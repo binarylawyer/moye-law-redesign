@@ -33,22 +33,30 @@ const Header: React.FC = () => {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 py-6 px-4 md:px-8 transition-all duration-200 ${
-        isScrolled ? 'bg-white/90 backdrop-blur-sm shadow-sm' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 h-[80px] flex items-center transition-all duration-300 ${
+        isScrolled ? 'bg-white border-b border-gray-200' : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-navy font-serif text-xl font-medium hover:opacity-80 transition duration-200">
-          Moye Law
+      <div className="container mx-auto px-8 flex justify-between items-center">
+        <Link to="/" className="text-navy font-serif text-xl hover:opacity-80 transition duration-200">
+          MOYE LAW
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link to="/practice" className="text-navy hover:text-gold transition-colors">Practice</Link>
-          <Link to="/about" className="text-navy hover:text-gold transition-colors">About</Link>
-          <Link to="/resources" className="text-navy hover:text-gold transition-colors">Resources</Link>
-          <Link to="/contact" className="text-navy hover:text-gold transition-colors">Contact</Link>
-        </nav>
+        <div className="hidden md:flex items-center space-x-24">
+          <nav className="flex items-center space-x-24">
+            <Link to="/practice" className="text-navy hover:text-gold transition-colors font-sans text-base">Practice</Link>
+            <Link to="/about" className="text-navy hover:text-gold transition-colors font-sans text-base">About</Link>
+            <Link to="/resources" className="text-navy hover:text-gold transition-colors font-sans text-base">Resources</Link>
+            <Link to="/contact" className="text-navy hover:text-gold transition-colors font-sans text-base">Contact</Link>
+          </nav>
+          
+          <Link to="/contact">
+            <Button variant="ghost" className="text-gold hover:text-gold/90 hover:bg-transparent font-sans text-base px-0 font-normal">
+              Schedule Consultation
+            </Button>
+          </Link>
+        </div>
 
         {/* Mobile menu button */}
         <div className="md:hidden">
@@ -63,11 +71,11 @@ const Header: React.FC = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed top-[72px] left-0 right-0 bottom-0 bg-white z-40 p-6 pt-8 overflow-y-auto">
+        <div className="md:hidden fixed top-[80px] left-0 right-0 bottom-0 bg-white z-40 p-8 overflow-y-auto">
           <nav className="flex flex-col space-y-6">
             <Link 
               to="/practice" 
-              className="text-3xl font-serif text-navy hover:text-gold transition-colors"
+              className="font-serif text-2xl text-navy hover:text-gold transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               Practice
@@ -77,7 +85,7 @@ const Header: React.FC = () => {
               <Link
                 key={area.path}
                 to={area.path}
-                className="text-lg font-sans text-navy/70 hover:text-navy/90 transition-colors pl-4"
+                className="text-base font-sans text-navy/70 hover:text-navy/90 transition-colors pl-4"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {area.title}
@@ -86,7 +94,7 @@ const Header: React.FC = () => {
             
             <Link 
               to="/about" 
-              className="text-3xl font-serif text-navy hover:text-gold transition-colors"
+              className="font-serif text-2xl text-navy hover:text-gold transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               About
@@ -94,7 +102,7 @@ const Header: React.FC = () => {
             
             <Link 
               to="/resources" 
-              className="text-3xl font-serif text-navy hover:text-gold transition-colors"
+              className="font-serif text-2xl text-navy hover:text-gold transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               Resources
@@ -104,7 +112,7 @@ const Header: React.FC = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className="text-lg font-sans text-navy/70 hover:text-navy/90 transition-colors pl-4"
+                className="text-base font-sans text-navy/70 hover:text-navy/90 transition-colors pl-4"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.title}
@@ -113,21 +121,20 @@ const Header: React.FC = () => {
             
             <Link 
               to="/contact" 
-              className="text-3xl font-serif text-navy hover:text-gold transition-colors"
+              className="font-serif text-2xl text-navy hover:text-gold transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               Contact
             </Link>
             
-            <Button 
-              className="mt-8 bg-gold hover:bg-gold/90 text-white font-sans font-medium w-full"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                window.location.href = '/contact';
-              }}
-            >
-              Schedule a Consultation
-            </Button>
+            <Link to="/contact" className="mt-8">
+              <Button 
+                className="bg-gold hover:bg-gold/90 text-white font-sans font-normal w-full"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Schedule a Consultation
+              </Button>
+            </Link>
           </nav>
         </div>
       )}

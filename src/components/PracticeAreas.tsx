@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const PracticeAreas: React.FC = () => {
   // Practice areas tailored to each persona
@@ -33,9 +33,9 @@ const PracticeAreas: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-white">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="max-w-3xl mx-auto mb-12 text-center">
+    <section className="py-24 md:py-32 bg-white">
+      <div className="container mx-auto px-8">
+        <div className="max-w-3xl mb-16">
           <h2 className="reveal font-serif text-3xl md:text-4xl text-navy mb-4">
             Areas of Practice
           </h2>
@@ -45,22 +45,23 @@ const PracticeAreas: React.FC = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl">
           {practiceAreas.map((practice, index) => (
             <div 
               key={practice.id}
-              className="reveal bg-white p-6 rounded-lg border border-navy/10 hover:border-navy/20 transition-all duration-300 flex flex-col h-full"
+              className="reveal border-t border-gray-200 pt-6"
               style={{ transitionDelay: `${0.1 * (index + 1)}s` }}
             >
-              <h3 className="font-serif text-navy mb-3 text-xl">{practice.title}</h3>
-              <p className="text-charcoal/80 mb-4 text-sm">{practice.description}</p>
+              <span className="text-navy/50 text-sm mb-3 block">{(index + 1).toString().padStart(2, '0')}</span>
+              <h3 className="font-serif text-navy text-2xl mb-3">{practice.title}</h3>
+              <p className="text-charcoal/80 mb-6">{practice.description}</p>
               
               <div className="mt-auto">
                 <Link 
                   to={practice.path} 
-                  className="inline-flex items-center text-navy hover:text-gold transition-colors text-sm"
+                  className="inline-flex items-center text-navy hover:text-gold transition-colors"
                 >
-                  Learn more <ChevronRight className="ml-1 h-4 w-4" />
+                  Learn more <ArrowRight className="ml-1 h-4 w-4" />
                 </Link>
               </div>
             </div>
