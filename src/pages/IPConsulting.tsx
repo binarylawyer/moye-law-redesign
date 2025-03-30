@@ -4,7 +4,6 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { FileText, Lightbulb, Scale, Globe, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import ConsultationCTA from '@/components/ConsultationCTA';
 
 const IPConsulting: React.FC = () => {
   const consultingAreas = [
@@ -198,9 +197,6 @@ const IPConsulting: React.FC = () => {
             </div>
           </div>
         </section>
-        
-        {/* Add ConsultationCTA before the existing CTA Section */}
-        <ConsultationCTA />
         
         {/* CTA Section */}
         <section className="bg-navy py-24 text-white">
