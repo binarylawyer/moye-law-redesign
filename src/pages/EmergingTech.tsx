@@ -19,8 +19,8 @@ const EmergingTech: React.FC = () => {
         <EmergingTechOverview />
         <EmergingTechAreas />
         <EmergingTechProcess />
-        <ConsultationCTA />
         <EmergingTechRelated />
+        <ConsultationCTA />
       </main>
       
       <Footer />

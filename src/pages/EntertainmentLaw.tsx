@@ -21,8 +21,8 @@ const EntertainmentLaw: React.FC = () => {
         <EntertainmentServices />
         <EntertainmentPrinciples />
         <EntertainmentProcess />
-        <ConsultationCTA />
         <EntertainmentRelated />
+        <ConsultationCTA />
       </main>
       
       <Footer />

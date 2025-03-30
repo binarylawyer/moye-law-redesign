@@ -19,8 +19,8 @@ const Licensing: React.FC = () => {
         <LicensingOverview />
         <LicensingAreas />
         <LicensingProcess />
-        <ConsultationCTA />
         <LicensingRelated />
+        <ConsultationCTA />
       </main>
       
       <Footer />
