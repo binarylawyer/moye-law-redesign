@@ -24,7 +24,7 @@
 
   /* Navigation styles */
   .nav-link {
-    @apply text-navy hover:text-cerulean transition-colors;
+    @apply text-navy hover:text-gold transition-colors;
   }
 }
 

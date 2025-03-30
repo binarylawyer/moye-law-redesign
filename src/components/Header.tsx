@@ -26,7 +26,7 @@ const Header: React.FC = () => {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 py-24 px-24 md:px-32 transition-all duration-200 ${
+      className={`fixed top-0 left-0 right-0 z-50 py-6 px-4 md:px-8 transition-all duration-200 ${
         isScrolled ? 'bg-white/90 backdrop-blur-sm shadow-sm' : 'bg-transparent'
       }`}
     >
@@ -36,18 +36,18 @@ const Header: React.FC = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-64">
-          <Link to="/practice" className="nav-link">Practice</Link>
-          <Link to="/about" className="nav-link">About</Link>
-          <Link to="/resources" className="nav-link">Resources</Link>
-          <Link to="/contact" className="nav-link">Contact</Link>
+        <nav className="hidden md:flex items-center space-x-8">
+          <Link to="/practice" className="text-navy hover:text-gold transition-colors">Practice</Link>
+          <Link to="/about" className="text-navy hover:text-gold transition-colors">About</Link>
+          <Link to="/resources" className="text-navy hover:text-gold transition-colors">Resources</Link>
+          <Link to="/contact" className="text-navy hover:text-gold transition-colors">Contact</Link>
         </nav>
 
         {/* Mobile menu button */}
         <div className="md:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-navy hover:text-navy/80 transition-colors"
+            className="text-navy hover:text-gold transition-colors"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -56,11 +56,11 @@ const Header: React.FC = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed top-[72px] left-0 right-0 bottom-0 bg-white z-40 p-24 pt-32">
-          <nav className="flex flex-col space-y-24">
+        <div className="md:hidden fixed top-[72px] left-0 right-0 bottom-0 bg-white z-40 p-6 pt-8">
+          <nav className="flex flex-col space-y-6">
             <Link 
               to="/practice" 
-              className="text-3xl font-serif text-navy hover:text-navy/80 transition-colors"
+              className="text-3xl font-serif text-navy hover:text-gold transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               Practice
@@ -70,7 +70,7 @@ const Header: React.FC = () => {
               <Link
                 key={area.path}
                 to={area.path}
-                className="text-lg font-sans text-navy/70 hover:text-navy/90 transition-colors pl-16"
+                className="text-lg font-sans text-navy/70 hover:text-navy/90 transition-colors pl-4"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {area.title}
@@ -79,7 +79,7 @@ const Header: React.FC = () => {
             
             <Link 
               to="/about" 
-              className="text-3xl font-serif text-navy hover:text-navy/80 transition-colors"
+              className="text-3xl font-serif text-navy hover:text-gold transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               About
@@ -87,7 +87,7 @@ const Header: React.FC = () => {
             
             <Link 
               to="/resources" 
-              className="text-3xl font-serif text-navy hover:text-navy/80 transition-colors"
+              className="text-3xl font-serif text-navy hover:text-gold transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               Resources
@@ -95,13 +95,13 @@ const Header: React.FC = () => {
             
             <Link 
               to="/contact" 
-              className="text-3xl font-serif text-navy hover:text-navy/80 transition-colors"
+              className="text-3xl font-serif text-navy hover:text-gold transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               Contact
             </Link>
             
-            <Button className="mt-32 bg-gold hover:bg-gold/90 text-white font-sans font-medium w-full">
+            <Button className="mt-8 bg-gold hover:bg-gold/90 text-white font-sans font-medium w-full">
               Schedule a Consultation
             </Button>
           </nav>

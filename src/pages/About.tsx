@@ -87,7 +87,7 @@ const About: React.FC = () => {
               </p>
               <Link 
                 to="/team" 
-                className="inline-flex items-center font-sans text-cerulean hover:text-navy transition-colors"
+                className="inline-flex items-center font-sans text-navy hover:text-gold transition-colors"
               >
                 Meet our team <ChevronRight className="ml-2 h-4 w-4" />
               </Link>
