@@ -18,7 +18,10 @@ const Footer: React.FC = () => {
               Family Values, Future-Forward Solutions
             </p>
             <p className="mt-8 text-base text-charcoal/60">
-              © {currentYear} Moye Law Firm. All rights reserved.
+              © {currentYear} Moye Law Firm.
+            </p>
+            <p className="text-base text-charcoal/60">
+              All rights reserved.
             </p>
           </div>
           
