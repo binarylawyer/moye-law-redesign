@@ -126,7 +126,7 @@ const DigitalAssetProtection: React.FC = () => {
           </div>
         </section>
         
-        {/* Process Section */}
+        {/* Process Section - Fixed to alternate text on both sides */}
         <section className="bg-white py-24">
           <div className="container mx-auto px-8">
             <h2 className="font-serif text-3xl text-navy mb-12 text-center">Our Digital Asset Protection Process</h2>
@@ -140,51 +140,56 @@ const DigitalAssetProtection: React.FC = () => {
                 {/* Step 1 */}
                 <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="md:text-right md:pr-16">
-                    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center">1</div>
                     <h3 className="font-serif text-xl text-navy mb-4">Digital Asset Inventory</h3>
                     <p className="text-charcoal">We conduct a comprehensive inventory of all digital assets, their locations, access methods, and associated values.</p>
                   </div>
                   <div className="md:pl-16"></div>
+                  {/* Circle marker */}
+                  <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 rounded-full bg-ocean-blue text-white flex items-center justify-center">1</div>
                 </div>
                 
                 {/* Step 2 */}
                 <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="md:text-right md:pr-16 md:order-1 md:-order-none"></div>
-                  <div className="md:pl-16">
-                    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center">2</div>
-                    <h3 className="font-serif text-xl text-navy mb-4">Risk Assessment</h3>
-                    <p className="text-charcoal">We evaluate potential vulnerabilities and risks specific to each digital asset type and your personal situation.</p>
+                  <div className="md:order-2 md:text-left">
+                    <h3 className="font-serif text-xl text-navy mb-4 md:pl-16">Risk Assessment</h3>
+                    <p className="text-charcoal md:pl-16">We evaluate potential vulnerabilities and risks specific to each digital asset type and your personal situation.</p>
                   </div>
+                  <div></div>
+                  {/* Circle marker */}
+                  <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 rounded-full bg-ocean-blue text-white flex items-center justify-center">2</div>
                 </div>
                 
                 {/* Step 3 */}
                 <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="md:text-right md:pr-16">
-                    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center">3</div>
                     <h3 className="font-serif text-xl text-navy mb-4">Protection Strategy Development</h3>
                     <p className="text-charcoal">We create a customized protection strategy combining legal structures, technical protocols, and documentation systems.</p>
                   </div>
-                  <div className="md:pl-16"></div>
+                  <div></div>
+                  {/* Circle marker */}
+                  <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 rounded-full bg-ocean-blue text-white flex items-center justify-center">3</div>
                 </div>
                 
                 {/* Step 4 */}
                 <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="md:text-right md:pr-16 md:order-1 md:-order-none"></div>
-                  <div className="md:pl-16">
-                    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center">4</div>
-                    <h3 className="font-serif text-xl text-navy mb-4">Implementation</h3>
-                    <p className="text-charcoal">We assist with implementing all protection measures, including establishing legal entities, drafting documents, and coordinating with technical advisors.</p>
+                  <div className="md:order-2 md:text-left">
+                    <h3 className="font-serif text-xl text-navy mb-4 md:pl-16">Implementation</h3>
+                    <p className="text-charcoal md:pl-16">We assist with implementing all protection measures, including establishing legal entities, drafting documents, and coordinating with technical advisors.</p>
                   </div>
+                  <div></div>
+                  {/* Circle marker */}
+                  <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 rounded-full bg-ocean-blue text-white flex items-center justify-center">4</div>
                 </div>
                 
                 {/* Step 5 */}
                 <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="md:text-right md:pr-16">
-                    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center">5</div>
                     <h3 className="font-serif text-xl text-navy mb-4">Ongoing Monitoring & Updates</h3>
                     <p className="text-charcoal">We provide regular reviews to ensure your protection strategy remains effective as regulations, technologies, and your holdings evolve.</p>
                   </div>
-                  <div className="md:pl-16"></div>
+                  <div></div>
+                  {/* Circle marker */}
+                  <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 rounded-full bg-ocean-blue text-white flex items-center justify-center">5</div>
                 </div>
               </div>
             </div>
