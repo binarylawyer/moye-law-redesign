@@ -10,7 +10,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const FAQ: React.FC = () => {
   const [faqResource, setFaqResource] = useState<Resource | null>(null);
@@ -25,14 +24,15 @@ const FAQ: React.FC = () => {
     // Extract FAQ content - parse the markdown content into Q&A format
     if (faq && faq.content) {
       const content = faq.content;
-      const sections = content.split('###').filter(Boolean);
+      const questionPattern = /###\s+(.*?)\n([\s\S]*?)(?=###|$)/g;
+      const qaItems: { question: string; answer: string }[] = [];
       
-      const qaItems = sections.map(section => {
-        const lines = section.trim().split('\n');
-        const question = lines[0].trim();
-        const answer = lines.slice(1).join('\n').trim();
-        return { question, answer };
-      });
+      let match;
+      while ((match = questionPattern.exec(content)) !== null) {
+        const question = match[1].trim();
+        const answer = match[2].trim();
+        qaItems.push({ question, answer });
+      }
       
       setFaqContent(qaItems);
     }

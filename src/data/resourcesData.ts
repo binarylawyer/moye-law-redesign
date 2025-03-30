@@ -328,15 +328,11 @@ export const resources: Resource[] = [
     content: `
       # Frequently Asked Questions
 
-      ## Client Services
-
       ### How do we retain your law firm?
       We have a client onboarding process where we make sure that we don't have conflicts of interest that would prevent us from representing you. Once that's completed, we will onboard you and set up your private client locker so that you can begin accessing our services.
 
       ### What is your fee structure?
       Our fee structure varies depending on the complexity of your legal needs and the specific practice area. We offer both flat fee arrangements for certain services and hourly billing for more complex matters. We believe in transparent pricing and will discuss all fee arrangements upfront during our initial consultation.
-
-      ## Estate Planning
 
       ### How long does it take to plan an estate?
       We can usually complete everything in less than a week. It just takes time for you to gather all of your documents and take care of things that are required to set up your session. Once all necessary documentation is provided, we can draft the required legal instruments promptly.
@@ -344,23 +340,17 @@ export const resources: Resource[] = [
       ### Do I need to update my estate plan if I move to another state?
       Yes, it's highly recommended to review and potentially update your estate plan when you move to a new state. Estate laws vary significantly between states, and documents that were valid in your previous state of residence may not function as intended under your new state's laws.
 
-      ## Intellectual Property
-
       ### How do I know if my creative work qualifies for copyright protection?
       Copyright protection automatically applies to original works of authorship fixed in a tangible medium of expression. This includes literary works, musical compositions, dramatic works, choreographic works, pictorial/graphic/sculptural works, motion pictures, sound recordings, and architectural works. The work must demonstrate some minimal degree of creativity, but the threshold is quite low. We can help assess your specific work and determine the best protection strategy.
 
       ### What's the difference between a trademark and a service mark?
       Trademarks and service marks both function as source identifiers, but they apply to different offerings. A trademark identifies the source of goods (physical products), while a service mark identifies the source of services. Both are protected under the same legal framework and can be registered with the USPTO. The term "trademark" is often used broadly to refer to both types of marks.
 
-      ## Art Law
-
       ### What should artists know about contracts with galleries?
       Artists should carefully review gallery contracts for terms regarding commission percentages, exclusivity arrangements, territory limitations, contract duration, payment schedules, responsibility for expenses, insurance coverage, copyright permissions, and termination conditions. We recommend having these contracts reviewed by an attorney who specializes in art law to ensure your interests are properly protected.
 
       ### How can I protect my artwork from unauthorized reproduction?
       You can protect your artwork through copyright registration, which provides significant legal advantages if infringement occurs. Additionally, consider using watermarks on digital images, limited licensing agreements, certificates of authenticity, and clear copyright notices. For physical works, documentation of your creative process and maintaining provenance records is valuable. Our firm can help establish a comprehensive protection strategy tailored to your specific artistic medium and goals.
-
-      ## Cryptocurrency & Digital Assets
 
       ### What are the current tax implications of cryptocurrency transactions?
       Cryptocurrency transactions are subject to capital gains tax treatment in most cases. The IRS treats cryptocurrency as property, not currency. This means you must track the cost basis of each acquisition and calculate gains or losses upon sale or exchange. Mining, staking, and receiving airdrops may also create taxable events. The regulatory landscape is rapidly evolving, and we recommend consulting with our team to develop a tax-compliant strategy for your digital asset activities.
