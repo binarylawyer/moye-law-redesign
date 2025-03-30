@@ -63,20 +63,20 @@ const HowWeWork: React.FC = () => {
   return (
     <>
       <Header />
-      <main className="pt-32 bg-white">
-        {/* Hero Section */}
-        <section className="py-16 md:py-24">
+      <main>
+        {/* Hero Section with updated spacing to match other pages */}
+        <section className="bg-light-gray py-24 md:py-32">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-3xl mx-auto text-center">
               <h1 
                 ref={el => elementsRef.current[0] = el}
-                className="reveal font-serif text-4xl md:text-5xl text-navy mb-6"
+                className="reveal font-serif text-4xl md:text-5xl lg:text-6xl text-navy mb-6"
               >
                 How We Work
               </h1>
               <p 
                 ref={el => elementsRef.current[1] = el}
-                className="reveal text-lg text-charcoal/80 mb-8"
+                className="reveal text-lg md:text-xl text-charcoal/80 mb-8 max-w-2xl mx-auto"
                 style={{ transitionDelay: '0.1s' }}
               >
                 Our process is designed to provide clarity, confidence, and customized solutions for your unique legal needs. We combine personal attention with innovative approaches to deliver exceptional results.
@@ -86,7 +86,7 @@ const HowWeWork: React.FC = () => {
         </section>
 
         {/* Process Timeline */}
-        <section className="py-16 bg-light-gray">
+        <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2 
@@ -101,7 +101,7 @@ const HowWeWork: React.FC = () => {
                 {/* Vertical line */}
                 <div className="absolute left-6 md:left-1/2 transform md:-translate-x-px h-full w-px bg-navy/20"></div>
                 
-                {/* Timeline items */}
+                {/* Timeline items - updated circle colors to ocean-blue (cerulean) */}
                 {processSteps.map((step, index) => (
                   <div 
                     key={index}
@@ -111,8 +111,8 @@ const HowWeWork: React.FC = () => {
                     }`}
                     style={{ transitionDelay: `${0.3 + (index * 0.1)}s` }}
                   >
-                    {/* Circle marker */}
-                    <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 -mt-1 w-12 h-12 rounded-full bg-navy z-10 flex items-center justify-center">
+                    {/* Circle marker - changed to ocean-blue (cerulean) from navy */}
+                    <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 -mt-1 w-12 h-12 rounded-full bg-ocean-blue z-10 flex items-center justify-center">
                       <span className="text-white font-serif">{step.number}</span>
                     </div>
                     
@@ -133,14 +133,14 @@ const HowWeWork: React.FC = () => {
         </section>
 
         {/* Our Philosophy */}
-        <section className="py-16">
+        <section className="py-16 md:py-24 bg-light-gray">
           <div className="container mx-auto px-4">
             <div 
               ref={el => elementsRef.current[processSteps.length + 3] = el}
               className="reveal max-w-3xl mx-auto"
               style={{ transitionDelay: `${0.4 + (processSteps.length * 0.1)}s` }}
             >
-              <h2 className="font-serif text-3xl text-navy mb-6 text-center">Our Philosophy</h2>
+              <h2 className="font-serif text-3xl text-navy mb-8 text-center">Our Philosophy</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                 <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
