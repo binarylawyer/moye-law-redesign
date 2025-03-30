@@ -38,9 +38,9 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
   const featuredPracticeAreas = practiceAreas.slice(0, 6);
 
   return (
-    <div className="hidden md:flex items-center space-x-24">
+    <div className="hidden md:flex items-center space-x-8 pr-8">
       <NavigationMenu>
-        <NavigationMenuList className="space-x-24">
+        <NavigationMenuList className="space-x-12">
           <NavigationMenuItem className="relative">
             <Link to="/practice" className={`${navMenuItemClasses} ${isActive('/practice') ? activeNavClass : ''} text-lg`}>
               <NavigationMenuTrigger className="bg-transparent hover:bg-transparent focus:bg-transparent text-lg p-0">Practice</NavigationMenuTrigger>

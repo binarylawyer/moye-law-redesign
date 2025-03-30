@@ -26,7 +26,7 @@ const Header: React.FC = () => {
         isScrolled ? 'bg-white border-b border-gray-200' : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-8 flex justify-between items-center">
+      <div className="container mx-auto px-4 md:px-12 flex justify-between items-center">
         <Link to="/" className="text-navy font-serif text-xl hover:opacity-80 transition duration-200">
           MOYE LAW
         </Link>
