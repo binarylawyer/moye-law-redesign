@@ -1,42 +1,69 @@
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
 const Approach: React.FC = () => {
+  const elementsRef = useRef<Array<HTMLElement | null>>([]);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    const elements = elementsRef.current.filter(Boolean) as HTMLElement[];
+    elements.forEach(el => {
+      observer.observe(el);
+    });
+    
+    return () => {
+      elements.forEach(el => {
+        observer.unobserve(el);
+      });
+    };
+  }, []);
+
   return (
-    <section className="bg-white py-64 px-24">
-      <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-32 lg:gap-64">
-          {/* Left Side: Traditional/Family Elements */}
-          <div className="md:w-1/2">
-            <h2 className="text-navy font-serif mb-16">Our Approach</h2>
-            <p className="text-charcoal mb-16">
-              We blend personalized attention with innovative legal solutions, combining decades of experience with advanced technology to provide exceptional service that evolves with your needs while maintaining the human touch.
-            </p>
-            
-            {/* For Barbara: Personal Attention */}
-            <div className="mb-24">
-              <h3 className="text-navy font-serif text-xl mb-8">Personal Attention</h3>
-              <p className="text-charcoal">We prioritize genuine relationships, ensuring every client receives dedicated time and tailored solutions.</p>
-            </div>
-            
-            {/* For David: Stability Signal */}
-            <div>
-              <h3 className="text-navy font-serif text-xl mb-8">Deep Expertise</h3>
-              <p className="text-charcoal">With over three decades of experience, our attorneys bring seasoned judgment to complex legal challenges.</p>
-            </div>
-          </div>
+    <section className="py-96 bg-white">
+      <div className="container mx-auto px-24">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 
+            ref={el => elementsRef.current[0] = el} 
+            className="reveal font-serif mb-64"
+          >
+            Our Approach
+          </h2>
           
-          {/* Right Side: Innovative/Tech Elements */}
-          <div className="md:w-1/2 mt-32 md:mt-0">
-            {/* For Alex: Tech Sophistication */}
-            <div className="mb-24">
-              <h3 className="text-navy font-serif text-xl mb-8">Tech-Forward Solutions</h3>
-              <p className="text-charcoal">We leverage secure digital tools while maintaining strict confidentiality to streamline complex legal processes.</p>
+          <p 
+            ref={el => elementsRef.current[1] = el} 
+            className="reveal text-xl md:text-2xl font-serif font-light text-charcoal mb-32 leading-relaxed"
+            style={{ transitionDelay: '0.1s' }}
+          >
+            We blend personalized attention with technological innovation to deliver legal solutions that are both traditional in values and forward-thinking in execution.
+          </p>
+          
+          <div 
+            ref={el => elementsRef.current[2] = el} 
+            className="reveal flex justify-center items-center gap-24 text-charcoal/60 my-64"
+            style={{ transitionDelay: '0.2s' }}
+          >
+            {/* Traditional & Innovative elements side by side */}
+            <div className="text-center">
+              <span className="block text-lg md:text-xl font-serif mb-16">Traditional</span>
+              <span className="block text-sm">Personal relationship</span>
+              <span className="block text-sm">Family values</span>
+              <span className="block text-sm">Attentive service</span>
             </div>
             
-            <div>
-              <h3 className="text-navy font-serif text-xl mb-8">Future-Oriented Planning</h3>
-              <p className="text-charcoal">Our forward-thinking strategies anticipate changes in law, technology, and family dynamics to protect your legacy.</p>
+            <div className="h-32 w-px bg-charcoal/20"></div>
+            
+            <div className="text-center">
+              <span className="block text-lg md:text-xl font-serif mb-16">Innovative</span>
+              <span className="block text-sm">Advanced technology</span>
+              <span className="block text-sm">Secure processes</span>
+              <span className="block text-sm">Efficient solutions</span>
             </div>
           </div>
         </div>

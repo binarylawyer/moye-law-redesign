@@ -3,61 +3,55 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+  
   return (
-    <footer className="bg-light-gray text-charcoal py-64 px-24">
+    <footer className="bg-white py-64 px-24">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-32">
-          {/* Logo and Tagline */}
-          <div className="lg:col-span-1">
-            <Link to="/" className="text-navy font-serif text-xl font-bold hover:text-navy/90 transition duration-200">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-64">
+          {/* Logo and copyright */}
+          <div className="md:col-span-4">
+            <Link to="/" className="text-navy font-serif text-xl font-medium hover:opacity-80 transition duration-200">
               Moye Law
             </Link>
-            <p className="mt-16 text-sm">
-              Family Values, Future-Forward Legal Solutions
+            <p className="mt-16 text-sm text-charcoal/60">
+              Family Values, Future-Forward Solutions
+            </p>
+            <p className="mt-32 text-sm text-charcoal/60">
+              © {currentYear} Moye Law Firm. All rights reserved.
             </p>
           </div>
-
+          
+          {/* Navigation */}
+          <nav className="md:col-span-2">
+            <p className="font-medium text-navy mb-16">Navigate</p>
+            <ul className="space-y-8">
+              <li><Link to="/practice" className="text-sm text-charcoal/70 hover:text-navy transition-colors">Practice</Link></li>
+              <li><Link to="/about" className="text-sm text-charcoal/70 hover:text-navy transition-colors">About</Link></li>
+              <li><Link to="/resources" className="text-sm text-charcoal/70 hover:text-navy transition-colors">Resources</Link></li>
+              <li><Link to="/contact" className="text-sm text-charcoal/70 hover:text-navy transition-colors">Contact</Link></li>
+            </ul>
+          </nav>
+          
           {/* Practice Areas */}
-          <div>
-            <h3 className="font-serif font-bold text-navy mb-16 text-lg">Practice Areas</h3>
+          <nav className="md:col-span-3">
+            <p className="font-medium text-navy mb-16">Practice Areas</p>
             <ul className="space-y-8">
-              <li><Link to="/practice/estate-planning" className="hover:text-navy transition-colors">Estate Planning & Trusts</Link></li>
-              <li><Link to="/practice/elder-law" className="hover:text-navy transition-colors">Elder Law</Link></li>
-              <li><Link to="/practice/ip-digital-assets" className="hover:text-navy transition-colors">IP & Digital Assets</Link></li>
-              <li><Link to="/practice/art-law" className="hover:text-navy transition-colors">Art Law</Link></li>
+              <li><Link to="/practice/estate-planning" className="text-sm text-charcoal/70 hover:text-navy transition-colors">Estate Planning & Trusts</Link></li>
+              <li><Link to="/practice/elder-law" className="text-sm text-charcoal/70 hover:text-navy transition-colors">Elder Law</Link></li>
+              <li><Link to="/practice/intellectual-property" className="text-sm text-charcoal/70 hover:text-navy transition-colors">Intellectual Property</Link></li>
+              <li><Link to="/practice/art-law" className="text-sm text-charcoal/70 hover:text-navy transition-colors">Art Law</Link></li>
             </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h3 className="font-serif font-bold text-navy mb-16 text-lg">Resources</h3>
-            <ul className="space-y-8">
-              <li><Link to="/resources/guides" className="hover:text-navy transition-colors">Client Guides</Link></li>
-              <li><Link to="/resources/faqs" className="hover:text-navy transition-colors">FAQs</Link></li>
-              <li><Link to="/resources/blog" className="hover:text-navy transition-colors">Legal Insights</Link></li>
-              <li><Link to="/client-portal" className="hover:text-navy transition-colors">Client Portal</Link></li>
-            </ul>
-          </div>
-
+          </nav>
+          
           {/* Contact */}
-          <div>
-            <h3 className="font-serif font-bold text-navy mb-16 text-lg">Contact</h3>
-            <ul className="space-y-8">
-              <li><Link to="/contact" className="hover:text-navy transition-colors">Contact Us</Link></li>
-              <li><a href="mailto:info@moye.law" className="hover:text-navy transition-colors">info@moye.law</a></li>
-              <li><a href="tel:+12125551234" className="hover:text-navy transition-colors">(212) 555-1234</a></li>
-              <li className="text-sm">123 Legal Avenue<br/>New York, NY 10001</li>
-            </ul>
-          </div>
-        </div>
-        
-        <div className="mt-64 pt-24 border-t border-gray-300 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-charcoal/80">
-            © {new Date().getFullYear()} Moye Law. All rights reserved.
-          </p>
-          <div className="mt-16 md:mt-0 flex space-x-16">
-            <Link to="/privacy" className="text-sm text-charcoal/80 hover:text-navy transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="text-sm text-charcoal/80 hover:text-navy transition-colors">Terms of Use</Link>
+          <div className="md:col-span-3">
+            <p className="font-medium text-navy mb-16">Contact</p>
+            <p className="text-sm text-charcoal/70 mb-8">New York</p>
+            <p className="text-sm text-charcoal/70 mb-16">Virginia</p>
+            <p className="text-sm text-charcoal/70">
+              <a href="mailto:contact@moye.law" className="hover:text-navy transition-colors">contact@moye.law</a>
+            </p>
           </div>
         </div>
       </div>
