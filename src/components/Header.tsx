@@ -101,7 +101,13 @@ const Header: React.FC = () => {
               Contact
             </Link>
             
-            <Button className="mt-8 bg-gold hover:bg-gold/90 text-white font-sans font-medium w-full">
+            <Button 
+              className="mt-8 bg-gold hover:bg-gold/90 text-white font-sans font-medium w-full"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                window.location.href = '/contact';
+              }}
+            >
               Schedule a Consultation
             </Button>
           </nav>

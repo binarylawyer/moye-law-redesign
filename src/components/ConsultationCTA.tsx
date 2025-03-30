@@ -1,6 +1,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const ConsultationCTA: React.FC = () => {
   const elementsRef = useRef<Array<HTMLElement | null>>([]);
@@ -27,35 +28,37 @@ const ConsultationCTA: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-96 bg-muted-navy text-white">
-      <div className="container mx-auto px-24">
+    <section className="py-16 md:py-24 bg-muted-navy text-white">
+      <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h2 
             ref={el => elementsRef.current[0] = el} 
-            className="reveal font-serif text-white mb-32"
+            className="reveal font-serif text-3xl md:text-4xl text-white mb-6 md:mb-8"
           >
             Schedule a Confidential Consultation
           </h2>
           
           <p 
             ref={el => elementsRef.current[1] = el} 
-            className="reveal text-lg mb-64 text-white/80"
+            className="reveal text-lg mb-8 md:mb-10 text-white/80"
             style={{ transitionDelay: '0.1s' }}
           >
             Take the first step toward securing your legacy. Our confidential consultation process ensures your information remains private while we develop solutions tailored to your specific needs.
           </p>
           
-          <Button 
-            ref={el => elementsRef.current[2] = el} 
-            className="reveal bg-gold hover:bg-gold/90 text-white font-medium px-32 py-24"
-            style={{ transitionDelay: '0.2s' }}
-          >
-            Request Consultation
-          </Button>
+          <Link to="/contact">
+            <Button 
+              ref={el => elementsRef.current[2] = el} 
+              className="reveal bg-gold hover:bg-gold/90 text-white font-medium px-6 py-2"
+              style={{ transitionDelay: '0.2s' }}
+            >
+              Request Consultation
+            </Button>
+          </Link>
           
           <p 
             ref={el => elementsRef.current[3] = el} 
-            className="reveal text-sm mt-24 text-white/60"
+            className="reveal text-sm mt-4 text-white/60"
             style={{ transitionDelay: '0.3s' }}
           >
             All consultations are protected by attorney-client privilege
