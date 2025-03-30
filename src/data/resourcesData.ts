@@ -1,4 +1,3 @@
-
 export type ResourceCategory = 'article' | 'guide' | 'faq' | 'case-study' | 'whitepaper';
 
 export interface Resource {
@@ -319,84 +318,55 @@ export const resources: Resource[] = [
   },
   {
     id: '5',
-    title: 'FAQ: Common Estate Planning Questions',
-    description: 'Answers to frequently asked questions about estate planning and trusts.',
+    title: 'FAQ: Common Legal Questions',
+    description: 'Answers to frequently asked questions about our legal services and practice areas.',
     category: 'faq',
-    slug: 'estate-planning-faq',
+    slug: 'legal-faq',
     date: '2024-01-20',
     author: 'Legal Team',
-    tags: ['Estate Planning', 'FAQ', 'Trusts'],
+    tags: ['Estate Planning', 'FAQ', 'Intellectual Property', 'Art Law', 'Crypto'],
     content: `
-      # Frequently Asked Questions: Estate Planning
+      # Frequently Asked Questions
 
-      ## General Estate Planning Questions
+      ## Client Services
 
-      ### What is estate planning?
-      Estate planning is the process of arranging for the management and disposal of your estate during your lifetime and after death, while minimizing gift, estate, generation skipping transfer, and income tax. Good estate planning includes planning for incapacity.
+      ### How do we retain your law firm?
+      We have a client onboarding process where we make sure that we don't have conflicts of interest that would prevent us from representing you. Once that's completed, we will onboard you and set up your private client locker so that you can begin accessing our services.
 
-      ### When should I start estate planning?
-      You should begin estate planning as soon as you have assets or responsibilities. Even young adults should have basic documents such as a power of attorney and healthcare directive. As your assets grow or family situation changes, your estate plan should be updated accordingly.
+      ### What is your fee structure?
+      Our fee structure varies depending on the complexity of your legal needs and the specific practice area. We offer both flat fee arrangements for certain services and hourly billing for more complex matters. We believe in transparent pricing and will discuss all fee arrangements upfront during our initial consultation.
 
-      ### How often should I review my estate plan?
-      You should review your estate plan at least every 3-5 years, or whenever you experience significant life events such as:
-      - Marriage or divorce
-      - Birth or adoption of children
-      - Death of a spouse or beneficiary
-      - Substantial changes in assets
-      - Moving to a different state
-      - Major tax law changes
+      ## Estate Planning
 
-      ## Trust-Related Questions
+      ### How long does it take to plan an estate?
+      We can usually complete everything in less than a week. It just takes time for you to gather all of your documents and take care of things that are required to set up your session. Once all necessary documentation is provided, we can draft the required legal instruments promptly.
 
-      ### What is the difference between a revocable and irrevocable trust?
-      A revocable trust can be changed or terminated by the grantor during their lifetime. It doesn't provide asset protection but helps avoid probate. An irrevocable trust generally cannot be changed after creation and can provide asset protection and tax benefits.
+      ### Do I need to update my estate plan if I move to another state?
+      Yes, it's highly recommended to review and potentially update your estate plan when you move to a new state. Estate laws vary significantly between states, and documents that were valid in your previous state of residence may not function as intended under your new state's laws.
 
-      ### Do I need a trust if I have a will?
-      A will must go through probate, which can be time-consuming and public. A properly funded trust avoids probate, provides privacy, and can manage assets if you become incapacitated. Whether you need a trust depends on your specific circumstances, assets, and goals.
+      ## Intellectual Property
 
-      ### How do I fund a trust?
-      Funding a trust involves transferring ownership of your assets to the trust. This may include:
-      - Retitling real estate, bank accounts, and investment accounts
-      - Assigning business interests
-      - Changing beneficiary designations
-      - Transferring personal property through assignment documents
+      ### How do I know if my creative work qualifies for copyright protection?
+      Copyright protection automatically applies to original works of authorship fixed in a tangible medium of expression. This includes literary works, musical compositions, dramatic works, choreographic works, pictorial/graphic/sculptural works, motion pictures, sound recordings, and architectural works. The work must demonstrate some minimal degree of creativity, but the threshold is quite low. We can help assess your specific work and determine the best protection strategy.
 
-      ## Tax Planning Questions
+      ### What's the difference between a trademark and a service mark?
+      Trademarks and service marks both function as source identifiers, but they apply to different offerings. A trademark identifies the source of goods (physical products), while a service mark identifies the source of services. Both are protected under the same legal framework and can be registered with the USPTO. The term "trademark" is often used broadly to refer to both types of marks.
 
-      ### How much can I give away tax-free?
-      As of 2024, the federal lifetime gift and estate tax exemption is $13.61 million per individual. Additionally, you can give up to $18,000 per recipient per year without using your lifetime exemption (annual exclusion gifts).
+      ## Art Law
 
-      ### How can I minimize estate taxes?
-      Strategies to minimize estate taxes include:
-      - Fully utilizing both spouses' exemption amounts
-      - Annual exclusion gifts
-      - Direct payments for medical and educational expenses
-      - Charitable giving
-      - Irrevocable life insurance trusts
-      - Family limited partnerships
-      - Various advanced trust strategies
+      ### What should artists know about contracts with galleries?
+      Artists should carefully review gallery contracts for terms regarding commission percentages, exclusivity arrangements, territory limitations, contract duration, payment schedules, responsibility for expenses, insurance coverage, copyright permissions, and termination conditions. We recommend having these contracts reviewed by an attorney who specializes in art law to ensure your interests are properly protected.
 
-      ### What is portability of the estate tax exemption?
-      Portability allows a surviving spouse to use the deceased spouse's unused estate tax exemption. This effectively allows married couples to use both of their exemptions ($27.22 million total for 2024), even if all assets are held by one spouse.
+      ### How can I protect my artwork from unauthorized reproduction?
+      You can protect your artwork through copyright registration, which provides significant legal advantages if infringement occurs. Additionally, consider using watermarks on digital images, limited licensing agreements, certificates of authenticity, and clear copyright notices. For physical works, documentation of your creative process and maintaining provenance records is valuable. Our firm can help establish a comprehensive protection strategy tailored to your specific artistic medium and goals.
 
-      ## Digital Asset Questions
+      ## Cryptocurrency & Digital Assets
 
-      ### How do I include digital assets in my estate plan?
-      To address digital assets:
-      - Create an inventory of digital assets
-      - Document access information securely
-      - Include specific authorization language in your estate documents
-      - Consider a digital asset trust
-      - Use a password manager with legacy access features
+      ### What are the current tax implications of cryptocurrency transactions?
+      Cryptocurrency transactions are subject to capital gains tax treatment in most cases. The IRS treats cryptocurrency as property, not currency. This means you must track the cost basis of each acquisition and calculate gains or losses upon sale or exchange. Mining, staking, and receiving airdrops may also create taxable events. The regulatory landscape is rapidly evolving, and we recommend consulting with our team to develop a tax-compliant strategy for your digital asset activities.
 
-      ### Can my executor access my email and social media accounts?
-      Access to digital accounts depends on:
-      - Terms of service agreements
-      - State laws regarding fiduciary access
-      - Whether you've provided explicit authorization
-      - Documentation held by your executor
-
-      The Revised Uniform Fiduciary Access to Digital Assets Act (RUFADAA), adopted in many states, provides a legal framework for executor access to digital assets.
+      ### How can I include digital assets in my estate plan?
+      Including digital assets in your estate plan requires specialized documentation that grants your fiduciaries legal authority to access and manage these assets. This includes creating a comprehensive digital asset inventory, secure methods for passing access credentials, explicit authorization language in your estate planning documents, and potentially establishing digital asset trusts. Given the technical and legal complexity of digital assets, we recommend working with our team to create a customized digital asset succession plan.
     `
   },
   {
