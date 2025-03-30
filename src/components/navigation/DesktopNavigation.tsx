@@ -37,19 +37,19 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
         <NavigationMenuList className="space-x-24">
           <NavigationMenuItem>
             <NavigationMenuTrigger className={`${navMenuItemClasses} ${isActive('/practice') ? activeNavClass : ''} bg-transparent hover:bg-transparent focus:bg-transparent`}>Practice</NavigationMenuTrigger>
-            <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-4 w-[400px] mt-2">
-              <div className="grid grid-cols-2 gap-4">
+            <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-8 w-[500px] mt-2">
+              <div className="grid grid-cols-2 gap-x-8 gap-y-4">
                 {practiceAreas.map((area) => (
                   <Link
                     key={area.path}
                     to={area.path}
-                    className="text-navy hover:text-gold p-2 transition-colors"
+                    className="text-navy hover:text-gold p-2 transition-colors whitespace-nowrap"
                   >
                     {area.title}
                   </Link>
                 ))}
               </div>
-              <div className="mt-4 pt-4 border-t">
+              <div className="mt-6 pt-4 border-t">
                 <Link to="/practice" className="text-gold hover:text-navy flex items-center transition-colors">
                   View All Practice Areas
                 </Link>
