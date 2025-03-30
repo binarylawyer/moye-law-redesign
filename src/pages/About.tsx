@@ -3,7 +3,7 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Shield, Briefcase, Lightbulb } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
@@ -14,7 +14,7 @@ const About: React.FC = () => {
         <section className="py-20 md:py-32 px-4 md:px-6 bg-light-gray">
           <div className="container mx-auto">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="font-serif text-4xl md:text-5xl mb-8 text-navy mt-24">About Moye Law</h1>
+              <h1 className="font-serif text-4xl md:text-5xl mb-8 text-navy mt-36">About Moye Law</h1>
               <p className="text-navy/70 text-xl mb-4">
                 A family-run firm at the intersection of traditional legal expertise and innovative technology.
               </p>
@@ -103,6 +103,62 @@ const About: React.FC = () => {
             </div>
           </div>
         </section>
+        
+        {/* New Section for Targeted Personas */}
+        <section className="py-16 md:py-28 px-4 md:px-6 bg-light-gray">
+          <div className="container mx-auto">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="font-serif text-3xl md:text-4xl mb-12 text-navy text-center">Who We Serve</h2>
+              <p className="text-navy/70 text-xl mb-16 text-center">
+                Our practice is tailored to the unique needs of clients who value both personal attention and sophisticated legal strategies.
+              </p>
+              
+              <div className="grid md:grid-cols-3 gap-8 mb-16">
+                <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 text-center">
+                  <div className="mx-auto mb-6 w-16 h-16 flex items-center justify-center rounded-full bg-pastel-blue/30">
+                    <Lightbulb className="h-8 w-8 text-navy" />
+                  </div>
+                  <h3 className="font-serif text-2xl mb-4 text-navy">Innovators</h3>
+                  <p className="text-navy/70 text-lg">
+                    Tech founders and digital pioneers who need sophisticated IP protection and forward-thinking estate planning for digital assets.
+                  </p>
+                </div>
+                
+                <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 text-center">
+                  <div className="mx-auto mb-6 w-16 h-16 flex items-center justify-center rounded-full bg-pastel-blue/30">
+                    <Briefcase className="h-8 w-8 text-navy" />
+                  </div>
+                  <h3 className="font-serif text-2xl mb-4 text-navy">Executives</h3>
+                  <p className="text-navy/70 text-lg">
+                    Senior executives balancing career demands with family responsibilities, including care for aging parents and estate planning.
+                  </p>
+                </div>
+                
+                <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 text-center">
+                  <div className="mx-auto mb-6 w-16 h-16 flex items-center justify-center rounded-full bg-pastel-blue/30">
+                    <Shield className="h-8 w-8 text-navy" />
+                  </div>
+                  <h3 className="font-serif text-2xl mb-4 text-navy">Legacy Builders</h3>
+                  <p className="text-navy/70 text-lg">
+                    High-net-worth individuals focused on preserving family wealth and establishing governance structures for multi-generational assets.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="text-center mt-12">
+                <Link 
+                  to="/contact" 
+                  className="inline-flex items-center justify-center px-8 py-3 font-sans text-lg text-white bg-gold hover:bg-gold/90 rounded transition-colors"
+                >
+                  Schedule a Consultation
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* Extra whitespace section */}
+        <div className="h-24 md:h-40"></div>
       </main>
       <Footer />
     </div>
