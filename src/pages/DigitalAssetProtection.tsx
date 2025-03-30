@@ -6,8 +6,8 @@ import DigitalAssetHero from '@/components/digital-asset-protection/DigitalAsset
 import DigitalAssetOverview from '@/components/digital-asset-protection/DigitalAssetOverview';
 import DigitalAssetStrategies from '@/components/digital-asset-protection/DigitalAssetStrategies';
 import DigitalAssetProcess from '@/components/digital-asset-protection/DigitalAssetProcess';
-import DigitalAssetCTA from '@/components/digital-asset-protection/DigitalAssetCTA';
 import DigitalAssetRelated from '@/components/digital-asset-protection/DigitalAssetRelated';
+import ConsultationCTA from '@/components/ConsultationCTA';
 
 const DigitalAssetProtection: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ const DigitalAssetProtection: React.FC = () => {
         <DigitalAssetOverview />
         <DigitalAssetStrategies />
         <DigitalAssetProcess />
-        <DigitalAssetCTA />
+        <ConsultationCTA />
         <DigitalAssetRelated />
       </main>
       

@@ -1,10 +1,10 @@
-
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { practiceAreasData } from '@/data/practiceAreasData';
+import ConsultationCTA from '@/components/ConsultationCTA';
 
 const PracticeArea: React.FC = () => {
   const { area } = useParams<{ area: string }>();
@@ -123,16 +123,8 @@ const PracticeArea: React.FC = () => {
           </div>
         </section>
         
-        {/* CTA Section */}
-        <section className="py-72 md:py-96 bg-gradient-to-br from-navy to-muted-navy text-white">
-          <div className="container mx-auto px-8 text-center">
-            <h2 className="reveal font-serif text-4xl mb-16">Ready to discuss your {practiceData.title.toLowerCase()} needs?</h2>
-            <p className="reveal text-xl max-w-3xl mx-auto mb-16">Our experienced attorneys are available to provide personalized guidance tailored to your specific situation. We understand the unique challenges facing {area === 'estate-planning' ? 'high-net-worth individuals' : area === 'elder-law' ? 'families caring for aging relatives' : area === 'intellectual-property' ? 'innovators and entrepreneurs' : 'art collectors and creative professionals'}.</p>
-            <Button className="reveal bg-gold hover:bg-gold/90 text-white mt-16 text-lg px-10 py-8">
-              Schedule a Consultation
-            </Button>
-          </div>
-        </section>
+        {/* Using the ConsultationCTA component instead of inline CTA */}
+        <ConsultationCTA />
       </main>
       <Footer />
     </div>

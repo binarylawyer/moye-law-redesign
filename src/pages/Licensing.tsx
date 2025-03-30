@@ -6,8 +6,8 @@ import LicensingHero from '@/components/licensing/LicensingHero';
 import LicensingOverview from '@/components/licensing/LicensingOverview';
 import LicensingAreas from '@/components/licensing/LicensingAreas';
 import LicensingProcess from '@/components/licensing/LicensingProcess';
-import LicensingCTA from '@/components/licensing/LicensingCTA';
 import LicensingRelated from '@/components/licensing/LicensingRelated';
+import ConsultationCTA from '@/components/ConsultationCTA';
 
 const Licensing: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ const Licensing: React.FC = () => {
         <LicensingOverview />
         <LicensingAreas />
         <LicensingProcess />
-        <LicensingCTA />
+        <ConsultationCTA />
         <LicensingRelated />
       </main>
       
