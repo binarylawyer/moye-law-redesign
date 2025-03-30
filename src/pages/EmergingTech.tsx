@@ -6,7 +6,6 @@ import EmergingTechHero from '@/components/emerging-tech/EmergingTechHero';
 import EmergingTechOverview from '@/components/emerging-tech/EmergingTechOverview';
 import EmergingTechAreas from '@/components/emerging-tech/EmergingTechAreas';
 import EmergingTechProcess from '@/components/emerging-tech/EmergingTechProcess';
-import EmergingTechCTA from '@/components/emerging-tech/EmergingTechCTA';
 import EmergingTechRelated from '@/components/emerging-tech/EmergingTechRelated';
 import ConsultationCTA from '@/components/ConsultationCTA';
 
@@ -21,7 +20,6 @@ const EmergingTech: React.FC = () => {
         <EmergingTechAreas />
         <EmergingTechProcess />
         <ConsultationCTA />
-        <EmergingTechCTA />
         <EmergingTechRelated />
       </main>
       

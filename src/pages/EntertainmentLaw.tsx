@@ -7,7 +7,6 @@ import EntertainmentOverview from '@/components/entertainment/EntertainmentOverv
 import EntertainmentServices from '@/components/entertainment/EntertainmentServices';
 import EntertainmentPrinciples from '@/components/entertainment/EntertainmentPrinciples';
 import EntertainmentProcess from '@/components/entertainment/EntertainmentProcess';
-import EntertainmentCTA from '@/components/entertainment/EntertainmentCTA';
 import EntertainmentRelated from '@/components/entertainment/EntertainmentRelated';
 import ConsultationCTA from '@/components/ConsultationCTA';
 
@@ -23,7 +22,6 @@ const EntertainmentLaw: React.FC = () => {
         <EntertainmentPrinciples />
         <EntertainmentProcess />
         <ConsultationCTA />
-        <EntertainmentCTA />
         <EntertainmentRelated />
       </main>
       
