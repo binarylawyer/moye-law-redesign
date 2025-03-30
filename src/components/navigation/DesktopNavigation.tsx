@@ -28,6 +28,11 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
     return location.pathname === path;
   };
 
+  // Check if the current path is part of a service path
+  const isServiceActive = () => {
+    return specializedServices.some(service => location.pathname === service.path);
+  };
+
   const navMenuItemClasses = "text-navy hover:text-gold transition-colors font-sans text-lg relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-gold after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left";
   const activeNavClass = "after:scale-x-100 font-medium";
 
@@ -63,7 +68,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
           </NavigationMenuItem>
           
           <NavigationMenuItem>
-            <NavigationMenuTrigger className={`${navMenuItemClasses} ${isActive('/ip-consulting') || isActive('/ip-licensing') || isActive('/digital-asset-protection') || isActive('/entertainment-law') || isActive('/emerging-tech') ? activeNavClass : ''} bg-transparent hover:bg-transparent focus:bg-transparent`}>Services</NavigationMenuTrigger>
+            <NavigationMenuTrigger className={`${navMenuItemClasses} ${isServiceActive() ? activeNavClass : ''} bg-transparent hover:bg-transparent focus:bg-transparent`}>Services</NavigationMenuTrigger>
             <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-4 w-[300px] mt-2">
               <div className="flex flex-col space-y-2">
                 {specializedServices.map((service) => (

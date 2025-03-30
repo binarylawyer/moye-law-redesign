@@ -6,8 +6,8 @@ export const practiceAreas = [
   { title: "Art Law", path: "/practice/art-law" },
   { title: "Software Licensing", path: "/practice/software-licensing" },
   { title: "IP Licensing", path: "/practice/ip-licensing" },
-  { title: "Entertainment Law", path: "/entertainment-law" },
-  { title: "Emerging Tech", path: "/emerging-tech" },
+  { title: "Entertainment Law", path: "/practice/entertainment-law" },
+  { title: "Emerging Tech", path: "/practice/emerging-tech" },
   { title: "Real Estate", path: "/practice/real-estate" },
   { title: "Crypto & Digital Assets", path: "/practice/crypto-assets" },
 ];
