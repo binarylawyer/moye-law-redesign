@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -160,21 +159,21 @@ const EntertainmentLaw: React.FC = () => {
           </div>
         </section>
         
-        {/* Process Section */}
+        {/* Process Section - Updated to alternate text on both sides */}
         <section className="bg-gray-50 py-24">
           <div className="container mx-auto px-8">
             <h2 className="font-serif text-3xl text-navy mb-12 text-center">Our Entertainment Law Process</h2>
             
             <div className="relative">
               {/* Vertical line */}
-              <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 h-full w-0.5 bg-gray-200"></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 top-0 h-full w-0.5 bg-gray-200"></div>
               
               {/* Process steps */}
               <div className="space-y-24">
                 {/* Step 1 */}
                 <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="md:text-right md:pr-16">
-                    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center">1</div>
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center">1</div>
                     <h3 className="font-serif text-xl text-navy mb-4">Rights Assessment</h3>
                     <p className="text-charcoal">We analyze existing rights, contracts, and restrictions to understand your current position and opportunities within the entertainment landscape.</p>
                   </div>
@@ -183,9 +182,9 @@ const EntertainmentLaw: React.FC = () => {
                 
                 {/* Step 2 */}
                 <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="md:text-right md:pr-16 md:order-1 md:-order-none"></div>
+                  <div className="md:order-last"></div>
                   <div className="md:pl-16">
-                    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center">2</div>
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center">2</div>
                     <h3 className="font-serif text-xl text-navy mb-4">Deal Structuring</h3>
                     <p className="text-charcoal">Our team develops appropriate deal structures that align with industry standards while protecting your specific interests and creative vision.</p>
                   </div>
@@ -194,7 +193,7 @@ const EntertainmentLaw: React.FC = () => {
                 {/* Step 3 */}
                 <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="md:text-right md:pr-16">
-                    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center">3</div>
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center">3</div>
                     <h3 className="font-serif text-xl text-navy mb-4">Contract Development</h3>
                     <p className="text-charcoal">We create comprehensive agreements covering production, distribution, licensing, and talent relationships with clear terms and appropriate protections.</p>
                   </div>
@@ -203,9 +202,9 @@ const EntertainmentLaw: React.FC = () => {
                 
                 {/* Step 4 */}
                 <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="md:text-right md:pr-16 md:order-1 md:-order-none"></div>
+                  <div className="md:order-last"></div>
                   <div className="md:pl-16">
-                    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center">4</div>
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center">4</div>
                     <h3 className="font-serif text-xl text-navy mb-4">Rights Management</h3>
                     <p className="text-charcoal">We establish systems to track and enforce your rights across territories and distribution channels to ensure proper recognition and compensation.</p>
                   </div>
@@ -214,7 +213,7 @@ const EntertainmentLaw: React.FC = () => {
                 {/* Step 5 */}
                 <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="md:text-right md:pr-16">
-                    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center">5</div>
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center">5</div>
                     <h3 className="font-serif text-xl text-navy mb-4">Dispute Resolution</h3>
                     <p className="text-charcoal">We provide representation in negotiations and disputes that arise throughout the content lifecycle, protecting your interests while seeking business-focused resolutions.</p>
                   </div>
