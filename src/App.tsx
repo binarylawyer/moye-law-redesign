@@ -25,6 +25,7 @@ import Licensing from "./pages/Licensing";
 import EntertainmentLaw from "./pages/EntertainmentLaw";
 import EmergingTech from "./pages/EmergingTech";
 import Podcasts from "./pages/Podcasts";
+import FloatingConsultationButton from "./components/FloatingConsultationButton";
 
 // Scroll to top component
 const ScrollToTop = () => {
@@ -43,6 +44,7 @@ const AppRoutes = () => {
   return (
     <>
       <ScrollToTop />
+      <FloatingConsultationButton />
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/practice" element={<Practice />} />

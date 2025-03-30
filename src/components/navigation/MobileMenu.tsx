@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 
 interface MobileMenuProps {
   mobileMenuOpen: boolean;
@@ -90,15 +89,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           onClick={() => setMobileMenuOpen(false)}
         >
           Contact
-        </Link>
-        
-        <Link to="/contact" className="mt-8">
-          <Button 
-            className="bg-gold hover:bg-gold/90 text-white font-sans font-normal w-full"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Schedule a Consultation
-          </Button>
         </Link>
       </nav>
     </div>

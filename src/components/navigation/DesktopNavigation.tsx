@@ -1,12 +1,10 @@
 
 import React from 'react';
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
@@ -120,15 +118,6 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      
-      <Link to="/contact">
-        <Button 
-          variant="ghost" 
-          className="text-gold hover:text-white hover:bg-gold transition-all font-sans text-lg px-6 py-2 font-normal border border-transparent hover:border-gold"
-        >
-          Schedule Consultation
-        </Button>
-      </Link>
     </div>
   );
 };
