@@ -44,8 +44,8 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
       <NavigationMenu>
         <NavigationMenuList className="space-x-24">
           <NavigationMenuItem className="relative">
-            <Link to="/practice" className={`${navMenuItemClasses} ${isActive('/practice') ? activeNavClass : ''}`}>
-              <NavigationMenuTrigger className="bg-transparent hover:bg-transparent focus:bg-transparent">Practice</NavigationMenuTrigger>
+            <Link to="/practice" className={`${navMenuItemClasses} ${isActive('/practice') ? activeNavClass : ''} text-lg`}>
+              <NavigationMenuTrigger className="bg-transparent hover:bg-transparent focus:bg-transparent text-lg p-0">Practice</NavigationMenuTrigger>
             </Link>
             <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-8 w-[500px] absolute left-1/2 -translate-x-1/2 mt-2">
               <div className="grid grid-cols-2 gap-x-8 gap-y-4">
