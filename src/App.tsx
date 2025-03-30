@@ -18,6 +18,12 @@ import ResourceDetail from "./pages/ResourceDetail";
 import FAQ from "./pages/FAQ";
 import HowWeWork from "./pages/HowWeWork";
 import TechnologyApproach from "./pages/TechnologyApproach";
+import CaseStudies from "./pages/CaseStudies";
+import DigitalAssetProtection from "./pages/DigitalAssetProtection";
+import IPConsulting from "./pages/IPConsulting";
+import Licensing from "./pages/Licensing";
+import EntertainmentLaw from "./pages/EntertainmentLaw";
+import EmergingTech from "./pages/EmergingTech";
 
 // Scroll to top component
 const ScrollToTop = () => {
@@ -53,6 +59,14 @@ const AppRoutes = () => {
         {/* Process & Client Experience Routes */}
         <Route path="/how-we-work" element={<HowWeWork />} />
         <Route path="/technology-approach" element={<TechnologyApproach />} />
+        
+        {/* New Specialized Pages */}
+        <Route path="/case-studies" element={<CaseStudies />} />
+        <Route path="/digital-asset-protection" element={<DigitalAssetProtection />} />
+        <Route path="/ip-consulting" element={<IPConsulting />} />
+        <Route path="/ip-licensing" element={<Licensing />} />
+        <Route path="/entertainment-law" element={<EntertainmentLaw />} />
+        <Route path="/emerging-tech" element={<EmergingTech />} />
         
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
