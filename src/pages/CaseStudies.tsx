@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -83,8 +82,8 @@ const CaseStudies: React.FC = () => {
       <Header />
       
       <main className="flex-grow">
-        {/* Hero Section with standardized spacing */}
-        <section className="py-24 md:py-32">
+        {/* Hero Section with adjusted padding to match other pages */}
+        <section className="pt-24 pb-12 md:pt-28 md:pb-16">
           <div className="container mx-auto px-8">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="font-serif text-4xl md:text-5xl text-navy mb-6">
