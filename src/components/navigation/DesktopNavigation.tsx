@@ -47,7 +47,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
             <Link to="/practice" className={`${navMenuItemClasses} ${isActive('/practice') ? activeNavClass : ''} text-lg`}>
               <NavigationMenuTrigger className="bg-transparent hover:bg-transparent focus:bg-transparent text-lg p-0">Practice</NavigationMenuTrigger>
             </Link>
-            <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-8 w-[500px] absolute left-1/2 -translate-x-1/2 mt-2">
+            <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-8 w-[500px] absolute left-1/2 -translate-x-1/2 mt-6">
               <div className="grid grid-cols-2 gap-x-8 gap-y-4">
                 {featuredPracticeAreas.map((area) => (
                   <Link
@@ -69,7 +69,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
           
           <NavigationMenuItem className="relative">
             <NavigationMenuTrigger className={`${navMenuItemClasses} ${isServiceActive() ? activeNavClass : ''} bg-transparent hover:bg-transparent focus:bg-transparent`}>Services</NavigationMenuTrigger>
-            <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-4 w-[300px] absolute left-1/2 -translate-x-1/2 mt-2">
+            <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-4 w-[300px] absolute left-1/2 -translate-x-1/2 mt-6">
               <div className="flex flex-col space-y-2">
                 {specializedServices.map((service) => (
                   <Link
@@ -95,7 +95,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
           
           <NavigationMenuItem className="relative">
             <NavigationMenuTrigger className={`${navMenuItemClasses} ${isActive('/resources') || isActive('/case-studies') || isActive('/faq') || isActive('/how-we-work') || isActive('/technology-approach') ? activeNavClass : ''} bg-transparent hover:bg-transparent focus:bg-transparent`}>Resources</NavigationMenuTrigger>
-            <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-4 w-[300px] absolute left-1/2 -translate-x-1/2 mt-2">
+            <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-4 w-[300px] absolute left-1/2 -translate-x-1/2 mt-6">
               <div className="flex flex-col space-y-2">
                 {resourcesItems.map((item) => (
                   <Link

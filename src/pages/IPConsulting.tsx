@@ -2,35 +2,30 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Lightbulb, Search, BarChart, Globe, Users, ArrowRight } from 'lucide-react';
+import { FileText, Lightbulb, Scale, Globe, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const IPConsulting: React.FC = () => {
-  const services = [
+  const consultingAreas = [
     {
-      icon: <Search className="h-10 w-10 text-gold" />,
-      title: "IP Audits & Due Diligence",
-      description: "Comprehensive evaluation of intellectual property assets to identify strengths, weaknesses, and opportunities in your IP portfolio."
+      icon: <FileText className="h-10 w-10 text-gold" />,
+      title: "IP Audit & Portfolio Management",
+      description: "Comprehensive evaluation and strategic management of intellectual property assets."
     },
     {
       icon: <Lightbulb className="h-10 w-10 text-gold" />,
       title: "IP Strategy Development",
-      description: "Creation of tailored intellectual property strategies aligned with your business goals and competitive landscape."
+      description: "Forward-looking IP strategies aligned with business objectives and market opportunities."
     },
     {
-      icon: <BarChart className="h-10 w-10 text-gold" />,
-      title: "IP Valuation",
-      description: "Expert assessment of intellectual property value for transactions, investment, and strategic decision-making."
+      icon: <Scale className="h-10 w-10 text-gold" />,
+      title: "IP Valuation & Monetization",
+      description: "Expert analysis of IP value and development of strategic monetization pathways."
     },
     {
       icon: <Globe className="h-10 w-10 text-gold" />,
-      title: "International IP Strategy",
-      description: "Development of global intellectual property protection strategies across key markets and jurisdictions."
-    },
-    {
-      icon: <Users className="h-10 w-10 text-gold" />,
-      title: "IP Team Training",
-      description: "Customized training programs to enhance your team's understanding of intellectual property management."
+      title: "Global IP Protection",
+      description: "International strategies to secure and defend intellectual property across borders."
     }
   ];
 
@@ -40,12 +35,14 @@ const IPConsulting: React.FC = () => {
       
       <main className="flex-grow">
         {/* Hero Section with standardized spacing */}
-        <section className="bg-white pt-40 pb-20">
+        <section className="py-72 md:py-96 bg-pastel-blue/20">
           <div className="container mx-auto px-8">
-            <h1 className="font-serif text-5xl text-navy mb-6">IP Consulting</h1>
-            <p className="text-lg max-w-3xl">
-              Strategic consulting to help businesses and innovators maximize the value of their intellectual property assets.
-            </p>
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="font-serif text-navy text-5xl md:text-6xl lg:text-7xl mb-16">IP Consulting Services</h1>
+              <p className="text-xl md:text-2xl text-charcoal/80 mx-auto">
+                Strategic intellectual property guidance for businesses seeking to maximize value and competitive advantage.
+              </p>
+            </div>
           </div>
         </section>
         
@@ -115,13 +112,13 @@ const IPConsulting: React.FC = () => {
           <div className="container mx-auto px-8">
             <h2 className="font-serif text-3xl text-navy mb-12 text-center">Our Consulting Services</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, idx) => (
+              {consultingAreas.map((area, idx) => (
                 <div key={idx} className="bg-white p-8 border border-gray-200">
                   <div className="mb-6">
-                    {service.icon}
+                    {area.icon}
                   </div>
-                  <h3 className="font-serif text-xl text-navy mb-4">{service.title}</h3>
-                  <p className="text-charcoal">{service.description}</p>
+                  <h3 className="font-serif text-xl text-navy mb-4">{area.title}</h3>
+                  <p className="text-charcoal">{area.description}</p>
                 </div>
               ))}
             </div>

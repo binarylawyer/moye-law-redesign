@@ -1,55 +1,31 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Film, Music, Radio, BookOpen, ArrowRight } from 'lucide-react';
+import { Film, Music, Newspaper, Radio, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const EntertainmentLaw: React.FC = () => {
-  const services = [
+  const entertainmentAreas = [
     {
       icon: <Film className="h-10 w-10 text-gold" />,
       title: "Film & Television",
-      description: "Comprehensive legal support for production, financing, distribution, and talent agreements in film and television projects."
+      description: "Comprehensive legal services for production, distribution, and talent agreements in visual media."
     },
     {
       icon: <Music className="h-10 w-10 text-gold" />,
-      title: "Music & Recording",
-      description: "Strategic guidance for artists, labels, and publishers on recording, publishing, licensing, and royalty agreements."
+      title: "Music & Audio",
+      description: "Rights management, licensing, and contract negotiation for composers, performers, and labels."
+    },
+    {
+      icon: <Newspaper className="h-10 w-10 text-gold" />,
+      title: "Publishing & Literary Works",
+      description: "Strategic legal guidance for authors, publishers, and digital content distribution."
     },
     {
       icon: <Radio className="h-10 w-10 text-gold" />,
-      title: "Digital Media & Streaming",
-      description: "Legal solutions for content creators and platforms in the rapidly evolving digital entertainment landscape."
-    },
-    {
-      icon: <BookOpen className="h-10 w-10 text-gold" />,
-      title: "Literary & Publishing",
-      description: "Comprehensive support for authors, agents, and publishers on book deals, rights management, and adaptation agreements."
-    }
-  ];
-
-  const principles = [
-    {
-      title: "Creator Protection",
-      description: "We prioritize protecting the creative and economic rights of artists, writers, and performers across all distribution channels."
-    },
-    {
-      title: "Fair Compensation",
-      description: "Our agreements ensure transparent accounting and appropriate compensation for creative contributions."
-    },
-    {
-      title: "Rights Clarity",
-      description: "We establish clear ownership and usage rights for all parties to prevent future disputes over valuable content."
-    },
-    {
-      title: "Platform Adaptability",
-      description: "Our strategies anticipate evolution in distribution platforms and preserve rights across emerging technologies."
-    },
-    {
-      title: "Brand Integration",
-      description: "We help clients leverage entertainment properties across multiple revenue streams including merchandising and licensing."
+      title: "Digital Media & Gaming",
+      description: "Forward-looking legal solutions for interactive entertainment, streaming, and emerging platforms."
     }
   ];
 
@@ -58,13 +34,15 @@ const EntertainmentLaw: React.FC = () => {
       <Header />
       
       <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="bg-white pt-32 pb-16">
+        {/* Hero Section with standardized spacing */}
+        <section className="py-72 md:py-96 bg-pastel-blue/20">
           <div className="container mx-auto px-8">
-            <h1 className="font-serif text-5xl text-navy mb-6">Entertainment Law</h1>
-            <p className="text-lg max-w-3xl">
-              Comprehensive legal guidance for creators, performers, and entertainment businesses navigating the complex landscape of content creation and distribution.
-            </p>
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="font-serif text-navy text-5xl md:text-6xl lg:text-7xl mb-16">Entertainment Law</h1>
+              <p className="text-xl md:text-2xl text-charcoal/80 mx-auto">
+                Strategic legal guidance for creators, producers, and distributors across all entertainment mediums.
+              </p>
+            </div>
           </div>
         </section>
         
@@ -134,7 +112,7 @@ const EntertainmentLaw: React.FC = () => {
           <div className="container mx-auto px-8">
             <h2 className="font-serif text-3xl text-navy mb-12 text-center">Entertainment Industry Focus</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {services.map((service, idx) => (
+              {entertainmentAreas.map((service, idx) => (
                 <div key={idx} className="bg-white p-8 border border-gray-200">
                   <div className="mb-6">
                     {service.icon}
