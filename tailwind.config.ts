@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -24,6 +23,9 @@ export default {
 				'sans': ['Inter', 'sans-serif'],
 			},
 			colors: {
+				'primary': '#4682B4', // Cerulean blue
+				'primary-light': '#B0C4DE', // Lighter cerulean (Light Steel Blue)
+				'primary-muted': '#7BA7CC', // Muted cerulean
 				'navy': '#0A2342',
 				'gold': '#C99D56',
 				'light-gray': '#F5F5F5',
