@@ -23,6 +23,13 @@ const Header: React.FC = () => {
     { title: "Intellectual Property", path: "/practice/intellectual-property" },
     { title: "Art Law", path: "/practice/art-law" },
   ];
+  
+  const resourcesItems = [
+    { title: "Articles & Guides", path: "/resources" },
+    { title: "FAQ", path: "/faq" },
+    { title: "How We Work", path: "/how-we-work" },
+    { title: "Technology Approach", path: "/technology-approach" },
+  ];
 
   return (
     <header 
@@ -56,7 +63,7 @@ const Header: React.FC = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed top-[72px] left-0 right-0 bottom-0 bg-white z-40 p-6 pt-8">
+        <div className="md:hidden fixed top-[72px] left-0 right-0 bottom-0 bg-white z-40 p-6 pt-8 overflow-y-auto">
           <nav className="flex flex-col space-y-6">
             <Link 
               to="/practice" 
@@ -92,6 +99,17 @@ const Header: React.FC = () => {
             >
               Resources
             </Link>
+            
+            {resourcesItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className="text-lg font-sans text-navy/70 hover:text-navy/90 transition-colors pl-4"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.title}
+              </Link>
+            ))}
             
             <Link 
               to="/contact" 

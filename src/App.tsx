@@ -13,6 +13,11 @@ import Team from "./pages/Team";
 import TeamMemberProfile from "./pages/TeamMemberProfile";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Resources from "./pages/Resources";
+import ResourceDetail from "./pages/ResourceDetail";
+import FAQ from "./pages/FAQ";
+import HowWeWork from "./pages/HowWeWork";
+import TechnologyApproach from "./pages/TechnologyApproach";
 
 // Scroll to top component
 const ScrollToTop = () => {
@@ -39,6 +44,16 @@ const AppRoutes = () => {
         <Route path="/team" element={<Team />} />
         <Route path="/team/:memberId" element={<TeamMemberProfile />} />
         <Route path="/contact" element={<Contact />} />
+        
+        {/* Resources Routes */}
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/resources/:slug" element={<ResourceDetail />} />
+        <Route path="/faq" element={<FAQ />} />
+        
+        {/* Process & Client Experience Routes */}
+        <Route path="/how-we-work" element={<HowWeWork />} />
+        <Route path="/technology-approach" element={<TechnologyApproach />} />
+        
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
