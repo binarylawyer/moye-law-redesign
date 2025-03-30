@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -82,8 +81,8 @@ const CaseStudies: React.FC = () => {
       <Header />
       
       <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="bg-white pt-32 pb-16">
+        {/* Hero Section with standardized spacing */}
+        <section className="bg-white pt-40 pb-20">
           <div className="container mx-auto px-8">
             <h1 className="font-serif text-5xl text-navy mb-6">Client Success Stories</h1>
             <p className="text-lg max-w-3xl">
@@ -93,7 +92,7 @@ const CaseStudies: React.FC = () => {
         </section>
         
         {/* Case Studies List */}
-        <section className="bg-white py-16">
+        <section className="bg-white py-20">
           <div className="container mx-auto px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {caseStudies.map((study) => (

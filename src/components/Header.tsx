@@ -79,7 +79,7 @@ const Header: React.FC = () => {
             <NavigationMenuList className="space-x-24">
               <NavigationMenuItem>
                 <NavigationMenuTrigger className={`${navMenuItemClasses} ${isActive('/practice') ? activeNavClass : ''} bg-transparent hover:bg-transparent focus:bg-transparent`}>Practice</NavigationMenuTrigger>
-                <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-4 w-[400px]">
+                <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-4 w-[400px] mt-2">
                   <div className="grid grid-cols-2 gap-4">
                     {practiceAreas.map((area) => (
                       <Link
@@ -102,7 +102,7 @@ const Header: React.FC = () => {
               
               <NavigationMenuItem>
                 <NavigationMenuTrigger className={`${navMenuItemClasses} ${isActive('/ip-consulting') || isActive('/ip-licensing') || isActive('/digital-asset-protection') || isActive('/entertainment-law') || isActive('/emerging-tech') ? activeNavClass : ''} bg-transparent hover:bg-transparent focus:bg-transparent`}>Services</NavigationMenuTrigger>
-                <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-4 w-[300px]">
+                <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-4 w-[300px] mt-2">
                   <div className="flex flex-col space-y-2">
                     {specializedServices.map((service) => (
                       <Link
@@ -129,7 +129,7 @@ const Header: React.FC = () => {
               
               <NavigationMenuItem>
                 <NavigationMenuTrigger className={`${navMenuItemClasses} ${isActive('/resources') || isActive('/case-studies') || isActive('/faq') || isActive('/how-we-work') || isActive('/technology-approach') ? activeNavClass : ''} bg-transparent hover:bg-transparent focus:bg-transparent`}>Resources</NavigationMenuTrigger>
-                <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-4 w-[300px]">
+                <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-4 w-[300px] mt-2">
                   <div className="flex flex-col space-y-2">
                     {resourcesItems.map((item) => (
                       <Link
