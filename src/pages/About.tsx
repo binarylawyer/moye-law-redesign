@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -14,7 +13,7 @@ const About: React.FC = () => {
         <section className="py-20 md:py-32 px-4 md:px-6 bg-light-gray">
           <div className="container mx-auto">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="font-serif text-4xl md:text-5xl mb-8 text-navy mt-36">About Moye Law</h1>
+              <h1 className="font-serif text-4xl md:text-5xl mb-8 text-navy mt-36">Our Firm</h1>
               <p className="text-navy/70 text-xl mb-4">
                 A family-run firm at the intersection of traditional legal expertise and innovative technology.
               </p>

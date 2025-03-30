@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { resources, Resource } from '../data/resourcesData';
@@ -84,46 +83,44 @@ const ResourceDetail: React.FC = () => {
     <>
       <Header />
       <main className="pt-32 bg-white">
-        {/* Article Header */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <Link 
-                to="/resources" 
-                className="inline-flex items-center text-navy hover:text-gold transition-colors mb-6"
-              >
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                <span>Back to Resources</span>
-              </Link>
-              
-              <div 
-                ref={el => elementsRef.current[0] = el}
-                className="reveal"
-              >
-                <div className="flex items-center mb-6">
-                  <span className="text-sm font-medium bg-navy/10 text-navy px-3 py-1 rounded-full">
-                    {resource.category.charAt(0).toUpperCase() + resource.category.slice(1)}
-                  </span>
-                  <div className="flex items-center text-charcoal/60 ml-4">
-                    <Calendar className="h-4 w-4 mr-1" />
-                    <span className="text-sm">{resource.date}</span>
-                  </div>
+        {/* Article Header - Updated to be more consistent with Practice page */}
+        <section className="py-48 md:py-64">
+          <div className="container mx-auto px-24 md:px-32">
+            <Link 
+              to="/resources" 
+              className="inline-flex items-center text-navy hover:text-gold transition-colors mb-6"
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              <span>Back to Resources</span>
+            </Link>
+            
+            <div 
+              ref={el => elementsRef.current[0] = el}
+              className="reveal"
+            >
+              <div className="flex items-center mb-6">
+                <span className="text-sm font-medium bg-navy/10 text-navy px-3 py-1 rounded-full">
+                  {resource?.category.charAt(0).toUpperCase() + resource?.category.slice(1)}
+                </span>
+                <div className="flex items-center text-charcoal/60 ml-4">
+                  <Calendar className="h-4 w-4 mr-1" />
+                  <span className="text-sm">{resource?.date}</span>
                 </div>
-                
-                <h1 className="font-serif text-4xl md:text-5xl text-navy mb-6">
-                  {resource.title}
-                </h1>
-                
-                <p className="text-lg text-charcoal/80 mb-4">
-                  {resource.description}
-                </p>
-                
-                {resource.author && (
-                  <p className="text-sm text-charcoal/60 mb-8">
-                    By {resource.author}
-                  </p>
-                )}
               </div>
+              
+              <h1 className="font-sans text-primary text-4xl md:text-5xl lg:text-6xl mb-32 md:mb-48 text-center font-light">
+                {resource?.title}
+              </h1>
+              
+              <p className="text-lg text-charcoal/80 mb-4 max-w-3xl mx-auto">
+                {resource?.description}
+              </p>
+              
+              {resource?.author && (
+                <p className="text-sm text-charcoal/60 mb-8">
+                  By {resource?.author}
+                </p>
+              )}
             </div>
           </div>
         </section>

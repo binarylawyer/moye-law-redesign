@@ -60,7 +60,7 @@ const Header: React.FC = () => {
               to="/about" 
               className={`text-navy hover:text-gold transition-colors font-sans text-lg relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-gold after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left ${isActive('/about') ? 'after:scale-x-100 font-medium' : ''}`}
             >
-              About
+              Our Firm
             </Link>
             <Link 
               to="/resources" 
@@ -125,7 +125,7 @@ const Header: React.FC = () => {
               className="font-serif text-2xl text-navy hover:text-gold transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
-              About
+              Our Firm
             </Link>
             
             <Link 
