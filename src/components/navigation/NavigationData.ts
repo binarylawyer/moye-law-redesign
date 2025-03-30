@@ -22,6 +22,7 @@ export const specializedServices = [
 
 export const resourcesItems = [
   { title: "Articles & Guides", path: "/resources" },
+  { title: "Podcasts", path: "/podcasts" },
   { title: "Case Studies", path: "/case-studies" },
   { title: "FAQ", path: "/faq" },
   { title: "How We Work", path: "/how-we-work" },

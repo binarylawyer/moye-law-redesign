@@ -24,6 +24,7 @@ import IPConsulting from "./pages/IPConsulting";
 import Licensing from "./pages/Licensing";
 import EntertainmentLaw from "./pages/EntertainmentLaw";
 import EmergingTech from "./pages/EmergingTech";
+import Podcasts from "./pages/Podcasts";
 
 // Scroll to top component
 const ScrollToTop = () => {
@@ -54,6 +55,7 @@ const AppRoutes = () => {
         {/* Resources Routes */}
         <Route path="/resources" element={<Resources />} />
         <Route path="/resources/:slug" element={<ResourceDetail />} />
+        <Route path="/podcasts" element={<Podcasts />} />
         <Route path="/faq" element={<FAQ />} />
         
         {/* Process & Client Experience Routes */}

@@ -6,6 +6,7 @@ import ConsultationCTA from "../components/ConsultationCTA";
 import { resources, ResourceCategory } from "../data/resourcesData";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Headphones } from "lucide-react";
 
 const Resources: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<ResourceCategory | 'all'>('all');
@@ -62,7 +63,7 @@ const Resources: React.FC = () => {
                 className="reveal text-lg text-charcoal/80 mb-12"
                 style={{ transitionDelay: '0.1s' }}
               >
-                Browse our collection of articles, guides, and resources designed to help you understand complex legal topics and make informed decisions about your estate planning, intellectual property, and other legal needs.
+                Browse our collection of articles, guides, podcasts, and resources designed to help you understand complex legal topics and make informed decisions about your estate planning, intellectual property, and other legal needs.
               </p>
             </div>
           </div>
@@ -107,6 +108,36 @@ const Resources: React.FC = () => {
                   </div>
                 ))}
               </div>
+              
+              {/* Podcasts Promo Card */}
+              <div 
+                ref={el => elementsRef.current[6] = el}
+                className="reveal bg-white rounded-lg shadow-sm border border-navy/10 overflow-hidden mb-8"
+                style={{ transitionDelay: '0.6s' }}
+              >
+                <div className="p-8 flex flex-col md:flex-row items-center justify-between">
+                  <div className="mb-6 md:mb-0 md:mr-6">
+                    <div className="flex items-center mb-3">
+                      <span className="text-xs font-medium bg-gold/20 text-gold px-2 py-1 rounded flex items-center gap-1">
+                        <Headphones size={14} />
+                        Podcast
+                      </span>
+                    </div>
+                    <h3 className="font-serif text-2xl text-navy mb-2">Estate Planning Insights Podcast</h3>
+                    <p className="text-charcoal/80 mb-4">
+                      Listen to our AI-driven podcast series exploring complex estate planning topics in an accessible format.
+                    </p>
+                  </div>
+                  <Link 
+                    to="/podcasts"
+                    className="shrink-0"
+                  >
+                    <Button className="bg-gold hover:bg-gold/90 text-white">
+                      Listen to Episodes
+                    </Button>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -116,7 +147,7 @@ const Resources: React.FC = () => {
           <div className="container mx-auto px-8">
             <div className="max-w-6xl mx-auto">
               <h2 
-                ref={el => elementsRef.current[6] = el}
+                ref={el => elementsRef.current[7] = el}
                 className="reveal font-serif text-3xl text-navy mb-12"
                 style={{ transitionDelay: '0.4s' }}
               >
@@ -129,7 +160,7 @@ const Resources: React.FC = () => {
                 onValueChange={(value) => setSelectedCategory(value as ResourceCategory | 'all')}
               >
                 <div 
-                  ref={el => elementsRef.current[7] = el}
+                  ref={el => elementsRef.current[8] = el}
                   className="reveal mb-16"
                   style={{ transitionDelay: '0.5s' }}
                 >
@@ -148,7 +179,7 @@ const Resources: React.FC = () => {
                     {filteredResources.map((resource, index) => (
                       <div 
                         key={resource.id}
-                        ref={el => elementsRef.current[8 + index] = el}
+                        ref={el => elementsRef.current[9 + index] = el}
                         className="reveal bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden"
                         style={{ transitionDelay: `${0.6 + (index * 0.05)}s` }}
                       >
