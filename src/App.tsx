@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import Practice from "./pages/Practice";
+import PracticeArea from "./pages/PracticeArea";
 
 // Scroll to top component
 const ScrollToTop = () => {
@@ -27,6 +29,8 @@ const AppRoutes = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Index />} />
+        <Route path="/practice" element={<Practice />} />
+        <Route path="/practice/:area" element={<PracticeArea />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
