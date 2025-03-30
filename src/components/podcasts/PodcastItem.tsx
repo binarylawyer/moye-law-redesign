@@ -25,6 +25,12 @@ const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
     } else {
       setAudioSrc(podcast.audioUrl);
     }
+    
+    // Log for debugging
+    console.log("Audio URL for", podcast.title, ":", podcast.audioUrl);
+    if (podcast.audioUrl && podcast.audioUrl.startsWith('podcast-')) {
+      console.log("Retrieved from local storage:", getFileUrl(podcast.audioUrl));
+    }
   }, [podcast.audioUrl]);
 
   const togglePlayPause = () => {

@@ -16,6 +16,7 @@ export const uploadFile = async (file: File): Promise<string> => {
       // Store in localStorage for persistence across page reloads
       const fileKey = `podcast-${Date.now()}-${file.name}`;
       localStorage.setItem(fileKey, url);
+      console.log("File saved with key:", fileKey);
       resolve(fileKey);
     };
     reader.readAsDataURL(file);
@@ -26,5 +27,7 @@ export const uploadFile = async (file: File): Promise<string> => {
  * Retrieves a file from local storage by its key
  */
 export const getFileUrl = (fileKey: string): string | null => {
-  return localStorage.getItem(fileKey);
+  const url = localStorage.getItem(fileKey);
+  console.log(`Retrieved file for key ${fileKey}: ${url ? 'Found' : 'Not found'}`);
+  return url;
 };

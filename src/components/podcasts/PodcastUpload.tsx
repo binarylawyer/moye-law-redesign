@@ -33,6 +33,7 @@ const PodcastUpload: React.FC<PodcastUploadProps> = ({ onPodcastUploaded }) => {
         return;
       }
       setAudioFile(files[0]);
+      console.log("Audio file selected:", files[0].name, files[0].type);
     }
   };
 
@@ -51,8 +52,11 @@ const PodcastUpload: React.FC<PodcastUploadProps> = ({ onPodcastUploaded }) => {
     setIsUploading(true);
     
     try {
+      console.log("Starting upload of:", audioFile.name);
+      
       // Upload the audio file
       const audioUrl = await uploadFile(audioFile);
+      console.log("Audio uploaded with URL key:", audioUrl);
       
       // Create a new podcast object
       const newPodcast: Podcast = {
@@ -70,6 +74,8 @@ const PodcastUpload: React.FC<PodcastUploadProps> = ({ onPodcastUploaded }) => {
         topics: topics.split(',').map(topic => topic.trim())
       };
       
+      console.log("New podcast created:", newPodcast);
+      
       // Pass the new podcast to the parent component
       onPodcastUploaded(newPodcast);
       
@@ -84,6 +90,7 @@ const PodcastUpload: React.FC<PodcastUploadProps> = ({ onPodcastUploaded }) => {
         description: "Your podcast has been successfully uploaded.",
       });
     } catch (error) {
+      console.error("Upload error:", error);
       toast({
         title: "Upload failed",
         description: "There was an error uploading your podcast. Please try again.",
