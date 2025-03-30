@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
@@ -47,20 +46,20 @@ const Resources: React.FC = () => {
   return (
     <>
       <Header />
-      <main className="pt-32 bg-white">
+      <main className="pt-48 bg-white">
         {/* Hero Section */}
-        <section className="py-16 md:py-24">
-          <div className="container mx-auto px-4">
+        <section className="py-24 md:py-32">
+          <div className="container mx-auto px-8">
             <div className="max-w-3xl mx-auto">
               <h1 
                 ref={el => elementsRef.current[0] = el}
-                className="reveal font-serif text-4xl md:text-5xl text-navy mb-6"
+                className="reveal font-serif text-4xl md:text-5xl text-navy mb-8"
               >
                 Resources
               </h1>
               <p 
                 ref={el => elementsRef.current[1] = el}
-                className="reveal text-lg text-charcoal/80 mb-8"
+                className="reveal text-lg text-charcoal/80 mb-12"
                 style={{ transitionDelay: '0.1s' }}
               >
                 Browse our collection of articles, guides, and resources designed to help you understand complex legal topics and make informed decisions about your estate planning, intellectual property, and other legal needs.
@@ -70,18 +69,18 @@ const Resources: React.FC = () => {
         </section>
 
         {/* Featured Resources */}
-        <section className="py-12 bg-light-gray">
-          <div className="container mx-auto px-4">
+        <section className="py-24 bg-light-gray">
+          <div className="container mx-auto px-8">
             <div className="max-w-6xl mx-auto">
               <h2 
                 ref={el => elementsRef.current[2] = el}
-                className="reveal font-serif text-3xl text-navy mb-8"
+                className="reveal font-serif text-3xl text-navy mb-12"
                 style={{ transitionDelay: '0.2s' }}
               >
                 Featured Resources
               </h2>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
                 {articles.map((resource, index) => (
                   <div 
                     key={resource.id}
@@ -113,12 +112,12 @@ const Resources: React.FC = () => {
         </section>
 
         {/* All Resources */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
+        <section className="py-32">
+          <div className="container mx-auto px-8">
             <div className="max-w-6xl mx-auto">
               <h2 
                 ref={el => elementsRef.current[6] = el}
-                className="reveal font-serif text-3xl text-navy mb-6"
+                className="reveal font-serif text-3xl text-navy mb-12"
                 style={{ transitionDelay: '0.4s' }}
               >
                 Browse All Resources
@@ -131,7 +130,7 @@ const Resources: React.FC = () => {
               >
                 <div 
                   ref={el => elementsRef.current[7] = el}
-                  className="reveal mb-8"
+                  className="reveal mb-16"
                   style={{ transitionDelay: '0.5s' }}
                 >
                   <TabsList className="bg-light-gray">
@@ -145,7 +144,7 @@ const Resources: React.FC = () => {
                 </div>
                 
                 <TabsContent value="all" className="mt-0">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                     {filteredResources.map((resource, index) => (
                       <div 
                         key={resource.id}
@@ -174,9 +173,8 @@ const Resources: React.FC = () => {
                   </div>
                 </TabsContent>
                 
-                {/* Duplicate TabsContent for each category with the same structure */}
                 <TabsContent value="article" className="mt-0">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                     {filteredResources.map((resource, index) => (
                       <div 
                         key={resource.id}
@@ -203,9 +201,8 @@ const Resources: React.FC = () => {
                   </div>
                 </TabsContent>
                 
-                {/* Repeat similar TabsContent structure for other categories */}
                 <TabsContent value="guide" className="mt-0">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                     {filteredResources.map((resource, index) => (
                       <div 
                         key={resource.id}
@@ -233,7 +230,7 @@ const Resources: React.FC = () => {
                 </TabsContent>
                 
                 <TabsContent value="whitepaper" className="mt-0">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                     {filteredResources.map((resource, index) => (
                       <div 
                         key={resource.id}
@@ -261,7 +258,7 @@ const Resources: React.FC = () => {
                 </TabsContent>
                 
                 <TabsContent value="case-study" className="mt-0">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                     {filteredResources.map((resource, index) => (
                       <div 
                         key={resource.id}
@@ -289,7 +286,7 @@ const Resources: React.FC = () => {
                 </TabsContent>
                 
                 <TabsContent value="faq" className="mt-0">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                     {filteredResources.map((resource, index) => (
                       <div 
                         key={resource.id}

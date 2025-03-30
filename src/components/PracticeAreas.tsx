@@ -33,35 +33,35 @@ const PracticeAreas: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 md:py-32 bg-white">
+    <section className="py-32 md:py-48 bg-white">
       <div className="container mx-auto px-8">
-        <div className="max-w-3xl mb-16">
-          <h2 className="reveal font-serif text-3xl md:text-4xl text-navy mb-4">
+        <div className="max-w-3xl mb-24">
+          <h2 className="reveal font-serif text-3xl md:text-4xl text-navy mb-8">
             Areas of Practice
           </h2>
-          <p className="reveal text-charcoal/80" style={{ transitionDelay: '0.1s' }}>
+          <p className="reveal text-charcoal/80 text-lg" style={{ transitionDelay: '0.1s' }}>
             Our specialized legal expertise serves the unique needs of high-net-worth individuals
             and their families.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16 max-w-5xl">
           {practiceAreas.map((practice, index) => (
             <div 
               key={practice.id}
-              className="reveal border-t border-gray-200 pt-6"
+              className="reveal border-t border-gray-200 pt-8"
               style={{ transitionDelay: `${0.1 * (index + 1)}s` }}
             >
-              <span className="text-navy/50 text-sm mb-3 block">{(index + 1).toString().padStart(2, '0')}</span>
-              <h3 className="font-serif text-navy text-2xl mb-3">{practice.title}</h3>
-              <p className="text-charcoal/80 mb-6">{practice.description}</p>
+              <span className="text-navy/50 text-sm mb-4 block">{(index + 1).toString().padStart(2, '0')}</span>
+              <h3 className="font-serif text-navy text-2xl mb-4">{practice.title}</h3>
+              <p className="text-charcoal/80 mb-8">{practice.description}</p>
               
               <div className="mt-auto">
                 <Link 
                   to={practice.path} 
                   className="inline-flex items-center text-navy hover:text-gold transition-colors"
                 >
-                  Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                  Learn more <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </div>
             </div>

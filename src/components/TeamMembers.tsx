@@ -49,22 +49,22 @@ const TeamMembers: React.FC = () => {
   const otherMembers = teamMembers.filter(member => !member.featured);
 
   return (
-    <div>
+    <div className="py-16">
       {/* Featured Team Member */}
       {featuredMember && (
-        <div className="mb-64">
-          <h2 className="font-sans text-3xl md:text-4xl mb-32 text-primary text-center">Leadership</h2>
+        <div className="mb-80">
+          <h2 className="font-sans text-3xl md:text-4xl mb-40 text-primary text-center">Leadership</h2>
           <Card className="overflow-hidden border-none shadow-sm bg-white">
-            <div className="grid md:grid-cols-12 gap-32">
-              <div className="md:col-span-4 p-32 flex justify-center items-start">
-                <Avatar className="w-64 h-64 border-2 border-cerulean/20">
+            <div className="grid md:grid-cols-12 gap-40">
+              <div className="md:col-span-4 p-40 flex justify-center items-start">
+                <Avatar className="w-80 h-80 border-2 border-cerulean/20">
                   <AvatarImage src={featuredMember.imageUrl} alt={featuredMember.name} />
                   <AvatarFallback className="bg-cerulean/10 text-primary text-2xl">
                     {featuredMember.name.charAt(0)}
                   </AvatarFallback>
                 </Avatar>
               </div>
-              <div className="md:col-span-8 p-32 flex flex-col">
+              <div className="md:col-span-8 p-40 flex flex-col">
                 <h3 className="font-sans text-2xl text-primary mb-8">{featuredMember.name}</h3>
                 <p className="text-cerulean mb-16">{featuredMember.title}</p>
                 <p className="text-charcoal/80 mb-24">
@@ -85,25 +85,25 @@ const TeamMembers: React.FC = () => {
       )}
 
       {/* Other Team Members */}
-      <div>
-        <h2 className="font-sans text-3xl md:text-4xl mb-32 text-primary text-center">Team</h2>
-        <div className="grid md:grid-cols-2 gap-32">
+      <div className="mt-80">
+        <h2 className="font-sans text-3xl md:text-4xl mb-40 text-primary text-center">Team</h2>
+        <div className="grid md:grid-cols-2 gap-40">
           {otherMembers.map(member => (
             <Card key={member.id} className="overflow-hidden border-none shadow-sm bg-white">
-              <CardContent className="p-32 flex flex-col">
-                <div className="flex items-center mb-16">
-                  <Avatar className="w-48 h-48 mr-16 border-2 border-cerulean/20">
+              <CardContent className="p-40 flex flex-col">
+                <div className="flex items-center mb-24">
+                  <Avatar className="w-56 h-56 mr-24 border-2 border-cerulean/20">
                     <AvatarImage src={member.imageUrl} alt={member.name} />
                     <AvatarFallback className="bg-cerulean/10 text-primary text-xl">
                       {member.name.charAt(0)}
                     </AvatarFallback>
                   </Avatar>
                   <div>
-                    <h3 className="font-sans text-lg text-primary">{member.name}</h3>
+                    <h3 className="font-sans text-xl text-primary">{member.name}</h3>
                     <p className="text-cerulean text-sm">{member.title}</p>
                   </div>
                 </div>
-                <p className="text-charcoal/80 mb-24">{member.bio}</p>
+                <p className="text-charcoal/80 mb-32">{member.bio}</p>
                 <div className="mt-auto">
                   <Link 
                     to={member.path}
