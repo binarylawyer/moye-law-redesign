@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { NotFound } from './NotFound';
+import NotFound from './NotFound';
 
 interface TeamMember {
   id: string;
