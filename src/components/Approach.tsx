@@ -5,65 +5,65 @@ import { ArrowRight } from 'lucide-react';
 
 const Approach: React.FC = () => {
   return (
-    <section className="py-32 md:py-48 bg-light-gray">
+    <section className="py-48 md:py-72 bg-gradient-to-br from-pastel-blue/20 to-white">
       <div className="container mx-auto px-8">
-        <div className="max-w-3xl">
-          <h2 className="reveal font-serif text-3xl md:text-4xl text-navy mb-8">
+        <div className="max-w-4xl mx-auto text-center mb-24">
+          <h2 className="reveal font-serif text-4xl md:text-5xl text-navy mb-12">
             Our Approach
           </h2>
           
-          <p className="reveal text-lg text-charcoal mb-16 leading-relaxed"
+          <p className="reveal text-xl md:text-2xl text-charcoal mb-16 leading-relaxed"
              style={{ transitionDelay: '0.1s' }}>
             We blend personalized attention with technological innovation to deliver legal solutions 
             that are both traditional in values and forward-thinking in execution.
           </p>
-          
-          <div className="reveal grid grid-cols-1 md:grid-cols-2 gap-24 mb-24"
-               style={{ transitionDelay: '0.2s' }}>
-            {/* Traditional column */}
-            <div>
-              <h3 className="font-serif text-2xl mb-8 text-navy">Traditional</h3>
-              <ul className="space-y-8 text-charcoal/80">
-                <li className="flex items-start">
-                  <span className="mr-6 text-sm text-navy/50">01</span>
-                  <span>Personal relationships built on trust</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-6 text-sm text-navy/50">02</span>
-                  <span>Family values at the core of our practice</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-6 text-sm text-navy/50">03</span>
-                  <span>Attentive, personalized service</span>
-                </li>
-              </ul>
-            </div>
-            
-            {/* Innovative column */}
-            <div>
-              <h3 className="font-serif text-2xl mb-8 text-navy">Innovative</h3>
-              <ul className="space-y-8 text-charcoal/80">
-                <li className="flex items-start">
-                  <span className="mr-6 text-sm text-navy/50">01</span>
-                  <span>Advanced AI/ML technology integration</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-6 text-sm text-navy/50">02</span>
-                  <span>Secure, modern client processes</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-6 text-sm text-navy/50">03</span>
-                  <span>Data-driven, efficient solutions</span>
-                </li>
-              </ul>
-            </div>
+        </div>
+        
+        <div className="reveal grid grid-cols-1 md:grid-cols-2 gap-24 mb-32 max-w-5xl mx-auto"
+             style={{ transitionDelay: '0.2s' }}>
+          {/* Traditional column */}
+          <div className="bg-white p-12 rounded-lg shadow-sm border border-navy/5">
+            <h3 className="font-serif text-3xl mb-10 text-navy text-center">Traditional</h3>
+            <ul className="space-y-10 text-charcoal/80 text-lg">
+              <li className="flex items-start">
+                <span className="mr-6 text-base font-semibold text-ocean-blue">01</span>
+                <span>Personal relationships built on trust and multi-generational commitment</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-6 text-base font-semibold text-ocean-blue">02</span>
+                <span>Family values at the core of our practice, guiding every recommendation</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-6 text-base font-semibold text-ocean-blue">03</span>
+                <span>Attentive, personalized service from professionals who truly understand your goals</span>
+              </li>
+            </ul>
           </div>
           
-          <div className="reveal border-t border-navy/10 pt-8" style={{ transitionDelay: '0.3s' }}>
-            <Link to="/how-we-work" className="inline-flex items-center text-navy hover:text-gold transition-colors">
-              Learn more about how we work <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
+          {/* Innovative column */}
+          <div className="bg-white p-12 rounded-lg shadow-sm border border-navy/5">
+            <h3 className="font-serif text-3xl mb-10 text-navy text-center">Innovative</h3>
+            <ul className="space-y-10 text-charcoal/80 text-lg">
+              <li className="flex items-start">
+                <span className="mr-6 text-base font-semibold text-ocean-blue">01</span>
+                <span>Advanced AI/ML technology integration that enhances accuracy and efficiency</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-6 text-base font-semibold text-ocean-blue">02</span>
+                <span>Secure, modern client processes designed for today's digital environment</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-6 text-base font-semibold text-ocean-blue">03</span>
+                <span>Data-driven, efficient solutions that save time while improving outcomes</span>
+              </li>
+            </ul>
           </div>
+        </div>
+        
+        <div className="reveal border-t border-navy/10 pt-8 text-center" style={{ transitionDelay: '0.3s' }}>
+          <Link to="/how-we-work" className="inline-flex items-center text-ocean-blue hover:text-navy transition-colors text-lg">
+            Learn more about how we work <ArrowRight className="ml-3 h-5 w-5" />
+          </Link>
         </div>
       </div>
     </section>

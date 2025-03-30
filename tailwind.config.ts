@@ -22,6 +22,17 @@ export default {
 				'serif': ['Inter', 'sans-serif'],
 				'sans': ['Inter', 'sans-serif'],
 			},
+			fontSize: {
+                'base': '1.125rem',    // Increased base font size
+                'lg': '1.25rem',
+                'xl': '1.375rem',
+                '2xl': '1.5rem',
+                '3xl': '1.75rem',
+                '4xl': '2.25rem',
+                '5xl': '3rem',
+                '6xl': '3.75rem',
+                '7xl': '4.5rem',
+            },
 			colors: {
 				'primary': '#4682B4', // Cerulean blue
 				'primary-light': '#B0C4DE', // Lighter cerulean (Light Steel Blue)
@@ -31,6 +42,10 @@ export default {
 				'light-gray': '#F5F5F5',
 				'charcoal': '#2D3142',
 				'pastel-blue': '#D3E4FD',
+				'ocean-blue': '#0EA5E9',
+				'sky-blue': '#1EAEDB',
+				'bright-blue': '#0FA0CE',
+				'soft-gold': '#F2E3C9',
 				'pastel-green': '#F2FCE2',
 				'pastel-beige': '#FDE1D3',
 				'pastel-cream': '#FEF7CD',
@@ -74,8 +89,14 @@ export default {
 				'16': '16px',
 				'24': '24px',
 				'32': '32px',
+				'40': '40px',
+				'48': '48px',
+				'56': '56px',
 				'64': '64px',
+				'72': '72px',
+				'80': '80px',
 				'96': '96px',
+				'120': '120px',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

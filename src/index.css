@@ -5,7 +5,7 @@
 
 @layer base {
   body {
-    @apply font-sans;
+    @apply font-sans text-base md:text-lg;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -13,8 +13,20 @@
     letter-spacing: -0.01em;
   }
   
+  h1 {
+    @apply text-5xl md:text-6xl lg:text-7xl;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+  
   p {
-    @apply leading-relaxed;
+    @apply leading-relaxed text-base md:text-lg lg:text-xl;
   }
 }
 
@@ -33,16 +45,26 @@
 
   /* Navigation styles */
   .nav-link {
-    @apply text-navy hover:text-gold transition-colors;
+    @apply text-navy hover:text-gold transition-colors text-lg;
   }
   
   /* Spacing utilities */
   .section-spacing {
-    @apply py-32 md:py-48;
+    @apply py-40 md:py-56 lg:py-72;
   }
   
   .content-spacing {
-    @apply mb-16 md:mb-24;
+    @apply mb-20 md:mb-32;
+  }
+
+  /* Text sizing utilities */
+  .text-larger {
+    @apply text-lg md:text-xl lg:text-2xl;
+  }
+
+  /* Center content */
+  .center-content {
+    @apply flex flex-col items-center justify-center text-center;
   }
 }
 
@@ -71,4 +93,33 @@
 
 .bg-cerulean {
   background-color: #4A90E2;
+}
+
+/* New color classes */
+.bg-pastel-blue {
+  background-color: #D3E4FD;
+}
+
+.bg-ocean-blue {
+  background-color: #0EA5E9;
+}
+
+.text-ocean-blue {
+  color: #0EA5E9;
+}
+
+.bg-soft-gold {
+  background-color: #F2E3C9;
+}
+
+.text-soft-gold {
+  color: #E5C289;
+}
+
+.bg-gradient-blue {
+  background: linear-gradient(90deg, hsla(221, 45%, 73%, 1) 0%, hsla(220, 78%, 29%, 1) 100%);
+}
+
+.bg-gradient-gold {
+  background: linear-gradient(90deg, hsla(39, 100%, 77%, 1) 0%, hsla(22, 90%, 57%, 1) 100%);
 }
