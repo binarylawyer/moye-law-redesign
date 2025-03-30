@@ -40,5 +40,25 @@ export const podcastData: Podcast[] = [
     duration: "Approx. 30 min",
     listens: 0,
     topics: ["Digital Assets", "Cryptocurrency", "Estate Planning"]
+  },
+  {
+    id: "4",
+    title: "Protecting Software IP: Legal Strategies for Developers",
+    description: "A comprehensive examination of how developers can protect their software intellectual property through patents, copyrights, trade secrets, and strategic licensing.",
+    audioUrl: "#", // This would be replaced with actual audio file URL
+    date: "June 12, 2024",
+    duration: "34:22",
+    listens: 317,
+    topics: ["Intellectual Property", "IP Protection", "Software Development"]
+  },
+  {
+    id: "5",
+    title: "Open Source Licensing: Legal Implications for Business",
+    description: "Navigate the complex world of open source licensing and understand how different licenses impact your business strategy, compliance requirements, and IP portfolio.",
+    audioUrl: "#", // This would be replaced with actual audio file URL
+    date: "July 28, 2024",
+    duration: "29:15",
+    listens: 245,
+    topics: ["Intellectual Property", "Open Source", "Licensing"]
   }
 ];
