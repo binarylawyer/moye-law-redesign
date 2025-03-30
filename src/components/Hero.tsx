@@ -1,93 +1,53 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Hero: React.FC = () => {
-  const elementsRef = useRef<Array<HTMLElement | null>>([]);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    const elements = elementsRef.current.filter(Boolean) as HTMLElement[];
-    elements.forEach(el => {
-      observer.observe(el);
-    });
-    
-    return () => {
-      elements.forEach(el => {
-        observer.unobserve(el);
-      });
-    };
-  }, []);
-
   return (
-    <section className="pt-48 pb-24 md:pt-64 lg:pt-96">
-      <div className="container mx-auto px-24">
-        {/* Main headline with more whitespace */}
-        <div className="max-w-4xl mx-auto mb-96">
-          <h1 
-            ref={el => elementsRef.current[0] = el} 
-            className="reveal font-serif text-navy text-5xl md:text-6xl lg:text-7xl mb-32 text-center leading-tight"
-          >
+    <section className="pt-32 pb-16 md:pt-40 md:pb-24">
+      <div className="container mx-auto px-4 md:px-8">
+        {/* Main headline with minimalist design */}
+        <div className="max-w-4xl mx-auto mb-24 md:mb-40">
+          <h1 className="reveal font-serif text-navy text-4xl md:text-5xl lg:text-6xl mb-8 text-center leading-tight">
             Family Values, <br className="hidden md:block" />Future-Forward Legal Solutions
           </h1>
-          <p 
-            ref={el => elementsRef.current[1] = el} 
-            className="reveal text-lg md:text-xl text-center max-w-2xl mx-auto mb-64 text-charcoal/80"
-            style={{ transitionDelay: '0.1s' }}
-          >
+          <p className="reveal text-lg text-center max-w-2xl mx-auto mb-12 text-charcoal/80"
+             style={{ transitionDelay: '0.1s' }}>
             We combine time-honored legal expertise with innovative approaches to protect what matters most to you and your family.
           </p>
+
+          {/* CTA Buttons with outlign-like spacing */}
+          <div className="reveal flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto"
+               style={{ transitionDelay: '0.2s' }}>
+            <Link to="/contact" className="w-full sm:w-auto">
+              <Button className="w-full bg-gold hover:bg-gold/90 text-white">
+                Schedule a Consultation
+              </Button>
+            </Link>
+            <Link to="/practice" className="w-full sm:w-auto">
+              <Button variant="outline" className="w-full border-navy/20 text-navy hover:bg-navy/5">
+                Explore Our Services
+              </Button>
+            </Link>
+          </div>
         </div>
         
-        {/* Hero Image with Abstract Visualization */}
-        <div 
-          ref={el => elementsRef.current[2] = el} 
-          className="reveal max-w-6xl mx-auto mb-96 relative aspect-[16/9] md:aspect-[21/9]"
-          style={{ transitionDelay: '0.2s' }}
-        >
-          <div className="absolute inset-0 bg-pastel-blue/30 rounded-lg overflow-hidden">
-            <div className="absolute left-0 top-1/3 w-1/2 h-1/3 bg-pastel-beige/50 rounded-r-full"></div>
-            <div className="absolute right-1/4 bottom-1/4 w-1/3 h-1/3 bg-pastel-cream/50 rounded-full"></div>
-            <div className="absolute right-1/5 top-1/5 w-1/5 h-2/5 bg-pastel-green/30 rounded-lg"></div>
-            
-            {/* Traditional elements (left side) */}
-            <div className="absolute left-1/6 top-1/4 w-1/4 border-t border-navy/20"></div>
-            <div className="absolute left-1/5 bottom-1/4 w-1/5 h-1/5 border border-navy/10 rounded-sm"></div>
-            
-            {/* Tech/Innovation elements (right side) */}
-            <div className="absolute right-1/6 top-2/3 w-1/5 h-px bg-gold/50"></div>
-            <div className="absolute right-1/4 top-1/3 w-px h-1/5 bg-gold/50"></div>
-            <div className="absolute right-1/3 bottom-1/5 w-1/6 h-1/6 bg-navy/5 rounded-full"></div>
+        {/* Abstract visualization - simplified like outlign */}
+        <div className="reveal max-w-5xl mx-auto mb-16 md:mb-32 relative aspect-[21/9] hidden md:block"
+             style={{ transitionDelay: '0.3s' }}>
+          <div className="absolute inset-0 rounded-lg overflow-hidden bg-light-gray">
+            {/* Subtle abstract elements */}
+            <div className="absolute left-1/4 top-1/2 w-1/3 h-1/4 bg-pastel-blue/30 rounded-full transform -translate-y-1/2"></div>
+            <div className="absolute right-1/4 top-1/3 w-1/5 h-2/5 bg-pastel-cream/30 rounded-full"></div>
+            <div className="absolute right-1/3 bottom-1/4 w-1/6 h-1/5 border border-navy/10 rounded-full"></div>
+            <div className="absolute left-1/3 bottom-1/3 w-1/5 h-px bg-gold/30"></div>
           </div>
         </div>
 
-        {/* CTA Buttons with more whitespace */}
-        <div 
-          ref={el => elementsRef.current[3] = el} 
-          className="reveal flex flex-col sm:flex-row justify-center gap-16 max-w-xl mx-auto mb-64"
-          style={{ transitionDelay: '0.3s' }}
-        >
-          <Button className="primary-btn">
-            Schedule a Consultation
-          </Button>
-          <Button variant="outline" className="outline-btn">
-            Explore Our Services
-          </Button>
-        </div>
-        
-        {/* Trust indicators */}
-        <div 
-          ref={el => elementsRef.current[4] = el} 
-          className="reveal flex flex-col md:flex-row justify-center gap-32 md:gap-64 items-center text-sm text-charcoal/60 my-64"
-          style={{ transitionDelay: '0.4s' }}
-        >
+        {/* Trust indicators - simplified like outlign */}
+        <div className="reveal flex flex-col md:flex-row justify-center gap-6 md:gap-16 items-center text-sm text-charcoal/60 mt-12"
+             style={{ transitionDelay: '0.4s' }}>
           <p>Family-owned since 1985</p>
           <div className="hidden md:block h-1 w-1 bg-charcoal/20 rounded-full"></div>
           <p>Serving New York & Virginia</p>
