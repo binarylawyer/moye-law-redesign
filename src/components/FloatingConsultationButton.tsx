@@ -36,11 +36,11 @@ const FloatingConsultationButton: React.FC = () => {
     <div className={`fixed bottom-8 right-8 z-50 transition-transform duration-300 ${!isVisible ? 'translate-y-20' : ''}`}>
       <Link to="/contact">
         <Button 
-          className="bg-bright-blue hover:bg-bright-blue/90 text-white font-sans rounded-md w-48 h-48 shadow-xl flex flex-col items-center justify-center hover:scale-105 transition-all duration-300"
+          className="bg-bright-blue hover:bg-bright-blue/90 text-white font-sans rounded-md w-[192px] h-[192px] shadow-xl flex flex-col items-center justify-center hover:scale-105 transition-all duration-300"
           aria-label="Schedule a consultation"
         >
-          <Calendar size={64} />
-          <span className="text-lg mt-3 font-medium">Consult</span>
+          <Calendar size={96} />
+          <span className="text-3xl mt-4 font-medium">Consult</span>
         </Button>
       </Link>
     </div>
