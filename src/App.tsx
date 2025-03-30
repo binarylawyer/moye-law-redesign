@@ -17,7 +17,7 @@ import Resources from "./pages/Resources";
 import ResourceDetail from "./pages/ResourceDetail";
 import FAQ from "./pages/FAQ";
 import HowWeWork from "./pages/HowWeWork";
-import TechnologyApproach from "./pages/TechnologyApproach";
+import TechnologyPlatform from "./pages/TechnologyApproach";
 import CaseStudies from "./pages/CaseStudies";
 import DigitalAssetProtection from "./pages/DigitalAssetProtection";
 import IPConsulting from "./pages/IPConsulting";
@@ -60,7 +60,7 @@ const AppRoutes = () => {
         
         {/* Process & Client Experience Routes */}
         <Route path="/how-we-work" element={<HowWeWork />} />
-        <Route path="/technology-approach" element={<TechnologyApproach />} />
+        <Route path="/technology-approach" element={<TechnologyPlatform />} />
         
         {/* New Specialized Pages */}
         <Route path="/case-studies" element={<CaseStudies />} />

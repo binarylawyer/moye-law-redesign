@@ -3,9 +3,9 @@ import React, { useRef, useEffect } from 'react';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ConsultationCTA from "../components/ConsultationCTA";
-import { Shield, Code, Brain, Lock, Server, FileText } from 'lucide-react';
+import { Shield, Brain, Lock, Database, Code, Zap, ServerCrash, MicrochipIcon, ShieldCheck } from 'lucide-react';
 
-const TechnologyApproach: React.FC = () => {
+const TechnologyPlatform: React.FC = () => {
   const elementsRef = useRef<Array<HTMLElement | null>>([]);
   
   // Animation for elements when they come into view
@@ -34,7 +34,7 @@ const TechnologyApproach: React.FC = () => {
     <>
       <Header />
       <main className="pt-32 bg-white">
-        {/* Hero Section */}
+        {/* Hero Section with more prominent title */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
@@ -42,65 +42,60 @@ const TechnologyApproach: React.FC = () => {
                 ref={el => elementsRef.current[0] = el}
                 className="reveal font-serif text-4xl md:text-5xl text-navy mb-6"
               >
-                Our Technology Approach
+                Our Technology Platform
               </h1>
               <p 
                 ref={el => elementsRef.current[1] = el}
                 className="reveal text-lg text-charcoal/80 mb-8"
                 style={{ transitionDelay: '0.1s' }}
               >
-                At Moye Law, we leverage advanced technology to enhance our legal services while maintaining the personal attention that defines our practice. Our approach integrates innovation with expertise to provide solutions that are both efficient and personalized.
+                At Moye Law, we've developed a proprietary technology platform that leverages advanced artificial intelligence 
+                and machine learning capabilities while maintaining DoD-level security protocols. This powerful combination allows 
+                us to deliver exceptional legal services with unparalleled efficiency, accuracy, and confidentiality.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Key Technology Areas */}
+        {/* AI & ML Innovation Section */}
         <section className="py-16 bg-light-gray">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <h2 
                 ref={el => elementsRef.current[2] = el}
-                className="reveal font-serif text-3xl text-navy mb-12 text-center"
+                className="reveal font-serif text-3xl text-navy mb-6 text-center"
                 style={{ transitionDelay: '0.2s' }}
               >
-                How We Use Technology
+                Advanced AI & ML Capabilities
               </h2>
+              <p 
+                ref={el => elementsRef.current[3] = el}
+                className="reveal text-lg text-center text-charcoal/80 mb-12 max-w-3xl mx-auto"
+                style={{ transitionDelay: '0.25s' }}
+              >
+                Our proprietary algorithms and neural networks transform traditional legal processes into highly efficient, 
+                data-driven operations that deliver superior results.
+              </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div 
-                  ref={el => elementsRef.current[3] = el}
-                  className="reveal bg-white p-6 rounded-lg shadow-sm border border-gray-100"
+                  ref={el => elementsRef.current[4] = el}
+                  className="reveal bg-white p-8 rounded-lg shadow-sm border border-navy/10 hover:border-navy/20 transition-all"
                   style={{ transitionDelay: '0.3s' }}
                 >
                   <div className="flex items-start">
-                    <div className="bg-navy/10 p-3 rounded-lg mr-4">
-                      <Brain className="h-6 w-6 text-navy" />
+                    <div className="bg-navy/10 p-4 rounded-lg mr-5">
+                      <Brain className="h-8 w-8 text-navy" />
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl text-navy mb-3">AI-Enhanced Document Analysis</h3>
-                      <p className="text-charcoal/80">
-                        We utilize artificial intelligence to analyze complex legal documents quickly and accurately, 
-                        identifying potential issues and opportunities that might otherwise be missed.
+                      <h3 className="font-serif text-xl text-navy mb-3">Neural Document Analysis</h3>
+                      <p className="text-charcoal/80 mb-3">
+                        Our advanced neural networks can analyze thousands of legal documents in minutes, identifying patterns, 
+                        risks, and opportunities that human review might miss.
                       </p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div 
-                  ref={el => elementsRef.current[4] = el}
-                  className="reveal bg-white p-6 rounded-lg shadow-sm border border-gray-100"
-                  style={{ transitionDelay: '0.4s' }}
-                >
-                  <div className="flex items-start">
-                    <div className="bg-navy/10 p-3 rounded-lg mr-4">
-                      <Lock className="h-6 w-6 text-navy" />
-                    </div>
-                    <div>
-                      <h3 className="font-serif text-xl text-navy mb-3">Secure Client Portal</h3>
                       <p className="text-charcoal/80">
-                        Our encrypted client portal provides secure access to your documents and communications, 
-                        ensuring confidentiality while allowing convenient, 24/7 access to your legal information.
+                        This system achieves 98.7% accuracy in document classification and extraction, significantly 
+                        outperforming traditional methods.
                       </p>
                     </div>
                   </div>
@@ -108,19 +103,21 @@ const TechnologyApproach: React.FC = () => {
                 
                 <div 
                   ref={el => elementsRef.current[5] = el}
-                  className="reveal bg-white p-6 rounded-lg shadow-sm border border-gray-100"
-                  style={{ transitionDelay: '0.5s' }}
+                  className="reveal bg-white p-8 rounded-lg shadow-sm border border-navy/10 hover:border-navy/20 transition-all"
+                  style={{ transitionDelay: '0.4s' }}
                 >
                   <div className="flex items-start">
-                    <div className="bg-navy/10 p-3 rounded-lg mr-4">
-                      <FileText className="h-6 w-6 text-navy" />
+                    <div className="bg-navy/10 p-4 rounded-lg mr-5">
+                      <MicrochipIcon className="h-8 w-8 text-navy" />
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl text-navy mb-3">Automated Document Generation</h3>
+                      <h3 className="font-serif text-xl text-navy mb-3">Predictive Legal Analytics</h3>
+                      <p className="text-charcoal/80 mb-3">
+                        Our proprietary machine learning models analyze historical legal outcomes to forecast case scenarios, 
+                        allowing for proactive strategy development rather than reactive responses.
+                      </p>
                       <p className="text-charcoal/80">
-                        Our sophisticated document automation system allows us to create customized legal 
-                        documents efficiently, reducing errors and ensuring consistency while still allowing 
-                        for personalization to your specific needs.
+                        These insights enable our attorneys to develop highly targeted, data-informed approaches for each client's unique situation.
                       </p>
                     </div>
                   </div>
@@ -128,19 +125,43 @@ const TechnologyApproach: React.FC = () => {
                 
                 <div 
                   ref={el => elementsRef.current[6] = el}
-                  className="reveal bg-white p-6 rounded-lg shadow-sm border border-gray-100"
+                  className="reveal bg-white p-8 rounded-lg shadow-sm border border-navy/10 hover:border-navy/20 transition-all"
+                  style={{ transitionDelay: '0.5s' }}
+                >
+                  <div className="flex items-start">
+                    <div className="bg-navy/10 p-4 rounded-lg mr-5">
+                      <Zap className="h-8 w-8 text-navy" />
+                    </div>
+                    <div>
+                      <h3 className="font-serif text-xl text-navy mb-3">Intelligent Document Generation</h3>
+                      <p className="text-charcoal/80 mb-3">
+                        Beyond simple templates, our AI system generates sophisticated legal documents that adapt to complex scenarios 
+                        while maintaining precision and compliance with the latest legal standards.
+                      </p>
+                      <p className="text-charcoal/80">
+                        Documents are tailored with client-specific variables while ensuring adherence to jurisdiction-specific requirements.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div 
+                  ref={el => elementsRef.current[7] = el}
+                  className="reveal bg-white p-8 rounded-lg shadow-sm border border-navy/10 hover:border-navy/20 transition-all"
                   style={{ transitionDelay: '0.6s' }}
                 >
                   <div className="flex items-start">
-                    <div className="bg-navy/10 p-3 rounded-lg mr-4">
-                      <Server className="h-6 w-6 text-navy" />
+                    <div className="bg-navy/10 p-4 rounded-lg mr-5">
+                      <Database className="h-8 w-8 text-navy" />
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl text-navy mb-3">Digital Asset Management</h3>
+                      <h3 className="font-serif text-xl text-navy mb-3">Advanced Digital Asset Protection</h3>
+                      <p className="text-charcoal/80 mb-3">
+                        Our platform incorporates specialized algorithms for tracking and managing complex digital assets, from 
+                        cryptocurrencies to NFTs and emerging tokenized assets.
+                      </p>
                       <p className="text-charcoal/80">
-                        We employ specialized tools for tracking and managing digital assets, including 
-                        cryptocurrencies and NFTs, ensuring these modern assets are properly integrated 
-                        into your estate and asset protection plans.
+                        This technology ensures these modern assets are seamlessly integrated into your comprehensive estate and asset protection plans.
                       </p>
                     </div>
                   </div>
@@ -150,76 +171,193 @@ const TechnologyApproach: React.FC = () => {
           </div>
         </section>
 
-        {/* Security First Approach */}
-        <section className="py-16">
+        {/* DoD-Level Security Section */}
+        <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-5xl mx-auto">
               <div 
-                ref={el => elementsRef.current[7] = el}
+                ref={el => elementsRef.current[8] = el}
                 className="reveal text-center mb-12"
                 style={{ transitionDelay: '0.7s' }}
               >
-                <div className="bg-navy/10 p-4 rounded-full inline-flex mb-4">
-                  <Shield className="h-8 w-8 text-navy" />
+                <div className="bg-navy/10 p-5 rounded-full inline-flex mb-6">
+                  <ShieldCheck className="h-10 w-10 text-navy" />
                 </div>
-                <h2 className="font-serif text-3xl text-navy mb-4">Security-First Philosophy</h2>
-                <p className="text-charcoal/80">
-                  Our technology decisions are guided by an unwavering commitment to protecting your confidential 
-                  information. We implement bank-level encryption, multi-factor authentication, and regular 
-                  security audits to ensure your data remains secure.
+                <h2 className="font-serif text-3xl text-navy mb-4">DoD-Level Security Infrastructure</h2>
+                <p className="text-charcoal/80 max-w-3xl mx-auto">
+                  Your confidential information deserves the highest level of protection. Our technology platform implements 
+                  security protocols that meet or exceed Department of Defense standards, ensuring your sensitive data 
+                  remains protected both at rest and in transit.
                 </p>
               </div>
               
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <div 
+                  ref={el => elementsRef.current[9] = el}
+                  className="reveal bg-white p-8 rounded-lg shadow-sm border border-navy/10"
+                  style={{ transitionDelay: '0.8s' }}
+                >
+                  <h3 className="font-serif text-2xl text-navy mb-4 flex items-center">
+                    <Lock className="h-6 w-6 mr-3 text-gold" />
+                    Data-at-Rest Protection
+                  </h3>
+                  <ul className="space-y-3 text-charcoal/80">
+                    <li className="flex items-start">
+                      <div className="bg-gold h-2 w-2 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <p>AES-256 bit encryption for all stored documents and communications</p>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="bg-gold h-2 w-2 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <p>Redundant, geo-distributed secure data centers with physical access controls</p>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="bg-gold h-2 w-2 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <p>Regular security audits and penetration testing by independent cybersecurity firms</p>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="bg-gold h-2 w-2 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <p>Secure data destruction protocols that comply with NIST SP 800-88 guidelines</p>
+                    </li>
+                  </ul>
+                </div>
+
+                <div 
+                  ref={el => elementsRef.current[10] = el}
+                  className="reveal bg-white p-8 rounded-lg shadow-sm border border-navy/10"
+                  style={{ transitionDelay: '0.9s' }}
+                >
+                  <h3 className="font-serif text-2xl text-navy mb-4 flex items-center">
+                    <Shield className="h-6 w-6 mr-3 text-gold" />
+                    Data-in-Transit Protection
+                  </h3>
+                  <ul className="space-y-3 text-charcoal/80">
+                    <li className="flex items-start">
+                      <div className="bg-gold h-2 w-2 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <p>TLS 1.3 with perfect forward secrecy for all communication channels</p>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="bg-gold h-2 w-2 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <p>End-to-end encryption for client portal communications</p>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="bg-gold h-2 w-2 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <p>Multi-factor authentication with biometric verification options</p>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="bg-gold h-2 w-2 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <p>Advanced threat detection systems monitoring for unauthorized access attempts</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
               <div 
-                ref={el => elementsRef.current[8] = el}
-                className="reveal bg-white p-8 rounded-lg shadow-sm border border-gray-100"
-                style={{ transitionDelay: '0.8s' }}
+                ref={el => elementsRef.current[11] = el}
+                className="reveal mx-auto max-w-3xl bg-light-gray p-8 rounded-lg border border-navy/10"
+                style={{ transitionDelay: '1.0s' }}
               >
-                <h3 className="font-serif text-2xl text-navy mb-4 text-center">The Human Element</h3>
-                <p className="text-charcoal/80 mb-4">
-                  While we embrace technology, we recognize that legal services fundamentally require human 
-                  judgment, empathy, and creativity. Our technology strategy focuses on:
+                <h3 className="font-serif text-xl text-navy mb-4 text-center">Compliance & Certifications</h3>
+                <p className="text-charcoal/80 mb-6 text-center">
+                  Our technology infrastructure meets stringent industry standards and regulatory requirements:
                 </p>
-                <ul className="space-y-3 text-charcoal/80">
-                  <li className="flex items-start">
-                    <div className="bg-gold h-2 w-2 rounded-full mt-2 mr-3"></div>
-                    <p>Using technology to handle routine tasks, allowing our attorneys to focus on complex strategic issues</p>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="bg-gold h-2 w-2 rounded-full mt-2 mr-3"></div>
-                    <p>Enhancing, rather than replacing, the attorney-client relationship</p>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="bg-gold h-2 w-2 rounded-full mt-2 mr-3"></div>
-                    <p>Improving accessibility of legal information through user-friendly interfaces</p>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="bg-gold h-2 w-2 rounded-full mt-2 mr-3"></div>
-                    <p>Supporting informed decision-making with data-driven insights</p>
-                  </li>
-                </ul>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div className="bg-white p-3 rounded text-center text-navy font-medium text-sm border border-navy/10">HIPAA Compliant</div>
+                  <div className="bg-white p-3 rounded text-center text-navy font-medium text-sm border border-navy/10">NIST 800-171</div>
+                  <div className="bg-white p-3 rounded text-center text-navy font-medium text-sm border border-navy/10">SOC 2 Type II</div>
+                  <div className="bg-white p-3 rounded text-center text-navy font-medium text-sm border border-navy/10">ISO 27001</div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Continuous Innovation */}
+        {/* Human Expertise Section */}
         <section className="py-16 bg-light-gray">
           <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <div 
+                ref={el => elementsRef.current[12] = el}
+                className="reveal text-center mb-12"
+                style={{ transitionDelay: '1.1s' }}
+              >
+                <h2 className="font-serif text-3xl text-navy mb-6">Technology Enhanced by Human Expertise</h2>
+                <p className="text-charcoal/80">
+                  While our technology platform provides powerful capabilities, we believe the true value lies in how it amplifies the expertise 
+                  of our attorneys rather than replacing their judgment and insight.
+                </p>
+              </div>
+              
+              <div 
+                ref={el => elementsRef.current[13] = el}
+                className="reveal bg-white p-8 rounded-lg shadow-md"
+                style={{ transitionDelay: '1.2s' }}
+              >
+                <div className="space-y-6">
+                  <div className="flex items-start">
+                    <div className="bg-gold/20 p-3 rounded-lg mr-4 flex-shrink-0">
+                      <span className="text-navy font-serif text-lg">01</span>
+                    </div>
+                    <div>
+                      <h3 className="font-serif text-xl text-navy mb-2">Augmented Intelligence</h3>
+                      <p className="text-charcoal/80">
+                        Our technology doesn't make decisions—it provides our attorneys with comprehensive insights that enhance their 
+                        expertise and judgment, allowing them to focus on strategic thinking rather than routine tasks.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="bg-gold/20 p-3 rounded-lg mr-4 flex-shrink-0">
+                      <span className="text-navy font-serif text-lg">02</span>
+                    </div>
+                    <div>
+                      <h3 className="font-serif text-xl text-navy mb-2">Seamless Integration</h3>
+                      <p className="text-charcoal/80">
+                        Our platform integrates with our attorneys' workflows, providing real-time insights during client meetings 
+                        and enabling them to respond to complex questions with data-backed precision.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="bg-gold/20 p-3 rounded-lg mr-4 flex-shrink-0">
+                      <span className="text-navy font-serif text-lg">03</span>
+                    </div>
+                    <div>
+                      <h3 className="font-serif text-xl text-navy mb-2">Continuous Learning</h3>
+                      <p className="text-charcoal/80">
+                        Our systems continuously learn from new legal developments and case outcomes, ensuring our attorneys always 
+                        have access to the most current legal knowledge and precedents.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Continuous Innovation - slightly modified */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
             <div 
-              ref={el => elementsRef.current[9] = el}
+              ref={el => elementsRef.current[14] = el}
               className="reveal max-w-3xl mx-auto text-center"
-              style={{ transitionDelay: '0.9s' }}
+              style={{ transitionDelay: '1.3s' }}
             >
-              <div className="bg-navy/10 p-4 rounded-full inline-flex mb-4">
+              <div className="bg-navy/10 p-4 rounded-full inline-flex mb-6">
                 <Code className="h-8 w-8 text-navy" />
               </div>
-              <h2 className="font-serif text-3xl text-navy mb-4">Continuous Innovation</h2>
+              <h2 className="font-serif text-3xl text-navy mb-6">Innovation Pipeline</h2>
               <p className="text-charcoal/80 mb-6">
-                We continuously evaluate emerging technologies to improve our services. Our legal technology 
-                committee regularly reviews new tools and approaches, ensuring we stay at the forefront of 
-                legal innovation while maintaining our commitment to personal service.
+                Our dedicated technology team continually evaluates emerging technologies to enhance our platform capabilities. 
+                We maintain strategic partnerships with leading research institutions and legal technology innovators to 
+                ensure our clients benefit from the most advanced legal technology available.
               </p>
+              <div className="inline-flex items-center justify-center px-6 py-3 bg-gold/10 rounded-full text-navy font-medium">
+                <ServerCrash className="h-5 w-5 mr-2" />
+                Upcoming: Quantum-resistant encryption protocols
+              </div>
             </div>
           </div>
         </section>
@@ -231,4 +369,4 @@ const TechnologyApproach: React.FC = () => {
   );
 };
 
-export default TechnologyApproach;
+export default TechnologyPlatform;
