@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -20,8 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'serif': ['PP Mori', 'sans-serif'],
-				'sans': ['PP Mori', 'sans-serif'],
+				'serif': ['Inter', 'sans-serif'],
+				'sans': ['Inter', 'sans-serif'],
 			},
 			colors: {
 				'primary': '#4682B4', // Cerulean blue
