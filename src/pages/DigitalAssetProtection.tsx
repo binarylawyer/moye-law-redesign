@@ -19,8 +19,8 @@ const DigitalAssetProtection: React.FC = () => {
         <DigitalAssetOverview />
         <DigitalAssetStrategies />
         <DigitalAssetProcess />
-        <ConsultationCTA />
         <DigitalAssetRelated />
+        <ConsultationCTA />
       </main>
       
       <Footer />
