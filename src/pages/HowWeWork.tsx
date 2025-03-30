@@ -63,7 +63,7 @@ const HowWeWork: React.FC = () => {
   return (
     <>
       <Header />
-      <main>
+      <main className="pt-20"> {/* Added top padding to move content down */}
         {/* Hero Section with updated spacing to match other pages */}
         <section className="bg-light-gray py-24 md:py-32">
           <div className="container mx-auto px-4">
