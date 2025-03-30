@@ -15,7 +15,7 @@ export const podcastData: Podcast[] = [
     id: "1",
     title: "What to Do When Your Parents Die: A Complete Guide",
     description: "This episode walks you through the immediate steps to take following the death of a parent, including handling legal affairs, managing assets, and navigating the probate process with minimal stress.",
-    audioUrl: "#", // This would be replaced with actual audio file URL
+    audioUrl: "/podcast-sample.mp3",
     date: "July 15, 2024",
     duration: "28:45",
     listens: 432,
@@ -25,7 +25,7 @@ export const podcastData: Podcast[] = [
     id: "2",
     title: "Trust Design for Founder Parents: Protecting Your Tech Legacy",
     description: "Learn how founders of software companies should structure their trusts to protect intellectual property, manage company shares, and ensure their children's futures while preserving their business legacy.",
-    audioUrl: "#", // This would be replaced with actual audio file URL
+    audioUrl: "/podcast-sample.mp3",
     date: "August 3, 2024",
     duration: "32:17",
     listens: 287,
@@ -35,7 +35,7 @@ export const podcastData: Podcast[] = [
     id: "3",
     title: "Digital Asset Estate Planning in the Age of Cryptocurrency",
     description: "Discover essential strategies for incorporating digital assets into your estate plan, with special focus on cryptocurrency holdings, NFTs, and other blockchain-based assets.",
-    audioUrl: "#", // This would be replaced with actual audio file URL
+    audioUrl: "/podcast-sample.mp3",
     date: "Coming Soon",
     duration: "Approx. 30 min",
     listens: 0,
@@ -45,7 +45,7 @@ export const podcastData: Podcast[] = [
     id: "4",
     title: "Protecting Software IP: Legal Strategies for Developers",
     description: "A comprehensive examination of how developers can protect their software intellectual property through patents, copyrights, trade secrets, and strategic licensing.",
-    audioUrl: "#", // This would be replaced with actual audio file URL
+    audioUrl: "/podcast-sample.mp3",
     date: "June 12, 2024",
     duration: "34:22",
     listens: 317,
@@ -55,7 +55,7 @@ export const podcastData: Podcast[] = [
     id: "5",
     title: "Open Source Licensing: Legal Implications for Business",
     description: "Navigate the complex world of open source licensing and understand how different licenses impact your business strategy, compliance requirements, and IP portfolio.",
-    audioUrl: "#", // This would be replaced with actual audio file URL
+    audioUrl: "/podcast-sample.mp3",
     date: "July 28, 2024",
     duration: "29:15",
     listens: 245,

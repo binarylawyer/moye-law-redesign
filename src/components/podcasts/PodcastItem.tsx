@@ -2,7 +2,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Headphones, Play, Pause } from 'lucide-react';
 import { Podcast } from '../../data/podcastData';
-import { getFileUrl } from '../../utils/fileUpload';
 
 interface PodcastItemProps {
   podcast: Podcast;
@@ -10,28 +9,12 @@ interface PodcastItemProps {
 
 const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [audioSrc, setAudioSrc] = useState<string | null>(null);
   const [duration, setDuration] = useState(podcast.duration);
   const [currentTime, setCurrentTime] = useState("0:00");
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  useEffect(() => {
-    // Check if it's a local storage URL or external URL
-    if (podcast.audioUrl && podcast.audioUrl.startsWith('podcast-')) {
-      const url = getFileUrl(podcast.audioUrl);
-      if (url) {
-        setAudioSrc(url);
-      }
-    } else {
-      setAudioSrc(podcast.audioUrl);
-    }
-    
-    // Log for debugging
-    console.log("Audio URL for", podcast.title, ":", podcast.audioUrl);
-    if (podcast.audioUrl && podcast.audioUrl.startsWith('podcast-')) {
-      console.log("Retrieved from local storage:", getFileUrl(podcast.audioUrl));
-    }
-  }, [podcast.audioUrl]);
+  // Fixed audio file URL - this will be used for all podcast items
+  const audioSrc = "/podcast-sample.mp3";
 
   const togglePlayPause = () => {
     if (audioRef.current) {
@@ -82,7 +65,6 @@ const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
             <button 
               onClick={togglePlayPause}
               className="flex items-center gap-2 bg-navy hover:bg-navy/90 text-white px-4 py-2 rounded transition-colors"
-              disabled={!audioSrc}
             >
               {isPlaying ? (
                 <>
@@ -104,16 +86,14 @@ const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
           </div>
         </div>
         
-        {audioSrc && (
-          <audio 
-            ref={audioRef}
-            src={audioSrc}
-            onEnded={() => setIsPlaying(false)}
-            onLoadedMetadata={handleLoadedMetadata}
-            onTimeUpdate={handleTimeUpdate}
-            className="hidden" 
-          />
-        )}
+        <audio 
+          ref={audioRef}
+          src={audioSrc}
+          onEnded={() => setIsPlaying(false)}
+          onLoadedMetadata={handleLoadedMetadata}
+          onTimeUpdate={handleTimeUpdate}
+          className="hidden" 
+        />
       </div>
     </div>
   );
