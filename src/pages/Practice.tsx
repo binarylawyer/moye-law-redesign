@@ -105,15 +105,15 @@ const Practice: React.FC = () => {
               {practiceAreas.map((practice, index) => (
                 <div 
                   key={practice.id}
-                  className="reveal bg-white p-32 md:p-48 rounded-lg hover:shadow-md transition-all duration-300"
+                  className="reveal border border-gray-200 bg-white p-32 md:p-48 rounded-lg hover:shadow-lg transition-all duration-300"
                   style={{ transitionDelay: `${0.1 * (index % 3)}s` }}
                 >
-                  <h3 className="font-serif mb-16 text-2xl">{practice.title}</h3>
-                  <p className="text-charcoal/80 mb-24">{practice.description}</p>
+                  <h3 className="font-serif text-navy mb-24 text-2xl">{practice.title}</h3>
+                  <p className="text-charcoal/80 mb-32 leading-relaxed">{practice.description}</p>
                   
                   <Link 
                     to={practice.path} 
-                    className="inline-flex items-center font-sans text-navy hover:text-gold transition-colors"
+                    className="inline-flex items-center font-sans text-gold hover:text-navy transition-colors mt-16"
                   >
                     Learn more <ChevronRight className="ml-8 h-4 w-4" />
                   </Link>
