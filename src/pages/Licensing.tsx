@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -35,12 +36,14 @@ const Licensing: React.FC = () => {
       
       <main className="flex-grow">
         {/* Hero Section with standardized spacing */}
-        <section className="bg-white pt-40 pb-20">
+        <section className="py-72 md:py-96 bg-pastel-blue/20">
           <div className="container mx-auto px-8">
-            <h1 className="font-serif text-5xl text-navy mb-6">IP & Software Licensing</h1>
-            <p className="text-lg max-w-3xl">
-              Strategic licensing solutions that protect your intellectual assets while generating revenue and expanding market reach.
-            </p>
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="font-serif text-navy text-5xl md:text-6xl lg:text-7xl mb-16">IP & Software Licensing</h1>
+              <p className="text-xl md:text-2xl text-charcoal/80 mx-auto">
+                Strategic licensing solutions that protect your intellectual assets while generating revenue and expanding market reach.
+              </p>
+            </div>
           </div>
         </section>
         
