@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Headphones, Play, Pause } from 'lucide-react';
 import { Podcast } from '../../data/podcastData';
+import { useToast } from "@/hooks/use-toast";
 
 interface PodcastItemProps {
   podcast: Podcast;
@@ -12,20 +13,47 @@ const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
   const [duration, setDuration] = useState(podcast.duration);
   const [currentTime, setCurrentTime] = useState("0:00");
   const audioRef = useRef<HTMLAudioElement>(null);
+  const { toast } = useToast();
 
-  // Fixed audio file URL - this will be used for all podcast items
-  const audioSrc = "/podcast-sample.mp3";
+  // Use the podcast audioUrl directly if available, otherwise use the sample
+  const audioSrc = podcast.audioUrl || "/podcast-sample.mp3";
+
+  useEffect(() => {
+    // Create an audio element when the component mounts
+    const audio = new Audio(audioSrc);
+    
+    // Set the audio element to our ref
+    if (audioRef.current) {
+      audioRef.current = audio;
+    }
+    
+    // Clean up function
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+    };
+  }, [audioSrc]);
 
   const togglePlayPause = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        setIsPlaying(false);
       } else {
-        audioRef.current.play().catch(error => {
-          console.error("Error playing audio:", error);
-        });
+        audioRef.current.play()
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch(error => {
+            console.error("Error playing audio:", error);
+            toast({
+              title: "Playback Error",
+              description: "Could not play the audio. Please try again.",
+              variant: "destructive",
+            });
+          });
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
@@ -44,6 +72,22 @@ const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
       setCurrentTime(`${minutes}:${seconds.toString().padStart(2, '0')}`);
     }
   };
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.addEventListener('loadedmetadata', handleLoadedMetadata);
+      audioRef.current.addEventListener('timeupdate', handleTimeUpdate);
+      audioRef.current.addEventListener('ended', () => setIsPlaying(false));
+      
+      return () => {
+        if (audioRef.current) {
+          audioRef.current.removeEventListener('loadedmetadata', handleLoadedMetadata);
+          audioRef.current.removeEventListener('timeupdate', handleTimeUpdate);
+          audioRef.current.removeEventListener('ended', () => setIsPlaying(false));
+        }
+      };
+    }
+  }, [audioRef.current]);
 
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
@@ -85,15 +129,6 @@ const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
             </span>
           </div>
         </div>
-        
-        <audio 
-          ref={audioRef}
-          src={audioSrc}
-          onEnded={() => setIsPlaying(false)}
-          onLoadedMetadata={handleLoadedMetadata}
-          onTimeUpdate={handleTimeUpdate}
-          className="hidden" 
-        />
       </div>
     </div>
   );
