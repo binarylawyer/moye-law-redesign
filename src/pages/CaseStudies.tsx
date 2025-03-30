@@ -1,9 +1,11 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
 interface CaseStudy {
   id: string;
@@ -77,75 +79,83 @@ const caseStudies: CaseStudy[] = [
 
 const CaseStudies: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header />
       
       <main className="flex-grow">
         {/* Hero Section with standardized spacing */}
-        <section className="bg-white pt-40 pb-20">
+        <section className="py-24 md:py-32">
           <div className="container mx-auto px-8">
-            <h1 className="font-serif text-5xl text-navy mb-6">Client Success Stories</h1>
-            <p className="text-lg max-w-3xl">
-              Real-world examples of how we've helped clients navigate complex legal challenges while protecting what matters most. All case studies are anonymized to protect client confidentiality.
-            </p>
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="font-serif text-4xl md:text-5xl text-navy mb-6">
+                Client Success Stories
+              </h1>
+              <p className="text-lg text-charcoal/80 mb-12 max-w-3xl mx-auto">
+                Real-world examples of how we've helped clients navigate complex legal challenges while protecting what matters most. All case studies are anonymized to protect client confidentiality.
+              </p>
+            </div>
           </div>
         </section>
         
         {/* Case Studies List */}
-        <section className="bg-white py-20">
+        <section className="bg-light-gray py-20">
           <div className="container mx-auto px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
               {caseStudies.map((study) => (
-                <div key={study.id} className="border border-gray-200 p-8 rounded-sm">
-                  <h2 className="font-serif text-2xl text-navy mb-3">{study.title}</h2>
-                  <p className="text-sm text-charcoal/70 mb-6">Client: {study.clientType}</p>
-                  
-                  <div className="mb-6">
-                    <h3 className="font-medium text-navy mb-2">Challenge</h3>
-                    <p className="text-charcoal">{study.challenge}</p>
-                  </div>
-                  
-                  <div className="mb-6">
-                    <h3 className="font-medium text-navy mb-2">Solution</h3>
-                    <p className="text-charcoal">{study.solution}</p>
-                  </div>
-                  
-                  <div className="mb-6">
-                    <h3 className="font-medium text-navy mb-2">Results</h3>
-                    <ul className="list-disc pl-5">
-                      {study.results.map((result, idx) => (
-                        <li key={idx} className="text-charcoal mb-1">{result}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div className="mt-8">
-                    <Link 
-                      to={study.practiceAreaPath} 
-                      className="text-gold hover:text-navy transition-colors flex items-center"
-                    >
-                      Learn more about {study.practiceArea}
-                      <ArrowRight className="ml-2" size={16} />
-                    </Link>
-                  </div>
-                </div>
+                <Card key={study.id} className="border border-gray-200 bg-white shadow-sm">
+                  <CardContent className="p-8">
+                    <h2 className="font-serif text-2xl text-navy mb-3">{study.title}</h2>
+                    <p className="text-sm text-charcoal/70 mb-6">Client: {study.clientType}</p>
+                    
+                    <div className="mb-6">
+                      <h3 className="font-medium text-navy mb-2">Challenge</h3>
+                      <p className="text-charcoal/80">{study.challenge}</p>
+                    </div>
+                    
+                    <div className="mb-6">
+                      <h3 className="font-medium text-navy mb-2">Solution</h3>
+                      <p className="text-charcoal/80">{study.solution}</p>
+                    </div>
+                    
+                    <div className="mb-6">
+                      <h3 className="font-medium text-navy mb-2">Results</h3>
+                      <ul className="list-disc pl-5">
+                        {study.results.map((result, idx) => (
+                          <li key={idx} className="text-charcoal/80 mb-1">{result}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div className="mt-8">
+                      <Link 
+                        to={study.practiceAreaPath} 
+                        className="text-gold hover:text-navy transition-colors flex items-center"
+                      >
+                        Learn more about {study.practiceArea}
+                        <ArrowRight className="ml-2" size={16} />
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
         </section>
         
         {/* CTA Section */}
-        <section className="bg-gray-50 py-24">
-          <div className="container mx-auto px-8 text-center">
-            <h2 className="font-serif text-3xl text-navy mb-6">Your Success Story Begins Here</h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto">
-              Every client journey begins with a conversation. Contact us to discuss how we can help you achieve your legal and financial goals.
-            </p>
-            <Link to="/contact">
-              <Button className="bg-gold hover:bg-gold/90 text-white px-8 py-6">
-                Schedule a Consultation
-              </Button>
-            </Link>
+        <section className="py-24">
+          <div className="container mx-auto px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="font-serif text-3xl text-navy mb-6">Your Success Story Begins Here</h2>
+              <p className="text-lg mb-8 max-w-2xl mx-auto text-charcoal/80">
+                Every client journey begins with a conversation. Contact us to discuss how we can help you achieve your legal and financial goals.
+              </p>
+              <Link to="/contact">
+                <Button className="bg-gold hover:bg-gold/90 text-white px-8 py-6">
+                  Schedule a Consultation
+                </Button>
+              </Link>
+            </div>
           </div>
         </section>
       </main>
