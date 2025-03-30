@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Calendar, ChevronUp } from "lucide-react";
+import { Calendar } from "lucide-react";
 
 const FloatingConsultationButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -33,13 +33,16 @@ const FloatingConsultationButton: React.FC = () => {
   }, [lastScrollY, isVisible]);
 
   return (
-    <div className={`fixed bottom-6 right-6 z-50 transition-transform duration-300 ${!isVisible ? 'translate-y-20' : ''}`}>
+    <div className={`fixed bottom-8 right-8 z-50 transition-transform duration-300 ${!isVisible ? 'translate-y-20' : ''}`}>
       <Link to="/contact">
         <Button 
-          className="bg-gold hover:bg-gold/90 text-white font-sans rounded-full w-16 h-16 shadow-lg flex items-center justify-center hover:scale-105 transition-all duration-300"
+          className="bg-bright-blue hover:bg-bright-blue/90 text-white font-sans rounded-full w-24 h-24 shadow-xl flex items-center justify-center hover:scale-105 transition-all duration-300 animate-pulse"
           aria-label="Schedule a consultation"
         >
-          <Calendar size={24} />
+          <div className="flex flex-col items-center">
+            <Calendar size={32} />
+            <span className="text-xs mt-1 font-medium">Consult</span>
+          </div>
         </Button>
       </Link>
     </div>
