@@ -60,35 +60,34 @@ const PracticeAreas: React.FC = () => {
   ];
 
   return (
-    <section className="py-96 bg-light-gray">
+    <section className="py-64 bg-light-gray">
       <div className="container mx-auto px-24">
         <h2 
           ref={el => elementsRef.current[0] = el} 
-          className="reveal font-serif text-center mb-96"
+          className="reveal font-sans text-primary text-4xl md:text-5xl mb-48 text-center"
         >
           Areas of Practice
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-32 md:gap-64">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-32">
           {practiceAreas.map((practice, index) => (
             <div 
               key={practice.id}
               ref={el => elementsRef.current[index + 1] = el}
-              className="reveal bg-white p-32 md:p-48 rounded-lg hover:shadow-md transition-all duration-300"
+              className="reveal bg-white p-32 rounded-lg border border-primary-light/30 hover:shadow-md transition-all duration-300 flex flex-col h-full"
               style={{ transitionDelay: `${0.1 * (index + 1)}s` }}
             >
-              {/* Comment indicating persona target */}
-              {/* For: {practice.persona} */}
-              
-              <h3 className="font-serif mb-16 text-2xl">{practice.title}</h3>
+              <h3 className="font-sans text-primary mb-16 text-xl font-medium">{practice.title}</h3>
               <p className="text-charcoal/80 mb-24">{practice.description}</p>
               
-              <Link 
-                to={practice.path} 
-                className="inline-flex items-center font-sans text-navy hover:text-gold transition-colors"
-              >
-                Learn more <ChevronRight className="ml-8 h-4 w-4" />
-              </Link>
+              <div className="mt-auto">
+                <Link 
+                  to={practice.path} 
+                  className="inline-flex items-center font-sans text-primary hover:text-gold transition-colors"
+                >
+                  Learn more <ChevronRight className="ml-8 h-4 w-4" />
+                </Link>
+              </div>
             </div>
           ))}
         </div>
