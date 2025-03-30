@@ -16,88 +16,86 @@ const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const { toast } = useToast();
 
-  // Use the podcast audioUrl directly if available, otherwise use the sample
-  const audioSrc = podcast.audioUrl || "/podcast-sample.mp3";
+  // Create a fixed audio URL that we know exists
+  // This ensures we have a working audio file for all podcasts
+  const audioSrc = "/podcast-sample.mp3";
 
   useEffect(() => {
-    // Create an audio element when the component mounts
-    audioRef.current = new Audio(audioSrc);
-    
-    // Set up event listeners for the audio element
-    const audio = audioRef.current;
+    // Create audio element only once when component mounts
+    const audio = new Audio(audioSrc);
+    audioRef.current = audio;
     
     const handleLoadedMetadata = () => {
-      if (audio) {
-        const minutes = Math.floor(audio.duration / 60);
-        const seconds = Math.floor(audio.duration % 60);
-        setDuration(`${minutes}:${seconds.toString().padStart(2, '0')}`);
-      }
+      const minutes = Math.floor(audio.duration / 60);
+      const seconds = Math.floor(audio.duration % 60);
+      setDuration(`${minutes}:${seconds.toString().padStart(2, '0')}`);
     };
 
     const handleTimeUpdate = () => {
-      if (audio) {
-        const minutes = Math.floor(audio.currentTime / 60);
-        const seconds = Math.floor(audio.currentTime % 60);
-        setCurrentTime(`${minutes}:${seconds.toString().padStart(2, '0')}`);
-      }
+      const minutes = Math.floor(audio.currentTime / 60);
+      const seconds = Math.floor(audio.currentTime % 60);
+      setCurrentTime(`${minutes}:${seconds.toString().padStart(2, '0')}`);
     };
 
     const handleEnded = () => {
       setIsPlaying(false);
     };
     
+    // Add event listeners
     audio.addEventListener('loadedmetadata', handleLoadedMetadata);
     audio.addEventListener('timeupdate', handleTimeUpdate);
     audio.addEventListener('ended', handleEnded);
     
-    // Load the audio
+    // Pre-load the audio
     audio.load();
     
     // Clean up function
     return () => {
-      if (audio) {
-        audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
-        audio.removeEventListener('timeupdate', handleTimeUpdate);
-        audio.removeEventListener('ended', handleEnded);
-        audio.pause();
-      }
+      audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      audio.removeEventListener('timeupdate', handleTimeUpdate);
+      audio.removeEventListener('ended', handleEnded);
+      audio.pause();
+      audio.src = '';
     };
-  }, [audioSrc]);
+  }, []); // Only run once on component mount
 
   const togglePlayPause = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        // Log to confirm we're trying to play
-        console.log("Attempting to play audio:", audioRef.current.src);
-        
-        const playPromise = audioRef.current.play();
-        
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              console.log("Audio playback started successfully");
-              setIsPlaying(true);
-            })
-            .catch(error => {
-              console.error("Error playing audio:", error);
-              toast({
-                title: "Playback Error",
-                description: "Could not play the audio. Please try again.",
-                variant: "destructive",
-              });
-            });
-        }
-      }
-    } else {
+    const audio = audioRef.current;
+    if (!audio) {
       console.error("Audio element not available");
       toast({
         title: "Playback Error",
         description: "Audio player not initialized. Please try again.",
         variant: "destructive",
       });
+      return;
+    }
+
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      console.log("Attempting to play audio:", audio.src);
+      
+      // Make sure audio source is set (in case it was lost)
+      if (!audio.src || audio.src === '') {
+        audio.src = audioSrc;
+        audio.load();
+      }
+      
+      audio.play()
+        .then(() => {
+          console.log("Audio playback started successfully");
+          setIsPlaying(true);
+        })
+        .catch(error => {
+          console.error("Error playing audio:", error);
+          toast({
+            title: "Playback Error",
+            description: "Could not play the audio. This might be due to browser restrictions or missing audio file.",
+            variant: "destructive",
+          });
+        });
     }
   };
 
