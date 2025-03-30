@@ -1,10 +1,11 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Headphones, Play, Pause } from 'lucide-react';
+import { Headphones, Play, Pause, Volume2, VolumeX } from 'lucide-react';
 import { Podcast } from '../../data/podcastData';
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import { Slider } from "@/components/ui/slider";
 
 interface PodcastItemProps {
   podcast: Podcast;
@@ -15,6 +16,8 @@ const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
   const [duration, setDuration] = useState(podcast.duration);
   const [currentTime, setCurrentTime] = useState("0:00");
   const [audioError, setAudioError] = useState<string | null>(null);
+  const [volume, setVolume] = useState(0.75); // Default volume to 75%
+  const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const { toast } = useToast();
 
@@ -25,6 +28,9 @@ const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
     // Create audio element only once when component mounts
     const audio = new Audio(audioSrc);
     audioRef.current = audio;
+    
+    // Set initial volume
+    audio.volume = volume;
     
     // Set up preload to check if the file exists
     audio.preload = "metadata";
@@ -73,6 +79,13 @@ const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
     };
   }, [audioSrc]); // Dependency on audioSrc so it rebuilds if the URL changes
 
+  useEffect(() => {
+    // Update audio volume when volume state changes
+    if (audioRef.current) {
+      audioRef.current.volume = isMuted ? 0 : volume;
+    }
+  }, [volume, isMuted]);
+
   const togglePlayPause = () => {
     const audio = audioRef.current;
     if (!audio) {
@@ -115,6 +128,30 @@ const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
     }
   };
 
+  const handleVolumeChange = (value: number[]) => {
+    const newVolume = value[0];
+    setVolume(newVolume);
+    
+    // Unmute if volume is adjusted and was previously muted
+    if (isMuted && newVolume > 0) {
+      setIsMuted(false);
+    }
+    
+    // Update audio element volume
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume;
+    }
+  };
+
+  const toggleMute = () => {
+    const newMuteState = !isMuted;
+    setIsMuted(newMuteState);
+    
+    if (audioRef.current) {
+      audioRef.current.volume = newMuteState ? 0 : volume;
+    }
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
       <div className="p-6">
@@ -137,7 +174,7 @@ const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
           </Alert>
         )}
         
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-4">
           <div>
             <Button 
               onClick={togglePlayPause}
@@ -162,6 +199,29 @@ const PodcastItem: React.FC<PodcastItemProps> = ({ podcast }) => {
             <span className="text-sm text-charcoal/60">
               {podcast.listens} listens
             </span>
+          </div>
+        </div>
+        
+        {/* Volume Controls */}
+        <div className="flex items-center gap-3">
+          <button 
+            onClick={toggleMute}
+            className="text-navy hover:text-navy/80 transition-colors"
+          >
+            {isMuted || volume === 0 ? (
+              <VolumeX size={18} />
+            ) : (
+              <Volume2 size={18} />
+            )}
+          </button>
+          <div className="w-full max-w-[180px]">
+            <Slider 
+              value={[isMuted ? 0 : volume]} 
+              max={1} 
+              step={0.01}
+              onValueChange={handleVolumeChange}
+              className="h-1"
+            />
           </div>
         </div>
       </div>
