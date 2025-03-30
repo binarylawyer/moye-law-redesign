@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -26,6 +27,21 @@ const EntertainmentLaw: React.FC = () => {
       icon: <Radio className="h-10 w-10 text-gold" />,
       title: "Digital Media & Gaming",
       description: "Forward-looking legal solutions for interactive entertainment, streaming, and emerging platforms."
+    }
+  ];
+  
+  const principles = [
+    {
+      title: "Creator Protection",
+      description: "We prioritize protecting the creative and economic rights of artists, writers, and performers across all distribution channels."
+    },
+    {
+      title: "Fair Compensation",
+      description: "Our agreements ensure transparent accounting and appropriate compensation for creative contributions and intellectual property."
+    },
+    {
+      title: "Rights Clarity",
+      description: "We establish clear ownership and usage rights for all parties to prevent future disputes over valuable content and IP."
     }
   ];
 
