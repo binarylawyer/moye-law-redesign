@@ -25,10 +25,7 @@ const EntertainmentPrinciples: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {principles.map((principle, idx) => (
             <div key={idx} className="relative border border-gold p-8">
-              <div className="absolute -top-4 -left-4 w-8 h-8 rounded-full border-2 border-gold bg-white flex items-center justify-center text-navy font-medium">
-                {idx + 1}
-              </div>
-              <h3 className="font-serif text-xl text-navy mb-4 pt-2">{principle.title}</h3>
+              <h3 className="font-serif text-xl text-navy mb-4">{principle.title}</h3>
               <p className="text-charcoal">{principle.description}</p>
             </div>
           ))}
