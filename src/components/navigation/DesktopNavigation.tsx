@@ -31,15 +31,20 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
   const navMenuItemClasses = "text-navy hover:text-gold transition-colors font-sans text-lg relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-gold after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left";
   const activeNavClass = "after:scale-x-100 font-medium";
 
+  // Select only a subset of practice areas for the dropdown
+  const featuredPracticeAreas = practiceAreas.slice(0, 6);
+
   return (
     <div className="hidden md:flex items-center space-x-24">
       <NavigationMenu>
         <NavigationMenuList className="space-x-24">
           <NavigationMenuItem>
-            <NavigationMenuTrigger className={`${navMenuItemClasses} ${isActive('/practice') ? activeNavClass : ''} bg-transparent hover:bg-transparent focus:bg-transparent`}>Practice</NavigationMenuTrigger>
+            <Link to="/practice" className={`${navMenuItemClasses} ${isActive('/practice') ? activeNavClass : ''}`}>
+              <NavigationMenuTrigger className="bg-transparent hover:bg-transparent focus:bg-transparent">Practice</NavigationMenuTrigger>
+            </Link>
             <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-8 w-[500px] mt-2">
               <div className="grid grid-cols-2 gap-x-8 gap-y-4">
-                {practiceAreas.map((area) => (
+                {featuredPracticeAreas.map((area) => (
                   <Link
                     key={area.path}
                     to={area.path}
