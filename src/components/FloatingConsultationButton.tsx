@@ -40,7 +40,7 @@ const FloatingConsultationButton: React.FC = () => {
         <Button 
           className={`
             ${isHovered 
-              ? 'bg-primary text-white border-white/80' 
+              ? 'bg-ocean-blue text-white border-white/80' 
               : 'bg-ocean-blue/10 text-navy border-navy/30'}
             font-sans font-bold
             rounded-lg w-[150px] h-[150px] 
