@@ -80,16 +80,6 @@ const ResourceDetail: React.FC = () => {
     );
   }
 
-  // Function to sanitize markdown content if needed
-  const renderContent = () => {
-    if (!resource.content) return null;
-    
-    // Return the ReactMarkdown component with properly configured options
-    return (
-      <ReactMarkdown>{resource.content}</ReactMarkdown>
-    );
-  };
-
   return (
     <>
       <Header />
@@ -145,9 +135,11 @@ const ResourceDetail: React.FC = () => {
               style={{ transitionDelay: '0.1s' }}
             >
               {resource.content ? (
-                <div className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-navy prose-p:text-charcoal/80 prose-strong:text-charcoal prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-ul:text-charcoal/80 prose-ol:text-charcoal/80">
-                  {renderContent()}
-                </div>
+                <article className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-navy prose-p:text-charcoal/80 prose-strong:text-charcoal prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-ul:text-charcoal/80 prose-ol:text-charcoal/80">
+                  <ReactMarkdown>
+                    {resource.content}
+                  </ReactMarkdown>
+                </article>
               ) : (
                 <p className="text-center text-charcoal/60 py-8">Full content for this resource is not available.</p>
               )}
