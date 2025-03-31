@@ -32,6 +32,8 @@ const ResourceDetail: React.FC = () => {
         )
         .slice(0, 3);
       setRelatedResources(related);
+    } else {
+      setRelatedResources([]);
     }
     
     // Scroll to top when resource changes
@@ -57,9 +59,11 @@ const ResourceDetail: React.FC = () => {
         </div>
         
         {/* Related Resources */}
-        <div ref={el => elementsRef.current[2] = el}>
-          <RelatedResources resources={relatedResources} />
-        </div>
+        {relatedResources.length > 0 && (
+          <div ref={el => elementsRef.current[2] = el}>
+            <RelatedResources resources={relatedResources} />
+          </div>
+        )}
         
         <ConsultationCTA />
       </main>

@@ -18,28 +18,40 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ content }) => {
 
   // Parse headings from markdown content
   const extractHeadings = (markdownContent: string): TOCItem[] => {
-    // Match all headings (# Heading, ## Heading, etc.)
-    const headingRegex = /^(#{1,6})\s+(.+?)$/gm;
-    const headings: TOCItem[] = [];
-    let match;
+    if (!markdownContent) return [];
+    
+    try {
+      // Match all headings (# Heading, ## Heading, etc.)
+      const headingRegex = /^(#{1,6})\s+(.+?)$/gm;
+      const headings: TOCItem[] = [];
+      let match;
 
-    while ((match = headingRegex.exec(markdownContent)) !== null) {
-      const level = match[1].length;
-      const text = match[2].trim();
-      
-      // Create an ID from the heading text (for anchor links)
-      const id = text
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, '')
-        .replace(/\s+/g, '-');
-      
-      headings.push({ id, text, level });
+      while ((match = headingRegex.exec(markdownContent)) !== null) {
+        const level = match[1].length;
+        const text = match[2].trim();
+        
+        // Create an ID from the heading text (for anchor links)
+        const id = text
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, '')
+          .replace(/\s+/g, '-');
+        
+        headings.push({ id, text, level });
+      }
+
+      return headings;
+    } catch (error) {
+      console.error("Error extracting headings:", error);
+      return [];
     }
-
-    return headings;
   };
 
-  const headings = extractHeadings(content || '');
+  // Safety check for content
+  if (!content) {
+    return null;
+  }
+
+  const headings = extractHeadings(content);
 
   // Don't render if no headings found
   if (headings.length === 0) {
