@@ -33,7 +33,7 @@ const FloatingConsultationButton: React.FC = () => {
 
   return (
     <div 
-      className={`fixed bottom-8 right-8 z-50 transition-all duration-300 ${!isVisible ? 'translate-y-20' : ''}`}
+      className={`fixed bottom-8 right-8 z-50 transition-all duration-300 ${!isVisible && !isHovered ? 'translate-y-20' : ''}`}
     >
       <Link to="/contact">
         <div 
