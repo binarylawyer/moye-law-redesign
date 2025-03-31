@@ -14,6 +14,7 @@ import TeamMemberProfile from "./pages/TeamMemberProfile";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Resources from "./pages/Resources";
+import Articles from "./pages/Articles";
 import ResourceDetail from "./pages/ResourceDetail";
 import FAQ from "./pages/FAQ";
 import HowWeWork from "./pages/HowWeWork";
@@ -56,6 +57,7 @@ const AppRoutes = () => {
         
         {/* Resources Routes */}
         <Route path="/resources" element={<Resources />} />
+        <Route path="/articles" element={<Articles />} />
         <Route path="/resources/:slug" element={<ResourceDetail />} />
         <Route path="/podcasts" element={<Podcasts />} />
         <Route path="/faq" element={<FAQ />} />
