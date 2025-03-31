@@ -39,8 +39,8 @@ const FloatingConsultationButton: React.FC = () => {
       <Link to="/contact">
         <Button 
           className={`
-            bg-gradient-to-br from-ocean-blue/30 to-sky-blue/30
-            hover:from-ocean-blue/90 hover:to-sky-blue/90
+            bg-gradient-to-br from-ocean-blue/20 to-sky-blue/20
+            hover:from-ocean-blue/80 hover:to-sky-blue/80
             text-white font-sans font-bold
             rounded-lg w-[150px] h-[150px] 
             shadow-2xl flex flex-col items-center justify-center 
