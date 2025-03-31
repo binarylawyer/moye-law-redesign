@@ -37,32 +37,18 @@ const FloatingConsultationButton: React.FC = () => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <Link to="/contact">
-        <Button 
-          className={`
-            ${isHovered 
-              ? 'bg-ocean-blue text-white border-white/80' 
-              : 'bg-ocean-blue/10 text-navy border-navy/30'}
-            font-sans font-bold
-            rounded-lg w-[150px] h-[150px] 
-            shadow-2xl flex flex-col items-center justify-center 
-            hover:scale-105 transition-all duration-300 
-            border-2
-          `} 
-          aria-label="Schedule a consultation"
-        >
-          {isHovered ? (
-            <div className="flex flex-col items-center">
-              <Calendar size={60} className="text-white mb-2" stroke="currentColor" strokeWidth={2} />
-              <span className="font-bold text-center text-white text-sm">Free Consultation</span>
-            </div>
-          ) : (
-            <div className="mt-2 flex flex-col items-center">
-              <Calendar size={32} className="text-navy mb-2" stroke="currentColor" strokeWidth={2} />
-              <span className="font-bold text-center text-navy text-xs">Free</span>
-              <span className="font-bold text-center text-navy text-xs">Consultation</span>
-            </div>
-          )}
-        </Button>
+        {isHovered ? (
+          <div className="bg-ocean-blue text-white rounded-lg w-[150px] h-[150px] shadow-2xl flex flex-col items-center justify-center hover:scale-105 transition-all duration-300 border-2 border-white/80">
+            <Calendar size={60} className="text-white mb-2" strokeWidth={2} />
+            <span className="font-bold text-center text-white text-sm">Free Consultation</span>
+          </div>
+        ) : (
+          <div className="bg-ocean-blue/10 text-navy rounded-lg w-[150px] h-[150px] shadow-2xl flex flex-col items-center justify-center hover:scale-105 transition-all duration-300 border-2 border-navy/30">
+            <Calendar size={32} className="text-navy mb-2" strokeWidth={2} />
+            <span className="font-bold text-center text-navy text-xs">Free</span>
+            <span className="font-bold text-center text-navy text-xs">Consultation</span>
+          </div>
+        )}
       </Link>
     </div>
   );
