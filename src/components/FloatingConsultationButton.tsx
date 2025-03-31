@@ -33,23 +33,28 @@ const FloatingConsultationButton: React.FC = () => {
 
   return (
     <div 
-      className={`fixed bottom-8 right-8 z-50 transition-transform duration-300 ${!isVisible ? 'translate-y-20' : ''}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className={`fixed bottom-8 right-8 z-50 transition-all duration-300 ${!isVisible ? 'translate-y-20' : ''}`}
     >
       <Link to="/contact">
-        {isHovered ? (
-          <div className="bg-ocean-blue text-white rounded-lg w-[150px] h-[150px] shadow-2xl flex flex-col items-center justify-center hover:scale-105 transition-all duration-300 border-2 border-white/80">
-            <Calendar size={60} className="text-white mb-2" strokeWidth={2} />
-            <span className="font-bold text-center text-white text-sm">Free Consultation</span>
-          </div>
-        ) : (
-          <div className="bg-ocean-blue/10 text-navy rounded-lg w-[150px] h-[150px] shadow-2xl flex flex-col items-center justify-center hover:scale-105 transition-all duration-300 border-2 border-navy/30">
-            <Calendar size={32} className="text-navy mb-2" strokeWidth={2} />
-            <span className="font-bold text-center text-navy text-xs">Free</span>
-            <span className="font-bold text-center text-navy text-xs">Consultation</span>
-          </div>
-        )}
+        <div 
+          className={`transition-all duration-300 ${isHovered ? 'transform -translate-y-4' : ''}`}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {isHovered ? (
+            <div className="bg-ocean-blue text-white rounded-lg w-[150px] h-[150px] shadow-2xl flex flex-col items-center justify-center hover:scale-105 transition-all duration-300 border-2 border-white/80">
+              <Calendar size={60} className="text-white mb-2" strokeWidth={2} />
+              <span className="font-bold text-center text-white text-lg">Free</span>
+              <span className="font-bold text-center text-white text-lg">Consultation</span>
+            </div>
+          ) : (
+            <div className="bg-ocean-blue/10 text-navy rounded-lg w-[150px] h-[150px] shadow-2xl flex flex-col items-center justify-center hover:scale-105 transition-all duration-300 border-2 border-navy/30">
+              <Calendar size={32} className="text-navy mb-2" strokeWidth={2} />
+              <span className="font-bold text-center text-navy text-xs">Free</span>
+              <span className="font-bold text-center text-navy text-xs">Consultation</span>
+            </div>
+          )}
+        </div>
       </Link>
     </div>
   );
