@@ -51,7 +51,10 @@ const FloatingConsultationButton: React.FC = () => {
           aria-label="Schedule a consultation"
         >
           {isHovered ? (
-            <Calendar size={80} className="text-white" />
+            <div className="flex flex-col items-center">
+              <Calendar size={60} className="text-white mb-2" />
+              <span className="font-bold text-center text-white text-sm">Free Consultation</span>
+            </div>
           ) : (
             <div className="mt-2 flex flex-col items-center">
               <span className="font-bold text-center text-xs">Free</span>
