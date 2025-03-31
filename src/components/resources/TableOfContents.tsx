@@ -47,7 +47,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ content }) => {
   };
 
   // Safety check for content
-  if (!content) {
+  if (!content || typeof content !== 'string') {
     return null;
   }
 

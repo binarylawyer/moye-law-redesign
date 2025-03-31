@@ -40,9 +40,13 @@ const ResourceDetail: React.FC = () => {
     window.scrollTo(0, 0);
   }, [slug]);
 
+  // Show not found if no resource
   if (!resource) {
     return <ResourceNotFound />;
   }
+
+  // Debug log to verify content
+  console.log("Resource content available:", !!resource.content);
 
   return (
     <>

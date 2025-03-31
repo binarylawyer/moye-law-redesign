@@ -21,31 +21,37 @@ const ResourceContent: React.FC<ResourceContentProps> = ({ content }) => {
     );
   }
 
-  // Create custom components for ReactMarkdown with proper typing
+  // Create components for ReactMarkdown with proper heading IDs
   const components = {
-    h1: ({node, ...props}: any) => {
-      const id = props.children?.[0]?.toString()?.toLowerCase()?.replace(/[^\w\s-]/g, '')?.replace(/\s+/g, '-') || '';
-      return <h1 {...props} id={id} />;
+    h1: ({ children }: React.PropsWithChildren<{}>) => {
+      const text = children?.toString() || '';
+      const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+      return <h1 id={id}>{children}</h1>;
     },
-    h2: ({node, ...props}: any) => {
-      const id = props.children?.[0]?.toString()?.toLowerCase()?.replace(/[^\w\s-]/g, '')?.replace(/\s+/g, '-') || '';
-      return <h2 {...props} id={id} />;
+    h2: ({ children }: React.PropsWithChildren<{}>) => {
+      const text = children?.toString() || '';
+      const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+      return <h2 id={id}>{children}</h2>;
     },
-    h3: ({node, ...props}: any) => {
-      const id = props.children?.[0]?.toString()?.toLowerCase()?.replace(/[^\w\s-]/g, '')?.replace(/\s+/g, '-') || '';
-      return <h3 {...props} id={id} />;
+    h3: ({ children }: React.PropsWithChildren<{}>) => {
+      const text = children?.toString() || '';
+      const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+      return <h3 id={id}>{children}</h3>;
     },
-    h4: ({node, ...props}: any) => {
-      const id = props.children?.[0]?.toString()?.toLowerCase()?.replace(/[^\w\s-]/g, '')?.replace(/\s+/g, '-') || '';
-      return <h4 {...props} id={id} />;
+    h4: ({ children }: React.PropsWithChildren<{}>) => {
+      const text = children?.toString() || '';
+      const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+      return <h4 id={id}>{children}</h4>;
     },
-    h5: ({node, ...props}: any) => {
-      const id = props.children?.[0]?.toString()?.toLowerCase()?.replace(/[^\w\s-]/g, '')?.replace(/\s+/g, '-') || '';
-      return <h5 {...props} id={id} />;
+    h5: ({ children }: React.PropsWithChildren<{}>) => {
+      const text = children?.toString() || '';
+      const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+      return <h5 id={id}>{children}</h5>;
     },
-    h6: ({node, ...props}: any) => {
-      const id = props.children?.[0]?.toString()?.toLowerCase()?.replace(/[^\w\s-]/g, '')?.replace(/\s+/g, '-') || '';
-      return <h6 {...props} id={id} />;
+    h6: ({ children }: React.PropsWithChildren<{}>) => {
+      const text = children?.toString() || '';
+      const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+      return <h6 id={id}>{children}</h6>;
     }
   };
 
