@@ -57,17 +57,19 @@ const AppRoutes = () => {
         
         {/* Resources Routes */}
         <Route path="/resources" element={<Resources />} />
-        <Route path="/articles" element={<Articles />} />
+        <Route path="/resources/articles" element={<Articles />} />
         <Route path="/resources/:slug" element={<ResourceDetail />} />
-        <Route path="/podcasts" element={<Podcasts />} />
-        <Route path="/faq" element={<FAQ />} />
+        <Route path="/resources/podcasts" element={<Podcasts />} />
+        <Route path="/resources/faq" element={<FAQ />} />
         
         {/* Process & Client Experience Routes */}
-        <Route path="/how-we-work" element={<HowWeWork />} />
-        <Route path="/technology-approach" element={<TechnologyPlatform />} />
+        <Route path="/resources/how-we-work" element={<HowWeWork />} />
+        <Route path="/resources/technology-approach" element={<TechnologyPlatform />} />
         
-        {/* New Specialized Pages */}
-        <Route path="/case-studies" element={<CaseStudies />} />
+        {/* Case Studies */}
+        <Route path="/resources/case-studies" element={<CaseStudies />} />
+        
+        {/* Specialized Pages */}
         <Route path="/digital-asset-protection" element={<DigitalAssetProtection />} />
         <Route path="/ip-consulting" element={<IPConsulting />} />
         <Route path="/ip-licensing" element={<Licensing />} />

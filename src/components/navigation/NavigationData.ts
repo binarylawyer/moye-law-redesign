@@ -21,10 +21,10 @@ export const specializedServices = [
 ];
 
 export const resourcesItems = [
-  { title: "Articles", path: "/articles" },
-  { title: "Podcasts", path: "/podcasts" },
-  { title: "Case Studies", path: "/case-studies" },
-  { title: "FAQ", path: "/faq" },
-  { title: "How We Work", path: "/how-we-work" },
-  { title: "Technology Approach", path: "/technology-approach" },
+  { title: "Articles", path: "/resources/articles" },
+  { title: "Podcasts", path: "/resources/podcasts" },
+  { title: "Case Studies", path: "/resources/case-studies" },
+  { title: "FAQ", path: "/resources/faq" },
+  { title: "How We Work", path: "/resources/how-we-work" },
+  { title: "Technology Approach", path: "/resources/technology-approach" },
 ];

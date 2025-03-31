@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
@@ -129,7 +130,7 @@ const Resources: React.FC = () => {
                     </p>
                   </div>
                   <Link 
-                    to="/podcasts"
+                    to="/resources/podcasts"
                     className="shrink-0"
                   >
                     <Button className="bg-gold hover:bg-gold/90 text-white">
