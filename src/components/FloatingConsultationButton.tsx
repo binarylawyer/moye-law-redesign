@@ -39,7 +39,7 @@ const FloatingConsultationButton: React.FC = () => {
       <Link to="/contact">
         <Button 
           className={`
-            bg-gradient-to-br from-ocean-blue/20 to-sky-blue/20
+            bg-gradient-to-br from-ocean-blue/10 to-sky-blue/10
             hover:from-ocean-blue/80 hover:to-sky-blue/80
             text-white font-sans font-bold
             rounded-lg w-[150px] h-[150px] 
@@ -51,14 +51,14 @@ const FloatingConsultationButton: React.FC = () => {
           aria-label="Schedule a consultation"
         >
           <div className="relative">
-            <Calendar size={200} className={`mb-1 transform scale-[0.7] ${isHovered ? 'animate-bounce' : ''}`} />
+            <Calendar size={280} className={`mb-1 transform scale-[1.0] ${isHovered ? 'animate-bounce' : ''}`} />
             {isHovered && (
               <div className="absolute -right-2 bottom-0 bg-navy text-white rounded-full p-1">
                 <ArrowRight size={16} />
               </div>
             )}
           </div>
-          <span className="mt-2 font-bold text-center text-sm max-w-full overflow-hidden break-normal px-3 whitespace-nowrap">
+          <span className="mt-2 font-bold text-center text-xs max-w-full overflow-hidden whitespace-nowrap px-3">
             Free Consultation
           </span>
         </Button>
