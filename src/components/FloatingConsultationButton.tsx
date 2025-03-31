@@ -41,7 +41,7 @@ const FloatingConsultationButton: React.FC = () => {
           className={`
             ${isHovered 
               ? 'bg-primary text-white border-white/80' 
-              : 'bg-ocean-blue/5 border-white/30 text-navy'}
+              : 'bg-ocean-blue/10 text-navy border-navy/30'}
             font-sans font-bold
             rounded-lg w-[150px] h-[150px] 
             shadow-2xl flex flex-col items-center justify-center 
@@ -52,13 +52,14 @@ const FloatingConsultationButton: React.FC = () => {
         >
           {isHovered ? (
             <div className="flex flex-col items-center">
-              <Calendar size={60} className="text-white mb-2" />
+              <Calendar size={60} className="text-white mb-2" stroke="currentColor" strokeWidth={2} />
               <span className="font-bold text-center text-white text-sm">Free Consultation</span>
             </div>
           ) : (
             <div className="mt-2 flex flex-col items-center">
-              <span className="font-bold text-center text-xs">Free</span>
-              <span className="font-bold text-center text-xs">Consultation</span>
+              <Calendar size={32} className="text-navy mb-2" stroke="currentColor" strokeWidth={2} />
+              <span className="font-bold text-center text-navy text-xs">Free</span>
+              <span className="font-bold text-center text-navy text-xs">Consultation</span>
             </div>
           )}
         </Button>
