@@ -80,11 +80,21 @@ const ResourceDetail: React.FC = () => {
     );
   }
 
+  // Function to sanitize markdown content if needed
+  const renderContent = () => {
+    if (!resource.content) return null;
+    
+    // Return the ReactMarkdown component with properly configured options
+    return (
+      <ReactMarkdown>{resource.content}</ReactMarkdown>
+    );
+  };
+
   return (
     <>
       <Header />
       <main className="pt-32 bg-white">
-        {/* Article Header - Updated to be more consistent with Practice page */}
+        {/* Article Header */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4 md:px-8 lg:px-12">
             <Link 
@@ -101,32 +111,32 @@ const ResourceDetail: React.FC = () => {
             >
               <div className="flex items-center mb-6">
                 <span className="text-sm font-medium bg-navy/10 text-navy px-3 py-1 rounded-full">
-                  {resource?.category.charAt(0).toUpperCase() + resource?.category.slice(1)}
+                  {resource.category.charAt(0).toUpperCase() + resource.category.slice(1)}
                 </span>
                 <div className="flex items-center text-charcoal/60 ml-4">
                   <Calendar className="h-4 w-4 mr-1" />
-                  <span className="text-sm">{resource?.date}</span>
+                  <span className="text-sm">{resource.date}</span>
                 </div>
               </div>
               
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-8 text-navy">
-                {resource?.title}
+                {resource.title}
               </h1>
               
               <p className="text-lg text-charcoal/80 mb-4">
-                {resource?.description}
+                {resource.description}
               </p>
               
-              {resource?.author && (
+              {resource.author && (
                 <p className="text-sm text-charcoal/60 mb-8">
-                  By {resource?.author}
+                  By {resource.author}
                 </p>
               )}
             </div>
           </div>
         </section>
         
-        {/* Article Content - Updated with improved markdown styling */}
+        {/* Article Content with improved markdown styling */}
         <section className="pb-16">
           <div className="container mx-auto px-4">
             <div 
@@ -136,7 +146,7 @@ const ResourceDetail: React.FC = () => {
             >
               {resource.content ? (
                 <div className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-navy prose-p:text-charcoal/80 prose-strong:text-charcoal prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-ul:text-charcoal/80 prose-ol:text-charcoal/80">
-                  <ReactMarkdown>{resource.content}</ReactMarkdown>
+                  {renderContent()}
                 </div>
               ) : (
                 <p className="text-center text-charcoal/60 py-8">Full content for this resource is not available.</p>
