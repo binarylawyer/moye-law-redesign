@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { resources, Resource } from '../data/resourcesData';
@@ -84,8 +85,8 @@ const ResourceDetail: React.FC = () => {
       <Header />
       <main className="pt-32 bg-white">
         {/* Article Header - Updated to be more consistent with Practice page */}
-        <section className="py-48 md:py-64">
-          <div className="container mx-auto px-24 md:px-32">
+        <section className="py-16 md:py-24">
+          <div className="container mx-auto px-4 md:px-8 lg:px-12">
             <Link 
               to="/resources" 
               className="inline-flex items-center text-navy hover:text-gold transition-colors mb-6"
@@ -96,7 +97,7 @@ const ResourceDetail: React.FC = () => {
             
             <div 
               ref={el => elementsRef.current[0] = el}
-              className="reveal"
+              className="reveal max-w-3xl mx-auto"
             >
               <div className="flex items-center mb-6">
                 <span className="text-sm font-medium bg-navy/10 text-navy px-3 py-1 rounded-full">
@@ -108,11 +109,11 @@ const ResourceDetail: React.FC = () => {
                 </div>
               </div>
               
-              <h1 className="font-sans text-primary text-4xl md:text-5xl lg:text-6xl mb-32 md:mb-48 text-center font-light">
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-8 text-navy">
                 {resource?.title}
               </h1>
               
-              <p className="text-lg text-charcoal/80 mb-4 max-w-3xl mx-auto">
+              <p className="text-lg text-charcoal/80 mb-4">
                 {resource?.description}
               </p>
               
@@ -125,16 +126,18 @@ const ResourceDetail: React.FC = () => {
           </div>
         </section>
         
-        {/* Article Content */}
+        {/* Article Content - Updated with improved markdown styling */}
         <section className="pb-16">
           <div className="container mx-auto px-4">
             <div 
               ref={el => elementsRef.current[1] = el}
-              className="reveal max-w-3xl mx-auto prose prose-lg prose-headings:font-serif prose-headings:text-navy prose-p:text-charcoal/80"
+              className="reveal max-w-3xl mx-auto"
               style={{ transitionDelay: '0.1s' }}
             >
               {resource.content ? (
-                <ReactMarkdown>{resource.content}</ReactMarkdown>
+                <div className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-navy prose-p:text-charcoal/80 prose-strong:text-charcoal prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-ul:text-charcoal/80 prose-ol:text-charcoal/80">
+                  <ReactMarkdown>{resource.content}</ReactMarkdown>
+                </div>
               ) : (
                 <p className="text-center text-charcoal/60 py-8">Full content for this resource is not available.</p>
               )}
