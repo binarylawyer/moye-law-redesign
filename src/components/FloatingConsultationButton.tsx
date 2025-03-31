@@ -58,9 +58,10 @@ const FloatingConsultationButton: React.FC = () => {
               </div>
             )}
           </div>
-          <span className="mt-2 font-bold text-center text-xs max-w-full overflow-hidden whitespace-nowrap px-3">
-            Free Consultation
-          </span>
+          <div className="mt-2 flex flex-col items-center">
+            <span className="font-bold text-center text-xs">Free</span>
+            <span className="font-bold text-center text-xs">Consultation</span>
+          </div>
         </Button>
       </Link>
     </div>
