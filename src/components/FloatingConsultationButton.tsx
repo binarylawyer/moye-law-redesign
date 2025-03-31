@@ -1,11 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
 
 const FloatingConsultationButton: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -13,20 +12,22 @@ const FloatingConsultationButton: React.FC = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      if (currentScrollY > lastScrollY && isVisible && currentScrollY > 300) {
-        setIsVisible(false);
-      } else if (currentScrollY < lastScrollY && !isVisible) {
+      // Show button when scrolling down (reverse of previous behavior)
+      if (currentScrollY > 100 && !isVisible) {
         setIsVisible(true);
+      } 
+      // Hide button when back at top
+      else if (currentScrollY < 100 && isVisible) {
+        setIsVisible(false);
       }
 
-      if (currentScrollY < 100) {
-        setIsVisible(true);
-      }
       setLastScrollY(currentScrollY);
     };
+    
     window.addEventListener('scroll', handleScroll, {
       passive: true
     });
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY, isVisible]);
 
