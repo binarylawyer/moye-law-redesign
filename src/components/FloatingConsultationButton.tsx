@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Calendar, ArrowRight } from "lucide-react";
+import { Calendar } from "lucide-react";
 
 const FloatingConsultationButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -41,7 +41,7 @@ const FloatingConsultationButton: React.FC = () => {
           className={`
             ${isHovered 
               ? 'bg-primary text-white border-white/80' 
-              : 'bg-ocean-blue/20 border-white/30 text-white'}
+              : 'bg-ocean-blue/5 border-white/30 text-navy'}
             font-sans font-bold
             rounded-lg w-[150px] h-[150px] 
             shadow-2xl flex flex-col items-center justify-center 
@@ -50,18 +50,14 @@ const FloatingConsultationButton: React.FC = () => {
           `} 
           aria-label="Schedule a consultation"
         >
-          <div className="relative">
-            <Calendar size={280} className="mb-1 transform scale-[1.0]" />
-            {isHovered && (
-              <div className="absolute -right-2 bottom-0 bg-navy text-white rounded-full p-1">
-                <ArrowRight size={16} />
-              </div>
-            )}
-          </div>
-          <div className="mt-2 flex flex-col items-center">
-            <span className="font-bold text-center text-xs">Free</span>
-            <span className="font-bold text-center text-xs">Consultation</span>
-          </div>
+          {isHovered ? (
+            <Calendar size={80} className="text-white" />
+          ) : (
+            <div className="mt-2 flex flex-col items-center">
+              <span className="font-bold text-center text-xs">Free</span>
+              <span className="font-bold text-center text-xs">Consultation</span>
+            </div>
+          )}
         </Button>
       </Link>
     </div>
