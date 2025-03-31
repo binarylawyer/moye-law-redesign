@@ -460,7 +460,96 @@ export const resources: Resource[] = [
     slug: 'business-succession-planning',
     date: '2024-01-15',
     author: 'Robert Williams',
-    tags: ['Business Planning', 'Succession', 'Family Business']
+    tags: ['Business Planning', 'Succession', 'Family Business'],
+    content: `
+      # Business Succession Planning
+
+      Effective business succession planning is crucial for ensuring the continued success and stability of family-owned businesses across generations. This whitepaper explores comprehensive strategies for seamless transitions.
+
+      ## Key Components of Succession Planning
+
+      ### 1. Early Preparation
+      Succession planning should begin years before any anticipated transition. Early preparation allows for:
+      - Thorough assessment of potential successors
+      - Development of necessary skills and leadership abilities
+      - Gradual transfer of responsibilities and knowledge
+      - Adjustment of plans as business conditions change
+
+      ### 2. Successor Identification and Development
+      Identifying the right successor involves more than simply choosing the oldest child or longest-serving employee:
+      - Objective assessment of skills, aptitude, and interest
+      - Customized development plans for potential successors
+      - Mentorship and progressive responsibility assignments
+      - External experience and education when appropriate
+
+      ### 3. Ownership Transfer Strategies
+      Several mechanisms exist for transferring business ownership:
+      - Gifting strategies utilizing annual exclusions
+      - Sale structures (installment sales, self-canceling notes)
+      - Grantor Retained Annuity Trusts (GRATs)
+      - Family Limited Partnerships
+      - Employee Stock Ownership Plans (ESOPs)
+
+      ### 4. Tax-Efficient Transfers
+      Minimizing tax impact is essential for preserving business value:
+      - Valuation strategies and discounting techniques
+      - Utilizing available exemptions and exclusions
+      - Timing transfers for optimal tax advantage
+      - Coordinating with overall estate plan
+
+      ## Special Considerations for Family Businesses
+
+      ### Balancing Family and Business Needs
+      Family dynamics add complexity to succession planning:
+      - Addressing concerns of family members not active in the business
+      - Creating equitable (not necessarily equal) inheritance plans
+      - Establishing family governance structures
+      - Developing conflict resolution mechanisms
+
+      ### Communication and Governance
+      Clear communication prevents misunderstandings and conflicts:
+      - Regular family meetings about business matters
+      - Written succession plans and timelines
+      - Family business constitutions or charters
+      - Independent advisory boards
+
+      ### Contingency Planning
+      Comprehensive succession plans include contingencies for:
+      - Unexpected disability or death of key individuals
+      - Changed market conditions affecting business value
+      - Shifts in family circumstances or goals
+      - Potential need to sell rather than transfer
+
+      ## Implementation Roadmap
+
+      ### Phase 1: Assessment
+      - Business valuation and analysis
+      - Successor capability evaluation
+      - Family and stakeholder needs assessment
+      - Review of existing legal structures
+
+      ### Phase 2: Planning
+      - Successor development planning
+      - Transfer mechanism selection
+      - Tax strategy development
+      - Timeline creation
+
+      ### Phase 3: Documentation
+      - Legal document preparation
+      - Funding arrangements
+      - Communication materials
+      - Governance structure formalization
+
+      ### Phase 4: Execution
+      - Phased implementation of transfers
+      - Training and mentoring activities
+      - Regular progress reviews
+      - Plan adjustments as needed
+
+      ## Conclusion
+
+      Successful business succession requires balancing technical planning with thoughtful attention to family dynamics. Working with advisors who understand both aspects ensures the continued prosperity of the business while preserving family harmony.
+    `
   },
   {
     id: '8',
@@ -470,7 +559,108 @@ export const resources: Resource[] = [
     slug: 'technology-estate-administration',
     date: '2024-02-20',
     author: 'Jane Smith',
-    tags: ['Technology', 'Estate Administration', 'Innovation']
+    tags: ['Technology', 'Estate Administration', 'Innovation'],
+    content: `
+      # Technology in Estate Administration
+
+      The administration of estates has historically been a paper-intensive, time-consuming process. Today, emerging technologies are revolutionizing how estates are administered, making the process more efficient, transparent, and accessible.
+
+      ## Digital Transformation of Estate Administration
+
+      ### Asset Discovery and Inventory
+      Technology now enables more comprehensive asset identification:
+      - Digital asset discovery tools that scan for online accounts and holdings
+      - Database integration with financial institutions for automatic asset identification
+      - Blockchain analysis for cryptocurrency holdings
+      - AI-powered document scanning for identifying assets from statements and records
+
+      ### Document Management
+      Paper is being replaced by sophisticated digital systems:
+      - Secure cloud-based document repositories
+      - Electronic signature capabilities for court filings
+      - Automated document generation based on asset information
+      - Optical character recognition (OCR) for converting legacy documents
+
+      ### Communication and Coordination
+      Technology platforms facilitate better coordination among stakeholders:
+      - Secure portals for beneficiaries to track estate progress
+      - Automated notifications at key administration milestones
+      - Virtual meeting capabilities for geographically dispersed families
+      - Shared calendars and task management for all involved parties
+
+      ## Emerging Technologies
+
+      ### Blockchain Applications
+      Blockchain technology offers transformative potential:
+      - Immutable records of asset transfers
+      - Smart contracts for automatic distribution of certain assets
+      - Tokenization of illiquid assets for easier partial distribution
+      - Transparent tracking of executor actions and decisions
+
+      ### Artificial Intelligence
+      AI is streamlining complex administrative tasks:
+      - Machine learning algorithms for identifying potential tax savings
+      - Natural language processing for interpreting legal documents
+      - Automated fiduciary accounting and report generation
+      - Predictive analytics for anticipating administration complications
+
+      ### Digital Identity Verification
+      Secure identification methods improve security:
+      - Biometric verification for beneficiary identity confirmation
+      - Multi-factor authentication for accessing estate information
+      - Digital identity management for deceased individuals
+      - Credential management systems for fiduciaries
+
+      ## Implementation Challenges
+
+      ### Legal and Regulatory Considerations
+      Technology adoption faces legal hurdles:
+      - Varying state laws on electronic documents and signatures
+      - Court system technological limitations
+      - Data privacy regulations affecting information sharing
+      - Evidentiary standards for digital records
+
+      ### Security Concerns
+      Protecting sensitive estate information is paramount:
+      - Encryption requirements for personal and financial data
+      - Access control protocols for different stakeholder groups
+      - Backup and recovery systems for digital estate records
+      - Threat monitoring for attempted unauthorized access
+
+      ### Digital Divide Issues
+      Not all beneficiaries have equal technology access:
+      - Accommodations for beneficiaries with limited digital literacy
+      - Alternative communication methods for those without internet access
+      - Simplified interfaces for elderly or disabled stakeholders
+      - Training resources for those new to digital tools
+
+      ## Future Trends
+
+      ### Integrated Estate Platforms
+      Comprehensive systems are emerging that handle the entire process:
+      - End-to-end administration workflow management
+      - Integration with court filing systems
+      - Automated tax preparation and filing
+      - Real-time valuation updates for volatile assets
+
+      ### Predictive Estate Planning
+      AI-assisted planning tools are becoming more sophisticated:
+      - Scenario modeling for different distribution strategies
+      - Tax impact forecasting for distribution decisions
+      - Beneficiary needs analysis based on financial profiles
+      - Risk assessment for potential estate litigation
+
+      ### Virtual Administration
+      Remote administration capabilities continue to expand:
+      - Virtual property inspections and inventories
+      - Remote witnessing of important events
+      - Digital appraisal methodologies
+      - Virtual court appearances and hearings
+
+      ## Conclusion
+
+      While technology will never completely replace the human judgment and empathy needed in estate administration, these tools are dramatically improving efficiency and transparency. Executors and administrators who embrace these technologies can provide better service to beneficiaries while reducing the time and cost of administration.
+    `
   },
   {
     id: '9',
@@ -480,7 +670,146 @@ export const resources: Resource[] = [
     slug: 'charitable-giving-strategies',
     date: '2023-12-12',
     author: 'Christopher Moye',
-    tags: ['Philanthropy', 'Tax Planning', 'Charitable Trusts']
+    tags: ['Philanthropy', 'Tax Planning', 'Charitable Trusts'],
+    content: `
+      # Charitable Giving Strategies
+
+      Strategic charitable giving allows you to support causes you care about while potentially gaining significant tax advantages. This guide explores advanced philanthropic techniques that can be integrated into your comprehensive estate plan.
+
+      ## Foundation Vehicles for Giving
+
+      ### Private Foundations
+      Private foundations offer significant control but require careful administration:
+      - Complete donor control over grants and investments
+      - Ability to involve family members in philanthropic decisions
+      - Minimum 5% annual distribution requirement
+      - Excise taxes and strict regulatory requirements
+      - Administrative costs and compliance burden
+
+      ### Donor-Advised Funds
+      DAFs provide flexibility with minimal administrative responsibility:
+      - Immediate tax deduction with deferred grant recommendations
+      - No minimum distribution requirements
+      - Lower contribution thresholds than private foundations
+      - Limited administrative and legal costs
+      - Ability to remain anonymous to recipient organizations
+
+      ### Supporting Organizations
+      These hybrid structures offer a middle ground:
+      - Close relationship with specific public charities
+      - Greater donor involvement than with direct gifts
+      - Fewer restrictions than private foundations
+      - Potentially higher deduction limits than private foundations
+      - Reduced excise taxes and simplified reporting
+
+      ## Income Tax-Focused Strategies
+
+      ### Bunching Charitable Contributions
+      Timing donations strategically can maximize tax benefits:
+      - Concentrating multiple years of giving into a single tax year
+      - Using donor-advised funds to implement bunching
+      - Alternating between standard and itemized deductions
+      - Accelerating gifts in high-income years
+      - Deferring gifts in lower-income years
+
+      ### Qualified Charitable Distributions
+      QCDs offer advantages for eligible retirement account holders:
+      - Direct transfers from IRAs to qualified charities (up to $100,000 annually)
+      - Available to taxpayers aged 70½ or older
+      - Counts toward required minimum distributions
+      - Excluded from taxable income (superior to taking distribution and donating)
+      - Particularly beneficial for non-itemizers
+
+      ### Appreciated Asset Donations
+      Donating appreciated assets provides dual tax advantages:
+      - Deduction for full fair market value (for qualified assets)
+      - Elimination of capital gains tax on appreciation
+      - Benefit maximization for long-term held assets with significant gains
+      - Special considerations for closely-held business interests
+      - Limitations based on asset type and receiving organization
+
+      ## Estate Tax-Focused Strategies
+
+      ### Charitable Remainder Trusts
+      CRTs provide income streams with ultimate charitable benefits:
+      - Income for life or term of years to non-charitable beneficiaries
+      - Remainder to charity
+      - Partial upfront charitable deduction
+      - Income, estate, and gift tax benefits
+      - Options for annuity (CRAT) or unitrust (CRUT) payments
+
+      ### Charitable Lead Trusts
+      CLTs reverse the CRT structure:
+      - Income stream to charity for specified period
+      - Remainder to family or other non-charitable beneficiaries
+      - Potential for significant wealth transfer with reduced gift/estate taxes
+      - Options for annuity (CLAT) or unitrust (CLUT) payments
+      - Particularly effective in low interest rate environments
+
+      ### Testamentary Charitable Giving
+      Charitable bequests offer estate tax benefits:
+      - Unlimited estate tax charitable deduction
+      - Percentage designations from estate residue
+      - Specific bequests of assets or dollar amounts
+      - Contingent charitable beneficiary designations
+      - Integration with retirement account beneficiary planning
+
+      ## Advanced Techniques
+
+      ### Conservation Easements
+      Protecting land while generating tax benefits:
+      - Permanent restrictions on land use
+      - Potential for income tax deductions
+      - Possible estate tax benefits through reduced property valuation
+      - State-specific additional tax incentives
+      - Special rules for historically important land areas
+
+      ### Charitable Gift Annuities
+      These contracts with charities provide lifetime income:
+      - Part gift, part purchase of an annuity
+      - Fixed payments for life
+      - Partial tax-free income component
+      - Immediate partial charitable deduction
+      - Rates typically based on American Council on Gift Annuities recommendations
+
+      ### Program-Related Investments
+      Impact-focused investments from foundations:
+      - Primary purpose is charitable, not financial return
+      - Counts toward foundation distribution requirements
+      - Potential for capital recovery and redeployment
+      - Supporting social enterprises and mission-related businesses
+      - Requires careful structuring to meet IRS requirements
+
+      ## Implementation Considerations
+
+      ### Timing of Contributions
+      Strategic timing enhances benefits:
+      - Year-end planning opportunities
+      - Coordination with other income/deduction strategies
+      - Securities donation timing around market fluctuations
+      - Planning around tax law changes
+      - Consideration of charity's needs and funding cycles
+
+      ### Asset Selection
+      Choosing the right assets to donate maximizes impact:
+      - Publicly traded securities with long-term appreciation
+      - Real estate with complex valuation considerations
+      - Tangible personal property rules and related-use requirements
+      - Privately held business interests and special valuation rules
+      - Retirement assets as particularly tax-efficient giving vehicles
+
+      ### Documentation Requirements
+      Proper substantiation is essential:
+      - Contemporaneous written acknowledgments for gifts over $250
+      - Form 8283 for non-cash contributions over $500
+      - Qualified appraisals for contributions over $5,000
+      - Additional requirements for gifts over $500,000
+      - Special requirements for vehicle donations
+
+      ## Conclusion
+
+      Effective charitable giving requires aligning philanthropic goals with appropriate strategies and vehicles. Working with advisors who understand both the technical aspects and your personal values ensures your giving achieves maximum impact for both your chosen causes and your overall financial plan.
+    `
   },
   {
     id: '10',
@@ -490,6 +819,145 @@ export const resources: Resource[] = [
     slug: 'how-we-work-client-process',
     date: '2024-03-01',
     author: 'Legal Team',
-    tags: ['Client Services', 'Process', 'Approach']
+    tags: ['Client Services', 'Process', 'Approach'],
+    content: `
+      # How We Work: Our Client Process
+
+      At Moye Law, we've developed a structured yet flexible process that allows us to deliver exceptional legal services while maintaining the personal touch of a family-run firm. This article outlines what you can expect when working with us.
+
+      ## Initial Engagement
+
+      ### Consultation
+      Our relationship begins with a thorough consultation:
+      - In-depth discussion of your legal needs and objectives
+      - Preliminary assessment of your situation
+      - Overview of potential approaches and solutions
+      - Introduction to relevant practice areas and team members
+      - Clear explanation of next steps and expectations
+
+      ### Conflict Check
+      Before formal engagement, we conduct a comprehensive conflict check:
+      - Review of all involved parties against our client database
+      - Identification of any potential conflicts of interest
+      - Discussion of any identified issues and possible resolutions
+      - Commitment to ethical representation and confidentiality
+      - Documentation of conflict resolution when appropriate
+
+      ### Engagement Agreement
+      Our engagement agreement clearly outlines our relationship:
+      - Defined scope of representation
+      - Fee structure and billing arrangements
+      - Communication protocols and expectations
+      - Client responsibilities for information sharing
+      - Data privacy and document retention policies
+
+      ## Discovery and Assessment
+
+      ### Information Gathering
+      We collect comprehensive information relevant to your matter:
+      - Secure client portal for document uploads
+      - Structured questionnaires tailored to your specific needs
+      - Inventory templates for assets, intellectual property, or other relevant items
+      - Family and business relationship mapping when applicable
+      - Timeline development for relevant events and deadlines
+
+      ### Comprehensive Analysis
+      Our team conducts a thorough analysis of your situation:
+      - Legal research on applicable laws and regulations
+      - Review of existing documents and agreements
+      - Identification of potential challenges and opportunities
+      - Consultation with specialized team members as needed
+      - Integration with existing professional advisor input
+
+      ### Strategy Development
+      We create a customized strategy based on your specific goals:
+      - Multiple approach options when available
+      - Clear explanation of pros and cons for each option
+      - Realistic timeline projections
+      - Cost-benefit analysis of different approaches
+      - Identification of key decision points
+
+      ## Implementation
+
+      ### Document Preparation
+      We prepare all necessary legal documents with meticulous attention:
+      - Draft documents tailored to your specific situation
+      - Plain language explanations of complex legal provisions
+      - Collaborative revision process with client input
+      - Version control and document history
+      - Secure digital storage with client access
+
+      ### Execution Process
+      We ensure proper execution of all documents:
+      - Coordination of signing meetings
+      - Notarization and witness arrangements
+      - Clear instructions for proper execution
+      - Document custody and safekeeping options
+      - Recording and filing with appropriate authorities
+
+      ### Asset Retitling and Follow-Through
+      Implementation often requires additional follow-through:
+      - Detailed instructions for account transfers or retitling
+      - Template letters for financial institutions
+      - Coordination with other professionals (accountants, financial advisors)
+      - Tracking systems to ensure completion
+      - Regular progress updates
+
+      ## Ongoing Relationship
+
+      ### Regular Review
+      We believe in proactive legal planning:
+      - Scheduled review meetings (annually or as appropriate)
+      - Updates based on life events or legal changes
+      - Reassessment of strategies as goals evolve
+      - Documentation of all reviews and discussions
+      - Proactive outreach for relevant legal developments
+
+      ### Secure Client Portal
+      Our technology platform enhances client service:
+      - 24/7 access to your legal documents
+      - Secure messaging system for confidential communications
+      - Centralized storage of all matter-related information
+      - Automated reminders for important dates
+      - Easy sharing with authorized family members or advisors
+
+      ### Ongoing Education
+      We keep you informed about relevant legal developments:
+      - Customized alerts about changes affecting your situation
+      - Access to webinars and educational resources
+      - Family meeting facilitation when appropriate
+      - Next-generation educational opportunities
+      - Regular newsletters with practical legal insights
+
+      ## Our Service Philosophy
+
+      ### Responsive Communication
+      We prioritize clear, timely communication:
+      - Response to inquiries within one business day
+      - Multiple communication channels based on preference
+      - Regular updates on ongoing matters
+      - Clear explanations without unnecessary legal jargon
+      - Proactive outreach for time-sensitive matters
+
+      ### Transparent Billing
+      Our billing practices emphasize clarity and fairness:
+      - Detailed invoices with clear activity descriptions
+      - Regular billing intervals (typically monthly)
+      - No surprises policy for unexpected costs
+      - Multiple payment options for convenience
+      - Discussions about cost-effective approaches
+
+      ### Continuous Improvement
+      We consistently seek to enhance our services:
+      - Client feedback solicitation
+      - Regular process reviews and refinements
+      - Technology investments for improved efficiency
+      - Professional development for all team members
+      - Best practice implementation across all service areas
+
+      ## Conclusion
+
+      Our structured process is designed to provide confidence and clarity while delivering exceptional legal outcomes. We recognize that each client's situation is unique, and we adapt our approach accordingly while maintaining consistent quality and attention to detail. We view our client relationships as long-term partnerships built on trust, communication, and mutual respect.
+    `
   }
 ];

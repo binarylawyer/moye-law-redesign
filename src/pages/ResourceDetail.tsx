@@ -38,15 +38,21 @@ const ResourceDetail: React.FC = () => {
     
     // Scroll to top when resource changes
     window.scrollTo(0, 0);
+    
+    // Log resource information for debugging
+    if (foundResource) {
+      console.log(`Resource found: ${foundResource.title}`);
+      console.log(`Content available: ${Boolean(foundResource.content)}`);
+      console.log(`Content length: ${foundResource.content?.length || 0} characters`);
+    } else {
+      console.log(`No resource found with slug: ${slug}`);
+    }
   }, [slug]);
 
   // Show not found if no resource
   if (!resource) {
     return <ResourceNotFound />;
   }
-
-  // Debug log to verify content
-  console.log("Resource content available:", !!resource.content);
 
   return (
     <>

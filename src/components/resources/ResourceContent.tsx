@@ -2,19 +2,29 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import TableOfContents from './TableOfContents';
+import { Link } from 'react-router-dom';
 
 interface ResourceContentProps {
   content?: string;
 }
 
 const ResourceContent: React.FC<ResourceContentProps> = ({ content }) => {
-  // If content is undefined or empty, show a message
+  // If content is undefined or empty, show a message with a return link
   if (!content) {
     return (
       <section className="pb-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <p className="text-center text-charcoal/60 py-8">Full content for this resource is not available.</p>
+            <div className="bg-navy/5 rounded-lg p-8 text-center">
+              <p className="text-charcoal/80 mb-4">The full content for this resource is currently being prepared.</p>
+              <p className="text-charcoal/60 mb-6">Please check back soon or explore our other available resources.</p>
+              <Link 
+                to="/resources" 
+                className="inline-flex items-center justify-center text-sm font-medium bg-navy hover:bg-navy/90 text-white py-2 px-4 rounded-md transition-colors"
+              >
+                Return to Resources
+              </Link>
+            </div>
           </div>
         </div>
       </section>
