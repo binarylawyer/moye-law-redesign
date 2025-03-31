@@ -34,7 +34,7 @@ const FloatingConsultationButton: React.FC = () => {
         <Button className="bg-gradient-to-br from-sky-blue to-ocean-blue text-white font-sans rounded-md w-[150px] h-[150px] shadow-2xl flex flex-col items-center justify-center hover:scale-105 transition-all duration-300 border-2 border-white" aria-label="Schedule a consultation">
           <Calendar size={180} className="animate-bounce" />
           <span className="mt-2 font-bold text-center text-lg max-w-full overflow-hidden break-words px-3 whitespace-normal">
-            Schedule a consultation
+            Free Consultation
           </span>
         </Button>
       </Link>
