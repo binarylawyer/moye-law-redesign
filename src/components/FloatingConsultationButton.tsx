@@ -40,7 +40,9 @@ const FloatingConsultationButton: React.FC = () => {
           aria-label="Schedule a consultation"
         >
           <Calendar size={120} className="animate-bounce" />
-          <span className="text-xl mt-2 font-bold">Schedule a consultation</span>
+          <span className="text-xl mt-2 font-bold text-center px-2 break-words">
+            Schedule a consultation
+          </span>
         </Button>
       </Link>
     </div>
