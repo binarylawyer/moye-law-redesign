@@ -92,7 +92,9 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
           </NavigationMenuItem>
           
           <NavigationMenuItem className="relative">
-            <NavigationMenuTrigger className={`${navMenuItemClasses} ${isActive('/resources') || isActive('/case-studies') || isActive('/faq') || isActive('/how-we-work') || isActive('/technology-approach') ? activeNavClass : ''} bg-transparent hover:bg-transparent focus:bg-transparent`}>Resources</NavigationMenuTrigger>
+            <Link to="/resources" className={`${navMenuItemClasses} ${isActive('/resources') ? activeNavClass : ''}`}>
+              <NavigationMenuTrigger className="bg-transparent hover:bg-transparent focus:bg-transparent text-lg p-0">Resources</NavigationMenuTrigger>
+            </Link>
             <NavigationMenuContent className="bg-white shadow-lg rounded-sm p-4 w-[300px] absolute left-1/2 -translate-x-1/2 mt-6">
               <div className="flex flex-col space-y-2">
                 {resourcesItems.map((item) => (
