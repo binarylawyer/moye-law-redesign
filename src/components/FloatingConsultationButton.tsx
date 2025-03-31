@@ -39,12 +39,12 @@ const FloatingConsultationButton: React.FC = () => {
       <Link to="/contact">
         <Button 
           className={`
-            bg-gradient-to-br from-gold to-soft-gold 
-            text-navy font-sans font-bold
+            bg-gradient-to-br from-ocean-blue/50 to-sky-blue/50
+            text-white font-sans font-bold
             rounded-lg w-[150px] h-[150px] 
             shadow-2xl flex flex-col items-center justify-center 
             hover:scale-105 transition-all duration-300 
-            border-2 border-white
+            border-2 border-white/50
             ${isHovered ? 'animate-pulse' : ''}
           `} 
           aria-label="Schedule a consultation"
