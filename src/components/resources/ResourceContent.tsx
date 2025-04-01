@@ -14,7 +14,7 @@ const ResourceContent: React.FC<ResourceContentProps> = ({ content }) => {
     return (
       <section className="pb-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <div className="bg-navy/5 rounded-lg p-8 text-center">
               <p className="text-charcoal/80 mb-4">The full content for this resource is currently being prepared.</p>
               <p className="text-charcoal/60 mb-6">Please check back soon or explore our other available resources.</p>
@@ -110,18 +110,21 @@ const ResourceContent: React.FC<ResourceContentProps> = ({ content }) => {
   };
 
   return (
-    <section className="py-12 md:py-16">
-      <div className="container mx-auto px-4">
-        <div className="reveal visible max-w-3xl mx-auto">
+    <section className="py-6 md:py-10 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
           <TableOfContents content={content} />
-          <article className="prose prose-lg max-w-none mt-8 prose-headings:font-serif prose-headings:text-navy prose-p:text-charcoal/80 prose-strong:text-charcoal prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-ul:text-charcoal/80 prose-ol:text-charcoal/80">
-            <ReactMarkdown 
-              components={components}
-              rehypePlugins={[rehypeRaw]}
-            >
-              {content}
-            </ReactMarkdown>
-          </article>
+          <div className="bg-white">
+            <div className="markdown-content">
+              <ReactMarkdown 
+                components={components}
+                rehypePlugins={[rehypeRaw]}
+                className="markdown-body"
+              >
+                {content}
+              </ReactMarkdown>
+            </div>
+          </div>
         </div>
       </div>
     </section>

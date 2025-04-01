@@ -12,7 +12,7 @@ interface TOCItem {
 }
 
 const TableOfContents: React.FC<TableOfContentsProps> = ({ content }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   // Parse headings from markdown content
   const extractHeadings = (markdownContent: string): TOCItem[] => {
@@ -83,10 +83,10 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ content }) => {
   };
 
   return (
-    <div className="mb-8 border rounded-lg overflow-hidden">
+    <div className="mb-6 border border-gray-200 rounded-lg shadow-sm">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between bg-light-gray p-4 text-navy font-medium"
+        className="w-full flex items-center justify-between bg-navy/5 p-4 text-navy font-medium hover:bg-navy/10 transition-colors"
       >
         <div className="flex items-center">
           <List className="w-4 h-4 mr-2" />
@@ -96,7 +96,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ content }) => {
       </button>
       
       {isOpen && (
-        <nav className="p-4 max-h-[300px] overflow-y-auto bg-white">
+        <nav className="p-4 max-h-[350px] overflow-y-auto bg-white">
           <ul className="space-y-1">
             {headings.map((heading, index) => (
               <li 
@@ -106,6 +106,17 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ content }) => {
                 <a 
                   href={`#${heading.id}`}
                   className="block py-1 hover:text-gold transition-colors"
+                  onClick={() => {
+                    // Add smooth scrolling
+                    const element = document.getElementById(heading.id);
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                      // Highlight the section briefly
+                      element.classList.add('highlight-section');
+                      setTimeout(() => element.classList.remove('highlight-section'), 2000);
+                    }
+                    return false;
+                  }}
                 >
                   {heading.text}
                 </a>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Resource } from '../../data/resourcesData';
@@ -10,8 +9,8 @@ interface ResourceHeaderProps {
 
 const ResourceHeader: React.FC<ResourceHeaderProps> = ({ resource }) => {
   return (
-    <section className="py-16 md:py-24">
-      <div className="container mx-auto px-4 md:px-8 lg:px-12">
+    <section className="py-10 md:py-16 border-b border-gray-100">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <Link 
           to="/resources" 
           className="inline-flex items-center text-navy hover:text-gold transition-colors mb-6"
@@ -20,7 +19,7 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = ({ resource }) => {
           <span>Back to Resources</span>
         </Link>
         
-        <div className="reveal max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="flex items-center mb-6">
             <span className="text-sm font-medium bg-navy/10 text-navy px-3 py-1 rounded-full">
               {resource.category.charAt(0).toUpperCase() + resource.category.slice(1)}
@@ -31,16 +30,16 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = ({ resource }) => {
             </div>
           </div>
           
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-8 text-navy">
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-6 text-navy">
             {resource.title}
           </h1>
           
-          <p className="text-lg text-charcoal/80 mb-4">
+          <p className="text-xl text-charcoal/80 mb-4 max-w-4xl">
             {resource.description}
           </p>
           
           {resource.author && (
-            <p className="text-sm text-charcoal/60 mb-8">
+            <p className="text-sm text-charcoal/60 mb-4">
               By {resource.author}
             </p>
           )}
