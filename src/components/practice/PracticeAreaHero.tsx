@@ -23,8 +23,8 @@ const PracticeAreaHero: React.FC<PracticeAreaHeroProps> = ({ title, description 
           
           {/* Content in white block with Mondrian border */}
           <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
-            <h1 className="reveal font-serif text-black text-4xl md:text-5xl lg:text-6xl mb-8">{title}</h1>
-            <p className="reveal text-xl text-black/80 mx-auto">{description}</p>
+            <h1 className="reveal font-serif text-black text-4xl md:text-5xl lg:text-6xl mb-8 !opacity-100">{title}</h1>
+            <p className="reveal text-xl text-black/80 mx-auto !opacity-100">{description}</p>
           </div>
           
           {/* White block with black border */}
