@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { specializedServicePathMap } from '@/data/practiceAreasData';
 
 interface RelatedItem {
@@ -44,7 +45,7 @@ const PracticeAreaRelated: React.FC<PracticeAreaRelatedProps> = ({ title, items 
                 to={getPath(item.path)} 
                 className="inline-flex items-center mt-auto text-primary font-medium hover:text-primary/80 transition-colors"
               >
-                Learn more <span className="ml-2">→</span>
+                Learn more <ArrowRightIcon className="ml-2 h-4 w-4" />
               </Link>
             </div>
           ))}
