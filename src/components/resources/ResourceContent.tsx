@@ -41,6 +41,76 @@ const ResourceContent: React.FC<ResourceContentProps> = ({ content }) => {
     return processed;
   };
 
+  // Process blockquotes
+  const processBlockquote = (text: string): string => {
+    if (!text.startsWith('> ')) return text;
+    
+    const content = text.substring(2);
+    const formattedContent = processInlineFormatting(content);
+    return `<blockquote class="pl-4 border-l-4 border-gold/50 italic text-charcoal/70 my-4">${formattedContent}</blockquote>`;
+  };
+
+  // Process a Markdown table
+  const processTable = (lines: string[], startIndex: number): { tableHtml: string, endIndex: number } => {
+    let currentIndex = startIndex;
+    const tableLines = [];
+    
+    // Collect all table lines
+    while (
+      currentIndex < lines.length && 
+      (lines[currentIndex].trim().startsWith('|') || lines[currentIndex].trim().startsWith('|-'))
+    ) {
+      const line = lines[currentIndex].trim();
+      if (line && line !== '') {
+        tableLines.push(line);
+      }
+      currentIndex++;
+    }
+    
+    if (tableLines.length < 3) {
+      // Not a valid table, return original content
+      return { 
+        tableHtml: lines[startIndex], 
+        endIndex: startIndex 
+      };
+    }
+    
+    // Process the table
+    let tableHtml = '<div class="overflow-x-auto my-6"><table class="min-w-full border-collapse border border-slate-300">';
+    
+    // Process each row
+    tableLines.forEach((row, index) => {
+      if (index === 1) return; // Skip the separator row
+      
+      const isHeader = index === 0;
+      const cellTag = isHeader ? 'th' : 'td';
+      
+      // Split the row into cells and remove empty first/last cells if they exist
+      let cells = row.split('|').map(cell => cell.trim());
+      if (cells[0] === '') cells.shift();
+      if (cells[cells.length - 1] === '') cells.pop();
+      
+      // Add the row
+      tableHtml += '<tr>';
+      cells.forEach(cell => {
+        const formattedContent = processInlineFormatting(cell);
+        const cellClasses = isHeader 
+          ? 'px-4 py-2 bg-navy/10 text-navy font-semibold border border-slate-300'
+          : 'px-4 py-2 border border-slate-300 text-charcoal/80';
+        
+        tableHtml += `<${cellTag} class="${cellClasses}">${formattedContent}</${cellTag}>`;
+      });
+      tableHtml += '</tr>';
+    });
+    
+    tableHtml += '</table></div>';
+    
+    return {
+      tableHtml,
+      endIndex: currentIndex - 1
+    };
+  };
+
   // Convert markdown to HTML manually
   const convertMarkdownToHtml = (markdown: string): string => {
     // First, normalize line endings
@@ -88,6 +158,16 @@ const ResourceContent: React.FC<ResourceContentProps> = ({ content }) => {
         const formattedHeading = processInlineFormatting(heading);
         processedLines.push(`<h4 id="${id}" class="text-xl font-serif text-navy mt-5 mb-2 font-semibold">${formattedHeading}</h4>`);
       }
+      // Process tables
+      else if (line.startsWith('|') && i < lines.length - 2 && lines[i+1].includes('|-')) {
+        const { tableHtml, endIndex } = processTable(lines, i);
+        processedLines.push(tableHtml);
+        i = endIndex; // Skip processed table rows
+      }
+      // Process blockquotes
+      else if (line.startsWith('> ')) {
+        processedLines.push(processBlockquote(line));
+      }
       // Process lists
       else if (line.startsWith('- ')) {
         const content = line.substring(2);
@@ -99,6 +179,22 @@ const ResourceContent: React.FC<ResourceContentProps> = ({ content }) => {
         }
         
         processedLines.push(`<li class="mb-2 text-charcoal/80">${formattedContent}</li>`);
+      }
+      // Process ordered lists
+      else if (/^\d+\.\s/.test(line)) {
+        const content = line.replace(/^\d+\.\s/, '');
+        const formattedContent = processInlineFormatting(content);
+        
+        if (!inList) {
+          processedLines.push('<ol class="list-decimal pl-6 mb-4 text-charcoal/80">');
+          inList = true;
+        }
+        
+        processedLines.push(`<li class="mb-2 text-charcoal/80">${formattedContent}</li>`);
+      }
+      // Process horizontal rule
+      else if (line === '---') {
+        processedLines.push('<hr class="my-6 border-t border-slate-200" />');
       }
       // Process paragraphs (anything else)
       else {
