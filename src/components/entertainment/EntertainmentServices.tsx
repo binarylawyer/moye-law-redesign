@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { Film, Music, Newspaper, Radio } from 'lucide-react';
+import MondrianDecoration from '@/components/MondrianDecoration';
 
 const EntertainmentServices: React.FC = () => {
   const entertainmentAreas = [
@@ -27,19 +27,42 @@ const EntertainmentServices: React.FC = () => {
   ];
   
   return (
-    <section className="bg-gray-50 py-24">
-      <div className="container mx-auto px-8">
-        <h2 className="font-serif text-3xl text-navy mb-12 text-center">Entertainment Industry Focus</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <section className="bg-white py-24">
+      <div className="container mx-auto px-8 relative">
+        {/* Add subtle Mondrian decoration on left side */}
+        <div className="hidden md:block absolute -left-16 top-20">
+          <MondrianDecoration position="left" variant={1} />
+        </div>
+        
+        <h2 className="font-serif text-3xl text-navy mb-12 text-center relative">
+          Entertainment Industry Focus
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
           {entertainmentAreas.map((service, idx) => (
-            <div key={idx} className="bg-white p-8 border border-gray-200">
+            <div key={idx} className="bg-white p-8 border-4 border-black">
+              {/* Add Mondrian decoration to the first service item */}
+              {idx === 0 && (
+                <MondrianDecoration position="right" variant={3} />
+              )}
+              
               <div className="mb-6">
                 {service.icon}
               </div>
               <h3 className="font-serif text-xl text-navy mb-4">{service.title}</h3>
               <p className="text-charcoal">{service.description}</p>
+              
+              {/* Add Mondrian decoration to the last service item */}
+              {idx === entertainmentAreas.length - 1 && (
+                <MondrianDecoration position="left" variant={2} />
+              )}
             </div>
           ))}
+        </div>
+        
+        {/* Add subtle Mondrian decoration on right side */}
+        <div className="hidden md:block absolute -right-16 bottom-20">
+          <MondrianDecoration position="right" variant={5} />
         </div>
       </div>
     </section>

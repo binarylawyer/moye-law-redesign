@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { practiceAreasData } from '@/data/practiceAreasData';
 import ConsultationCTA from '@/components/ConsultationCTA';
+import MondrianDecoration from '@/components/MondrianDecoration';
 
 const PracticeArea: React.FC = () => {
   const { area } = useParams();
@@ -98,8 +99,14 @@ const PracticeArea: React.FC = () => {
                   
                   {/* Content block */}
                   <div className="col-span-12 md:col-span-10 mondrian-grid-item bg-white p-8">
+                    {/* Add Mondrian decoration to the first principle */}
+                    {index === 0 && <MondrianDecoration position="left" variant={1} />}
+                    
                     <h3 className="font-serif text-black text-2xl mb-4">{principle.title}</h3>
                     <p className="text-black/80 text-lg">{principle.description}</p>
+                    
+                    {/* Add Mondrian decoration to the third principle on the right */}
+                    {index === 2 && <MondrianDecoration position="right" variant={3} />}
                   </div>
                 </div>
               ))}
@@ -133,6 +140,9 @@ const PracticeArea: React.FC = () => {
                         <span className="font-serif text-white text-3xl">0{index + 1}</span>
                       </div>
                       <div className="col-span-12 md:col-span-9 mondrian-grid-item bg-white p-8">
+                        {/* Add Mondrian decoration to the second step */}
+                        {index === 1 && <MondrianDecoration position="right" variant={2} />}
+                        
                         <h3 className="font-serif text-black text-2xl mb-4">{step.title}</h3>
                         <p className="text-black/80 text-lg">{step.description}</p>
                       </div>
@@ -145,6 +155,11 @@ const PracticeArea: React.FC = () => {
                       <div className="col-span-12 md:col-span-9 mondrian-grid-item bg-white p-8">
                         <h3 className="font-serif text-black text-2xl mb-4">{step.title}</h3>
                         <p className="text-black/80 text-lg">{step.description}</p>
+                        
+                        {/* Add Mondrian decoration to the last step */}
+                        {index === practiceData.process.length - 1 && (
+                          <MondrianDecoration position="left" variant={4} />
+                        )}
                       </div>
                       <div className="col-span-12 md:col-span-3 mondrian-blue flex items-center justify-center p-8">
                         <span className="font-serif text-white text-3xl">0{index + 1}</span>
