@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Resource } from '../../data/resourcesData';
@@ -21,7 +22,7 @@ const RelatedResources = ({ resources }: RelatedResourcesProps) => {
             {resources.map((resource) => (
               <div 
                 key={resource.id} 
-                className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow aspect-square flex flex-col"
+                className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow flex flex-col"
               >
                 <div className="flex items-center mb-2">
                   <span className="text-xs font-medium bg-navy/10 text-navy px-2 py-1 rounded">

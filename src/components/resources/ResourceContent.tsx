@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -243,9 +244,6 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
         // Process empty lines
         } else if (line === '') {
           // Don't add a break for empty lines, as they're already handled by paragraph margins
-          // This prevents double spacing between paragraphs
-          // Only uncomment the line below if you want explicit breaks for empty lines
-          // elements.push(<br key={`br-${i}`} />);
         
         // Process paragraphs
         } else if (line !== '') {
