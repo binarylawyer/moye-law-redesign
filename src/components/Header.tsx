@@ -74,45 +74,45 @@ const Header: React.FC = () => {
         isScrolled ? 'h-[80px]' : 'h-[100px]'
       }`}
     >
-      {/* Enhanced Mondrian-style background */}
+      {/* Enhanced Mondrian-style background with more translucent frosted glass effect */}
       <div 
         className="absolute inset-0 overflow-hidden"
         style={{
           backgroundColor: isScrolled 
-            ? 'rgba(255, 255, 255, 0.9)' 
-            : 'rgba(255, 255, 255, 0.8)',
-          backdropFilter: 'blur(12px)'
+            ? 'rgba(255, 255, 255, 0.7)' 
+            : 'rgba(255, 255, 255, 0.5)',
+          backdropFilter: 'blur(15px)'
         }}
       >
         {/* Mondrian-inspired animated vertical lines */}
         <div 
-          className="absolute top-0 h-full w-1 bg-black/30 transition-all duration-1000 ease-in-out" 
+          className="absolute top-0 h-full w-1 bg-black/20 transition-all duration-1000 ease-in-out" 
           style={{ left: `${line1Position}%` }}
         ></div>
         <div 
-          className="absolute top-0 h-full w-1 bg-black/30 transition-all duration-1000 ease-in-out" 
+          className="absolute top-0 h-full w-1 bg-black/20 transition-all duration-1000 ease-in-out" 
           style={{ left: `${line2Position}%` }}
         ></div>
 
         {/* Mondrian-inspired color blocks */}
         <div 
-          className="absolute top-0 left-0 w-12 h-full mondrian-red opacity-20"
+          className="absolute top-0 left-0 w-12 h-full mondrian-red opacity-10"
         ></div>
         <div 
-          className="absolute top-0 right-0 w-12 h-full mondrian-blue opacity-20"
+          className="absolute top-0 right-0 w-12 h-full mondrian-blue opacity-10"
         ></div>
         
         {/* Mondrian-inspired horizontal lines */}
         <div className="absolute top-0 left-0 w-full h-1 flex border-b-2 border-black/20">
-          <div className="w-1/5 h-full bg-[#D6001C]/40"></div>
+          <div className="w-1/5 h-full bg-[#D6001C]/30"></div>
           <div className="w-3/5 h-full bg-transparent"></div>
-          <div className="w-1/5 h-full bg-[#003B98]/40"></div>
+          <div className="w-1/5 h-full bg-[#003B98]/30"></div>
         </div>
         
         {/* Bottom accent */}
         <div className="absolute bottom-0 left-0 w-full h-1 flex">
           <div className="w-2/3 h-full bg-transparent"></div>
-          <div className="w-1/3 h-full bg-[#FFD500]/40"></div>
+          <div className="w-1/3 h-full bg-[#FFD500]/30"></div>
         </div>
       </div>
       

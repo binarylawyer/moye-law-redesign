@@ -33,6 +33,15 @@
   background-color: #FFFFFF;
 }
 
+/* Additional lighter color variations */
+.mondrian-light-blue {
+  background-color: #4D80D4;
+}
+
+.mondrian-light-yellow {
+  background-color: #FFEB80;
+}
+
 /* Mondrian-style borders - always black and bold */
 .mondrian-border {
   border: 4px solid black;
@@ -200,6 +209,19 @@
   width: 20%;
 }
 
+/* Also add divider variations with the new colors */
+.mondrian-divider-light-blue {
+  background-color: #4D80D4;
+  height: 100%;
+  width: 20%;
+}
+
+.mondrian-divider-light-yellow {
+  background-color: #FFEB80;
+  height: 100%;
+  width: 20%;
+}
+
 /* Mondrian buttons */
 .mondrian-button {
   display: inline-flex;
@@ -222,6 +244,10 @@
   background-color: #FFD500;
 }
 
+.mondrian-button.light-yellow {
+  background-color: #FFEB80;
+}
+
 .mondrian-button.red {
   background-color: #D6001C;
   color: white;
@@ -229,5 +255,10 @@
 
 .mondrian-button.blue {
   background-color: #003B98;
+  color: white;
+}
+
+.mondrian-button.light-blue {
+  background-color: #4D80D4;
   color: white;
 } 

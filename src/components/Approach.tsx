@@ -27,33 +27,35 @@ const Approach = () => {
           
           {/* Yellow block */}
           <div className="col-span-3 mondrian-yellow"></div>
+        </div>
           
-          {/* Timeline element - pure Mondrian style */}
-          <div className="col-span-12 mondrian-grid-item bg-white p-0">
-            <div className="flex justify-between">
-              <div className="text-center py-6 px-4 border-r-4 border-black w-1/4">
-                <div className="w-16 h-16 mondrian-red border-4 border-black mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-white font-medium">1994</span>
+        {/* Timeline element - improved design with stronger borders */}
+        <div className="mondrian-grid mb-16">
+          <div className="col-span-12 mondrian-grid-item bg-white p-4">
+            <div className="flex flex-wrap md:flex-nowrap mb-8 border-4 border-black">
+              <div className="w-full md:w-1/4 text-center p-6 border-b-4 md:border-b-0 md:border-r-4 border-black bg-white">
+                <div className="w-20 h-20 mondrian-red border-4 border-black mx-auto mb-4 flex items-center justify-center">
+                  <span className="text-white font-bold text-2xl">1994</span>
                 </div>
-                <span className="text-sm font-medium">Founded</span>
+                <span className="text-lg font-medium">Founded</span>
               </div>
-              <div className="text-center py-6 px-4 border-r-4 border-black w-1/4">
-                <div className="w-16 h-16 bg-white border-4 border-black mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-black font-medium">2004</span>
+              <div className="w-full md:w-1/4 text-center p-6 border-b-4 md:border-b-0 md:border-r-4 border-black bg-white">
+                <div className="w-20 h-20 mondrian-light-blue border-4 border-black mx-auto mb-4 flex items-center justify-center">
+                  <span className="text-white font-bold text-2xl">2004</span>
                 </div>
-                <span className="text-sm font-medium">Expanded</span>
+                <span className="text-lg font-medium">Expanded</span>
               </div>
-              <div className="text-center py-6 px-4 border-r-4 border-black w-1/4">
-                <div className="w-16 h-16 mondrian-blue border-4 border-black mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-white font-medium">2014</span>
+              <div className="w-full md:w-1/4 text-center p-6 border-b-4 md:border-b-0 md:border-r-4 border-black bg-white">
+                <div className="w-20 h-20 mondrian-blue border-4 border-black mx-auto mb-4 flex items-center justify-center">
+                  <span className="text-white font-bold text-2xl">2014</span>
                 </div>
-                <span className="text-sm font-medium">Innovated</span>
+                <span className="text-lg font-medium">Innovated</span>
               </div>
-              <div className="text-center py-6 px-4 w-1/4">
-                <div className="w-20 h-20 mondrian-yellow border-4 border-black mx-auto mb-2 flex items-center justify-center">
-                  <span className="text-black font-bold text-2xl">30</span>
+              <div className="w-full md:w-1/4 text-center p-6 bg-white">
+                <div className="w-24 h-24 mondrian-light-yellow border-4 border-black mx-auto mb-2 flex items-center justify-center">
+                  <span className="text-black font-bold text-3xl">30</span>
                 </div>
-                <span className="text-sm font-medium">Years</span>
+                <span className="text-lg font-medium">Years</span>
               </div>
             </div>
           </div>
@@ -75,7 +77,7 @@ const Approach = () => {
                   <span className="pt-1 text-black/80">Personal relationships built on trust and multi-generational commitment</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="w-12 h-12 mondrian-yellow border-4 border-black flex items-center justify-center mr-5 flex-shrink-0 text-black font-medium">02</span>
+                  <span className="w-12 h-12 mondrian-light-yellow border-4 border-black flex items-center justify-center mr-5 flex-shrink-0 text-black font-medium">02</span>
                   <span className="pt-1 text-black/80">Family values at the core of our practice, guiding every recommendation</span>
                 </li>
                 <li className="flex items-start">
@@ -90,7 +92,7 @@ const Approach = () => {
           <div className="col-span-6 mondrian-grid-item bg-white">
             <div className="flex h-12 border-b-4 border-black">
               <div className="w-2/3 bg-white"></div>
-              <div className="w-1/3 mondrian-blue"></div>
+              <div className="w-1/3 mondrian-light-blue"></div>
             </div>
             <div className="p-8">
               <h3 className="font-serif text-2xl text-black mb-8">
@@ -107,7 +109,7 @@ const Approach = () => {
                   <span className="pt-1 text-black/80">Secure, modern client processes designed for today's digital environment</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="w-12 h-12 border-4 border-black flex items-center justify-center mr-5 flex-shrink-0 text-black font-medium">03</span>
+                  <span className="w-12 h-12 mondrian-light-blue border-4 border-black flex items-center justify-center mr-5 flex-shrink-0 text-white font-medium">03</span>
                   <span className="pt-1 text-black/80">Data-driven, efficient solutions that save time while improving outcomes</span>
                 </li>
               </ul>
@@ -124,7 +126,7 @@ const Approach = () => {
               <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-all" />
             </Link>
           </div>
-          <div className="col-span-2 mondrian-yellow"></div>
+          <div className="col-span-2 mondrian-light-yellow"></div>
         </div>
       </div>
     </section>
