@@ -28,55 +28,96 @@ const ResourceContent: React.FC<ResourceContentProps> = ({ content }) => {
     );
   }
 
+  // Helper function to process inline formatting like bold and italic
+  const processInlineFormatting = (text: string): string => {
+    // Bold text (surrounded by ** or __)
+    let processed = text.replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold text-charcoal">$1</strong>');
+    processed = processed.replace(/__([^_]+)__/g, '<strong class="font-semibold text-charcoal">$1</strong>');
+    
+    // Italic text (surrounded by * or _)
+    processed = processed.replace(/\*([^*]+)\*/g, '<em class="text-charcoal/80 italic">$1</em>');
+    processed = processed.replace(/_([^_]+)_/g, '<em class="text-charcoal/80 italic">$1</em>');
+    
+    return processed;
+  };
+
   // Convert markdown to HTML manually
   const convertMarkdownToHtml = (markdown: string): string => {
-    let html = markdown;
+    // First, normalize line endings
+    let html = markdown.replace(/\r\n/g, '\n');
     
-    // Replace headings
-    html = html.replace(/^# (.+)$/gm, '<h1 id="$1" class="text-4xl font-serif text-navy mt-8 mb-6 font-bold">$1</h1>');
-    html = html.replace(/^## (.+)$/gm, '<h2 id="$1" class="text-3xl font-serif text-navy mt-8 mb-4 font-bold">$1</h2>');
-    html = html.replace(/^### (.+)$/gm, '<h3 id="$1" class="text-2xl font-serif text-navy mt-6 mb-3 font-bold">$1</h3>');
-    html = html.replace(/^#### (.+)$/gm, '<h4 id="$1" class="text-xl font-serif text-navy mt-5 mb-2 font-semibold">$1</h4>');
-    
-    // Replace lists
-    html = html.replace(/^- (.+)$/gm, '<li class="mb-2 text-charcoal/80">$1</li>');
-    
-    // Wrap lists
-    let inList = false;
+    // Process the content line by line for better control
     const lines = html.split('\n');
     const processedLines = [];
     
+    let inList = false;
+    
     for (let i = 0; i < lines.length; i++) {
-      const line = lines[i];
+      let line = lines[i].trim();
       
-      if (line.startsWith('<li')) {
+      // Skip empty lines
+      if (!line) {
+        if (!inList) { // Don't add empty lines inside lists
+          processedLines.push('');
+        }
+        continue;
+      }
+      
+      // Process headings
+      if (line.startsWith('# ')) {
+        const heading = line.substring(2);
+        const id = heading.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+        const formattedHeading = processInlineFormatting(heading);
+        processedLines.push(`<h1 id="${id}" class="text-4xl font-serif text-navy mt-8 mb-6 font-bold">${formattedHeading}</h1>`);
+      }
+      else if (line.startsWith('## ')) {
+        const heading = line.substring(3);
+        const id = heading.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+        const formattedHeading = processInlineFormatting(heading);
+        processedLines.push(`<h2 id="${id}" class="text-3xl font-serif text-navy mt-8 mb-4 font-bold">${formattedHeading}</h2>`);
+      }
+      else if (line.startsWith('### ')) {
+        const heading = line.substring(4);
+        const id = heading.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+        const formattedHeading = processInlineFormatting(heading);
+        processedLines.push(`<h3 id="${id}" class="text-2xl font-serif text-navy mt-6 mb-3 font-bold">${formattedHeading}</h3>`);
+      }
+      else if (line.startsWith('#### ')) {
+        const heading = line.substring(5);
+        const id = heading.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+        const formattedHeading = processInlineFormatting(heading);
+        processedLines.push(`<h4 id="${id}" class="text-xl font-serif text-navy mt-5 mb-2 font-semibold">${formattedHeading}</h4>`);
+      }
+      // Process lists
+      else if (line.startsWith('- ')) {
+        const content = line.substring(2);
+        const formattedContent = processInlineFormatting(content);
+        
         if (!inList) {
           processedLines.push('<ul class="list-disc pl-6 mb-4 text-charcoal/80">');
           inList = true;
         }
-        processedLines.push(line);
-      } else {
+        
+        processedLines.push(`<li class="mb-2 text-charcoal/80">${formattedContent}</li>`);
+      }
+      // Process paragraphs (anything else)
+      else {
         if (inList) {
           processedLines.push('</ul>');
           inList = false;
         }
-        processedLines.push(line);
+        
+        const formattedParagraph = processInlineFormatting(line);
+        processedLines.push(`<p class="text-charcoal/80 mb-4 leading-relaxed">${formattedParagraph}</p>`);
       }
     }
     
+    // Close any open list
     if (inList) {
       processedLines.push('</ul>');
     }
     
-    html = processedLines.join('\n');
-    
-    // Replace paragraphs (anything that's not a heading or list)
-    html = html.replace(/^([^<\n].+)$/gm, '<p class="text-charcoal/80 mb-4 leading-relaxed">$1</p>');
-    
-    // Remove empty paragraphs
-    html = html.replace(/<p class="[^"]+"><\/p>/g, '');
-    
-    return html;
+    return processedLines.join('\n');
   };
   
   const htmlContent = convertMarkdownToHtml(content);
