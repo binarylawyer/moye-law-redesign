@@ -558,10 +558,10 @@ export const resources: Resource[] = [
     category: 'article',
     slug: 'technology-estate-administration',
     date: '2024-02-20',
-    author: 'Jane Smith',
+    author: 'Aina Moye',
     tags: ['Legal Technology', 'Estate Administration', 'Innovation'],
     content: `
-      # Technology in Estate Administration
+      # Technology in Estate Administration Penny
 
       The administration of estates has historically been a paper-intensive, time-consuming process. Today, emerging technologies are revolutionizing how estates are administered, making the process more efficient, transparent, and accessible.
 
