@@ -1,75 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import MarkdownIt from 'markdown-it';
-// @ts-ignore - No type definitions available
-import mdTable from 'markdown-it-table';
-// @ts-ignore - No type definitions available
-import mdContainer from 'markdown-it-container';
 
 interface ResourceContentProps {
   content?: string;
 }
 
 const ResourceContent = ({ content }: ResourceContentProps) => {
-  const [htmlContent, setHtmlContent] = useState<string>('');
-  
-  // Initialize markdown-it with all options enabled
-  const md = new MarkdownIt({
-    html: true,        // Enable HTML tags in source
-    xhtmlOut: true,    // Use '/' to close single tags (<br />)
-    breaks: true,      // Convert '\n' in paragraphs into <br>
-    linkify: true,     // Autoconvert URL-like text to links
-    typographer: true, // Enable smartquotes and other replacements
-  })
-  .use(mdTable)        // Add table support
-  .use(mdContainer);   // Add container support
-  
-  // Add custom rendering for tables to add styling
-  md.renderer.rules.table_open = () => {
-    return '<div class="overflow-x-auto my-6"><table class="min-w-full border-collapse border border-slate-300">';
-  };
-  
-  md.renderer.rules.table_close = () => {
-    return '</table></div>';
-  };
-  
-  md.renderer.rules.thead_open = () => {
-    return '<thead class="bg-navy/10">';
-  };
-  
-  md.renderer.rules.tr_open = () => {
-    return '<tr class="border-b border-slate-300">';
-  };
-  
-  md.renderer.rules.th_open = () => {
-    return '<th class="px-4 py-2 text-navy font-semibold border border-slate-300">';
-  };
-  
-  md.renderer.rules.td_open = () => {
-    return '<td class="px-4 py-2 border border-slate-300 text-charcoal/80">';
-  };
-  
-  useEffect(() => {
-    if (content) {
-      // Extract the first heading and remove it from content
-      const contentLines = content.trim().split('\n');
-      let contentWithoutFirstHeading = content;
-      
-      // Check if the first non-empty line is a heading and remove it
-      for (let i = 0; i < contentLines.length; i++) {
-        const line = contentLines[i].trim();
-        if (line.startsWith('# ')) {
-          contentWithoutFirstHeading = contentLines.slice(i + 1).join('\n').trim();
-          break;
-        }
-      }
-      
-      // Convert markdown to HTML
-      const renderedHtml = md.render(contentWithoutFirstHeading);
-      setHtmlContent(renderedHtml);
-    }
-  }, [content, md]);
-  
   // If content is undefined or empty, show a message with a return link
   if (!content) {
     return (
@@ -92,106 +28,190 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
     );
   }
 
+  // Helper function to process inline formatting in text
+  const processInlineFormatting = (text: string): string => {
+    return text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')  // Bold
+      .replace(/__(.*?)__/g, '<strong>$1</strong>')      // Bold alternative
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')              // Italic
+      .replace(/_(.*?)_/g, '<em>$1</em>');               // Italic alternative
+  };
+
+  // Extract the first heading and remove it from content since it's already in ResourceHeader
+  const contentLines = content.trim().split('\n');
+  let contentWithoutFirstHeading = content;
+  
+  // Check if the first non-empty line is a heading and remove it
+  for (let i = 0; i < contentLines.length; i++) {
+    const line = contentLines[i].trim();
+    if (line.startsWith('# ')) {
+      contentWithoutFirstHeading = contentLines.slice(i + 1).join('\n').trim();
+      break;
+    }
+  }
+
+  // Group the content into blocks for rendering
+  const renderContent = () => {
+    const lines = contentWithoutFirstHeading.split('\n');
+    const elements: JSX.Element[] = [];
+    let currentList: string[] = [];
+    let isUnorderedList = false;
+    let isOrderedList = false;
+    let listKey = 0;
+    
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      
+      // Process list items - check for various list markers
+      if (line.match(/^[-*+]\s+/)) {
+        // If this is the first list item, start a new unordered list
+        if (currentList.length === 0) {
+          isUnorderedList = true;
+          isOrderedList = false;
+        }
+        
+        // Add the list item content (without the marker)
+        // This will remove -, *, or + at the beginning
+        const content = line.replace(/^[-*+]\s+/, '');
+        currentList.push(content);
+      } else if (line.match(/^\d+\.?\s+/)) {
+        // If this is the first list item, start a new ordered list
+        if (currentList.length === 0) {
+          isOrderedList = true;
+          isUnorderedList = false;
+        }
+        
+        // Add the list item content (without the number and period)
+        const content = line.replace(/^\d+\.?\s+/, '');
+        currentList.push(content);
+      } else {
+        // If we were building a list and now we're not, render the list and reset
+        if (currentList.length > 0) {
+          const listItems = currentList.map((item, idx) => (
+            <li 
+              key={idx} 
+              className="mb-2 text-charcoal/80"
+              dangerouslySetInnerHTML={{ __html: processInlineFormatting(item) }}
+            />
+          ));
+          
+          if (isUnorderedList) {
+            elements.push(
+              <ul key={`ul-${listKey++}`} className="list-disc pl-6 mb-4 text-charcoal/80">
+                {listItems}
+              </ul>
+            );
+          } else if (isOrderedList) {
+            elements.push(
+              <ol key={`ol-${listKey++}`} className="list-decimal pl-6 mb-4 text-charcoal/80">
+                {listItems}
+              </ol>
+            );
+          }
+          
+          // Reset the list
+          currentList = [];
+          isUnorderedList = false;
+          isOrderedList = false;
+        }
+        
+        // Process headings
+        if (line.startsWith('## ')) {
+          const heading = line.substring(3);
+          elements.push(
+            <h2 
+              key={`h2-${i}`} 
+              className="text-3xl font-serif text-navy mt-8 mb-4 font-bold"
+              dangerouslySetInnerHTML={{ __html: processInlineFormatting(heading) }}
+            />
+          );
+        } else if (line.startsWith('### ')) {
+          const heading = line.substring(4);
+          elements.push(
+            <h3 
+              key={`h3-${i}`} 
+              className="text-2xl font-serif text-navy mt-6 mb-3 font-bold"
+              dangerouslySetInnerHTML={{ __html: processInlineFormatting(heading) }}
+            />
+          );
+        } else if (line.startsWith('#### ')) {
+          const heading = line.substring(5);
+          elements.push(
+            <h4 
+              key={`h4-${i}`} 
+              className="text-xl font-serif text-navy mt-5 mb-2 font-semibold"
+              dangerouslySetInnerHTML={{ __html: processInlineFormatting(heading) }}
+            />
+          );
+        
+        // Process blockquotes  
+        } else if (line.startsWith('> ')) {
+          const quote = line.substring(2);
+          elements.push(
+            <blockquote 
+              key={`bq-${i}`} 
+              className="pl-4 border-l-4 border-gold/50 italic text-charcoal/70 my-4"
+              dangerouslySetInnerHTML={{ __html: processInlineFormatting(quote) }}
+            />
+          );
+        
+        // Process empty lines
+        } else if (line === '') {
+          // Only add a break if there's not already content
+          if (elements.length > 0 && elements[elements.length - 1].type !== 'br') {
+            elements.push(<br key={`br-${i}`} />);
+          }
+        
+        // Process paragraphs
+        } else if (line !== '') {
+          elements.push(
+            <p 
+              key={`p-${i}`} 
+              className="text-charcoal/80 mb-4 leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: processInlineFormatting(line) }}
+            />
+          );
+        }
+      }
+    }
+    
+    // If we ended with a list, make sure to render it
+    if (currentList.length > 0) {
+      const listItems = currentList.map((item, idx) => (
+        <li 
+          key={idx} 
+          className="mb-2 text-charcoal/80"
+          dangerouslySetInnerHTML={{ __html: processInlineFormatting(item) }}
+        />
+      ));
+      
+      if (isUnorderedList) {
+        elements.push(
+          <ul key={`ul-${listKey}`} className="list-disc pl-6 mb-4 text-charcoal/80">
+            {listItems}
+          </ul>
+        );
+      } else if (isOrderedList) {
+        elements.push(
+          <ol key={`ol-${listKey}`} className="list-decimal pl-6 mb-4 text-charcoal/80">
+            {listItems}
+          </ol>
+        );
+      }
+    }
+    
+    return elements;
+  };
+
   return (
     <section className="py-6 md:py-10 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-sm">
-          <article className="prose prose-base max-w-none">
-            <style jsx>{`
-              .markdown-content h2 {
-                font-family: serif;
-                font-size: 1.875rem;
-                color: #284b63;
-                margin-top: 2rem;
-                margin-bottom: 1rem;
-                font-weight: bold;
-              }
-              .markdown-content h3 {
-                font-family: serif;
-                font-size: 1.5rem;
-                color: #284b63;
-                margin-top: 1.5rem;
-                margin-bottom: 0.75rem;
-                font-weight: bold;
-              }
-              .markdown-content h4 {
-                font-family: serif;
-                font-size: 1.25rem;
-                color: #284b63;
-                margin-top: 1.25rem;
-                margin-bottom: 0.5rem;
-                font-weight: 600;
-              }
-              .markdown-content p {
-                color: rgba(51, 51, 51, 0.8);
-                margin-bottom: 1rem;
-                line-height: 1.7;
-              }
-              .markdown-content ul, .markdown-content ol {
-                padding-left: 1.5rem;
-                margin-bottom: 1rem;
-                color: rgba(51, 51, 51, 0.8);
-              }
-              .markdown-content ul {
-                list-style-type: disc;
-              }
-              .markdown-content ol {
-                list-style-type: decimal;
-              }
-              .markdown-content li {
-                margin-bottom: 0.5rem;
-              }
-              .markdown-content a {
-                color: #d4a373;
-                text-decoration: none;
-              }
-              .markdown-content a:hover {
-                text-decoration: underline;
-              }
-              .markdown-content strong {
-                font-weight: 600;
-                color: #333;
-              }
-              .markdown-content em {
-                font-style: italic;
-                color: rgba(51, 51, 51, 0.8);
-              }
-              .markdown-content blockquote {
-                border-left: 4px solid rgba(212, 163, 115, 0.5);
-                padding-left: 1rem;
-                font-style: italic;
-                color: rgba(51, 51, 51, 0.7);
-                margin: 1rem 0;
-              }
-              .markdown-content code {
-                background-color: #f1f5f9;
-                padding: 0.125rem 0.25rem;
-                border-radius: 0.25rem;
-                color: rgba(40, 75, 99, 0.9);
-                font-size: 0.875rem;
-              }
-              .markdown-content pre {
-                background-color: #f1f5f9;
-                padding: 1rem;
-                border-radius: 0.25rem;
-                overflow-x: auto;
-                margin: 1rem 0;
-              }
-              .markdown-content pre code {
-                background-color: transparent;
-                padding: 0;
-                font-size: 0.875rem;
-              }
-              .markdown-content hr {
-                margin: 1.5rem 0;
-                border-top: 1px solid #e2e8f0;
-              }
-            `}</style>
-            <div 
-              className="markdown-content"
-              dangerouslySetInnerHTML={{ __html: htmlContent }}
-            />
-          </article>
+          <div className="prose prose-base max-w-none prose-headings:font-serif prose-headings:text-navy prose-p:text-charcoal/80 prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-ul:list-disc prose-ol:list-decimal">
+            <div className="markdown-content">
+              {renderContent()}
+            </div>
+          </div>
         </div>
       </div>
     </section>
