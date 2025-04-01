@@ -18,6 +18,18 @@ declare module 'react' {
   export type CSSProperties = React.CSSProperties;
   export type KeyboardEvent<T = Element> = React.KeyboardEvent<T>;
   export type ErrorInfo = React.ErrorInfo;
+  
+  // Core React exports
+  export const useState: typeof React.useState;
+  export const useEffect: typeof React.useEffect;
+  export const useRef: typeof React.useRef;
+  export const useContext: typeof React.useContext;
+  export const useCallback: typeof React.useCallback;
+  export const useMemo: typeof React.useMemo;
+  export const useId: typeof React.useId;
+  export const forwardRef: typeof React.forwardRef;
+  export const createContext: typeof React.createContext;
+  export const Component: typeof React.Component;
 }
 
 declare module 'react-router-dom';
