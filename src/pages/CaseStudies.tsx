@@ -86,8 +86,9 @@ const CaseStudies: React.FC = () => {
         <section className="pt-32 pb-12 md:pt-48 md:pb-24">
           <div className="container mx-auto px-8">
             <div className="relative">
-              {/* Decorative Mondrian element */}
-              <div className="absolute top-[-60px] right-[15%] w-32 h-32 mondrian-yellow mondrian-border"></div>
+              {/* Decorative Mondrian elements - added more with light colors */}
+              <div className="absolute top-[-60px] right-[15%] w-32 h-32 mondrian-light-yellow mondrian-border"></div>
+              <div className="absolute bottom-[-20px] left-[10%] w-16 h-16 mondrian-light-blue mondrian-border"></div>
               
               <div className="max-w-4xl">
                 <h1 className="font-serif text-4xl md:text-5xl text-navy mb-6 relative z-10">
@@ -102,8 +103,9 @@ const CaseStudies: React.FC = () => {
           </div>
         </section>
         
-        {/* Horizontal line extending beyond screen width - Position 1 */}
-        <div className="absolute w-[150vw] h-6 mondrian-blue left-[-25vw] top-[38%] z-10"></div>
+        {/* Horizontal lines extending beyond screen width - Position 1 */}
+        <div className="absolute w-[150vw] h-4 mondrian-light-blue left-[-25vw] top-[32%] z-10"></div>
+        <div className="absolute w-[150vw] h-2 mondrian-blue left-[-25vw] top-[38%] z-10"></div>
         
         {/* Case Studies Layout */}
         <section className="py-20 relative">
@@ -118,12 +120,27 @@ const CaseStudies: React.FC = () => {
                     ${index % 2 === 0 ? 'max-w-3xl' : 'max-w-4xl'}
                   `}
                 >
-                  {/* Decorative square */}
+                  {/* Multiple decorative squares for more Mondrian-like composition */}
                   <div 
                     className={`
                       absolute w-12 h-12 mondrian-border z-10
-                      ${index % 3 === 0 ? 'mondrian-red' : index % 3 === 1 ? 'mondrian-yellow' : 'mondrian-light-blue'}
+                      ${index % 5 === 0 ? 'mondrian-red' : 
+                        index % 5 === 1 ? 'mondrian-light-yellow' : 
+                        index % 5 === 2 ? 'mondrian-blue' : 
+                        index % 5 === 3 ? 'mondrian-light-blue' : 'mondrian-yellow'}
                       ${index % 2 === 0 ? 'top-[-16px] left-[-16px]' : 'bottom-[-16px] right-[-16px]'}
+                    `}
+                  ></div>
+                  
+                  {/* Second decorative square for asymmetry */}
+                  <div 
+                    className={`
+                      absolute w-8 h-8 mondrian-border z-10
+                      ${index % 5 === 0 ? 'mondrian-light-blue' : 
+                        index % 5 === 1 ? 'mondrian-red' : 
+                        index % 5 === 2 ? 'mondrian-light-yellow' : 
+                        index % 5 === 3 ? 'mondrian-yellow' : 'mondrian-blue'}
+                      ${index % 2 === 0 ? 'bottom-[16px] right-[-8px]' : 'top-[20px] left-[-8px]'}
                     `}
                   ></div>
                   
@@ -149,8 +166,11 @@ const CaseStudies: React.FC = () => {
                         <div 
                           className={`
                             p-4 h-full
-                            ${index % 3 === 0 ? 'mondrian-light-yellow' : index % 3 === 1 ? 'mondrian-light-blue' : 'mondrian-red'}
-                            ${index % 3 === 2 ? 'text-white' : 'text-navy'}
+                            ${index % 5 === 0 ? 'mondrian-light-yellow' : 
+                              index % 5 === 1 ? 'mondrian-light-blue' : 
+                              index % 5 === 2 ? 'mondrian-yellow' : 
+                              index % 5 === 3 ? 'mondrian-blue' : 'mondrian-red'}
+                            ${index % 5 === 4 ? 'text-white' : 'text-navy'}
                             mondrian-border
                           `}
                         >
@@ -180,15 +200,19 @@ const CaseStudies: React.FC = () => {
           </div>
         </section>
         
-        {/* Horizontal line extending beyond screen width - Position 2 */}
-        <div className="absolute w-[150vw] h-6 mondrian-red right-[-25vw] bottom-[25%] z-10"></div>
+        {/* Horizontal lines extending beyond screen width - Position 2 */}
+        <div className="absolute w-[150vw] h-3 mondrian-light-yellow right-[-25vw] bottom-[28%] z-10"></div>
+        <div className="absolute w-[150vw] h-4 mondrian-red right-[-25vw] bottom-[25%] z-10"></div>
         
-        {/* CTA Section */}
+        {/* CTA Section with mondrian-style grid background */}
         <section className="py-24 relative z-20">
           <div className="container mx-auto px-8">
             <div className="max-w-4xl mx-auto text-center">
               <div className="mondrian-highlight">
-                <h2 className="font-serif text-3xl text-navy mb-6">Your Success Story Begins Here</h2>
+                <div className="absolute top-[-12px] left-[-12px] w-24 h-24 mondrian-light-blue mondrian-border z-0"></div>
+                <div className="absolute bottom-[-12px] right-[-12px] w-20 h-20 mondrian-light-yellow mondrian-border z-0"></div>
+                
+                <h2 className="font-serif text-3xl text-navy mb-6 relative z-10">Your Success Story Begins Here</h2>
                 <p className="text-lg mb-8 max-w-2xl mx-auto text-charcoal/80">
                   Every client journey begins with a conversation. Contact us to discuss how we can help you achieve your legal and financial goals.
                 </p>

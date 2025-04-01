@@ -7,10 +7,11 @@ const Approach = () => {
     <section className="py-24 bg-white relative">
       {/* Pure Mondrian-style grid structure */}
       <div className="container mx-auto px-8 max-w-7xl relative">
-        {/* Title section */}
+        {/* Title section - more asymmetrical now */}
         <div className="mondrian-grid mb-16">
-          {/* Red block */}
-          <div className="col-span-3 mondrian-red"></div>
+          {/* Asymmetrical left blocks */}
+          <div className="col-span-2 mondrian-red"></div>
+          <div className="col-span-1 mondrian-light-blue"></div>
           
           {/* Title area */}
           <div className="col-span-6 mondrian-grid-item bg-white p-8">
@@ -25,8 +26,9 @@ const Approach = () => {
             </p>
           </div>
           
-          {/* Yellow block */}
-          <div className="col-span-3 mondrian-yellow"></div>
+          {/* Asymmetrical right blocks */}
+          <div className="col-span-2 mondrian-light-yellow"></div>
+          <div className="col-span-1 mondrian-yellow"></div>
         </div>
           
         {/* Timeline element - improved design with stronger borders */}
@@ -61,11 +63,16 @@ const Approach = () => {
           </div>
         </div>
         
-        {/* Approach columns in pure Mondrian style */}
+        {/* Approach columns in pure Mondrian style - more asymmetrical now */}
         <div className="mondrian-grid mb-16">
           {/* Traditional column - left side */}
           <div className="col-span-6 mondrian-grid-item bg-white">
-            <div className="h-12 mondrian-red border-b-4 border-black"></div>
+            {/* Asymmetrical top blocks */}
+            <div className="flex h-12 border-b-4 border-black">
+              <div className="w-1/3 mondrian-red"></div>
+              <div className="w-1/3 bg-white"></div>
+              <div className="w-1/3 mondrian-light-yellow"></div>
+            </div>
             <div className="p-8">
               <h3 className="font-serif text-2xl text-black mb-8">
                 Traditional
@@ -90,9 +97,11 @@ const Approach = () => {
           
           {/* Innovative column - right side */}
           <div className="col-span-6 mondrian-grid-item bg-white">
+            {/* Asymmetrical top blocks */}
             <div className="flex h-12 border-b-4 border-black">
-              <div className="w-2/3 bg-white"></div>
-              <div className="w-1/3 mondrian-light-blue"></div>
+              <div className="w-1/4 mondrian-light-blue"></div>
+              <div className="w-2/4 bg-white"></div>
+              <div className="w-1/4 mondrian-blue"></div>
             </div>
             <div className="p-8">
               <h3 className="font-serif text-2xl text-black mb-8">
@@ -117,16 +126,18 @@ const Approach = () => {
           </div>
         </div>
         
-        {/* Footer link in pure Mondrian style */}
+        {/* Footer link in pure Mondrian style - more asymmetrical grid */}
         <div className="mondrian-grid">
-          <div className="col-span-2 mondrian-red"></div>
-          <div className="col-span-8 mondrian-grid-item bg-white p-8 text-center">
+          <div className="col-span-1 mondrian-red"></div>
+          <div className="col-span-2 mondrian-light-blue"></div>
+          <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
             <Link to="/how-we-work" className="mondrian-button inline-flex items-center font-medium text-xl">
               Learn more about how we work
               <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-all" />
             </Link>
           </div>
           <div className="col-span-2 mondrian-light-yellow"></div>
+          <div className="col-span-1 mondrian-yellow"></div>
         </div>
       </div>
     </section>

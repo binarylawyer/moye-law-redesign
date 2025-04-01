@@ -8,8 +8,9 @@ const ConsultationCTA = () => {
       <div className="container mx-auto px-8 max-w-7xl relative">
         {/* Pure Mondrian composition */}
         <div className="mondrian-grid mb-16">
-          {/* Red block - top left */}
-          <div className="col-span-3 mondrian-red"></div>
+          {/* Top row with asymmetrical blocks */}
+          <div className="col-span-2 mondrian-red"></div>
+          <div className="col-span-1 mondrian-light-blue"></div>
           
           {/* Main content box with thick border */}
           <div className="col-span-6 mondrian-grid-item bg-white p-10">
@@ -27,7 +28,7 @@ const ConsultationCTA = () => {
               {/* 30 years highlight - pure Mondrian style */}
               <div className="reveal mb-12" style={{ transitionDelay: '0.15s' }}>
                 <div className="inline-block border-4 border-black p-4 relative mx-auto flex items-center">
-                  <div className="w-16 h-full mondrian-yellow border-r-4 border-black"></div>
+                  <div className="w-16 h-full mondrian-light-yellow border-r-4 border-black"></div>
                   <span className="text-xl font-medium pl-4">
                     <span className="font-bold">30 YEARS</span> OF TRUSTED COUNSEL
                   </span>
@@ -36,7 +37,7 @@ const ConsultationCTA = () => {
               
               <div className="reveal mb-8" style={{ transitionDelay: '0.2s' }}>
                 <Link to="/contact">
-                  <button className="mondrian-button yellow text-xl py-5 px-12">
+                  <button className="mondrian-button light-yellow text-xl py-5 px-12">
                     Request Your Free Consultation
                     <ArrowRight className="inline-block ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </button>
@@ -52,21 +53,28 @@ const ConsultationCTA = () => {
             </div>
           </div>
           
-          {/* Blue block - top right */}
-          <div className="col-span-3 mondrian-blue"></div>
+          {/* Right side asymmetrical blocks */}
+          <div className="col-span-2 mondrian-blue"></div>
+          <div className="col-span-1 mondrian-light-yellow"></div>
           
-          {/* Bottom row with white spacing */}
-          <div className="col-span-8 mondrian-grid-item bg-white"></div>
-          <div className="col-span-4 mondrian-yellow"></div>
+          {/* Bottom row with more asymmetrical blocks */}
+          <div className="col-span-3 bg-white"></div>
+          <div className="col-span-2 mondrian-light-blue"></div>
+          <div className="col-span-3 bg-white"></div>
+          <div className="col-span-1 mondrian-yellow"></div>
+          <div className="col-span-3 mondrian-light-yellow"></div>
         </div>
         
-        {/* Pure Mondrian-style grid beneath */}
-        <div className="mondrian-grid h-16">
-          <div className="col-span-2 mondrian-red"></div>
+        {/* Pure Mondrian-style grid beneath - more asymmetrical */}
+        <div className="mondrian-grid h-20">
+          <div className="col-span-1 mondrian-red"></div>
+          <div className="col-span-2 bg-white mondrian-grid-item"></div>
+          <div className="col-span-2 mondrian-light-blue"></div>
           <div className="col-span-1 bg-white mondrian-grid-item"></div>
-          <div className="col-span-3 mondrian-blue"></div>
-          <div className="col-span-4 bg-white mondrian-grid-item"></div>
           <div className="col-span-2 mondrian-yellow"></div>
+          <div className="col-span-1 mondrian-blue"></div>
+          <div className="col-span-2 mondrian-light-yellow"></div>
+          <div className="col-span-1 bg-white mondrian-grid-item"></div>
         </div>
       </div>
     </section>
