@@ -150,7 +150,18 @@
 
   /* Skip link styles */
   .skip-link {
-    @apply sr-only focus:not-sr-only focus:fixed focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-white focus:text-black;
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #0A2342;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.3s;
+  }
+
+  .skip-link:focus {
+    top: 0;
   }
 }
 
