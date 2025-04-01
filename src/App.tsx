@@ -73,6 +73,9 @@ const AppRoutes = () => {
         <Route path="/entertainment-law" element={<EntertainmentLaw />} />
         <Route path="/emerging-tech" element={<EmergingTech />} />
         
+        {/* Direct access route for How We Work */}
+        <Route path="/how-we-work" element={<HowWeWork />} />
+        
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

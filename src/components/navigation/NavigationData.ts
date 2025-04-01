@@ -24,6 +24,6 @@ export const resourcesItems = [
   { title: "Podcasts", path: "/resources/podcasts" },
   { title: "Case Studies", path: "/resources/case-studies" },
   { title: "FAQ", path: "/resources/faq" },
-  { title: "How We Work", path: "/resources/how-we-work" },
+  { title: "How We Work", path: "/how-we-work" },
   { title: "Technology Approach", path: "/resources/technology-approach" },
 ];
