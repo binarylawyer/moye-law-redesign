@@ -61,7 +61,7 @@ const MondrianIntro = () => {
 
             {/* CTA with yellow background */}
             <div className="reveal col-span-12 md:col-span-4 bg-[#FFD500] p-6" style={{ transitionDelay: '0.5s' }}>
-              <Link to="/experience" className="inline-flex items-center group">
+              <Link to="/experience-the-difference" className="inline-flex items-center group">
                 <span className="text-black font-medium group-hover:underline transition-colors">Experience the Difference</span>
                 <ArrowRight className="ml-2 h-5 w-5 text-black group-hover:translate-x-1 transition-all" />
               </Link>
