@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,6 +14,7 @@
   
   h1 {
     @apply text-5xl md:text-6xl lg:text-7xl;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
   }
   
   h2 {
@@ -27,6 +27,7 @@
   
   p {
     @apply leading-relaxed text-base md:text-lg lg:text-xl;
+    line-height: 1.8;
   }
 }
 
@@ -74,6 +75,43 @@
   /* Center content */
   .center-content {
     @apply flex flex-col items-center justify-center text-center;
+  }
+
+  /* Add consistent spacing scale */
+  .space-xs { @apply p-2 md:p-3; }
+  .space-sm { @apply p-4 md:p-6; }
+  .space-md { @apply p-6 md:p-8; }
+  .space-lg { @apply p-8 md:p-12; }
+  .space-xl { @apply p-12 md:p-16; }
+
+  /* Add better touch targets */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  /* Add mobile-specific navigation */
+  .mobile-nav {
+    @apply fixed bottom-0 w-full bg-white shadow-lg md:hidden;
+  }
+
+  /* Add more semantic color variables */
+  :root {
+    --color-primary: #0A2342;
+    --color-secondary: #C99D56;
+    --color-accent: #4A90E2;
+    --color-success: #34D399;
+    --color-error: #EF4444;
+    --color-warning: #F59E0B;
+  }
+
+  /* Add consistent spacing system */
+  .spacing-system {
+    --space-unit: 0.25rem;
+    --space-xs: calc(var(--space-unit) * 2);
+    --space-sm: calc(var(--space-unit) * 4);
+    --space-md: calc(var(--space-unit) * 8);
+    --space-lg: calc(var(--space-unit) * 16);
+    --space-xl: calc(var(--space-unit) * 24);
   }
 }
 
