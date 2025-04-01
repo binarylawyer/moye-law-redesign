@@ -36,17 +36,17 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
   // Select only a subset of practice areas for the dropdown
   const featuredPracticeAreas = practiceAreas.slice(0, 6);
 
-  // Determine text color based on scroll state
-  const textColor = isScrolled ? 'text-navy' : 'text-white';
-  const activeColor = 'text-[#FFD500]';
+  // Consistent colors regardless of scroll state
+  const textColor = 'text-black';
+  const activeColor = 'text-[#D6001C]';
   const hoverColor = 'hover:text-[#D6001C]';
 
   return (
     <NavigationMenu>
-      <NavigationMenuList className="space-x-6">
+      <NavigationMenuList className="space-x-4">
         <NavigationMenuItem className="relative">
           <NavigationMenuTrigger 
-            className="group px-2 bg-transparent focus:bg-transparent hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-inherit"
+            className="group px-2 bg-transparent focus:bg-transparent hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-inherit border-2 border-black/30 hover:border-black"
           >
             <span className={`font-serif text-lg font-medium ${textColor} ${hoverColor} transition-colors ${isActive('/practice') ? activeColor : ''}`}>
               Practice
@@ -54,18 +54,18 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
             <ChevronDown className={`h-4 w-4 transition duration-200 group-data-[state=open]:rotate-180 ${textColor}`} />
           </NavigationMenuTrigger>
           
-          <NavigationMenuContent className="bg-white/95 backdrop-blur-md shadow-lg p-6 w-[500px] absolute left-1/2 -translate-x-1/2 mt-3 border border-black/20">
-            {/* Subtle accent element */}
-            <div className="absolute top-0 left-0 w-1/3 h-0.5 bg-[#D6001C]/40"></div>
+          <NavigationMenuContent className="bg-white border-4 border-black p-6 w-[500px] absolute left-1/2 -translate-x-1/2 mt-3">
+            {/* Mondrian accent element */}
+            <div className="absolute top-0 left-0 w-1/3 h-2 bg-[#D6001C]"></div>
             
             <div className="grid grid-cols-2 gap-x-8 gap-y-4">
               {featuredPracticeAreas.map((area, index) => (
                 <Link
                   key={area.path}
                   to={area.path}
-                  className="text-navy group flex items-center border-b border-navy/20 pb-1 transition-colors whitespace-nowrap hover:border-[#D6001C]"
+                  className="text-black group flex items-center border-b-2 border-black/30 pb-1 transition-colors whitespace-nowrap hover:border-[#D6001C]"
                 >
-                  <span className="w-5 h-5 inline-flex items-center justify-center mr-2 text-xs font-medium border border-navy/40">
+                  <span className="w-6 h-6 inline-flex items-center justify-center mr-2 text-xs font-medium border-2 border-black">
                     {index + 1}
                   </span>
                   <span className="group-hover:text-[#D6001C]">{area.title}</span>
@@ -73,7 +73,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
               ))}
             </div>
             
-            <div className="mt-6 pt-4 border-t border-black/20">
+            <div className="mt-6 pt-4 border-t-2 border-black">
               <Link to="/practice" className="text-[#003B98] hover:text-[#D6001C] flex items-center transition-colors font-serif">
                 View All Practice Areas
               </Link>
@@ -83,24 +83,24 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
         
         <NavigationMenuItem className="relative">
           <NavigationMenuTrigger 
-            className="group px-2 bg-transparent focus:bg-transparent hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-inherit"
+            className="group px-2 bg-transparent focus:bg-transparent hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-inherit border-2 border-black/30 hover:border-black"
           >
-            <span className={`font-serif text-xl font-light ${textColor} ${hoverColor} transition-colors ${isServiceActive() ? activeColor : ''}`}>
+            <span className={`font-serif text-lg font-medium ${textColor} ${hoverColor} transition-colors ${isServiceActive() ? activeColor : ''}`}>
               Services
             </span>
             <ChevronDown className={`h-4 w-4 transition duration-200 group-data-[state=open]:rotate-180 ${textColor}`} />
           </NavigationMenuTrigger>
           
-          <NavigationMenuContent className="bg-white/95 backdrop-blur-md shadow-lg p-5 w-[300px] absolute left-1/2 -translate-x-1/2 mt-3 border border-black/20">
-            {/* Subtle accent element */}
-            <div className="absolute top-0 right-0 w-1/3 h-0.5 bg-[#FFD500]/40"></div>
+          <NavigationMenuContent className="bg-white border-4 border-black p-5 w-[300px] absolute left-1/2 -translate-x-1/2 mt-3">
+            {/* Mondrian accent element */}
+            <div className="absolute top-0 right-0 w-1/3 h-2 bg-[#FFD500]"></div>
             
             <div className="flex flex-col space-y-3">
               {specializedServices.map((service) => (
                 <Link
                   key={service.path}
                   to={service.path}
-                  className="text-navy hover:text-[#D6001C] transition-colors border-b border-navy/20 pb-1 hover:border-[#D6001C]"
+                  className="text-black hover:text-[#D6001C] transition-colors border-b-2 border-black/30 pb-1 hover:border-[#D6001C]"
                 >
                   {service.title}
                 </Link>
@@ -112,7 +112,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
         <NavigationMenuItem>
           <Link 
             to="/about" 
-            className={`px-2 font-serif text-base font-semibold ${textColor} ${hoverColor} transition-colors ${isActive('/about') ? activeColor : ''}`}
+            className={`px-3 py-2 font-serif text-base font-medium ${textColor} ${hoverColor} transition-colors border-2 border-black/30 hover:border-black ${isActive('/about') ? activeColor : ''}`}
           >
             Our Firm
           </Link>
@@ -120,7 +120,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
         
         <NavigationMenuItem className="relative">
           <NavigationMenuTrigger 
-            className="group px-2 bg-transparent focus:bg-transparent hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-inherit"
+            className="group px-2 bg-transparent focus:bg-transparent hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-inherit border-2 border-black/30 hover:border-black"
           >
             <span className={`font-serif text-lg ${textColor} ${hoverColor} transition-colors ${isActive('/resources') ? activeColor : ''}`}>
               Resources
@@ -128,16 +128,16 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
             <ChevronDown className={`h-4 w-4 transition duration-200 group-data-[state=open]:rotate-180 ${textColor}`} />
           </NavigationMenuTrigger>
           
-          <NavigationMenuContent className="bg-white/95 backdrop-blur-md shadow-lg p-5 w-[300px] absolute left-1/2 -translate-x-1/2 mt-3 border border-black/20">
-            {/* Subtle accent element */}
-            <div className="absolute bottom-0 left-0 w-1/3 h-0.5 bg-[#003B98]/40"></div>
+          <NavigationMenuContent className="bg-white border-4 border-black p-5 w-[300px] absolute left-1/2 -translate-x-1/2 mt-3">
+            {/* Mondrian accent element */}
+            <div className="absolute bottom-0 left-0 w-1/3 h-2 bg-[#003B98]"></div>
             
             <div className="flex flex-col space-y-3">
               {resourcesItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className="text-navy hover:text-[#D6001C] transition-colors border-b border-navy/20 pb-1 hover:border-[#D6001C]"
+                  className="text-black hover:text-[#D6001C] transition-colors border-b-2 border-black/30 pb-1 hover:border-[#D6001C]"
                 >
                   {item.title}
                 </Link>
@@ -149,7 +149,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
         <NavigationMenuItem>
           <Link 
             to="/contact" 
-            className={`px-3 py-2 font-serif text-lg font-medium text-white bg-[#003B98]/90 hover:bg-[#D6001C]/90 transition-colors border border-white/30 flex items-center ${isScrolled ? 'border-navy/30' : ''}`}
+            className="px-3 py-2 font-serif text-lg font-medium text-black bg-[#FFD500] hover:bg-[#D6001C] hover:text-white transition-colors border-4 border-black flex items-center mondrian-button yellow"
           >
             Contact
           </Link>

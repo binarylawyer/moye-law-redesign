@@ -22,6 +22,10 @@ const Header: React.FC = () => {
   const isHomePage = location.pathname === '/';
 
   useEffect(() => {
+    // Check initial scroll position on mount
+    const initialScroll = window.scrollY;
+    setIsScrolled(initialScroll > 20);
+    
     const handleScroll = () => {
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 20);
@@ -66,78 +70,56 @@ const Header: React.FC = () => {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b-4 border-black ${
         isScrolled ? 'h-[80px]' : 'h-[100px]'
       }`}
     >
-      {/* Enhanced frosted glass background */}
+      {/* Enhanced Mondrian-style background */}
       <div 
         className="absolute inset-0 overflow-hidden"
         style={{
           backgroundColor: isScrolled 
-            ? 'rgba(255, 255, 255, 0.85)' 
-            : 'rgba(255, 255, 255, 0.7)',
-          backdropFilter: 'blur(12px)',
-          borderBottom: isScrolled ? '1px solid rgba(0, 0, 0, 0.1)' : 'none'
+            ? 'rgba(255, 255, 255, 0.9)' 
+            : 'rgba(255, 255, 255, 0.8)',
+          backdropFilter: 'blur(12px)'
         }}
       >
-        {/* Animated thicker vertical lines in middle section */}
+        {/* Mondrian-inspired animated vertical lines */}
         <div 
-          className="absolute top-0 h-full w-1 bg-black/8 transition-all duration-1000 ease-in-out" 
+          className="absolute top-0 h-full w-1 bg-black/30 transition-all duration-1000 ease-in-out" 
           style={{ left: `${line1Position}%` }}
         ></div>
         <div 
-          className="absolute top-0 h-full w-1 bg-black/8 transition-all duration-1000 ease-in-out" 
+          className="absolute top-0 h-full w-1 bg-black/30 transition-all duration-1000 ease-in-out" 
           style={{ left: `${line2Position}%` }}
         ></div>
 
-        {/* Subtle irregular moving boxes */}
+        {/* Mondrian-inspired color blocks */}
         <div 
-          className="absolute top-0 left-1/4 w-12 h-12 bg-[#D6001C]/5 transition-all duration-300"
-          style={{ 
-            transform: `translate(${-box1Offset}px, ${box1Offset/2}px) scale(${box1Scale})`,
-            opacity: isScrolled ? 0.5 : 0.2
-          }}
+          className="absolute top-0 left-0 w-12 h-full mondrian-red opacity-20"
         ></div>
         <div 
-          className="absolute top-1/2 right-1/3 w-16 h-10 bg-[#003B98]/5 transition-all duration-300"
-          style={{ 
-            transform: `translate(${box2Offset}px, ${-box2Offset/3}px) scale(${box2Scale})`,
-            opacity: isScrolled ? 0.5 : 0.2
-          }}
-        ></div>
-        <div 
-          className="absolute bottom-0 left-2/3 w-10 h-10 bg-[#FFD500]/5 transition-all duration-300"
-          style={{ 
-            transform: `translate(${box3Offset}px, ${-box3Offset/2}px) scale(${box3Scale})`,
-            opacity: isScrolled ? 0.5 : 0.2
-          }}
+          className="absolute top-0 right-0 w-12 h-full mondrian-blue opacity-20"
         ></div>
         
-        {/* Mondrian-inspired subtle color accents */}
-        <div className={`absolute top-0 left-0 w-full h-0.5 transition-opacity duration-300 ${isScrolled ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="h-full flex">
-            <div className="w-1/5 h-full bg-[#D6001C]/40"></div>
-            <div className="w-3/5 h-full bg-transparent"></div>
-            <div className="w-1/5 h-full bg-[#003B98]/40"></div>
-          </div>
+        {/* Mondrian-inspired horizontal lines */}
+        <div className="absolute top-0 left-0 w-full h-1 flex border-b-2 border-black/20">
+          <div className="w-1/5 h-full bg-[#D6001C]/40"></div>
+          <div className="w-3/5 h-full bg-transparent"></div>
+          <div className="w-1/5 h-full bg-[#003B98]/40"></div>
         </div>
         
         {/* Bottom accent */}
-        <div className={`absolute bottom-0 left-0 w-full h-0.5 transition-opacity duration-300 ${isScrolled ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="h-full flex">
-            <div className="w-2/3 h-full bg-transparent"></div>
-            <div className="w-1/3 h-full bg-[#FFD500]/40"></div>
-          </div>
+        <div className="absolute bottom-0 left-0 w-full h-1 flex">
+          <div className="w-2/3 h-full bg-transparent"></div>
+          <div className="w-1/3 h-full bg-[#FFD500]/40"></div>
         </div>
       </div>
       
       <div className="container mx-auto px-4 md:px-12 flex justify-between items-center h-full relative">
         <Link 
           to="/" 
-          className={`font-serif text-xl hover:opacity-80 transition duration-200 z-10 ${
-            isScrolled ? 'text-navy' : 'text-white'
-          }`}
+          className="font-serif text-xl hover:opacity-80 transition duration-200 z-10 text-black"
         >
           <span className="font-bold text-2xl">MOYE</span> <span className="text-lg">LAW</span>
         </Link>
@@ -156,9 +138,7 @@ const Header: React.FC = () => {
         <div className="md:hidden z-10">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`hover:text-[#D6001C] transition-colors p-2 border ${
-              isScrolled ? 'text-navy border-navy/20' : 'text-white border-white/20'
-            }`}
+            className="hover:text-[#D6001C] transition-colors p-2 border border-black/20 text-black"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
