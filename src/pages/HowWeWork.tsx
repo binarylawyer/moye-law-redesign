@@ -37,11 +37,11 @@ const HowWeWork = () => {
               <div className="col-span-3 mondrian-red h-64 md:h-96"></div>
               
               {/* Title in center white block */}
-              <div className="col-span-6 bg-white p-8 flex flex-col justify-center items-center h-64 md:h-96">
-                <h1 className="reveal font-serif text-4xl md:text-6xl text-black mb-8 tracking-tight text-center">
+              <div className="col-span-6 bg-white p-6 flex flex-col justify-center items-center min-h-[16rem] md:min-h-[24rem]">
+                <h1 className="reveal font-serif text-3xl sm:text-4xl md:text-6xl text-black mb-4 md:mb-8 tracking-tight text-center">
                   How We Work
                 </h1>
-                <p className="reveal text-center text-lg text-black/80 max-w-md" style={{ transitionDelay: '0.1s' }}>
+                <p className="reveal text-center text-base sm:text-lg text-black/80 max-w-md" style={{ transitionDelay: '0.1s' }}>
                   The intersection of traditional legal expertise and forward-thinking innovation.
                 </p>
               </div>
@@ -271,10 +271,13 @@ const HowWeWork = () => {
           <div className="container mx-auto px-8 max-w-7xl">
             <div className="mondrian-grid h-64">
               <div className="col-span-2 mondrian-red"></div>
-              <div className="col-span-3 bg-white"></div>
+              <div className="col-span-1 bg-white"></div>
+              <div className="col-span-2 mondrian-light-blue"></div>
               <div className="col-span-1 mondrian-blue"></div>
               <div className="col-span-2 mondrian-light-yellow"></div>
-              <div className="col-span-4 bg-white"></div>
+              <div className="col-span-1 bg-white"></div>
+              <div className="col-span-2 mondrian-yellow"></div>
+              <div className="col-span-1 bg-white"></div>
             </div>
           </div>
         </section>
