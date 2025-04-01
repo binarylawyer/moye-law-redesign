@@ -364,3 +364,84 @@
   border-radius: 0.25rem;
   padding: 0.25rem;
 }
+
+/* Additional typography overrides */
+.prose h1, 
+.prose h2, 
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  color: #0A2342; /* Navy color */
+  font-family: 'Inter', serif;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+.prose h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+.prose h2 {
+  font-size: 2rem;
+  border-bottom: 1px solid rgba(10, 35, 66, 0.1);
+  padding-bottom: 0.3em;
+  font-weight: 600;
+}
+
+.prose h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.prose p {
+  color: rgba(45, 49, 66, 0.9);
+  margin-bottom: 1.25em;
+  line-height: 1.6;
+}
+
+.prose ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25em;
+}
+
+.prose ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25em;
+}
+
+.prose li {
+  margin-bottom: 0.5em;
+  color: rgba(45, 49, 66, 0.9);
+}
+
+.prose a {
+  color: #C99D56; /* Gold */
+  text-decoration: none;
+}
+
+.prose a:hover {
+  text-decoration: underline;
+}
+
+.prose blockquote {
+  border-left: 4px solid #C99D56;
+  padding-left: 1rem;
+  font-style: italic;
+  color: rgba(45, 49, 66, 0.7);
+}
+
+/* Table of contents target highlight */
+.highlight-toc-target {
+  animation: highlight-section 2s ease-out;
+}
+
+@keyframes highlight-section {
+  0% { background-color: rgba(201, 157, 86, 0.2); }
+  100% { background-color: transparent; }
+}

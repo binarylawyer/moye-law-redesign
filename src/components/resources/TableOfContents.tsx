@@ -83,7 +83,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ content }) => {
   };
 
   return (
-    <div className="mb-6 border border-gray-200 rounded-lg shadow-sm">
+    <div className="mb-8 border border-gray-200 rounded-lg shadow-sm">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between bg-navy/5 p-4 text-navy font-medium hover:bg-navy/10 transition-colors"
@@ -106,16 +106,17 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ content }) => {
                 <a 
                   href={`#${heading.id}`}
                   className="block py-1 hover:text-gold transition-colors"
-                  onClick={() => {
-                    // Add smooth scrolling
+                  onClick={(e) => {
+                    e.preventDefault();
                     const element = document.getElementById(heading.id);
                     if (element) {
                       element.scrollIntoView({ behavior: 'smooth' });
-                      // Highlight the section briefly
-                      element.classList.add('highlight-section');
-                      setTimeout(() => element.classList.remove('highlight-section'), 2000);
+                      // Add a temporary highlight effect
+                      element.classList.add('highlight-toc-target');
+                      setTimeout(() => {
+                        element.classList.remove('highlight-toc-target');
+                      }, 2000);
                     }
-                    return false;
                   }}
                 >
                   {heading.text}
