@@ -17,12 +17,24 @@ const ResourceDetail: React.FC = () => {
   const elementsRef = useAnimatedElements();
 
   useEffect(() => {
+    // DEBUG: Log important information
+    console.log('Current slug:', slug);
+    console.log('All available slugs:', resources.map(r => r.slug));
+    
     // Find the resource that matches the slug
     const foundResource = resources.find(r => r.slug === slug) || null;
+    
+    // DEBUG: Log found resource
+    console.log('Found resource:', foundResource);
     
     // Ensure resource content is properly set - trim whitespace if needed
     if (foundResource && foundResource.content) {
       foundResource.content = foundResource.content.trim();
+      // DEBUG: Log content length
+      console.log('Content length:', foundResource.content.length);
+      console.log('Content preview:', foundResource.content.substring(0, 100));
+    } else {
+      console.log('No content found in resource');
     }
     
     setResource(foundResource);
@@ -44,6 +56,9 @@ const ResourceDetail: React.FC = () => {
     // Scroll to top when resource changes
     window.scrollTo(0, 0);
   }, [slug]);
+
+  // DEBUG: Log rendering state
+  console.log('Current resource state:', resource ? `Resource ${resource.title} ready to render` : 'No resource');
 
   // Show not found if no resource
   if (!resource) {

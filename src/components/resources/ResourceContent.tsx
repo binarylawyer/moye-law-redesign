@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
+import remarkGfm from 'remark-gfm';
 import TableOfContents from './TableOfContents';
 import { Link } from 'react-router-dom';
 
@@ -9,6 +10,15 @@ interface ResourceContentProps {
 }
 
 const ResourceContent: React.FC<ResourceContentProps> = ({ content }) => {
+  // Debug logging
+  useEffect(() => {
+    console.log("ResourceContent received content:", !!content);
+    if (content) {
+      console.log("Content type:", typeof content);
+      console.log("Content length:", content.length);
+    }
+  }, [content]);
+
   // If content is undefined or empty, show a message with a return link
   if (!content) {
     return (
@@ -30,7 +40,7 @@ const ResourceContent: React.FC<ResourceContentProps> = ({ content }) => {
       </section>
     );
   }
-
+  
   // Create components for ReactMarkdown with proper heading IDs and styling
   const components = {
     h1: ({ children }: React.PropsWithChildren<{}>) => {
@@ -108,18 +118,18 @@ const ResourceContent: React.FC<ResourceContentProps> = ({ content }) => {
       return <hr className="my-8 border-t border-gray-200" />;
     },
   };
-
+  
   return (
     <section className="py-6 md:py-10 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <TableOfContents content={content} />
-          <div className="bg-white">
+          <div className="bg-white p-0">
             <div className="markdown-content">
               <ReactMarkdown 
-                components={components}
+                remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
-                className="markdown-body"
+                components={components}
               >
                 {content}
               </ReactMarkdown>
