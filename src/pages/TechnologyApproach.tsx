@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ConsultationCTA from "../components/ConsultationCTA";
+import ResourcePageHeader from "../components/resources/ResourcePageHeader";
 import { Shield, Brain, Lock, Database, Code, Zap, ServerCrash, MicrochipIcon, ShieldCheck } from 'lucide-react';
 
 const TechnologyPlatform: React.FC = () => {
@@ -32,29 +33,12 @@ const TechnologyPlatform: React.FC = () => {
   return (
     <>
       <Header />
-      <main className="pt-32 bg-white">
-        {/* Hero Section with more prominent title */}
-        <section className="py-16 md:py-24">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <h1 
-                ref={el => elementsRef.current[0] = el}
-                className="reveal font-serif text-4xl md:text-5xl text-navy mb-6"
-              >
-                Our Technology Platform
-              </h1>
-              <p 
-                ref={el => elementsRef.current[1] = el}
-                className="reveal text-lg text-charcoal/80 mb-8"
-                style={{ transitionDelay: '0.1s' }}
-              >
-                At Moye Law, we've developed a proprietary technology platform that leverages advanced artificial intelligence 
-                and machine learning capabilities while maintaining DoD-level security protocols. This powerful combination allows 
-                us to deliver exceptional legal services with unparalleled efficiency, accuracy, and confidentiality.
-              </p>
-            </div>
-          </div>
-        </section>
+      <main className="pt-48 bg-white">
+        <ResourcePageHeader 
+          title="Our Technology Platform"
+          description="At Moye Law, we've developed a proprietary technology platform that leverages advanced artificial intelligence and machine learning capabilities while maintaining DoD-level security protocols."
+          variant="blue"
+        />
 
         {/* AI & ML Innovation Section */}
         <section className="py-16 bg-light-gray">

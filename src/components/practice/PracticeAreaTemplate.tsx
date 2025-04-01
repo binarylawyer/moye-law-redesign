@@ -17,7 +17,7 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
       
-      <main className="flex-grow pt-24 relative">
+      <main className="flex-grow pt-48 relative">
         {/* Decorative Mondrian lines that extend beyond screen width */}
         <div className="absolute top-64 left-0 w-full h-4 mondrian-blue -z-10"></div>
         <div className="absolute top-[32rem] left-0 w-full h-4 mondrian-red -z-10"></div>

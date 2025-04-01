@@ -15,7 +15,7 @@ const PracticeAreaHero: React.FC<PracticeAreaHeroProps> = ({ title, description 
   };
 
   return (
-    <section className="pt-32 pb-24 md:pt-40 md:pb-32 relative overflow-hidden">
+    <section className="py-20 md:py-24 relative overflow-hidden">
       <div className="container mx-auto px-8">
         <div className="mondrian-grid">
           {/* Mondrian-style colored block - color determined by title */}

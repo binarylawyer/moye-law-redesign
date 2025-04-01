@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -40,15 +39,26 @@ const About: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main className="pt-24">
-        {/* Hero Section with more subdued coloring */}
-        <section className="py-20 md:py-32 px-4 md:px-6 bg-light-gray">
-          <div className="container mx-auto">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="font-serif text-4xl md:text-5xl mb-8 text-navy mt-36">Our Firm</h1>
-              <p className="text-navy/70 text-xl mb-4">
-                A family-run firm at the intersection of traditional legal expertise and innovative technology.
-              </p>
+      <main className="pt-48">
+        {/* Hero Section with Mondrian styling */}
+        <section className="py-20 md:py-24 bg-white relative">
+          {/* Horizontal Mondrian lines that extend beyond screen width */}
+          <div className="absolute top-16 left-0 w-full h-4 mondrian-blue -z-10"></div>
+          <div className="absolute bottom-16 left-0 w-full h-4 mondrian-red -z-10"></div>
+          
+          <div className="container mx-auto px-8">
+            {/* Mondrian-style title container */}
+            <div className="mondrian-grid mb-12">
+              <div className="col-span-3 mondrian-light-blue"></div>
+              <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
+                <h1 className="font-serif text-4xl md:text-5xl text-black mb-6">
+                  Our Firm
+                </h1>
+                <p className="text-black/80 text-lg md:text-xl">
+                  A family-run firm at the intersection of traditional legal expertise and innovative technology.
+                </p>
+              </div>
+              <div className="col-span-3 mondrian-light-yellow"></div>
             </div>
           </div>
         </section>

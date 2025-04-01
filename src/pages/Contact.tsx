@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -35,9 +34,9 @@ const Contact: React.FC = () => {
   return (
     <>
       <Header />
-      <main className="pt-32 bg-white">
+      <main className="pt-48 bg-white">
         {/* Hero Section */}
-        <section className="pt-16 pb-16 md:pt-24 md:pb-24">
+        <section className="pb-16 md:pb-24">
           <div className="container mx-auto px-4">
             <div 
               ref={el => elementsRef.current[0] = el}

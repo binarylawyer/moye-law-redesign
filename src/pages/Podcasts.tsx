@@ -1,10 +1,9 @@
-
 import React from 'react';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import PodcastHero from "../components/podcasts/PodcastHero";
 import PodcastList from "../components/podcasts/PodcastList";
 import ConsultationCTA from "../components/ConsultationCTA";
+import ResourcePageHeader from "../components/resources/ResourcePageHeader";
 import { podcastData } from "../data/podcastData";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -16,7 +15,11 @@ const Podcasts: React.FC = () => {
     <>
       <Header />
       <main className="pt-48 bg-white">
-        <PodcastHero />
+        <ResourcePageHeader 
+          title="Moye Law Podcast Series"
+          description="Listen to our AI-driven podcast series exploring complex legal topics in a clear, accessible format. Get expert insights on estate planning, intellectual property protection, and other specialized areas."
+          variant="blue"
+        />
         <PodcastList customPodcasts={podcasts} />
         <ConsultationCTA />
       </main>

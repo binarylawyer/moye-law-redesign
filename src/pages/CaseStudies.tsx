@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ConsultationCTA from '@/components/ConsultationCTA';
+import ResourcePageHeader from '@/components/resources/ResourcePageHeader';
 
 interface CaseStudy {
   id: string;
@@ -81,27 +82,12 @@ const CaseStudies: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
       
-      <main className="flex-grow relative overflow-hidden">
-        {/* Hero Section with adjusted padding to match other pages */}
-        <section className="pt-32 pb-12 md:pt-48 md:pb-24">
-          <div className="container mx-auto px-8">
-            <div className="relative">
-              {/* Decorative Mondrian elements - added more with light colors */}
-              <div className="absolute top-[-60px] right-[15%] w-32 h-32 mondrian-light-yellow mondrian-border"></div>
-              <div className="absolute bottom-[-20px] left-[10%] w-16 h-16 mondrian-light-blue mondrian-border"></div>
-              
-              <div className="max-w-4xl">
-                <h1 className="font-serif text-4xl md:text-5xl text-navy mb-6 relative z-10">
-                  Client Success Stories
-                </h1>
-                <div className="w-48 h-2 mondrian-red mb-8"></div>
-                <p className="text-lg text-charcoal/80 mb-12 max-w-3xl relative z-10">
-                  Real-world examples of how we've helped clients navigate complex legal challenges while protecting what matters most. All case studies are anonymized to protect client confidentiality.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+      <main className="flex-grow pt-48 relative overflow-hidden">
+        <ResourcePageHeader 
+          title="Client Success Stories"
+          description="Real-world examples of how we've helped clients navigate complex legal challenges while protecting what matters most. All case studies are anonymized to protect client confidentiality."
+          variant="red"
+        />
         
         {/* Horizontal lines extending beyond screen width - Position 1 */}
         <div className="absolute w-[150vw] h-4 mondrian-light-blue left-[-25vw] top-[32%] z-10"></div>
@@ -148,17 +134,17 @@ const CaseStudies: React.FC = () => {
                   <div className="bg-white mondrian-border p-8">
                     <div className="flex flex-col md:flex-row gap-8">
                       <div className="md:w-3/4">
-                        <h2 className="font-serif text-2xl text-navy mb-3">{study.title}</h2>
-                        <p className="text-sm text-charcoal/70 mb-6">Client: {study.clientType}</p>
+                        <h2 className="font-serif text-2xl text-black mb-3">{study.title}</h2>
+                        <p className="text-sm text-black/70 mb-6">Client: {study.clientType}</p>
                         
                         <div className="mb-6">
-                          <h3 className="font-medium text-navy mb-2">Challenge</h3>
-                          <p className="text-charcoal/80">{study.challenge}</p>
+                          <h3 className="font-medium text-black mb-2">Challenge</h3>
+                          <p className="text-black/80">{study.challenge}</p>
                         </div>
                         
                         <div className="mb-6">
-                          <h3 className="font-medium text-navy mb-2">Solution</h3>
-                          <p className="text-charcoal/80">{study.solution}</p>
+                          <h3 className="font-medium text-black mb-2">Solution</h3>
+                          <p className="text-black/80">{study.solution}</p>
                         </div>
                       </div>
                       
@@ -170,7 +156,7 @@ const CaseStudies: React.FC = () => {
                               index % 5 === 1 ? 'mondrian-light-blue' : 
                               index % 5 === 2 ? 'mondrian-yellow' : 
                               index % 5 === 3 ? 'mondrian-blue' : 'mondrian-red'}
-                            ${index % 5 === 4 ? 'text-white' : 'text-navy'}
+                            ${index % 5 === 4 ? 'text-white' : 'text-black'}
                             mondrian-border
                           `}
                         >
@@ -187,7 +173,7 @@ const CaseStudies: React.FC = () => {
                     <div className="mt-8 text-right">
                       <Link 
                         to={study.practiceAreaPath} 
-                        className="text-gold hover:text-navy transition-colors flex items-center justify-end"
+                        className="text-black border-b-2 border-black hover:text-[#D6001C] transition-colors flex items-center justify-end"
                       >
                         Learn more about {study.practiceArea}
                         <ArrowRight className="ml-2" size={16} />
@@ -212,12 +198,12 @@ const CaseStudies: React.FC = () => {
                 <div className="absolute top-[-12px] left-[-12px] w-24 h-24 mondrian-light-blue mondrian-border z-0"></div>
                 <div className="absolute bottom-[-12px] right-[-12px] w-20 h-20 mondrian-light-yellow mondrian-border z-0"></div>
                 
-                <h2 className="font-serif text-3xl text-navy mb-6 relative z-10">Your Success Story Begins Here</h2>
-                <p className="text-lg mb-8 max-w-2xl mx-auto text-charcoal/80">
+                <h2 className="font-serif text-3xl text-black mb-6 relative z-10">Your Success Story Begins Here</h2>
+                <p className="text-lg mb-8 max-w-2xl mx-auto text-black/80">
                   Every client journey begins with a conversation. Contact us to discuss how we can help you achieve your legal and financial goals.
                 </p>
                 <Link to="/contact">
-                  <Button className="bg-gold hover:bg-gold/90 text-white px-8 py-6 mondrian-border">
+                  <Button className="bg-[#D6001C] hover:bg-[#D6001C]/90 text-white px-8 py-6 mondrian-border">
                     Schedule a Consultation
                   </Button>
                 </Link>
