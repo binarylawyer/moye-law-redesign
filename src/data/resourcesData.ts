@@ -559,7 +559,7 @@ export const resources: Resource[] = [
     slug: 'technology-estate-administration',
     date: '2024-02-20',
     author: 'Jane Smith',
-    tags: ['Technology', 'Estate Administration', 'Innovation'],
+    tags: ['Legal Technology', 'Estate Administration', 'Innovation'],
     content: `
       # Technology in Estate Administration
 
@@ -670,7 +670,7 @@ export const resources: Resource[] = [
     slug: 'charitable-giving-strategies',
     date: '2023-12-12',
     author: 'Christopher Moye',
-    tags: ['Philanthropy', 'Tax Planning', 'Charitable Trusts'],
+    tags: ['Legal Technology', 'Estate Administration', 'Innovation'],
     content: `
       # Charitable Giving Strategies
 
