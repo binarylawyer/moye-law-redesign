@@ -959,5 +959,206 @@ export const resources: Resource[] = [
 
       Our structured process is designed to provide confidence and clarity while delivering exceptional legal outcomes. We recognize that each client's situation is unique, and we adapt our approach accordingly while maintaining consistent quality and attention to detail. We view our client relationships as long-term partnerships built on trust, communication, and mutual respect.
     `
+  },
+  {
+    id: '20',
+    title: 'Test Article with Markdown Features',
+    description: 'An article to test various Markdown formatting features.',
+    category: 'article',
+    slug: 'markdown-test',
+    date: '2023-01-20',
+    author: 'Test Author',
+    tags: ['Test', 'Markdown', 'Formatting'],
+    content: `
+      # Markdown Test Article
+
+      This is a **test article** that demonstrates *various* Markdown formatting features.
+
+      ## Headings and Text Formatting
+
+      This section shows different heading levels and text formatting options. 
+      
+      You can make text **bold** using double asterisks or __underscores__.
+      
+      You can make text *italic* using single asterisks or _underscores_.
+      
+      ### Lists Work Too
+
+      Here's an unordered list:
+      
+      - First item with **bold text**
+      - Second item with *italic text*
+      - Third item with ***bold and italic text***
+      
+      ### Nested Headings
+      
+      #### Level 4 Heading
+      
+      This demonstrates how level 4 headings appear in the document.
+      
+      ## Another Main Section
+      
+      This shows how multiple main sections are formatted and spaced in the document.
+      
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque, justo nec egestas vulputate, felis nisl varius est, vitae feugiat magna lacus vel lectus. Phasellus tincidunt commodo ipsum, sit amet lobortis sapien pellentesque sit amet.
+    `
+  },
+  {
+    id: '11',
+    title: 'AI and the Future of Legal Services: Balancing Innovation with Tradition',
+    description: 'An examination of how AI is transforming legal practice while maintaining essential human elements.',
+    category: 'article',
+    slug: 'ai-future-legal-services',
+    date: '2024-03-15',
+    author: 'Christopher Moye',
+    tags: ['AI', 'Legal Technology', 'Innovation', 'Future of Law'],
+    content: `
+      # AI and the Future of Legal Services: Balancing Innovation with Tradition
+
+      In today's rapidly evolving legal landscape, artificial intelligence (AI) is no longer a futuristic concept but a present reality transforming how legal services are delivered. The integration of AI into legal practice offers unprecedented opportunities to enhance efficiency, accuracy, and client service while raising important questions about the balance between technological innovation and the human elements that have traditionally defined the practice of law.
+
+      ## The Current State of AI in Legal Practice
+
+      The legal industry has witnessed significant technological advancement in recent years. Today's AI applications in law include:
+
+      - **Document review and analysis** - AI systems can review thousands of documents in a fraction of the time it would take human attorneys
+      - **Contract analysis** - Identifying key provisions, risks, and opportunities in complex agreements
+      - *Predictive analytics* - Forecasting litigation outcomes based on historical data
+      - **Legal research** - Finding relevant precedents and authorities across vast databases
+      - *Due diligence automation* - Streamlining transaction preparation and review
+
+      These technologies are not merely theoretical—they're being implemented by forward-thinking firms seeking competitive advantages in a changing marketplace. According to recent industry surveys, over 60% of large law firms have already implemented some form of AI in their practice.
+
+      ### From Automation to Augmentation
+
+      The most successful implementations of legal AI follow an **augmentation rather than replacement** model. In this paradigm:
+
+      1. AI handles routine, repetitive tasks
+      2. Attorneys focus on complex analysis and strategy
+      3. The client benefits from improved efficiency and reduced costs
+      4. Legal judgment remains firmly in human hands
+
+      This approach recognizes that while AI excels at pattern recognition and data processing, the practice of law fundamentally requires human judgment, emotional intelligence, and ethical reasoning that AI cannot replicate.
+
+      ## Key Benefits for Clients
+
+      The integration of AI into legal practice offers several tangible benefits for clients:
+
+      ### Efficiency and Cost Reduction
+
+      AI can dramatically reduce the time required for certain legal tasks:
+
+      | Task | Traditional Approach | AI-Enhanced Approach | Time Savings |
+      |------|----------------------|----------------------|--------------|
+      | Document Review | 100 attorney hours | 20 attorney hours + AI | 80% |
+      | Contract Analysis | 10 hours per contract | 2 hours per contract | 80% |
+      | Legal Research | 15 hours | 3 hours | 80% |
+      | Due Diligence | 200+ hours | 40-60 hours | 70-80% |
+
+      These efficiency gains can translate directly into cost savings or allow attorneys to provide more value-added services within the same budget constraints.
+
+      ### Enhanced Accuracy
+
+      Human reviewers, no matter how diligent, are subject to fatigue and oversight. AI systems can maintain consistent focus and apply pre-defined criteria with remarkable consistency. In several controlled studies, AI contract review identified more potential issues than human-only review, particularly for:
+
+      - Non-standard clauses
+      - Missing provisions
+      - Inconsistencies across multiple documents
+      - Compliance with regulatory requirements
+
+      ### Faster Response Times
+
+      In time-sensitive matters, AI can provide critical advantages:
+
+      > "Our firm's implementation of AI-enhanced document review allowed us to complete due diligence for a $50M acquisition in 72 hours—a process that would have previously required weeks."
+
+      This acceleration enables more responsive client service in urgent situations such as:
+
+      * Mergers and acquisitions with tight timelines
+      * Emergency litigation responses
+      * Regulatory compliance deadlines
+      * Time-sensitive estate planning matters
+
+      ## Preserving the Human Element
+
+      Despite these advantages, the most effective legal service models recognize the irreplaceable value of human attorneys. The integration of AI should enhance rather than diminish the core relationship between attorney and client.
+
+      ### The Limits of Artificial Intelligence
+
+      Current AI systems have significant limitations:
+
+      1. **Contextual understanding** - AI struggles with nuanced interpretation of language and context
+      2. **Judgment in novel situations** - AI performs poorly when faced with unprecedented scenarios
+      3. **Empathy and emotional intelligence** - Critical for understanding client needs
+      4. **Ethical reasoning** - The application of values to complex situations
+      5. **Creative problem-solving** - Developing innovative solutions to unique challenges
+
+      ### Building a Balanced Approach
+
+      A thoughtful integration of AI into legal practice requires careful consideration of:
+
+      #### Technology Selection
+      Choose AI tools that complement your firm's practice areas and client needs rather than adopting technology for its own sake.
+
+      #### Attorney Training
+      Ensure lawyers understand both the capabilities and limitations of AI tools to make appropriate use of technology.
+
+      #### Client Communication
+      Be transparent with clients about how technology is used in their matters, including:
+      - What tasks are performed by AI
+      - How human oversight is maintained
+      - How cost savings are realized
+      - What safeguards ensure quality and confidentiality
+
+      #### Ethical Compliance
+      Address emerging ethical questions, such as:
+      - **Competency** - Attorneys must understand the technology they use
+      - *Supervision* - Responsibility for AI outputs remains with the attorney
+      - **Confidentiality** - Ensuring data security when using third-party AI tools
+      - *Transparency* - Disclosing appropriate information about technology use
+
+      ## The Future of Legal AI
+
+      Looking ahead, we can anticipate several developments in legal AI:
+
+      ### Increasingly Specialized Applications
+
+      Rather than general-purpose AI, we will see more specialized tools designed for specific practice areas:
+
+      * Estate planning document automation with built-in tax optimization
+      * Intellectual property portfolio management with infringement monitoring
+      * Real estate transaction platforms with automated due diligence
+      * Litigation strategy tools with jurisdiction-specific analytics
+
+      ### Greater Integration
+
+      Future systems will likely feature tighter integration between:
+      - Client relationship management
+      - Document management
+      - Knowledge management
+      - Practice management
+      - Billing systems
+
+      This integration will create seamless workflows that enhance both attorney efficiency and client experience.
+
+      ### Regulatory Responses
+
+      As AI becomes more prevalent in legal practice, we can expect:
+
+      1. Updated ethical guidelines from bar associations
+      2. Court rules addressing AI-generated work product
+      3. Malpractice standards that consider appropriate technology use
+      4. Potential certification requirements for legal AI systems
+
+      ## Conclusion
+
+      The future of legal practice lies not in choosing between technology and tradition but in thoughtfully integrating AI to enhance human capabilities. By embracing innovation while preserving the core values and relationships that define the practice of law, forward-thinking firms can deliver superior client service in a rapidly evolving landscape.
+
+      The most successful firms will be those that view AI as a tool to augment—rather than replace—the expertise, judgment, and personal connection that form the foundation of the attorney-client relationship. In this balanced approach, technology serves as a means to enhance the human elements of legal practice rather than diminish them.
+
+      ---
+
+      *This article demonstrates various Markdown formatting capabilities, including headings, bold and italic text, lists, blockquotes, tables, and paragraph styling. It has been crafted to test how these elements render in your content management system while providing relevant content for your firm's technology-forward positioning.*
+    `
   }
 ];
