@@ -23,6 +23,15 @@ const ResourceDetail: React.FC = () => {
     
     // Find the resource that matches the slug
     const foundResource = resources.find(r => r.slug === slug) || null;
+    
+    // Ensure resource content is properly set - trim whitespace if needed
+    if (foundResource && foundResource.content) {
+      foundResource.content = foundResource.content.trim();
+      
+      // Log the first few characters to help with debugging
+      console.log("Content sample:", foundResource.content.substring(0, 150));
+    }
+    
     setResource(foundResource);
     
     // Find related resources based on tags
@@ -47,7 +56,6 @@ const ResourceDetail: React.FC = () => {
       console.log(`Resource found: ${foundResource.title}`);
       console.log(`Content available: ${Boolean(foundResource.content)}`);
       console.log(`Content length: ${foundResource.content?.length || 0} characters`);
-      console.log("First 100 characters of content:", foundResource.content?.substring(0, 100));
     } else {
       console.log(`No resource found with slug: ${slug}`);
     }

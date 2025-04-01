@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import TableOfContents from './TableOfContents';
 import { Link } from 'react-router-dom';
 
@@ -113,8 +114,11 @@ const ResourceContent: React.FC<ResourceContentProps> = ({ content }) => {
       <div className="container mx-auto px-4">
         <div className="reveal visible max-w-3xl mx-auto">
           <TableOfContents content={content} />
-          <article className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-navy prose-p:text-charcoal/80 prose-strong:text-charcoal prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-ul:text-charcoal/80 prose-ol:text-charcoal/80 prose-code:bg-gray-100 prose-code:text-navy prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none prose-pre:bg-gray-100 prose-pre:p-4 prose-pre:rounded-md prose-pre:overflow-x-auto">
-            <ReactMarkdown components={components}>
+          <article className="prose prose-lg max-w-none mt-8 prose-headings:font-serif prose-headings:text-navy prose-p:text-charcoal/80 prose-strong:text-charcoal prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-ul:text-charcoal/80 prose-ol:text-charcoal/80">
+            <ReactMarkdown 
+              components={components}
+              rehypePlugins={[rehypeRaw]}
+            >
               {content}
             </ReactMarkdown>
           </article>
