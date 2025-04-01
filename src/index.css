@@ -147,22 +147,6 @@
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-blue-500;
   }
-
-  /* Skip link styles */
-  .skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: #0A2342;
-    color: white;
-    padding: 8px;
-    z-index: 100;
-    transition: top 0.3s;
-  }
-
-  .skip-link:focus {
-    top: 0;
-  }
 }
 
 /* Custom background colors */
