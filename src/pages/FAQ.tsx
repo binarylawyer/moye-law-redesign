@@ -17,7 +17,7 @@ const FAQ: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: '1',
-      text: 'Hello! I am Moye Law's assistant. How can I help you today? You can ask me about our services, estate planning, digital assets, intellectual property, or anything else related to our legal services.',
+      text: "Hello! I am Moye Law's assistant. How can I help you today? You can ask me about our services, estate planning, digital assets, intellectual property, or anything else related to our legal services.",
       isUser: false,
       timestamp: new Date()
     }
