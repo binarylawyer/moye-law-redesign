@@ -1,4 +1,4 @@
-/* Mondrian-inspired animation styles */
+/* Authentic Mondrian-inspired styles */
 
 /* Reveal animation for elements */
 .reveal {
@@ -12,18 +12,7 @@
   transform: translateY(0);
 }
 
-/* Add Mondrian-style border to images */
-.mondrian-image {
-  border: 2px solid black;
-  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
-}
-
-/* Art-inspired box shadows */
-.mondrian-shadow {
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8);
-}
-
-/* Mondrian primary colors */
+/* Pure Mondrian colors - using exact color codes from his paintings */
 .mondrian-red {
   background-color: #D6001C;
 }
@@ -36,53 +25,137 @@
   background-color: #FFD500;
 }
 
-/* Mondrian grid container */
+.mondrian-black {
+  background-color: #000000;
+}
+
+.mondrian-white {
+  background-color: #FFFFFF;
+}
+
+/* Mondrian-style borders - always black and bold */
+.mondrian-border {
+  border: 4px solid black;
+}
+
+.mondrian-border-t {
+  border-top: 4px solid black;
+}
+
+.mondrian-border-r {
+  border-right: 4px solid black;
+}
+
+.mondrian-border-b {
+  border-bottom: 4px solid black;
+}
+
+.mondrian-border-l {
+  border-left: 4px solid black;
+}
+
+/* Mondrian grid container - zero gap grid with bold borders */
 .mondrian-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 8px;
-  border: 2px solid black;
+  gap: 0;
+  border: 4px solid black;
 }
 
-/* Hover effects for Mondrian elements */
-.mondrian-block {
-  border: 2px solid black;
-  transition: transform 0.3s ease;
+/* Mondrian grid items - to be used in combination with grid-col classes */
+.mondrian-grid-item {
+  position: relative;
+  border-right: 4px solid black;
+  border-bottom: 4px solid black;
 }
 
-.mondrian-block:hover {
-  transform: translateY(-3px);
+.mondrian-grid-item:last-child,
+.mondrian-grid-item.last-col {
+  border-right: 0;
+}
+
+.mondrian-grid-item.last-row {
+  border-bottom: 0;
+}
+
+/* Authentic Mondrian composition preset layouts */
+.mondrian-composition-1 {
+  display: grid;
+  grid-template-columns: 6fr 2fr 4fr;
+  grid-template-rows: 5fr 3fr 2fr; 
+  gap: 0;
+  border: 4px solid black;
+  height: 100%;
+}
+
+.mondrian-composition-2 {
+  display: grid;
+  grid-template-columns: 2fr 2fr 8fr;
+  grid-template-rows: 1fr 6fr 3fr;
+  gap: 0;
+  border: 4px solid black;
+  height: 100%;
+}
+
+/* Text styles for Mondrian design */
+.mondrian-text-on-white {
+  color: black;
+}
+
+.mondrian-text-on-color {
+  color: white;
+}
+
+/* Mondrian-style images */
+.mondrian-image {
+  border: 4px solid black;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Art-inspired box shadows */
+.mondrian-shadow {
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.8);
+}
+
+/* Hover effects for interactive Mondrian elements */
+.mondrian-interactive {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mondrian-interactive:hover {
+  transform: translateY(-4px);
+  box-shadow: 6px 10px 0 rgba(0, 0, 0, 0.15);
 }
 
 /* Decorative box for highlighting specific content */
 .mondrian-highlight {
   position: relative;
-  border: 2px solid black;
+  border: 4px solid black;
   padding: 1.5rem;
   background-color: white;
 }
 
-.mondrian-highlight::before {
+.mondrian-highlight.red-accent::before {
   content: '';
   position: absolute;
   top: -8px;
   left: -8px;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   background-color: #D6001C;
-  border: 2px solid black;
+  border: 4px solid black;
   z-index: -1;
 }
 
-.mondrian-highlight::after {
+.mondrian-highlight.yellow-accent::after {
   content: '';
   position: absolute;
   bottom: -8px;
   right: -8px;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   background-color: #FFD500;
-  border: 2px solid black;
+  border: 4px solid black;
   z-index: -1;
 }
 
@@ -90,15 +163,71 @@
 .mondrian-quote {
   position: relative;
   padding-left: 2rem;
+  border-left: 12px solid #003B98;
   font-style: italic;
+  margin: 2rem 0;
 }
 
-.mondrian-quote::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 8px;
+/* Mondrian divider lines */
+.mondrian-divider {
+  display: flex;
+  width: 100%;
+  height: 4px;
+  margin: 2rem 0;
+}
+
+.mondrian-divider-red {
+  background-color: #D6001C;
+  height: 100%;
+  width: 30%;
+}
+
+.mondrian-divider-white {
+  background-color: white;
+  height: 100%;
+  width: 30%;
+}
+
+.mondrian-divider-blue {
   background-color: #003B98;
+  height: 100%;
+  width: 20%;
+}
+
+.mondrian-divider-yellow {
+  background-color: #FFD500;
+  height: 100%;
+  width: 20%;
+}
+
+/* Mondrian buttons */
+.mondrian-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid black;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  background-color: white;
+  color: black;
+}
+
+.mondrian-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 4px 6px 0 rgba(0, 0, 0, 0.15);
+}
+
+.mondrian-button.yellow {
+  background-color: #FFD500;
+}
+
+.mondrian-button.red {
+  background-color: #D6001C;
+  color: white;
+}
+
+.mondrian-button.blue {
+  background-color: #003B98;
+  color: white;
 } 
