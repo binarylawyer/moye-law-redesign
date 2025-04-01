@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import ConsultationCTA from '@/components/ConsultationCTA';
 
 interface CaseStudy {
   id: string;
@@ -81,82 +81,128 @@ const CaseStudies: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
       
-      <main className="flex-grow">
+      <main className="flex-grow relative overflow-hidden">
         {/* Hero Section with adjusted padding to match other pages */}
-        <section className="pt-24 pb-12 md:pt-28 md:pb-16">
+        <section className="pt-32 pb-12 md:pt-48 md:pb-24">
           <div className="container mx-auto px-8">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="font-serif text-4xl md:text-5xl text-navy mb-6">
-                Client Success Stories
-              </h1>
-              <p className="text-lg text-charcoal/80 mb-12 max-w-3xl mx-auto">
-                Real-world examples of how we've helped clients navigate complex legal challenges while protecting what matters most. All case studies are anonymized to protect client confidentiality.
-              </p>
+            <div className="relative">
+              {/* Decorative Mondrian element */}
+              <div className="absolute top-[-60px] right-[15%] w-32 h-32 mondrian-yellow mondrian-border"></div>
+              
+              <div className="max-w-4xl">
+                <h1 className="font-serif text-4xl md:text-5xl text-navy mb-6 relative z-10">
+                  Client Success Stories
+                </h1>
+                <div className="w-48 h-2 mondrian-red mb-8"></div>
+                <p className="text-lg text-charcoal/80 mb-12 max-w-3xl relative z-10">
+                  Real-world examples of how we've helped clients navigate complex legal challenges while protecting what matters most. All case studies are anonymized to protect client confidentiality.
+                </p>
+              </div>
             </div>
           </div>
         </section>
         
-        {/* Case Studies List */}
-        <section className="bg-light-gray py-20">
+        {/* Horizontal line extending beyond screen width - Position 1 */}
+        <div className="absolute w-[150vw] h-6 mondrian-blue left-[-25vw] top-[38%] z-10"></div>
+        
+        {/* Case Studies Layout */}
+        <section className="py-20 relative">
           <div className="container mx-auto px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-              {caseStudies.map((study) => (
-                <Card key={study.id} className="border border-gray-200 bg-white shadow-sm">
-                  <CardContent className="p-8">
-                    <h2 className="font-serif text-2xl text-navy mb-3">{study.title}</h2>
-                    <p className="text-sm text-charcoal/70 mb-6">Client: {study.clientType}</p>
-                    
-                    <div className="mb-6">
-                      <h3 className="font-medium text-navy mb-2">Challenge</h3>
-                      <p className="text-charcoal/80">{study.challenge}</p>
+            <div className="relative z-20">
+              {caseStudies.map((study, index) => (
+                <div 
+                  key={study.id} 
+                  className={`
+                    mb-20 relative
+                    ${index % 2 === 0 ? 'ml-0 md:ml-12' : 'mr-0 md:mr-12 ml-auto'}
+                    ${index % 2 === 0 ? 'max-w-3xl' : 'max-w-4xl'}
+                  `}
+                >
+                  {/* Decorative square */}
+                  <div 
+                    className={`
+                      absolute w-12 h-12 mondrian-border z-10
+                      ${index % 3 === 0 ? 'mondrian-red' : index % 3 === 1 ? 'mondrian-yellow' : 'mondrian-light-blue'}
+                      ${index % 2 === 0 ? 'top-[-16px] left-[-16px]' : 'bottom-[-16px] right-[-16px]'}
+                    `}
+                  ></div>
+                  
+                  {/* Study content */}
+                  <div className="bg-white mondrian-border p-8">
+                    <div className="flex flex-col md:flex-row gap-8">
+                      <div className="md:w-3/4">
+                        <h2 className="font-serif text-2xl text-navy mb-3">{study.title}</h2>
+                        <p className="text-sm text-charcoal/70 mb-6">Client: {study.clientType}</p>
+                        
+                        <div className="mb-6">
+                          <h3 className="font-medium text-navy mb-2">Challenge</h3>
+                          <p className="text-charcoal/80">{study.challenge}</p>
+                        </div>
+                        
+                        <div className="mb-6">
+                          <h3 className="font-medium text-navy mb-2">Solution</h3>
+                          <p className="text-charcoal/80">{study.solution}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="md:w-1/4">
+                        <div 
+                          className={`
+                            p-4 h-full
+                            ${index % 3 === 0 ? 'mondrian-light-yellow' : index % 3 === 1 ? 'mondrian-light-blue' : 'mondrian-red'}
+                            ${index % 3 === 2 ? 'text-white' : 'text-navy'}
+                            mondrian-border
+                          `}
+                        >
+                          <h3 className="font-medium mb-2">Results</h3>
+                          <ul className="list-none pl-0">
+                            {study.results.map((result, idx) => (
+                              <li key={idx} className="mb-2 text-sm">{result}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
                     </div>
                     
-                    <div className="mb-6">
-                      <h3 className="font-medium text-navy mb-2">Solution</h3>
-                      <p className="text-charcoal/80">{study.solution}</p>
-                    </div>
-                    
-                    <div className="mb-6">
-                      <h3 className="font-medium text-navy mb-2">Results</h3>
-                      <ul className="list-disc pl-5">
-                        {study.results.map((result, idx) => (
-                          <li key={idx} className="text-charcoal/80 mb-1">{result}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div className="mt-8">
+                    <div className="mt-8 text-right">
                       <Link 
                         to={study.practiceAreaPath} 
-                        className="text-gold hover:text-navy transition-colors flex items-center"
+                        className="text-gold hover:text-navy transition-colors flex items-center justify-end"
                       >
                         Learn more about {study.practiceArea}
                         <ArrowRight className="ml-2" size={16} />
                       </Link>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
         </section>
         
+        {/* Horizontal line extending beyond screen width - Position 2 */}
+        <div className="absolute w-[150vw] h-6 mondrian-red right-[-25vw] bottom-[25%] z-10"></div>
+        
         {/* CTA Section */}
-        <section className="py-24">
+        <section className="py-24 relative z-20">
           <div className="container mx-auto px-8">
             <div className="max-w-4xl mx-auto text-center">
-              <h2 className="font-serif text-3xl text-navy mb-6">Your Success Story Begins Here</h2>
-              <p className="text-lg mb-8 max-w-2xl mx-auto text-charcoal/80">
-                Every client journey begins with a conversation. Contact us to discuss how we can help you achieve your legal and financial goals.
-              </p>
-              <Link to="/contact">
-                <Button className="bg-gold hover:bg-gold/90 text-white px-8 py-6">
-                  Schedule a Consultation
-                </Button>
-              </Link>
+              <div className="mondrian-highlight">
+                <h2 className="font-serif text-3xl text-navy mb-6">Your Success Story Begins Here</h2>
+                <p className="text-lg mb-8 max-w-2xl mx-auto text-charcoal/80">
+                  Every client journey begins with a conversation. Contact us to discuss how we can help you achieve your legal and financial goals.
+                </p>
+                <Link to="/contact">
+                  <Button className="bg-gold hover:bg-gold/90 text-white px-8 py-6 mondrian-border">
+                    Schedule a Consultation
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
+        
+        <ConsultationCTA />
       </main>
       
       <Footer />

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Podcast } from '../../data/podcastData';
 import { Play, Pause, Download } from "lucide-react";
@@ -87,7 +86,7 @@ const PodcastItem = ({ podcast }: PodcastItemProps) => {
   const progress = audioState.duration ? (audioState.currentTime / audioState.duration) * 100 : 0;
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+    <div className="bg-white mondrian-border p-6 relative">
       <div className="flex justify-between items-start mb-4">
         <div>
           <h3 className="font-serif text-xl text-navy mb-2">{podcast.title}</h3>
@@ -100,7 +99,7 @@ const PodcastItem = ({ podcast }: PodcastItemProps) => {
           </p>
         </div>
         <div className="flex items-center">
-          <span className="text-xs font-medium bg-navy/10 text-navy px-2 py-1 rounded">
+          <span className="text-xs font-medium mondrian-border px-2 py-1">
             {podcast.duration}
           </span>
         </div>
@@ -111,7 +110,11 @@ const PodcastItem = ({ podcast }: PodcastItemProps) => {
         {podcast.topics.map((topic, index) => (
           <span 
             key={index}
-            className="text-xs bg-gray-100 text-charcoal/70 px-2 py-1 rounded"
+            className={`text-xs px-2 py-1 ${
+              index % 3 === 0 ? 'mondrian-light-yellow text-navy' : 
+              index % 3 === 1 ? 'mondrian-light-blue text-white' : 
+              'bg-gray-100 text-charcoal/70'
+            }`}
           >
             {topic}
           </span>
@@ -122,10 +125,10 @@ const PodcastItem = ({ podcast }: PodcastItemProps) => {
       <p className="text-charcoal/80 text-sm mb-4 line-clamp-2">{podcast.description}</p>
       
       {/* Audio Player */}
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-4 pt-3 border-t-2 border-black">
         <button 
           onClick={togglePlayPause}
-          className="w-10 h-10 flex items-center justify-center bg-navy text-white rounded-full flex-shrink-0 hover:bg-navy/90 transition-colors"
+          className="w-10 h-10 flex items-center justify-center mondrian-blue text-white flex-shrink-0 hover:bg-navy/90 transition-colors mondrian-border"
         >
           {audioState.isPlaying ? (
             <Pause className="h-5 w-5" />
@@ -135,11 +138,11 @@ const PodcastItem = ({ podcast }: PodcastItemProps) => {
         </button>
         
         <div className="flex-1">
-          <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
+          <div className="h-2 w-full bg-gray-200 overflow-hidden">
             <div 
               className={cn(
-                "h-full bg-navy transition-all duration-100",
-                audioState.isPlaying ? "bg-gold" : "bg-navy"
+                "h-full transition-all duration-100",
+                audioState.isPlaying ? "mondrian-yellow" : "mondrian-blue"
               )} 
               style={{ width: `${progress}%` }}
             />
@@ -153,7 +156,7 @@ const PodcastItem = ({ podcast }: PodcastItemProps) => {
         <a 
           href={podcast.audioUrl} 
           download
-          className="w-8 h-8 flex items-center justify-center text-navy bg-navy/5 rounded-full hover:bg-navy/10 transition-colors"
+          className="w-8 h-8 flex items-center justify-center text-navy mondrian-yellow mondrian-border"
         >
           <Download className="h-4 w-4" />
         </a>

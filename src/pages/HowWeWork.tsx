@@ -27,7 +27,7 @@ const HowWeWork = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main className="overflow-hidden">
+      <main className="overflow-hidden pt-[100px]">
         {/* Mondrian-style hero section with pure grid layout */}
         <section className="py-24 bg-white relative">
           {/* Pure Mondrian-style grid layout for the hero */}
