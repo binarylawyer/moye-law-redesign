@@ -14,6 +14,7 @@ const Articles: React.FC = () => {
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const [showDebug, setShowDebug] = useState(true); // Debug mode on by default
 
   // Get all articles
   const allArticles = resources.filter(resource => resource.category === 'article');
@@ -58,6 +59,12 @@ const Articles: React.FC = () => {
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
+    
+    // Log article information for debugging
+    console.log(`Total articles found: ${allArticles.length}`);
+    allArticles.forEach(article => {
+      console.log(`Article: ${article.title}, Slug: ${article.slug}`);
+    });
   }, []);
 
   if (isLoading) {
@@ -98,12 +105,46 @@ const Articles: React.FC = () => {
               </p>
             </div>
 
+            {/* Debug Section - Direct Links to All Articles */}
+            {showDebug && (
+              <div className="max-w-3xl mx-auto mb-12 p-6 bg-white rounded-lg shadow-md">
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-xl font-medium text-navy">Debug: All Available Articles</h2>
+                  <button 
+                    onClick={() => setShowDebug(false)} 
+                    className="text-sm bg-navy/10 text-navy px-3 py-1 rounded hover:bg-navy/20"
+                  >
+                    Hide Debug
+                  </button>
+                </div>
+                <p className="text-sm text-charcoal/80 mb-4">
+                  Total Articles: {allArticles.length}
+                </p>
+                <ul className="divide-y">
+                  {allArticles.map(article => (
+                    <li key={article.id} className="py-2">
+                      <div className="flex justify-between">
+                        <Link 
+                          to={`/resources/${article.slug}`}
+                          className="text-navy hover:text-gold font-medium"
+                        >
+                          {article.title}
+                        </Link>
+                        <span className="text-sm text-charcoal/60">{article.date}</span>
+                      </div>
+                      <p className="text-sm text-charcoal/80">Slug: {article.slug}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {/* Featured Articles */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {featuredArticles.map((article, index) => (
                 <div 
                   key={article.id}
-                  className="reveal bg-white rounded-lg shadow-md overflow-hidden card-hover"
+                  className="reveal visible bg-white rounded-lg shadow-md overflow-hidden card-hover"
                   style={{ transitionDelay: `${0.1 * index}s` }}
                 >
                   <div className="p-6">
@@ -190,7 +231,7 @@ const Articles: React.FC = () => {
                   {paginatedArticles.map((article, index) => (
                     <div 
                       key={article.id}
-                      className="reveal bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden card-hover"
+                      className="reveal visible bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden card-hover"
                       style={{ transitionDelay: `${0.1 * index}s` }}
                     >
                       <div className="p-6">

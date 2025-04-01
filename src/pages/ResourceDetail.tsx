@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { resources, Resource } from '../data/resourcesData';
@@ -18,6 +17,10 @@ const ResourceDetail: React.FC = () => {
   const elementsRef = useAnimatedElements();
 
   useEffect(() => {
+    // Enhanced debugging
+    console.log("Current URL slug:", slug);
+    console.log("Available resource slugs:", resources.map(r => r.slug));
+    
     // Find the resource that matches the slug
     const foundResource = resources.find(r => r.slug === slug) || null;
     setResource(foundResource);
@@ -44,6 +47,7 @@ const ResourceDetail: React.FC = () => {
       console.log(`Resource found: ${foundResource.title}`);
       console.log(`Content available: ${Boolean(foundResource.content)}`);
       console.log(`Content length: ${foundResource.content?.length || 0} characters`);
+      console.log("First 100 characters of content:", foundResource.content?.substring(0, 100));
     } else {
       console.log(`No resource found with slug: ${slug}`);
     }
@@ -59,18 +63,18 @@ const ResourceDetail: React.FC = () => {
       <Header />
       <main className="pt-32 bg-white">
         {/* Article Header */}
-        <div ref={el => elementsRef.current[0] = el}>
+        <div ref={el => elementsRef.current[0] = el} className="reveal visible">
           <ResourceHeader resource={resource} />
         </div>
         
         {/* Article Content */}
-        <div ref={el => elementsRef.current[1] = el} style={{ transitionDelay: '0.1s' }}>
+        <div ref={el => elementsRef.current[1] = el} className="reveal visible" style={{ transitionDelay: '0.1s' }}>
           <ResourceContent content={resource.content} />
         </div>
         
         {/* Related Resources */}
         {relatedResources.length > 0 && (
-          <div ref={el => elementsRef.current[2] = el}>
+          <div ref={el => elementsRef.current[2] = el} className="reveal visible">
             <RelatedResources resources={relatedResources} />
           </div>
         )}
