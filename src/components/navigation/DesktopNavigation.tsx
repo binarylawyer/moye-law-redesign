@@ -77,7 +77,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
 
   return (
     <NavigationMenu className="relative">
-      <NavigationMenuList className="space-x-6">
+      <NavigationMenuList className="space-x-8">
         <NavigationMenuItem className="relative">
           <NavigationMenuTrigger 
             className={`group px-4 py-2 ${boxColors.practice.bg} focus:bg-transparent hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-inherit border-2 ${isPracticeActive() ? boxColors.practice.active + ' ' + boxColors.practice.border : 'border-black/30'} hover:${boxColors.practice.border}`}
@@ -85,14 +85,14 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
             <span className={`font-serif text-lg font-medium ${textColor} ${hoverColor} transition-colors ${isPracticeActive() ? activeColor : ''}`}>
               Practice
             </span>
-            {isPracticeActive() && <ChevronDown className={`h-4 w-4 transition duration-200 ml-2 group-data-[state=open]:rotate-180 ${textColor}`} />}
+            <ChevronDown className={`h-4 w-4 transition duration-200 ml-2 group-data-[state=open]:rotate-180 ${textColor}`} />
           </NavigationMenuTrigger>
           
-          <NavigationMenuContent className="bg-white border-4 border-black p-8 w-[600px] absolute left-1/2 -translate-x-1/2 mt-4 transition-all duration-300 ease-in-out origin-top animate-dropdown z-50">
+          <NavigationMenuContent className="bg-white border-4 border-black p-8 w-[500px] absolute left-0 mt-4 transition-all duration-300 ease-in-out origin-top-center animate-dropdown z-50">
             {/* Mondrian accent element */}
             <div className="absolute top-0 left-0 w-1/3 h-2 bg-[#D6001C]"></div>
             
-            <div className="grid grid-cols-2 gap-x-10 gap-y-6">
+            <div className="grid grid-cols-1 gap-y-4">
               {featuredPracticeAreas.map((area, index) => (
                 <Link
                   key={area.path}
@@ -122,10 +122,10 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
             <span className={`font-serif text-lg font-medium ${textColor} ${hoverColor} transition-colors ${isServiceActive() ? activeColor : ''}`}>
               Services
             </span>
-            {isServiceActive() && <ChevronDown className={`h-4 w-4 transition duration-200 ml-2 group-data-[state=open]:rotate-180 ${textColor}`} />}
+            <ChevronDown className={`h-4 w-4 transition duration-200 ml-2 group-data-[state=open]:rotate-180 ${textColor}`} />
           </NavigationMenuTrigger>
           
-          <NavigationMenuContent className="bg-white border-4 border-black p-8 w-[400px] absolute left-1/2 -translate-x-1/2 mt-4 transition-all duration-300 ease-in-out origin-top animate-dropdown z-50">
+          <NavigationMenuContent className="bg-white border-4 border-black p-8 w-[450px] absolute left-0 mt-4 transition-all duration-300 ease-in-out origin-top-center animate-dropdown z-50">
             {/* Mondrian accent element */}
             <div className="absolute top-0 right-0 w-1/3 h-2 bg-[#FFEB80]"></div>
             
@@ -159,10 +159,10 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
             <span className={`font-serif text-lg ${textColor} ${hoverColor} transition-colors ${isResourceActive() ? activeColor : ''}`}>
               Resources
             </span>
-            {isResourceActive() && <ChevronDown className={`h-4 w-4 transition duration-200 ml-2 group-data-[state=open]:rotate-180 ${textColor}`} />}
+            <ChevronDown className={`h-4 w-4 transition duration-200 ml-2 group-data-[state=open]:rotate-180 ${textColor}`} />
           </NavigationMenuTrigger>
           
-          <NavigationMenuContent className="bg-white border-4 border-black p-8 w-[400px] absolute left-1/2 -translate-x-1/2 mt-4 transition-all duration-300 ease-in-out origin-top animate-dropdown z-50">
+          <NavigationMenuContent className="bg-white border-4 border-black p-8 w-[450px] absolute left-0 mt-4 transition-all duration-300 ease-in-out origin-top-center animate-dropdown z-50">
             {/* Mondrian accent element */}
             <div className="absolute bottom-0 left-0 w-1/3 h-2 bg-[#4D80D4]"></div>
             
