@@ -76,11 +76,11 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
   const hoverColor = 'hover:text-[#D6001C]';
 
   return (
-    <NavigationMenu>
-      <NavigationMenuList className="space-x-4">
+    <NavigationMenu className="relative">
+      <NavigationMenuList className="space-x-6">
         <NavigationMenuItem className="relative">
           <NavigationMenuTrigger 
-            className={`group px-3 py-2 ${boxColors.practice.bg} focus:bg-transparent hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-inherit border-2 ${isPracticeActive() ? boxColors.practice.active + ' ' + boxColors.practice.border : 'border-black/30'} hover:${boxColors.practice.border}`}
+            className={`group px-4 py-2 ${boxColors.practice.bg} focus:bg-transparent hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-inherit border-2 ${isPracticeActive() ? boxColors.practice.active + ' ' + boxColors.practice.border : 'border-black/30'} hover:${boxColors.practice.border}`}
           >
             <span className={`font-serif text-lg font-medium ${textColor} ${hoverColor} transition-colors ${isPracticeActive() ? activeColor : ''}`}>
               Practice
@@ -88,7 +88,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
             {isPracticeActive() && <ChevronDown className={`h-4 w-4 transition duration-200 ml-2 group-data-[state=open]:rotate-180 ${textColor}`} />}
           </NavigationMenuTrigger>
           
-          <NavigationMenuContent className="bg-white border-4 border-black p-6 w-[600px] absolute left-1/2 -translate-x-1/2 mt-4 transition-all duration-300 ease-in-out origin-top animate-dropdown">
+          <NavigationMenuContent className="bg-white border-4 border-black p-8 w-[600px] absolute left-1/2 -translate-x-1/2 mt-4 transition-all duration-300 ease-in-out origin-top animate-dropdown z-50">
             {/* Mondrian accent element */}
             <div className="absolute top-0 left-0 w-1/3 h-2 bg-[#D6001C]"></div>
             
@@ -117,7 +117,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
         
         <NavigationMenuItem className="relative">
           <NavigationMenuTrigger 
-            className={`group px-3 py-2 ${boxColors.services.bg} focus:bg-transparent hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-inherit border-2 ${isServiceActive() ? boxColors.services.active + ' ' + boxColors.services.border : 'border-black/30'} hover:${boxColors.services.border}`}
+            className={`group px-4 py-2 ${boxColors.services.bg} focus:bg-transparent hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-inherit border-2 ${isServiceActive() ? boxColors.services.active + ' ' + boxColors.services.border : 'border-black/30'} hover:${boxColors.services.border}`}
           >
             <span className={`font-serif text-lg font-medium ${textColor} ${hoverColor} transition-colors ${isServiceActive() ? activeColor : ''}`}>
               Services
@@ -125,7 +125,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
             {isServiceActive() && <ChevronDown className={`h-4 w-4 transition duration-200 ml-2 group-data-[state=open]:rotate-180 ${textColor}`} />}
           </NavigationMenuTrigger>
           
-          <NavigationMenuContent className="bg-white border-4 border-black p-6 w-[400px] absolute left-1/2 -translate-x-1/2 mt-4 transition-all duration-300 ease-in-out origin-top animate-dropdown">
+          <NavigationMenuContent className="bg-white border-4 border-black p-8 w-[400px] absolute left-1/2 -translate-x-1/2 mt-4 transition-all duration-300 ease-in-out origin-top animate-dropdown z-50">
             {/* Mondrian accent element */}
             <div className="absolute top-0 right-0 w-1/3 h-2 bg-[#FFEB80]"></div>
             
@@ -146,7 +146,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
         <NavigationMenuItem>
           <Link 
             to="/about" 
-            className={`px-3 py-2 font-serif text-lg font-medium ${textColor} ${hoverColor} transition-colors border-2 ${isActive('/about') ? boxColors.about.active + ' ' + boxColors.about.border : boxColors.about.bg + ' border-black/30'} hover:${boxColors.about.border}`}
+            className={`px-4 py-2 font-serif text-lg font-medium ${textColor} ${hoverColor} transition-colors border-2 ${isActive('/about') ? boxColors.about.active + ' ' + boxColors.about.border : boxColors.about.bg + ' border-black/30'} hover:${boxColors.about.border}`}
           >
             Our Firm
           </Link>
@@ -154,7 +154,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
         
         <NavigationMenuItem className="relative">
           <NavigationMenuTrigger 
-            className={`group px-3 py-2 ${boxColors.resources.bg} focus:bg-transparent hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-inherit border-2 ${isResourceActive() ? boxColors.resources.active + ' ' + boxColors.resources.border : 'border-black/30'} hover:${boxColors.resources.border}`}
+            className={`group px-4 py-2 ${boxColors.resources.bg} focus:bg-transparent hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-inherit border-2 ${isResourceActive() ? boxColors.resources.active + ' ' + boxColors.resources.border : 'border-black/30'} hover:${boxColors.resources.border}`}
           >
             <span className={`font-serif text-lg ${textColor} ${hoverColor} transition-colors ${isResourceActive() ? activeColor : ''}`}>
               Resources
@@ -162,7 +162,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
             {isResourceActive() && <ChevronDown className={`h-4 w-4 transition duration-200 ml-2 group-data-[state=open]:rotate-180 ${textColor}`} />}
           </NavigationMenuTrigger>
           
-          <NavigationMenuContent className="bg-white border-4 border-black p-6 w-[400px] absolute left-1/2 -translate-x-1/2 mt-4 transition-all duration-300 ease-in-out origin-top animate-dropdown">
+          <NavigationMenuContent className="bg-white border-4 border-black p-8 w-[400px] absolute left-1/2 -translate-x-1/2 mt-4 transition-all duration-300 ease-in-out origin-top animate-dropdown z-50">
             {/* Mondrian accent element */}
             <div className="absolute bottom-0 left-0 w-1/3 h-2 bg-[#4D80D4]"></div>
             
@@ -183,7 +183,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
         <NavigationMenuItem>
           <Link 
             to="/contact" 
-            className="px-3 py-2 font-serif text-lg font-medium text-black bg-[#FFEB80] hover:bg-[#D6001C] hover:text-white transition-colors border-4 border-black flex items-center mondrian-button light-yellow"
+            className="px-4 py-2 font-serif text-lg font-medium text-black bg-[#FFEB80] hover:bg-[#D6001C] hover:text-white transition-colors border-4 border-black flex items-center mondrian-button light-yellow"
           >
             Contact
           </Link>
