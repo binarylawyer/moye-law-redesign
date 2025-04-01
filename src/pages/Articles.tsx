@@ -1,10 +1,11 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { resources } from '../data/resourcesData';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ConsultationCTA from "../components/ConsultationCTA";
 import { Search, SortAsc, SortDesc } from 'lucide-react';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 const ITEMS_PER_PAGE = 9;
 
@@ -14,6 +15,7 @@ const Articles: React.FC = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Get all articles
   const allArticles = resources.filter(resource => resource.category === 'article');
@@ -53,8 +55,42 @@ const Articles: React.FC = () => {
     currentPage * ITEMS_PER_PAGE
   );
 
+  useEffect(() => {
+    // Simulate data loading
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <>
+        <Header />
+        <main className="pt-32 bg-white min-h-screen">
+          <div className="container mx-auto px-4">
+            <div className="animate-pulse">
+              <div className="h-8 bg-gray-200 rounded w-1/3 mb-4"></div>
+              <div className="h-4 bg-gray-200 rounded w-1/2 mb-12"></div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="bg-gray-200 h-64 rounded-lg"></div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // Add these console logs
+  console.log('Articles component rendered');
+  console.log('All articles:', allArticles);
+  console.log('Featured articles:', featuredArticles);
+
   return (
-    <>
+    <ErrorBoundary>
       <Header />
       <main className="pt-32 bg-white">
         {/* Hero Section with Featured Articles */}
@@ -227,7 +263,7 @@ const Articles: React.FC = () => {
         <ConsultationCTA />
       </main>
       <Footer />
-    </>
+    </ErrorBoundary>
   );
 };
 
