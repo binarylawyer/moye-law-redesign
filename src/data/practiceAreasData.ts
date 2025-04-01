@@ -449,3 +449,20 @@ export const practiceAreasData: PracticeArea[] = [
     ]
   }
 ];
+
+export const getServiceByName = (serviceId: string): SpecializedService | undefined => {
+  return specializedServices.find(service => 
+    service.id === serviceId || 
+    service.id.replace(/-/g, '') === serviceId.replace(/-/g, '') || // Handle with or without hyphens
+    service.title.toLowerCase().replace(/\s+/g, '-') === serviceId.toLowerCase() || // Handle title matching
+    service.shortTitle?.toLowerCase().replace(/\s+/g, '-') === serviceId.toLowerCase() // Handle shortTitle matching
+  );
+};
+
+export const specializedServicePathMap: Record<string, string> = {
+  'digital-asset-protection': '/practice/digital-asset-protection',
+  'ip-consulting': '/practice/ip-consulting',
+  'ip-licensing': '/practice/ip-licensing',
+  'entertainment-law': '/practice/entertainment-law',
+  'emerging-tech': '/practice/emerging-tech',
+};

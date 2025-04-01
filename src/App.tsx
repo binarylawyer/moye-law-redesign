@@ -19,11 +19,11 @@ import FAQ from "./pages/FAQ";
 import HowWeWork from "./pages/HowWeWork";
 import TechnologyPlatform from "./pages/TechnologyApproach";
 import CaseStudies from "./pages/CaseStudies";
-import DigitalAssetProtection from "./pages/DigitalAssetProtection";
-import IPConsulting from "./pages/IPConsulting";
-import Licensing from "./pages/Licensing";
-import EntertainmentLaw from "./pages/EntertainmentLaw";
-import EmergingTech from "./pages/EmergingTech";
+import DigitalAssetProtection from "./pages/practice/DigitalAssetProtection";
+import IPConsulting from "./pages/practice/IPConsulting";
+import Licensing from "./pages/practice/Licensing";
+import EntertainmentLaw from "./pages/practice/EntertainmentLaw";
+import EmergingTech from "./pages/practice/EmergingTech";
 import Podcasts from "./pages/Podcasts";
 import ExperienceTheDifference from "./pages/ExperienceTheDifference";
 import FloatingConsultationButton from "./components/FloatingConsultationButton";
@@ -68,6 +68,13 @@ const AppRoutes = () => {
         <Route path="/resources/:slug" element={<ResourceDetail />} />
         
         {/* Specialized Pages */}
+        <Route path="/practice/digital-asset-protection" element={<DigitalAssetProtection />} />
+        <Route path="/practice/ip-consulting" element={<IPConsulting />} />
+        <Route path="/practice/ip-licensing" element={<Licensing />} />
+        <Route path="/practice/entertainment-law" element={<EntertainmentLaw />} />
+        <Route path="/practice/emerging-tech" element={<EmergingTech />} />
+        
+        {/* Legacy URLs - redirect to new paths */}
         <Route path="/digital-asset-protection" element={<DigitalAssetProtection />} />
         <Route path="/ip-consulting" element={<IPConsulting />} />
         <Route path="/ip-licensing" element={<Licensing />} />

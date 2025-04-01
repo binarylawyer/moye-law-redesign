@@ -12,11 +12,11 @@ export const practiceAreas = [
 ];
 
 export const specializedServices = [
-  { title: "IP Consulting", path: "/ip-consulting" },
-  { title: "Licensing Solutions", path: "/ip-licensing" },
-  { title: "Digital Asset Protection", path: "/digital-asset-protection" },
-  { title: "Entertainment Law", path: "/entertainment-law" },
-  { title: "Emerging Tech", path: "/emerging-tech" },
+  { title: "IP Consulting", path: "/practice/ip-consulting" },
+  { title: "Licensing Solutions", path: "/practice/ip-licensing" },
+  { title: "Digital Asset Protection", path: "/practice/digital-asset-protection" },
+  { title: "Entertainment Law", path: "/practice/entertainment-law" },
+  { title: "Emerging Tech", path: "/practice/emerging-tech" },
 ];
 
 export const resourcesItems = [
