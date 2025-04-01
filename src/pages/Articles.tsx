@@ -4,8 +4,6 @@ import { resources } from '../data/resourcesData';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ConsultationCTA from "../components/ConsultationCTA";
-import { Search, SortAsc, SortDesc } from 'lucide-react';
-import ErrorBoundary from '../components/ErrorBoundary';
 
 const ITEMS_PER_PAGE = 9;
 
@@ -84,13 +82,8 @@ const Articles: React.FC = () => {
     );
   }
 
-  // Add these console logs
-  console.log('Articles component rendered');
-  console.log('All articles:', allArticles);
-  console.log('Featured articles:', featuredArticles);
-
   return (
-    <ErrorBoundary>
+    <>
       <Header />
       <main className="pt-32 bg-white">
         {/* Hero Section with Featured Articles */}
@@ -145,15 +138,14 @@ const Articles: React.FC = () => {
         <section className="py-8 border-b">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-              {/* Search */}
+              {/* Search - No icon */}
               <div className="relative w-full md:w-64">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-charcoal/40" />
                 <input
                   type="text"
                   placeholder="Search articles..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-navy/20"
+                  className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-navy/20"
                 />
               </div>
 
@@ -178,12 +170,11 @@ const Articles: React.FC = () => {
                 ))}
               </div>
 
-              {/* Sort */}
+              {/* Sort - Text only */}
               <button
                 onClick={() => setSortOrder(prev => prev === 'newest' ? 'oldest' : 'newest')}
-                className="flex items-center gap-2 text-sm text-navy hover:text-gold transition-colors"
+                className="text-sm text-navy hover:text-gold transition-colors"
               >
-                {sortOrder === 'newest' ? <SortDesc className="h-4 w-4" /> : <SortAsc className="h-4 w-4" />}
                 {sortOrder === 'newest' ? 'Newest First' : 'Oldest First'}
               </button>
             </div>
@@ -263,7 +254,7 @@ const Articles: React.FC = () => {
         <ConsultationCTA />
       </main>
       <Footer />
-    </ErrorBoundary>
+    </>
   );
 };
 
