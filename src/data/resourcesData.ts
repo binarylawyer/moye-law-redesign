@@ -77,7 +77,7 @@ export const resources: Resource[] = [
     slug: 'protecting-digital-assets',
     date: '2023-10-22',
     author: 'Christopher Moye',
-    tags: ['Digital Assets', 'Cryptocurrency', 'Estate Planning'],
+    tags: ['Digital Assets', 'Estate Planning'],
     content: `
       # Protecting Digital Assets in Estate Planning
 
@@ -150,7 +150,7 @@ export const resources: Resource[] = [
     slug: 'art-law-protecting-collection',
     date: '2023-11-10',
     author: 'Jane Smith',
-    tags: ['Art Law', 'Collections', 'Asset Protection'],
+    tags: ['Asset Protection', 'Wealth Management'],
     content: `
       # Art Law: Protecting Your Collection
 
@@ -324,7 +324,7 @@ export const resources: Resource[] = [
     slug: 'legal-faq',
     date: '2024-01-20',
     author: 'Legal Team',
-    tags: ['Estate Planning', 'FAQ', 'Intellectual Property', 'Art Law', 'Crypto'],
+    tags: ['Estate Planning', 'Digital Assets', 'Asset Protection'],
     content: `
       # Frequently Asked Questions
 
@@ -367,7 +367,7 @@ export const resources: Resource[] = [
     slug: 'family-office-coordination',
     date: '2024-02-03',
     author: 'Christopher Moye',
-    tags: ['Family Office', 'Wealth Management', 'Coordination'],
+    tags: ['Wealth Management', 'Tax Planning'],
     content: `
       # Family Office Coordination: A Case Study
 
@@ -819,7 +819,7 @@ export const resources: Resource[] = [
     slug: 'how-we-work-client-process',
     date: '2024-03-01',
     author: 'Legal Team',
-    tags: ['Client Services', 'Process', 'Approach'],
+    tags: ['Innovation', 'Legal Technology'],
     content: `
       # How We Work: Our Client Process
 
@@ -968,7 +968,7 @@ export const resources: Resource[] = [
     slug: 'markdown-test',
     date: '2023-01-20',
     author: 'Test Author',
-    tags: ['Test', 'Markdown', 'Formatting'],
+    tags: ['Legal Technology', 'Innovation'],
     content: `
       # Markdown Test Article
 
@@ -1011,7 +1011,7 @@ export const resources: Resource[] = [
     slug: 'ai-future-legal-services',
     date: '2024-03-15',
     author: 'Christopher Moye',
-    tags: ['AI', 'Legal Technology', 'Innovation', 'Future of Law'],
+    tags: ['AI', 'Legal Technology', 'Innovation'],
     content: `
       # AI and the Future of Legal Services: Balancing Innovation with Tradition
 
