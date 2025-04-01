@@ -10,10 +10,12 @@ import RelatedResources from "../components/resources/RelatedResources";
 import ResourceNotFound from "../components/resources/ResourceNotFound";
 import useAnimatedElements from "../hooks/useAnimatedElements";
 
-const ResourceDetail: React.FC = () => {
-  const { slug } = useParams();
+const ResourceDetail = () => {
+  const params = useParams();
+  const slug = params.slug;
+  
   const [resource, setResource] = useState<Resource | null>(null);
-  const [relatedResources, setRelatedResources] = useState([]);
+  const [relatedResources, setRelatedResources] = useState<Resource[]>([]);
   const [loading, setLoading] = useState(true);
   const elementsRef = useAnimatedElements();
 
