@@ -1,38 +1,31 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-const ConsultationCTA: React.FC = () => {
+const ConsultationCTA = () => {
   return (
-    <section className="py-12 bg-gradient-to-br from-navy to-muted-navy text-white">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="max-w-3xl mx-auto text-center">
-          {/* Gold accent line above heading */}
-          <div className="w-24 h-0.5 bg-gold mx-auto mb-6"></div>
-          
-          <h2 className="font-serif text-2xl md:text-4xl mb-5 tracking-wide">
-            Schedule a Confidential Consultation
+    <section className="py-20 bg-navy text-white">
+      <div className="container mx-auto px-8 max-w-7xl">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="reveal font-serif text-3xl md:text-4xl mb-6 tracking-tight">
+            Protect Your Future – Contact Us Today
           </h2>
           
-          <p className="text-base md:text-xl mb-8 text-white/90 max-w-xl mx-auto">
-            Take the first step toward securing your legacy.
+          <p className="reveal text-xl mb-10 text-white/80 max-w-2xl mx-auto" style={{ transitionDelay: '0.1s' }}>
+            Schedule a consultation to discuss your legal needs
           </p>
           
-          <div>
+          <div className="reveal mb-10" style={{ transitionDelay: '0.2s' }}>
             <Link to="/contact">
               <Button 
-                className="bg-gold hover:bg-gold/80 text-white font-normal px-8 py-3 rounded-none text-base border border-gold/30 transition-all hover:shadow-lg"
+                className="bg-white text-navy hover:bg-gray-100 font-medium px-8 py-4 text-lg shadow-sm"
               >
-                Request Consultation
+                Request Your Free Consultation
               </Button>
             </Link>
           </div>
           
-          {/* Gold accent line below the content */}
-          <div className="w-16 h-0.5 bg-gold/60 mx-auto mt-8"></div>
-          
-          <p className="text-sm mt-4 text-white/70">
+          <p className="reveal text-sm text-white/60" style={{ transitionDelay: '0.3s' }}>
             All consultations are protected by attorney-client privilege
           </p>
         </div>

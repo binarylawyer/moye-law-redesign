@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import PracticeAreas from '@/components/PracticeAreas';
 import Approach from '@/components/Approach';
+import Testimonial from '@/components/Testimonial';
 import ConsultationCTA from '@/components/ConsultationCTA';
 import Footer from '@/components/Footer';
 
@@ -31,6 +32,7 @@ const Index = () => {
       <main className="overflow-hidden">
         <Hero />
         <PracticeAreas />
+        <Testimonial />
         <Approach />
         <ConsultationCTA />
       </main>
@@ -39,4 +41,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Index; 
