@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import { useMemo } from "react"
 import {
@@ -5,7 +6,7 @@ import {
   AreaChart,
   CartesianGrid,
   ResponsiveContainer,
-  Tooltip,
+  Tooltip as RechartsTooltip,
   XAxis,
   YAxis,
 } from "recharts"
@@ -26,10 +27,10 @@ export interface ChartProps extends React.HTMLAttributes<HTMLDivElement> {
   indicator?: "line" | "circle" | "dashed"
 }
 
-// Fix the tooltip component type issues
+// Fix the tooltip component type issues by creating a custom tooltip component
 const CustomTooltip = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<"div"> & {
+  React.HTMLAttributes<HTMLDivElement> & {
     active?: boolean;
     payload?: any[];
     label?: string;
@@ -95,7 +96,7 @@ const CustomTooltip = React.forwardRef<
         })}
       </div>
     )
-  }, [active, payload, labelFormatter, nameKey, labelKey, formatter, label])
+  }, [active, payload, labelFormatter, nameKey, labelKey, formatter, label, hideLabel, hideIndicator, indicator, labelClassName])
 
   if (!active || !payload?.length) {
     return null
@@ -148,9 +149,10 @@ export const Chart = React.forwardRef<HTMLDivElement, ChartProps>(
               tickLine={false}
               tickFormatter={valueFormatter}
             />
-            <Tooltip
-              content={
+            <RechartsTooltip
+              content={(props: any) => (
                 <CustomTooltip
+                  {...props}
                   valueFormatter={valueFormatter}
                   labelFormatter={labelFormatter}
                   nameKey={nameKey}
@@ -159,7 +161,7 @@ export const Chart = React.forwardRef<HTMLDivElement, ChartProps>(
                   hideIndicator={hideIndicator}
                   indicator={indicator}
                 />
-              }
+              )}
             />
             <Area
               type="monotone"

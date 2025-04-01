@@ -721,19 +721,28 @@ const SidebarMenuSubButton = React.forwardRef<
 })
 SidebarMenuSubButton.displayName = "SidebarMenuSubButton"
 
+interface SidebarMobileProps extends React.ComponentPropsWithoutRef<typeof SheetContent> {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  children: React.ReactNode;
+  side?: "left" | "right";
+  className?: string;
+}
+
 export function SidebarMobile({
   open,
   onOpenChange,
   children,
-  side,
+  side = "left",
   className,
   ...props
 }: SidebarMobileProps) {
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent 
-        side={side as "left" | "right"}
+        side={side}
         className={cn("p-0", className)}
+        {...props}
       >
         <div
           data-sidebar
@@ -745,7 +754,6 @@ export function SidebarMobile({
           style={{
             zIndex: 1000,
           }}
-          {...props}
         >
           {children}
         </div>
@@ -754,10 +762,16 @@ export function SidebarMobile({
   )
 }
 
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "default" | "outline";
+  size?: "default" | "sm" | "lg";
+  className?: string;
+}
+
 export function SidebarButton({
   className,
-  variant = "default" as const,
-  size = "default" as const,
+  variant = "default",
+  size = "default",
   ...props
 }: ButtonProps) {
   return (

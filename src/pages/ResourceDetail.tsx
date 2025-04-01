@@ -13,7 +13,7 @@ import useAnimatedElements from "../hooks/useAnimatedElements";
 const ResourceDetail: React.FC = () => {
   const { slug } = useParams();
   const [resource, setResource] = useState<Resource | null>(null);
-  const [relatedResources, setRelatedResources] = useState<Resource[]>([]);
+  const [relatedResources, setRelatedResources] = useState([]);
   const [loading, setLoading] = useState(true);
   const elementsRef = useAnimatedElements();
 
@@ -96,7 +96,7 @@ const ResourceDetail: React.FC = () => {
         </div>
         
         <div ref={el => elementsRef.current[1] = el} className="reveal visible">
-          <ResourceContent content={resource.content} />
+          <ResourceContent content={resource?.content} />
         </div>
         
         {relatedResources.length > 0 && (

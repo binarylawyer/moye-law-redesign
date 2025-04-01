@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import * as ToastPrimitives from "@radix-ui/react-toast"
 
@@ -19,7 +20,14 @@ const Toast = React.forwardRef<
 ))
 Toast.displayName = ToastPrimitives.Root.displayName
 
-const ToastTrigger = ToastPrimitives.Trigger
+// Create ToastTrigger component compatible with Radix UI
+const ToastTrigger = React.forwardRef<
+  React.ElementRef<typeof ToastPrimitives.Trigger>,
+  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Trigger>
+>(({ ...props }, ref) => (
+  <ToastPrimitives.Trigger ref={ref} {...props} />
+))
+ToastTrigger.displayName = "ToastTrigger"
 
 const ToastProvider = ToastPrimitives.Provider
 
