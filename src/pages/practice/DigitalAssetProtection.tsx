@@ -57,12 +57,12 @@ const DigitalAssetProtection: React.FC = () => {
     {
       title: "Emerging Tech",
       path: "/practice/emerging-tech",
-      description: "Legal solutions for businesses leveraging cutting-edge technologies like blockchain, AI, and IoT."
+      description: "Legal frameworks for emerging technologies like AI, blockchain, and IoT."
     },
     {
       title: "IP Licensing",
       path: "/practice/ip-licensing",
-      description: "Structured frameworks for licensing digital assets and intellectual property in the digital economy."
+      description: "Structured frameworks for monetizing intellectual property through strategic licensing arrangements."
     }
   ];
 

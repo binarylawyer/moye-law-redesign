@@ -51,17 +51,17 @@ const EmergingTech: React.FC = () => {
   const relatedServices = [
     {
       title: "IP Consulting",
-      path: "/practice/ip-consulting",
+      path: "/services/ip-consulting",
       description: "Strategic guidance for managing and maximizing the value of your intellectual property assets."
     },
     {
       title: "Digital Asset Protection",
-      path: "/practice/digital-asset-protection",
+      path: "/services/digital-asset-protection",
       description: "Comprehensive legal protection for digital assets, from NFTs to domain names and digital IP."
     },
     {
       title: "Entertainment Law",
-      path: "/practice/entertainment-law",
+      path: "/services/entertainment-law",
       description: "Legal counsel for entertainment properties, content licensing, and media ventures."
     }
   ];

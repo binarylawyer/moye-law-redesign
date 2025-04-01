@@ -51,17 +51,17 @@ const EntertainmentLaw: React.FC = () => {
   const relatedServices = [
     {
       title: "IP Licensing",
-      path: "/practice/ip-licensing",
+      path: "/services/ip-licensing",
       description: "Structured frameworks for monetizing and leveraging intellectual property through strategic licensing arrangements."
     },
     {
       title: "Digital Asset Protection",
-      path: "/practice/digital-asset-protection",
+      path: "/services/digital-asset-protection",
       description: "Comprehensive legal protection for digital assets, from NFTs to domain names and digital IP."
     },
     {
       title: "IP Consulting",
-      path: "/practice/ip-consulting",
+      path: "/services/ip-consulting",
       description: "Strategic guidance for managing and maximizing the value of your intellectual property assets."
     }
   ];

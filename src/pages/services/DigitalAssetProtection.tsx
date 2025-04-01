@@ -51,18 +51,18 @@ const DigitalAssetProtection: React.FC = () => {
   const relatedServices = [
     {
       title: "IP Consulting",
-      path: "/ip-consulting",
+      path: "/services/ip-consulting",
       description: "Strategic guidance for managing and maximizing the value of your intellectual property assets."
     },
     {
       title: "Emerging Tech",
-      path: "/emerging-tech",
-      description: "Legal solutions for businesses leveraging cutting-edge technologies like blockchain, AI, and IoT."
+      path: "/services/emerging-tech",
+      description: "Legal frameworks for emerging technologies like AI, blockchain, and IoT."
     },
     {
       title: "IP Licensing",
-      path: "/ip-licensing",
-      description: "Structured frameworks for licensing digital assets and intellectual property in the digital economy."
+      path: "/services/ip-licensing",
+      description: "Structured frameworks for monetizing intellectual property through strategic licensing arrangements."
     }
   ];
 
@@ -123,4 +123,4 @@ const DigitalAssetProtection: React.FC = () => {
   );
 };
 
-export default DigitalAssetProtection;
+export default DigitalAssetProtection; 

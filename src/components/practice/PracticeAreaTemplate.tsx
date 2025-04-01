@@ -3,7 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ConsultationCTA from '@/components/ConsultationCTA';
 import MondrianDividerCTA from '@/components/MondrianDividerCTA';
-import { specializedServiceData } from '@/data/practiceAreasData';
+import { specializedServiceData, getServiceByName, specializedServicePathMap } from '@/data/practiceAreasData';
 import PracticeAreaHero from './PracticeAreaHero';
 
 interface PracticeAreaTemplateProps {
@@ -22,13 +22,35 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
   // Find service data if it exists
   useEffect(() => {
     if (serviceId) {
-      const foundService = specializedServiceData.find(service => service.id === serviceId);
+      // First try with the exact ID
+      const foundService = specializedServiceData.find(service => 
+        service.id === serviceId ||
+        service.id.replace(/-/g, '') === serviceId.replace(/-/g, '')
+      );
+      
       if (foundService) {
         setServiceInfo({
           title: foundService.title,
           description: foundService.description
         });
         console.log('Service info found:', foundService.title, foundService.description);
+      } else {
+        // If not found by ID, try to match by normalized name
+        const normalizedId = serviceId.toLowerCase().replace(/\s+/g, '-');
+        const serviceByName = specializedServiceData.find(service => 
+          service.title.toLowerCase().replace(/\s+/g, '-') === normalizedId ||
+          service.shortTitle?.toLowerCase().replace(/\s+/g, '-') === normalizedId
+        );
+
+        if (serviceByName) {
+          setServiceInfo({
+            title: serviceByName.title,
+            description: serviceByName.description
+          });
+          console.log('Service info found by name:', serviceByName.title, serviceByName.description);
+        } else {
+          console.warn(`No service info found for ID: ${serviceId}`);
+        }
       }
     }
   }, [serviceId]);
@@ -74,10 +96,15 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
   const hasHeroComponent = () => {
     let hasHero = false;
     Children.forEach(children, (child) => {
-      if (isValidElement(child) && 
-         (child.type === PracticeAreaHero || 
-          (typeof child.type === 'function' && (child.type as any).name === 'PracticeAreaHero'))) {
-        hasHero = true;
+      if (isValidElement(child)) {
+        // Check if the component is PracticeAreaHero by name or type
+        const componentName = typeof child.type === 'function' 
+          ? (child.type as any).name 
+          : typeof child.type === 'string' ? child.type : '';
+        
+        if (componentName === 'PracticeAreaHero' || child.type === PracticeAreaHero) {
+          hasHero = true;
+        }
       }
     });
     return hasHero;

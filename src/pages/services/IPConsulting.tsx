@@ -56,17 +56,17 @@ const IPConsulting: React.FC = () => {
   const relatedServices = [
     {
       title: "IP Licensing",
-      path: "/practice/ip-licensing",
+      path: "/services/ip-licensing",
       description: "Structured frameworks for monetizing and leveraging intellectual property through strategic licensing arrangements."
     },
     {
       title: "Intellectual Property",
-      path: "/practice/intellectual-property",
+      path: "/services/intellectual-property",
       description: "Comprehensive legal services for identifying, protecting, and enforcing intellectual property rights."
     },
     {
       title: "Emerging Tech",
-      path: "/practice/emerging-tech",
+      path: "/services/emerging-tech",
       description: "Legal frameworks for businesses leveraging emerging technologies like blockchain, AI, and IoT."
     }
   ];
