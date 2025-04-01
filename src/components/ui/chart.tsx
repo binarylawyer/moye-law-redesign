@@ -6,7 +6,7 @@ import {
   AreaChart,
   CartesianGrid,
   ResponsiveContainer,
-  Tooltip as RechartsTooltip,
+  Tooltip,
   XAxis,
   YAxis,
 } from "recharts"
@@ -27,23 +27,38 @@ export interface ChartProps extends React.HTMLAttributes<HTMLDivElement> {
   indicator?: "line" | "circle" | "dashed"
 }
 
+// Create a wrapper for the tooltip to fix typing issues
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    payload: Record<string, any>;
+    value: number;
+    name: string;
+  }>;
+  label?: string;
+  labelFormatter?: (label: string) => string;
+  labelClassName?: string;
+  formatter?: (value: number, name: string) => string;
+  nameKey?: string;
+  labelKey?: string;
+  hideLabel?: boolean;
+  hideIndicator?: boolean;
+  indicator?: "line" | "circle" | "dashed";
+}
+
 // Fix the tooltip component type issues by creating a custom tooltip component
-const CustomTooltip = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & {
-    active?: boolean;
-    payload?: any[];
-    label?: string;
-    labelFormatter?: (label: string) => string;
-    labelClassName?: string;
-    formatter?: (value: number, name: string) => string;
-    nameKey?: string;
-    labelKey?: string;
-    hideLabel?: boolean;
-    hideIndicator?: boolean;
-    indicator?: "line" | "circle" | "dashed";
-  }
->(({ className, hideLabel, hideIndicator, indicator, nameKey, labelKey, active, payload, labelFormatter, labelClassName, formatter, label, ...props }, ref) => {
+const CustomTooltip: React.FC<CustomTooltipProps> = ({ 
+  active, 
+  payload, 
+  label, 
+  labelFormatter, 
+  labelClassName, 
+  formatter, 
+  nameKey = "", 
+  hideLabel, 
+  hideIndicator, 
+  indicator = "circle" 
+}) => {
   const indicatorVariants = {
     line: "w-4 h-px",
     circle: "w-2 h-2 rounded-full",
@@ -96,7 +111,7 @@ const CustomTooltip = React.forwardRef<
         })}
       </div>
     )
-  }, [active, payload, labelFormatter, nameKey, labelKey, formatter, label, hideLabel, hideIndicator, indicator, labelClassName])
+  }, [active, payload, labelFormatter, nameKey, formatter, label, hideLabel, hideIndicator, indicator, labelClassName])
 
   if (!active || !payload?.length) {
     return null
@@ -104,17 +119,14 @@ const CustomTooltip = React.forwardRef<
 
   return (
     <div
-      ref={ref}
       className={cn(
-        "z-50 rounded-lg border bg-background p-2 shadow-md outline-none",
-        className
+        "z-50 rounded-lg border bg-background p-2 shadow-md outline-none"
       )}
-      {...props}
     >
       {content}
     </div>
   )
-})
+}
 CustomTooltip.displayName = "CustomTooltip"
 
 export const Chart = React.forwardRef<HTMLDivElement, ChartProps>(
@@ -149,10 +161,10 @@ export const Chart = React.forwardRef<HTMLDivElement, ChartProps>(
               tickLine={false}
               tickFormatter={valueFormatter}
             />
-            <RechartsTooltip
-              content={(props: any) => (
+            <Tooltip
+              content={(props) => (
                 <CustomTooltip
-                  {...props}
+                  {...props as CustomTooltipProps}
                   valueFormatter={valueFormatter}
                   labelFormatter={labelFormatter}
                   nameKey={nameKey}

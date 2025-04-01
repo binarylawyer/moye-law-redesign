@@ -745,15 +745,12 @@ export function SidebarMobile({
         {...props}
       >
         <div
-          data-sidebar
-          data-mobile
+          data-sidebar="sidebar"
+          data-mobile="true"
           className={cn(
             "flex h-full flex-col overflow-hidden",
             className
           )}
-          style={{
-            zIndex: 1000,
-          }}
         >
           {children}
         </div>

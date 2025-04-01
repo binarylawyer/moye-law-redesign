@@ -20,12 +20,12 @@ const Toast = React.forwardRef<
 ))
 Toast.displayName = ToastPrimitives.Root.displayName
 
-// Create ToastTrigger component compatible with Radix UI
+// Create a custom ToastTrigger component since Radix UI doesn't have one
 const ToastTrigger = React.forwardRef<
-  React.ElementRef<typeof ToastPrimitives.Trigger>,
-  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Trigger>
+  HTMLButtonElement,
+  React.ButtonHTMLAttributes<HTMLButtonElement>
 >(({ ...props }, ref) => (
-  <ToastPrimitives.Trigger ref={ref} {...props} />
+  <button ref={ref} {...props} />
 ))
 ToastTrigger.displayName = "ToastTrigger"
 
