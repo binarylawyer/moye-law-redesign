@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { practiceAreasData } from '@/data/practiceAreasData';
 import ConsultationCTA from '@/components/ConsultationCTA';
 import MondrianDecoration from '@/components/MondrianDecoration';
+import MondrianDividerCTA from '@/components/MondrianDividerCTA';
 
 const PracticeArea: React.FC = () => {
   const { area } = useParams();
@@ -172,12 +173,11 @@ const PracticeArea: React.FC = () => {
           </div>
         </section>
         
-        {/* Mondrian-style divider */}
-        <div className="mondrian-divider max-w-7xl mx-auto mb-16">
-          <div className="mondrian-divider-red"></div>
-          <div className="mondrian-divider-white"></div>
-          <div className="mondrian-divider-blue"></div>
-          <div className="mondrian-divider-yellow"></div>
+        {/* Replace standard Mondrian divider with the new CTA version */}
+        <div className="max-w-7xl mx-auto px-8 mb-16">
+          <MondrianDividerCTA 
+            text={`Ask us about ${practiceData.title} services:`}
+          />
         </div>
         
         {/* Using the ConsultationCTA component instead of inline CTA */}

@@ -54,8 +54,8 @@ const Approach = () => {
                 <span className="text-lg font-medium">Innovated</span>
               </div>
               <div className="w-full md:w-1/4 text-center p-6 bg-white">
-                <div className="w-24 h-24 mondrian-light-yellow border-4 border-black mx-auto mb-2 flex items-center justify-center">
-                  <span className="text-black font-bold text-3xl">30</span>
+                <div className="w-28 h-28 mondrian-light-yellow border-4 border-black mx-auto mb-2 flex items-center justify-center overflow-visible">
+                  <span className="text-black font-bold text-5xl">30</span>
                 </div>
                 <span className="text-lg font-medium">Years</span>
               </div>

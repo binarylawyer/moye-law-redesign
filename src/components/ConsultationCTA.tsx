@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { ArrowRight, Lock } from 'lucide-react';
+import { ArrowRight, Lock, Phone } from 'lucide-react';
 
 const ConsultationCTA = () => {
   return (
     <section className="py-24 bg-white relative">
       <div className="container mx-auto px-8 max-w-7xl relative">
         {/* Pure Mondrian composition */}
-        <div className="mondrian-grid mb-16">
+        <div className="mondrian-grid mb-6">
           {/* Top row with asymmetrical blocks */}
           <div className="col-span-2 mondrian-red"></div>
           <div className="col-span-1 mondrian-light-blue"></div>
@@ -65,16 +65,35 @@ const ConsultationCTA = () => {
           <div className="col-span-3 mondrian-light-yellow"></div>
         </div>
         
-        {/* Pure Mondrian-style grid beneath - more asymmetrical */}
-        <div className="mondrian-grid h-20">
-          <div className="col-span-1 mondrian-red"></div>
-          <div className="col-span-2 bg-white mondrian-grid-item"></div>
-          <div className="col-span-2 mondrian-light-blue"></div>
-          <div className="col-span-1 bg-white mondrian-grid-item"></div>
-          <div className="col-span-2 mondrian-yellow"></div>
-          <div className="col-span-1 mondrian-blue"></div>
-          <div className="col-span-2 mondrian-light-yellow"></div>
-          <div className="col-span-1 bg-white mondrian-grid-item"></div>
+        {/* Redesigned Pure Mondrian-style grid beneath - shorter height with more asymmetry */}
+        <div className="mondrian-grid h-16 relative">
+          {/* Left side - broken into asymmetrical colored blocks */}
+          <div className="col-span-1 flex flex-col h-full">
+            <div className="h-1/2 mondrian-red"></div>
+            <div className="h-1/2 mondrian-light-blue"></div>
+          </div>
+          <div className="col-span-1 flex flex-col h-full">
+            <div className="h-2/3 mondrian-light-yellow"></div>
+            <div className="h-1/3 bg-white"></div>
+          </div>
+          
+          {/* Middle section with CTA */}
+          <div className="col-span-8 flex items-center justify-center bg-white h-full border-l-4 border-r-4 border-black">
+            <Link to="/contact" className="flex items-center font-medium text-lg hover:underline">
+              <Phone className="h-4 w-4 mr-2" />
+              Contact us for a private consultation (212) 555-0123
+            </Link>
+          </div>
+          
+          {/* Right side - broken into asymmetrical colored blocks */}
+          <div className="col-span-1 flex flex-col h-full">
+            <div className="h-1/3 mondrian-blue"></div>
+            <div className="h-2/3 mondrian-light-yellow"></div>
+          </div>
+          <div className="col-span-1 flex flex-col h-full">
+            <div className="h-3/5 bg-white"></div>
+            <div className="h-2/5 mondrian-yellow"></div>
+          </div>
         </div>
       </div>
     </section>

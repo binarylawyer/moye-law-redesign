@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import { practiceAreasData } from '@/data/practiceAreasData';
 import '../styles/mondrian.css';
 import MondrianDecoration from '@/components/MondrianDecoration';
+import MondrianDividerCTA from '@/components/MondrianDividerCTA';
 
 const PracticeAreas: React.FC = () => {
   const [filter, setFilter] = useState<string>('all');
@@ -147,12 +148,11 @@ const PracticeAreas: React.FC = () => {
           </div>
         </section>
         
-        {/* Mondrian-style divider */}
-        <div className="mondrian-divider max-w-7xl mx-auto mb-16">
-          <div className="mondrian-divider-blue"></div>
-          <div className="mondrian-divider-white"></div>
-          <div className="mondrian-divider-red"></div>
-          <div className="mondrian-divider-yellow"></div>
+        {/* Replace standard Mondrian divider with the new CTA version */}
+        <div className="max-w-7xl mx-auto px-8 mb-16">
+          <MondrianDividerCTA 
+            text="Need help choosing a practice area?"
+          />
         </div>
       </main>
       <Footer />
