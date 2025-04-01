@@ -67,7 +67,7 @@ const Licensing: React.FC = () => {
   ];
 
   return (
-    <PracticeAreaTemplate areaName="IP Licensing">
+    <PracticeAreaTemplate areaName="IP Licensing" serviceId="ip-licensing">
       <PracticeAreaHero 
         title="IP Licensing Solutions"
         description="Strategic licensing frameworks that transform intellectual property into revenue streams and market advantages."

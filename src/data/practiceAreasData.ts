@@ -19,6 +19,34 @@ export interface PracticeArea {
   process: ProcessStep[];
 }
 
+export const specializedServiceData = [
+  {
+    id: 'ip-consulting',
+    title: 'IP Consulting Services',
+    description: 'Strategic intellectual property guidance for businesses seeking to maximize value and competitive advantage.'
+  },
+  {
+    id: 'ip-licensing',
+    title: 'IP Licensing Solutions',
+    description: 'Structured frameworks for monetizing and leveraging intellectual property through strategic licensing arrangements.'
+  },
+  {
+    id: 'digital-asset-protection',
+    title: 'Digital Asset Protection',
+    description: 'Comprehensive legal protection for valuable digital assets, from cryptocurrencies and NFTs to domain names and digital intellectual property.'
+  },
+  {
+    id: 'entertainment-law',
+    title: 'Entertainment Law',
+    description: 'Expert legal guidance for creators, producers, and businesses across the evolving entertainment landscape.'
+  },
+  {
+    id: 'emerging-tech',
+    title: 'Emerging Technology Law',
+    description: 'Forward-looking legal solutions for pioneers at the frontier of technological innovation.'
+  }
+];
+
 export const practiceAreasData: PracticeArea[] = [
   {
     id: 'intellectual-property',

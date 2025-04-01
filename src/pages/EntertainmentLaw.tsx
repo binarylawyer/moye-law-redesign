@@ -67,7 +67,7 @@ const EntertainmentLaw: React.FC = () => {
   ];
 
   return (
-    <PracticeAreaTemplate areaName="Entertainment Law">
+    <PracticeAreaTemplate areaName="Entertainment Law" serviceId="entertainment-law">
       <PracticeAreaHero 
         title="Entertainment Law"
         description="Expert legal guidance for creators, producers, and businesses across the evolving entertainment landscape."

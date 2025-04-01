@@ -1,18 +1,36 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ConsultationCTA from '@/components/ConsultationCTA';
 import MondrianDividerCTA from '@/components/MondrianDividerCTA';
+import { specializedServiceData } from '@/data/practiceAreasData';
 
 interface PracticeAreaTemplateProps {
   children: ReactNode;
   areaName: string;
+  serviceId?: string;
 }
 
 const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({ 
   children, 
-  areaName 
+  areaName,
+  serviceId
 }) => {
+  const [serviceInfo, setServiceInfo] = useState<{title: string, description: string} | null>(null);
+  
+  // Find service data if it exists
+  useEffect(() => {
+    if (serviceId) {
+      const foundService = specializedServiceData.find(service => service.id === serviceId);
+      if (foundService) {
+        setServiceInfo({
+          title: foundService.title,
+          description: foundService.description
+        });
+      }
+    }
+  }, [serviceId]);
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />

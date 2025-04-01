@@ -67,7 +67,7 @@ const DigitalAssetProtection: React.FC = () => {
   ];
 
   return (
-    <PracticeAreaTemplate areaName="Digital Asset Protection">
+    <PracticeAreaTemplate areaName="Digital Asset Protection" serviceId="digital-asset-protection">
       <PracticeAreaHero 
         title="Digital Asset Protection"
         description="Comprehensive legal protection for your valuable digital assets, from cryptocurrencies and NFTs to domain names and digital intellectual property."

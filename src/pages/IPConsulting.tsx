@@ -72,7 +72,7 @@ const IPConsulting: React.FC = () => {
   ];
 
   return (
-    <PracticeAreaTemplate areaName="IP Consulting">
+    <PracticeAreaTemplate areaName="IP Consulting" serviceId="ip-consulting">
       <PracticeAreaHero 
         title="IP Consulting Services"
         description="Strategic intellectual property guidance for businesses seeking to maximize value and competitive advantage."

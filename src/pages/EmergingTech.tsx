@@ -67,7 +67,7 @@ const EmergingTech: React.FC = () => {
   ];
 
   return (
-    <PracticeAreaTemplate areaName="Emerging Technology">
+    <PracticeAreaTemplate areaName="Emerging Technology" serviceId="emerging-tech">
       <PracticeAreaHero 
         title="Emerging Technology Law"
         description="Forward-looking legal solutions for pioneers at the frontier of technological innovation."
