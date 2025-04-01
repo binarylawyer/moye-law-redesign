@@ -52,10 +52,11 @@ const PracticeAreas = () => {
   return (
     <section className="py-28 bg-gray-50">
       <div className="container mx-auto px-8 max-w-7xl">
-        <div className="max-w-xl mx-auto text-center mb-20">
+        <div className="max-w-2xl mx-auto text-center mb-20">
           <h2 className="reveal font-serif text-3xl md:text-4xl text-navy mb-6 tracking-tight">
             Our Practice Areas
           </h2>
+          <div className="w-16 h-1 bg-gold/40 mx-auto mb-8"></div>
           <p className="reveal text-lg text-charcoal/70" style={{ transitionDelay: '0.1s' }}>
             Specialized legal expertise serving high-net-worth individuals and their families with solutions as individual as you are.
           </p>
@@ -65,9 +66,12 @@ const PracticeAreas = () => {
           {practiceAreas.map((practice, index) => (
             <div 
               key={practice.id}
-              className={`reveal ${practice.bgColor} border border-navy/5 rounded-lg p-10 shadow-sm hover:shadow-md transition-all h-full flex flex-col`}
+              className={`reveal ${practice.bgColor} border border-navy/5 rounded-xl p-10 shadow-sm hover:shadow-md transition-all h-full flex flex-col`}
               style={{ transitionDelay: `${0.05 * (index + 1)}s` }}
             >
+              <div className="w-10 h-10 rounded-full bg-navy/5 mb-6 flex items-center justify-center">
+                <span className="font-serif text-navy font-medium">{index + 1}</span>
+              </div>
               <h3 className="font-serif text-xl text-navy mb-4">{practice.title}</h3>
               <p className="text-charcoal/70 mb-6 text-base flex-grow">{practice.description}</p>
               
