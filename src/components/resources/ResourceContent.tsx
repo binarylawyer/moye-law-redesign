@@ -224,7 +224,7 @@ const ResourceContent: React.FC<ResourceContentProps> = ({ content }) => {
         <div className="max-w-5xl mx-auto">
           <div className="bg-white p-0">
             <div 
-              className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-navy prose-p:text-charcoal/80 prose-a:text-gold prose-a:no-underline hover:prose-a:underline"
+              className="prose prose-base max-w-none prose-headings:font-serif prose-headings:text-navy prose-p:text-charcoal/80 prose-a:text-gold prose-a:no-underline hover:prose-a:underline"
               dangerouslySetInnerHTML={{ __html: htmlContent }}
             />
           </div>
