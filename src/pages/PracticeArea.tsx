@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -7,7 +7,7 @@ import { practiceAreasData } from '@/data/practiceAreasData';
 import ConsultationCTA from '@/components/ConsultationCTA';
 
 const PracticeArea: React.FC = () => {
-  const { area } = useParams<{ area: string }>();
+  const { area } = useParams();
   const practiceData = practiceAreasData.find(practice => practice.id === area);
   
   // Intersection Observer for reveal animations

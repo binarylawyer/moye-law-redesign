@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -17,7 +16,7 @@ interface TeamMember {
 }
 
 const TeamMemberProfile: React.FC = () => {
-  const { memberId } = useParams<{ memberId: string }>();
+  const { memberId } = useParams();
   
   const teamMembersData: Record<string, TeamMember> = {
     "christopher-moye": {

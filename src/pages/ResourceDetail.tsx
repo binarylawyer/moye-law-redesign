@@ -1,6 +1,5 @@
-
 import React, { useEffect, useState } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { resources, Resource } from '../data/resourcesData';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -12,32 +11,25 @@ import ResourceNotFound from "../components/resources/ResourceNotFound";
 import useAnimatedElements from "../hooks/useAnimatedElements";
 
 const ResourceDetail: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>();
+  const { slug } = useParams();
   const [resource, setResource] = useState<Resource | null>(null);
   const [relatedResources, setRelatedResources] = useState<Resource[]>([]);
   const [loading, setLoading] = useState(true);
   const elementsRef = useAnimatedElements();
 
   useEffect(() => {
-    // Simulate loading to ensure all data is processed
     setLoading(true);
     
-    // Log important information for debugging
     console.log('Current slug:', slug);
     console.log('All available slugs:', resources.map(r => r.slug));
     
-    // Find the resource that matches the slug
     const foundResource = resources.find(r => r.slug === slug) || null;
     
-    // Log found resource
     console.log('Found resource:', foundResource);
     
-    // Ensure resource content is properly set
     if (foundResource && foundResource.content) {
-      // Make sure content is trimmed of whitespace
       foundResource.content = foundResource.content.trim();
       
-      // Log content details for debugging
       console.log('Content length:', foundResource.content.length);
       console.log('Content preview:', foundResource.content.substring(0, 100));
     } else {
@@ -46,7 +38,6 @@ const ResourceDetail: React.FC = () => {
     
     setResource(foundResource);
     
-    // Find related resources based on tags
     if (foundResource && foundResource.tags && foundResource.tags.length > 0) {
       const related = resources
         .filter(r => 
@@ -60,14 +51,11 @@ const ResourceDetail: React.FC = () => {
       setRelatedResources([]);
     }
     
-    // Scroll to top when resource changes
     window.scrollTo(0, 0);
     
-    // Set loading to false after data is processed
     setTimeout(() => setLoading(false), 100);
   }, [slug]);
 
-  // Show loading state
   if (loading) {
     return (
       <>
@@ -91,12 +79,10 @@ const ResourceDetail: React.FC = () => {
     );
   }
 
-  // Show not found if no resource
   if (!resource) {
     return <ResourceNotFound />;
   }
 
-  // Log rendering state for debugging
   console.log('Current resource state:', `Resource ${resource.title} ready to render`);
   console.log('Resource content exists:', Boolean(resource.content));
   console.log('Content length:', resource.content ? resource.content.length : 0);
@@ -105,17 +91,14 @@ const ResourceDetail: React.FC = () => {
     <>
       <Header />
       <main className="pt-24 pb-0 bg-white">
-        {/* Article Header */}
         <div ref={el => elementsRef.current[0] = el} className="reveal visible">
           <ResourceHeader resource={resource} />
         </div>
         
-        {/* Article Content */}
         <div ref={el => elementsRef.current[1] = el} className="reveal visible">
           <ResourceContent content={resource.content} />
         </div>
         
-        {/* Related Resources */}
         {relatedResources.length > 0 && (
           <div ref={el => elementsRef.current[2] = el} className="reveal visible">
             <RelatedResources resources={relatedResources} />
