@@ -57,16 +57,14 @@ const AppRoutes = () => {
         {/* Resources Routes */}
         <Route path="/resources" element={<Resources />} />
         <Route path="/resources/articles" element={<Articles />} />
-        <Route path="/resources/:slug" element={<ResourceDetail />} />
         <Route path="/resources/podcasts" element={<Podcasts />} />
         <Route path="/resources/faq" element={<FAQ />} />
-        
-        {/* Process & Client Experience Routes */}
         <Route path="/resources/how-we-work" element={<HowWeWork />} />
         <Route path="/resources/technology-approach" element={<TechnologyPlatform />} />
-        
-        {/* Case Studies */}
         <Route path="/resources/case-studies" element={<CaseStudies />} />
+        
+        {/* This specific route needs to be AFTER all other /resources/[specific-page] routes */}
+        <Route path="/resources/:slug" element={<ResourceDetail />} />
         
         {/* Specialized Pages */}
         <Route path="/digital-asset-protection" element={<DigitalAssetProtection />} />

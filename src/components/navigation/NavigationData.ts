@@ -1,4 +1,3 @@
-
 export const practiceAreas = [
   { title: "Estate Planning", path: "/practice/estate-planning" },
   { title: "Elder Law", path: "/practice/elder-law" },
