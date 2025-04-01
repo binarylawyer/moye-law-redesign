@@ -25,6 +25,7 @@ import Licensing from "./pages/Licensing";
 import EntertainmentLaw from "./pages/EntertainmentLaw";
 import EmergingTech from "./pages/EmergingTech";
 import Podcasts from "./pages/Podcasts";
+import ExperienceTheDifference from "./pages/ExperienceTheDifference";
 import FloatingConsultationButton from "./components/FloatingConsultationButton";
 
 // Scroll to top component
@@ -75,6 +76,9 @@ const AppRoutes = () => {
         
         {/* Direct access route for How We Work */}
         <Route path="/how-we-work" element={<HowWeWork />} />
+        
+        {/* Experience the Difference page */}
+        <Route path="/experience-the-difference" element={<ExperienceTheDifference />} />
         
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />

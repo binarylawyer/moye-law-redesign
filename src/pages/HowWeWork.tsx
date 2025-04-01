@@ -28,23 +28,55 @@ const HowWeWork = () => {
     <div className="min-h-screen bg-white">
       <Header />
       <main className="overflow-hidden">
-        {/* Hero Section - Dramatic and elegant */}
-        <section className="relative pt-48 pb-40 bg-white overflow-hidden">
-          {/* Abstract background elements */}
-          <div className="absolute right-0 top-0 w-1/2 h-full bg-navy/3 rounded-l-[300px] -z-10 opacity-50 transform rotate-3"></div>
-          <div className="absolute left-0 top-1/3 w-1/3 h-2/3 bg-gold/3 rounded-r-[400px] -z-10 opacity-40 transform -rotate-6"></div>
-          <div className="absolute top-1/4 right-1/4 w-32 h-32 rounded-full bg-navy/5 -z-10 blur-2xl"></div>
+        {/* Hero Section - Dramatic and elegant with frosted glass effect */}
+        <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
+          {/* Premium background image - replace this URL with your actual image */}
+          <div className="absolute inset-0 z-0">
+            {/* Image layer */}
+            <div 
+              className="absolute inset-0 bg-[url('https://source.unsplash.com/random/1920x1080/?luxury,office')] bg-cover bg-center"
+            ></div>
+            
+            {/* Dark gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-navy/50 to-navy/70 mix-blend-multiply"></div>
+            
+            {/* Frosted glass layer */}
+            <div 
+              className="absolute inset-0 backdrop-blur-[6px] bg-white/10"
+              style={{
+                backdropFilter: 'blur(6px)',
+              }}
+            ></div>
+          </div>
           
-          <div className="container mx-auto px-8 max-w-6xl">
-            <div className="max-w-3xl mx-auto">
-              <h1 className="reveal font-serif text-5xl md:text-6xl lg:text-7xl text-navy mb-10 text-center leading-tight">
+          {/* Content */}
+          <div className="container mx-auto px-8 max-w-6xl relative z-10 mt-24">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="reveal font-serif text-5xl md:text-6xl lg:text-7xl text-white mb-8 leading-tight drop-shadow-md">
                 The Art of Legal Distinction
               </h1>
-              <div className="w-24 h-1 bg-gold/40 mx-auto mb-12"></div>
-              <p className="reveal text-center text-xl md:text-2xl text-charcoal/80 leading-relaxed mb-12 mx-auto max-w-2xl" style={{ transitionDelay: '0.1s' }}>
+              <div className="w-24 h-1 bg-gold/70 mx-auto mb-12"></div>
+              <p className="reveal text-center text-xl md:text-2xl text-white/90 leading-relaxed mb-16 mx-auto max-w-2xl drop-shadow-md" style={{ transitionDelay: '0.1s' }}>
                 Where timeless precision meets bold innovation. Experience legal craftsmanship redefined for the discerning client.
               </p>
+              
+              <div className="reveal" style={{ transitionDelay: '0.2s' }}>
+                <Link 
+                  to="/contact" 
+                  className="inline-flex items-center bg-gold hover:bg-gold/90 text-white px-8 py-4 rounded-md text-lg font-medium transition-all shadow-lg hover:shadow-xl"
+                >
+                  Request Private Consultation
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </div>
             </div>
+          </div>
+          
+          {/* Decorative elements */}
+          <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-4 opacity-60">
+            <div className="w-3 h-3 rounded-full bg-gold/80"></div>
+            <div className="w-3 h-3 rounded-full bg-white/80"></div>
+            <div className="w-3 h-3 rounded-full bg-white/80"></div>
           </div>
         </section>
         
