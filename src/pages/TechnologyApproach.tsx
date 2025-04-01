@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -117,7 +116,7 @@ const TechnologyPlatform: React.FC = () => {
                         allowing for proactive strategy development rather than reactive responses.
                       </p>
                       <p className="text-charcoal/80">
-                        These insights enable our attorneys to develop highly targeted, data-informed approaches for each client's unique situation.
+                        These insights enable our attorneys to develop highly targeted, data-informed approaches for each client\'s unique situation.
                       </p>
                     </div>
                   </div>
@@ -300,7 +299,7 @@ const TechnologyPlatform: React.FC = () => {
                     <div>
                       <h3 className="font-serif text-xl text-navy mb-2">Augmented Intelligence</h3>
                       <p className="text-charcoal/80">
-                        Our technology doesn't make decisions—it provides our attorneys with comprehensive insights that enhance their 
+                        Our technology doesn\'t make decisions—it provides our attorneys with comprehensive insights that enhance their 
                         expertise and judgment, allowing them to focus on strategic thinking rather than routine tasks.
                       </p>
                     </div>

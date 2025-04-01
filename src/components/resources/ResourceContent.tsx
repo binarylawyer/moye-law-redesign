@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -13,12 +12,12 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
       <section className="pb-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-navy/5 rounded-lg p-8 text-center">
-              <p className="text-charcoal/80 mb-4">The full content for this resource is currently being prepared.</p>
-              <p className="text-charcoal/60 mb-6">Please check back soon or explore our other available resources.</p>
+            <div className="bg-white border-4 border-black p-8 text-center">
+              <p className="text-black/80 mb-4">The full content for this resource is currently being prepared.</p>
+              <p className="text-black/60 mb-6">Please check back soon or explore our other available resources.</p>
               <Link 
                 to="/resources" 
-                className="inline-flex items-center justify-center text-sm font-medium bg-navy hover:bg-navy/90 text-white py-2 px-4 rounded-md transition-colors"
+                className="mondrian-button inline-flex items-center justify-center"
               >
                 Return to Resources
               </Link>
@@ -85,13 +84,13 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
     
     return (
       <div className="overflow-x-auto my-6">
-        <table className="min-w-full border-collapse border border-slate-300">
-          <thead className="bg-navy/10">
-            <tr className="border-b border-slate-300">
+        <table className="min-w-full border-collapse border-4 border-black">
+          <thead className="mondrian-light-blue">
+            <tr>
               {headers.map((header, i) => (
                 <th 
                   key={i} 
-                  className="px-4 py-2 text-navy font-semibold border border-slate-300"
+                  className="px-4 py-2 text-black font-semibold border-2 border-black"
                   dangerouslySetInnerHTML={{ __html: processInlineFormatting(header) }}
                 />
               ))}
@@ -99,11 +98,11 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
           </thead>
           <tbody>
             {rows.map((row, i) => (
-              <tr key={i} className="border-b border-slate-300">
+              <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                 {row.map((cell, j) => (
                   <td 
                     key={j} 
-                    className="px-4 py-2 border border-slate-300 text-charcoal/80"
+                    className="px-4 py-2 border-2 border-black text-black/80"
                     dangerouslySetInnerHTML={{ __html: processInlineFormatting(cell) }}
                   />
                 ))}
@@ -176,20 +175,20 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
           const listItems = currentList.map((item, idx) => (
             <li 
               key={idx} 
-              className="mb-2 text-charcoal/80"
+              className="mb-2 text-black/80"
               dangerouslySetInnerHTML={{ __html: processInlineFormatting(item) }}
             />
           ));
           
           if (isUnorderedList) {
             elements.push(
-              <ul key={`ul-${listKey++}`} className="list-disc pl-6 mb-4 text-charcoal/80">
+              <ul key={`ul-${listKey++}`} className="list-disc pl-6 mb-4 text-black/80">
                 {listItems}
               </ul>
             );
           } else if (isOrderedList) {
             elements.push(
-              <ol key={`ol-${listKey++}`} className="list-decimal pl-6 mb-4 text-charcoal/80">
+              <ol key={`ol-${listKey++}`} className="list-decimal pl-6 mb-4 text-black/80">
                 {listItems}
               </ol>
             );
@@ -207,7 +206,7 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
           elements.push(
             <h2 
               key={`h2-${i}`} 
-              className="text-3xl font-serif text-navy mt-8 mb-4 font-bold"
+              className="text-3xl font-serif text-black mt-8 mb-4 font-bold"
               dangerouslySetInnerHTML={{ __html: processInlineFormatting(heading) }}
             />
           );
@@ -216,7 +215,7 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
           elements.push(
             <h3 
               key={`h3-${i}`} 
-              className="text-2xl font-serif text-navy mt-6 mb-3 font-bold"
+              className="text-2xl font-serif text-black mt-6 mb-3 font-bold"
               dangerouslySetInnerHTML={{ __html: processInlineFormatting(heading) }}
             />
           );
@@ -225,7 +224,7 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
           elements.push(
             <h4 
               key={`h4-${i}`} 
-              className="text-xl font-serif text-navy mt-5 mb-2 font-semibold"
+              className="text-xl font-serif text-black mt-5 mb-2 font-semibold"
               dangerouslySetInnerHTML={{ __html: processInlineFormatting(heading) }}
             />
           );
@@ -236,7 +235,7 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
           elements.push(
             <blockquote 
               key={`bq-${i}`} 
-              className="pl-4 border-l-4 border-gold/50 italic text-charcoal/70 my-4"
+              className="pl-4 border-l-4 border-black italic text-black/70 my-4 mondrian-quote"
               dangerouslySetInnerHTML={{ __html: processInlineFormatting(quote) }}
             />
           );
@@ -250,7 +249,7 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
           elements.push(
             <p 
               key={`p-${i}`} 
-              className="text-charcoal/80 mb-4 leading-relaxed"
+              className="text-black/80 mb-4 leading-relaxed"
               dangerouslySetInnerHTML={{ __html: processInlineFormatting(line) }}
             />
           );
@@ -263,20 +262,20 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
       const listItems = currentList.map((item, idx) => (
         <li 
           key={idx} 
-          className="mb-2 text-charcoal/80"
+          className="mb-2 text-black/80"
           dangerouslySetInnerHTML={{ __html: processInlineFormatting(item) }}
         />
       ));
       
       if (isUnorderedList) {
         elements.push(
-          <ul key={`ul-${listKey}`} className="list-disc pl-6 mb-4 text-charcoal/80">
+          <ul key={`ul-${listKey}`} className="list-disc pl-6 mb-4 text-black/80">
             {listItems}
           </ul>
         );
       } else if (isOrderedList) {
         elements.push(
-          <ol key={`ol-${listKey}`} className="list-decimal pl-6 mb-4 text-charcoal/80">
+          <ol key={`ol-${listKey}`} className="list-decimal pl-6 mb-4 text-black/80">
             {listItems}
           </ol>
         );
@@ -286,14 +285,64 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
     return elements;
   };
 
+  // Determine which Mondrian accent colors to use for the borders
+  const getAccentColors = () => {
+    // Random selection but consistent for the same content
+    const contentHash = content.length % 4;
+    
+    switch(contentHash) {
+      case 0:
+        return {
+          top: 'border-t-4 border-t-[#D6001C]', // mondrian-red as top border
+          right: 'border-r-4 border-r-black',
+          bottom: 'border-b-4 border-b-[#003B98]', // mondrian-blue as bottom border
+          left: 'border-l-4 border-l-black'
+        };
+      case 1:
+        return {
+          top: 'border-t-4 border-t-black',
+          right: 'border-r-4 border-r-[#FFD500]', // mondrian-yellow as right border
+          bottom: 'border-b-4 border-b-black',
+          left: 'border-l-4 border-l-[#4D80D4]' // mondrian-light-blue as left border
+        };
+      case 2:
+        return {
+          top: 'border-t-4 border-t-[#003B98]', // mondrian-blue as top border
+          right: 'border-r-4 border-r-black',
+          bottom: 'border-b-4 border-b-[#FFD500]', // mondrian-yellow as bottom border
+          left: 'border-l-4 border-l-black'
+        };
+      default:
+        return {
+          top: 'border-t-4 border-t-black',
+          right: 'border-r-4 border-r-[#D6001C]', // mondrian-red as right border
+          bottom: 'border-b-4 border-b-black',
+          left: 'border-l-4 border-l-[#FFD500]' // mondrian-yellow as left border
+        };
+    }
+  };
+
+  const borders = getAccentColors();
+
   return (
     <section className="py-6 md:py-10 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-sm">
-          <div className="prose prose-base max-w-none prose-headings:font-serif prose-headings:text-navy prose-p:text-charcoal/80 prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-ul:list-disc prose-ol:list-decimal">
-            <div className="markdown-content">
-              {renderContent()}
+        <div className="max-w-5xl mx-auto">
+          {/* Mondrian styled container with multi-colored borders */}
+          <div className={`bg-white p-6 md:p-8 ${borders.top} ${borders.right} ${borders.bottom} ${borders.left}`}>
+            <div className="prose prose-base max-w-none prose-headings:font-serif prose-headings:text-black prose-p:text-black/80 prose-a:text-[#D6001C] prose-a:no-underline hover:prose-a:underline prose-ul:list-disc prose-ol:list-decimal">
+              <div className="markdown-content">
+                {renderContent()}
+              </div>
             </div>
+          </div>
+          
+          {/* Mondrian-style divider at bottom */}
+          <div className="mondrian-divider mt-8">
+            <div className="mondrian-divider-red"></div>
+            <div className="mondrian-divider-white"></div>
+            <div className="mondrian-divider-blue"></div>
+            <div className="mondrian-divider-yellow"></div>
           </div>
         </div>
       </div>

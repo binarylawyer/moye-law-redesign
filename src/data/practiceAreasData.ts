@@ -34,7 +34,7 @@ export const practiceAreasData: PracticeArea[] = [
       },
       {
         title: 'Global Perspective',
-        description: 'In today's interconnected world, IP protection must transcend borders. We implement worldwide protection strategies that secure your innovations across all relevant jurisdictions.'
+        description: 'In today\'s interconnected world, IP protection must transcend borders. We implement worldwide protection strategies that secure your innovations across all relevant jurisdictions.'
       },
       {
         title: 'Value-Driven Approach',
@@ -143,7 +143,7 @@ export const practiceAreasData: PracticeArea[] = [
   {
     id: 'estate-planning',
     title: 'Estate Planning',
-    shortDescription: 'Securing your legacy and protecting your family's future',
+    shortDescription: 'Securing your legacy and protecting your family\'s future',
     introduction: 'Our estate planning practice creates comprehensive strategies to preserve wealth, minimize tax burdens, and ensure your assets are distributed according to your wishes.',
     category: 'personal',
     featured: false,

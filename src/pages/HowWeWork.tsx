@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ConsultationCTA from '@/components/ConsultationCTA';
-import { ArrowRight, Sparkles, Clock, Gem, Target, Check } from 'lucide-react';
+import { ArrowRight, Clock, Target, Zap, Shield, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HowWeWork = () => {
@@ -28,255 +28,253 @@ const HowWeWork = () => {
     <div className="min-h-screen bg-white">
       <Header />
       <main className="overflow-hidden">
-        {/* Hero Section - Dramatic and elegant with frosted glass effect */}
-        <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
-          {/* Premium background image - replace this URL with your actual image */}
-          <div className="absolute inset-0 z-0">
-            {/* Image layer */}
-            <div 
-              className="absolute inset-0 bg-[url('https://source.unsplash.com/random/1920x1080/?luxury,office')] bg-cover bg-center"
-            ></div>
-            
-            {/* Dark gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-navy/50 to-navy/70 mix-blend-multiply"></div>
-            
-            {/* Frosted glass layer */}
-            <div 
-              className="absolute inset-0 backdrop-blur-[6px] bg-white/10"
-              style={{
-                backdropFilter: 'blur(6px)',
-              }}
-            ></div>
-          </div>
-          
-          {/* Content */}
-          <div className="container mx-auto px-8 max-w-6xl relative z-10 mt-24">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="reveal font-serif text-5xl md:text-6xl lg:text-7xl text-white mb-8 leading-tight drop-shadow-md">
-                The Art of Legal Distinction
-              </h1>
-              <div className="w-24 h-1 bg-gold/70 mx-auto mb-12"></div>
-              <p className="reveal text-center text-xl md:text-2xl text-white/90 leading-relaxed mb-16 mx-auto max-w-2xl drop-shadow-md" style={{ transitionDelay: '0.1s' }}>
-                Where timeless precision meets bold innovation. Experience legal craftsmanship redefined for the discerning client.
-              </p>
+        {/* Mondrian-style hero section with pure grid layout */}
+        <section className="py-24 bg-white relative">
+          {/* Pure Mondrian-style grid layout for the hero */}
+          <div className="container mx-auto px-8 max-w-7xl">
+            <div className="mondrian-grid mb-16">
+              {/* Left red block */}
+              <div className="col-span-3 mondrian-red h-64 md:h-96"></div>
               
-              <div className="reveal" style={{ transitionDelay: '0.2s' }}>
-                <Link 
-                  to="/contact" 
-                  className="inline-flex items-center bg-gold hover:bg-gold/90 text-white px-8 py-4 rounded-md text-lg font-medium transition-all shadow-lg hover:shadow-xl"
-                >
-                  Request Private Consultation
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
+              {/* Title in center white block */}
+              <div className="col-span-6 bg-white p-8 flex flex-col justify-center items-center h-64 md:h-96">
+                <h1 className="reveal font-serif text-4xl md:text-6xl text-black mb-8 tracking-tight text-center">
+                  How We Work
+                </h1>
+                <p className="reveal text-center text-lg text-black/80 max-w-md" style={{ transitionDelay: '0.1s' }}>
+                  The intersection of traditional legal expertise and forward-thinking innovation.
+                </p>
               </div>
+              
+              {/* Right yellow block */}
+              <div className="col-span-3 mondrian-yellow h-64 md:h-96"></div>
             </div>
           </div>
           
-          {/* Decorative elements */}
-          <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-4 opacity-60">
-            <div className="w-3 h-3 rounded-full bg-gold/80"></div>
-            <div className="w-3 h-3 rounded-full bg-white/80"></div>
-            <div className="w-3 h-3 rounded-full bg-white/80"></div>
+          {/* Mondrian-style horizontal color bar */}
+          <div className="h-8 w-full flex border-t-4 border-b-4 border-black">
+            <div className="w-1/5 mondrian-red border-r-4 border-black"></div>
+            <div className="w-2/5 bg-white border-r-4 border-black"></div>
+            <div className="w-1/5 mondrian-blue border-r-4 border-black"></div>
+            <div className="w-1/5 mondrian-light-yellow"></div>
           </div>
         </section>
         
-        {/* Philosophy Section - Luxury-inspired */}
-        <section className="py-32 relative overflow-hidden">
-          {/* Organic background elements */}
-          <div className="absolute w-full h-full top-0 left-0 bg-gradient-to-b from-white via-navy/[0.01] to-white -z-10"></div>
-          <div className="absolute -left-20 top-40 w-80 h-80 rounded-full bg-gold/[0.02] -z-10 blur-md"></div>
-          
-          <div className="container mx-auto px-8 max-w-7xl relative">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-              <div className="relative">
-                <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-xl relative z-10">
-                  <img 
-                    src="/images/family.jpg" 
-                    alt="Sophisticated legal consultation" 
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent mix-blend-multiply"></div>
-                </div>
-                {/* Decorative frame element */}
-                <div className="absolute top-6 left-6 right-6 bottom-6 border-2 border-gold/20 rounded-2xl -z-0"></div>
+        {/* Philosophy Section - Mondrian grid */}
+        <section className="py-24 bg-white relative">
+          <div className="container mx-auto px-8 max-w-7xl">
+            <div className="mondrian-grid">
+              {/* Blue title block */}
+              <div className="col-span-4 mondrian-blue p-8 flex items-center">
+                <h2 className="reveal font-serif text-3xl md:text-4xl text-white">
+                  Our Philosophy
+                </h2>
               </div>
               
-              <div className="reveal" style={{ transitionDelay: '0.2s' }}>
-                <h2 className="font-serif text-3xl md:text-4xl text-navy mb-8 leading-tight">Our Philosophy: <span className="text-gold">Curated Legal Excellence</span></h2>
-                <div className="w-16 h-1 bg-gold/40 mb-8"></div>
-                <p className="text-lg text-charcoal/80 mb-6 leading-relaxed">
-                  At Moye Law, we approach each client relationship as an atelier approaches a bespoke creation. Your legal needs are unique—deserving of solutions crafted with exceptional care and precision.
+              {/* White content block */}
+              <div className="col-span-8 bg-white p-8">
+                <p className="reveal text-lg text-black/80 mb-6 leading-relaxed">
+                  At Moye Law, we approach each client relationship with meticulous care. Your legal needs are unique and deserve solutions crafted with exceptional precision.
                 </p>
-                <p className="text-lg text-charcoal/80 mb-10 leading-relaxed">
-                  Like a couturier evaluating the finest fabrics, we meticulously examine every aspect of your situation to create legal strategies of uncompromising quality. This is not merely law practice—it is legal artisanship.
+                <p className="reveal text-lg text-black/80 leading-relaxed" style={{ transitionDelay: '0.1s' }}>
+                  We thoroughly examine every aspect of your situation to create legal strategies of uncompromising quality. This is not merely law practice—it is legal artisanship.
                 </p>
-                
-                <div className="flex items-center space-x-4 text-lg text-navy/70 italic">
-                  <Sparkles className="h-5 w-5 text-gold" />
-                  <span>"Excellence is not an act, but our constant habit."</span>
-                </div>
+              </div>
+              
+              {/* Quote block with yellow background */}
+              <div className="col-span-12 mondrian-light-yellow p-8 border-t-4 border-black flex justify-center items-center">
+                <blockquote className="reveal text-2xl font-serif italic text-black text-center max-w-3xl" style={{ transitionDelay: '0.2s' }}>
+                  "We blend personalized attention with technological innovation to deliver legal solutions that are both traditional in values and forward-thinking in execution."
+                </blockquote>
               </div>
             </div>
           </div>
         </section>
         
-        {/* Process Section - Luxury & Fashion inspired */}
-        <section className="py-32 bg-white relative overflow-hidden">
-          <div className="absolute top-1/4 right-0 w-1/3 h-2/3 bg-gray-50 rounded-l-[300px] -z-10"></div>
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-1/2 bg-gradient-to-t from-navy/[0.01] to-transparent -z-10"></div>
-          
-          <div className="container mx-auto px-8 max-w-6xl">
-            <div className="text-center max-w-3xl mx-auto mb-20">
-              <h2 className="reveal font-serif text-3xl md:text-4xl text-navy mb-6">The Moye Experience</h2>
-              <div className="w-16 h-1 bg-gold/40 mx-auto mb-8"></div>
-              <p className="reveal text-lg text-charcoal/70" style={{ transitionDelay: '0.1s' }}>
-                Our distinctive process is crafted with the same attention to detail as a limited-edition collection.
-                Each phase is designed to ensure results as remarkable as they are refined.
+        {/* Process Section - Animated Mondrian-style blocks */}
+        <section className="py-24 bg-white relative">
+          <div className="container mx-auto px-8 max-w-7xl">
+            <div className="text-center mb-16">
+              <h2 className="reveal font-serif text-4xl text-black mb-6">
+                The Moye Experience
+              </h2>
+              <div className="w-24 h-1 bg-black mx-auto mb-8"></div>
+              <p className="reveal text-lg text-black/80 max-w-2xl mx-auto">
+                Our distinctive process ensures results as remarkable as they are refined.
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-16">
+            {/* Process steps in Mondrian grid */}
+            <div className="mondrian-grid mb-16">
               {/* Process Step 1 */}
-              <div className="reveal" style={{ transitionDelay: '0.1s' }}>
-                <div className="relative mb-8">
-                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-navy/10 text-navy">
-                    <Clock className="w-7 h-7" />
-                  </div>
-                  <div className="absolute top-8 left-8 h-[1px] w-32 bg-gold/30 hidden md:block"></div>
+              <div className="col-span-4 bg-white p-8 reveal" style={{ transitionDelay: '0.1s' }}>
+                <div className="w-20 h-20 mondrian-red border-4 border-black flex items-center justify-center mb-8">
+                  <Clock className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="font-serif text-2xl text-navy mb-4">The Private Consultation</h3>
-                <p className="text-charcoal/70 leading-relaxed">
-                  Your journey begins with an exclusive consultation where we explore your vision and objectives. Like the first fitting for a bespoke garment, we measure your precise needs and aspirations.
+                <h3 className="font-serif text-2xl text-black mb-4">The Private Consultation</h3>
+                <p className="text-black/80">
+                  Your journey begins with an exclusive consultation where we explore your vision and objectives. We measure your precise needs and aspirations.
                 </p>
               </div>
+              
+              {/* Yellow decorative block */}
+              <div className="col-span-2 mondrian-yellow"></div>
               
               {/* Process Step 2 */}
-              <div className="reveal" style={{ transitionDelay: '0.2s' }}>
-                <div className="relative mb-8">
-                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-navy/10 text-navy">
-                    <Gem className="w-7 h-7" />
-                  </div>
-                  <div className="absolute top-8 left-8 h-[1px] w-32 bg-gold/30 hidden md:block"></div>
+              <div className="col-span-4 bg-white p-8 reveal" style={{ transitionDelay: '0.2s' }}>
+                <div className="w-20 h-20 mondrian-blue border-4 border-black flex items-center justify-center mb-8">
+                  <Target className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="font-serif text-2xl text-navy mb-4">Artisanal Strategy</h3>
-                <p className="text-charcoal/70 leading-relaxed">
-                  We craft a bespoke legal strategy with the same meticulous care Prada applies to their signature pieces. Every detail is thoughtfully considered, every contingency elegantly addressed.
+                <h3 className="font-serif text-2xl text-black mb-4">Artisanal Strategy</h3>
+                <p className="text-black/80">
+                  We craft a bespoke legal strategy with meticulous care. Every detail is thoughtfully considered, every contingency elegantly addressed.
                 </p>
               </div>
+              
+              {/* Light blue decorative block */}
+              <div className="col-span-2 mondrian-light-blue"></div>
+              
+              {/* Red decorative block */}
+              <div className="col-span-2 mondrian-red"></div>
               
               {/* Process Step 3 */}
-              <div className="reveal" style={{ transitionDelay: '0.3s' }}>
-                <div className="relative mb-8">
-                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-navy/10 text-navy">
-                    <Target className="w-7 h-7" />
-                  </div>
+              <div className="col-span-4 bg-white p-8 reveal" style={{ transitionDelay: '0.3s' }}>
+                <div className="w-20 h-20 mondrian-light-yellow border-4 border-black flex items-center justify-center mb-8">
+                  <Zap className="w-8 h-8 text-black" />
                 </div>
-                <h3 className="font-serif text-2xl text-navy mb-4">Flawless Execution</h3>
-                <p className="text-charcoal/70 leading-relaxed">
-                  We execute with precision and confidence, drawing on decades of expertise and our innovative approach to deliver results with the timeless excellence of a heritage luxury brand.
+                <h3 className="font-serif text-2xl text-black mb-4">Flawless Execution</h3>
+                <p className="text-black/80">
+                  We execute with precision and confidence, drawing on decades of expertise and our innovative approach to deliver exceptional results.
                 </p>
               </div>
+              
+              {/* Blue decorative block */}
+              <div className="col-span-6 mondrian-blue"></div>
             </div>
           </div>
         </section>
         
-        {/* Signature Approach Section */}
-        <section className="py-36 bg-navy/[0.03] relative overflow-hidden">
-          <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-navy/[0.02] rounded-tl-[200px] -z-10"></div>
-          <div className="absolute top-1/3 left-0 w-64 h-64 rounded-full bg-gold/[0.03] -z-10"></div>
-          
-          <div className="container mx-auto px-8 max-w-6xl">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="reveal font-serif text-3xl md:text-4xl text-navy mb-8 text-center">The Moye Law Signature</h2>
-              <div className="w-16 h-1 bg-gold/40 mx-auto mb-12"></div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20">
-                {/* Left Column */}
-                <div className="reveal space-y-8" style={{ transitionDelay: '0.1s' }}>
-                  <div className="p-8 bg-white rounded-2xl shadow-sm border border-navy/5 hover:shadow-md transition-all">
-                    <div className="flex items-start mb-4">
-                      <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center mr-4 flex-shrink-0">
-                        <Check className="w-4 h-4 text-gold" />
-                      </div>
-                      <h3 className="font-serif text-xl text-navy">Personalized Attention</h3>
-                    </div>
-                    <p className="text-charcoal/70 pl-12">
-                      Like a private shopping experience at Gucci, your relationship with us is intimate and exclusive. We limit our client roster to ensure each receives our undivided attention.
-                    </p>
+        {/* Signature Approach Section in pure Mondrian style */}
+        <section className="py-24 bg-white relative">
+          <div className="container mx-auto px-8 max-w-7xl">
+            <div className="text-center mb-16">
+              <h2 className="reveal font-serif text-4xl text-black mb-6">
+                The Moye Law Signature
+              </h2>
+              <div className="w-24 h-1 bg-black mx-auto"></div>
+            </div>
+            
+            {/* 2x2 Mondrian grid for approach features */}
+            <div className="mondrian-grid mb-16">
+              {/* Feature 1: Personalized Attention */}
+              <div className="col-span-6 bg-white p-8 reveal flex flex-col" style={{ transitionDelay: '0.1s' }}>
+                <div className="flex items-start mb-4">
+                  <div className="w-16 h-16 mondrian-red border-4 border-black flex items-center justify-center flex-shrink-0 mr-6">
+                    <CheckCircle className="w-8 h-8 text-white" />
                   </div>
-                  
-                  <div className="p-8 bg-white rounded-2xl shadow-sm border border-navy/5 hover:shadow-md transition-all">
-                    <div className="flex items-start mb-4">
-                      <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center mr-4 flex-shrink-0">
-                        <Check className="w-4 h-4 text-gold" />
-                      </div>
-                      <h3 className="font-serif text-xl text-navy">Technological Innovation</h3>
-                    </div>
-                    <p className="text-charcoal/70 pl-12">
-                      We seamlessly blend tradition with innovation, much like how Louis Vuitton honors its heritage while embracing contemporary design. Our AI-enhanced workflows deliver efficiency without sacrificing quality.
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Right Column */}
-                <div className="reveal space-y-8" style={{ transitionDelay: '0.2s' }}>
-                  <div className="p-8 bg-white rounded-2xl shadow-sm border border-navy/5 hover:shadow-md transition-all">
-                    <div className="flex items-start mb-4">
-                      <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center mr-4 flex-shrink-0">
-                        <Check className="w-4 h-4 text-gold" />
-                      </div>
-                      <h3 className="font-serif text-xl text-navy">Discreet Handling</h3>
-                    </div>
-                    <p className="text-charcoal/70 pl-12">
-                      Your affairs are managed with the utmost discretion and confidentiality—the same level of privacy you would expect from the ateliers of haute couture.
-                    </p>
-                  </div>
-                  
-                  <div className="p-8 bg-white rounded-2xl shadow-sm border border-navy/5 hover:shadow-md transition-all">
-                    <div className="flex items-start mb-4">
-                      <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center mr-4 flex-shrink-0">
-                        <Check className="w-4 h-4 text-gold" />
-                      </div>
-                      <h3 className="font-serif text-xl text-navy">Legacy Preservation</h3>
-                    </div>
-                    <p className="text-charcoal/70 pl-12">
-                      We craft legal solutions that stand the test of time, protecting your legacy with the same reverence Rolex applies to its timeless timepieces—built to endure for generations.
+                  <div>
+                    <h3 className="font-serif text-2xl text-black mb-2">Personalized Attention</h3>
+                    <p className="text-black/80">
+                      Your relationship with us is intimate and exclusive. We limit our client roster to ensure each receives our undivided attention.
                     </p>
                   </div>
                 </div>
               </div>
               
-              <div className="reveal text-center" style={{ transitionDelay: '0.3s' }}>
-                <Link to="/contact" className="inline-flex items-center bg-gold hover:bg-gold/90 text-white font-medium py-4 px-8 rounded-lg shadow-sm transition-all">
-                  Schedule Your Private Consultation <ArrowRight className="ml-3 h-5 w-5" />
-                </Link>
+              {/* Feature 2: Technological Innovation */}
+              <div className="col-span-6 bg-white p-8 reveal flex flex-col" style={{ transitionDelay: '0.2s' }}>
+                <div className="flex items-start mb-4">
+                  <div className="w-16 h-16 mondrian-blue border-4 border-black flex items-center justify-center flex-shrink-0 mr-6">
+                    <Shield className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-2xl text-black mb-2">Technological Innovation</h3>
+                    <p className="text-black/80">
+                      We seamlessly blend tradition with innovation. Our AI-enhanced workflows deliver efficiency without sacrificing quality.
+                    </p>
+                  </div>
+                </div>
               </div>
+              
+              {/* Feature 3: Discreet Handling - with yellow block */}
+              <div className="col-span-3 mondrian-yellow h-64"></div>
+              <div className="col-span-6 bg-white p-8 reveal flex flex-col" style={{ transitionDelay: '0.3s' }}>
+                <div className="flex items-start mb-4">
+                  <div className="w-16 h-16 mondrian-light-blue border-4 border-black flex items-center justify-center flex-shrink-0 mr-6">
+                    <CheckCircle className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-2xl text-black mb-2">Discreet Handling</h3>
+                    <p className="text-black/80">
+                      Your affairs are managed with the utmost discretion and confidentiality—the same level of privacy you would expect from the finest institutions.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-span-3 mondrian-red h-64"></div>
+              
+              {/* Feature 4: Legacy Preservation */}
+              <div className="col-span-6 bg-white p-8 reveal flex flex-col" style={{ transitionDelay: '0.4s' }}>
+                <div className="flex items-start mb-4">
+                  <div className="w-16 h-16 mondrian-light-yellow border-4 border-black flex items-center justify-center flex-shrink-0 mr-6">
+                    <CheckCircle className="w-8 h-8 text-black" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-2xl text-black mb-2">Legacy Preservation</h3>
+                    <p className="text-black/80">
+                      We craft legal solutions that stand the test of time, protecting your legacy with reverence—built to endure for generations.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-span-6 mondrian-blue h-64"></div>
+            </div>
+            
+            {/* CTA button in Mondrian style */}
+            <div className="flex justify-center mb-16 reveal" style={{ transitionDelay: '0.5s' }}>
+              <Link to="/contact" className="mondrian-button yellow text-xl">
+                Schedule Your Private Consultation <ArrowRight className="ml-3 h-5 w-5" />
+              </Link>
             </div>
           </div>
         </section>
         
-        {/* Client Testimonial - Elegant showcase */}
-        <section className="py-36 bg-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-navy/[0.01] to-transparent -z-10"></div>
-          
-          <div className="container mx-auto px-8 max-w-6xl">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="reveal font-serif text-3xl md:text-4xl text-navy mb-16">Client Experiences</h2>
+        {/* Client Testimonial in Mondrian style */}
+        <section className="py-24 bg-white relative">
+          <div className="container mx-auto px-8 max-w-7xl">
+            <div className="mondrian-grid">
+              {/* Red left block */}
+              <div className="col-span-2 mondrian-red"></div>
               
-              <div className="reveal py-12 px-8 md:px-16 bg-navy/[0.02] rounded-2xl border border-navy/5 shadow-sm relative" style={{ transitionDelay: '0.1s' }}>
-                {/* Decorative quote mark */}
-                <div className="absolute top-6 left-6 text-gold/20 text-8xl font-serif">"</div>
-                <div className="absolute bottom-6 right-6 text-gold/20 text-8xl font-serif">"</div>
+              {/* Testimonial in center */}
+              <div className="col-span-8 bg-white p-12 reveal" style={{ transitionDelay: '0.1s' }}>
+                <h2 className="font-serif text-4xl text-black mb-12 text-center">Client Experiences</h2>
                 
-                <p className="text-navy/80 text-xl md:text-2xl italic font-serif mb-12 relative z-10">
-                  Working with Moye Law is like commissioning a masterpiece. Their attention to detail, personalized approach, and innovative solutions made complex estate planning feel effortless and elegant.
-                </p>
+                <blockquote className="mondrian-highlight yellow-accent text-xl italic font-serif mb-8 text-center">
+                  "Working with Moye Law is like commissioning a masterpiece. Their attention to detail, personalized approach, and innovative solutions made complex estate planning feel effortless and elegant."
+                </blockquote>
                 
-                <div className="flex flex-col items-center">
-                  <p className="text-navy font-medium text-lg">Elizabeth R.</p>
-                  <p className="text-charcoal/60 text-sm">CEO & Philanthrophist</p>
+                <div className="flex flex-col items-center text-center">
+                  <p className="text-black font-medium text-lg">Elizabeth R.</p>
+                  <p className="text-black/60 text-sm">CEO & Philanthropist</p>
                 </div>
               </div>
+              
+              {/* Blue right block */}
+              <div className="col-span-2 mondrian-blue"></div>
+            </div>
+          </div>
+        </section>
+        
+        {/* Authentic Mondrian-style grid composition for visual interest */}
+        <section className="py-16 relative">
+          <div className="container mx-auto px-8 max-w-7xl">
+            <div className="mondrian-grid h-64">
+              <div className="col-span-2 mondrian-red"></div>
+              <div className="col-span-3 bg-white"></div>
+              <div className="col-span-1 mondrian-blue"></div>
+              <div className="col-span-2 mondrian-light-yellow"></div>
+              <div className="col-span-4 bg-white"></div>
             </div>
           </div>
         </section>

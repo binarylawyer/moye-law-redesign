@@ -9,6 +9,7 @@ import ResourceContent from "../components/resources/ResourceContent";
 import RelatedResources from "../components/resources/RelatedResources";
 import ResourceNotFound from "../components/resources/ResourceNotFound";
 import useAnimatedElements from "../hooks/useAnimatedElements";
+import '../styles/mondrian.css';
 
 const ResourceDetail = () => {
   const params = useParams();
@@ -65,7 +66,7 @@ const ResourceDetail = () => {
         <main className="pt-24 pb-0 bg-white min-h-screen">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
-              <div className="animate-pulse">
+              <div className="animate-pulse mondrian-border p-8">
                 <div className="h-8 bg-gray-200 rounded w-1/2 mb-4"></div>
                 <div className="h-4 bg-gray-200 rounded w-1/3 mb-8"></div>
                 <div className="h-64 bg-gray-200 rounded mb-4"></div>
@@ -93,6 +94,14 @@ const ResourceDetail = () => {
     <>
       <Header />
       <main className="pt-24 pb-0 bg-white">
+        {/* Decorative Mondrian-style bar */}
+        <div className="h-8 w-full flex border-t-4 border-b-4 border-black mb-8">
+          <div className="w-1/5 mondrian-red border-r-4 border-black"></div>
+          <div className="w-1/5 bg-white border-r-4 border-black"></div>
+          <div className="w-2/5 mondrian-blue border-r-4 border-black"></div>
+          <div className="w-1/5 mondrian-yellow"></div>
+        </div>
+        
         <div ref={el => elementsRef.current[0] = el} className="reveal visible">
           <ResourceHeader resource={resource} />
         </div>
@@ -101,11 +110,40 @@ const ResourceDetail = () => {
           <ResourceContent content={resource?.content} />
         </div>
         
+        {/* Related Resources with Mondrian styling */}
         {relatedResources.length > 0 && (
           <div ref={el => elementsRef.current[2] = el} className="reveal visible">
-            <RelatedResources resources={relatedResources} />
+            <div className="py-8">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-5xl mx-auto">
+                  <h2 className="font-serif text-3xl mb-6 text-black">Related Resources</h2>
+                  <div className="mondrian-grid">
+                    {relatedResources.map((relatedResource, i) => (
+                      <div key={relatedResource.id} className={`col-span-12 md:col-span-4 p-4 ${i === 0 ? 'mondrian-light-blue' : i === 1 ? 'mondrian-light-yellow' : 'mondrian-white'}`}>
+                        <RelatedResources resources={[relatedResource]} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         )}
+        
+        {/* Decorative Mondrian-style composition before CTA */}
+        <div className="py-8 relative">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+              <div className="mondrian-grid h-32">
+                <div className="col-span-2 mondrian-red"></div>
+                <div className="col-span-4 bg-white"></div>
+                <div className="col-span-3 mondrian-blue"></div>
+                <div className="col-span-1 mondrian-light-yellow"></div>
+                <div className="col-span-2 bg-white"></div>
+              </div>
+            </div>
+          </div>
+        </div>
         
         <ConsultationCTA />
       </main>

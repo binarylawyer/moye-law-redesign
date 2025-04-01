@@ -106,7 +106,7 @@ const Approach = () => {
                 </li>
                 <li className="flex items-start">
                   <span className="w-12 h-12 border-4 border-black flex items-center justify-center mr-5 flex-shrink-0 text-black font-medium">02</span>
-                  <span className="pt-1 text-black/80">Secure, modern client processes designed for today's digital environment</span>
+                  <span className="pt-1 text-black/80">Secure, modern client processes designed for today\'s digital environment</span>
                 </li>
                 <li className="flex items-start">
                   <span className="w-12 h-12 mondrian-light-blue border-4 border-black flex items-center justify-center mr-5 flex-shrink-0 text-white font-medium">03</span>
