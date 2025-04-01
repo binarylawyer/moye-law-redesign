@@ -1,7 +1,5 @@
-
 import React, { useState } from 'react';
 import { List, ChevronDown, ChevronUp } from 'lucide-react';
-import { cn } from "@/lib/utils";
 
 interface TableOfContentsProps {
   content: string;
@@ -58,6 +56,32 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ content }) => {
     return null;
   }
 
+  // Get the proper padding for each heading level
+  const getPaddingClass = (level: number) => {
+    switch (level) {
+      case 1: return "pl-0";
+      case 2: return "pl-4";
+      case 3: return "pl-8";
+      case 4: return "pl-12";
+      case 5: return "pl-16";
+      case 6: return "pl-20";
+      default: return "pl-0";
+    }
+  };
+
+  // Get the proper font size and color for each heading level
+  const getStyleClass = (level: number) => {
+    switch (level) {
+      case 1: return "font-medium text-navy";
+      case 2: return "text-navy/90";
+      case 3: return "text-navy/80 text-sm";
+      case 4: return "text-navy/70 text-sm";
+      case 5: return "text-navy/60 text-xs";
+      case 6: return "text-navy/50 text-xs";
+      default: return "";
+    }
+  };
+
   return (
     <div className="mb-8 border rounded-lg overflow-hidden">
       <button
@@ -72,20 +96,16 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ content }) => {
       </button>
       
       {isOpen && (
-        <nav className="p-4 max-h-[300px] overflow-y-auto">
-          <ul className="space-y-2">
+        <nav className="p-4 max-h-[300px] overflow-y-auto bg-white">
+          <ul className="space-y-1">
             {headings.map((heading, index) => (
               <li 
                 key={index} 
-                className={cn(
-                  "text-charcoal/80 hover:text-navy transition-colors",
-                  heading.level === 1 ? "font-medium" : "",
-                  heading.level > 1 ? `ml-${(heading.level - 1) * 4}` : ""
-                )}
+                className={`${getPaddingClass(heading.level)} ${getStyleClass(heading.level)}`}
               >
                 <a 
                   href={`#${heading.id}`}
-                  className="block py-1"
+                  className="block py-1 hover:text-gold transition-colors"
                 >
                   {heading.text}
                 </a>
