@@ -44,8 +44,8 @@ const Hero = () => {
   
   return (
     <div className="relative border-b-4 border-black" ref={heroRef}>
-      {/* Video container - smaller height */}
-      <div className="h-[70vh] overflow-hidden relative">
+      {/* Video container - full height */}
+      <div className="h-screen overflow-hidden relative">
         {/* Video with horizontal movement effect */}
         <div className="absolute inset-0 w-[120%] h-full overflow-hidden">
           <video 
