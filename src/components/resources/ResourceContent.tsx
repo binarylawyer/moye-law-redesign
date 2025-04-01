@@ -50,6 +50,70 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
     }
   }
 
+  // Process markdown tables
+  const parseTable = (tableLines: string[]): JSX.Element => {
+    const tableData: string[][] = [];
+    let isHeader = true;
+    
+    // Process each line and build table data
+    tableLines.forEach((line, index) => {
+      if (line.trim() === '') return;
+      if (line.includes('|---') || line.includes('|-:') || line.includes('|:-')) {
+        // This is a separator line, just mark that we're past the header
+        isHeader = false;
+        return;
+      }
+      
+      // Split the line by | and remove empty cells from start/end
+      const rowContent = line.trim();
+      const cellsRaw = rowContent.split('|');
+      // If the first/last characters are |, remove the resulting empty strings
+      const cells = cellsRaw.slice(
+        rowContent.startsWith('|') ? 1 : 0, 
+        rowContent.endsWith('|') ? cellsRaw.length - 1 : cellsRaw.length
+      );
+      
+      // Trim cells and add to table data
+      tableData.push(cells.map(cell => cell.trim()));
+    });
+    
+    if (tableData.length === 0) return <></>;
+    
+    const headers = tableData[0];
+    const rows = tableData.slice(1);
+    
+    return (
+      <div className="overflow-x-auto my-6">
+        <table className="min-w-full border-collapse border border-slate-300">
+          <thead className="bg-navy/10">
+            <tr className="border-b border-slate-300">
+              {headers.map((header, i) => (
+                <th 
+                  key={i} 
+                  className="px-4 py-2 text-navy font-semibold border border-slate-300"
+                  dangerouslySetInnerHTML={{ __html: processInlineFormatting(header) }}
+                />
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row, i) => (
+              <tr key={i} className="border-b border-slate-300">
+                {row.map((cell, j) => (
+                  <td 
+                    key={j} 
+                    className="px-4 py-2 border border-slate-300 text-charcoal/80"
+                    dangerouslySetInnerHTML={{ __html: processInlineFormatting(cell) }}
+                  />
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
+
   // Group the content into blocks for rendering
   const renderContent = () => {
     const lines = contentWithoutFirstHeading.split('\n');
@@ -59,8 +123,29 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
     let isOrderedList = false;
     let listKey = 0;
     
+    // For table parsing
+    let tableLines: string[] = [];
+    let inTable = false;
+    
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
+      
+      // Check if this is a table row
+      if (line.startsWith('|') && line.endsWith('|')) {
+        if (!inTable) {
+          inTable = true;
+        }
+        tableLines.push(line);
+        
+        // If this is the last line or the next line is not part of the table
+        if (i === lines.length - 1 || 
+            !lines[i+1].trim().startsWith('|')) {
+          elements.push(parseTable(tableLines));
+          tableLines = [];
+          inTable = false;
+        }
+        continue;
+      }
       
       // Process list items - check for various list markers
       if (line.match(/^[-*+]\s+/)) {
@@ -157,10 +242,10 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
         
         // Process empty lines
         } else if (line === '') {
-          // Only add a break if there's not already content
-          if (elements.length > 0 && elements[elements.length - 1].type !== 'br') {
-            elements.push(<br key={`br-${i}`} />);
-          }
+          // Don't add a break for empty lines, as they're already handled by paragraph margins
+          // This prevents double spacing between paragraphs
+          // Only uncomment the line below if you want explicit breaks for empty lines
+          // elements.push(<br key={`br-${i}`} />);
         
         // Process paragraphs
         } else if (line !== '') {
