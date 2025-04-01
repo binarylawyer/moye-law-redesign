@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Add dropdown animation keyframes */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
 @layer base {
   body {
     @apply font-sans text-base md:text-lg;
@@ -32,6 +55,15 @@
 }
 
 @layer utilities {
+  /* Animation for dropdown menus */
+  .animate-dropdown {
+    animation: slideDown 0.3s ease-in-out forwards;
+  }
+  
+  .animate-dropdown-leave {
+    animation: slideUp 0.3s ease-in-out forwards;
+  }
+
   /* Animation classes for reveal animations */
   .reveal {
     opacity: 0;

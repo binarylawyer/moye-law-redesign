@@ -10,7 +10,11 @@ import MondrianDividerCTA from '@/components/MondrianDividerCTA';
 
 const PracticeArea: React.FC = () => {
   const { area } = useParams();
+  console.log('Practice Area Component - URL Parameter:', area);
+  console.log('Available Practice Areas:', practiceAreasData.map(p => p.id));
+  
   const practiceData = practiceAreasData.find(practice => practice.id === area);
+  console.log('Matched Practice Area:', practiceData?.title || 'None');
   
   // Intersection Observer for reveal animations
   useEffect(() => {

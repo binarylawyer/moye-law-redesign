@@ -1,3 +1,10 @@
+export interface SpecializedService {
+  id: string;
+  title: string;
+  description: string;
+  shortTitle?: string;
+}
+
 export interface PracticePrinciple {
   title: string;
   description: string;
@@ -451,12 +458,44 @@ export const practiceAreasData: PracticeArea[] = [
 ];
 
 export const getServiceByName = (serviceId: string): SpecializedService | undefined => {
-  return specializedServices.find(service => 
-    service.id === serviceId || 
-    service.id.replace(/-/g, '') === serviceId.replace(/-/g, '') || // Handle with or without hyphens
-    service.title.toLowerCase().replace(/\s+/g, '-') === serviceId.toLowerCase() || // Handle title matching
-    service.shortTitle?.toLowerCase().replace(/\s+/g, '-') === serviceId.toLowerCase() // Handle shortTitle matching
+  console.log('Looking up service by ID:', serviceId);
+  
+  // Try exact match first
+  const exactMatch = specializedServiceData.find(service => service.id === serviceId);
+  if (exactMatch) {
+    console.log('Found exact match:', exactMatch.id);
+    return exactMatch;
+  }
+  
+  // Try with or without hyphens
+  const hyphenNormalizedMatch = specializedServiceData.find(service => 
+    service.id.replace(/-/g, '') === serviceId.replace(/-/g, '')
   );
+  if (hyphenNormalizedMatch) {
+    console.log('Found match after normalizing hyphens:', hyphenNormalizedMatch.id);
+    return hyphenNormalizedMatch;
+  }
+  
+  // Try by title
+  const titleMatch = specializedServiceData.find(service => 
+    service.title.toLowerCase().replace(/\s+/g, '-') === serviceId.toLowerCase()
+  );
+  if (titleMatch) {
+    console.log('Found match by title:', titleMatch.id);
+    return titleMatch;
+  }
+  
+  // Try by shortTitle if available
+  const shortTitleMatch = specializedServiceData.find(service => 
+    service.shortTitle?.toLowerCase().replace(/\s+/g, '-') === serviceId.toLowerCase()
+  );
+  if (shortTitleMatch) {
+    console.log('Found match by shortTitle:', shortTitleMatch.id);
+    return shortTitleMatch;
+  }
+  
+  console.log('No service found for ID:', serviceId);
+  return undefined;
 };
 
 export const specializedServicePathMap: Record<string, string> = {

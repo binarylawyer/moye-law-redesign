@@ -8,7 +8,8 @@ export const practiceAreas = [
   { title: "Entertainment Law", path: "/practice/entertainment-law" },
   { title: "Emerging Tech", path: "/practice/emerging-tech" },
   { title: "Real Estate", path: "/practice/real-estate" },
-  { title: "Crypto & Digital Assets", path: "/practice/crypto-assets" },
+  { title: "Digital Asset Protection", path: "/practice/digital-asset-protection" },
+  { title: "IP Consulting", path: "/practice/ip-consulting" },
 ];
 
 export const specializedServices = [

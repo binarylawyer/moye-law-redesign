@@ -55,8 +55,17 @@ const AppRoutes = () => {
       <FloatingConsultationButton />
       <Routes>
         <Route path="/" element={<Index />} />
+        
+        {/* Practice Routes */}
+        <Route path="/practice/digital-asset-protection" element={<DigitalAssetProtection />} />
+        <Route path="/practice/ip-consulting" element={<IPConsulting />} />
+        <Route path="/practice/ip-licensing" element={<Licensing />} />
+        <Route path="/practice/entertainment-law" element={<EntertainmentLaw />} />
+        <Route path="/practice/emerging-tech" element={<EmergingTech />} />
         <Route path="/practice" element={<Practice />} />
         <Route path="/practice/:area" element={<PracticeArea />} />
+        
+        {/* Other Main Routes */}
         <Route path="/about" element={<About />} />
         <Route path="/team" element={<Team />} />
         <Route path="/team/:memberId" element={<TeamMemberProfile />} />
@@ -70,16 +79,7 @@ const AppRoutes = () => {
         <Route path="/resources/how-we-work" element={<HowWeWork />} />
         <Route path="/resources/technology-approach" element={<TechnologyPlatform />} />
         <Route path="/resources/case-studies" element={<CaseStudies />} />
-        
-        {/* This specific route needs to be AFTER all other /resources/[specific-page] routes */}
         <Route path="/resources/:slug" element={<ResourceDetail />} />
-        
-        {/* Practice Area Routes */}
-        <Route path="/practice/digital-asset-protection" element={<DigitalAssetProtection />} />
-        <Route path="/practice/ip-consulting" element={<IPConsulting />} />
-        <Route path="/practice/ip-licensing" element={<Licensing />} />
-        <Route path="/practice/entertainment-law" element={<EntertainmentLaw />} />
-        <Route path="/practice/emerging-tech" element={<EmergingTech />} />
         
         {/* Services Routes */}
         <Route path="/services/digital-asset-protection" element={<DigitalAssetProtectionService />} />
