@@ -28,6 +28,13 @@ import Podcasts from "./pages/Podcasts";
 import ExperienceTheDifference from "./pages/ExperienceTheDifference";
 import FloatingConsultationButton from "./components/FloatingConsultationButton";
 
+// Services imports
+import DigitalAssetProtectionService from "./pages/services/DigitalAssetProtection";
+import IPConsultingService from "./pages/services/IPConsulting";
+import LicensingService from "./pages/services/Licensing";
+import EntertainmentLawService from "./pages/services/EntertainmentLaw";
+import EmergingTechService from "./pages/services/EmergingTech";
+
 // Scroll to top component
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -67,19 +74,26 @@ const AppRoutes = () => {
         {/* This specific route needs to be AFTER all other /resources/[specific-page] routes */}
         <Route path="/resources/:slug" element={<ResourceDetail />} />
         
-        {/* Specialized Pages */}
+        {/* Practice Area Routes */}
         <Route path="/practice/digital-asset-protection" element={<DigitalAssetProtection />} />
         <Route path="/practice/ip-consulting" element={<IPConsulting />} />
         <Route path="/practice/ip-licensing" element={<Licensing />} />
         <Route path="/practice/entertainment-law" element={<EntertainmentLaw />} />
         <Route path="/practice/emerging-tech" element={<EmergingTech />} />
         
+        {/* Services Routes */}
+        <Route path="/services/digital-asset-protection" element={<DigitalAssetProtectionService />} />
+        <Route path="/services/ip-consulting" element={<IPConsultingService />} />
+        <Route path="/services/ip-licensing" element={<LicensingService />} />
+        <Route path="/services/entertainment-law" element={<EntertainmentLawService />} />
+        <Route path="/services/emerging-tech" element={<EmergingTechService />} />
+        
         {/* Legacy URLs - redirect to new paths */}
-        <Route path="/digital-asset-protection" element={<DigitalAssetProtection />} />
-        <Route path="/ip-consulting" element={<IPConsulting />} />
-        <Route path="/ip-licensing" element={<Licensing />} />
-        <Route path="/entertainment-law" element={<EntertainmentLaw />} />
-        <Route path="/emerging-tech" element={<EmergingTech />} />
+        <Route path="/digital-asset-protection" element={<DigitalAssetProtectionService />} />
+        <Route path="/ip-consulting" element={<IPConsultingService />} />
+        <Route path="/ip-licensing" element={<LicensingService />} />
+        <Route path="/entertainment-law" element={<EntertainmentLawService />} />
+        <Route path="/emerging-tech" element={<EmergingTechService />} />
         
         {/* Direct access route for How We Work */}
         <Route path="/how-we-work" element={<HowWeWork />} />

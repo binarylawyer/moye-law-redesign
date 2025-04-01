@@ -460,9 +460,9 @@ export const getServiceByName = (serviceId: string): SpecializedService | undefi
 };
 
 export const specializedServicePathMap: Record<string, string> = {
-  'digital-asset-protection': '/practice/digital-asset-protection',
-  'ip-consulting': '/practice/ip-consulting',
-  'ip-licensing': '/practice/ip-licensing',
-  'entertainment-law': '/practice/entertainment-law',
-  'emerging-tech': '/practice/emerging-tech',
+  'digital-asset-protection': '/services/digital-asset-protection',
+  'ip-consulting': '/services/ip-consulting',
+  'ip-licensing': '/services/ip-licensing',
+  'entertainment-law': '/services/entertainment-law',
+  'emerging-tech': '/services/emerging-tech',
 };
