@@ -30,42 +30,562 @@ export const specializedServiceData = [
   {
     id: 'ip-consulting',
     title: 'IP Consulting Services',
-    description: 'Strategic intellectual property guidance for businesses seeking to maximize value and competitive advantage.'
-  },
-  {
-    id: 'ip-licensing',
-    title: 'IP Licensing Solutions',
-    description: 'Structured frameworks for monetizing and leveraging intellectual property through strategic licensing arrangements.'
+    shortTitle: 'IP Consulting',
+    areaOfPractice: 'Intellectual Property',
+    description: 'Strategic intellectual property guidance for businesses seeking to maximize value and competitive advantage.',
+    content: [
+      {
+        title: "IP Audit & Portfolio Management",
+        description: "Comprehensive evaluation and strategic management of intellectual property assets."
+      },
+      {
+        title: "IP Strategy Development",
+        description: "Forward-looking IP strategies aligned with business objectives and market opportunities."
+      },
+      {
+        title: "IP Valuation & Monetization",
+        description: "Expert analysis of IP value and development of strategic monetization pathways."
+      },
+      {
+        title: "Global IP Protection",
+        description: "International strategies to secure and defend intellectual property across borders."
+      }
+    ],
+    featureContent: {
+      title: "Strategic IP Management Solutions",
+      description: "Our IP consulting services help businesses identify, protect, and leverage their intellectual property assets. We provide tailored strategies that align with your business goals and enhance your competitive position in the market.",
+      imagePath: "/images/ip-consulting.jpg"
+    },
+    process: [
+      {
+        number: "01",
+        title: "Discovery & Assessment",
+        description: "We begin with a thorough evaluation of your existing intellectual property assets, business objectives, and competitive landscape."
+      },
+      {
+        number: "02",
+        title: "Strategy Development",
+        description: "Based on our assessment, we develop a comprehensive IP strategy tailored to your specific needs and goals."
+      },
+      {
+        number: "03",
+        title: "Implementation Planning",
+        description: "We create a detailed implementation plan with clear timelines, responsibilities, and resource requirements."
+      },
+      {
+        number: "04",
+        title: "Execution Support",
+        description: "We provide ongoing support during the implementation of your IP strategy, including coordination with specialized counsel."
+      }
+    ],
+    processDescription: "Our systematic approach ensures your intellectual property strategy supports business objectives while maximizing asset value.",
+    relatedServices: [
+      {
+        title: "IP Licensing",
+        path: "ip-licensing",
+        description: "Structured frameworks for monetizing and leveraging intellectual property through strategic licensing arrangements."
+      },
+      {
+        title: "Emerging Tech",
+        path: "emerging-tech",
+        description: "Legal frameworks for businesses leveraging emerging technologies like blockchain, AI, and IoT."
+      },
+      {
+        title: "Digital Asset Protection",
+        path: "digital-asset-protection",
+        description: "Comprehensive protection strategies for digital intellectual property."
+      }
+    ]
   },
   {
     id: 'digital-asset-protection',
     title: 'Digital Asset Protection',
-    description: 'Comprehensive legal protection for valuable digital assets, from cryptocurrencies and NFTs to domain names and digital intellectual property.'
+    shortTitle: 'Digital Assets',
+    areaOfPractice: 'Digital Asset Protection',
+    description: 'Comprehensive legal strategies to safeguard your digital assets and intellectual property in an increasingly virtual world.',
+    content: [
+      {
+        title: "Cryptocurrency & NFT Protection",
+        description: "Legal frameworks for securing digital currencies, NFTs, and blockchain-based assets."
+      },
+      {
+        title: "Digital IP Rights Management",
+        description: "Strategies for establishing, monitoring, and enforcing digital intellectual property rights."
+      },
+      {
+        title: "Online Content Protection",
+        description: "Legal tools to prevent unauthorized use of digital content and creative works."
+      },
+      {
+        title: "Digital Estate Planning",
+        description: "Solutions for managing digital asset succession and ensuring long-term protection."
+      }
+    ],
+    featureContent: {
+      title: "Proactive Digital Rights Management",
+      description: "We implement forward-thinking strategies that protect your digital assets before problems arise, combining preventative legal measures with responsive enforcement frameworks.",
+      imagePath: "/images/digital-protection.jpg"
+    },
+    process: [
+      {
+        number: "01",
+        title: "Digital Asset Audit",
+        description: "We thoroughly inventory and assess your digital assets and current protection measures."
+      },
+      {
+        number: "02",
+        title: "Risk Assessment",
+        description: "We identify vulnerabilities and potential legal challenges to your digital property."
+      },
+      {
+        number: "03",
+        title: "Protection Strategy",
+        description: "We develop a comprehensive legal framework to protect your digital assets."
+      },
+      {
+        number: "04",
+        title: "Implementation & Monitoring",
+        description: "We put protection measures in place and establish ongoing monitoring systems."
+      }
+    ],
+    processDescription: "Our structured approach ensures your digital assets receive comprehensive legal protection in today's rapidly evolving digital landscape.",
+    relatedServices: [
+      {
+        title: "IP Consulting",
+        path: "ip-consulting",
+        description: "Strategic consulting for intellectual property in digital environments."
+      },
+      {
+        title: "Estate Planning",
+        path: "estate-planning",
+        description: "Ensuring your digital assets are included in comprehensive estate plans."
+      },
+      {
+        title: "Emerging Tech Law",
+        path: "emerging-tech",
+        description: "Legal frameworks for cutting-edge digital technologies and platforms."
+      }
+    ]
   },
   {
     id: 'entertainment-law',
     title: 'Entertainment Law',
-    description: 'Expert legal guidance for creators, producers, and businesses across the evolving entertainment landscape.'
+    shortTitle: 'Entertainment Law',
+    areaOfPractice: 'Entertainment',
+    description: 'Our entertainment law practice provides expert legal guidance for creators, producers, and businesses across the evolving media landscape.',
+    content: [
+      {
+        title: "Film & Television",
+        description: "Contract negotiation, intellectual property protection, and production legal services for content creators and studios."
+      },
+      {
+        title: "Music & Performing Arts",
+        description: "Rights management, licensing agreements, and career strategy for artists, labels, and production companies."
+      },
+      {
+        title: "Digital Entertainment",
+        description: "Legal frameworks for podcasts, streaming platforms, gaming, and other digital entertainment ventures."
+      },
+      {
+        title: "Talent Representation",
+        description: "Comprehensive representation services for performers, creators, and influencers in traditional and digital media."
+      }
+    ],
+    featureContent: {
+      title: "Creative Rights Protection",
+      description: "We safeguard the legal interests of creative professionals and entertainment companies with sophisticated rights management strategies designed for today's complex media environment.",
+      imagePath: "/images/creative-rights.jpg"
+    },
+    process: [
+      {
+        number: "01",
+        title: "Rights Assessment",
+        description: "We evaluate existing intellectual property rights and development needs for your entertainment project."
+      },
+      {
+        number: "02",
+        title: "Strategic Planning",
+        description: "We develop tailored legal strategies that align with your creative and business objectives."
+      },
+      {
+        number: "03",
+        title: "Documentation & Negotiation",
+        description: "We create and negotiate agreements that protect your interests while facilitating successful collaborations."
+      },
+      {
+        number: "04",
+        title: "Rights Management",
+        description: "We establish systems for ongoing rights management, compliance, and monetization."
+      }
+    ],
+    processDescription: "We implement a structured methodology that protects creative works while enabling successful commercial ventures.",
+    relatedServices: [
+      {
+        title: "IP Licensing",
+        path: "ip-licensing",
+        description: "Strategic frameworks for content licensing and intellectual property monetization."
+      },
+      {
+        title: "Digital Asset Protection",
+        path: "digital-asset-protection",
+        description: "Protecting digital creative works and entertainment properties."
+      },
+      {
+        title: "Contract Law",
+        path: "contract-law",
+        description: "Expert guidance on entertainment industry agreements and negotiations."
+      }
+    ]
   },
   {
     id: 'emerging-tech',
     title: 'Emerging Technology Law',
-    description: 'Forward-looking legal solutions for pioneers at the frontier of technological innovation.'
-  },
-  {
-    id: 'elder-law',
-    title: 'Elder Law',
-    description: 'Comprehensive legal services for older adults and their families, including estate planning, long-term care, and asset protection.'
+    shortTitle: 'Emerging Tech',
+    areaOfPractice: 'Emerging Technology',
+    description: 'Our emerging technology practice provides forward-thinking legal guidance for innovators at the frontier of technological development.',
+    content: [
+      {
+        title: "Blockchain & Cryptocurrency",
+        description: "Legal frameworks for blockchain applications, token offerings, smart contracts, and cryptocurrency ventures."
+      },
+      {
+        title: "Artificial Intelligence",
+        description: "Navigating the complex legal landscape of AI development, data usage, liability, and intellectual property protection."
+      },
+      {
+        title: "Internet of Things (IoT)",
+        description: "Addressing privacy, security, and regulatory compliance for connected devices and systems."
+      },
+      {
+        title: "Automated Systems",
+        description: "Legal guidance for robotic process automation, autonomous vehicles, and other automated technologies."
+      }
+    ],
+    featureContent: {
+      title: "Future-Proof Legal Frameworks",
+      description: "We develop adaptable legal frameworks that protect your innovations today while accommodating the rapid pace of technological evolution.",
+      imagePath: "/images/tech-innovation.jpg"
+    },
+    process: [
+      {
+        number: "01",
+        title: "Technology Assessment",
+        description: "We begin with a comprehensive assessment of your technology and its unique legal considerations."
+      },
+      {
+        number: "02",
+        title: "Regulatory Mapping",
+        description: "We identify applicable regulatory frameworks across all relevant jurisdictions."
+      },
+      {
+        number: "03",
+        title: "Risk Mitigation",
+        description: "We develop tailored strategies to address identified legal risks while enabling innovation."
+      },
+      {
+        number: "04",
+        title: "Ongoing Advisory",
+        description: "We provide continuous guidance as your technology evolves and regulatory landscapes change."
+      }
+    ],
+    processDescription: "We implement a methodical approach to addressing the novel legal challenges presented by emerging technologies.",
+    relatedServices: [
+      {
+        title: "IP Licensing",
+        path: "ip-licensing",
+        description: "Strategic frameworks for technology licensing and intellectual property monetization."
+      },
+      {
+        title: "Digital Asset Protection",
+        path: "digital-asset-protection",
+        description: "Comprehensive protection for digital assets, from NFTs to digital IP."
+      },
+      {
+        title: "Data Privacy",
+        path: "data-privacy",
+        description: "Ensuring compliance with evolving global data protection regulations."
+      }
+    ]
   },
   {
     id: 'software-licensing',
     title: 'Software Licensing',
-    description: 'Strategic legal frameworks for software development, distribution, and licensing agreements across various platforms and industries.'
+    shortTitle: 'Software Licensing',
+    areaOfPractice: 'Software Law',
+    description: 'Our software licensing practice helps developers and companies maximize value while protecting their code through optimal licensing structures.',
+    content: [
+      {
+        title: "Open Source Compliance",
+        description: "Navigating the complexities of open source license obligations and integration with proprietary software."
+      },
+      {
+        title: "SaaS Agreements",
+        description: "Structured agreements for cloud-based software, addressing access rights, data ownership, and service levels."
+      },
+      {
+        title: "Enterprise Licensing",
+        description: "Comprehensive frameworks for licensing software across large organizations with multiple divisions and users."
+      },
+      {
+        title: "Mobile App Licensing",
+        description: "Specialized licensing solutions for mobile applications across various platforms and distribution channels."
+      }
+    ],
+    featureContent: {
+      title: "Value-Maximizing License Frameworks",
+      description: "We develop licensing frameworks that balance protection with distribution, enabling you to monetize your software while maintaining appropriate control.",
+      imagePath: "/images/software-code.jpg"
+    },
+    process: [
+      {
+        number: "01",
+        title: "License Analysis",
+        description: "We analyze your software business model and distribution needs to determine optimal licensing structures."
+      },
+      {
+        number: "02",
+        title: "Strategy Development",
+        description: "We craft a licensing strategy that protects your intellectual property while facilitating distribution and revenue."
+      },
+      {
+        number: "03",
+        title: "Agreement Drafting",
+        description: "We create customized licensing agreements that address your specific technology and business requirements."
+      },
+      {
+        number: "04",
+        title: "Compliance Monitoring",
+        description: "We establish systems to monitor compliance with licensing terms and enforce your rights when necessary."
+      }
+    ],
+    processDescription: "Our methodical approach ensures your software licensing strategy supports both protection and business growth.",
+    relatedServices: [
+      {
+        title: "IP Licensing",
+        path: "ip-licensing",
+        description: "Broader intellectual property licensing strategies beyond software."
+      },
+      {
+        title: "Emerging Tech",
+        path: "emerging-tech",
+        description: "Legal solutions for frontier technologies and innovative software applications."
+      },
+      {
+        title: "Digital Asset Protection",
+        path: "digital-asset-protection",
+        description: "Comprehensive protection for your valuable digital and software assets."
+      }
+    ]
+  },
+  {
+    id: 'elder-law',
+    title: 'Elder Law',
+    shortTitle: 'Elder Law',
+    areaOfPractice: 'Elder Care',
+    description: 'Our elder law practice provides comprehensive legal services to seniors and their families, addressing the unique challenges that come with aging.',
+    content: [
+      {
+        title: "Estate Planning for Seniors",
+        description: "Comprehensive planning for the management and distribution of assets, including wills, trusts, and powers of attorney."
+      },
+      {
+        title: "Long-Term Care Planning",
+        description: "Strategic planning for future care needs, including Medicaid planning and asset protection strategies."
+      },
+      {
+        title: "Guardianship & Conservatorship",
+        description: "Legal arrangements for managing the affairs of individuals who can no longer make decisions for themselves."
+      },
+      {
+        title: "Elder Abuse Protection",
+        description: "Legal protection against financial exploitation, physical abuse, and neglect of seniors."
+      }
+    ],
+    featureContent: {
+      title: "Dignity-Focused Legal Support",
+      description: "We prioritize the dignity and independence of our senior clients while providing the legal protection they need for security and peace of mind.",
+      imagePath: "/images/elder-care.jpg"
+    },
+    process: [
+      {
+        number: "01",
+        title: "Needs Assessment",
+        description: "We conduct a thorough assessment of your current situation and future needs."
+      },
+      {
+        number: "02",
+        title: "Strategy Development",
+        description: "We develop a comprehensive legal strategy tailored to your specific circumstances."
+      },
+      {
+        number: "03",
+        title: "Implementation",
+        description: "We handle all necessary documentation and filings to put your plan into action."
+      },
+      {
+        number: "04",
+        title: "Ongoing Support",
+        description: "We provide continued guidance as needs evolve and laws change."
+      }
+    ],
+    processDescription: "Our compassionate approach to elder law ensures seniors and their families receive the legal protection and guidance they need during life transitions.",
+    relatedServices: [
+      {
+        title: "Estate Planning",
+        path: "estate-planning",
+        description: "Comprehensive planning for wealth preservation and asset distribution."
+      },
+      {
+        title: "Healthcare Law",
+        path: "healthcare-law",
+        description: "Legal guidance on healthcare decisions and medical directives."
+      },
+      {
+        title: "Asset Protection",
+        path: "digital-asset-protection",
+        description: "Strategies to protect assets while ensuring eligibility for needed benefits."
+      }
+    ]
   },
   {
     id: 'estate-planning',
     title: 'Estate Planning',
-    description: 'Comprehensive strategies to preserve wealth, minimize tax burdens, and ensure your assets are distributed according to your wishes.'
+    shortTitle: 'Estate Planning',
+    areaOfPractice: 'Estate Law',
+    description: 'Comprehensive estate planning services to protect your assets, provide for your loved ones, and secure your legacy.',
+    content: [
+      {
+        title: "Wills & Trusts",
+        description: "Customized legal documents to ensure your assets are distributed according to your wishes."
+      },
+      {
+        title: "Asset Protection",
+        description: "Strategic planning to safeguard your assets from potential creditors and liabilities."
+      },
+      {
+        title: "Business Succession",
+        description: "Comprehensive plans for the seamless transition of business ownership and management."
+      },
+      {
+        title: "Tax Planning",
+        description: "Strategies to minimize estate, gift, and income taxes while maximizing wealth preservation."
+      }
+    ],
+    featureContent: {
+      title: "Future-Focused Estate Solutions",
+      description: "We develop comprehensive estate plans that address your current needs while anticipating future circumstances, ensuring your legacy is preserved and your loved ones are protected.",
+      imagePath: "/images/estate-planning.jpg"
+    },
+    process: [
+      {
+        number: "01",
+        title: "Personal Assessment",
+        description: "We conduct a thorough evaluation of your assets, family structure, and estate planning goals."
+      },
+      {
+        number: "02",
+        title: "Strategy Development",
+        description: "We create a tailored estate plan that addresses your specific needs and objectives."
+      },
+      {
+        number: "03",
+        title: "Documentation",
+        description: "We prepare all necessary legal documents to implement your estate plan."
+      },
+      {
+        number: "04",
+        title: "Regular Review",
+        description: "We provide ongoing support and periodic reviews to ensure your estate plan remains current."
+      }
+    ],
+    processDescription: "Our methodical estate planning process ensures all aspects of your legacy and asset protection are addressed with precision and care.",
+    relatedServices: [
+      {
+        title: "Elder Law",
+        path: "elder-law",
+        description: "Legal services addressing the unique needs of older adults and their families."
+      },
+      {
+        title: "Business Planning",
+        path: "business-planning",
+        description: "Legal strategies for business formation, operation, and succession."
+      },
+      {
+        title: "Digital Asset Protection",
+        path: "digital-asset-protection",
+        description: "Protection strategies for digital assets and online accounts as part of your estate."
+      }
+    ]
+  },
+  {
+    id: 'ip-licensing',
+    title: 'IP Licensing',
+    shortTitle: 'IP Licensing',
+    areaOfPractice: 'Intellectual Property',
+    description: 'Our IP licensing practice helps businesses leverage their innovations, creative works, and brands through strategic licensing programs.',
+    content: [
+      {
+        title: "Technology Licensing",
+        description: "Strategic agreements for software, patents, and technical innovations that maximize value while protecting intellectual assets."
+      },
+      {
+        title: "Content & Media Licensing",
+        description: "Structured frameworks for licensing creative works, from digital content to entertainment properties."
+      },
+      {
+        title: "Trademark & Brand Licensing",
+        description: "Brand extension and merchandising agreements that protect brand integrity while opening new revenue streams."
+      },
+      {
+        title: "Cross-Border Licensing",
+        description: "International licensing strategies that navigate complex jurisdictional requirements and maximize global opportunities."
+      }
+    ],
+    featureContent: {
+      title: "Strategic IP Monetization",
+      description: "We develop customized licensing strategies to help you monetize your intellectual property portfolio through traditional licensing, franchise models, or innovative cross-industry collaborations.",
+      imagePath: "/images/ip-monetization.jpg"
+    },
+    process: [
+      {
+        number: "01",
+        title: "Strategy Development",
+        description: "We analyze your intellectual property portfolio and business objectives to develop a licensing strategy that maximizes value."
+      },
+      {
+        number: "02",
+        title: "Agreement Structuring",
+        description: "Our team crafts licensing agreements with precise terms on usage rights, territories, duration, and compensation structures."
+      },
+      {
+        number: "03",
+        title: "Negotiation & Execution",
+        description: "We negotiate favorable terms and complete all documentation required to formalize the licensing relationship."
+      },
+      {
+        number: "04",
+        title: "Ongoing Management",
+        description: "We help monitor compliance, manage royalty calculations, and address any issues that arise during the license term."
+      }
+    ],
+    processDescription: "Our structured approach ensures your licensing agreements are optimized for success and protection.",
+    relatedServices: [
+      {
+        title: "IP Portfolio Management",
+        path: "ip-portfolio-management",
+        description: "Comprehensive management of intellectual property assets."
+      },
+      {
+        title: "Digital Asset Protection",
+        path: "digital-asset-protection",
+        description: "Protecting digital IP and creative works in the digital economy."
+      },
+      {
+        title: "Emerging Technologies",
+        path: "emerging-tech",
+        description: "Legal guidance for blockchain, AI, and other emerging technologies."
+      }
+    ]
   }
 ];
 
@@ -519,4 +1039,19 @@ export const specializedServicePathMap: Record<string, string> = {
   'ip-licensing': '/practice/ip-licensing',
   'entertainment-law': '/practice/entertainment-law',
   'emerging-tech': '/practice/emerging-tech',
+};
+
+// Helper function to ensure we have data for known problematic services
+export const getServiceDataByExactId = (id: string): any => {
+  // Handle specific cases that might have issues
+  switch (id) {
+    case 'ip-licensing':
+      return specializedServiceData.find(s => s.id === 'ip-licensing');
+    case 'software-licensing':
+      return specializedServiceData.find(s => s.id === 'software-licensing');
+    case 'elder-law':
+      return specializedServiceData.find(s => s.id === 'elder-law');
+    default:
+      return null;
+  }
 };

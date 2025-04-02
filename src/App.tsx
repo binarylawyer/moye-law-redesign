@@ -10,7 +10,6 @@ import { logger } from "./utils/logger";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Practice from "./pages/Practice";
-import PracticeArea from "./pages/PracticeArea";
 import Team from "./pages/Team";
 import TeamMemberProfile from "./pages/TeamMemberProfile";
 import About from "./pages/About";
@@ -22,14 +21,8 @@ import FAQ from "./pages/FAQ";
 import HowWeWork from "./pages/HowWeWork";
 import TechnologyPlatform from "./pages/TechnologyApproach";
 import CaseStudies from "./pages/CaseStudies";
-import DigitalAssetProtection from "./pages/practice/DigitalAssetProtection";
-import IPConsulting from "./pages/practice/IPConsulting";
-import Licensing from "./pages/practice/Licensing";
-import EntertainmentLaw from "./pages/practice/EntertainmentLaw";
-import EmergingTech from "./pages/practice/EmergingTech";
-import ElderLaw from "./pages/practice/ElderLaw";
-import SoftwareLicensing from "./pages/practice/SoftwareLicensing";
-import EstatePlanning from "./pages/practice/EstatePlanning";
+import PracticeAreaPage from "./pages/practice/PracticeAreaPage";
+import TestComponent from "./pages/practice/TestComponent";
 import Podcasts from "./pages/Podcasts";
 import ExperienceTheDifference from "./pages/ExperienceTheDifference";
 import FloatingConsultationButton from "./components/FloatingConsultationButton";
@@ -41,6 +34,20 @@ import IPConsultingService from "./pages/services/IPConsulting";
 import LicensingService from "./pages/services/Licensing";
 import EntertainmentLawService from "./pages/services/EntertainmentLaw";
 import EmergingTechService from "./pages/services/EmergingTech";
+
+// Import specific practice pages for debugging
+// import IPConsulting from "./pages/practice/IPConsulting";
+// import Licensing from "./pages/practice/Licensing";
+// import SoftwareLicensing from "./pages/practice/SoftwareLicensing";
+import DirectElderLaw from "./pages/practice/DirectElderLaw";
+import DirectSoftwareLicensing from "./pages/practice/DirectSoftwareLicensing";
+import DirectIPLicensing from "./pages/practice/DirectIPLicensing";
+import DirectEntertainmentLaw from "./pages/practice/DirectEntertainmentLaw";
+
+// Import the new direct components
+import DirectDigitalAssetProtection from "./pages/practice/DirectDigitalAssetProtection";
+import DirectIPConsulting from "./pages/practice/DirectIPConsulting";
+import DirectEmergingTech from "./pages/practice/DirectEmergingTech";
 
 // Scroll to top component
 const ScrollToTop = () => {
@@ -67,56 +74,60 @@ const AppRoutes = () => {
           </PageErrorBoundary>
         } />
         
-        {/* Practice Routes - Specific routes must come before the wildcard route */}
-        <Route path="/practice/digital-asset-protection" element={
-          <PageErrorBoundary pageName="Digital Asset Protection">
-            <DigitalAssetProtection />
-          </PageErrorBoundary>
-        } />
-        <Route path="/practice/ip-consulting" element={
-          <PageErrorBoundary pageName="IP Consulting">
-            <IPConsulting />
-          </PageErrorBoundary>
-        } />
-        <Route path="/practice/ip-licensing" element={
-          <PageErrorBoundary pageName="IP Licensing">
-            <Licensing />
-          </PageErrorBoundary>
-        } />
-        <Route path="/practice/entertainment-law" element={
-          <PageErrorBoundary pageName="Entertainment Law">
-            <EntertainmentLaw />
-          </PageErrorBoundary>
-        } />
-        <Route path="/practice/emerging-tech" element={
-          <PageErrorBoundary pageName="Emerging Technology Law">
-            <EmergingTech />
-          </PageErrorBoundary>
-        } />
-        <Route path="/practice/elder-law" element={
-          <PageErrorBoundary pageName="Elder Law">
-            <ElderLaw />
-          </PageErrorBoundary>
-        } />
-        <Route path="/practice/software-licensing" element={
-          <PageErrorBoundary pageName="Software Licensing">
-            <SoftwareLicensing />
-          </PageErrorBoundary>
-        } />
-        <Route path="/practice/estate-planning" element={
-          <PageErrorBoundary pageName="Estate Planning">
-            <EstatePlanning />
-          </PageErrorBoundary>
-        } />
+        {/* Practice Routes */}
         <Route path="/practice" element={
           <PageErrorBoundary pageName="Practice Areas">
             <Practice />
           </PageErrorBoundary>
         } />
-        {/* Catch-all practice area route should be last */}
-        <Route path="/practice/:area" element={
-          <PageErrorBoundary pageName="Practice Area">
-            <PracticeArea />
+        
+        {/* Test Route */}
+        <Route path="/practice/test" element={
+          <PageErrorBoundary pageName="Practice Area Test">
+            <TestComponent />
+          </PageErrorBoundary>
+        } />
+        
+        {/* Explicit routes for problematic practice areas */}
+        <Route path="/practice/ip-licensing" element={
+          <PageErrorBoundary pageName="IP Licensing">
+            <DirectIPLicensing />
+          </PageErrorBoundary>
+        } />
+        
+        <Route path="/practice/digital-asset-protection" element={
+          <PageErrorBoundary pageName="Digital Asset Protection">
+            <DirectDigitalAssetProtection />
+          </PageErrorBoundary>
+        } />
+        
+        <Route path="/practice/ip-consulting" element={
+          <PageErrorBoundary pageName="IP Consulting">
+            <DirectIPConsulting />
+          </PageErrorBoundary>
+        } />
+        
+        <Route path="/practice/software-licensing" element={
+          <PageErrorBoundary pageName="Software Licensing">
+            <DirectSoftwareLicensing />
+          </PageErrorBoundary>
+        } />
+        
+        <Route path="/practice/elder-law" element={
+          <PageErrorBoundary pageName="Elder Law">
+            <DirectElderLaw />
+          </PageErrorBoundary>
+        } />
+        
+        <Route path="/practice/entertainment-law" element={
+          <PageErrorBoundary pageName="Entertainment Law">
+            <DirectEntertainmentLaw />
+          </PageErrorBoundary>
+        } />
+        
+        <Route path="/practice/emerging-tech" element={
+          <PageErrorBoundary pageName="Emerging Technology Law">
+            <DirectEmergingTech />
           </PageErrorBoundary>
         } />
         

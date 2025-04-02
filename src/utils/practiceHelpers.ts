@@ -51,21 +51,21 @@ export const validateServiceIdFormat = (serviceId: string): { isValid: boolean; 
 
 /**
  * Normalizes a service ID to ensure consistent format
- * @param serviceId The service ID to normalize
+ * @param id The service ID to normalize
  * @returns Normalized service ID
  */
-export const normalizeServiceId = (serviceId: string): string => {
-  // Remove any leading/trailing slashes and spaces
-  let normalized = serviceId.trim().replace(/^\/|\/$/g, '');
+export const normalizeServiceId = (id: string = ''): string => {
+  if (!id) return '';
   
-  // Convert to lowercase
-  normalized = normalized.toLowerCase();
-  
-  // Replace spaces with hyphens
-  normalized = normalized.replace(/\s+/g, '-');
-  
-  // Remove any character that's not lowercase alphanumeric or hyphen
-  normalized = normalized.replace(/[^a-z0-9-]/g, '');
+  // Convert to lowercase, replace spaces and special characters with hyphens,
+  // and remove any duplicate hyphens
+  const normalized = id
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')     // Replace spaces with hyphens
+    .replace(/[^a-z0-9-]/g, '') // Remove non-alphanumeric characters except hyphens
+    .replace(/-+/g, '-')      // Replace multiple hyphens with a single hyphen
+    .replace(/^-|-$/g, '');   // Remove leading and trailing hyphens
   
   return normalized;
 };
