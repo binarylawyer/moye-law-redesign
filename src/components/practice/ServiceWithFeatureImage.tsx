@@ -46,14 +46,14 @@ const ServiceWithFeatureImage: React.FC<ServiceWithFeatureImageProps> = ({
   const colorClasses = getColorClasses();
   
   return (
-    <div className="py-16 bg-white">
+    <div className="py-10 bg-white">
       <div className="container mx-auto px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center min-h-[400px]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center min-h-[300px]">
           {/* Left content area */}
           <div className="md:col-span-6 order-2 md:order-1">
             <div className="max-w-xl">
-              <h2 className="font-serif text-3xl text-black mb-6">{serviceTitle}</h2>
-              <p className="text-lg text-black/80 mb-8">{serviceDescription}</p>
+              <h2 className="font-serif text-3xl text-black mb-4">{serviceTitle}</h2>
+              <p className="text-lg text-black/80 mb-6">{serviceDescription}</p>
               
               <Link 
                 to={callToActionLink} 
@@ -68,7 +68,7 @@ const ServiceWithFeatureImage: React.FC<ServiceWithFeatureImageProps> = ({
           <div className="md:col-span-6 order-1 md:order-2">
             <div className="relative">
               {/* Main image with mondrian border */}
-              <div className={`border-4 border-black overflow-hidden h-[400px] relative`}>
+              <div className={`border-4 border-black overflow-hidden h-[350px] relative`}>
                 <img 
                   src={imagePath} 
                   alt={serviceTitle}
