@@ -1,38 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Link, useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Button } from '@/components/ui/button';
 import { practiceAreasData } from '@/data/practiceAreasData';
-import ConsultationCTA from '@/components/ConsultationCTA';
 import MondrianDecoration from '@/components/MondrianDecoration';
 import MondrianDividerCTA from '@/components/MondrianDividerCTA';
 import CallToAction from '@/components/shared/CallToAction';
 import { logger } from '@/utils/logger';
-import { normalizeServiceId } from '@/utils/practiceHelpers';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
-const PracticeArea: React.FC = () => {
-  const { area } = useParams();
-  const location = useLocation();
+const EstatePlanning: React.FC = () => {
+  // Find the estate planning data from practiceAreasData
+  const practiceData = practiceAreasData.find(practice => practice.id === 'estate-planning');
   
-  // Improved logging for debugging purposes
-  logger.debug('PracticeArea Component - Current URL:', location.pathname);
-  logger.debug('Practice Area Component - URL Parameter:', area);
-  logger.debug('Available Practice Areas:', practiceAreasData.map(p => ({ id: p.id, title: p.title })));
-  
-  // Use normalized ID for comparison to be more forgiving with matching
-  const normalizedAreaId = area ? normalizeServiceId(area) : '';
-  
-  // Try to find the practice area by normalized ID for more robust matching
-  const practiceData = practiceAreasData.find(practice => 
-    normalizeServiceId(practice.id) === normalizedAreaId
-  );
-  
-  logger.debug('Matched Practice Area:', practiceData ? { id: practiceData.id, title: practiceData.title } : 'None');
-  
-  if (!practiceData) {
-    logger.warn(`No practice area found for ID: ${area}. This might indicate a route conflict or missing definition.`);
+  // Log for debugging - use string format instead of passing objects
+  if (practiceData) {
+    logger.debug(`Estate Planning Component - Data found: ${practiceData.id}, ${practiceData.title}`);
+  } else {
+    logger.debug('Estate Planning Component - Data not found');
   }
   
   // Use our custom intersection observer hook to prevent memory leaks
@@ -56,23 +40,14 @@ const PracticeArea: React.FC = () => {
   }, [observe, unobserve]);
 
   if (!practiceData) {
+    logger.error('Estate Planning data not found in practiceAreasData');
     return (
       <div className="min-h-screen bg-white">
         <Header />
         <main className="pt-32 md:pt-40">
           <div className="container mx-auto px-8 py-24 text-center">
-            <div className="mondrian-grid">
-              <div className="col-span-3 mondrian-red"></div>
-              <div className="col-span-6 mondrian-grid-item bg-white p-8">
-                <h1 className="font-serif text-black text-4xl md:text-5xl mb-8">Practice Area Not Found</h1>
-                <p className="text-xl mb-8">The practice area you're looking for doesn't exist.</p>
-                <p className="text-md mb-8">Attempted to find: "{area}"</p>
-                <Button asChild className="mondrian-button yellow">
-                  <Link to="/practice">View All Practice Areas</Link>
-                </Button>
-              </div>
-              <div className="col-span-3 mondrian-blue"></div>
-            </div>
+            <h1 className="font-serif text-black text-4xl md:text-5xl mb-8">Error Loading Estate Planning</h1>
+            <p className="text-xl mb-8">Unable to load practice area data. Please try again later.</p>
           </div>
         </main>
         <Footer />
@@ -88,11 +63,8 @@ const PracticeArea: React.FC = () => {
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-8">
             <div className="mondrian-grid mb-16">
-              {/* Use the first letter of practice area to determine color */}
-              <div className={`col-span-3 ${
-                practiceData.title.toLowerCase().charAt(0) <= 'h' ? 'mondrian-red' : 
-                practiceData.title.toLowerCase().charAt(0) <= 'p' ? 'mondrian-blue' : 'mondrian-yellow'
-              }`}></div>
+              {/* Using red color for Estate Planning (based on first letter 'E') */}
+              <div className="col-span-3 mondrian-red"></div>
               <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
                 <h1 className="reveal font-serif text-black text-4xl md:text-5xl lg:text-6xl mb-8">{practiceData.title}</h1>
                 <p className="reveal text-xl text-black/80 mx-auto">{practiceData.introduction}</p>
@@ -214,4 +186,4 @@ const PracticeArea: React.FC = () => {
   );
 };
 
-export default PracticeArea;
+export default EstatePlanning; 

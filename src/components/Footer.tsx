@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -40,11 +39,14 @@ const Footer: React.FC = () => {
           <nav className="md:col-span-3">
             <p className="font-medium text-navy mb-4 font-serif text-lg">Practice Areas</p>
             <ul className="space-y-3">
-              <li><Link to="/practice/estate-planning" className="text-base text-charcoal/70 hover:text-navy transition-colors">Estate Planning & Trusts</Link></li>
+              <li><Link to="/practice/estate-planning" className="text-base text-charcoal/70 hover:text-navy transition-colors">Estate Planning</Link></li>
+              <li><Link to="/practice/elder-law" className="text-base text-charcoal/70 hover:text-navy transition-colors">Elder Law</Link></li>
               <li><Link to="/practice/intellectual-property" className="text-base text-charcoal/70 hover:text-navy transition-colors">Intellectual Property</Link></li>
               <li><Link to="/practice/emerging-tech" className="text-base text-charcoal/70 hover:text-navy transition-colors">Emerging Tech</Link></li>
               <li><Link to="/practice/ip-licensing" className="text-base text-charcoal/70 hover:text-navy transition-colors">IP Licensing</Link></li>
+              <li><Link to="/practice/software-licensing" className="text-base text-charcoal/70 hover:text-navy transition-colors">Software Licensing</Link></li>
               <li><Link to="/practice/entertainment-law" className="text-base text-charcoal/70 hover:text-navy transition-colors">Entertainment Law</Link></li>
+              <li><Link to="/practice/digital-asset-protection" className="text-base text-charcoal/70 hover:text-navy transition-colors">Digital Asset Protection</Link></li>
             </ul>
           </nav>
           

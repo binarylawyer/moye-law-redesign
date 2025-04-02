@@ -27,6 +27,9 @@ import IPConsulting from "./pages/practice/IPConsulting";
 import Licensing from "./pages/practice/Licensing";
 import EntertainmentLaw from "./pages/practice/EntertainmentLaw";
 import EmergingTech from "./pages/practice/EmergingTech";
+import ElderLaw from "./pages/practice/ElderLaw";
+import SoftwareLicensing from "./pages/practice/SoftwareLicensing";
+import EstatePlanning from "./pages/practice/EstatePlanning";
 import Podcasts from "./pages/Podcasts";
 import ExperienceTheDifference from "./pages/ExperienceTheDifference";
 import FloatingConsultationButton from "./components/FloatingConsultationButton";
@@ -88,6 +91,21 @@ const AppRoutes = () => {
         <Route path="/practice/emerging-tech" element={
           <PageErrorBoundary pageName="Emerging Technology Law">
             <EmergingTech />
+          </PageErrorBoundary>
+        } />
+        <Route path="/practice/elder-law" element={
+          <PageErrorBoundary pageName="Elder Law">
+            <ElderLaw />
+          </PageErrorBoundary>
+        } />
+        <Route path="/practice/software-licensing" element={
+          <PageErrorBoundary pageName="Software Licensing">
+            <SoftwareLicensing />
+          </PageErrorBoundary>
+        } />
+        <Route path="/practice/estate-planning" element={
+          <PageErrorBoundary pageName="Estate Planning">
+            <EstatePlanning />
           </PageErrorBoundary>
         } />
         <Route path="/practice" element={

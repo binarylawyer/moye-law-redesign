@@ -51,6 +51,21 @@ export const specializedServiceData = [
     id: 'emerging-tech',
     title: 'Emerging Technology Law',
     description: 'Forward-looking legal solutions for pioneers at the frontier of technological innovation.'
+  },
+  {
+    id: 'elder-law',
+    title: 'Elder Law',
+    description: 'Comprehensive legal services for older adults and their families, including estate planning, long-term care, and asset protection.'
+  },
+  {
+    id: 'software-licensing',
+    title: 'Software Licensing',
+    description: 'Strategic legal frameworks for software development, distribution, and licensing agreements across various platforms and industries.'
+  },
+  {
+    id: 'estate-planning',
+    title: 'Estate Planning',
+    description: 'Comprehensive strategies to preserve wealth, minimize tax burdens, and ensure your assets are distributed according to your wishes.'
   }
 ];
 

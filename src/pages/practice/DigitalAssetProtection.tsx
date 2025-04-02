@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PracticeAreaTemplate from '@/components/practice/PracticeAreaTemplate';
 import PracticeAreaHero from '@/components/practice/PracticeAreaHero';
 import PracticeAreaContent from '@/components/practice/PracticeAreaContent';
@@ -6,136 +6,124 @@ import PracticeAreaProcess from '@/components/practice/PracticeAreaProcess';
 import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
 import ServiceWithFeatureImage from '@/components/practice/ServiceWithFeatureImage';
 import { validatePracticeArea, standardizeServicePaths, ContentSection, RelatedService } from '@/utils/practiceHelpers';
+import { logger } from '@/utils/logger';
 
 const DigitalAssetProtection: React.FC = () => {
   // Define service ID consistently
   const SERVICE_ID = 'digital-asset-protection';
+  const [isValidatingService, setIsValidatingService] = useState(true);
   
-  // Validate that this service ID exists in specialized services
+  // Validate that this service ID exists in specialized services, but don't block rendering
   useEffect(() => {
-    validatePracticeArea('DigitalAssetProtection', SERVICE_ID);
+    try {
+      const result = validatePracticeArea('DigitalAssetProtection', SERVICE_ID);
+      
+      if (!result.isValid) {
+        logger.warn(`Service validation warning: ${result.message}`);
+      } else {
+        logger.debug('Service validation successful for DigitalAssetProtection component');
+      }
+    } catch (error) {
+      logger.error('Error validating service:', error);
+    } finally {
+      setIsValidatingService(false);
+    }
   }, []);
 
-  const strategies: ContentSection[] = [
+  const digitalAreas: ContentSection[] = [
     {
-      title: "Cryptocurrency Security",
-      description: "Legal frameworks for securing cryptocurrency assets, wallet security protocols, and exchange transaction protections."
+      title: "Cryptocurrency & Digital Tokens",
+      description: "Comprehensive legal protection for crypto assets, NFTs, and tokenized investments."
     },
     {
-      title: "NFT Protection",
-      description: "Comprehensive protection strategies for non-fungible tokens, including smart contract audits and metadata security."
+      title: "Digital Intellectual Property",
+      description: "Strategic protection for digital creations, software, algorithms, and other intangible assets."
     },
     {
-      title: "Digital IP Defense",
-      description: "Protecting intellectual property in digital formats through blockchain verification, watermarking, and anti-piracy measures."
+      title: "Domain Names & Web Assets",
+      description: "Ownership protection, dispute resolution, and strategic acquisition of digital property."
     },
     {
-      title: "Data Asset Management",
-      description: "Securing valuable data assets through proper legal structures, access controls, and compliance frameworks."
+      title: "Data & Privacy Protection",
+      description: "Compliance frameworks and protective measures for valuable corporate and customer data."
     }
   ];
 
-  const processSteps: ContentSection[] = [
+  const digitalProcess = [
     {
+      number: "01",
       title: "Asset Inventory",
-      description: "We begin with a comprehensive inventory of your digital assets, categorizing them by type, value, vulnerability, and current protection status."
+      description: "We conduct a comprehensive audit of your digital assets to identify protection needs."
     },
     {
+      number: "02",
       title: "Risk Assessment",
-      description: "We identify potential threats and vulnerabilities specific to each digital asset class, from technical exploits to legal challenges to ownership disputes."
+      description: "We identify vulnerabilities and potential threats to your digital asset portfolio."
     },
     {
+      number: "03",
       title: "Protection Strategy",
-      description: "We develop a tailored digital asset protection strategy that addresses your specific assets, utilizing the appropriate legal frameworks, technical safeguards, and documentation."
+      description: "We develop a tailored legal protection framework for each category of digital asset."
     },
     {
-      title: "Implementation",
-      description: "We guide the implementation of your protection strategy, including drafting necessary legal documentation, establishing verification systems, and setting up monitoring protocols."
-    },
-    {
-      title: "Ongoing Maintenance",
-      description: "We provide continuous support to ensure your digital assets remain protected as technologies evolve and new threats emerge in the digital landscape."
+      number: "04",
+      title: "Implementation & Monitoring",
+      description: "We deploy protection measures and establish ongoing monitoring protocols."
     }
   ];
 
+  // Related services with standardized paths for consistency
   const relatedServices: RelatedService[] = standardizeServicePaths([
     {
-      title: "IP Consulting",
-      path: "/practice/ip-consulting",
-      description: "Strategic guidance for managing and maximizing the value of your intellectual property assets."
-    },
-    {
-      title: "Emerging Tech",
-      path: "/practice/emerging-tech",
-      description: "Legal frameworks for emerging technologies like AI, blockchain, and IoT."
+      title: "Emerging Technologies",
+      path: "emerging-tech",
+      description: "Forward-looking legal solutions for blockchain, AI, and other digital innovations."
     },
     {
       title: "IP Licensing",
-      path: "/practice/ip-licensing",
-      description: "Structured frameworks for monetizing intellectual property through strategic licensing arrangements."
+      path: "ip-licensing",
+      description: "Strategic frameworks for licensing and monetizing digital assets and IP."
+    },
+    {
+      title: "Data Privacy",
+      path: "data-privacy",
+      description: "Compliance frameworks for data protection and privacy regulations."
     }
   ]);
 
   return (
-    <PracticeAreaTemplate areaName="Digital Asset Protection" serviceId={SERVICE_ID}>
-      <PracticeAreaHero 
+    <PracticeAreaTemplate
+      areaName="Digital Asset Protection"
+      serviceId={SERVICE_ID}
+    >
+      <PracticeAreaHero
         title="Digital Asset Protection"
-        description="Comprehensive legal protection for your valuable digital assets, from cryptocurrencies and NFTs to domain names and digital intellectual property."
+        subtitle="Safeguarding Your Digital Portfolio"
+        description="Our digital asset protection practice provides comprehensive legal strategies to secure and maximize the value of your digital holdings."
+        imagePath="/images/digital-assets.jpg"
       />
       
       <PracticeAreaContent 
-        title="Safeguarding Your Digital Value" 
-        variant="default"
-        decorationPosition="right"
-        decorationVariant={2}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-1 gap-10">
-          <div>
-            <p className="text-lg mb-6">
-              In today's digital economy, assets increasingly exist as code, tokens, and digital files rather than physical property. These digital assets—from cryptocurrencies and NFTs to domain names and digital intellectual property—require specialized legal protection strategies.
-            </p>
-            <p className="text-lg mb-6">
-              Our Digital Asset Protection practice combines cutting-edge technical knowledge with sophisticated legal expertise to help clients secure, manage, and defend their valuable digital assets.
-            </p>
-            <p className="text-lg">
-              We work with individuals, startups, and established businesses to develop comprehensive protection frameworks that address the unique challenges of digital ownership, transfer, and monetization in an evolving regulatory landscape.
-            </p>
-          </div>
-        </div>
-      </PracticeAreaContent>
+        title="Digital Asset Protection Services"
+        sections={digitalAreas}
+      />
       
-      {/* Feature image section to fill white space */}
       <ServiceWithFeatureImage
-        serviceTitle="Secure Your Digital Future"
-        serviceDescription="The value of digital assets continues to grow exponentially. Our specialized legal frameworks help you protect cryptocurrency holdings, NFT collections, and digital intellectual property with comprehensive strategies designed for the digital economy."
-        callToActionText="Protect your digital assets"
-        variant="primary"
+        serviceTitle="Future-Proof Digital Security"
+        serviceDescription="We develop adaptive protection strategies that safeguard your digital assets in an evolving technological and regulatory landscape."
+        imagePath="/images/digital-security.jpg"
+        variant="secondary"
       />
-      
-      <PracticeAreaContent 
-        title="Protection Strategies" 
-        variant="alternate"
-        decorationPosition="left"
-        decorationVariant={5}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {strategies.map((strategy, idx) => (
-            <div key={idx} className="mondrian-border p-6 bg-white">
-              <h3 className="font-serif text-xl text-black mb-4">{strategy.title}</h3>
-              <p className="text-black/80">{strategy.description}</p>
-            </div>
-          ))}
-        </div>
-      </PracticeAreaContent>
       
       <PracticeAreaProcess
-        title="Our Protection Process"
-        steps={processSteps}
+        title="Our Digital Protection Process"
+        description="We implement a methodical approach to identifying, securing, and managing your valuable digital assets."
+        steps={digitalProcess}
       />
       
       <PracticeAreaRelated
-        title="Related Services"
-        items={relatedServices}
+        title="Related Digital Services"
+        services={relatedServices}
       />
     </PracticeAreaTemplate>
   );

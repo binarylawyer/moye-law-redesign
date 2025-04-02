@@ -20,4 +20,26 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    outDir: 'dist',
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+      },
+    },
+  },
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react-router-dom',
+      '@radix-ui/react-navigation-menu',
+      'lucide-react',
+      'zod',
+      'react-hook-form',
+      '@hookform/resolvers/zod',
+      'dompurify',
+      'react-helmet',
+    ],
+  },
 }));

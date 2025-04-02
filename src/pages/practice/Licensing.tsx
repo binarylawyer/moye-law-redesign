@@ -18,42 +18,24 @@ import { Link, Navigate } from 'react-router-dom';
 const Licensing: React.FC = () => {
   // Define service ID consistently
   const SERVICE_ID = 'ip-licensing';
-  const [validationResult, setValidationResult] = useState<{ 
-    isValid: boolean; 
-    message?: string;
-  }>({ isValid: true });
+  const [isValidatingService, setIsValidatingService] = useState(true);
   
-  // Validate that this service ID exists in specialized services
+  // Validate that this service ID exists in specialized services, but don't block rendering
   useEffect(() => {
-    const result = validatePracticeArea('Licensing', SERVICE_ID);
-    setValidationResult(result);
-    
-    if (!result.isValid) {
-      logger.warn(`Invalid practice area: ${result.message}`);
+    try {
+      const result = validatePracticeArea('Licensing', SERVICE_ID);
+      
+      if (!result.isValid) {
+        logger.warn(`Service validation warning: ${result.message}`);
+      } else {
+        logger.debug('Service validation successful for Licensing component');
+      }
+    } catch (error) {
+      logger.error('Error validating service:', error);
+    } finally {
+      setIsValidatingService(false);
     }
   }, []);
-
-  // If the service ID is invalid, show a helpful error state
-  if (!validationResult.isValid) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-        <div className="max-w-md w-full text-center">
-          <h1 className="text-2xl font-serif text-navy mb-4">Practice Area Not Found</h1>
-          <p className="text-charcoal/70 mb-8">
-            {validationResult.message || "The requested practice area does not exist or is unavailable."}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild variant="outline">
-              <Link to="/practice">View All Practice Areas</Link>
-            </Button>
-            <Button asChild>
-              <Link to="/">Return to Home</Link>
-            </Button>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   const licensingAreas: ContentSection[] = [
     {
@@ -74,7 +56,7 @@ const Licensing: React.FC = () => {
     }
   ];
 
-  const licenseProcess = [
+  const licensingProcess = [
     {
       number: "01",
       title: "Strategy Development",
@@ -105,9 +87,9 @@ const Licensing: React.FC = () => {
       description: "Comprehensive management of intellectual property assets."
     },
     {
-      title: "IP Litigation",
-      path: "ip-litigation",
-      description: "Resolving disputes related to intellectual property rights."
+      title: "Digital Asset Protection",
+      path: "digital-asset-protection",
+      description: "Protecting digital IP and creative works in the digital economy."
     },
     {
       title: "Emerging Technologies",
@@ -118,37 +100,43 @@ const Licensing: React.FC = () => {
 
   return (
     <PracticeAreaTemplate
-      areaName="Intellectual Property Licensing"
+      areaName="IP Licensing"
       serviceId={SERVICE_ID}
     >
       <PracticeAreaHero
         title="IP Licensing"
-        subtitle="Maximizing the Value of Intellectual Property Assets"
-        description="Our intellectual property licensing practice helps businesses leverage their innovations, creative works, and brands through strategic licensing programs."
-        imagePath="/images/intellectual-property.jpg"
+        description="Our IP licensing practice helps businesses leverage their innovations, creative works, and brands through strategic licensing programs."
+        imagePath="/images/ip-licensing.jpg"
       />
       
       <PracticeAreaContent 
-        title="Licensing Solutions Across Industry Sectors"
-        sections={licensingAreas}
-      />
+        title="IP Licensing Services"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {licensingAreas.map((area, idx) => (
+            <div key={idx} className="mondrian-border p-6 bg-white">
+              <h3 className="font-serif text-xl text-black mb-4">{area.title}</h3>
+              <p className="text-black/80">{area.description}</p>
+            </div>
+          ))}
+        </div>
+      </PracticeAreaContent>
       
       <ServiceWithFeatureImage
         serviceTitle="Strategic IP Monetization"
-        serviceDescription="Our licensing team develops customized strategies to monetize your intellectual property portfolio, whether through traditional licensing, franchise models, or innovative cross-industry collaborations."
-        imagePath="/images/licensing-strategy.jpg"
-        variant="secondary"
+        serviceDescription="We develop customized licensing strategies to help you monetize your intellectual property portfolio through traditional licensing, franchise models, or innovative cross-industry collaborations."
+        imagePath="/images/ip-monetization.jpg"
+        variant="primary"
       />
       
       <PracticeAreaProcess
         title="Our IP Licensing Process"
-        description="We implement a methodical approach to licensing that maximizes value while protecting your intellectual property."
-        steps={licenseProcess}
+        steps={licensingProcess}
       />
       
       <PracticeAreaRelated
-        title="Related Intellectual Property Services"
-        services={relatedServices}
+        title="Related Services"
+        items={relatedServices}
       />
     </PracticeAreaTemplate>
   );

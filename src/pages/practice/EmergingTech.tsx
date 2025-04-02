@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PracticeAreaTemplate from '@/components/practice/PracticeAreaTemplate';
 import PracticeAreaHero from '@/components/practice/PracticeAreaHero';
 import PracticeAreaContent from '@/components/practice/PracticeAreaContent';
@@ -6,14 +6,28 @@ import PracticeAreaProcess from '@/components/practice/PracticeAreaProcess';
 import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
 import ServiceWithFeatureImage from '@/components/practice/ServiceWithFeatureImage';
 import { validatePracticeArea, standardizeServicePaths, ContentSection, RelatedService } from '@/utils/practiceHelpers';
+import { logger } from '@/utils/logger';
 
 const EmergingTech: React.FC = () => {
   // Define service ID consistently
   const SERVICE_ID = 'emerging-tech';
+  const [isValidatingService, setIsValidatingService] = useState(true);
   
-  // Validate that this service ID exists in specialized services
+  // Validate that this service ID exists in specialized services, but don't block rendering
   useEffect(() => {
-    validatePracticeArea('EmergingTech', SERVICE_ID);
+    try {
+      const result = validatePracticeArea('EmergingTech', SERVICE_ID);
+      
+      if (!result.isValid) {
+        logger.warn(`Service validation warning: ${result.message}`);
+      } else {
+        logger.debug('Service validation successful for EmergingTech component');
+      }
+    } catch (error) {
+      logger.error('Error validating service:', error);
+    } finally {
+      setIsValidatingService(false);
+    }
   }, []);
 
   const techAreas: ContentSection[] = [
@@ -35,107 +49,81 @@ const EmergingTech: React.FC = () => {
     }
   ];
 
-  const processSteps: ContentSection[] = [
+  const techProcess = [
     {
+      number: "01",
       title: "Technology Assessment",
-      description: "We begin by thoroughly understanding your technology, its applications, and the specific legal challenges it presents in current and future regulatory environments."
+      description: "We begin with a comprehensive assessment of your technology and its unique legal considerations."
     },
     {
-      title: "Risk Mapping",
-      description: "We identify and map potential legal and regulatory risks specific to emerging technologies, from privacy concerns to liability frameworks and intellectual property protection."
+      number: "02",
+      title: "Regulatory Mapping",
+      description: "We identify applicable regulatory frameworks across all relevant jurisdictions."
     },
     {
-      title: "Compliance Framework",
-      description: "We develop a tailored compliance strategy that addresses current regulations while anticipating forthcoming legal developments in this rapidly evolving space."
+      number: "03",
+      title: "Risk Mitigation",
+      description: "We develop tailored strategies to address identified legal risks while enabling innovation."
     },
     {
-      title: "Implementation Support",
-      description: "We provide practical guidance on implementing legal safeguards, including contract structures, terms of service, privacy policies, and operational protocols."
-    },
-    {
-      title: "Ongoing Monitoring",
-      description: "We continuously track regulatory developments and evolving case law to ensure your legal framework remains current with the rapidly changing landscape of technology law."
+      number: "04",
+      title: "Ongoing Advisory",
+      description: "We provide continuous guidance as your technology evolves and regulatory landscapes change."
     }
   ];
 
+  // Related services with standardized paths for consistency
   const relatedServices: RelatedService[] = standardizeServicePaths([
     {
-      title: "IP Consulting",
-      path: "/practice/ip-consulting",
-      description: "Strategic guidance for managing and maximizing the value of your intellectual property assets."
+      title: "IP Licensing",
+      path: "ip-licensing",
+      description: "Strategic frameworks for technology licensing and intellectual property monetization."
     },
     {
       title: "Digital Asset Protection",
-      path: "/practice/digital-asset-protection",
-      description: "Comprehensive legal protection for digital assets, from NFTs to domain names and digital IP."
+      path: "digital-asset-protection",
+      description: "Comprehensive protection for digital assets, from NFTs to digital IP."
     },
     {
-      title: "Entertainment Law",
-      path: "/practice/entertainment-law",
-      description: "Legal counsel for entertainment properties, content licensing, and media ventures."
+      title: "Data Privacy",
+      path: "data-privacy",
+      description: "Ensuring compliance with evolving global data protection regulations."
     }
   ]);
 
   return (
-    <PracticeAreaTemplate areaName="Emerging Technology Law" serviceId={SERVICE_ID}>
-      <PracticeAreaHero 
+    <PracticeAreaTemplate
+      areaName="Emerging Technology Law"
+      serviceId={SERVICE_ID}
+    >
+      <PracticeAreaHero
         title="Emerging Technology Law"
-        description="Forward-looking legal solutions for pioneers at the frontier of technological innovation."
+        subtitle="Legal Solutions for Tomorrow's Innovations"
+        description="Our emerging technology practice provides forward-thinking legal guidance for innovators at the frontier of technological development."
+        imagePath="/images/emerging-tech.jpg"
       />
       
       <PracticeAreaContent 
-        title="Legal Guidance for the Digital Frontier" 
-        variant="default"
-        decorationPosition="left"
-        decorationVariant={4}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-1 gap-10">
-          <div>
-            <p className="text-lg mb-6">
-              The rapid pace of technological innovation creates new legal challenges that traditional frameworks struggle to address. Our Emerging Technology practice bridges this gap, providing forward-thinking legal guidance for businesses operating at the cutting edge.
-            </p>
-            <p className="text-lg mb-6">
-              We combine deep technical understanding with legal expertise to help innovative companies navigate uncertain regulatory waters, protect their intellectual assets, and structure their operations for sustainable growth.
-            </p>
-            <p className="text-lg">
-              Our team stays at the forefront of both technological developments and legal trends, ensuring that our clients receive advice that is not just current but anticipatory of future changes in this dynamic landscape.
-            </p>
-          </div>
-        </div>
-      </PracticeAreaContent>
+        title="Navigating the Legal Frontier of Innovation"
+        sections={techAreas}
+      />
       
-      {/* Feature image section to fill white space */}
       <ServiceWithFeatureImage
-        serviceTitle="Navigate the Future with Confidence"
-        serviceDescription="Emerging technologies require forward-thinking legal strategies that anticipate regulatory developments and address novel legal questions. Our technology law experts help innovators navigate complex legal frameworks while maintaining their competitive edge."
-        callToActionText="Future-proof your innovation"
+        serviceTitle="Future-Proof Legal Frameworks"
+        serviceDescription="We develop adaptable legal frameworks that protect your innovations today while accommodating the rapid pace of technological evolution."
+        imagePath="/images/tech-innovation.jpg"
         variant="tertiary"
       />
       
-      <PracticeAreaContent 
-        title="Technology Focus Areas" 
-        variant="alternate"
-        decorationPosition="right"
-        decorationVariant={1}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {techAreas.map((area, idx) => (
-            <div key={idx} className="mondrian-border p-6 bg-white">
-              <h3 className="font-serif text-xl text-black mb-4">{area.title}</h3>
-              <p className="text-black/80">{area.description}</p>
-            </div>
-          ))}
-        </div>
-      </PracticeAreaContent>
-      
       <PracticeAreaProcess
-        title="Our Approach to Emerging Tech"
-        steps={processSteps}
+        title="Our Emerging Tech Legal Process"
+        description="We implement a methodical approach to addressing the novel legal challenges presented by emerging technologies."
+        steps={techProcess}
       />
       
       <PracticeAreaRelated
-        title="Related Services"
-        items={relatedServices}
+        title="Related Technology Services"
+        services={relatedServices}
       />
     </PracticeAreaTemplate>
   );
