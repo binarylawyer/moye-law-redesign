@@ -5,6 +5,7 @@ import MondrianDividerCTA from '@/components/MondrianDividerCTA';
 import { specializedServiceData, getServiceByName } from '@/data/practiceAreasData'; // We'll keep using the same data source
 import ServiceHero from './ServiceHero';
 import CallToAction from '@/components/shared/CallToAction';
+import { logger } from '@/utils/logger';
 
 interface ServiceTemplateProps {
   children: ReactNode;
@@ -23,11 +24,11 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
   useEffect(() => {
     try {
       if (serviceId) {
-        console.log('ServiceTemplate: Looking for service with ID:', serviceId);
+        logger.debug('ServiceTemplate: Looking for service with ID:', serviceId);
         
         // Log available services to help with debugging
         const availableServices = specializedServiceData?.map?.(s => s.id).join(', ') || 'No services available';
-        console.log('Available services:', availableServices);
+        logger.debug('Available services:', availableServices);
         
         // First try with the exact ID
         const foundService = specializedServiceData?.find?.(service => 
@@ -40,17 +41,17 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
             title: foundService.title,
             description: foundService.description
           });
-          console.log('Service info found by exact ID match:', foundService.id, foundService.title);
+          logger.debug('Service info found by exact ID match:', foundService.id, foundService.title);
         } else {
           // If not found by ID, try to match by normalized name
           const normalizedId = serviceId.toLowerCase().replace(/\s+/g, '-');
-          console.log('Trying normalized ID:', normalizedId);
+          logger.debug('Trying normalized ID:', normalizedId);
           
           const serviceByName = specializedServiceData?.find?.(service => {
             const normalizedTitle = service.title?.toLowerCase().replace(/\s+/g, '-');
             const normalizedShortTitle = service.shortTitle?.toLowerCase().replace(/\s+/g, '-');
             
-            console.log(`Comparing with: ${service.id} (${normalizedTitle}, ${normalizedShortTitle})`);
+            logger.debug(`Comparing with: ${service.id} (${normalizedTitle}, ${normalizedShortTitle})`);
             
             return normalizedTitle === normalizedId || normalizedShortTitle === normalizedId;
           });
@@ -60,10 +61,10 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
               title: serviceByName.title,
               description: serviceByName.description
             });
-            console.log('Service info found by name:', serviceByName.title, serviceByName.description);
+            logger.debug('Service info found by name:', serviceByName.title, serviceByName.description);
           } else {
             // Fallback to the serviceName if no service found
-            console.warn(`No service info found for ID: ${serviceId}. Using serviceName instead.`);
+            logger.warn(`No service info found for ID: ${serviceId}. Using serviceName instead.`);
             setServiceInfo({
               title: serviceName,
               description: `${serviceName} provided by Moye Law.`
@@ -78,7 +79,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
         });
       }
     } catch (error) {
-      console.error('Error in ServiceTemplate when finding service info:', error);
+      logger.error('Error in ServiceTemplate when finding service info:', error);
       // Set a fallback in case of error
       setServiceInfo({
         title: serviceName,
@@ -141,7 +142,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
         }
       });
     } catch (error) {
-      console.error('Error checking for hero component:', error);
+      logger.error('Error checking for hero component:', error);
     }
     return hasHero;
   };

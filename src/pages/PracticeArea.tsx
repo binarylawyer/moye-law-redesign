@@ -8,21 +8,22 @@ import ConsultationCTA from '@/components/ConsultationCTA';
 import MondrianDecoration from '@/components/MondrianDecoration';
 import MondrianDividerCTA from '@/components/MondrianDividerCTA';
 import CallToAction from '@/components/shared/CallToAction';
+import { logger } from '@/utils/logger';
 
 const PracticeArea: React.FC = () => {
   const { area } = useParams();
   const location = useLocation();
   
   // Improved logging for debugging purposes
-  console.log('PracticeArea Component - Current URL:', location.pathname);
-  console.log('Practice Area Component - URL Parameter:', area);
-  console.log('Available Practice Areas:', practiceAreasData.map(p => ({ id: p.id, title: p.title })));
+  logger.debug('PracticeArea Component - Current URL:', location.pathname);
+  logger.debug('Practice Area Component - URL Parameter:', area);
+  logger.debug('Available Practice Areas:', practiceAreasData.map(p => ({ id: p.id, title: p.title })));
   
   const practiceData = practiceAreasData.find(practice => practice.id === area);
-  console.log('Matched Practice Area:', practiceData ? { id: practiceData.id, title: practiceData.title } : 'None');
+  logger.debug('Matched Practice Area:', practiceData ? { id: practiceData.id, title: practiceData.title } : 'None');
   
   if (!practiceData) {
-    console.warn(`No practice area found for ID: ${area}. This might indicate a route conflict or missing definition.`);
+    logger.warn(`No practice area found for ID: ${area}. This might indicate a route conflict or missing definition.`);
   }
   
   // Intersection Observer for reveal animations

@@ -1,4 +1,5 @@
 // Helper functions for practice area components
+import { logger } from './logger';
 
 /**
  * Standard interface for practice area content sections
@@ -31,15 +32,15 @@ export const getServicePath = (serviceId: string): string => {
     const { specializedServicePathMap } = require('@/data/practiceAreasData');
     
     if (specializedServicePathMap && normalizedId in specializedServicePathMap) {
-      console.log(`Found path mapping for service "${normalizedId}":`, specializedServicePathMap[normalizedId]);
+      logger.debug(`Found path mapping for service "${normalizedId}":`, specializedServicePathMap[normalizedId]);
       return specializedServicePathMap[normalizedId];
     }
     
     // Default to /practice/ prefix if not found in map
-    console.log(`No path mapping found for service "${normalizedId}", using default pattern`);
+    logger.debug(`No path mapping found for service "${normalizedId}", using default pattern`);
     return `/practice/${normalizedId}`;
   } catch (error) {
-    console.error(`Error getting service path for "${serviceId}":`, error);
+    logger.error(`Error getting service path for "${serviceId}":`, error);
     // Return a safe default value
     return `/practice/${serviceId.replace(/^\/|\/$/g, '')}`;
   }
@@ -55,7 +56,7 @@ export const validatePracticeArea = (componentName: string, serviceId: string): 
     // Import dynamically to avoid circular dependencies
     const { specializedServiceData } = require('@/data/practiceAreasData');
     
-    console.log(`${componentName}: Validating practice area with ID "${serviceId}"`);
+    logger.debug(`${componentName}: Validating practice area with ID "${serviceId}"`);
     
     // Check if service ID exists in specialized services
     const matchingService = specializedServiceData.find(
@@ -63,15 +64,15 @@ export const validatePracticeArea = (componentName: string, serviceId: string): 
     );
     
     if (!matchingService) {
-      console.warn(
+      logger.warn(
         `${componentName}: WARNING - No matching specialized service found for "${serviceId}". ` +
         `Available services: ${specializedServiceData.map((s: any) => s.id).join(', ')}`
       );
     } else {
-      console.log(`${componentName}: Successfully matched to specialized service "${matchingService.title}"`);
+      logger.debug(`${componentName}: Successfully matched to specialized service "${matchingService.title}"`);
     }
   } catch (error) {
-    console.error(`Error validating practice area "${serviceId}" in ${componentName}:`, error);
+    logger.error(`Error validating practice area "${serviceId}" in ${componentName}:`, error);
     // Continue execution even if validation fails
   }
 };
@@ -94,7 +95,7 @@ export const standardizeServicePaths = (services: RelatedService[]): RelatedServ
       return service;
     });
   } catch (error) {
-    console.error('Error standardizing service paths:', error);
+    logger.error('Error standardizing service paths:', error);
     // Return original services if there's an error
     return services;
   }

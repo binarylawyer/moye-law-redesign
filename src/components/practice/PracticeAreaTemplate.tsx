@@ -5,6 +5,7 @@ import MondrianDividerCTA from '@/components/MondrianDividerCTA';
 import { specializedServiceData, getServiceByName } from '@/data/practiceAreasData';
 import PracticeAreaHero from './PracticeAreaHero';
 import CallToAction from '@/components/shared/CallToAction';
+import { logger } from '@/utils/logger';
 
 interface PracticeAreaTemplateProps {
   children: ReactNode;
@@ -23,11 +24,11 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
   useEffect(() => {
     try {
       if (serviceId) {
-        console.log('PracticeAreaTemplate: Looking for service with ID:', serviceId);
+        logger.debug('PracticeAreaTemplate: Looking for service with ID:', serviceId);
         
         // Log available services to help with debugging
         const availableServices = specializedServiceData?.map?.(s => s.id).join(', ') || 'No services available';
-        console.log('Available services:', availableServices);
+        logger.debug('Available services:', availableServices);
         
         // First try with the exact ID
         const foundService = specializedServiceData?.find?.(service => 
@@ -40,17 +41,17 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
             title: foundService.title,
             description: foundService.description
           });
-          console.log('Service info found by exact ID match:', foundService.id, foundService.title);
+          logger.debug('Service info found by exact ID match:', foundService.id, foundService.title);
         } else {
           // If not found by ID, try to match by normalized name
           const normalizedId = serviceId.toLowerCase().replace(/\s+/g, '-');
-          console.log('Trying normalized ID:', normalizedId);
+          logger.debug('Trying normalized ID:', normalizedId);
           
           const serviceByName = specializedServiceData?.find?.(service => {
             const normalizedTitle = service.title?.toLowerCase().replace(/\s+/g, '-');
             const normalizedShortTitle = service.shortTitle?.toLowerCase().replace(/\s+/g, '-');
             
-            console.log(`Comparing with: ${service.id} (${normalizedTitle}, ${normalizedShortTitle})`);
+            logger.debug(`Comparing with: ${service.id} (${normalizedTitle}, ${normalizedShortTitle})`);
             
             return normalizedTitle === normalizedId || normalizedShortTitle === normalizedId;
           });
@@ -60,10 +61,10 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
               title: serviceByName.title,
               description: serviceByName.description
             });
-            console.log('Service info found by name:', serviceByName.title, serviceByName.description);
+            logger.debug('Service info found by name:', serviceByName.title, serviceByName.description);
           } else {
             // Fallback to the areaName if no service found
-            console.warn(`No service info found for ID: ${serviceId}. Using areaName instead.`);
+            logger.warn(`No service info found for ID: ${serviceId}. Using areaName instead.`);
             setServiceInfo({
               title: areaName,
               description: `${areaName} services provided by Moye Law.`
@@ -78,7 +79,7 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
         });
       }
     } catch (error) {
-      console.error('Error in PracticeAreaTemplate when finding service info:', error);
+      logger.error('Error in PracticeAreaTemplate when finding service info:', error);
       // Set a fallback in case of error
       setServiceInfo({
         title: areaName,
@@ -141,7 +142,7 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
         }
       });
     } catch (error) {
-      console.error('Error checking for hero component:', error);
+      logger.error('Error checking for hero component:', error);
     }
     return hasHero;
   };
