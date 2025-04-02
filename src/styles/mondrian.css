@@ -12,6 +12,33 @@
   transform: translateY(0);
 }
 
+/* Line animations for header - replace JS-based animation */
+.line-animation-1 {
+  left: 42%;
+  animation: moveLineHorizontal1 8s ease-in-out infinite;
+}
+
+.line-animation-2 {
+  left: 58%;
+  animation: moveLineHorizontal2 10s ease-in-out infinite;
+}
+
+@keyframes moveLineHorizontal1 {
+  0% { left: 42%; }
+  25% { left: 46%; }
+  50% { left: 44%; }
+  75% { left: 38%; }
+  100% { left: 42%; }
+}
+
+@keyframes moveLineHorizontal2 {
+  0% { left: 58%; }
+  25% { left: 54%; }
+  50% { left: 56%; }
+  75% { left: 62%; }
+  100% { left: 58%; }
+}
+
 /* Ensure the Approach section is always visible */
 .moye-approach-section {
   display: block !important;

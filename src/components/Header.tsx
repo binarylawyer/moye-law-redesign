@@ -1,72 +1,59 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import DesktopNavigation from './navigation/DesktopNavigation';
 import MobileMenu from './navigation/MobileMenu';
 import { practiceAreas, specializedServices, resourcesItems } from './navigation/NavigationData';
+import { COMPONENT_COLORS } from '@/utils/colors';
 
 const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [line1Position, setLine1Position] = useState(42);
-  const [line2Position, setLine2Position] = useState(58);
-  const [line1Direction, setLine1Direction] = useState(1);
-  const [line2Direction, setLine2Direction] = useState(-1);
-  const [box1Scale, setBox1Scale] = useState(1);
-  const [box2Scale, setBox2Scale] = useState(1);
-  const [box3Scale, setBox3Scale] = useState(1);
-  const [box1Offset, setBox1Offset] = useState(0);
-  const [box2Offset, setBox2Offset] = useState(0);
-  const [box3Offset, setBox3Offset] = useState(0);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
+  // Memoize toggle function to prevent recreation on each render
+  const toggleMobileMenu = useCallback(() => {
+    setMobileMenuOpen(prev => !prev);
+  }, []);
+
+  // Use a single effect for scroll handling
   useEffect(() => {
     // Check initial scroll position on mount
     const initialScroll = window.scrollY;
     setIsScrolled(initialScroll > 20);
     
+    // Use throttled event handler for better performance
+    let ticking = false;
+    
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 20);
-      
-      // Subtle box transformations based on scroll
-      setBox1Scale(1 + (scrollY * 0.0003));
-      setBox2Scale(1 - (scrollY * 0.0002));
-      setBox3Scale(1 + (scrollY * 0.0001));
-      
-      setBox1Offset(scrollY * 0.05);
-      setBox2Offset(scrollY * -0.03);
-      setBox3Offset(scrollY * 0.02);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Animate the vertical lines
-  useEffect(() => {
-    const moveLines = () => {
-      setLine1Position(prev => {
-        const newPos = prev + (0.1 * line1Direction);
-        if (newPos >= 46 || newPos <= 38) {
-          setLine1Direction(prev => -prev);
-        }
-        return newPos < 38 ? 38 : newPos > 46 ? 46 : newPos;
-      });
+  // Memoize the header background style
+  const headerBackground = useMemo(() => ({
+    backgroundColor: isScrolled 
+      ? COMPONENT_COLORS.header.background 
+      : 'rgba(255, 255, 255, 0.5)',
+    backdropFilter: 'blur(15px)'
+  }), [isScrolled]);
 
-      setLine2Position(prev => {
-        const newPos = prev + (0.08 * line2Direction);
-        if (newPos >= 62 || newPos <= 54) {
-          setLine2Direction(prev => -prev);
-        }
-        return newPos < 54 ? 54 : newPos > 62 ? 62 : newPos;
-      });
-    };
-
-    const interval = setInterval(moveLines, 50);
-    return () => clearInterval(interval);
-  }, [line1Direction, line2Direction]);
+  // Memoize navigation data to prevent unnecessary re-renders
+  const navigationData = useMemo(() => ({
+    practiceAreas,
+    specializedServices,
+    resourcesItems
+  }), []);
 
   return (
     <header 
@@ -77,30 +64,15 @@ const Header: React.FC = () => {
       {/* Enhanced Mondrian-style background with more translucent frosted glass effect */}
       <div 
         className="absolute inset-0 overflow-hidden"
-        style={{
-          backgroundColor: isScrolled 
-            ? 'rgba(255, 255, 255, 0.7)' 
-            : 'rgba(255, 255, 255, 0.5)',
-          backdropFilter: 'blur(15px)'
-        }}
+        style={headerBackground}
       >
-        {/* Mondrian-inspired animated vertical lines */}
-        <div 
-          className="absolute top-0 h-full w-1 bg-black/20 transition-all duration-1000 ease-in-out" 
-          style={{ left: `${line1Position}%` }}
-        ></div>
-        <div 
-          className="absolute top-0 h-full w-1 bg-black/20 transition-all duration-1000 ease-in-out" 
-          style={{ left: `${line2Position}%` }}
-        ></div>
+        {/* Replace JS-controlled animations with CSS animations for better performance */}
+        <div className="absolute top-0 h-full w-1 bg-black/20 line-animation-1"></div>
+        <div className="absolute top-0 h-full w-1 bg-black/20 line-animation-2"></div>
 
         {/* Mondrian-inspired color blocks */}
-        <div 
-          className="absolute top-0 left-0 w-12 h-full mondrian-red opacity-10"
-        ></div>
-        <div 
-          className="absolute top-0 right-0 w-12 h-full mondrian-blue opacity-10"
-        ></div>
+        <div className="absolute top-0 left-0 w-12 h-full mondrian-red opacity-10"></div>
+        <div className="absolute top-0 right-0 w-12 h-full mondrian-blue opacity-10"></div>
         
         {/* Mondrian-inspired horizontal lines */}
         <div className="absolute top-0 left-0 w-full h-1 flex border-b-2 border-black/20">
@@ -127,9 +99,9 @@ const Header: React.FC = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:block z-10">
           <DesktopNavigation 
-            practiceAreas={practiceAreas}
-            specializedServices={specializedServices}
-            resourcesItems={resourcesItems}
+            practiceAreas={navigationData.practiceAreas}
+            specializedServices={navigationData.specializedServices}
+            resourcesItems={navigationData.resourcesItems}
             isScrolled={isScrolled}
           />
         </div>
@@ -137,7 +109,7 @@ const Header: React.FC = () => {
         {/* Mobile menu button */}
         <div className="md:hidden z-10">
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={toggleMobileMenu}
             className="hover:text-[#D6001C] transition-colors p-2 border border-black/20 text-black"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -149,12 +121,13 @@ const Header: React.FC = () => {
       <MobileMenu 
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
-        practiceAreas={practiceAreas}
-        specializedServices={specializedServices}
-        resourcesItems={resourcesItems}
+        practiceAreas={navigationData.practiceAreas}
+        specializedServices={navigationData.specializedServices}
+        resourcesItems={navigationData.resourcesItems}
       />
     </header>
   );
 };
 
-export default Header;
+// Export as memoized component to prevent unnecessary re-renders
+export default React.memo(Header);

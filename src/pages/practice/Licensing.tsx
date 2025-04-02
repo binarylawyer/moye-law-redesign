@@ -1,20 +1,59 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PracticeAreaTemplate from '@/components/practice/PracticeAreaTemplate';
 import PracticeAreaHero from '@/components/practice/PracticeAreaHero';
 import PracticeAreaContent from '@/components/practice/PracticeAreaContent';
 import PracticeAreaProcess from '@/components/practice/PracticeAreaProcess';
 import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
 import ServiceWithFeatureImage from '@/components/practice/ServiceWithFeatureImage';
-import { validatePracticeArea, standardizeServicePaths, ContentSection, RelatedService } from '@/utils/practiceHelpers';
+import { 
+  validatePracticeArea, 
+  standardizeServicePaths, 
+  ContentSection, 
+  RelatedService 
+} from '@/utils/practiceHelpers';
+import { logger } from '@/utils/logger';
+import { Button } from '@/components/ui/button';
+import { Link, Navigate } from 'react-router-dom';
 
 const Licensing: React.FC = () => {
   // Define service ID consistently
   const SERVICE_ID = 'ip-licensing';
+  const [validationResult, setValidationResult] = useState<{ 
+    isValid: boolean; 
+    message?: string;
+  }>({ isValid: true });
   
   // Validate that this service ID exists in specialized services
   useEffect(() => {
-    validatePracticeArea('Licensing', SERVICE_ID);
+    const result = validatePracticeArea('Licensing', SERVICE_ID);
+    setValidationResult(result);
+    
+    if (!result.isValid) {
+      logger.warn(`Invalid practice area: ${result.message}`);
+    }
   }, []);
+
+  // If the service ID is invalid, show a helpful error state
+  if (!validationResult.isValid) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+        <div className="max-w-md w-full text-center">
+          <h1 className="text-2xl font-serif text-navy mb-4">Practice Area Not Found</h1>
+          <p className="text-charcoal/70 mb-8">
+            {validationResult.message || "The requested practice area does not exist or is unavailable."}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild variant="outline">
+              <Link to="/practice">View All Practice Areas</Link>
+            </Button>
+            <Button asChild>
+              <Link to="/">Return to Home</Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const licensingAreas: ContentSection[] = [
     {
@@ -35,107 +74,81 @@ const Licensing: React.FC = () => {
     }
   ];
 
-  const processSteps: ContentSection[] = [
+  const licenseProcess = [
     {
-      title: "Asset Assessment",
-      description: "We begin with a thorough evaluation of your licensable intellectual property, identifying the most valuable assets and optimal licensing strategies for each."
+      number: "01",
+      title: "Strategy Development",
+      description: "We analyze your intellectual property portfolio and business objectives to develop a licensing strategy that maximizes value."
     },
     {
-      title: "Market Analysis",
-      description: "We research potential licensing partners, markets, and opportunities, evaluating competitive offerings and identifying the most promising licensing avenues."
+      number: "02",
+      title: "Agreement Structuring",
+      description: "Our team crafts licensing agreements with precise terms on usage rights, territories, duration, and compensation structures."
     },
     {
-      title: "Strategic Planning",
-      description: "We develop a comprehensive licensing strategy aligned with your business objectives, from revenue generation to market expansion or technology adoption."
+      number: "03",
+      title: "Negotiation & Execution",
+      description: "We negotiate favorable terms and complete all documentation required to formalize the licensing relationship."
     },
     {
-      title: "Agreement Development",
-      description: "We craft customized licensing agreements that protect your intellectual property while establishing clear terms for usage, compensation, quality control, and compliance."
-    },
-    {
+      number: "04",
       title: "Ongoing Management",
-      description: "We provide continuous support to monitor compliance, manage renewals, and optimize your licensing program as market conditions and business objectives evolve."
+      description: "We help monitor compliance, manage royalty calculations, and address any issues that arise during the license term."
     }
   ];
 
+  // Related services with standardized paths for consistency
   const relatedServices: RelatedService[] = standardizeServicePaths([
     {
-      title: "IP Consulting",
-      path: "/practice/ip-consulting",
-      description: "Strategic guidance for managing and maximizing the value of your intellectual property assets."
+      title: "IP Portfolio Management",
+      path: "ip-portfolio-management",
+      description: "Comprehensive management of intellectual property assets."
     },
     {
-      title: "Digital Asset Protection",
-      path: "/practice/digital-asset-protection",
-      description: "Comprehensive legal protection for digital assets, from NFTs to domain names and digital IP."
+      title: "IP Litigation",
+      path: "ip-litigation",
+      description: "Resolving disputes related to intellectual property rights."
     },
     {
-      title: "Entertainment Law",
-      path: "/practice/entertainment-law",
-      description: "Legal counsel for entertainment properties, content licensing, and media ventures."
+      title: "Emerging Technologies",
+      path: "emerging-tech",
+      description: "Legal guidance for blockchain, AI, and other emerging technologies."
     }
   ]);
 
   return (
-    <PracticeAreaTemplate areaName="IP Licensing" serviceId={SERVICE_ID}>
-      <PracticeAreaHero 
-        title="IP Licensing Solutions"
-        description="Structured frameworks for monetizing and leveraging intellectual property through strategic licensing arrangements."
+    <PracticeAreaTemplate
+      areaName="Intellectual Property Licensing"
+      serviceId={SERVICE_ID}
+    >
+      <PracticeAreaHero
+        title="IP Licensing"
+        subtitle="Maximizing the Value of Intellectual Property Assets"
+        description="Our intellectual property licensing practice helps businesses leverage their innovations, creative works, and brands through strategic licensing programs."
+        imagePath="/images/intellectual-property.jpg"
       />
       
       <PracticeAreaContent 
-        title="Unlocking IP Value Through Strategic Licensing" 
-        variant="default"
-        decorationPosition="right"
-        decorationVariant={2}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-1 gap-10">
-          <div>
-            <p className="text-lg mb-6">
-              Intellectual property licensing transforms static IP assets into dynamic revenue streams and strategic advantages. Our IP Licensing practice helps clients leverage their intellectual property through carefully structured licensing arrangements.
-            </p>
-            <p className="text-lg mb-6">
-              We work with innovators, creators, and businesses to develop licensing strategies that extend market reach, generate revenue, and maintain control over valuable intellectual assets.
-            </p>
-            <p className="text-lg">
-              Our expertise spans technology, content, and brand licensing across multiple industries, enabling us to craft licensing solutions tailored to your specific intellectual property portfolio and business objectives.
-            </p>
-          </div>
-        </div>
-      </PracticeAreaContent>
+        title="Licensing Solutions Across Industry Sectors"
+        sections={licensingAreas}
+      />
       
-      {/* Feature image section to fill white space */}
       <ServiceWithFeatureImage
-        serviceTitle="Transform Your IP into Revenue"
-        serviceDescription="Our licensing expertise helps you develop strategic frameworks that maximize the value of your intellectual property while maintaining control and protecting your core assets. We'll help you navigate complex licensing arrangements to create sustainable revenue streams."
-        callToActionText="Explore licensing opportunities"
+        serviceTitle="Strategic IP Monetization"
+        serviceDescription="Our licensing team develops customized strategies to monetize your intellectual property portfolio, whether through traditional licensing, franchise models, or innovative cross-industry collaborations."
+        imagePath="/images/licensing-strategy.jpg"
         variant="secondary"
       />
       
-      <PracticeAreaContent 
-        title="Licensing Solutions" 
-        variant="alternate"
-        decorationPosition="left"
-        decorationVariant={5}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {licensingAreas.map((area, idx) => (
-            <div key={idx} className="mondrian-border p-6 bg-white">
-              <h3 className="font-serif text-xl text-black mb-4">{area.title}</h3>
-              <p className="text-black/80">{area.description}</p>
-            </div>
-          ))}
-        </div>
-      </PracticeAreaContent>
-      
       <PracticeAreaProcess
-        title="Our Licensing Process"
-        steps={processSteps}
+        title="Our IP Licensing Process"
+        description="We implement a methodical approach to licensing that maximizes value while protecting your intellectual property."
+        steps={licenseProcess}
       />
       
       <PracticeAreaRelated
-        title="Related Services"
-        items={relatedServices}
+        title="Related Intellectual Property Services"
+        services={relatedServices}
       />
     </PracticeAreaTemplate>
   );

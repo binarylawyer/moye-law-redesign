@@ -15,8 +15,106 @@ export interface ContentSection {
 export interface RelatedService {
   title: string;
   path: string;
-  description: string;
+  description?: string;
 }
+
+// Validation rules for service IDs
+const SERVICE_ID_PATTERN = /^[a-z0-9-]+$/;
+const VALID_SERVICE_ID_LENGTH = { min: 3, max: 50 };
+
+/**
+ * Validates a service ID format
+ * @param serviceId The service ID to validate
+ * @returns Object containing validation result and error message if invalid
+ */
+export const validateServiceIdFormat = (serviceId: string): { isValid: boolean; error?: string } => {
+  if (!serviceId) {
+    return { isValid: false, error: 'Service ID cannot be empty' };
+  }
+
+  if (serviceId.length < VALID_SERVICE_ID_LENGTH.min || serviceId.length > VALID_SERVICE_ID_LENGTH.max) {
+    return { 
+      isValid: false, 
+      error: `Service ID must be between ${VALID_SERVICE_ID_LENGTH.min} and ${VALID_SERVICE_ID_LENGTH.max} characters`
+    };
+  }
+
+  if (!SERVICE_ID_PATTERN.test(serviceId)) {
+    return { 
+      isValid: false, 
+      error: 'Service ID must contain only lowercase letters, numbers, and hyphens'
+    };
+  }
+
+  return { isValid: true };
+};
+
+/**
+ * Normalizes a service ID to ensure consistent format
+ * @param serviceId The service ID to normalize
+ * @returns Normalized service ID
+ */
+export const normalizeServiceId = (serviceId: string): string => {
+  // Remove any leading/trailing slashes and spaces
+  let normalized = serviceId.trim().replace(/^\/|\/$/g, '');
+  
+  // Convert to lowercase
+  normalized = normalized.toLowerCase();
+  
+  // Replace spaces with hyphens
+  normalized = normalized.replace(/\s+/g, '-');
+  
+  // Remove any character that's not lowercase alphanumeric or hyphen
+  normalized = normalized.replace(/[^a-z0-9-]/g, '');
+  
+  return normalized;
+};
+
+/**
+ * Gets the service data by ID from specialized services
+ * @param serviceId The service ID to look up
+ * @returns Service data if found, undefined otherwise
+ */
+export const getServiceById = (serviceId: string): any | undefined => {
+  try {
+    if (!serviceId) return undefined;
+    
+    // Normalize the service ID
+    const normalizedId = normalizeServiceId(serviceId);
+    
+    // Import dynamically to avoid circular dependencies
+    const { specializedServiceData } = require('@/data/practiceAreasData');
+    
+    // First try exact match with normalized ID
+    const exactMatch = specializedServiceData.find(
+      (service: any) => normalizeServiceId(service.id) === normalizedId
+    );
+    
+    if (exactMatch) {
+      logger.debug(`Found exact match for service "${normalizedId}":`, exactMatch.title);
+      return exactMatch;
+    }
+    
+    // Try matching by title
+    const titleMatch = specializedServiceData.find((service: any) => {
+      const normalizedTitle = normalizeServiceId(service.title);
+      const normalizedShortTitle = service.shortTitle ? normalizeServiceId(service.shortTitle) : '';
+      
+      return normalizedTitle === normalizedId || normalizedShortTitle === normalizedId;
+    });
+    
+    if (titleMatch) {
+      logger.debug(`Found title match for service "${normalizedId}":`, titleMatch.title);
+      return titleMatch;
+    }
+    
+    logger.debug(`No service found for ID "${normalizedId}"`);
+    return undefined;
+  } catch (error) {
+    logger.error(`Error getting service data for ID "${serviceId}":`, error);
+    return undefined;
+  }
+};
 
 /**
  * Gets the service path from an ID, ensuring consistent navigation
@@ -25,15 +123,16 @@ export interface RelatedService {
  */
 export const getServicePath = (serviceId: string): string => {
   try {
-    // Normalize the service ID by removing any leading/trailing slashes
-    const normalizedId = serviceId.replace(/^\/|\/$/g, '');
+    // Normalize the service ID
+    const normalizedId = normalizeServiceId(serviceId);
     
     // Check if it's a known service ID using the specializedServicePathMap
     const { specializedServicePathMap } = require('@/data/practiceAreasData');
     
     if (specializedServicePathMap && normalizedId in specializedServicePathMap) {
-      logger.debug(`Found path mapping for service "${normalizedId}":`, specializedServicePathMap[normalizedId]);
-      return specializedServicePathMap[normalizedId];
+      const path = specializedServicePathMap[normalizedId];
+      logger.debug(`Found path mapping for service "${normalizedId}":`, path);
+      return path;
     }
     
     // Default to /practice/ prefix if not found in map
@@ -42,7 +141,7 @@ export const getServicePath = (serviceId: string): string => {
   } catch (error) {
     logger.error(`Error getting service path for "${serviceId}":`, error);
     // Return a safe default value
-    return `/practice/${serviceId.replace(/^\/|\/$/g, '')}`;
+    return `/practice/${normalizeServiceId(serviceId)}`;
   }
 };
 
@@ -50,30 +149,46 @@ export const getServicePath = (serviceId: string): string => {
  * Validates that a practice area ID matches with available specialized services
  * @param componentName The name of the component for logging
  * @param serviceId The service ID to validate
+ * @returns Validation result object
  */
-export const validatePracticeArea = (componentName: string, serviceId: string): void => {
+export const validatePracticeArea = (componentName: string, serviceId: string): {
+  isValid: boolean;
+  service?: any;
+  message?: string;
+} => {
   try {
+    // First validate the format
+    const formatValidation = validateServiceIdFormat(serviceId);
+    if (!formatValidation.isValid) {
+      logger.warn(`${componentName}: ${formatValidation.error} for "${serviceId}"`);
+      return { isValid: false, message: formatValidation.error };
+    }
+    
     // Import dynamically to avoid circular dependencies
     const { specializedServiceData } = require('@/data/practiceAreasData');
     
     logger.debug(`${componentName}: Validating practice area with ID "${serviceId}"`);
     
-    // Check if service ID exists in specialized services
-    const matchingService = specializedServiceData.find(
-      (service: any) => service.id === serviceId
-    );
+    // Use the extracted business logic to get the service
+    const matchingService = getServiceById(serviceId);
     
     if (!matchingService) {
-      logger.warn(
-        `${componentName}: WARNING - No matching specialized service found for "${serviceId}". ` +
-        `Available services: ${specializedServiceData.map((s: any) => s.id).join(', ')}`
-      );
-    } else {
-      logger.debug(`${componentName}: Successfully matched to specialized service "${matchingService.title}"`);
+      const message = `No matching specialized service found for "${serviceId}". ` +
+      `Available services: ${specializedServiceData.map((s: any) => s.id).join(', ')}`;
+      
+      logger.warn(`${componentName}: WARNING - ${message}`);
+      return { isValid: false, message };
     }
+    
+    logger.debug(`${componentName}: Successfully matched to specialized service "${matchingService.title}"`);
+    return { isValid: true, service: matchingService };
   } catch (error) {
     logger.error(`Error validating practice area "${serviceId}" in ${componentName}:`, error);
-    // Continue execution even if validation fails
+    // Return invalid with an error message
+    return { 
+      isValid: false,
+      message: `An error occurred while validating the practice area`
+    };
   }
 };
 

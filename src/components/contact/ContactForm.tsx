@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -17,6 +16,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
+import { sanitizeFormData } from '@/utils/formSanitization';
+import { logger } from '@/utils/logger';
 
 // Form schema definition
 const formSchema = z.object({
@@ -37,6 +38,7 @@ interface ContactFormProps {
 
 const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   
   // Initialize form
@@ -52,17 +54,43 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
   });
   
   // Handle form submission
-  const onSubmit = (data: FormValues) => {
-    console.log("Form submitted:", data);
-    
-    // Simulate form submission
-    setTimeout(() => {
+  const onSubmit = async (data: FormValues) => {
+    try {
+      setIsSubmitting(true);
+      
+      // Sanitize form data before sending
+      const sanitizedData = sanitizeFormData(data);
+      
+      // Log sanitized data (without sensitive info in production)
+      if (import.meta.env.MODE !== 'production') {
+        logger.debug("Form data after sanitization:", sanitizedData);
+      }
+      
+      // Simulate form submission with a delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // In a real app, this would be an API call
+      // const response = await fetch('/api/contact', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(sanitizedData)
+      // });
+      
       setIsSubmitted(true);
       toast({
         title: "Request Received",
         description: "We'll contact you within 1 business day.",
       });
-    }, 1000);
+    } catch (error) {
+      logger.error("Error submitting contact form:", error);
+      toast({
+        title: "Submission Error",
+        description: "There was a problem submitting your request. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -70,20 +98,20 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
       <h2 className="font-serif text-2xl text-navy mb-6">Request a Consultation</h2>
       
       {isSubmitted ? (
-        <div className="text-center py-12">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-6">
+        <div className="text-center py-6">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4">
             <Check className="h-8 w-8 text-green-600" />
           </div>
-          <h3 className="text-xl font-serif text-navy mb-4">Request Received</h3>
-          <p className="text-charcoal/80 mb-6">
-            Thank you for reaching out. We'll contact you within 1 business day to schedule your consultation.
+          <h3 className="text-xl font-medium text-gray-900 mb-2">Thank You</h3>
+          <p className="text-gray-600 mb-6">
+            Your consultation request has been received. A member of our team will contact you within 1 business day.
           </p>
           <Button 
-            onClick={() => setIsSubmitted(false)}
-            variant="outline" 
-            className="mt-4"
+            onClick={() => setIsSubmitted(false)} 
+            variant="outline"
+            className="border-gold text-gold hover:bg-gold hover:text-white"
           >
-            Submit another request
+            Submit Another Request
           </Button>
         </div>
       ) : (
@@ -175,8 +203,9 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
             <Button 
               type="submit" 
               className="w-full md:w-auto bg-gold hover:bg-gold/90 text-white font-medium"
+              disabled={isSubmitting}
             >
-              Request Consultation
+              {isSubmitting ? "Submitting..." : "Request Consultation"}
             </Button>
             
             <p className="text-xs text-charcoal/60">
