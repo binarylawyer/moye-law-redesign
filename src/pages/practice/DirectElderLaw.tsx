@@ -248,12 +248,12 @@ const DirectElderLaw: React.FC = () => {
           <section className="py-16 bg-white">
             <div className="container mx-auto px-4">
               <div className="flex flex-col md:flex-row">
-                {/* Mondrian-style grid for the left section */}
+                {/* Mondrian composition for the left section */}
                 <div className="w-full md:w-1/4 flex-shrink-0 h-64 md:h-auto">
                   <MondrianClassicComposition />
                 </div>
                 
-                <div className="mondrian-blue w-full md:w-16 p-8 hidden md:block"></div>
+                <div className="bg-white w-full md:w-16 p-8 hidden md:block"></div>
                 
                 <div className="bg-white w-full md:flex-1 p-8 border-4 border-black">
                   <h2 className="font-serif text-3xl mb-4">Protect Your Future — Contact Us Today</h2>

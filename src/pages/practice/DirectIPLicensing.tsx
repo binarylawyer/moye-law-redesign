@@ -2,6 +2,7 @@ import React from 'react';
 import { logger } from '@/utils/logger';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import MondrianClassicComposition from '@/components/MondrianClassicComposition';
 import { Link } from 'react-router-dom';
 import '../../styles/mondrian.css';
 
@@ -105,8 +106,10 @@ const DirectIPLicensing: React.FC = () => {
         <section className="py-16">
           <div className="container mx-auto px-8">
             <div className="flex flex-col md:flex-row">
-              {/* Red Mondrian block on left */}
-              <div className="mondrian-red w-full md:w-1/3"></div>
+              {/* Mondrian composition on left */}
+              <div className="w-full md:w-1/3 h-64 md:h-auto">
+                <MondrianClassicComposition />
+              </div>
               
               {/* White content block */}
               <div className="bg-white border-4 border-black p-8 md:p-12 w-full md:w-2/3">
@@ -236,27 +239,9 @@ const DirectIPLicensing: React.FC = () => {
           <section className="py-16 bg-white">
             <div className="container mx-auto px-4">
               <div className="flex flex-col md:flex-row">
-                {/* Mondrian-style grid for the left section */}
-                <div className="w-full md:w-1/4 flex-shrink-0 h-full relative">
-                  <div className="border-2 border-black h-full w-full">
-                    {/* Outer frame */}
-                    <div className="absolute inset-0 grid grid-cols-12 grid-rows-12 gap-0">
-                      {/* Red rectangle - top */}
-                      <div className="col-span-12 row-span-4 mondrian-red border-b-2 border-black"></div>
-                      
-                      {/* White rectangle - middle left */}
-                      <div className="col-span-6 row-span-3 mondrian-white border-r-2 border-b-2 border-black"></div>
-                      
-                      {/* Blue rectangle - middle right */}
-                      <div className="col-span-6 row-span-3 mondrian-blue border-b-2 border-black"></div>
-                      
-                      {/* Yellow rectangle - bottom left */}
-                      <div className="col-span-9 row-span-5 mondrian-yellow border-r-2 border-black"></div>
-                      
-                      {/* Dark blue rectangle - bottom right */}
-                      <div className="col-span-3 row-span-5 mondrian-blue"></div>
-                    </div>
-                  </div>
+                {/* Mondrian composition for the left section */}
+                <div className="w-full md:w-1/4 flex-shrink-0 h-64 md:h-auto">
+                  <MondrianClassicComposition />
                 </div>
                 
                 <div className="mondrian-blue w-full md:w-16 p-8 hidden md:block"></div>
@@ -270,7 +255,7 @@ const DirectIPLicensing: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="mondrian-yellow w-full md:w-1/6 p-8"></div>
+                <div className="bg-gray-100 w-full md:w-1/6 p-8"></div>
               </div>
               
               <div className="mt-8 text-center">
