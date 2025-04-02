@@ -18,6 +18,34 @@ export interface RelatedService {
 }
 
 /**
+ * Gets the service path from an ID, ensuring consistent navigation
+ * @param serviceId The service ID to get the path for
+ * @returns The standardized path for the service
+ */
+export const getServicePath = (serviceId: string): string => {
+  try {
+    // Normalize the service ID by removing any leading/trailing slashes
+    const normalizedId = serviceId.replace(/^\/|\/$/g, '');
+    
+    // Check if it's a known service ID using the specializedServicePathMap
+    const { specializedServicePathMap } = require('@/data/practiceAreasData');
+    
+    if (specializedServicePathMap && normalizedId in specializedServicePathMap) {
+      console.log(`Found path mapping for service "${normalizedId}":`, specializedServicePathMap[normalizedId]);
+      return specializedServicePathMap[normalizedId];
+    }
+    
+    // Default to /practice/ prefix if not found in map
+    console.log(`No path mapping found for service "${normalizedId}", using default pattern`);
+    return `/practice/${normalizedId}`;
+  } catch (error) {
+    console.error(`Error getting service path for "${serviceId}":`, error);
+    // Return a safe default value
+    return `/practice/${serviceId.replace(/^\/|\/$/g, '')}`;
+  }
+};
+
+/**
  * Validates that a practice area ID matches with available specialized services
  * @param componentName The name of the component for logging
  * @param serviceId The service ID to validate

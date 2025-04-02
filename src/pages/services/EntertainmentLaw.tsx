@@ -1,50 +1,51 @@
 import React from 'react';
-import PracticeAreaTemplate from '@/components/practice/PracticeAreaTemplate';
-import PracticeAreaHero from '@/components/practice/PracticeAreaHero';
-import PracticeAreaContent from '@/components/practice/PracticeAreaContent';
-import PracticeAreaProcess from '@/components/practice/PracticeAreaProcess';
-import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
+import ServiceTemplate from '@/components/services/ServiceTemplate';
+import ServiceHero from '@/components/services/ServiceHero';
+import ServiceContent from '@/components/services/ServiceContent';
+import ServiceProcess from '@/components/services/ServiceProcess';
+import ServiceRelated from '@/components/services/ServiceRelated';
+import ServiceFeatureImage from '@/components/services/ServiceFeatureImage';
 
 const EntertainmentLaw: React.FC = () => {
-  const entertainmentAreas = [
+  const entertainmentServices = [
     {
       title: "Film & Television",
-      description: "Comprehensive legal services for productions, talent, distributors, and investors in the film and television industry."
+      description: "Production agreements, talent contracts, distribution rights, and financing structures for audiovisual projects."
     },
     {
       title: "Music & Recording",
-      description: "Expert guidance for artists, labels, producers, and publishers in navigating complex music rights and agreements."
+      description: "Artist deals, publishing rights, royalty structures, and licensing agreements for music industry clients."
     },
     {
-      title: "Digital Media & Gaming",
-      description: "Legal frameworks for game developers, content creators, streamers, and interactive entertainment companies."
+      title: "Gaming & Interactive Media",
+      description: "Development contracts, player agreements, streaming rights, and content monetization strategies."
     },
     {
-      title: "Literary & Publishing",
-      description: "Contract development and rights management for authors, publishers, and literary agencies across traditional and digital formats."
+      title: "Digital Content & Influencers",
+      description: "Content creator agreements, sponsorship deals, platform terms, and revenue sharing arrangements."
     }
   ];
 
-  const processSteps = [
+  const serviceSteps = [
     {
-      title: "Initial Consultation",
-      description: "We begin with a comprehensive discussion of your entertainment project or career goals, understanding your vision, timeline, and specific legal needs."
+      title: "Project Analysis",
+      description: "We evaluate your entertainment project or business to identify specific legal needs, opportunities, and potential challenges."
     },
     {
-      title: "Rights Assessment",
-      description: "We evaluate existing rights, identify potential rights issues, and develop strategies for securing, clearing, or licensing necessary rights for your project."
+      title: "Rights Clearance",
+      description: "We conduct thorough due diligence to ensure all intellectual property rights are properly secured and cleared for your intended use."
     },
     {
       title: "Contract Development",
-      description: "We draft, review, or negotiate agreements tailored to your specific entertainment venture, focusing on protecting your creative and financial interests."
+      description: "We craft customized agreements that protect your interests while facilitating productive creative and business relationships."
     },
     {
-      title: "Compliance & Clearances",
-      description: "We ensure all necessary permissions, releases, and regulatory compliance measures are properly addressed before your content reaches its audience."
+      title: "Deal Negotiation",
+      description: "We represent your interests in negotiations with studios, labels, platforms, talent, and other stakeholders in the entertainment ecosystem."
     },
     {
-      title: "Ongoing Representation",
-      description: "We provide continuous legal support throughout the lifecycle of your entertainment career or project, from development through distribution and beyond."
+      title: "Ongoing Guidance",
+      description: "We provide continuing legal support through project development, production, distribution, and monetization phases."
     }
   ];
 
@@ -52,7 +53,7 @@ const EntertainmentLaw: React.FC = () => {
     {
       title: "IP Licensing",
       path: "/services/ip-licensing",
-      description: "Structured frameworks for monetizing and leveraging intellectual property through strategic licensing arrangements."
+      description: "Comprehensive solutions for intellectual property licensing across industries and applications."
     },
     {
       title: "Digital Asset Protection",
@@ -67,59 +68,66 @@ const EntertainmentLaw: React.FC = () => {
   ];
 
   return (
-    <PracticeAreaTemplate areaName="Entertainment Law" serviceId="entertainment-law">
-      <PracticeAreaHero 
+    <ServiceTemplate serviceName="Entertainment Law" serviceId="entertainment-law">
+      <ServiceHero 
         title="Entertainment Law"
-        description="Expert legal guidance for creators, producers, and businesses across the evolving entertainment landscape."
+        description="Sophisticated legal counsel for the business of creativity."
       />
       
-      <PracticeAreaContent 
-        title="Empowering Creative Industries" 
+      <ServiceContent 
+        title="Navigating the Entertainment Industry's Legal Landscape" 
         variant="default"
-        decorationPosition="left"
-        decorationVariant={3}
+        decorationPosition="right"
+        decorationVariant={2}
       >
         <div className="grid grid-cols-1 md:grid-cols-1 gap-10">
           <div>
             <p className="text-lg mb-6">
-              Today's entertainment industry spans traditional media, digital platforms, and interactive experiences, creating a complex landscape of legal challenges and opportunities for creators and businesses.
+              The entertainment industry combines creative expression with complex business structures, requiring legal guidance that understands both dimensions. Our Entertainment Law practice provides comprehensive legal support for creators, producers, talent, and businesses throughout the entertainment ecosystem.
             </p>
             <p className="text-lg mb-6">
-              Our Entertainment Law practice provides specialized legal guidance at every stage of the creative process, from concept development and rights acquisition to production, distribution, and monetization.
+              We offer specialized counsel on project development, financing, production, distribution, and rights management across traditional and emerging entertainment formats. Our attorneys have deep industry knowledge that allows them to navigate the evolving legal challenges in this dynamic sector.
             </p>
             <p className="text-lg">
-              We work with individual creators, production companies, studios, publishers, and platforms to navigate the specific legal requirements of their projects while protecting their creative vision and business interests.
+              From independent creators to established media companies, we tailor our approach to each client's specific needs while maintaining a focus on maximizing creative and commercial opportunities.
             </p>
           </div>
         </div>
-      </PracticeAreaContent>
+      </ServiceContent>
       
-      <PracticeAreaContent 
-        title="Industry Expertise" 
+      <ServiceFeatureImage
+        featureTitle="Protecting Creative Vision"
+        featureDescription="Entertainment ventures require legal frameworks that protect creative work while enabling commercial success. Our entertainment attorneys combine industry expertise with legal acumen to help clients navigate complex media landscapes."
+        callToActionText="Secure your creative assets"
+        variant="secondary"
+      />
+      
+      <ServiceContent 
+        title="Entertainment Sectors" 
         variant="alternate"
-        decorationPosition="right"
-        decorationVariant={1}
+        decorationPosition="left"
+        decorationVariant={3}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {entertainmentAreas.map((area, idx) => (
+          {entertainmentServices.map((service, idx) => (
             <div key={idx} className="mondrian-border p-6 bg-white">
-              <h3 className="font-serif text-xl text-black mb-4">{area.title}</h3>
-              <p className="text-black/80">{area.description}</p>
+              <h3 className="font-serif text-xl text-black mb-4">{service.title}</h3>
+              <p className="text-black/80">{service.description}</p>
             </div>
           ))}
         </div>
-      </PracticeAreaContent>
+      </ServiceContent>
       
-      <PracticeAreaProcess
+      <ServiceProcess
         title="Our Entertainment Law Process"
-        steps={processSteps}
+        steps={serviceSteps}
       />
       
-      <PracticeAreaRelated
+      <ServiceRelated
         title="Related Services"
         items={relatedServices}
       />
-    </PracticeAreaTemplate>
+    </ServiceTemplate>
   );
 };
 

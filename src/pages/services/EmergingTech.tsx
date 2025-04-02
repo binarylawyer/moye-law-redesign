@@ -1,12 +1,13 @@
 import React from 'react';
-import PracticeAreaTemplate from '@/components/practice/PracticeAreaTemplate';
-import PracticeAreaHero from '@/components/practice/PracticeAreaHero';
-import PracticeAreaContent from '@/components/practice/PracticeAreaContent';
-import PracticeAreaProcess from '@/components/practice/PracticeAreaProcess';
-import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
+import ServiceTemplate from '@/components/services/ServiceTemplate';
+import ServiceHero from '@/components/services/ServiceHero';
+import ServiceContent from '@/components/services/ServiceContent';
+import ServiceProcess from '@/components/services/ServiceProcess';
+import ServiceRelated from '@/components/services/ServiceRelated';
+import ServiceFeatureImage from '@/components/services/ServiceFeatureImage';
 
 const EmergingTech: React.FC = () => {
-  const techAreas = [
+  const techServices = [
     {
       title: "Blockchain & Cryptocurrency",
       description: "Legal frameworks for blockchain applications, token offerings, smart contracts, and cryptocurrency ventures."
@@ -25,7 +26,7 @@ const EmergingTech: React.FC = () => {
     }
   ];
 
-  const processSteps = [
+  const serviceSteps = [
     {
       title: "Technology Assessment",
       description: "We begin by thoroughly understanding your technology, its applications, and the specific legal challenges it presents in current and future regulatory environments."
@@ -67,13 +68,13 @@ const EmergingTech: React.FC = () => {
   ];
 
   return (
-    <PracticeAreaTemplate areaName="Emerging Technology" serviceId="emerging-tech">
-      <PracticeAreaHero 
+    <ServiceTemplate serviceName="Emerging Technology Law" serviceId="emerging-tech">
+      <ServiceHero 
         title="Emerging Technology Law"
         description="Forward-looking legal solutions for pioneers at the frontier of technological innovation."
       />
       
-      <PracticeAreaContent 
+      <ServiceContent 
         title="Legal Guidance for the Digital Frontier" 
         variant="default"
         decorationPosition="left"
@@ -92,34 +93,41 @@ const EmergingTech: React.FC = () => {
             </p>
           </div>
         </div>
-      </PracticeAreaContent>
+      </ServiceContent>
       
-      <PracticeAreaContent 
+      <ServiceFeatureImage
+        featureTitle="Navigate the Future with Confidence"
+        featureDescription="Emerging technologies require forward-thinking legal strategies that anticipate regulatory developments and address novel legal questions. Our technology law experts help innovators navigate complex legal frameworks while maintaining their competitive edge."
+        callToActionText="Future-proof your innovation"
+        variant="tertiary"
+      />
+      
+      <ServiceContent 
         title="Technology Focus Areas" 
         variant="alternate"
         decorationPosition="right"
         decorationVariant={1}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {techAreas.map((area, idx) => (
+          {techServices.map((service, idx) => (
             <div key={idx} className="mondrian-border p-6 bg-white">
-              <h3 className="font-serif text-xl text-black mb-4">{area.title}</h3>
-              <p className="text-black/80">{area.description}</p>
+              <h3 className="font-serif text-xl text-black mb-4">{service.title}</h3>
+              <p className="text-black/80">{service.description}</p>
             </div>
           ))}
         </div>
-      </PracticeAreaContent>
+      </ServiceContent>
       
-      <PracticeAreaProcess
+      <ServiceProcess
         title="Our Approach to Emerging Tech"
-        steps={processSteps}
+        steps={serviceSteps}
       />
       
-      <PracticeAreaRelated
+      <ServiceRelated
         title="Related Services"
         items={relatedServices}
       />
-    </PracticeAreaTemplate>
+    </ServiceTemplate>
   );
 };
 

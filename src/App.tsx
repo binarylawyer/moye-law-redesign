@@ -56,13 +56,14 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<Index />} />
         
-        {/* Practice Routes */}
+        {/* Practice Routes - Specific routes must come before the wildcard route */}
         <Route path="/practice/digital-asset-protection" element={<DigitalAssetProtection />} />
         <Route path="/practice/ip-consulting" element={<IPConsulting />} />
         <Route path="/practice/ip-licensing" element={<Licensing />} />
         <Route path="/practice/entertainment-law" element={<EntertainmentLaw />} />
         <Route path="/practice/emerging-tech" element={<EmergingTech />} />
         <Route path="/practice" element={<Practice />} />
+        {/* Catch-all practice area route should be last */}
         <Route path="/practice/:area" element={<PracticeArea />} />
         
         {/* Other Main Routes */}
@@ -87,13 +88,6 @@ const AppRoutes = () => {
         <Route path="/services/ip-licensing" element={<LicensingService />} />
         <Route path="/services/entertainment-law" element={<EntertainmentLawService />} />
         <Route path="/services/emerging-tech" element={<EmergingTechService />} />
-        
-        {/* Legacy URLs - redirect to new paths */}
-        <Route path="/digital-asset-protection" element={<DigitalAssetProtectionService />} />
-        <Route path="/ip-consulting" element={<IPConsultingService />} />
-        <Route path="/ip-licensing" element={<LicensingService />} />
-        <Route path="/entertainment-law" element={<EntertainmentLawService />} />
-        <Route path="/emerging-tech" element={<EmergingTechService />} />
         
         {/* Direct access route for How We Work */}
         <Route path="/how-we-work" element={<HowWeWork />} />

@@ -1,12 +1,13 @@
 import React from 'react';
-import PracticeAreaTemplate from '@/components/practice/PracticeAreaTemplate';
-import PracticeAreaHero from '@/components/practice/PracticeAreaHero';
-import PracticeAreaContent from '@/components/practice/PracticeAreaContent';
-import PracticeAreaProcess from '@/components/practice/PracticeAreaProcess';
-import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
+import ServiceTemplate from '@/components/services/ServiceTemplate';
+import ServiceHero from '@/components/services/ServiceHero';
+import ServiceContent from '@/components/services/ServiceContent';
+import ServiceProcess from '@/components/services/ServiceProcess';
+import ServiceRelated from '@/components/services/ServiceRelated';
+import ServiceFeatureImage from '@/components/services/ServiceFeatureImage';
 
 const DigitalAssetProtection: React.FC = () => {
-  const strategies = [
+  const protectionServices = [
     {
       title: "Cryptocurrency Security",
       description: "Legal frameworks for securing cryptocurrency assets, wallet security protocols, and exchange transaction protections."
@@ -25,7 +26,7 @@ const DigitalAssetProtection: React.FC = () => {
     }
   ];
 
-  const processSteps = [
+  const serviceSteps = [
     {
       title: "Asset Inventory",
       description: "We begin with a comprehensive inventory of your digital assets, categorizing them by type, value, vulnerability, and current protection status."
@@ -67,13 +68,13 @@ const DigitalAssetProtection: React.FC = () => {
   ];
 
   return (
-    <PracticeAreaTemplate areaName="Digital Asset Protection" serviceId="digital-asset-protection">
-      <PracticeAreaHero 
+    <ServiceTemplate serviceName="Digital Asset Protection" serviceId="digital-asset-protection">
+      <ServiceHero 
         title="Digital Asset Protection"
         description="Comprehensive legal protection for your valuable digital assets, from cryptocurrencies and NFTs to domain names and digital intellectual property."
       />
       
-      <PracticeAreaContent 
+      <ServiceContent 
         title="Safeguarding Your Digital Value" 
         variant="default"
         decorationPosition="right"
@@ -92,34 +93,41 @@ const DigitalAssetProtection: React.FC = () => {
             </p>
           </div>
         </div>
-      </PracticeAreaContent>
+      </ServiceContent>
       
-      <PracticeAreaContent 
+      <ServiceFeatureImage
+        featureTitle="Secure Your Digital Future"
+        featureDescription="The value of digital assets continues to grow exponentially. Our specialized legal frameworks help you protect cryptocurrency holdings, NFT collections, and digital intellectual property with comprehensive strategies designed for the digital economy."
+        callToActionText="Protect your digital assets"
+        variant="primary"
+      />
+      
+      <ServiceContent 
         title="Protection Strategies" 
         variant="alternate"
         decorationPosition="left"
         decorationVariant={5}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {strategies.map((strategy, idx) => (
+          {protectionServices.map((service, idx) => (
             <div key={idx} className="mondrian-border p-6 bg-white">
-              <h3 className="font-serif text-xl text-black mb-4">{strategy.title}</h3>
-              <p className="text-black/80">{strategy.description}</p>
+              <h3 className="font-serif text-xl text-black mb-4">{service.title}</h3>
+              <p className="text-black/80">{service.description}</p>
             </div>
           ))}
         </div>
-      </PracticeAreaContent>
+      </ServiceContent>
       
-      <PracticeAreaProcess
+      <ServiceProcess
         title="Our Protection Process"
-        steps={processSteps}
+        steps={serviceSteps}
       />
       
-      <PracticeAreaRelated
+      <ServiceRelated
         title="Related Services"
         items={relatedServices}
       />
-    </PracticeAreaTemplate>
+    </ServiceTemplate>
   );
 };
 

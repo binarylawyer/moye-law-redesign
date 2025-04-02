@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
-import { specializedServicePathMap } from '@/data/practiceAreasData';
+import { getServicePath } from '@/utils/practiceHelpers';
 
 interface RelatedItem {
   title: string;
@@ -15,20 +15,15 @@ interface PracticeAreaRelatedProps {
 }
 
 const PracticeAreaRelated: React.FC<PracticeAreaRelatedProps> = ({ title, items }) => {
-  // Helper function to ensure path has the proper format
+  // Helper function to ensure path has the proper format using our utility
   const getPath = (path: string) => {
-    // If it's already a full path with /, return it
+    // If it's already a full path with /, use it directly
     if (path.startsWith('/')) {
       return path;
     }
     
-    // Otherwise, check if it's a known service ID and map it
-    if (specializedServicePathMap && path in specializedServicePathMap) {
-      return specializedServicePathMap[path];
-    }
-    
-    // Default to practice prefix if not found
-    return `/practice/${path}`;
+    // Otherwise use our helper to get the standardized path
+    return getServicePath(path);
   };
 
   return (

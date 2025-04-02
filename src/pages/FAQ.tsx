@@ -145,8 +145,8 @@ const FAQ: React.FC = () => {
                             {message.timestamp.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                           </span>
                         </div>
-                      </div>
-                    </div>
+            </div>
+          </div>
                   ))}
                   {isLoading && (
                     <div className="flex justify-start">

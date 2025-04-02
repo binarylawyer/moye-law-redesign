@@ -8,6 +8,11 @@ import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
 import ServiceWithFeatureImage from '@/components/practice/ServiceWithFeatureImage';
 import { validatePracticeArea, standardizeServicePaths, ContentSection, RelatedService } from '@/utils/practiceHelpers';
 
+// Extended interface for content sections with icons
+interface ContentSectionWithIcon extends ContentSection {
+  icon?: React.ReactNode;
+}
+
 const IPConsulting: React.FC = () => {
   // Define service ID consistently
   const SERVICE_ID = 'ip-consulting';
@@ -17,7 +22,8 @@ const IPConsulting: React.FC = () => {
     validatePracticeArea('IPConsulting', SERVICE_ID);
   }, []);
 
-  const consultingAreas: ContentSection[] = [
+  // Define the consulting areas using the ContentSectionWithIcon interface
+  const consultingAreas: ContentSectionWithIcon[] = [
     {
       icon: <FileText className="h-10 w-10 text-black" />,
       title: "IP Audit & Portfolio Management",

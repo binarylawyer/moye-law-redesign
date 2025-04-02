@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -11,11 +11,19 @@ import CallToAction from '@/components/shared/CallToAction';
 
 const PracticeArea: React.FC = () => {
   const { area } = useParams();
+  const location = useLocation();
+  
+  // Improved logging for debugging purposes
+  console.log('PracticeArea Component - Current URL:', location.pathname);
   console.log('Practice Area Component - URL Parameter:', area);
-  console.log('Available Practice Areas:', practiceAreasData.map(p => p.id));
+  console.log('Available Practice Areas:', practiceAreasData.map(p => ({ id: p.id, title: p.title })));
   
   const practiceData = practiceAreasData.find(practice => practice.id === area);
-  console.log('Matched Practice Area:', practiceData?.title || 'None');
+  console.log('Matched Practice Area:', practiceData ? { id: practiceData.id, title: practiceData.title } : 'None');
+  
+  if (!practiceData) {
+    console.warn(`No practice area found for ID: ${area}. This might indicate a route conflict or missing definition.`);
+  }
   
   // Intersection Observer for reveal animations
   useEffect(() => {
@@ -46,6 +54,7 @@ const PracticeArea: React.FC = () => {
               <div className="col-span-6 mondrian-grid-item bg-white p-8">
                 <h1 className="font-serif text-black text-4xl md:text-5xl mb-8">Practice Area Not Found</h1>
                 <p className="text-xl mb-8">The practice area you're looking for doesn't exist.</p>
+                <p className="text-md mb-8">Attempted to find: "{area}"</p>
                 <Button asChild className="mondrian-button yellow">
                   <Link to="/practice">View All Practice Areas</Link>
                 </Button>
