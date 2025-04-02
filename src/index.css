@@ -68,7 +68,7 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    @apply font-display;
     letter-spacing: -0.01em;
   }
   
