@@ -6,13 +6,13 @@
 @keyframes slideDown {
   0% {
     opacity: 0;
-    transform: translateY(-20px);
-    clip-path: inset(0 0 100% 0);
+    transform: translateY(-8px);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
-    clip-path: inset(0 0 0 0);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   }
 }
 
@@ -20,12 +20,24 @@
   0% {
     opacity: 1;
     transform: translateY(0);
-    clip-path: inset(0 0 0 0);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   }
   100% {
     opacity: 0;
-    transform: translateY(-20px);
-    clip-path: inset(0 0 100% 0);
+    transform: translateY(-8px);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+/* Staggered fade-in animation for dropdown items */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -61,16 +73,20 @@
 @layer utilities {
   /* Animation for dropdown menus */
   .animate-dropdown {
-    animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    transform-origin: top;
-    backface-visibility: hidden;
+    animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   
   .animate-dropdown-leave {
-    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    transform-origin: top;
-    backface-visibility: hidden;
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
+  
+  /* Animation for dropdown items with staggered delay */
+  .dropdown-item-1 { animation: fadeIn 0.3s ease-out 0.05s both; }
+  .dropdown-item-2 { animation: fadeIn 0.3s ease-out 0.1s both; }
+  .dropdown-item-3 { animation: fadeIn 0.3s ease-out 0.15s both; }
+  .dropdown-item-4 { animation: fadeIn 0.3s ease-out 0.2s both; }
+  .dropdown-item-5 { animation: fadeIn 0.3s ease-out 0.25s both; }
+  .dropdown-item-6 { animation: fadeIn 0.3s ease-out 0.3s both; }
 
   /* Animation classes for reveal animations */
   .reveal {

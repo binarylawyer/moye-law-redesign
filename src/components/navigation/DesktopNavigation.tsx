@@ -88,27 +88,46 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
             <ChevronDown className={`h-4 w-4 transition duration-200 ml-2 group-data-[state=open]:rotate-180 ${textColor}`} />
           </NavigationMenuTrigger>
           
-          <NavigationMenuContent className="bg-white border-4 border-black p-8 !w-[1050px] absolute left-0 mt-64 transition-all duration-300 ease-in-out origin-top-center animate-dropdown z-50">
+          <NavigationMenuContent className="bg-white border-4 border-black p-6 !w-[650px] absolute left-0 mt-[120px] transition-all duration-300 ease-in-out origin-top-center animate-dropdown z-50 shadow-xl">
             {/* Mondrian accent element */}
             <div className="absolute top-0 left-0 w-1/3 h-2 bg-[#D6001C]"></div>
+            <div className="absolute top-0 right-0 w-10 h-10 border-r-4 border-t-4 border-black"></div>
             
-            <div className="grid grid-cols-2 gap-x-16 gap-y-6">
-              {featuredPracticeAreas.map((area, index) => (
-                <Link
-                  key={area.path}
-                  to={area.path}
-                  className="text-black group flex items-center border-b-2 border-black/30 pb-3 transition-colors whitespace-nowrap hover:border-[#D6001C]"
-                >
-                  <span className="w-8 h-8 inline-flex items-center justify-center mr-4 text-md font-medium border-2 border-black">
-                    {index + 1}
-                  </span>
-                  <span className="group-hover:text-[#D6001C] text-lg">{area.title}</span>
-                </Link>
-              ))}
+            <div className="mb-4 pb-2 border-b border-black">
+              <h3 className="font-serif text-xl text-black">Practice Areas</h3>
+              <p className="text-xs text-black/70">Specialized legal expertise for your unique needs</p>
             </div>
             
-            <div className="mt-8 pt-4 border-t-2 border-black">
-              <Link to="/practice" className="text-[#4D80D4] hover:text-[#D6001C] flex items-center transition-colors font-serif text-base">
+            <div className="grid grid-cols-2 gap-x-12 gap-y-4">
+              {featuredPracticeAreas.map((area, index) => {
+                // Assign a different color to each number based on its position
+                const badgeColors = [
+                  "bg-[#D6001C] text-white", // Red
+                  "bg-[#4D80D4] text-white", // Blue
+                  "bg-[#FFEB80] text-black", // Yellow
+                  "bg-[#00A650] text-white", // Green
+                  "bg-[#D6001C] text-white", // Red again
+                  "bg-[#4D80D4] text-white"  // Blue again
+                ];
+                
+                return (
+                  <Link
+                    key={area.path}
+                    to={area.path}
+                    className={`text-black group flex items-center border-b border-black/20 pb-2 transition-colors hover:border-[#D6001C] dropdown-item-${index + 1}`}
+                  >
+                    <span className={`${badgeColors[index]} w-6 h-6 inline-flex items-center justify-center mr-3 text-xs font-medium rounded-full shadow-sm transition-transform group-hover:scale-110`}>
+                      {index + 1}
+                    </span>
+                    <span className="group-hover:text-[#D6001C] text-base font-medium">{area.title}</span>
+                  </Link>
+                );
+              })}
+            </div>
+            
+            <div className="mt-6 pt-3 border-t-2 border-black/30">
+              <Link to="/practice" className="text-[#4D80D4] hover:text-[#D6001C] flex items-center transition-colors font-serif text-sm group">
+                <span className="bg-[#FFEB80] text-black w-5 h-5 inline-flex items-center justify-center mr-2 text-xs font-medium rounded-full shadow-sm group-hover:bg-[#D6001C] group-hover:text-white transition-colors">→</span>
                 View All Practice Areas
               </Link>
             </div>
@@ -125,20 +144,40 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
             <ChevronDown className={`h-4 w-4 transition duration-200 ml-2 group-data-[state=open]:rotate-180 ${textColor}`} />
           </NavigationMenuTrigger>
           
-          <NavigationMenuContent className="bg-white border-4 border-black p-8 !w-[550px] absolute left-0 mt-64 transition-all duration-300 ease-in-out origin-top-center animate-dropdown z-50">
+          <NavigationMenuContent className="bg-white border-4 border-black p-6 !w-[500px] absolute left-0 mt-[120px] transition-all duration-300 ease-in-out origin-top-center animate-dropdown z-50 shadow-xl">
             {/* Mondrian accent element */}
             <div className="absolute top-0 right-0 w-1/3 h-2 bg-[#FFEB80]"></div>
+            <div className="absolute top-0 left-0 w-10 h-10 border-l-4 border-t-4 border-black"></div>
             
-            <div className="flex flex-col space-y-4">
-              {specializedServices.map((service) => (
-                <Link
-                  key={service.path}
-                  to={service.path}
-                  className="text-black hover:text-[#D6001C] transition-colors border-b-2 border-black/30 pb-2 hover:border-[#D6001C] text-base"
-                >
-                  {service.title}
-                </Link>
-              ))}
+            <div className="mb-4 pb-2 border-b border-black">
+              <h3 className="font-serif text-xl text-black">Specialized Services</h3>
+              <p className="text-xs text-black/70">Tailored legal services for specific industries and needs</p>
+            </div>
+            
+            <div className="flex flex-col space-y-3">
+              {specializedServices.map((service, index) => {
+                // Assign a different color to each number based on its position
+                const badgeColors = [
+                  "bg-[#FFEB80] text-black", // Yellow
+                  "bg-[#4D80D4] text-white", // Blue
+                  "bg-[#D6001C] text-white", // Red
+                  "bg-[#00A650] text-white", // Green
+                  "bg-[#FFEB80] text-black"  // Yellow again
+                ];
+                
+                return (
+                  <Link
+                    key={service.path}
+                    to={service.path}
+                    className={`text-black hover:text-[#D6001C] transition-colors border-b border-black/20 pb-2 hover:border-[#D6001C] flex items-center dropdown-item-${index + 1}`}
+                  >
+                    <span className={`${badgeColors[index]} w-6 h-6 inline-flex items-center justify-center mr-3 text-xs font-medium rounded-full shadow-sm transition-transform group-hover:scale-110`}>
+                      {index + 1}
+                    </span>
+                    <span className="text-sm font-medium">{service.title}</span>
+                  </Link>
+                );
+              })}
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -162,20 +201,41 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
             <ChevronDown className={`h-4 w-4 transition duration-200 ml-2 group-data-[state=open]:rotate-180 ${textColor}`} />
           </NavigationMenuTrigger>
           
-          <NavigationMenuContent className="bg-white border-4 border-black p-8 !w-[550px] absolute left-0 mt-64 transition-all duration-300 ease-in-out origin-top-center animate-dropdown z-50">
+          <NavigationMenuContent className="bg-white border-4 border-black p-6 !w-[500px] absolute left-0 mt-[120px] transition-all duration-300 ease-in-out origin-top-center animate-dropdown z-50 shadow-xl">
             {/* Mondrian accent element */}
             <div className="absolute bottom-0 left-0 w-1/3 h-2 bg-[#4D80D4]"></div>
+            <div className="absolute bottom-0 right-0 w-10 h-10 border-r-4 border-b-4 border-black"></div>
             
-            <div className="flex flex-col space-y-4">
-              {resourcesItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className="text-black hover:text-[#D6001C] transition-colors border-b-2 border-black/30 pb-2 hover:border-[#D6001C] text-base"
-                >
-                  {item.title}
-                </Link>
-              ))}
+            <div className="mb-4 pb-2 border-b border-black">
+              <h3 className="font-serif text-xl text-black">Resources</h3>
+              <p className="text-xs text-black/70">Insights, guides and information to help you navigate legal matters</p>
+            </div>
+            
+            <div className="flex flex-col space-y-3">
+              {resourcesItems.map((item, index) => {
+                // Assign a different color to each number based on its position
+                const badgeColors = [
+                  "bg-[#00A650] text-white", // Green
+                  "bg-[#D6001C] text-white", // Red
+                  "bg-[#4D80D4] text-white", // Blue
+                  "bg-[#FFEB80] text-black", // Yellow
+                  "bg-[#00A650] text-white", // Green again
+                  "bg-[#D6001C] text-white"  // Red again
+                ];
+                
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className={`text-black hover:text-[#D6001C] transition-colors border-b border-black/20 pb-2 hover:border-[#D6001C] flex items-center dropdown-item-${index + 1}`}
+                  >
+                    <span className={`${badgeColors[index]} w-6 h-6 inline-flex items-center justify-center mr-3 text-xs font-medium rounded-full shadow-sm transition-transform group-hover:scale-110`}>
+                      {index + 1}
+                    </span>
+                    <span className="text-sm font-medium">{item.title}</span>
+                  </Link>
+                );
+              })}
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
