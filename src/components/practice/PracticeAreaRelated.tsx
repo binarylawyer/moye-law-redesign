@@ -32,15 +32,15 @@ const PracticeAreaRelated: React.FC<PracticeAreaRelatedProps> = ({ title, items 
   };
 
   return (
-    <section className="bg-gray-50 py-20">
+    <section className="bg-gray-50 py-12">
       <div className="container mx-auto px-8">
-        <h2 className="font-serif text-3xl md:text-4xl text-center mb-16">{title}</h2>
+        <h2 className="font-serif text-3xl md:text-4xl text-center mb-10">{title || "Related Services"}</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {items.map((item, idx) => (
-            <div key={idx} className="mondrian-border bg-white p-8 flex flex-col h-full">
-              <h3 className="font-serif text-xl text-black mb-4">{item.title}</h3>
-              <p className="text-black/80 mb-6 flex-grow">{item.description}</p>
+            <div key={idx} className="mondrian-border bg-white p-6 flex flex-col h-full">
+              <h3 className="font-serif text-xl text-black mb-3">{item.title}</h3>
+              <p className="text-black/80 mb-4 flex-grow">{item.description}</p>
               <Link 
                 to={getPath(item.path)} 
                 className="inline-flex items-center mt-auto text-primary font-medium hover:text-primary/80 transition-colors"

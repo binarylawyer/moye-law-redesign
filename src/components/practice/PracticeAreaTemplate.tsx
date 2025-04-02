@@ -146,6 +146,11 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
     return hasHero;
   };
 
+  // Check if children have any content
+  const hasContent = () => {
+    return Children.count(children) > 0;
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
@@ -159,12 +164,21 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
         {serviceInfo && !hasHeroComponent() && renderHero()}
         
         {/* Always render children */}
-        {children}
+        <div className="space-y-0">
+          {children}
+        </div>
+        
+        {/* If there's no content, add a placeholder to help guide users */}
+        {!hasContent() && (
+          <div className="max-w-7xl mx-auto px-8 mb-16 py-8 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50">
+            <p className="text-center text-gray-500 italic">Add service-specific content here</p>
+          </div>
+        )}
         
         {/* Consistent Mondrian divider with CTA specific to practice area */}
-        <div className="max-w-7xl mx-auto px-8 mb-16">
+        <div className="max-w-7xl mx-auto px-8 mb-1">
           <MondrianDividerCTA 
-            text={`Have questions about ${areaName}?`}
+            text={`Have questions about ${areaName}? Call us for a free consultation:`}
           />
         </div>
         

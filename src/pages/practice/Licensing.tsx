@@ -4,6 +4,7 @@ import PracticeAreaHero from '@/components/practice/PracticeAreaHero';
 import PracticeAreaContent from '@/components/practice/PracticeAreaContent';
 import PracticeAreaProcess from '@/components/practice/PracticeAreaProcess';
 import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
+import ServiceWithFeatureImage from '@/components/practice/ServiceWithFeatureImage';
 import { validatePracticeArea, standardizeServicePaths, ContentSection, RelatedService } from '@/utils/practiceHelpers';
 
 const Licensing: React.FC = () => {
@@ -102,6 +103,14 @@ const Licensing: React.FC = () => {
           </div>
         </div>
       </PracticeAreaContent>
+      
+      {/* Feature image section to fill white space */}
+      <ServiceWithFeatureImage
+        serviceTitle="Transform Your IP into Revenue"
+        serviceDescription="Our licensing expertise helps you develop strategic frameworks that maximize the value of your intellectual property while maintaining control and protecting your core assets. We'll help you navigate complex licensing arrangements to create sustainable revenue streams."
+        callToActionText="Explore licensing opportunities"
+        variant="secondary"
+      />
       
       <PracticeAreaContent 
         title="Licensing Solutions" 

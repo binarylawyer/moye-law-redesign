@@ -5,6 +5,7 @@ import PracticeAreaHero from '@/components/practice/PracticeAreaHero';
 import PracticeAreaContent from '@/components/practice/PracticeAreaContent';
 import PracticeAreaProcess from '@/components/practice/PracticeAreaProcess';
 import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
+import ServiceWithFeatureImage from '@/components/practice/ServiceWithFeatureImage';
 import { validatePracticeArea, standardizeServicePaths, ContentSection, RelatedService } from '@/utils/practiceHelpers';
 
 const IPConsulting: React.FC = () => {
@@ -148,6 +149,14 @@ const IPConsulting: React.FC = () => {
           </div>
         </div>
       </PracticeAreaContent>
+      
+      {/* Feature image section to fill white space */}
+      <ServiceWithFeatureImage
+        serviceTitle="Strategic IP Management Solutions"
+        serviceDescription="Our IP consulting services help businesses identify, protect, and leverage their intellectual property assets. We provide tailored strategies that align with your business goals and enhance your competitive position in the market."
+        callToActionText="Schedule an IP consultation"
+        variant="primary"
+      />
       
       <PracticeAreaContent 
         title="Our Consulting Services" 

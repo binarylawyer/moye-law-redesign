@@ -4,6 +4,7 @@ import PracticeAreaHero from '@/components/practice/PracticeAreaHero';
 import PracticeAreaContent from '@/components/practice/PracticeAreaContent';
 import PracticeAreaProcess from '@/components/practice/PracticeAreaProcess';
 import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
+import ServiceWithFeatureImage from '@/components/practice/ServiceWithFeatureImage';
 import { validatePracticeArea, standardizeServicePaths, ContentSection, RelatedService } from '@/utils/practiceHelpers';
 
 const DigitalAssetProtection: React.FC = () => {
@@ -102,6 +103,14 @@ const DigitalAssetProtection: React.FC = () => {
           </div>
         </div>
       </PracticeAreaContent>
+      
+      {/* Feature image section to fill white space */}
+      <ServiceWithFeatureImage
+        serviceTitle="Secure Your Digital Future"
+        serviceDescription="The value of digital assets continues to grow exponentially. Our specialized legal frameworks help you protect cryptocurrency holdings, NFT collections, and digital intellectual property with comprehensive strategies designed for the digital economy."
+        callToActionText="Protect your digital assets"
+        variant="primary"
+      />
       
       <PracticeAreaContent 
         title="Protection Strategies" 

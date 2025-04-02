@@ -4,6 +4,7 @@ import PracticeAreaHero from '@/components/practice/PracticeAreaHero';
 import PracticeAreaContent from '@/components/practice/PracticeAreaContent';
 import PracticeAreaProcess from '@/components/practice/PracticeAreaProcess';
 import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
+import ServiceWithFeatureImage from '@/components/practice/ServiceWithFeatureImage';
 import { validatePracticeArea, standardizeServicePaths, ContentSection, RelatedService } from '@/utils/practiceHelpers';
 
 const EmergingTech: React.FC = () => {
@@ -102,6 +103,14 @@ const EmergingTech: React.FC = () => {
           </div>
         </div>
       </PracticeAreaContent>
+      
+      {/* Feature image section to fill white space */}
+      <ServiceWithFeatureImage
+        serviceTitle="Navigate the Future with Confidence"
+        serviceDescription="Emerging technologies require forward-thinking legal strategies that anticipate regulatory developments and address novel legal questions. Our technology law experts help innovators navigate complex legal frameworks while maintaining their competitive edge."
+        callToActionText="Future-proof your innovation"
+        variant="tertiary"
+      />
       
       <PracticeAreaContent 
         title="Technology Focus Areas" 

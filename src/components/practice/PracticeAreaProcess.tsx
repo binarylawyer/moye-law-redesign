@@ -15,9 +15,9 @@ const PracticeAreaProcess: React.FC<PracticeAreaProcessProps> = ({
   steps 
 }) => {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-12">
       <div className="container mx-auto px-8">
-        <div className="mondrian-grid mb-16">
+        <div className="mondrian-grid mb-10">
           <div className="col-span-3 mondrian-light-blue"></div>
           <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
             <h2 className="reveal font-serif text-black text-3xl mb-4">{title}</h2>
@@ -35,12 +35,12 @@ const PracticeAreaProcess: React.FC<PracticeAreaProcessProps> = ({
               {/* For even indices, show red block and content */}
               {index % 2 === 0 && (
                 <>
-                  <div className="col-span-12 md:col-span-3 mondrian-red flex items-center justify-center p-8">
+                  <div className="col-span-12 md:col-span-3 mondrian-red flex items-center justify-center p-6">
                     <span className="font-serif text-white text-3xl">0{index + 1}</span>
                   </div>
-                  <div className="col-span-12 md:col-span-9 mondrian-grid-item bg-white p-8">
-                    <h3 className="font-serif text-black text-2xl mb-4">{step.title}</h3>
-                    <p className="text-black/80 text-lg">{step.description}</p>
+                  <div className="col-span-12 md:col-span-9 mondrian-grid-item bg-white p-6">
+                    <h3 className="font-serif text-black text-xl mb-2">{step.title}</h3>
+                    <p className="text-black/80">{step.description}</p>
                   </div>
                 </>
               )}
@@ -48,11 +48,11 @@ const PracticeAreaProcess: React.FC<PracticeAreaProcessProps> = ({
               {/* For odd indices, show blue block and content */}
               {index % 2 === 1 && (
                 <>
-                  <div className="col-span-12 md:col-span-9 mondrian-grid-item bg-white p-8">
-                    <h3 className="font-serif text-black text-2xl mb-4">{step.title}</h3>
-                    <p className="text-black/80 text-lg">{step.description}</p>
+                  <div className="col-span-12 md:col-span-9 mondrian-grid-item bg-white p-6">
+                    <h3 className="font-serif text-black text-xl mb-2">{step.title}</h3>
+                    <p className="text-black/80">{step.description}</p>
                   </div>
-                  <div className="col-span-12 md:col-span-3 mondrian-light-blue flex items-center justify-center p-8">
+                  <div className="col-span-12 md:col-span-3 mondrian-light-blue flex items-center justify-center p-6">
                     <span className="font-serif text-white text-3xl">0{index + 1}</span>
                   </div>
                 </>

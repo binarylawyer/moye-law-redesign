@@ -21,9 +21,13 @@ const MondrianDividerCTA: React.FC<MondrianDividerCTAProps> = ({
       
       {/* Center with contact CTA */}
       <div className="mondrian-divider-cta-center">
-        <Link to="/contact" className="flex items-center font-medium text-sm hover:underline">
-          <Phone className="h-3 w-3 mr-2" />
-          {text} {phoneNumber}
+        <Link 
+          to="/contact" 
+          className="flex items-center justify-center w-full h-full text-black font-medium text-sm md:text-base hover:underline"
+        >
+          <Phone className="h-4 w-4 mr-2 text-[#D6001C]" />
+          <span>{text}</span>
+          <span className="font-bold ml-1">{phoneNumber}</span>
         </Link>
       </div>
       
