@@ -23,23 +23,28 @@ export interface RelatedService {
  * @param serviceId The service ID to validate
  */
 export const validatePracticeArea = (componentName: string, serviceId: string): void => {
-  // Import dynamically to avoid circular dependencies
-  const { specializedServiceData } = require('@/data/practiceAreasData');
-  
-  console.log(`${componentName}: Validating practice area with ID "${serviceId}"`);
-  
-  // Check if service ID exists in specialized services
-  const matchingService = specializedServiceData.find(
-    (service: any) => service.id === serviceId
-  );
-  
-  if (!matchingService) {
-    console.warn(
-      `${componentName}: WARNING - No matching specialized service found for "${serviceId}". ` +
-      `Available services: ${specializedServiceData.map((s: any) => s.id).join(', ')}`
+  try {
+    // Import dynamically to avoid circular dependencies
+    const { specializedServiceData } = require('@/data/practiceAreasData');
+    
+    console.log(`${componentName}: Validating practice area with ID "${serviceId}"`);
+    
+    // Check if service ID exists in specialized services
+    const matchingService = specializedServiceData.find(
+      (service: any) => service.id === serviceId
     );
-  } else {
-    console.log(`${componentName}: Successfully matched to specialized service "${matchingService.title}"`);
+    
+    if (!matchingService) {
+      console.warn(
+        `${componentName}: WARNING - No matching specialized service found for "${serviceId}". ` +
+        `Available services: ${specializedServiceData.map((s: any) => s.id).join(', ')}`
+      );
+    } else {
+      console.log(`${componentName}: Successfully matched to specialized service "${matchingService.title}"`);
+    }
+  } catch (error) {
+    console.error(`Error validating practice area "${serviceId}" in ${componentName}:`, error);
+    // Continue execution even if validation fails
   }
 };
 
@@ -49,14 +54,20 @@ export const validatePracticeArea = (componentName: string, serviceId: string): 
  * @returns Array with standardized paths
  */
 export const standardizeServicePaths = (services: RelatedService[]): RelatedService[] => {
-  return services.map(service => {
-    // Ensure all paths are prefixed with /practice/
-    if (!service.path.startsWith('/practice/')) {
-      return {
-        ...service,
-        path: `/practice/${service.path.replace(/^\//, '')}`
-      };
-    }
-    return service;
-  });
+  try {
+    return services.map(service => {
+      // Ensure all paths are prefixed with /practice/
+      if (!service.path.startsWith('/practice/')) {
+        return {
+          ...service,
+          path: `/practice/${service.path.replace(/^\//, '')}`
+        };
+      }
+      return service;
+    });
+  } catch (error) {
+    console.error('Error standardizing service paths:', error);
+    // Return original services if there's an error
+    return services;
+  }
 }; 

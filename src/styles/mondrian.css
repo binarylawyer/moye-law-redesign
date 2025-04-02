@@ -12,6 +12,15 @@
   transform: translateY(0);
 }
 
+/* Ensure the Approach section is always visible */
+.moye-approach-section {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 10 !important;
+  position: relative !important;
+}
+
 /* Pure Mondrian colors - using exact color codes from his paintings */
 .mondrian-red {
   background-color: #D6001C;
@@ -308,10 +317,5 @@
 
 .mondrian-button.red {
   background-color: #D6001C;
-  color: white;
-}
-
-.mondrian-button.blue {
-  background-color: #003B98;
   color: white;
 } 

@@ -1,10 +1,33 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 const Approach = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  
+  // Use useEffect to apply the !important styles
+  useEffect(() => {
+    if (sectionRef.current) {
+      sectionRef.current.style.setProperty('display', 'block', 'important');
+      sectionRef.current.style.setProperty('visibility', 'visible', 'important');
+      sectionRef.current.style.setProperty('opacity', '1', 'important');
+      sectionRef.current.style.setProperty('z-index', '10', 'important');
+      
+      // Log that the component mounted for debugging
+      console.log("Approach component mounted and styled");
+    }
+    
+    return () => {
+      console.log("Approach component unmounted");
+    };
+  }, []);
+  
   return (
-    <section className="py-24 bg-white relative">
+    <section 
+      ref={sectionRef}
+      id="our-approach-section"
+      className="py-24 bg-white relative moye-approach-section" 
+    >
       {/* Pure Mondrian-style grid structure */}
       <div className="container mx-auto px-8 max-w-7xl relative">
         {/* Title section - more asymmetrical now */}
