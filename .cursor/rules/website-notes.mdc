@@ -1,0 +1,48 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Your rule content
+{
+  "version": 1,
+  "rules": [
+    {
+      "name": "User Persona Awareness",
+      "description": "Ensure code and design solutions consider all three key user personas",
+      "pattern": "(user|client|visitor|audience|design|interface|experience|accessibility)",
+      "message": "Remember to consider all three Moye Law user personas when making UI/UX decisions:\n\n1. **Alex Chen (Tech Innovator)**: 38, NYC tech founder, values efficiency, digital assets, minimal UX\n2. **Barbara Miller (Executive Caregiver)**: 52, financial exec, needs both estate planning & elder law info, values relationship\n3. **David Rodriguez (Wealth Patriarch)**: 63, UHNW retired banker, expects sophistication, discretion, legacy planning focus"
+    },
+    {
+      "name": "Tech-Focused Features",
+      "description": "When implementing tech-forward features, optimize for Tech Innovator persona",
+      "pattern": "(AI|ML|innovation|technology|digital|automation|efficiency)",
+      "message": "This relates to Moye Law's tech-forward positioning. Ensure it will appeal to Alex Chen (Tech Innovator persona):\n- Values efficiency and speed\n- Appreciates automation that saves time\n- Needs security for digital assets\n- Prefers clear, concise communication\n- Is highly tech-savvy but needs assurance of human oversight"
+    },
+    {
+      "name": "Trust and Empathy Features",
+      "description": "When implementing features focused on care and relationships, optimize for Executive Caregiver persona",
+      "pattern": "(empathy|care|relationship|elder|aging|parent|family|personal)",
+      "message": "This relates to Moye Law's family-values positioning. Ensure it will appeal to Barbara Miller (Executive Caregiver persona):\n- Balancing career with caring for aging parents\n- Values personal attention and relationships\n- Needs clear explanations of complex options\n- Appreciates convenience but prioritizes human connection\n- Competent with technology but not an early adopter"
+    },
+    {
+      "name": "Sophistication and Discretion Features",
+      "description": "When implementing features focused on wealth preservation or sophistication, optimize for Wealth Patriarch persona",
+      "pattern": "(wealth|legacy|discretion|sophisticated|preservation|governance|multi-generational|trust)",
+      "message": "This relates to Moye Law's high-end service positioning. Ensure it will appeal to David Rodriguez (Wealth Patriarch persona):\n- Focused on preserving wealth across generations\n- Values utmost discretion and confidentiality\n- Expects highest level of expertise and proactive advice\n- Appreciates sophisticated design that reflects premium service\n- Delegates details but expects seamless digital experience"
+    },
+    {
+      "name": "Design System Adherence",
+      "description": "Ensure adherence to Moye Law's minimalist design principles",
+      "pattern": "(design|color|font|typography|layout|spacing|UI|component)",
+      "message": "Follow Moye Law's minimalist design system:\n\n- **Colors**: Navy (#0A2342), White (#FFFFFF), Light Gray (#F5F5F5), Gold accent (#C99D56) for CTAs only\n- **Typography**: Headings in Cormorant Garamond, Body in Poppins\n- **Principles**: Content focus, functional minimalism, purposeful whitespace\n- **Constraints**: Fast load times (<1.5s), responsive across all devices, WCAG 2.1 AA compliance"
+    },
+    {
+      "name": "Dual Brand Positioning",
+      "description": "Maintain balance between family values and tech innovation messaging",
+      "pattern": "(branding|messaging|content|copy|value proposition|marketing)",
+      "message": "Maintain Moye Law's dual value proposition: \"Family Values, Future-Forward Legal Solutions\"\n\n- Balance tradition (trust, personal attention) with innovation (AI/ML efficiency)\n- When emphasizing technology, always clarify human oversight\n- When emphasizing tradition, hint at modern approach\n- All copy should reflect sophisticated but warm tone that appeals to HNW individuals"
+    }
+  ]
+}

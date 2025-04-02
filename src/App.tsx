@@ -57,6 +57,14 @@ import DirectTrustsEstates from "./pages/practice/DirectTrustsEstates";
 import EmergingTech from "./pages/practice/EmergingTech";
 import IPLicensing from "./pages/practice/IPLicensing";
 
+// Import the refactored practice page
+import IPLicensingRefactored from "./pages/practice/IPLicensingRefactored";
+import TrustsEstatesRefactored from "./pages/practice/TrustsEstatesRefactored";
+import ElderLawRefactored from "./pages/practice/ElderLawRefactored";
+import IPAssetProtectionRefactored from "./pages/practice/IPAssetProtectionRefactored";
+import RealEstateRefactored from "./pages/practice/RealEstateRefactored";
+import EmergingTechRefactored from "./pages/practice/EmergingTechRefactored";
+
 // Scroll to top component
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -99,7 +107,7 @@ const AppRoutes = () => {
         {/* Explicit routes for problematic practice areas */}
         <Route path="/practice/ip-licensing" element={
           <PageErrorBoundary pageName="IP Licensing">
-            <DirectIPLicensing />
+            <IPLicensingRefactored />
           </PageErrorBoundary>
         } />
         
@@ -123,7 +131,7 @@ const AppRoutes = () => {
         
         <Route path="/practice/elder-law" element={
           <PageErrorBoundary pageName="Elder Law">
-            <DirectElderLaw />
+            <ElderLawRefactored />
           </PageErrorBoundary>
         } />
         
@@ -135,7 +143,7 @@ const AppRoutes = () => {
         
         <Route path="/practice/emerging-tech" element={
           <PageErrorBoundary pageName="Emerging Technology Law">
-            <DirectEmergingTech />
+            <EmergingTechRefactored />
           </PageErrorBoundary>
         } />
         
@@ -147,19 +155,19 @@ const AppRoutes = () => {
         
         <Route path="/practice/ip-asset-protection" element={
           <PageErrorBoundary pageName="IP Asset Protection">
-            <DirectIPAssetProtection />
+            <IPAssetProtectionRefactored />
           </PageErrorBoundary>
         } />
         
         <Route path="/practice/real-estate" element={
           <PageErrorBoundary pageName="Real Estate">
-            <DirectRealEstate />
+            <RealEstateRefactored />
           </PageErrorBoundary>
         } />
         
         <Route path="/practice/trusts-estates" element={
           <PageErrorBoundary pageName="Trusts & Estates">
-            <DirectTrustsEstates />
+            <TrustsEstatesRefactored />
           </PageErrorBoundary>
         } />
         
