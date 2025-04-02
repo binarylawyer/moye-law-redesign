@@ -55,14 +55,14 @@ const digitalAssetProcess = [
 // Related services
 const relatedServices = [
   {
+    title: "Trusts & Estates",
+    path: "trusts-estates",
+    description: "Strategic planning for digital assets as part of your overall estate plan."
+  },
+  {
     title: "IP Consulting",
     path: "ip-consulting",
     description: "Strategic consulting for intellectual property in digital environments."
-  },
-  {
-    title: "Estate Planning",
-    path: "estate-planning",
-    description: "Ensuring your digital assets are included in comprehensive estate plans."
   },
   {
     title: "Emerging Tech Law",

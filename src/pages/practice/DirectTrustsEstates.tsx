@@ -2,25 +2,24 @@ import React from 'react';
 import { logger } from '@/utils/logger';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Link } from 'react-router-dom';
 
 // Content sections
-const techAreas = [
+const trustsEstatesAreas = [
   {
-    title: "Blockchain & Cryptocurrency",
-    description: "Legal frameworks for blockchain applications, token offerings, smart contracts, and cryptocurrency ventures."
+    title: "Estate Planning",
+    description: "Comprehensive planning for the distribution of assets and wealth preservation, including wills and trusts."
   },
   {
-    title: "Artificial Intelligence",
-    description: "Navigating the complex legal landscape of AI development, data usage, liability, and intellectual property protection."
+    title: "Trust Formation",
+    description: "Creation of various trust structures to protect assets, minimize taxes, and ensure proper asset distribution."
   },
   {
-    title: "Internet of Things (IoT)",
-    description: "Addressing privacy, security, and regulatory compliance for connected devices and systems."
+    title: "Probate Administration",
+    description: "Guidance through the probate process, representation in probate court, and estate administration."
   },
   {
-    title: "Automated Systems",
-    description: "Legal guidance for robotic process automation, autonomous vehicles, and other automated technologies."
+    title: "Succession Planning",
+    description: "Strategic planning for business succession and wealth transfer across generations."
   }
 ];
 
@@ -28,21 +27,21 @@ const techAreas = [
 const principles = [
   {
     number: "1",
-    title: "Future-Oriented Approach",
-    description: "We stay ahead of evolving legal frameworks for emerging technologies, anticipating regulatory developments before they impact your business operations.",
+    title: "Legacy Preservation",
+    description: "We safeguard your legacy through careful planning and precise documentation, ensuring your wishes are honored and your values continue to influence future generations.",
     color: "mondrian-blue"
   },
   {
     number: "2",
-    title: "Technical Fluency",
-    description: "Our team combines deep legal expertise with genuine understanding of technical concepts, enabling meaningful guidance that bridges legal and technical considerations.",
-    color: "mondrian-red"
+    title: "Tax Efficiency",
+    description: "Our estate planning approach incorporates sophisticated tax minimization strategies that help preserve wealth and maximize the assets that pass to your beneficiaries.",
+    color: "mondrian-yellow"
   },
   {
     number: "3",
-    title: "Adaptable Frameworks",
-    description: "We create legal structures that accommodate rapid technological change, providing necessary protection while maintaining flexibility for innovation and growth.",
-    color: "mondrian-yellow"
+    title: "Family Harmony",
+    description: "We develop clear, thoughtful plans that reduce potential conflicts among family members while creating mechanisms for successful wealth transfer and management.",
+    color: "mondrian-red"
   }
 ];
 
@@ -50,26 +49,26 @@ const principles = [
 const process = [
   {
     number: "01",
-    title: "Technology Assessment",
-    description: "We begin with a comprehensive assessment of your technology and its unique legal considerations to identify specific compliance needs and risks.",
+    title: "Personal Assessment",
+    description: "We conduct a thorough assessment of your assets, family dynamics, and long-term goals to understand your complete estate planning needs.",
     color: "mondrian-blue"
   },
   {
     number: "02",
-    title: "Regulatory Mapping",
-    description: "We identify applicable regulatory frameworks across all relevant jurisdictions, creating a clear compliance roadmap for your technology.",
-    color: "mondrian-yellow"
-  },
-  {
-    number: "03",
-    title: "Risk Mitigation",
-    description: "We develop tailored strategies to address identified legal risks while enabling innovation and technology development.",
+    title: "Strategy Design",
+    description: "Our team develops a customized estate plan that addresses your specific circumstances, incorporating appropriate trusts, wills, and other planning instruments.",
     color: "mondrian-red"
   },
   {
+    number: "03",
+    title: "Implementation",
+    description: "We prepare all necessary legal documentation and guide you through the execution process, ensuring all instruments are properly signed and authenticated.",
+    color: "mondrian-yellow"
+  },
+  {
     number: "04",
-    title: "Ongoing Advisory",
-    description: "We provide continuous guidance as your technology evolves and regulatory landscapes change, ensuring consistent legal protection.",
+    title: "Periodic Review",
+    description: "We provide ongoing review and updates to your estate plan as your circumstances change, ensuring your plan remains aligned with your goals and current law.",
     color: "mondrian-blue"
   }
 ];
@@ -77,24 +76,24 @@ const process = [
 // Related services
 const relatedServices = [
   {
-    title: "IP Licensing",
-    path: "ip-licensing",
-    description: "Strategic frameworks for technology licensing and intellectual property monetization."
+    title: "Elder Law",
+    path: "elder-law",
+    description: "Legal planning for the unique needs of seniors and their families."
   },
   {
-    title: "Digital Asset Protection",
-    path: "digital-asset-protection",
-    description: "Comprehensive protection for digital assets, from NFTs to digital IP."
+    title: "Real Estate",
+    path: "real-estate",
+    description: "Legal counsel for real property transactions and management."
   },
   {
-    title: "IP Consulting",
-    path: "ip-consulting",
-    description: "Strategic guidance for intellectual property in emerging technology contexts."
+    title: "Tax Planning",
+    path: "tax-planning",
+    description: "Strategic planning to minimize tax burden on estates and inheritances."
   }
 ];
 
-const DirectEmergingTech: React.FC = () => {
-  logger.debug('DirectEmergingTech component rendered');
+const DirectTrustsEstates: React.FC = () => {
+  logger.debug('DirectTrustsEstates component rendered');
   
   return (
     <div className="min-h-screen bg-white">
@@ -104,16 +103,16 @@ const DirectEmergingTech: React.FC = () => {
         <section className="py-16">
           <div className="container mx-auto px-8">
             <div className="flex flex-col md:flex-row">
-              {/* Yellow Mondrian block on left */}
-              <div className="bg-yellow-400 w-full md:w-1/3"></div>
+              {/* Blue Mondrian block on left */}
+              <div className="bg-blue-600 w-full md:w-1/3"></div>
               
               {/* White content block */}
               <div className="bg-white border-4 border-black p-8 md:p-12 w-full md:w-2/3">
-                <h1 className="font-serif text-black text-4xl md:text-5xl lg:text-6xl mb-8">Emerging Technology</h1>
+                <h1 className="font-serif text-black text-4xl md:text-5xl lg:text-6xl mb-8">Trusts & Estates</h1>
                 <p className="text-xl text-black/80">
-                  Our emerging technology practice provides forward-thinking legal guidance for 
-                  innovators at the frontier of technological development, addressing novel 
-                  legal challenges while enabling continued innovation.
+                  Our Trusts & Estates practice provides comprehensive planning to protect your legacy, 
+                  minimize taxes, and ensure the smooth transfer of assets. We create customized strategies 
+                  that address your unique family dynamics and financial goals.
                 </p>
               </div>
             </div>
@@ -124,11 +123,11 @@ const DirectEmergingTech: React.FC = () => {
         <section className="py-16">
           <div className="container mx-auto px-8">
             <div className="mondrian-grid mb-16">
-              <div className="col-span-3 mondrian-red"></div>
+              <div className="col-span-3 mondrian-white border-r-4 border-b-4 border-black"></div>
               <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
                 <h2 className="font-serif text-black text-3xl mb-8">Our Principles</h2>
               </div>
-              <div className="col-span-3 mondrian-white border-r-4 border-b-4 border-black"></div>
+              <div className="col-span-3 mondrian-yellow"></div>
             </div>
             
             <div className="space-y-8 max-w-5xl mx-auto">
@@ -154,11 +153,11 @@ const DirectEmergingTech: React.FC = () => {
         <section className="py-16">
           <div className="container mx-auto px-8">
             <div className="mondrian-grid mb-16">
-              <div className="col-span-3 mondrian-white border-r-4 border-b-4 border-black"></div>
+              <div className="col-span-3 mondrian-red"></div>
               <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
                 <h2 className="font-serif text-black text-3xl mb-8">Our Process</h2>
               </div>
-              <div className="col-span-3 mondrian-blue"></div>
+              <div className="col-span-3 mondrian-white border-r-4 border-b-4 border-black"></div>
             </div>
             
             <div className="space-y-8 max-w-5xl mx-auto">
@@ -175,7 +174,7 @@ const DirectEmergingTech: React.FC = () => {
               
               {/* Process step 2 */}
               <div className="flex flex-col md:flex-row-reverse">
-                <div className="mondrian-yellow w-full md:w-48 flex-shrink-0 flex items-center justify-center p-8">
+                <div className="mondrian-red w-full md:w-48 flex-shrink-0 flex items-center justify-center p-8">
                   <span className="font-serif text-white text-3xl font-bold">{process[1].number}</span>
                 </div>
                 <div className="bg-white p-6 border-4 border-black flex-grow">
@@ -186,7 +185,7 @@ const DirectEmergingTech: React.FC = () => {
               
               {/* Process step 3 */}
               <div className="flex flex-col md:flex-row">
-                <div className="mondrian-red w-full md:w-48 flex-shrink-0 flex items-center justify-center p-8">
+                <div className="mondrian-yellow w-full md:w-48 flex-shrink-0 flex items-center justify-center p-8">
                   <span className="font-serif text-white text-3xl font-bold">{process[2].number}</span>
                 </div>
                 <div className="bg-white p-6 border-4 border-black flex-grow">
@@ -206,10 +205,10 @@ const DirectEmergingTech: React.FC = () => {
                   
                   {/* Small Mondrian decoration in bottom right */}
                   <div className="absolute bottom-3 right-3 w-24 h-24 grid grid-cols-2 grid-rows-2 gap-1">
-                    <div className="mondrian-yellow"></div>
-                    <div className="bg-white border border-black"></div>
-                    <div className="bg-white border border-black"></div>
                     <div className="mondrian-red"></div>
+                    <div className="bg-white border border-black"></div>
+                    <div className="bg-white border border-black"></div>
+                    <div className="mondrian-yellow"></div>
                   </div>
                 </div>
               </div>
@@ -221,11 +220,11 @@ const DirectEmergingTech: React.FC = () => {
         <section className="py-8">
           <div className="container mx-auto px-8 flex justify-center">
             <div className="mondrian-divider flex items-center w-full max-w-4xl">
-              <div className="mondrian-blue h-8 w-16 flex-shrink-0"></div>
+              <div className="mondrian-yellow h-8 w-16 flex-shrink-0"></div>
               <div className="flex-grow bg-white border-t-4 border-b-4 border-black py-4 px-6 text-center">
-                <span className="text-xl">Ask us about Emerging Technology Law: (212) 555-0123</span>
+                <span className="text-xl">Ask us about Trusts & Estates: (212) 555-0123</span>
               </div>
-              <div className="mondrian-yellow h-8 w-32 flex-shrink-0"></div>
+              <div className="mondrian-blue h-8 w-32 flex-shrink-0"></div>
             </div>
           </div>
         </section>
@@ -235,28 +234,28 @@ const DirectEmergingTech: React.FC = () => {
           <section className="py-16 bg-white">
             <div className="container mx-auto px-4">
               <div className="flex flex-col md:flex-row">
-                <div className="bg-blue-600 w-full md:w-1/4 p-8"></div>
+                <div className="bg-red-600 w-full md:w-1/4 p-8"></div>
                 <div className="bg-yellow-400 w-full md:w-16 p-8 hidden md:block"></div>
                 
                 <div className="bg-white w-full md:flex-1 p-8 border-4 border-black">
-                  <h2 className="font-serif text-3xl mb-4">Navigate the Future of Tech Law — Contact Us Today</h2>
-                  <p className="mb-6">Schedule a consultation to discuss your emerging technology legal needs and discover how our innovative approach can help secure your technological future.</p>
+                  <h2 className="font-serif text-3xl mb-4">Protect Your Legacy — Contact Us Today</h2>
+                  <p className="mb-6">Schedule a consultation to discuss your estate planning needs and discover how our strategic approach can help secure your family's future.</p>
                   
                   <div className="inline-block bg-white border-2 border-black px-8 py-3 font-medium">
-                    TECH-FORWARD LEGAL SOLUTIONS
+                    LEGACY PLANNING EXPERTISE FOR OVER 30 YEARS
                   </div>
                 </div>
                 
-                <div className="bg-red-600 w-full md:w-1/6 p-8"></div>
+                <div className="bg-blue-600 w-full md:w-1/6 p-8"></div>
               </div>
               
               <div className="mt-8 text-center">
-                <Link to="/contact" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 border-2 border-black inline-flex items-center">
-                  Request Your Technology Law Consultation
+                <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 border-2 border-black inline-flex items-center">
+                  Request Your Estate Planning Consultation
                   <svg className="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
                   </svg>
-                </Link>
+                </button>
               </div>
             </div>
           </section>
@@ -267,4 +266,4 @@ const DirectEmergingTech: React.FC = () => {
   );
 };
 
-export default DirectEmergingTech; 
+export default DirectTrustsEstates; 

@@ -39,6 +39,7 @@ const TestComponent: React.FC = () => {
                 'digital-asset-protection',
                 'ip-consulting',
                 'emerging-tech',
+                'intellectual-property',
               ].map(serviceId => (
                 <li key={serviceId} className="mb-2">
                   <a 

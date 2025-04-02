@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
@@ -23,7 +22,7 @@ const DigitalAssetRelated: React.FC = () => {
               Learn more <ArrowRight className="ml-2" size={16} />
             </div>
           </Link>
-          <Link to="/practice/estate-planning" className="border border-gray-200 p-8 hover:border-gold transition-colors">
+          <Link to="/practice/trusts-estates" className="border border-gray-200 p-8 hover:border-gold transition-colors">
             <h3 className="font-serif text-xl text-navy mb-4">Estate Planning & Trusts</h3>
             <p className="text-charcoal mb-4">Strategic wealth preservation and legacy planning for high-net-worth individuals.</p>
             <div className="text-gold flex items-center">

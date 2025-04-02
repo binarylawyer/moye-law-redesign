@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
@@ -27,12 +26,12 @@ const Practice: React.FC = () => {
   // Practice areas aligned with personas from knowledge file
   const practiceAreas = [
     {
-      id: "estate-planning",
-      title: "Estate Planning & Trusts",
-      description: "Strategic wealth preservation and legacy planning for high-net-worth individuals.",
+      id: "trusts-estates",
+      title: "Trusts & Estates",
+      description: "Comprehensive planning for wealth preservation, asset distribution, and legacy protection.",
       persona: "David (Prudent Investor)",
       benefit: "Preserve family wealth across generations with sophisticated trust strategies.",
-      path: "/practice/estate-planning"
+      path: "/practice/trusts-estates"
     },
     {
       id: "elder-law",
@@ -51,12 +50,12 @@ const Practice: React.FC = () => {
       path: "/practice/intellectual-property"
     },
     {
-      id: "art-law",
-      title: "Art Law",
-      description: "Specialized legal services for collectors, artists, and cultural institutions.",
-      persona: "Premium Differentiator",
-      benefit: "Navigate the complex intersection of art, law and wealth preservation.",
-      path: "/practice/art-law"
+      id: "ip-asset-protection",
+      title: "IP Asset Protection",
+      description: "Strategic safeguarding of intellectual property assets against infringement and unauthorized use.",
+      persona: "Alex (Tech Innovator)",
+      benefit: "Protect your innovations with robust IP protection strategies.",
+      path: "/practice/ip-asset-protection"
     },
     {
       id: "software-licensing",
@@ -90,12 +89,20 @@ const Practice: React.FC = () => {
       path: "/practice/real-estate"
     },
     {
-      id: "crypto-assets",
-      title: "Crypto & Digital Assets",
-      description: "Legal solutions for blockchain technologies and digital asset management.",
+      id: "emerging-tech",
+      title: "Emerging Technology",
+      description: "Legal solutions for cutting-edge technologies and innovation ventures.",
       persona: "Alex (Tech Innovator)",
-      benefit: "Cutting-edge legal protection for your cryptocurrency and digital asset holdings.",
-      path: "/practice/crypto-assets"
+      benefit: "Navigate the legal complexities of tomorrow's technologies with forward-thinking counsel.",
+      path: "/practice/emerging-tech"
+    },
+    {
+      id: "digital-asset-protection",
+      title: "Digital Asset Protection",
+      description: "Safeguarding digital properties and assets in the modern technology landscape.",
+      persona: "Alex (Tech Innovator)",
+      benefit: "Secure your digital future with comprehensive protection strategies.",
+      path: "/practice/digital-asset-protection"
     }
   ];
 

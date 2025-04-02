@@ -341,7 +341,7 @@ const ExperienceTheDifference = () => {
                           className="w-full px-4 py-3 border-2 border-navy focus:outline-none focus:border-[#D6001C] bg-white"
                         >
                           <option value="">Select a service</option>
-                          <option value="estate-planning">Estate Planning</option>
+                          <option value="trusts-estates">Trusts & Estates</option>
                           <option value="elder-law">Elder Law</option>
                           <option value="intellectual-property">Intellectual Property</option>
                           <option value="art-law">Art Law</option>

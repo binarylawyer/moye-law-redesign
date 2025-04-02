@@ -7,11 +7,12 @@ const PracticeAreas = () => {
   const practiceAreas = [
     {
       id: "estate-planning",
-      title: "Estate Planning",
-      description: "Wills, trusts & legacy planning for your family\'s future in NYC and Westchester.",
-      path: "/practice/estate-planning",
+      title: "Trusts & Estates",
+      description: "Comprehensive planning for wealth preservation and legacy.",
+      path: "/practice/trusts-estates",
       color: "bg-white",
-      accent: "mondrian-red"
+      accent: "mondrian-red",
+      imageUrl: "/images/practice-areas/estate-planning.jpg"
     },
     {
       id: "elder-law",

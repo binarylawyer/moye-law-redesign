@@ -48,6 +48,14 @@ import DirectEntertainmentLaw from "./pages/practice/DirectEntertainmentLaw";
 import DirectDigitalAssetProtection from "./pages/practice/DirectDigitalAssetProtection";
 import DirectIPConsulting from "./pages/practice/DirectIPConsulting";
 import DirectEmergingTech from "./pages/practice/DirectEmergingTech";
+import DirectIntellectualProperty from "./pages/practice/DirectIntellectualProperty";
+import DirectIPAssetProtection from "./pages/practice/DirectIPAssetProtection";
+import DirectRealEstate from "./pages/practice/DirectRealEstate";
+import DirectTrustsEstates from "./pages/practice/DirectTrustsEstates";
+
+// Make sure these imports are at the top of the file
+import EmergingTech from "./pages/practice/EmergingTech";
+import IPLicensing from "./pages/practice/IPLicensing";
 
 // Scroll to top component
 const ScrollToTop = () => {
@@ -128,6 +136,30 @@ const AppRoutes = () => {
         <Route path="/practice/emerging-tech" element={
           <PageErrorBoundary pageName="Emerging Technology Law">
             <DirectEmergingTech />
+          </PageErrorBoundary>
+        } />
+        
+        <Route path="/practice/intellectual-property" element={
+          <PageErrorBoundary pageName="Intellectual Property">
+            <DirectIntellectualProperty />
+          </PageErrorBoundary>
+        } />
+        
+        <Route path="/practice/ip-asset-protection" element={
+          <PageErrorBoundary pageName="IP Asset Protection">
+            <DirectIPAssetProtection />
+          </PageErrorBoundary>
+        } />
+        
+        <Route path="/practice/real-estate" element={
+          <PageErrorBoundary pageName="Real Estate">
+            <DirectRealEstate />
+          </PageErrorBoundary>
+        } />
+        
+        <Route path="/practice/trusts-estates" element={
+          <PageErrorBoundary pageName="Trusts & Estates">
+            <DirectTrustsEstates />
           </PageErrorBoundary>
         } />
         

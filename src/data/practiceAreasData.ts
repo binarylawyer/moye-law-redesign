@@ -448,9 +448,9 @@ export const specializedServiceData = [
     ]
   },
   {
-    id: 'estate-planning',
-    title: 'Estate Planning',
-    shortTitle: 'Estate Planning',
+    id: 'trusts-estates',
+    title: 'Trusts & Estates',
+    shortTitle: 'Trusts & Estates',
     areaOfPractice: 'Estate Law',
     description: 'Comprehensive estate planning services to protect your assets, provide for your loved ones, and secure your legacy.',
     content: [
@@ -711,8 +711,8 @@ export const practiceAreasData: PracticeArea[] = [
     ]
   },
   {
-    id: 'estate-planning',
-    title: 'Estate Planning',
+    id: 'trusts-estates',
+    title: 'Trusts & Estates',
     shortDescription: 'Securing your legacy and protecting your family\'s future',
     introduction: 'Our estate planning practice creates comprehensive strategies to preserve wealth, minimize tax burdens, and ensure your assets are distributed according to your wishes.',
     category: 'personal',

@@ -1,8 +1,10 @@
-import React from 'react';
-import PracticeAreaPage from './PracticeAreaPage';
+import React, { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
+import DirectEmergingTech from './DirectEmergingTech';
 
 const EmergingTech: React.FC = () => {
-  return <PracticeAreaPage />;
+  // Just directly render the Direct component
+  return <DirectEmergingTech />;
 };
 
 export default EmergingTech; 

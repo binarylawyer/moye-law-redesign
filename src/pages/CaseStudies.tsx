@@ -31,7 +31,7 @@ const caseStudies: CaseStudy[] = [
       "Established foundation structure aligned with client's values"
     ],
     practiceArea: "Estate Planning",
-    practiceAreaPath: "/practice/estate-planning"
+    practiceAreaPath: "/practice/trusts-estates"
   },
   {
     id: "family-elder-care",
