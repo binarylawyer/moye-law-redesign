@@ -1,12 +1,13 @@
 import React from 'react';
-import PracticeAreaTemplate from '@/components/practice/PracticeAreaTemplate';
-import PracticeAreaHero from '@/components/practice/PracticeAreaHero';
-import PracticeAreaContent from '@/components/practice/PracticeAreaContent';
-import PracticeAreaProcess from '@/components/practice/PracticeAreaProcess';
-import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
+import ServiceTemplate from '@/components/services/ServiceTemplate';
+import ServiceHero from '@/components/services/ServiceHero';
+import ServiceContent from '@/components/services/ServiceContent';
+import ServiceProcess from '@/components/services/ServiceProcess';
+import ServiceRelated from '@/components/services/ServiceRelated';
+import ServiceFeatureImage from '@/components/services/ServiceFeatureImage';
 
 const Licensing: React.FC = () => {
-  const licensingAreas = [
+  const licensingServices = [
     {
       title: "Technology Licensing",
       description: "Strategic agreements for software, patents, and technical innovations that maximize value while protecting intellectual assets."
@@ -25,7 +26,7 @@ const Licensing: React.FC = () => {
     }
   ];
 
-  const processSteps = [
+  const serviceSteps = [
     {
       title: "Asset Assessment",
       description: "We begin with a thorough evaluation of your licensable intellectual property, identifying the most valuable assets and optimal licensing strategies for each."
@@ -67,13 +68,13 @@ const Licensing: React.FC = () => {
   ];
 
   return (
-    <PracticeAreaTemplate areaName="IP Licensing" serviceId="ip-licensing">
-      <PracticeAreaHero 
+    <ServiceTemplate serviceName="IP Licensing" serviceId="ip-licensing">
+      <ServiceHero 
         title="IP Licensing Solutions"
         description="Structured frameworks for monetizing and leveraging intellectual property through strategic licensing arrangements."
       />
       
-      <PracticeAreaContent 
+      <ServiceContent 
         title="Unlocking IP Value Through Strategic Licensing" 
         variant="default"
         decorationPosition="right"
@@ -92,34 +93,41 @@ const Licensing: React.FC = () => {
             </p>
           </div>
         </div>
-      </PracticeAreaContent>
+      </ServiceContent>
       
-      <PracticeAreaContent 
+      <ServiceFeatureImage
+        featureTitle="Transform Your IP into Revenue"
+        featureDescription="Our licensing expertise helps you develop strategic frameworks that maximize the value of your intellectual property while maintaining control and protecting your core assets. We'll help you navigate complex licensing arrangements to create sustainable revenue streams."
+        callToActionText="Explore licensing opportunities"
+        variant="secondary"
+      />
+      
+      <ServiceContent 
         title="Licensing Solutions" 
         variant="alternate"
         decorationPosition="left"
         decorationVariant={5}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {licensingAreas.map((area, idx) => (
+          {licensingServices.map((service, idx) => (
             <div key={idx} className="mondrian-border p-6 bg-white">
-              <h3 className="font-serif text-xl text-black mb-4">{area.title}</h3>
-              <p className="text-black/80">{area.description}</p>
+              <h3 className="font-serif text-xl text-black mb-4">{service.title}</h3>
+              <p className="text-black/80">{service.description}</p>
             </div>
           ))}
         </div>
-      </PracticeAreaContent>
+      </ServiceContent>
       
-      <PracticeAreaProcess
+      <ServiceProcess
         title="Our Licensing Process"
-        steps={processSteps}
+        steps={serviceSteps}
       />
       
-      <PracticeAreaRelated
+      <ServiceRelated
         title="Related Services"
         items={relatedServices}
       />
-    </PracticeAreaTemplate>
+    </ServiceTemplate>
   );
 };
 

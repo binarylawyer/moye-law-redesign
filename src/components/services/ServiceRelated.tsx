@@ -9,12 +9,12 @@ interface RelatedItem {
   description: string;
 }
 
-interface PracticeAreaRelatedProps {
+interface ServiceRelatedProps {
   title: string;
   items: RelatedItem[];
 }
 
-const PracticeAreaRelated: React.FC<PracticeAreaRelatedProps> = ({ title, items }) => {
+const ServiceRelated: React.FC<ServiceRelatedProps> = ({ title, items }) => {
   // Helper function to ensure path has the proper format
   const getPath = (path: string) => {
     // If it's already a full path with /, return it
@@ -22,13 +22,8 @@ const PracticeAreaRelated: React.FC<PracticeAreaRelatedProps> = ({ title, items 
       return path;
     }
     
-    // Otherwise, check if it's a known service ID and map it
-    if (specializedServicePathMap && path in specializedServicePathMap) {
-      return specializedServicePathMap[path];
-    }
-    
-    // Default to practice prefix if not found
-    return `/practice/${path}`;
+    // Default to services prefix - change this from practice prefix
+    return `/services/${path}`;
   };
 
   return (
@@ -55,4 +50,4 @@ const PracticeAreaRelated: React.FC<PracticeAreaRelatedProps> = ({ title, items 
   );
 };
 
-export default PracticeAreaRelated; 
+export default ServiceRelated; 

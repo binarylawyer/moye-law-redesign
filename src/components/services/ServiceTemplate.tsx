@@ -2,19 +2,19 @@ import React, { ReactNode, useEffect, useState, Children, isValidElement } from 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MondrianDividerCTA from '@/components/MondrianDividerCTA';
-import { specializedServiceData, getServiceByName } from '@/data/practiceAreasData';
-import PracticeAreaHero from './PracticeAreaHero';
+import { specializedServiceData, getServiceByName } from '@/data/practiceAreasData'; // We'll keep using the same data source
+import ServiceHero from './ServiceHero';
 import CallToAction from '@/components/shared/CallToAction';
 
-interface PracticeAreaTemplateProps {
+interface ServiceTemplateProps {
   children: ReactNode;
-  areaName: string;
+  serviceName: string;
   serviceId?: string;
 }
 
-const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({ 
+const ServiceTemplate: React.FC<ServiceTemplateProps> = ({ 
   children, 
-  areaName,
+  serviceName,
   serviceId
 }) => {
   const [serviceInfo, setServiceInfo] = useState<{title: string, description: string} | null>(null);
@@ -23,7 +23,7 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
   useEffect(() => {
     try {
       if (serviceId) {
-        console.log('PracticeAreaTemplate: Looking for service with ID:', serviceId);
+        console.log('ServiceTemplate: Looking for service with ID:', serviceId);
         
         // Log available services to help with debugging
         const availableServices = specializedServiceData?.map?.(s => s.id).join(', ') || 'No services available';
@@ -62,45 +62,45 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
             });
             console.log('Service info found by name:', serviceByName.title, serviceByName.description);
           } else {
-            // Fallback to the areaName if no service found
-            console.warn(`No service info found for ID: ${serviceId}. Using areaName instead.`);
+            // Fallback to the serviceName if no service found
+            console.warn(`No service info found for ID: ${serviceId}. Using serviceName instead.`);
             setServiceInfo({
-              title: areaName,
-              description: `${areaName} services provided by Moye Law.`
+              title: serviceName,
+              description: `${serviceName} provided by Moye Law.`
             });
           }
         }
       } else {
         // Set a default if no serviceId is provided
         setServiceInfo({
-          title: areaName,
-          description: `${areaName} services provided by Moye Law.`
+          title: serviceName,
+          description: `${serviceName} provided by Moye Law.`
         });
       }
     } catch (error) {
-      console.error('Error in PracticeAreaTemplate when finding service info:', error);
+      console.error('Error in ServiceTemplate when finding service info:', error);
       // Set a fallback in case of error
       setServiceInfo({
-        title: areaName,
-        description: `${areaName} services provided by Moye Law.`
+        title: serviceName,
+        description: `${serviceName} provided by Moye Law.`
       });
     }
-  }, [serviceId, areaName]);
+  }, [serviceId, serviceName]);
 
   // Function to render the hero directly if we have service info
   const renderHero = () => {
     if (!serviceInfo) return null;
     
     return (
-      <section className="py-20 md:py-24 relative overflow-hidden">
+      <section className="py-12 md:py-16 relative overflow-hidden">
         <div className="container mx-auto px-8">
           <div className="mondrian-grid">
             {/* Mondrian-style colored block - color determined by title */}
             <div className={`col-span-3 ${getMondrianColor(serviceInfo.title)}`}></div>
             
             {/* Content in white block with Mondrian border */}
-            <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
-              <h1 className="reveal font-serif text-black text-4xl md:text-5xl lg:text-6xl mb-8 !opacity-100">
+            <div className="col-span-6 mondrian-grid-item bg-white p-6 text-center">
+              <h1 className="reveal font-serif text-black text-4xl md:text-5xl mb-6 !opacity-100">
                 {serviceInfo.title}
               </h1>
               <p className="reveal text-xl text-black/80 mx-auto !opacity-100">
@@ -124,18 +124,18 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
     return 'mondrian-yellow';
   };
 
-  // Function to check if children contain a PracticeAreaHero
+  // Function to check if children contain a ServiceHero
   const hasHeroComponent = () => {
     let hasHero = false;
     try {
       Children.forEach(children, (child) => {
         if (isValidElement(child)) {
-          // Check if the component is PracticeAreaHero by name or type
+          // Check if the component is ServiceHero by name or type
           const componentName = typeof child.type === 'function' 
             ? (child.type as any).name 
             : typeof child.type === 'string' ? child.type : '';
           
-          if (componentName === 'PracticeAreaHero' || child.type === PracticeAreaHero) {
+          if (componentName === 'ServiceHero' || child.type === ServiceHero) {
             hasHero = true;
           }
         }
@@ -175,10 +175,10 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
           </div>
         )}
         
-        {/* Consistent Mondrian divider with CTA specific to practice area */}
+        {/* Consistent Mondrian divider with CTA specific to service */}
         <div className="max-w-7xl mx-auto px-8 mb-1">
           <MondrianDividerCTA 
-            text={`Have questions about ${areaName}? Call us for a free consultation:`}
+            text={`Have questions about ${serviceName}? Call us for a free consultation:`}
           />
         </div>
         
@@ -191,4 +191,4 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
   );
 };
 
-export default PracticeAreaTemplate; 
+export default ServiceTemplate; 

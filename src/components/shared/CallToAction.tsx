@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 
 const CallToAction = () => {
   return (
-    <section className="py-24 bg-white relative consultation-cta-hidden moye-cta-component">
+    <section className="py-16 bg-white relative moye-cta-component">
       <div className="container mx-auto px-8 max-w-7xl relative">
         <div className="mondrian-grid mb-6">
           <div className="col-span-2 mondrian-red"></div>

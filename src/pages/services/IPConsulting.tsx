@@ -1,13 +1,14 @@
 import React from 'react';
 import { FileText, Lightbulb, Scale, Globe } from 'lucide-react';
-import PracticeAreaTemplate from '@/components/practice/PracticeAreaTemplate';
-import PracticeAreaHero from '@/components/practice/PracticeAreaHero';
-import PracticeAreaContent from '@/components/practice/PracticeAreaContent';
-import PracticeAreaProcess from '@/components/practice/PracticeAreaProcess';
-import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
+import ServiceTemplate from '@/components/services/ServiceTemplate';
+import ServiceHero from '@/components/services/ServiceHero';
+import ServiceContent from '@/components/services/ServiceContent';
+import ServiceProcess from '@/components/services/ServiceProcess';
+import ServiceRelated from '@/components/services/ServiceRelated';
+import ServiceFeatureImage from '@/components/services/ServiceFeatureImage';
 
 const IPConsulting: React.FC = () => {
-  const consultingAreas = [
+  const consultingServices = [
     {
       icon: <FileText className="h-10 w-10 text-black" />,
       title: "IP Audit & Portfolio Management",
@@ -30,7 +31,7 @@ const IPConsulting: React.FC = () => {
     }
   ];
 
-  const processSteps = [
+  const serviceSteps = [
     {
       title: "Discovery & Assessment",
       description: "We begin with a thorough evaluation of your existing intellectual property assets, business objectives, and competitive landscape. This phase includes identifying registered and unregistered IP, assessing protection status, and uncovering untapped opportunities."
@@ -72,13 +73,13 @@ const IPConsulting: React.FC = () => {
   ];
 
   return (
-    <PracticeAreaTemplate areaName="IP Consulting" serviceId="ip-consulting">
-      <PracticeAreaHero 
+    <ServiceTemplate serviceName="IP Consulting" serviceId="ip-consulting">
+      <ServiceHero 
         title="IP Consulting Services"
         description="Strategic intellectual property guidance for businesses seeking to maximize value and competitive advantage."
       />
       
-      <PracticeAreaContent 
+      <ServiceContent 
         title="Unlocking IP Value" 
         variant="default"
         decorationPosition="left"
@@ -138,37 +139,44 @@ const IPConsulting: React.FC = () => {
             </ul>
           </div>
         </div>
-      </PracticeAreaContent>
+      </ServiceContent>
+
+      <ServiceFeatureImage
+        featureTitle="Strategic IP Management Solutions"
+        featureDescription="Our IP consulting services help businesses identify, protect, and leverage their intellectual property assets. We provide tailored strategies that align with your business goals and enhance your competitive position in the market."
+        callToActionText="Schedule an IP consultation"
+        variant="primary"
+      />
       
-      <PracticeAreaContent 
+      <ServiceContent 
         title="Our Consulting Services" 
         variant="alternate"
         decorationPosition="right"
         decorationVariant={2}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {consultingAreas.map((area, idx) => (
+          {consultingServices.map((service, idx) => (
             <div key={idx} className="mondrian-border p-6 bg-white">
               <div className="mb-6">
-                {area.icon}
+                {service.icon}
               </div>
-              <h3 className="font-serif text-xl text-black mb-4">{area.title}</h3>
-              <p className="text-black/80">{area.description}</p>
+              <h3 className="font-serif text-xl text-black mb-4">{service.title}</h3>
+              <p className="text-black/80">{service.description}</p>
             </div>
           ))}
         </div>
-      </PracticeAreaContent>
+      </ServiceContent>
       
-      <PracticeAreaProcess
+      <ServiceProcess
         title="Our Consulting Process"
-        steps={processSteps}
+        steps={serviceSteps}
       />
       
-      <PracticeAreaRelated
+      <ServiceRelated
         title="Related Services"
         items={relatedServices}
       />
-    </PracticeAreaTemplate>
+    </ServiceTemplate>
   );
 };
 

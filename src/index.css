@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Create a specific class for consultationCTA that we want to hide */
-.consultation-cta-hidden {
-  display: none !important;
-}
-
 /* Make sure our CallToAction component is visible */
 .moye-cta-component {
   display: block !important;

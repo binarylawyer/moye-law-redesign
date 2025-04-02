@@ -5,12 +5,12 @@ interface ProcessStep {
   description: string;
 }
 
-interface PracticeAreaProcessProps {
+interface ServiceProcessProps {
   title?: string;
   steps: ProcessStep[];
 }
 
-const PracticeAreaProcess: React.FC<PracticeAreaProcessProps> = ({ 
+const ServiceProcess: React.FC<ServiceProcessProps> = ({ 
   title = "Our Process", 
   steps 
 }) => {
@@ -65,4 +65,4 @@ const PracticeAreaProcess: React.FC<PracticeAreaProcessProps> = ({
   );
 };
 
-export default PracticeAreaProcess; 
+export default ServiceProcess; 

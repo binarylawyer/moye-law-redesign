@@ -1,11 +1,11 @@
 import React from 'react';
 
-interface PracticeAreaHeroProps {
+interface ServiceHeroProps {
   title: string;
   description: string;
 }
 
-const PracticeAreaHero: React.FC<PracticeAreaHeroProps> = ({ title, description }) => {
+const ServiceHero: React.FC<ServiceHeroProps> = ({ title, description }) => {
   // Determine color based on first letter of title for Mondrian aesthetics
   const getMondrianColor = () => {
     const firstLetter = title.toLowerCase().charAt(0);
@@ -35,4 +35,4 @@ const PracticeAreaHero: React.FC<PracticeAreaHeroProps> = ({ title, description 
   );
 };
 
-export default PracticeAreaHero; 
+export default ServiceHero; 
