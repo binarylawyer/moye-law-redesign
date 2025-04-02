@@ -326,7 +326,7 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
 .markdown-content h5,
 .markdown-content h6 {
   color: #0A2342; /* Navy */
-  font-family: var(--font-serif);
+  font-family: 'Montserrat', sans-serif;
   margin-top: 1.5em;
   margin-bottom: 0.75em;
   font-weight: 600;
@@ -450,7 +450,7 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
 .prose h5,
 .prose h6 {
   color: #0A2342; /* Navy color */
-  font-family: 'Inter', serif;
+  font-family: 'Montserrat', sans-serif;
   margin-top: 1.5em;
   margin-bottom: 0.75em;
 }
@@ -478,6 +478,7 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
   color: rgba(45, 49, 66, 0.9);
   margin-bottom: 1.25em;
   line-height: 1.6;
+  font-family: 'Inter', sans-serif;
 }
 
 .prose ul {

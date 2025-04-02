@@ -12,7 +12,7 @@ const MondrianIntro = () => {
           <div className="grid grid-cols-12 gap-0">
             {/* Large title box with full red background */}
             <div className="reveal col-span-12 md:col-span-8 bg-[#D6001C] border-r-4 border-b-4 border-black p-8 relative">
-              <h2 className="font-serif text-4xl md:text-5xl text-white mb-4">
+              <h2 className="font-display text-4xl md:text-5xl text-white mb-4">
                 Creative Legal Solutions for Modern Challenges
               </h2>
               <p className="text-white/90 max-w-2xl">
@@ -22,7 +22,7 @@ const MondrianIntro = () => {
 
             {/* Yellow box highlighting 30 years of experience */}
             <div className="reveal col-span-12 md:col-span-4 bg-[#FFD500] border-b-4 border-black p-8 flex flex-col justify-center" style={{ transitionDelay: '0.1s' }}>
-              <span className="font-serif text-7xl text-black font-light">30</span>
+              <span className="font-display text-7xl text-black font-light">30</span>
               <p className="text-black font-medium">Years of creative legal excellence</p>
             </div>
 
@@ -36,7 +36,7 @@ const MondrianIntro = () => {
 
             {/* Key differentiator - Tech expertise */}
             <div className="reveal col-span-12 md:col-span-4 lg:col-span-4 border-r-4 border-b-4 border-black p-6 bg-white" style={{ transitionDelay: '0.25s' }}>
-              <h3 className="font-serif text-2xl text-black mb-3">Tech Forward</h3>
+              <h3 className="font-display text-2xl text-black mb-3">Tech Forward</h3>
               <p className="text-black/80">Our lawyers bring software engineering expertise to legal challenges, creating innovative solutions for IP and technology law.</p>
             </div>
 
@@ -49,13 +49,13 @@ const MondrianIntro = () => {
 
             {/* Key differentiator - Art expertise in white area */}
             <div className="reveal col-span-12 md:col-span-9 border-b-4 border-black p-6 bg-white" style={{ transitionDelay: '0.4s' }}>
-              <h3 className="font-serif text-2xl text-black mb-3">Art Appreciation</h3>
+              <h3 className="font-display text-2xl text-black mb-3">Art Appreciation</h3>
               <p className="text-black/80">With deep expertise in art law, we understand the unique needs of artists, collectors, and galleries in protecting creative legacies.</p>
             </div>
 
             {/* Estate planning in white area */}
             <div className="reveal col-span-12 md:col-span-8 border-r-4 border-black p-6 bg-white" style={{ transitionDelay: '0.45s' }}>
-              <h3 className="font-serif text-2xl text-black mb-3">Estate Innovation</h3>
+              <h3 className="font-display text-2xl text-black mb-3">Estate Innovation</h3>
               <p className="text-black/80">Disrupting traditional estate planning with creative approaches that protect digital assets and intellectual property for future generations.</p>
             </div>
 

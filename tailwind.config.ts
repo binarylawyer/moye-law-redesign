@@ -19,8 +19,30 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'display': ['Montserrat', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-				'sans': ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+				'display': [
+					"Montserrat",
+					"ui-sans-serif",
+					"system-ui", 
+					"-apple-system", 
+					"BlinkMacSystemFont", 
+					"Segoe UI", 
+					"Roboto", 
+					"Helvetica Neue", 
+					"Arial", 
+					"sans-serif"
+				],
+				'sans': [
+					"Inter",
+					"ui-sans-serif",
+					"system-ui", 
+					"-apple-system", 
+					"BlinkMacSystemFont", 
+					"Segoe UI", 
+					"Roboto", 
+					"Helvetica Neue", 
+					"Arial", 
+					"sans-serif"
+				],
 			},
 			fontSize: {
                 'base': '1.125rem',    // Increased base font size
