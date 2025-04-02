@@ -19,8 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'serif': ['Inter', 'sans-serif'],
-				'sans': ['Inter', 'sans-serif'],
+				'serif': ['var(--font-serif)'],
+				'sans': ['var(--font-sans)'],
 			},
 			fontSize: {
                 'base': '1.125rem',    // Increased base font size

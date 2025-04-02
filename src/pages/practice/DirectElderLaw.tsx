@@ -10,8 +10,10 @@ import { logger } from '@/utils/logger';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MondrianDividerCTA from '@/components/MondrianDividerCTA';
+import MondrianClassicComposition from '@/components/MondrianClassicComposition';
 import CallToAction from '@/components/shared/CallToAction';
 import { Link } from 'react-router-dom';
+import '../../styles/mondrian.css';
 
 // Content sections
 const elderLawAreas = [
@@ -113,8 +115,10 @@ const DirectElderLaw: React.FC = () => {
         <section className="py-16">
           <div className="container mx-auto px-8">
             <div className="flex flex-col md:flex-row">
-              {/* Blue Mondrian block on left */}
-              <div className="bg-blue-600 w-full md:w-1/3"></div>
+              {/* Mondrian composition on left */}
+              <div className="w-full md:w-1/3 h-64 md:h-auto">
+                <MondrianClassicComposition />
+              </div>
               
               {/* White content block */}
               <div className="bg-white border-4 border-black p-8 md:p-12 w-full md:w-2/3">
@@ -244,8 +248,12 @@ const DirectElderLaw: React.FC = () => {
           <section className="py-16 bg-white">
             <div className="container mx-auto px-4">
               <div className="flex flex-col md:flex-row">
-                <div className="bg-red-600 w-full md:w-1/4 p-8"></div>
-                <div className="bg-blue-500 w-full md:w-16 p-8 hidden md:block"></div>
+                {/* Mondrian-style grid for the left section */}
+                <div className="w-full md:w-1/4 flex-shrink-0 h-64 md:h-auto">
+                  <MondrianClassicComposition />
+                </div>
+                
+                <div className="mondrian-blue w-full md:w-16 p-8 hidden md:block"></div>
                 
                 <div className="bg-white w-full md:flex-1 p-8 border-4 border-black">
                   <h2 className="font-serif text-3xl mb-4">Protect Your Future — Contact Us Today</h2>
@@ -256,11 +264,11 @@ const DirectElderLaw: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="bg-yellow-400 w-full md:w-1/6 p-8"></div>
+                <div className="mondrian-yellow w-full md:w-1/6 p-8"></div>
               </div>
               
               <div className="mt-8 text-center">
-                <Link to="/contact" className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 border-2 border-black inline-flex items-center">
+                <Link to="/contact" className="mondrian-yellow hover:bg-yellow-500 text-black font-bold py-3 px-6 border-2 border-black inline-flex items-center">
                   Request Your Free Consultation
                   <svg className="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>

@@ -3,6 +3,7 @@ import { logger } from '@/utils/logger';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
+import '../../styles/mondrian.css';
 
 // Content sections
 const techAreas = [
@@ -105,7 +106,7 @@ const DirectEmergingTech: React.FC = () => {
           <div className="container mx-auto px-8">
             <div className="flex flex-col md:flex-row">
               {/* Yellow Mondrian block on left */}
-              <div className="bg-yellow-400 w-full md:w-1/3"></div>
+              <div className="mondrian-yellow w-full md:w-1/3"></div>
               
               {/* White content block */}
               <div className="bg-white border-4 border-black p-8 md:p-12 w-full md:w-2/3">
@@ -235,8 +236,30 @@ const DirectEmergingTech: React.FC = () => {
           <section className="py-16 bg-white">
             <div className="container mx-auto px-4">
               <div className="flex flex-col md:flex-row">
-                <div className="bg-blue-600 w-full md:w-1/4 p-8"></div>
-                <div className="bg-yellow-400 w-full md:w-16 p-8 hidden md:block"></div>
+                {/* Mondrian-style grid for the left section */}
+                <div className="w-full md:w-1/4 flex-shrink-0 h-full relative">
+                  <div className="border-2 border-black h-full w-full">
+                    {/* Outer frame */}
+                    <div className="absolute inset-0 grid grid-cols-12 grid-rows-12 gap-0">
+                      {/* Red rectangle - top */}
+                      <div className="col-span-12 row-span-4 mondrian-red border-b-2 border-black"></div>
+                      
+                      {/* White rectangle - middle left */}
+                      <div className="col-span-6 row-span-3 mondrian-white border-r-2 border-b-2 border-black"></div>
+                      
+                      {/* Blue rectangle - middle right */}
+                      <div className="col-span-6 row-span-3 mondrian-blue border-b-2 border-black"></div>
+                      
+                      {/* Yellow rectangle - bottom left */}
+                      <div className="col-span-9 row-span-5 mondrian-yellow border-r-2 border-black"></div>
+                      
+                      {/* Dark blue rectangle - bottom right */}
+                      <div className="col-span-3 row-span-5 mondrian-blue"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mondrian-yellow w-full md:w-16 p-8 hidden md:block"></div>
                 
                 <div className="bg-white w-full md:flex-1 p-8 border-4 border-black">
                   <h2 className="font-serif text-3xl mb-4">Navigate the Future of Tech Law — Contact Us Today</h2>
@@ -247,11 +270,11 @@ const DirectEmergingTech: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="bg-red-600 w-full md:w-1/6 p-8"></div>
+                <div className="mondrian-red w-full md:w-1/6 p-8"></div>
               </div>
               
               <div className="mt-8 text-center">
-                <Link to="/contact" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 border-2 border-black inline-flex items-center">
+                <Link to="/contact" className="mondrian-blue hover:bg-blue-700 text-white font-bold py-3 px-6 border-2 border-black inline-flex items-center">
                   Request Your Technology Law Consultation
                   <svg className="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
