@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Override ConsultationCTA with high specificity */
+section.py-24.bg-white.relative > div.container.mx-auto.px-8.max-w-7xl.relative > div.mondrian-grid,
+section.py-24.bg-white.relative > div.container.mx-auto.px-8.max-w-7xl.relative > div.mondrian-grid + div,
+section.py-24.bg-white.relative {
+  display: none !important;
+}
+
 /* Improved dropdown animation keyframes */
 @keyframes slideDown {
   0% {

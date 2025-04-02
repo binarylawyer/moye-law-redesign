@@ -1,10 +1,10 @@
 import React, { ReactNode, useEffect, useState, Children, isValidElement, cloneElement } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ConsultationCTA from '@/components/ConsultationCTA';
 import MondrianDividerCTA from '@/components/MondrianDividerCTA';
 import { specializedServiceData, getServiceByName, specializedServicePathMap } from '@/data/practiceAreasData';
 import PracticeAreaHero from './PracticeAreaHero';
+import CallToAction from '@/components/shared/CallToAction';
 
 interface PracticeAreaTemplateProps {
   children: ReactNode;
@@ -141,7 +141,8 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
           />
         </div>
         
-        <ConsultationCTA />
+        {/* New Mondrian-inspired Call To Action */}
+        <CallToAction />
       </main>
       
       <Footer />

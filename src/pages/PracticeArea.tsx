@@ -7,6 +7,7 @@ import { practiceAreasData } from '@/data/practiceAreasData';
 import ConsultationCTA from '@/components/ConsultationCTA';
 import MondrianDecoration from '@/components/MondrianDecoration';
 import MondrianDividerCTA from '@/components/MondrianDividerCTA';
+import CallToAction from '@/components/shared/CallToAction';
 
 const PracticeArea: React.FC = () => {
   const { area } = useParams();
@@ -184,8 +185,8 @@ const PracticeArea: React.FC = () => {
           />
         </div>
         
-        {/* Using the ConsultationCTA component instead of inline CTA */}
-        <ConsultationCTA />
+        {/* Using the new Mondrian-style CallToAction component */}
+        <CallToAction />
       </main>
       <Footer />
     </div>
