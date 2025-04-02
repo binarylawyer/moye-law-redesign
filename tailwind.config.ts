@@ -19,8 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'serif': ['var(--font-serif)'],
-				'sans': ['var(--font-sans)'],
+				'serif': ['Playfair Display', 'Georgia', 'Times New Roman', 'serif'],
+				'sans': ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
 			},
 			fontSize: {
                 'base': '1.125rem',    // Increased base font size

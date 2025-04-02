@@ -244,7 +244,7 @@ const DirectTrustsEstates: React.FC = () => {
                   <MondrianClassicComposition />
                 </div>
                 
-                <div className="mondrian-yellow w-full md:w-16 p-8 hidden md:block"></div>
+                <div className="bg-white w-full md:w-16 p-8 hidden md:block"></div>
                 
                 <div className="bg-white w-full md:flex-1 p-8 border-4 border-black">
                   <h2 className="font-serif text-3xl mb-4">Protect Your Legacy — Contact Us Today</h2>
@@ -255,7 +255,7 @@ const DirectTrustsEstates: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="mondrian-blue w-full md:w-1/6 p-8"></div>
+                <div className="bg-gray-200 w-full md:w-1/6 p-8"></div>
               </div>
               
               <div className="mt-8 text-center">

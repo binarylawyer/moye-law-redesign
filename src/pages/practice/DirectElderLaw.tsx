@@ -264,7 +264,7 @@ const DirectElderLaw: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="mondrian-yellow w-full md:w-1/6 p-8"></div>
+                <div className="bg-gray-200 w-full md:w-1/6 p-8"></div>
               </div>
               
               <div className="mt-8 text-center">
