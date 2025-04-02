@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PracticeAreaTemplate from '@/components/practice/PracticeAreaTemplate';
 import PracticeAreaHero from '@/components/practice/PracticeAreaHero';
 import PracticeAreaContent from '@/components/practice/PracticeAreaContent';
 import PracticeAreaProcess from '@/components/practice/PracticeAreaProcess';
 import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
+import { validatePracticeArea, standardizeServicePaths, ContentSection, RelatedService } from '@/utils/practiceHelpers';
 
 const Licensing: React.FC = () => {
-  const licensingAreas = [
+  // Define service ID consistently
+  const SERVICE_ID = 'ip-licensing';
+  
+  // Validate that this service ID exists in specialized services
+  useEffect(() => {
+    validatePracticeArea('Licensing', SERVICE_ID);
+  }, []);
+
+  const licensingAreas: ContentSection[] = [
     {
       title: "Technology Licensing",
       description: "Strategic agreements for software, patents, and technical innovations that maximize value while protecting intellectual assets."
@@ -25,7 +34,7 @@ const Licensing: React.FC = () => {
     }
   ];
 
-  const processSteps = [
+  const processSteps: ContentSection[] = [
     {
       title: "Asset Assessment",
       description: "We begin with a thorough evaluation of your licensable intellectual property, identifying the most valuable assets and optimal licensing strategies for each."
@@ -48,7 +57,7 @@ const Licensing: React.FC = () => {
     }
   ];
 
-  const relatedServices = [
+  const relatedServices: RelatedService[] = standardizeServicePaths([
     {
       title: "IP Consulting",
       path: "/practice/ip-consulting",
@@ -64,10 +73,10 @@ const Licensing: React.FC = () => {
       path: "/practice/entertainment-law",
       description: "Legal counsel for entertainment properties, content licensing, and media ventures."
     }
-  ];
+  ]);
 
   return (
-    <PracticeAreaTemplate areaName="IP Licensing" serviceId="ip-licensing">
+    <PracticeAreaTemplate areaName="IP Licensing" serviceId={SERVICE_ID}>
       <PracticeAreaHero 
         title="IP Licensing Solutions"
         description="Structured frameworks for monetizing and leveraging intellectual property through strategic licensing arrangements."

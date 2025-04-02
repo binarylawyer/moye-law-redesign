@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PracticeAreaTemplate from '@/components/practice/PracticeAreaTemplate';
 import PracticeAreaHero from '@/components/practice/PracticeAreaHero';
 import PracticeAreaContent from '@/components/practice/PracticeAreaContent';
 import PracticeAreaProcess from '@/components/practice/PracticeAreaProcess';
 import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
+import { validatePracticeArea, standardizeServicePaths, ContentSection, RelatedService } from '@/utils/practiceHelpers';
 
 const DigitalAssetProtection: React.FC = () => {
-  const strategies = [
+  // Define service ID consistently
+  const SERVICE_ID = 'digital-asset-protection';
+  
+  // Validate that this service ID exists in specialized services
+  useEffect(() => {
+    validatePracticeArea('DigitalAssetProtection', SERVICE_ID);
+  }, []);
+
+  const strategies: ContentSection[] = [
     {
       title: "Cryptocurrency Security",
       description: "Legal frameworks for securing cryptocurrency assets, wallet security protocols, and exchange transaction protections."
@@ -25,7 +34,7 @@ const DigitalAssetProtection: React.FC = () => {
     }
   ];
 
-  const processSteps = [
+  const processSteps: ContentSection[] = [
     {
       title: "Asset Inventory",
       description: "We begin with a comprehensive inventory of your digital assets, categorizing them by type, value, vulnerability, and current protection status."
@@ -48,7 +57,7 @@ const DigitalAssetProtection: React.FC = () => {
     }
   ];
 
-  const relatedServices = [
+  const relatedServices: RelatedService[] = standardizeServicePaths([
     {
       title: "IP Consulting",
       path: "/practice/ip-consulting",
@@ -64,10 +73,10 @@ const DigitalAssetProtection: React.FC = () => {
       path: "/practice/ip-licensing",
       description: "Structured frameworks for monetizing intellectual property through strategic licensing arrangements."
     }
-  ];
+  ]);
 
   return (
-    <PracticeAreaTemplate areaName="Digital Asset Protection" serviceId="digital-asset-protection">
+    <PracticeAreaTemplate areaName="Digital Asset Protection" serviceId={SERVICE_ID}>
       <PracticeAreaHero 
         title="Digital Asset Protection"
         description="Comprehensive legal protection for your valuable digital assets, from cryptocurrencies and NFTs to domain names and digital intellectual property."

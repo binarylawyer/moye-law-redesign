@@ -22,6 +22,9 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
   // Find service data if it exists
   useEffect(() => {
     if (serviceId) {
+      console.log('PracticeAreaTemplate: Looking for service with ID:', serviceId);
+      console.log('Available services:', specializedServiceData.map(s => s.id).join(', '));
+      
       // First try with the exact ID
       const foundService = specializedServiceData.find(service => 
         service.id === serviceId ||
@@ -33,14 +36,20 @@ const PracticeAreaTemplate: React.FC<PracticeAreaTemplateProps> = ({
           title: foundService.title,
           description: foundService.description
         });
-        console.log('Service info found:', foundService.title, foundService.description);
+        console.log('Service info found by exact ID match:', foundService.id, foundService.title);
       } else {
         // If not found by ID, try to match by normalized name
         const normalizedId = serviceId.toLowerCase().replace(/\s+/g, '-');
-        const serviceByName = specializedServiceData.find(service => 
-          service.title.toLowerCase().replace(/\s+/g, '-') === normalizedId ||
-          service.shortTitle?.toLowerCase().replace(/\s+/g, '-') === normalizedId
-        );
+        console.log('Trying normalized ID:', normalizedId);
+        
+        const serviceByName = specializedServiceData.find(service => {
+          const normalizedTitle = service.title.toLowerCase().replace(/\s+/g, '-');
+          const normalizedShortTitle = service.shortTitle?.toLowerCase().replace(/\s+/g, '-');
+          
+          console.log(`Comparing with: ${service.id} (${normalizedTitle}, ${normalizedShortTitle})`);
+          
+          return normalizedTitle === normalizedId || normalizedShortTitle === normalizedId;
+        });
 
         if (serviceByName) {
           setServiceInfo({

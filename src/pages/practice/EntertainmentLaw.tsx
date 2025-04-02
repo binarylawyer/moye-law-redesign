@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PracticeAreaTemplate from '@/components/practice/PracticeAreaTemplate';
 import PracticeAreaHero from '@/components/practice/PracticeAreaHero';
 import PracticeAreaContent from '@/components/practice/PracticeAreaContent';
 import PracticeAreaProcess from '@/components/practice/PracticeAreaProcess';
 import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
+import { validatePracticeArea, standardizeServicePaths, ContentSection, RelatedService } from '@/utils/practiceHelpers';
 
 const EntertainmentLaw: React.FC = () => {
-  const entertainmentAreas = [
+  // Define service ID consistently
+  const SERVICE_ID = 'entertainment-law';
+  
+  // Validate that this service ID exists in specialized services
+  useEffect(() => {
+    validatePracticeArea('EntertainmentLaw', SERVICE_ID);
+  }, []);
+
+  const entertainmentAreas: ContentSection[] = [
     {
       title: "Film & Television",
       description: "Comprehensive legal services for productions, talent, distributors, and investors in the film and television industry."
@@ -25,7 +34,7 @@ const EntertainmentLaw: React.FC = () => {
     }
   ];
 
-  const processSteps = [
+  const processSteps: ContentSection[] = [
     {
       title: "Initial Consultation",
       description: "We begin with a comprehensive discussion of your entertainment project or career goals, understanding your vision, timeline, and specific legal needs."
@@ -48,7 +57,7 @@ const EntertainmentLaw: React.FC = () => {
     }
   ];
 
-  const relatedServices = [
+  const relatedServices: RelatedService[] = standardizeServicePaths([
     {
       title: "IP Licensing",
       path: "/practice/ip-licensing",
@@ -64,10 +73,10 @@ const EntertainmentLaw: React.FC = () => {
       path: "/practice/ip-consulting",
       description: "Strategic guidance for managing and maximizing the value of your intellectual property assets."
     }
-  ];
+  ]);
 
   return (
-    <PracticeAreaTemplate areaName="Entertainment Law" serviceId="entertainment-law">
+    <PracticeAreaTemplate areaName="Entertainment Law" serviceId={SERVICE_ID}>
       <PracticeAreaHero 
         title="Entertainment Law"
         description="Expert legal guidance for creators, producers, and businesses across the evolving entertainment landscape."

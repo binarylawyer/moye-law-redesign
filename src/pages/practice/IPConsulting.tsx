@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FileText, Lightbulb, Scale, Globe } from 'lucide-react';
 import PracticeAreaTemplate from '@/components/practice/PracticeAreaTemplate';
 import PracticeAreaHero from '@/components/practice/PracticeAreaHero';
 import PracticeAreaContent from '@/components/practice/PracticeAreaContent';
 import PracticeAreaProcess from '@/components/practice/PracticeAreaProcess';
 import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
+import { validatePracticeArea, standardizeServicePaths, ContentSection, RelatedService } from '@/utils/practiceHelpers';
 
 const IPConsulting: React.FC = () => {
-  const consultingAreas = [
+  // Define service ID consistently
+  const SERVICE_ID = 'ip-consulting';
+  
+  // Validate that this service ID exists in specialized services
+  useEffect(() => {
+    validatePracticeArea('IPConsulting', SERVICE_ID);
+  }, []);
+
+  const consultingAreas: ContentSection[] = [
     {
       icon: <FileText className="h-10 w-10 text-black" />,
       title: "IP Audit & Portfolio Management",
@@ -30,7 +39,7 @@ const IPConsulting: React.FC = () => {
     }
   ];
 
-  const processSteps = [
+  const processSteps: ContentSection[] = [
     {
       title: "Discovery & Assessment",
       description: "We begin with a thorough evaluation of your existing intellectual property assets, business objectives, and competitive landscape. This phase includes identifying registered and unregistered IP, assessing protection status, and uncovering untapped opportunities."
@@ -53,7 +62,7 @@ const IPConsulting: React.FC = () => {
     }
   ];
 
-  const relatedServices = [
+  const relatedServices: RelatedService[] = standardizeServicePaths([
     {
       title: "IP Licensing",
       path: "/practice/ip-licensing",
@@ -69,10 +78,10 @@ const IPConsulting: React.FC = () => {
       path: "/practice/emerging-tech",
       description: "Legal frameworks for businesses leveraging emerging technologies like blockchain, AI, and IoT."
     }
-  ];
+  ]);
 
   return (
-    <PracticeAreaTemplate areaName="IP Consulting" serviceId="ip-consulting">
+    <PracticeAreaTemplate areaName="IP Consulting" serviceId={SERVICE_ID}>
       <PracticeAreaHero 
         title="IP Consulting Services"
         description="Strategic intellectual property guidance for businesses seeking to maximize value and competitive advantage."

@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PracticeAreaTemplate from '@/components/practice/PracticeAreaTemplate';
 import PracticeAreaHero from '@/components/practice/PracticeAreaHero';
 import PracticeAreaContent from '@/components/practice/PracticeAreaContent';
 import PracticeAreaProcess from '@/components/practice/PracticeAreaProcess';
 import PracticeAreaRelated from '@/components/practice/PracticeAreaRelated';
+import { validatePracticeArea, standardizeServicePaths, ContentSection, RelatedService } from '@/utils/practiceHelpers';
 
 const EmergingTech: React.FC = () => {
-  const techAreas = [
+  // Define service ID consistently
+  const SERVICE_ID = 'emerging-tech';
+  
+  // Validate that this service ID exists in specialized services
+  useEffect(() => {
+    validatePracticeArea('EmergingTech', SERVICE_ID);
+  }, []);
+
+  const techAreas: ContentSection[] = [
     {
       title: "Blockchain & Cryptocurrency",
       description: "Legal frameworks for blockchain applications, token offerings, smart contracts, and cryptocurrency ventures."
@@ -25,7 +34,7 @@ const EmergingTech: React.FC = () => {
     }
   ];
 
-  const processSteps = [
+  const processSteps: ContentSection[] = [
     {
       title: "Technology Assessment",
       description: "We begin by thoroughly understanding your technology, its applications, and the specific legal challenges it presents in current and future regulatory environments."
@@ -48,7 +57,7 @@ const EmergingTech: React.FC = () => {
     }
   ];
 
-  const relatedServices = [
+  const relatedServices: RelatedService[] = standardizeServicePaths([
     {
       title: "IP Consulting",
       path: "/practice/ip-consulting",
@@ -64,10 +73,10 @@ const EmergingTech: React.FC = () => {
       path: "/practice/entertainment-law",
       description: "Legal counsel for entertainment properties, content licensing, and media ventures."
     }
-  ];
+  ]);
 
   return (
-    <PracticeAreaTemplate areaName="Emerging Technology" serviceId="emerging-tech">
+    <PracticeAreaTemplate areaName="Emerging Technology Law" serviceId={SERVICE_ID}>
       <PracticeAreaHero 
         title="Emerging Technology Law"
         description="Forward-looking legal solutions for pioneers at the frontier of technological innovation."

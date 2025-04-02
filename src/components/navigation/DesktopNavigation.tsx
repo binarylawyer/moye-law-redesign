@@ -88,21 +88,21 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
             <ChevronDown className={`h-4 w-4 transition duration-200 ml-2 group-data-[state=open]:rotate-180 ${textColor}`} />
           </NavigationMenuTrigger>
           
-          <NavigationMenuContent className="bg-white border-4 border-black p-8 w-[500px] absolute left-0 mt-4 transition-all duration-300 ease-in-out origin-top-center animate-dropdown z-50">
+          <NavigationMenuContent className="bg-white border-4 border-black p-8 !w-[1050px] absolute left-0 mt-64 transition-all duration-300 ease-in-out origin-top-center animate-dropdown z-50">
             {/* Mondrian accent element */}
             <div className="absolute top-0 left-0 w-1/3 h-2 bg-[#D6001C]"></div>
             
-            <div className="grid grid-cols-1 gap-y-4">
+            <div className="grid grid-cols-2 gap-x-16 gap-y-6">
               {featuredPracticeAreas.map((area, index) => (
                 <Link
                   key={area.path}
                   to={area.path}
-                  className="text-black group flex items-center border-b-2 border-black/30 pb-2 transition-colors whitespace-nowrap hover:border-[#D6001C]"
+                  className="text-black group flex items-center border-b-2 border-black/30 pb-3 transition-colors whitespace-nowrap hover:border-[#D6001C]"
                 >
-                  <span className="w-6 h-6 inline-flex items-center justify-center mr-3 text-xs font-medium border-2 border-black">
+                  <span className="w-8 h-8 inline-flex items-center justify-center mr-4 text-md font-medium border-2 border-black">
                     {index + 1}
                   </span>
-                  <span className="group-hover:text-[#D6001C] text-base">{area.title}</span>
+                  <span className="group-hover:text-[#D6001C] text-lg">{area.title}</span>
                 </Link>
               ))}
             </div>
@@ -125,7 +125,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
             <ChevronDown className={`h-4 w-4 transition duration-200 ml-2 group-data-[state=open]:rotate-180 ${textColor}`} />
           </NavigationMenuTrigger>
           
-          <NavigationMenuContent className="bg-white border-4 border-black p-8 w-[450px] absolute left-0 mt-4 transition-all duration-300 ease-in-out origin-top-center animate-dropdown z-50">
+          <NavigationMenuContent className="bg-white border-4 border-black p-8 !w-[550px] absolute left-0 mt-64 transition-all duration-300 ease-in-out origin-top-center animate-dropdown z-50">
             {/* Mondrian accent element */}
             <div className="absolute top-0 right-0 w-1/3 h-2 bg-[#FFEB80]"></div>
             
@@ -162,7 +162,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
             <ChevronDown className={`h-4 w-4 transition duration-200 ml-2 group-data-[state=open]:rotate-180 ${textColor}`} />
           </NavigationMenuTrigger>
           
-          <NavigationMenuContent className="bg-white border-4 border-black p-8 w-[450px] absolute left-0 mt-4 transition-all duration-300 ease-in-out origin-top-center animate-dropdown z-50">
+          <NavigationMenuContent className="bg-white border-4 border-black p-8 !w-[550px] absolute left-0 mt-64 transition-all duration-300 ease-in-out origin-top-center animate-dropdown z-50">
             {/* Mondrian accent element */}
             <div className="absolute bottom-0 left-0 w-1/3 h-2 bg-[#4D80D4]"></div>
             
