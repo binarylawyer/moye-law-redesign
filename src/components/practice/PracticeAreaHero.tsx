@@ -40,10 +40,10 @@ const PracticeAreaHero: React.FC<PracticeAreaHeroProps> = ({
           
           {/* Content in white block with Mondrian border */}
           <div className="col-span-6 mondrian-grid-item bg-white p-6 text-center">
-            <h1 className="reveal font-serif text-black text-4xl md:text-5xl mb-4 !opacity-100">{title}</h1>
+            <h1 className="reveal font-display text-black text-4xl md:text-5xl mb-4 !opacity-100">{title}</h1>
             
             {subtitle && (
-              <h2 className="reveal font-serif text-black/80 text-2xl mb-4 !opacity-100">{subtitle}</h2>
+              <h2 className="reveal font-display text-black/80 text-2xl mb-4 !opacity-100">{subtitle}</h2>
             )}
             
             <p className="reveal text-xl text-black/80 mx-auto !opacity-100">

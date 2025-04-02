@@ -37,7 +37,7 @@ const ResourcePageHeader: React.FC<ResourcePageHeaderProps> = ({
         <div className="mondrian-grid mb-12">
           <div className={`col-span-3 ${leftColor}`}></div>
           <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
-            <h1 className="font-serif text-4xl md:text-5xl text-black mb-6">
+            <h1 className="font-display text-4xl md:text-5xl text-black mb-6">
               {title}
             </h1>
             <p className="text-black/80 text-lg md:text-xl">

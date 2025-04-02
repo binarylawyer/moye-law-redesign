@@ -15,7 +15,7 @@ const ConsultationCTA = () => {
           {/* Main content box with thick border */}
           <div className="col-span-6 mondrian-grid-item bg-white p-10">
             <div className="text-center">
-              <h2 className="reveal font-serif text-4xl md:text-5xl text-black mb-8 tracking-tight">
+              <h2 className="reveal font-display text-4xl md:text-5xl text-black mb-8 tracking-tight">
                 Protect Your Future – Contact Us Today
               </h2>
               

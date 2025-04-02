@@ -29,14 +29,14 @@ const DigitalAssetStrategies: React.FC = () => {
   return (
     <section className="bg-gray-50 py-24">
       <div className="container mx-auto px-8">
-        <h2 className="font-serif text-3xl text-navy mb-12 text-center">Our Protection Strategies</h2>
+        <h2 className="font-display text-3xl text-navy mb-12 text-center">Our Protection Strategies</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {protectionStrategies.map((strategy, idx) => (
             <div key={idx} className="bg-white p-8 border border-gray-200">
               <div className="mb-6">
                 {strategy.icon}
               </div>
-              <h3 className="font-serif text-xl text-navy mb-4">{strategy.title}</h3>
+              <h3 className="font-display text-xl text-navy mb-4">{strategy.title}</h3>
               <p className="text-charcoal">{strategy.description}</p>
             </div>
           ))}

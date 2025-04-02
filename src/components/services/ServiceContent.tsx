@@ -45,7 +45,7 @@ const ServiceContent: React.FC<ServiceContentProps> = ({
           <div className="col-span-3 mondrian-light-blue"></div>
           <div className="col-span-6 mondrian-grid-item bg-white p-6 text-center">
             {title && (
-              <h2 className="reveal font-serif text-3xl text-black mb-3">
+              <h2 className="reveal font-display text-3xl text-black mb-3">
                 {title}
               </h2>
             )}

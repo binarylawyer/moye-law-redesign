@@ -38,7 +38,7 @@ const Approach = () => {
           
           {/* Title area */}
           <div className="col-span-6 mondrian-grid-item bg-white p-8">
-            <h2 className="reveal font-serif text-4xl md:text-5xl text-black mb-6 tracking-tight">
+            <h2 className="reveal font-display text-4xl md:text-5xl text-black mb-6 tracking-tight">
               Our Approach
             </h2>
             
@@ -97,7 +97,7 @@ const Approach = () => {
               <div className="w-1/3 mondrian-light-yellow"></div>
             </div>
             <div className="p-8">
-              <h3 className="font-serif text-2xl text-black mb-8">
+              <h3 className="font-display text-2xl text-black mb-8">
                 Traditional
               </h3>
               
@@ -127,7 +127,7 @@ const Approach = () => {
               <div className="w-1/4 mondrian-blue"></div>
             </div>
             <div className="p-8">
-              <h3 className="font-serif text-2xl text-black mb-8">
+              <h3 className="font-display text-2xl text-black mb-8">
                 Innovative
               </h3>
               

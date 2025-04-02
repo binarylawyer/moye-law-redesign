@@ -46,7 +46,7 @@ const RelatedResources: React.FC<RelatedResourcesProps> = ({ resources }) => {
               </div>
             </div>
             
-            <h3 className="font-serif text-lg mb-2 text-black">
+            <h3 className="font-display text-lg mb-2 text-black">
               {resource.title}
             </h3>
             

@@ -5,7 +5,7 @@ const DigitalAssetProcess: React.FC = () => {
   return (
     <section className="bg-white py-24">
       <div className="container mx-auto px-8">
-        <h2 className="font-serif text-3xl text-navy mb-12 text-center">Our Digital Asset Protection Process</h2>
+        <h2 className="font-display text-3xl text-navy mb-12 text-center">Our Digital Asset Protection Process</h2>
         
         <div className="relative">
           {/* Vertical line */}
@@ -16,7 +16,7 @@ const DigitalAssetProcess: React.FC = () => {
             {/* Step 1 */}
             <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="md:text-right md:pr-16">
-                <h3 className="font-serif text-xl text-navy mb-4">Digital Asset Inventory</h3>
+                <h3 className="font-display text-xl text-navy mb-4">Digital Asset Inventory</h3>
                 <p className="text-charcoal">We conduct a comprehensive inventory of all digital assets, their locations, access methods, and associated values.</p>
               </div>
               <div className="md:pl-16"></div>
@@ -27,7 +27,7 @@ const DigitalAssetProcess: React.FC = () => {
             {/* Step 2 */}
             <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="md:order-2 md:text-left">
-                <h3 className="font-serif text-xl text-navy mb-4 md:pl-16">Risk Assessment</h3>
+                <h3 className="font-display text-xl text-navy mb-4 md:pl-16">Risk Assessment</h3>
                 <p className="text-charcoal md:pl-16">We evaluate potential vulnerabilities and risks specific to each digital asset type and your personal situation.</p>
               </div>
               <div></div>
@@ -38,7 +38,7 @@ const DigitalAssetProcess: React.FC = () => {
             {/* Step 3 */}
             <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="md:text-right md:pr-16">
-                <h3 className="font-serif text-xl text-navy mb-4">Protection Strategy Development</h3>
+                <h3 className="font-display text-xl text-navy mb-4">Protection Strategy Development</h3>
                 <p className="text-charcoal">We create a customized protection strategy combining legal structures, technical protocols, and documentation systems.</p>
               </div>
               <div></div>
@@ -49,7 +49,7 @@ const DigitalAssetProcess: React.FC = () => {
             {/* Step 4 */}
             <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="md:order-2 md:text-left">
-                <h3 className="font-serif text-xl text-navy mb-4 md:pl-16">Implementation</h3>
+                <h3 className="font-display text-xl text-navy mb-4 md:pl-16">Implementation</h3>
                 <p className="text-charcoal md:pl-16">We assist with implementing all protection measures, including establishing legal entities, drafting documents, and coordinating with technical advisors.</p>
               </div>
               <div></div>
@@ -60,7 +60,7 @@ const DigitalAssetProcess: React.FC = () => {
             {/* Step 5 */}
             <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="md:text-right md:pr-16">
-                <h3 className="font-serif text-xl text-navy mb-4">Ongoing Monitoring & Updates</h3>
+                <h3 className="font-display text-xl text-navy mb-4">Ongoing Monitoring & Updates</h3>
                 <p className="text-charcoal">We provide regular reviews to ensure your protection strategy remains effective as regulations, technologies, and your holdings evolve.</p>
               </div>
               <div></div>

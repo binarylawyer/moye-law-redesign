@@ -206,7 +206,7 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
           elements.push(
             <h2 
               key={`h2-${i}`} 
-              className="text-3xl font-serif text-black mt-8 mb-4 font-bold"
+              className="text-3xl font-display text-black mt-8 mb-4 font-bold"
               dangerouslySetInnerHTML={{ __html: processInlineFormatting(heading) }}
             />
           );
@@ -215,7 +215,7 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
           elements.push(
             <h3 
               key={`h3-${i}`} 
-              className="text-2xl font-serif text-black mt-6 mb-3 font-bold"
+              className="text-2xl font-display text-black mt-6 mb-3 font-bold"
               dangerouslySetInnerHTML={{ __html: processInlineFormatting(heading) }}
             />
           );
@@ -224,7 +224,7 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
           elements.push(
             <h4 
               key={`h4-${i}`} 
-              className="text-xl font-serif text-black mt-5 mb-2 font-semibold"
+              className="text-xl font-display text-black mt-5 mb-2 font-semibold"
               dangerouslySetInnerHTML={{ __html: processInlineFormatting(heading) }}
             />
           );
@@ -330,7 +330,7 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
         <div className="max-w-5xl mx-auto">
           {/* Mondrian styled container with multi-colored borders */}
           <div className={`bg-white p-6 md:p-8 ${borders.top} ${borders.right} ${borders.bottom} ${borders.left}`}>
-            <div className="prose prose-base max-w-none prose-headings:font-serif prose-headings:text-black prose-p:text-black/80 prose-a:text-[#D6001C] prose-a:no-underline hover:prose-a:underline prose-ul:list-disc prose-ol:list-decimal">
+            <div className="prose prose-base max-w-none prose-headings:font-display prose-headings:text-navy prose-p:text-charcoal/80 prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-ul:list-disc prose-ol:list-decimal">
               <div className="markdown-content">
                 {renderContent()}
               </div>

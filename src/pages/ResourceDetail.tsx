@@ -116,7 +116,7 @@ const ResourceDetail = () => {
             <div className="py-8">
               <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="max-w-5xl mx-auto">
-                  <h2 className="font-serif text-3xl mb-6 text-black">Related Resources</h2>
+                  <h2 className="font-display text-3xl mb-6 text-black">Related Resources</h2>
                   <div className="mondrian-grid">
                     {relatedResources.map((relatedResource, i) => (
                       <div key={relatedResource.id} className={`col-span-12 md:col-span-4 p-4 ${i === 0 ? 'mondrian-light-blue' : i === 1 ? 'mondrian-light-yellow' : 'mondrian-white'}`}>

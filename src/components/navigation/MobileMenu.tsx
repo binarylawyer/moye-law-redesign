@@ -24,7 +24,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
       <nav className="flex flex-col space-y-6">
         <Link 
           to="/practice" 
-          className="font-serif text-2xl text-navy hover:text-gold transition-colors"
+          className="font-display text-2xl text-navy hover:text-gold transition-colors"
           onClick={() => setMobileMenuOpen(false)}
         >
           Practice
@@ -41,7 +41,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           </Link>
         ))}
         
-        <div className="font-serif text-2xl text-navy hover:text-gold transition-colors">
+        <div className="font-display text-2xl text-navy hover:text-gold transition-colors">
           Services
         </div>
         
@@ -58,7 +58,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         
         <Link 
           to="/about" 
-          className="font-serif text-2xl text-navy hover:text-gold transition-colors"
+          className="font-display text-2xl text-navy hover:text-gold transition-colors"
           onClick={() => setMobileMenuOpen(false)}
         >
           Our Firm
@@ -66,7 +66,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         
         <Link 
           to="/resources" 
-          className="font-serif text-2xl text-navy hover:text-gold transition-colors"
+          className="font-display text-2xl text-navy hover:text-gold transition-colors"
           onClick={() => setMobileMenuOpen(false)}
         >
           Resources
@@ -85,7 +85,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         
         <Link 
           to="/contact" 
-          className="font-serif text-2xl text-navy hover:text-gold transition-colors"
+          className="font-display text-2xl text-navy hover:text-gold transition-colors"
           onClick={() => setMobileMenuOpen(false)}
         >
           Contact

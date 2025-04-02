@@ -89,7 +89,7 @@ const PodcastItem = ({ podcast }: PodcastItemProps) => {
     <div className="bg-white mondrian-border p-6 relative">
       <div className="flex justify-between items-start mb-4">
         <div>
-          <h3 className="font-serif text-xl text-navy mb-2">{podcast.title}</h3>
+          <h3 className="font-display text-xl text-navy mb-2">{podcast.title}</h3>
           <p className="text-sm text-charcoal/70 mb-2">
             {new Date(podcast.date).toLocaleDateString('en-US', { 
               year: 'numeric', 

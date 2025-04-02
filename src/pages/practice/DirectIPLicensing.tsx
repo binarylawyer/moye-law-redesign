@@ -113,7 +113,7 @@ const DirectIPLicensing: React.FC = () => {
               
               {/* White content block */}
               <div className="bg-white border-4 border-black p-8 md:p-12 w-full md:w-2/3">
-                <h1 className="font-serif text-black text-4xl md:text-5xl lg:text-6xl mb-8">IP Licensing</h1>
+                <h1 className="font-display text-black text-4xl md:text-5xl lg:text-6xl mb-8">IP Licensing</h1>
                 <p className="text-xl text-black/80">
                   Our IP licensing practice helps businesses leverage their innovations, creative works, 
                   and brands through strategic licensing programs that generate revenue while maintaining 
@@ -130,7 +130,7 @@ const DirectIPLicensing: React.FC = () => {
             <div className="mondrian-grid mb-16">
               <div className="col-span-3 mondrian-yellow"></div>
               <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
-                <h2 className="font-serif text-black text-3xl mb-8">Our Principles</h2>
+                <h2 className="font-display text-black text-3xl mb-8">Our Principles</h2>
               </div>
               <div className="col-span-3 mondrian-white border-r-4 border-b-4 border-black"></div>
             </div>
@@ -140,12 +140,12 @@ const DirectIPLicensing: React.FC = () => {
                 <div key={index} className="flex flex-col md:flex-row">
                   {/* Number block with corresponding Mondrian color */}
                   <div className={`${principle.color} w-full md:w-48 flex-shrink-0 flex items-center justify-center p-8`}>
-                    <span className="font-serif text-white text-3xl font-bold">{principle.number}</span>
+                    <span className="font-display text-white text-3xl font-bold">{principle.number}</span>
                   </div>
                   
                   {/* Content block */}
                   <div className="bg-white p-6 border-4 border-black flex-grow">
-                    <h3 className="font-serif text-black text-2xl mb-4">{principle.title}</h3>
+                    <h3 className="font-display text-black text-2xl mb-4">{principle.title}</h3>
                     <p className="text-black/80 text-lg">{principle.description}</p>
                   </div>
                 </div>
@@ -160,7 +160,7 @@ const DirectIPLicensing: React.FC = () => {
             <div className="mondrian-grid mb-16">
               <div className="col-span-3 mondrian-white border-r-4 border-b-4 border-black"></div>
               <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
-                <h2 className="font-serif text-black text-3xl mb-8">Our Process</h2>
+                <h2 className="font-display text-black text-3xl mb-8">Our Process</h2>
               </div>
               <div className="col-span-3 mondrian-red"></div>
             </div>
@@ -169,10 +169,10 @@ const DirectIPLicensing: React.FC = () => {
               {/* Process step 1 */}
               <div className="flex flex-col md:flex-row">
                 <div className="mondrian-blue w-full md:w-48 flex-shrink-0 flex items-center justify-center p-8">
-                  <span className="font-serif text-white text-3xl font-bold">{process[0].number}</span>
+                  <span className="font-display text-white text-3xl font-bold">{process[0].number}</span>
                 </div>
                 <div className="bg-white p-6 border-4 border-black flex-grow">
-                  <h3 className="font-serif text-black text-2xl mb-4">{process[0].title}</h3>
+                  <h3 className="font-display text-black text-2xl mb-4">{process[0].title}</h3>
                   <p className="text-black/80 text-lg">{process[0].description}</p>
                 </div>
               </div>
@@ -180,10 +180,10 @@ const DirectIPLicensing: React.FC = () => {
               {/* Process step 2 */}
               <div className="flex flex-col md:flex-row-reverse">
                 <div className="mondrian-red w-full md:w-48 flex-shrink-0 flex items-center justify-center p-8">
-                  <span className="font-serif text-white text-3xl font-bold">{process[1].number}</span>
+                  <span className="font-display text-white text-3xl font-bold">{process[1].number}</span>
                 </div>
                 <div className="bg-white p-6 border-4 border-black flex-grow">
-                  <h3 className="font-serif text-black text-2xl mb-4">{process[1].title}</h3>
+                  <h3 className="font-display text-black text-2xl mb-4">{process[1].title}</h3>
                   <p className="text-black/80 text-lg">{process[1].description}</p>
                 </div>
               </div>
@@ -191,10 +191,10 @@ const DirectIPLicensing: React.FC = () => {
               {/* Process step 3 */}
               <div className="flex flex-col md:flex-row">
                 <div className="mondrian-yellow w-full md:w-48 flex-shrink-0 flex items-center justify-center p-8">
-                  <span className="font-serif text-white text-3xl font-bold">{process[2].number}</span>
+                  <span className="font-display text-white text-3xl font-bold">{process[2].number}</span>
                 </div>
                 <div className="bg-white p-6 border-4 border-black flex-grow">
-                  <h3 className="font-serif text-black text-2xl mb-4">{process[2].title}</h3>
+                  <h3 className="font-display text-black text-2xl mb-4">{process[2].title}</h3>
                   <p className="text-black/80 text-lg">{process[2].description}</p>
                 </div>
               </div>
@@ -202,10 +202,10 @@ const DirectIPLicensing: React.FC = () => {
               {/* Process step 4 with Mondrian decoration */}
               <div className="flex flex-col md:flex-row-reverse">
                 <div className="mondrian-blue w-full md:w-48 flex-shrink-0 flex items-center justify-center p-8">
-                  <span className="font-serif text-white text-3xl font-bold">{process[3].number}</span>
+                  <span className="font-display text-white text-3xl font-bold">{process[3].number}</span>
                 </div>
                 <div className="bg-white p-6 border-4 border-black flex-grow relative">
-                  <h3 className="font-serif text-black text-2xl mb-4">{process[3].title}</h3>
+                  <h3 className="font-display text-black text-2xl mb-4">{process[3].title}</h3>
                   <p className="text-black/80 text-lg">{process[3].description}</p>
                   
                   {/* Small Mondrian decoration in bottom right */}
@@ -247,7 +247,7 @@ const DirectIPLicensing: React.FC = () => {
                 <div className="bg-white w-full md:w-16 p-8 hidden md:block"></div>
                 
                 <div className="bg-white w-full md:flex-1 p-8 border-4 border-black">
-                  <h2 className="font-serif text-3xl mb-4">Maximize Your IP Value — Contact Us Today</h2>
+                  <h2 className="font-display text-3xl mb-4">Maximize Your IP Value — Contact Us Today</h2>
                   <p className="mb-6">Schedule a consultation to discuss your IP licensing needs and discover how our strategic approach can help you generate new revenue from your intellectual assets.</p>
                   
                   <div className="inline-block bg-white border-2 border-black px-8 py-3 font-medium">

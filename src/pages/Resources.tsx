@@ -55,7 +55,7 @@ const Resources: React.FC = () => {
             <div className="max-w-3xl mx-auto">
               <h1 
                 ref={el => elementsRef.current[0] = el}
-                className="reveal font-serif text-4xl md:text-5xl text-navy mb-8"
+                className="reveal font-display text-4xl md:text-5xl text-navy mb-8"
               >
                 Resources
               </h1>
@@ -76,7 +76,7 @@ const Resources: React.FC = () => {
             <div className="max-w-6xl mx-auto">
               <h2 
                 ref={el => elementsRef.current[2] = el}
-                className="reveal font-serif text-3xl text-navy mb-12"
+                className="reveal font-display text-3xl text-navy mb-12"
                 style={{ transitionDelay: '0.2s' }}
               >
                 Featured Resources
@@ -97,7 +97,7 @@ const Resources: React.FC = () => {
                         </span>
                         <span className="text-xs text-charcoal/60 ml-3">{resource.date}</span>
                       </div>
-                      <h3 className="font-serif text-xl text-navy mb-2">{resource.title}</h3>
+                      <h3 className="font-display text-xl text-navy mb-2">{resource.title}</h3>
                       <p className="text-charcoal/80 text-sm mb-4 line-clamp-2">{resource.description}</p>
                       <Link 
                         to={`/resources/${resource.slug}`}
@@ -124,7 +124,7 @@ const Resources: React.FC = () => {
                         Podcast
                       </span>
                     </div>
-                    <h3 className="font-serif text-2xl text-navy mb-2">Estate Planning Insights Podcast</h3>
+                    <h3 className="font-display text-2xl text-navy mb-2">Estate Planning Insights Podcast</h3>
                     <p className="text-charcoal/80 mb-4">
                       Listen to our AI-driven podcast series exploring complex estate planning topics in an accessible format.
                     </p>
@@ -149,7 +149,7 @@ const Resources: React.FC = () => {
             <div className="max-w-6xl mx-auto">
               <h2 
                 ref={el => elementsRef.current[7] = el}
-                className="reveal font-serif text-3xl text-navy mb-12"
+                className="reveal font-display text-3xl text-navy mb-12"
                 style={{ transitionDelay: '0.4s' }}
               >
                 Browse All Resources
@@ -191,7 +191,7 @@ const Resources: React.FC = () => {
                             </span>
                             <span className="text-xs text-charcoal/60 ml-3">{resource.date}</span>
                           </div>
-                          <h3 className="font-serif text-xl text-navy mb-2">{resource.title}</h3>
+                          <h3 className="font-display text-xl text-navy mb-2">{resource.title}</h3>
                           <p className="text-charcoal/80 text-sm mb-4 line-clamp-2">{resource.description}</p>
                           <Link 
                             to={`/resources/${resource.slug}`}
@@ -219,7 +219,7 @@ const Resources: React.FC = () => {
                             </span>
                             <span className="text-xs text-charcoal/60 ml-3">{resource.date}</span>
                           </div>
-                          <h3 className="font-serif text-xl text-navy mb-2">{resource.title}</h3>
+                          <h3 className="font-display text-xl text-navy mb-2">{resource.title}</h3>
                           <p className="text-charcoal/80 text-sm mb-4 line-clamp-2">{resource.description}</p>
                           <Link 
                             to={`/resources/${resource.slug}`}
@@ -247,7 +247,7 @@ const Resources: React.FC = () => {
                             </span>
                             <span className="text-xs text-charcoal/60 ml-3">{resource.date}</span>
                           </div>
-                          <h3 className="font-serif text-xl text-navy mb-2">{resource.title}</h3>
+                          <h3 className="font-display text-xl text-navy mb-2">{resource.title}</h3>
                           <p className="text-charcoal/80 text-sm mb-4 line-clamp-2">{resource.description}</p>
                           <Link 
                             to={`/resources/${resource.slug}`}
@@ -275,7 +275,7 @@ const Resources: React.FC = () => {
                             </span>
                             <span className="text-xs text-charcoal/60 ml-3">{resource.date}</span>
                           </div>
-                          <h3 className="font-serif text-xl text-navy mb-2">{resource.title}</h3>
+                          <h3 className="font-display text-xl text-navy mb-2">{resource.title}</h3>
                           <p className="text-charcoal/80 text-sm mb-4 line-clamp-2">{resource.description}</p>
                           <Link 
                             to={`/resources/${resource.slug}`}
@@ -303,7 +303,7 @@ const Resources: React.FC = () => {
                             </span>
                             <span className="text-xs text-charcoal/60 ml-3">{resource.date}</span>
                           </div>
-                          <h3 className="font-serif text-xl text-navy mb-2">{resource.title}</h3>
+                          <h3 className="font-display text-xl text-navy mb-2">{resource.title}</h3>
                           <p className="text-charcoal/80 text-sm mb-4 line-clamp-2">{resource.description}</p>
                           <Link 
                             to={`/resources/${resource.slug}`}
@@ -331,7 +331,7 @@ const Resources: React.FC = () => {
                             </span>
                             <span className="text-xs text-charcoal/60 ml-3">{resource.date}</span>
                           </div>
-                          <h3 className="font-serif text-xl text-navy mb-2">{resource.title}</h3>
+                          <h3 className="font-display text-xl text-navy mb-2">{resource.title}</h3>
                           <p className="text-charcoal/80 text-sm mb-4 line-clamp-2">{resource.description}</p>
                           <Link 
                             to={`/resources/${resource.slug}`}

@@ -168,7 +168,7 @@ const Article: React.FC = () => {
             <div className="mondrian-grid">
               <div className="col-span-3 mondrian-red"></div>
               <div className="col-span-6 mondrian-grid-item bg-white p-8">
-                <h1 className="font-serif text-black text-4xl md:text-5xl mb-8">Article Not Found</h1>
+                <h1 className="font-display text-black text-4xl md:text-5xl mb-8">Article Not Found</h1>
                 <p className="text-xl mb-8">The article you're looking for doesn't exist or has been moved.</p>
                 <Button asChild className="mondrian-button yellow">
                   <Link to="/articles">View All Articles</Link>
@@ -192,7 +192,7 @@ const Article: React.FC = () => {
           <div className="container mx-auto px-8">
             <div className="mondrian-grid mb-12">
               <div className="col-span-12 md:col-span-8 mondrian-grid-item bg-white p-8 border-4 border-black">
-                <h1 className="reveal font-serif text-black text-3xl md:text-4xl lg:text-5xl mb-6">{article.title}</h1>
+                <h1 className="reveal font-display text-black text-3xl md:text-4xl lg:text-5xl mb-6">{article.title}</h1>
                 <div className="flex flex-wrap gap-4 mb-6">
                   {article.tags.map((tag: string, index: number) => (
                     <span 
@@ -216,7 +216,7 @@ const Article: React.FC = () => {
                 </div>
               </div>
               <div className="col-span-12 md:col-span-4 mondrian-yellow border-t-4 border-r-4 border-b-4 border-black p-6">
-                <div className="text-xl font-serif mb-4">Article Category</div>
+                <div className="text-xl font-display mb-4">Article Category</div>
                 <div className="text-2xl font-medium">{article.category}</div>
               </div>
             </div>
@@ -237,7 +237,7 @@ const Article: React.FC = () => {
                 <div className="mondrian-grid mt-12">
                   <div className="col-span-3 mondrian-red"></div>
                   <div className="col-span-9 mondrian-grid-item bg-white p-8 border-4 border-black">
-                    <h3 className="text-2xl font-serif mb-4">About the Author</h3>
+                    <h3 className="text-2xl font-display mb-4">About the Author</h3>
                     <p className="mb-4">{article.author} is a specialist in {article.category} with over 15 years of experience. They have published numerous articles on the subject and regularly speak at industry conferences.</p>
                     <Button asChild className="mondrian-button black">
                       <Link to="/team">View Profile</Link>
@@ -259,7 +259,7 @@ const Article: React.FC = () => {
                 
                 {/* Related Content */}
                 <div className="mondrian-grid-item bg-white p-6 border-4 border-black mb-8">
-                  <h3 className="text-xl font-serif mb-4 pb-2 border-b-2 border-black">Related Content</h3>
+                  <h3 className="text-xl font-display mb-4 pb-2 border-b-2 border-black">Related Content</h3>
                   <ul className="space-y-4">
                     <li>
                       <Link to="/articles/first-amendment-digital-age" className="block group">
@@ -286,7 +286,7 @@ const Article: React.FC = () => {
                 
                 {/* Contact CTA */}
                 <div className="mondrian-blue border-4 border-black p-6">
-                  <h3 className="text-xl font-serif text-white mb-4">Have a Legal Question?</h3>
+                  <h3 className="text-xl font-display text-white mb-4">Have a Legal Question?</h3>
                   <p className="text-white/90 mb-4">Our team is ready to provide expert guidance on your specific situation.</p>
                   <Button asChild className="mondrian-button white">
                     <Link to="/contact">Contact Us</Link>

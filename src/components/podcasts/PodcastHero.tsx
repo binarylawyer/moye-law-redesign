@@ -6,7 +6,7 @@ const PodcastHero: React.FC = () => {
     <section className="py-24 md:py-32">
       <div className="container mx-auto px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="font-serif text-4xl md:text-5xl text-navy mb-8">
+          <h1 className="font-display text-4xl md:text-5xl text-navy mb-8">
             Moye Law Podcast Series
           </h1>
           <p className="text-lg text-charcoal/80 mb-12">

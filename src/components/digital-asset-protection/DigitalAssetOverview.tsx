@@ -7,7 +7,7 @@ const DigitalAssetOverview: React.FC = () => {
       <div className="container mx-auto px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
           <div>
-            <h2 className="font-serif text-3xl text-navy mb-6">Protecting Your Digital Wealth</h2>
+            <h2 className="font-display text-3xl text-navy mb-6">Protecting Your Digital Wealth</h2>
             <p className="text-lg mb-6">
               Digital assets represent an increasingly significant portion of personal and business wealth. Without proper protection, these assets face unique vulnerabilities including loss of access, regulatory uncertainty, and succession challenges.
             </p>
@@ -19,7 +19,7 @@ const DigitalAssetOverview: React.FC = () => {
             </p>
           </div>
           <div className="bg-gray-50 p-8">
-            <h3 className="font-serif text-xl text-navy mb-4">We Protect:</h3>
+            <h3 className="font-display text-xl text-navy mb-4">We Protect:</h3>
             <ul className="space-y-3">
               <li className="flex items-start">
                 <div className="h-6 w-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-1">

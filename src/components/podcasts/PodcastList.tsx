@@ -35,7 +35,7 @@ const PodcastList: React.FC<PodcastListProps> = ({ customPodcasts }) => {
       
       <div className="container mx-auto px-8 relative">
         <div className="mb-16">
-          <h2 className="font-serif text-3xl text-navy mb-8 relative z-20 bg-white inline-block pr-8">
+          <h2 className="font-display text-3xl text-navy mb-8 relative z-20 bg-white inline-block pr-8">
             Estate Planning Insights
           </h2>
           
@@ -66,7 +66,7 @@ const PodcastList: React.FC<PodcastListProps> = ({ customPodcasts }) => {
         <div className="relative">
           <div className="absolute w-[150vw] h-5 mondrian-red right-[-25vw] bottom-[45%] z-10"></div>
           
-          <h2 className="font-serif text-3xl text-navy mb-8 mt-16 relative z-20 bg-white inline-block pr-8">
+          <h2 className="font-display text-3xl text-navy mb-8 mt-16 relative z-20 bg-white inline-block pr-8">
             Intellectual Property Insights
           </h2>
           

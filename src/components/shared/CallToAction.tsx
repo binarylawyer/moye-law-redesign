@@ -11,7 +11,7 @@ const CallToAction = () => {
           <div className="col-span-2 mondrian-red"></div>
           <div className="col-span-1 mondrian-light-blue"></div>
           <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
-            <h2 className="reveal font-serif text-3xl md:text-4xl text-black mb-4">
+            <h2 className="reveal font-display text-3xl md:text-4xl text-black mb-4">
               Protect Your Future —<br />Contact Us Today
             </h2>
             <p className="reveal text-black/80 mb-6" style={{ transitionDelay: '0.1s' }}>
@@ -19,7 +19,7 @@ const CallToAction = () => {
             </p>
             <div className="flex justify-center mt-8">
               <div className="inline-block border-4 border-black p-3">
-                <span className="block font-serif text-xl">30 YEARS OF TRUSTED COUNSEL</span>
+                <span className="block font-display text-xl">30 YEARS OF TRUSTED COUNSEL</span>
               </div>
             </div>
             <div className="flex justify-center mt-6">

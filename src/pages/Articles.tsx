@@ -93,7 +93,7 @@ const Articles: React.FC = () => {
             <div className="mondrian-grid mb-16">
               <div className="col-span-3 mondrian-red"></div>
               <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
-                <h1 className="font-serif text-4xl md:text-5xl text-black mb-6">
+                <h1 className="font-display text-4xl md:text-5xl text-black mb-6">
                   Legal Insights & Articles
                 </h1>
                 <p className="text-black/80 text-lg md:text-xl">
@@ -116,7 +116,7 @@ const Articles: React.FC = () => {
                     {featuredArticles[0]?.date}
                   </span>
                 </div>
-                <h3 className="font-serif text-xl text-black mb-3">
+                <h3 className="font-display text-xl text-black mb-3">
                   {featuredArticles[0]?.title}
                 </h3>
                 <p className="text-black/80 text-sm mb-4 line-clamp-3">
@@ -144,7 +144,7 @@ const Articles: React.FC = () => {
                     {featuredArticles[1]?.date}
                   </span>
                 </div>
-                <h3 className="font-serif text-xl text-black mb-3">
+                <h3 className="font-display text-xl text-black mb-3">
                   {featuredArticles[1]?.title}
                 </h3>
                 <p className="text-black/80 text-sm mb-4 line-clamp-3">
@@ -172,7 +172,7 @@ const Articles: React.FC = () => {
                     {featuredArticles[2]?.date}
                   </span>
                 </div>
-                <h3 className="font-serif text-xl text-black mb-3">
+                <h3 className="font-display text-xl text-black mb-3">
                   {featuredArticles[2]?.title}
                 </h3>
                 <p className="text-black/80 text-sm mb-4 line-clamp-3">
@@ -268,7 +268,7 @@ const Articles: React.FC = () => {
                           {article.date}
                         </span>
                       </div>
-                      <h2 className="font-serif text-xl text-black mb-3 line-clamp-2">
+                      <h2 className="font-display text-xl text-black mb-3 line-clamp-2">
                         {article.title}
                       </h2>
                       <p className="text-black/80 text-sm mb-4 line-clamp-3">

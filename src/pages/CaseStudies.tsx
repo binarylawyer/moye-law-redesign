@@ -134,7 +134,7 @@ const CaseStudies: React.FC = () => {
                   <div className="bg-white mondrian-border p-8">
                     <div className="flex flex-col md:flex-row gap-8">
                       <div className="md:w-3/4">
-                        <h2 className="font-serif text-2xl text-black mb-3">{study.title}</h2>
+                        <h2 className="font-display text-2xl text-black mb-3">{study.title}</h2>
                         <p className="text-sm text-black/70 mb-6">Client: {study.clientType}</p>
                         
                         <div className="mb-6">
@@ -198,7 +198,7 @@ const CaseStudies: React.FC = () => {
                 <div className="absolute top-[-12px] left-[-12px] w-24 h-24 mondrian-light-blue mondrian-border z-0"></div>
                 <div className="absolute bottom-[-12px] right-[-12px] w-20 h-20 mondrian-light-yellow mondrian-border z-0"></div>
                 
-                <h2 className="font-serif text-3xl text-black mb-6 relative z-10">Your Success Story Begins Here</h2>
+                <h2 className="font-display text-3xl text-black mb-6 relative z-10">Your Success Story Begins Here</h2>
                 <p className="text-lg mb-8 max-w-2xl mx-auto text-black/80">
                   Every client journey begins with a conversation. Contact us to discuss how we can help you achieve your legal and financial goals.
                 </p>

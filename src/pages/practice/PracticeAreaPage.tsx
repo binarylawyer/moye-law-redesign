@@ -71,7 +71,7 @@ const PracticeAreaPage: React.FC = () => {
     return (
       <PracticeAreaTemplate areaName="Practice Area Not Found">
         <div className="py-12 text-center">
-          <h2 className="text-2xl font-serif mb-4">Error Loading Practice Area</h2>
+          <h2 className="text-2xl font-display mb-4">Error Loading Practice Area</h2>
           <p className="text-gray-600">{error}</p>
           <p className="text-sm text-gray-500 mt-4">Path: {location.pathname}</p>
         </div>

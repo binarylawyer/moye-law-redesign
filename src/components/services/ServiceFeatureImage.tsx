@@ -52,7 +52,7 @@ const ServiceFeatureImage: React.FC<ServiceFeatureImageProps> = ({
           {/* Left content area */}
           <div className="md:col-span-6 order-2 md:order-1">
             <div className="max-w-xl">
-              <h2 className="font-serif text-3xl text-black mb-4">{featureTitle}</h2>
+              <h2 className="font-display text-3xl text-black mb-4">{featureTitle}</h2>
               <p className="text-lg text-black/80 mb-6">{featureDescription}</p>
               
               <Link 

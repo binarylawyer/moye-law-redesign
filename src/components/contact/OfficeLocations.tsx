@@ -9,12 +9,12 @@ interface OfficeLocationsProps {
 const OfficeLocations: React.FC<OfficeLocationsProps> = ({ className }) => {
   return (
     <div className={className}>
-      <h2 className="font-serif text-2xl text-navy mb-6">Our Offices</h2>
+      <h2 className="font-display text-2xl text-navy mb-6">Our Offices</h2>
       
       <div className="space-y-6 mb-8">
         {/* New York Office */}
         <div className="p-6 bg-white rounded-lg border border-gray-100 shadow-sm">
-          <h3 className="font-serif text-lg text-navy mb-3">New York</h3>
+          <h3 className="font-display text-lg text-navy mb-3">New York</h3>
           <div className="space-y-4">
             <div className="flex items-start">
               <MapPin className="w-5 h-5 text-gold mr-3 mt-1" />
@@ -28,7 +28,7 @@ const OfficeLocations: React.FC<OfficeLocationsProps> = ({ className }) => {
         
         {/* Virginia Office */}
         <div className="p-6 bg-white rounded-lg border border-gray-100 shadow-sm">
-          <h3 className="font-serif text-lg text-navy mb-3">Virginia</h3>
+          <h3 className="font-display text-lg text-navy mb-3">Virginia</h3>
           <div className="space-y-4">
             <div className="flex items-start">
               <MapPin className="w-5 h-5 text-gold mr-3 mt-1" />
@@ -42,7 +42,7 @@ const OfficeLocations: React.FC<OfficeLocationsProps> = ({ className }) => {
       </div>
       
       {/* Direct Contact */}
-      <h3 className="font-serif text-lg text-navy mb-4">Direct Contact</h3>
+      <h3 className="font-display text-lg text-navy mb-4">Direct Contact</h3>
       <div className="space-y-4">
         <div className="flex items-center">
           <Phone className="w-5 h-5 text-gold mr-3" />

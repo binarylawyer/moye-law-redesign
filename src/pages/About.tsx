@@ -51,7 +51,7 @@ const About: React.FC = () => {
             <div className="mondrian-grid mb-12">
               <div className="col-span-3 mondrian-light-blue"></div>
               <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
-                <h1 className="font-serif text-4xl md:text-5xl text-black mb-6">
+                <h1 className="font-display text-4xl md:text-5xl text-black mb-6">
                   Our Firm
                 </h1>
                 <p className="text-black/80 text-lg md:text-xl">
@@ -67,7 +67,7 @@ const About: React.FC = () => {
         <section className="py-16 md:py-24 px-4 md:px-6 bg-white">
           <div className="container mx-auto">
             <div className="max-w-3xl mx-auto">
-              <h2 className="font-serif text-3xl md:text-4xl mb-10 text-navy text-center">Our Mission</h2>
+              <h2 className="font-display text-3xl md:text-4xl mb-10 text-navy text-center">Our Mission</h2>
               <p className="text-navy/70 text-xl mb-12 text-center">
                 To provide sophisticated legal services with the personal touch of a family firm, 
                 enhanced by innovative technology that improves efficiency without sacrificing quality.
@@ -77,9 +77,9 @@ const About: React.FC = () => {
               <div className="mt-16 grid md:grid-cols-2 gap-10">
                 <div className="bg-white p-10 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 group">
                   <div className="mb-6 w-12 h-12 flex items-center justify-center rounded-full bg-light-gray group-hover:bg-navy/5 transition-colors">
-                    <span className="text-navy font-serif text-2xl">01</span>
+                    <span className="text-navy font-display text-2xl">01</span>
                   </div>
-                  <h3 className="font-serif text-2xl mb-6 text-navy group-hover:text-gold transition-colors">Family Values</h3>
+                  <h3 className="font-display text-2xl mb-6 text-navy group-hover:text-gold transition-colors">Family Values</h3>
                   <p className="text-navy/70 text-lg">
                     As a family-run firm, we understand the importance of trust, personal attention, 
                     and values that guide decision-making across generations.
@@ -88,9 +88,9 @@ const About: React.FC = () => {
                 
                 <div className="bg-white p-10 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 group">
                   <div className="mb-6 w-12 h-12 flex items-center justify-center rounded-full bg-light-gray group-hover:bg-navy/5 transition-colors">
-                    <span className="text-navy font-serif text-2xl">02</span>
+                    <span className="text-navy font-display text-2xl">02</span>
                   </div>
-                  <h3 className="font-serif text-2xl mb-6 text-navy group-hover:text-gold transition-colors">Future-Forward</h3>
+                  <h3 className="font-display text-2xl mb-6 text-navy group-hover:text-gold transition-colors">Future-Forward</h3>
                   <p className="text-navy/70 text-lg">
                     We leverage technology to enhance our services, providing efficiency and accuracy 
                     while maintaining the personal relationships our clients value.
@@ -115,7 +115,7 @@ const About: React.FC = () => {
                     <AspectRatio ratio={3/4} className="bg-gradient-to-br from-navy/10 to-gold/10 rounded overflow-hidden">
                       <div className="h-full w-full flex flex-col items-center justify-center p-8 text-center">
                         <Scale className="h-12 w-12 text-navy mb-6" />
-                        <h4 className="font-serif text-2xl text-navy mb-3">Est. 2015</h4>
+                        <h4 className="font-display text-2xl text-navy mb-3">Est. 2015</h4>
                         <p className="text-navy/70">Founded on the principles of trust, innovation, and excellence</p>
                       </div>
                     </AspectRatio>
@@ -123,7 +123,7 @@ const About: React.FC = () => {
                 </div>
                 
                 <div className="md:w-2/3">
-                  <h2 className="font-serif text-3xl md:text-4xl mb-8 text-navy">Our Story</h2>
+                  <h2 className="font-display text-3xl md:text-4xl mb-8 text-navy">Our Story</h2>
                   <div className="space-y-6">
                     <p className="text-navy/70 text-lg">
                       Moye Law was founded with a vision to bridge the gap between traditional legal services and 
@@ -155,7 +155,7 @@ const About: React.FC = () => {
         <section className="py-16 md:py-24 px-4 md:px-6 bg-white">
           <div className="container mx-auto">
             <div className="max-w-5xl mx-auto">
-              <h2 className="font-serif text-3xl md:text-4xl mb-8 text-navy text-center">Client Perspectives</h2>
+              <h2 className="font-display text-3xl md:text-4xl mb-8 text-navy text-center">Client Perspectives</h2>
               <p className="text-navy/70 text-lg mb-12 text-center max-w-3xl mx-auto">
                 The trust our clients place in us is our greatest measure of success.
               </p>
@@ -173,7 +173,7 @@ const About: React.FC = () => {
                                   <path d="M13.5 36L0 18V0H18V18H9L13.5 36ZM40.5 36L27 18V0H45V18H36L40.5 36Z" fill="currentColor" fillOpacity="0.2"/>
                                 </svg>
                               </div>
-                              <blockquote className="text-xl md:text-2xl font-serif text-navy mb-8">
+                              <blockquote className="text-xl md:text-2xl font-display text-navy mb-8">
                                 "{testimonial.quote}"
                               </blockquote>
                               <footer className="flex items-center justify-center">
@@ -207,7 +207,7 @@ const About: React.FC = () => {
         <section className="py-16 md:py-24 px-4 md:px-6 bg-light-gray">
           <div className="container mx-auto">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="font-serif text-3xl md:text-4xl mb-8 text-navy">Our Team</h2>
+              <h2 className="font-display text-3xl md:text-4xl mb-8 text-navy">Our Team</h2>
               <p className="text-navy/70 text-lg mb-10">
                 Meet the professionals who make Moye Law's unique approach possible.
               </p>
@@ -225,7 +225,7 @@ const About: React.FC = () => {
         <section className="py-16 md:py-28 px-4 md:px-6 bg-white">
           <div className="container mx-auto">
             <div className="max-w-4xl mx-auto">
-              <h2 className="font-serif text-3xl md:text-4xl mb-12 text-navy text-center">Who We Serve</h2>
+              <h2 className="font-display text-3xl md:text-4xl mb-12 text-navy text-center">Who We Serve</h2>
               <p className="text-navy/70 text-xl mb-16 text-center">
                 Our practice is tailored to the unique needs of clients who value both personal attention and sophisticated legal strategies.
               </p>
@@ -235,7 +235,7 @@ const About: React.FC = () => {
                   <div className="mx-auto mb-6 w-16 h-16 flex items-center justify-center rounded-full bg-pastel-blue/30">
                     <Lightbulb className="h-8 w-8 text-navy" />
                   </div>
-                  <h3 className="font-serif text-2xl mb-4 text-navy">Innovators</h3>
+                  <h3 className="font-display text-2xl mb-4 text-navy">Innovators</h3>
                   <p className="text-navy/70 text-lg">
                     Tech founders and digital pioneers who need sophisticated IP protection and forward-thinking estate planning for digital assets.
                   </p>
@@ -245,7 +245,7 @@ const About: React.FC = () => {
                   <div className="mx-auto mb-6 w-16 h-16 flex items-center justify-center rounded-full bg-pastel-blue/30">
                     <Briefcase className="h-8 w-8 text-navy" />
                   </div>
-                  <h3 className="font-serif text-2xl mb-4 text-navy">Executives</h3>
+                  <h3 className="font-display text-2xl mb-4 text-navy">Executives</h3>
                   <p className="text-navy/70 text-lg">
                     Senior executives balancing career demands with family responsibilities, including care for aging parents and estate planning.
                   </p>
@@ -255,7 +255,7 @@ const About: React.FC = () => {
                   <div className="mx-auto mb-6 w-16 h-16 flex items-center justify-center rounded-full bg-pastel-blue/30">
                     <Shield className="h-8 w-8 text-navy" />
                   </div>
-                  <h3 className="font-serif text-2xl mb-4 text-navy">Legacy Builders</h3>
+                  <h3 className="font-display text-2xl mb-4 text-navy">Legacy Builders</h3>
                   <p className="text-navy/70 text-lg">
                     High-net-worth individuals focused on preserving family wealth and establishing governance structures for multi-generational assets.
                   </p>

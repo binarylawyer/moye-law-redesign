@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
           {/* Logo and copyright */}
           <div className="md:col-span-4">
-            <Link to="/" className="text-navy font-serif text-2xl hover:opacity-80 transition duration-200">
+            <Link to="/" className="text-navy font-display text-2xl hover:opacity-80 transition duration-200">
               MOYE LAW
             </Link>
             <p className="mt-4 text-base text-charcoal/60">
@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
           
           {/* Navigation */}
           <nav className="md:col-span-2">
-            <p className="font-medium text-navy mb-4 font-serif text-lg">Navigate</p>
+            <p className="font-medium text-navy mb-4 font-display text-lg">Navigate</p>
             <ul className="space-y-3">
               <li><Link to="/practice" className="text-base text-charcoal/70 hover:text-navy transition-colors">Practice</Link></li>
               <li><Link to="/about" className="text-base text-charcoal/70 hover:text-navy transition-colors">About</Link></li>
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
           
           {/* Practice Areas */}
           <nav className="md:col-span-3">
-            <p className="font-medium text-navy mb-4 font-serif text-lg">Practice Areas</p>
+            <p className="font-medium text-navy mb-4 font-display text-lg">Practice Areas</p>
             <ul className="space-y-3">
               <li><Link to="/practice/trusts-estates" className="text-base text-charcoal/70 hover:text-navy transition-colors">Trusts & Estates</Link></li>
               <li><Link to="/practice/elder-law" className="text-base text-charcoal/70 hover:text-navy transition-colors">Elder Law</Link></li>
@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
           
           {/* Contact */}
           <div className="md:col-span-3">
-            <p className="font-medium text-navy mb-4 font-serif text-lg">Contact</p>
+            <p className="font-medium text-navy mb-4 font-display text-lg">Contact</p>
             <p className="text-base text-charcoal/70 mb-2">New York</p>
             <p className="text-base text-charcoal/70 mb-4">Virginia</p>
             <p className="text-base text-charcoal/70">

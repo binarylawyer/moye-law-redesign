@@ -7,7 +7,7 @@ const DigitalAssetCTA: React.FC = () => {
   return (
     <section className="bg-navy py-24 text-white">
       <div className="container mx-auto px-8 text-center">
-        <h2 className="font-serif text-3xl mb-6">Protect Your Digital Legacy</h2>
+        <h2 className="font-display text-3xl mb-6">Protect Your Digital Legacy</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Digital assets require specialized protection strategies. Contact us to discuss how we can help secure your digital wealth.
         </p>

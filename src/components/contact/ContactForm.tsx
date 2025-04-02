@@ -95,7 +95,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
 
   return (
     <div className={`bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-100 ${className}`}>
-      <h2 className="font-serif text-2xl text-navy mb-6">Request a Consultation</h2>
+      <h2 className="font-display text-2xl text-navy mb-6">Request a Consultation</h2>
       
       {isSubmitted ? (
         <div className="text-center py-6">

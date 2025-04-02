@@ -54,7 +54,7 @@ const TeamMembers: React.FC = () => {
       {/* Featured Team Member */}
       {featuredMember && (
         <div className="mb-80">
-          <h2 className="font-serif text-4xl md:text-5xl mb-40 text-navy text-center">Leadership</h2>
+          <h2 className="font-display text-4xl md:text-5xl mb-40 text-navy text-center">Leadership</h2>
           <Card className="overflow-hidden border-none shadow-md bg-gradient-to-br from-pastel-blue/30 to-white">
             <div className="grid md:grid-cols-12 gap-40">
               <div className="md:col-span-4 p-40 flex justify-center items-start">
@@ -66,7 +66,7 @@ const TeamMembers: React.FC = () => {
                 </Avatar>
               </div>
               <div className="md:col-span-8 p-40 flex flex-col">
-                <h3 className="font-serif text-3xl text-navy mb-8">{featuredMember.name}</h3>
+                <h3 className="font-display text-3xl text-navy mb-8">{featuredMember.name}</h3>
                 <p className="text-ocean-blue text-xl mb-16">{featuredMember.title}</p>
                 <p className="text-charcoal/80 text-xl mb-24">
                   Christopher Moye founded Moye Law with a vision to bridge traditional legal services with innovative technology. With extensive experience in both Estate Planning and Intellectual Property, Christopher has built a practice that serves high-net-worth individuals across New York City and Westchester County. His unique approach combines the personal attention of a family firm with the forward-thinking solutions enabled by modern technology.
@@ -87,7 +87,7 @@ const TeamMembers: React.FC = () => {
 
       {/* Other Team Members */}
       <div className="mt-80">
-        <h2 className="font-serif text-4xl md:text-5xl mb-40 text-navy text-center">Team</h2>
+        <h2 className="font-display text-4xl md:text-5xl mb-40 text-navy text-center">Team</h2>
         <div className="grid md:grid-cols-2 gap-40">
           {otherMembers.map((member, index) => (
             <Card key={member.id} className={`overflow-hidden border-none shadow-md ${index % 2 === 0 ? 'bg-gradient-to-br from-pastel-green/30 to-white' : 'bg-gradient-to-br from-pastel-beige/30 to-white'}`}>
@@ -100,7 +100,7 @@ const TeamMembers: React.FC = () => {
                     </AvatarFallback>
                   </Avatar>
                   <div>
-                    <h3 className="font-serif text-2xl text-navy">{member.name}</h3>
+                    <h3 className="font-display text-2xl text-navy">{member.name}</h3>
                     <p className="text-ocean-blue text-lg">{member.title}</p>
                   </div>
                 </div>

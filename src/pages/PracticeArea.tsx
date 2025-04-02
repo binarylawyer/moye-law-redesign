@@ -64,7 +64,7 @@ const PracticeArea: React.FC = () => {
             <div className="mondrian-grid">
               <div className="col-span-3 mondrian-red"></div>
               <div className="col-span-6 mondrian-grid-item bg-white p-8">
-                <h1 className="font-serif text-black text-4xl md:text-5xl mb-8">Practice Area Not Found</h1>
+                <h1 className="font-display text-black text-4xl md:text-5xl mb-8">Practice Area Not Found</h1>
                 <p className="text-xl mb-8">The practice area you're looking for doesn't exist.</p>
                 <p className="text-md mb-8">Attempted to find: "{area}"</p>
                 <Button asChild className="mondrian-button yellow">
@@ -94,7 +94,7 @@ const PracticeArea: React.FC = () => {
                 practiceData.title.toLowerCase().charAt(0) <= 'p' ? 'mondrian-blue' : 'mondrian-yellow'
               }`}></div>
               <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
-                <h1 className="reveal font-serif text-black text-4xl md:text-5xl lg:text-6xl mb-8">{practiceData.title}</h1>
+                <h1 className="reveal font-display text-black text-4xl md:text-5xl lg:text-6xl mb-8">{practiceData.title}</h1>
                 <p className="reveal text-xl text-black/80 mx-auto">{practiceData.introduction}</p>
               </div>
               <div className="col-span-3 mondrian-white border-r-4 border-b-4 border-black"></div>
@@ -108,7 +108,7 @@ const PracticeArea: React.FC = () => {
             <div className="mondrian-grid mb-16">
               <div className="col-span-3 mondrian-white border-r-4 border-b-4 border-black"></div>
               <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
-                <h2 className="reveal font-serif text-black text-3xl mb-8">Our Principles</h2>
+                <h2 className="reveal font-display text-black text-3xl mb-8">Our Principles</h2>
               </div>
               <div className="col-span-3 mondrian-yellow"></div>
             </div>
@@ -121,7 +121,7 @@ const PracticeArea: React.FC = () => {
                     index % 3 === 0 ? 'mondrian-red' : 
                     index % 3 === 1 ? 'mondrian-blue' : 'mondrian-yellow'
                   }`}>
-                    <span className="font-serif text-white text-3xl font-bold">{index + 1}</span>
+                    <span className="font-display text-white text-3xl font-bold">{index + 1}</span>
                   </div>
                   
                   {/* Content block */}
@@ -129,7 +129,7 @@ const PracticeArea: React.FC = () => {
                     {/* Add Mondrian decoration to the first principle */}
                     {index === 0 && <MondrianDecoration position="left" variant={1} />}
                     
-                    <h3 className="font-serif text-black text-2xl mb-4">{principle.title}</h3>
+                    <h3 className="font-display text-black text-2xl mb-4">{principle.title}</h3>
                     <p className="text-black/80 text-lg">{principle.description}</p>
                     
                     {/* Add Mondrian decoration to the third principle on the right */}
@@ -147,7 +147,7 @@ const PracticeArea: React.FC = () => {
             <div className="mondrian-grid mb-16">
               <div className="col-span-3 mondrian-blue"></div>
               <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
-                <h2 className="reveal font-serif text-black text-3xl mb-8">Our Process</h2>
+                <h2 className="reveal font-display text-black text-3xl mb-8">Our Process</h2>
               </div>
               <div className="col-span-3 mondrian-white border-r-4 border-b-4 border-black"></div>
             </div>
@@ -164,13 +164,13 @@ const PracticeArea: React.FC = () => {
                   {index % 2 === 0 && (
                     <>
                       <div className="col-span-12 md:col-span-3 mondrian-red flex items-center justify-center p-8">
-                        <span className="font-serif text-white text-3xl">0{index + 1}</span>
+                        <span className="font-display text-white text-3xl">0{index + 1}</span>
                       </div>
                       <div className="col-span-12 md:col-span-9 mondrian-grid-item bg-white p-8">
                         {/* Add Mondrian decoration to the second step */}
                         {index === 1 && <MondrianDecoration position="right" variant={2} />}
                         
-                        <h3 className="font-serif text-black text-2xl mb-4">{step.title}</h3>
+                        <h3 className="font-display text-black text-2xl mb-4">{step.title}</h3>
                         <p className="text-black/80 text-lg">{step.description}</p>
                       </div>
                     </>
@@ -180,7 +180,7 @@ const PracticeArea: React.FC = () => {
                   {index % 2 === 1 && (
                     <>
                       <div className="col-span-12 md:col-span-9 mondrian-grid-item bg-white p-8">
-                        <h3 className="font-serif text-black text-2xl mb-4">{step.title}</h3>
+                        <h3 className="font-display text-black text-2xl mb-4">{step.title}</h3>
                         <p className="text-black/80 text-lg">{step.description}</p>
                         
                         {/* Add Mondrian decoration to the last step */}
@@ -189,7 +189,7 @@ const PracticeArea: React.FC = () => {
                         )}
                       </div>
                       <div className="col-span-12 md:col-span-3 mondrian-blue flex items-center justify-center p-8">
-                        <span className="font-serif text-white text-3xl">0{index + 1}</span>
+                        <span className="font-display text-white text-3xl">0{index + 1}</span>
                       </div>
                     </>
                   )}

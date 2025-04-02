@@ -68,7 +68,7 @@ const PracticeAreas = () => {
       
       <div className="container mx-auto px-8 max-w-7xl relative py-16">
         <div className="max-w-2xl mx-auto text-center mb-16">
-          <h2 className="reveal font-serif text-4xl md:text-5xl text-black mb-6 tracking-tight relative inline-block">
+          <h2 className="reveal font-display text-4xl md:text-5xl text-black mb-6 tracking-tight relative inline-block">
             Our Practice Areas
             <div className="absolute -bottom-3 left-0 right-0 h-1 bg-[#D6001C]"></div>
           </h2>
@@ -91,7 +91,7 @@ const PracticeAreas = () => {
           
           {/* Estate Planning - large white block */}
           <div className="col-span-5 mondrian-grid-item bg-white p-6">
-            <h3 className="font-serif text-3xl text-black mb-3">
+            <h3 className="font-display text-3xl text-black mb-3">
               {practiceAreas[0].title}
             </h3>
             <p className="text-black/80 mb-5">
@@ -110,7 +110,7 @@ const PracticeAreas = () => {
           
           {/* Elder Law */}
           <div className="col-span-5 mondrian-grid-item bg-white p-6">
-            <h3 className="font-serif text-2xl text-black mb-3">
+            <h3 className="font-display text-2xl text-black mb-3">
               {practiceAreas[1].title}
             </h3>
             <p className="text-black/80 mb-5">
@@ -129,7 +129,7 @@ const PracticeAreas = () => {
           
           {/* Probate */}
           <div className="col-span-4 mondrian-grid-item bg-white p-6">
-            <h3 className="font-serif text-2xl text-black mb-3">
+            <h3 className="font-display text-2xl text-black mb-3">
               {practiceAreas[2].title}
             </h3>
             <p className="text-black/80 mb-5">
@@ -145,7 +145,7 @@ const PracticeAreas = () => {
           
           {/* Art Law - large unit */}
           <div className="col-span-8 mondrian-grid-item bg-white p-6">
-            <h3 className="font-serif text-3xl text-black mb-3">
+            <h3 className="font-display text-3xl text-black mb-3">
               {practiceAreas[4].title}
             </h3>
             <p className="text-black/80 mb-5">
@@ -161,7 +161,7 @@ const PracticeAreas = () => {
           
           {/* IP and Tech Law - bottom row */}
           <div className="col-span-6 mondrian-grid-item bg-white p-6">
-            <h3 className="font-serif text-2xl text-black mb-3">
+            <h3 className="font-display text-2xl text-black mb-3">
               {practiceAreas[3].title}
             </h3>
             <p className="text-black/80 mb-5">
@@ -178,7 +178,7 @@ const PracticeAreas = () => {
           <div className="col-span-2 mondrian-red mondrian-grid-item"></div>
           
           <div className="col-span-4 mondrian-grid-item bg-white p-6">
-            <h3 className="font-serif text-2xl text-black mb-3">
+            <h3 className="font-display text-2xl text-black mb-3">
               {practiceAreas[5].title}
             </h3>
             <p className="text-black/80 mb-5">

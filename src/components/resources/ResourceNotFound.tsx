@@ -11,7 +11,7 @@ const ResourceNotFound: React.FC = () => {
       <main className="pt-32 bg-white">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-serif text-3xl text-navy mb-4">Resource Not Found</h1>
+            <h1 className="font-display text-3xl text-navy mb-4">Resource Not Found</h1>
             <p className="text-charcoal/80 mb-6">The resource you're looking for doesn't exist or has been moved.</p>
             <Link 
               to="/resources"

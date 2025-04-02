@@ -91,7 +91,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 md:px-12 flex justify-between items-center h-full relative">
         <Link 
           to="/" 
-          className="font-serif text-xl hover:opacity-80 transition duration-200 z-10 text-black"
+          className="font-display text-xl hover:opacity-80 transition duration-200 z-10 text-black"
         >
           <span className="font-bold text-2xl">MOYE</span> <span className="text-lg">LAW</span>
         </Link>

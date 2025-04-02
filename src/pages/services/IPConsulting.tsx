@@ -98,7 +98,7 @@ const IPConsulting: React.FC = () => {
             </p>
           </div>
           <div className="bg-gray-50 p-6 mondrian-border">
-            <h3 className="font-serif text-xl text-black mb-4">Our Expertise Covers:</h3>
+            <h3 className="font-display text-xl text-black mb-4">Our Expertise Covers:</h3>
             <ul className="space-y-3">
               <li className="flex items-start">
                 <div className="h-6 w-6 mondrian-red flex items-center justify-center mr-3 mt-1">
@@ -160,7 +160,7 @@ const IPConsulting: React.FC = () => {
               <div className="mb-6">
                 {service.icon}
               </div>
-              <h3 className="font-serif text-xl text-black mb-4">{service.title}</h3>
+              <h3 className="font-display text-xl text-black mb-4">{service.title}</h3>
               <p className="text-black/80">{service.description}</p>
             </div>
           ))}

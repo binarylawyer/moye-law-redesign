@@ -46,7 +46,7 @@ const PracticeAreas: React.FC = () => {
             <div className="mondrian-grid mb-16">
               <div className="col-span-3 mondrian-blue"></div>
               <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
-                <h1 className="reveal font-serif text-black text-4xl md:text-5xl lg:text-6xl mb-8">Practice Areas</h1>
+                <h1 className="reveal font-display text-black text-4xl md:text-5xl lg:text-6xl mb-8">Practice Areas</h1>
                 
                 <div className="relative">
                   {/* Add subtle Mondrian decoration to the left of the hero description */}
@@ -127,7 +127,7 @@ const PracticeAreas: React.FC = () => {
                         <div className="bg-white h-full border-4 border-black hover:border-black/70 transition-all duration-300">
                           <div className={`h-32 ${colorClass}`}></div>
                           <div className="p-8">
-                            <h2 className="font-serif text-black text-2xl mb-4 group-hover:text-black/80 transition-colors">{area.title}</h2>
+                            <h2 className="font-display text-black text-2xl mb-4 group-hover:text-black/80 transition-colors">{area.title}</h2>
                             <p className="text-black/70 mb-4">{area.shortDescription}</p>
                             <div className="text-sm font-medium uppercase tracking-wider mt-auto opacity-70 group-hover:opacity-100 transition-opacity">
                               Learn more →

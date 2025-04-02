@@ -34,7 +34,7 @@ const EntertainmentServices: React.FC = () => {
           <MondrianDecoration position="left" variant={1} />
         </div>
         
-        <h2 className="font-serif text-3xl text-navy mb-12 text-center relative">
+        <h2 className="font-display text-3xl text-navy mb-12 text-center relative">
           Entertainment Industry Focus
         </h2>
         
@@ -49,7 +49,7 @@ const EntertainmentServices: React.FC = () => {
               <div className="mb-6">
                 {service.icon}
               </div>
-              <h3 className="font-serif text-xl text-navy mb-4">{service.title}</h3>
+              <h3 className="font-display text-xl text-navy mb-4">{service.title}</h3>
               <p className="text-charcoal">{service.description}</p>
               
               {/* Add Mondrian decoration to the last service item */}

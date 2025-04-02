@@ -9,7 +9,7 @@ interface PrivacyMessageProps {
 const PrivacyMessage: React.FC<PrivacyMessageProps> = ({ className }) => {
   return (
     <div className={`text-center ${className}`}>
-      <h2 className="font-serif text-2xl text-navy mb-4">Our Commitment to Privacy</h2>
+      <h2 className="font-display text-2xl text-navy mb-4">Our Commitment to Privacy</h2>
       <p className="text-charcoal/80 mb-6">
         At Moye Law, we understand the sensitive nature of legal matters. All consultations and communications are protected by attorney-client privilege and held in the strictest confidence.
       </p>

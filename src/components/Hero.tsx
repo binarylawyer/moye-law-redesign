@@ -92,7 +92,7 @@ const Hero = () => {
       <div className="absolute inset-0 flex items-center">
         <div className="container mx-auto px-8">
           <div className="max-w-lg">
-            <h1 className="font-serif text-4xl md:text-5xl text-white font-light mb-4 reveal">
+            <h1 className="font-display text-4xl md:text-5xl text-white font-light mb-4 reveal">
               Mondrian-Inspired <span className="text-[#FFD500]">Legal Excellence</span>
             </h1>
             

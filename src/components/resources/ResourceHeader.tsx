@@ -40,7 +40,7 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = ({ resource }) => {
 
             {/* Title block */}
             <div className="col-span-9 bg-white border-l-4 border-black p-4 md:p-6">
-              <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl text-black">
+              <h1 className="font-display text-3xl md:text-4xl lg:text-5xl text-black">
                 {resource.title}
               </h1>
             </div>

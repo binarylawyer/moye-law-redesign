@@ -5,7 +5,7 @@ const EmergingTechProcess: React.FC = () => {
   return (
     <section className="bg-white py-24">
       <div className="container mx-auto px-8">
-        <h2 className="font-serif text-3xl text-navy mb-12 text-center">Our Approach</h2>
+        <h2 className="font-display text-3xl text-navy mb-12 text-center">Our Approach</h2>
         
         <div className="relative">
           {/* Vertical line */}
@@ -16,7 +16,7 @@ const EmergingTechProcess: React.FC = () => {
             {/* Step 1 */}
             <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="md:text-right md:pr-16">
-                <h3 className="font-serif text-xl text-navy mb-4">Technology Assessment</h3>
+                <h3 className="font-display text-xl text-navy mb-4">Technology Assessment</h3>
                 <p className="text-charcoal">We analyze the technology and its potential legal implications, identifying key areas of risk and opportunity.</p>
               </div>
               <div></div>
@@ -27,7 +27,7 @@ const EmergingTechProcess: React.FC = () => {
             {/* Step 2 */}
             <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="md:order-2 md:text-left md:pl-16">
-                <h3 className="font-serif text-xl text-navy mb-4">Strategy Development</h3>
+                <h3 className="font-display text-xl text-navy mb-4">Strategy Development</h3>
                 <p className="text-charcoal">We develop a customized legal strategy aligned with your business objectives, addressing regulatory compliance, intellectual property protection, and risk management.</p>
               </div>
               <div></div>
@@ -38,7 +38,7 @@ const EmergingTechProcess: React.FC = () => {
             {/* Step 3 */}
             <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="md:text-right md:pr-16">
-                <h3 className="font-serif text-xl text-navy mb-4">Implementation</h3>
+                <h3 className="font-display text-xl text-navy mb-4">Implementation</h3>
                 <p className="text-charcoal">We assist with implementing the legal strategy, including drafting contracts, developing policies, and providing training to your team.</p>
               </div>
               <div></div>
@@ -49,7 +49,7 @@ const EmergingTechProcess: React.FC = () => {
             {/* Step 4 */}
             <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="md:order-2 md:text-left md:pl-16">
-                <h3 className="font-serif text-xl text-navy mb-4">Ongoing Support</h3>
+                <h3 className="font-display text-xl text-navy mb-4">Ongoing Support</h3>
                 <p className="text-charcoal">We provide ongoing legal support to help you navigate the evolving legal landscape and address new challenges as they arise.</p>
               </div>
               <div></div>

@@ -7,7 +7,7 @@ const EmergingTechCTA: React.FC = () => {
   return (
     <section className="bg-navy py-24 text-white">
       <div className="container mx-auto px-8 text-center">
-        <h2 className="font-serif text-3xl mb-6">Innovate with Confidence</h2>
+        <h2 className="font-display text-3xl mb-6">Innovate with Confidence</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Navigate the legal complexities of emerging technologies with our expert guidance. Contact us to discuss your legal needs.
         </p>

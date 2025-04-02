@@ -111,7 +111,7 @@ const EntertainmentLaw: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {entertainmentServices.map((service, idx) => (
             <div key={idx} className="mondrian-border p-6 bg-white">
-              <h3 className="font-serif text-xl text-black mb-4">{service.title}</h3>
+              <h3 className="font-display text-xl text-black mb-4">{service.title}</h3>
               <p className="text-black/80">{service.description}</p>
             </div>
           ))}

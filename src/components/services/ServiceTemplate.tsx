@@ -101,7 +101,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
             
             {/* Content in white block with Mondrian border */}
             <div className="col-span-6 mondrian-grid-item bg-white p-6 text-center">
-              <h1 className="reveal font-serif text-black text-4xl md:text-5xl mb-6 !opacity-100">
+              <h1 className="reveal font-display text-black text-4xl md:text-5xl mb-6 !opacity-100">
                 {serviceInfo.title}
               </h1>
               <p className="reveal text-xl text-black/80 mx-auto !opacity-100">

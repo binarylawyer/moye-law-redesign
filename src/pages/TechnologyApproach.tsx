@@ -46,7 +46,7 @@ const TechnologyPlatform: React.FC = () => {
             <div className="max-w-5xl mx-auto">
               <h2 
                 ref={el => elementsRef.current[2] = el}
-                className="reveal font-serif text-3xl text-navy mb-6 text-center"
+                className="reveal font-display text-3xl text-navy mb-6 text-center"
                 style={{ transitionDelay: '0.2s' }}
               >
                 Advanced AI & ML Capabilities
@@ -71,7 +71,7 @@ const TechnologyPlatform: React.FC = () => {
                       <Brain className="h-8 w-8 text-navy" />
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl text-navy mb-3">Neural Document Analysis</h3>
+                      <h3 className="font-display text-xl text-navy mb-3">Neural Document Analysis</h3>
                       <p className="text-charcoal/80 mb-3">
                         Our advanced neural networks can analyze thousands of legal documents in minutes, identifying patterns, 
                         risks, and opportunities that human review might miss.
@@ -94,7 +94,7 @@ const TechnologyPlatform: React.FC = () => {
                       <MicrochipIcon className="h-8 w-8 text-navy" />
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl text-navy mb-3">Predictive Legal Analytics</h3>
+                      <h3 className="font-display text-xl text-navy mb-3">Predictive Legal Analytics</h3>
                       <p className="text-charcoal/80 mb-3">
                         Our proprietary machine learning models analyze historical legal outcomes to forecast case scenarios, 
                         allowing for proactive strategy development rather than reactive responses.
@@ -116,7 +116,7 @@ const TechnologyPlatform: React.FC = () => {
                       <Zap className="h-8 w-8 text-navy" />
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl text-navy mb-3">Intelligent Document Generation</h3>
+                      <h3 className="font-display text-xl text-navy mb-3">Intelligent Document Generation</h3>
                       <p className="text-charcoal/80 mb-3">
                         Beyond simple templates, our AI system generates sophisticated legal documents that adapt to complex scenarios 
                         while maintaining precision and compliance with the latest legal standards.
@@ -138,7 +138,7 @@ const TechnologyPlatform: React.FC = () => {
                       <Database className="h-8 w-8 text-navy" />
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl text-navy mb-3">Advanced Digital Asset Protection</h3>
+                      <h3 className="font-display text-xl text-navy mb-3">Advanced Digital Asset Protection</h3>
                       <p className="text-charcoal/80 mb-3">
                         Our platform incorporates specialized algorithms for tracking and managing complex digital assets, from 
                         cryptocurrencies to NFTs and emerging tokenized assets.
@@ -166,7 +166,7 @@ const TechnologyPlatform: React.FC = () => {
                 <div className="bg-navy/10 p-5 rounded-full inline-flex mb-6">
                   <ShieldCheck className="h-10 w-10 text-navy" />
                 </div>
-                <h2 className="font-serif text-3xl text-navy mb-4">DoD-Level Security Infrastructure</h2>
+                <h2 className="font-display text-3xl text-navy mb-4">DoD-Level Security Infrastructure</h2>
                 <p className="text-charcoal/80 max-w-3xl mx-auto">
                   Your confidential information deserves the highest level of protection. Our technology platform implements 
                   security protocols that meet or exceed Department of Defense standards, ensuring your sensitive data 
@@ -180,7 +180,7 @@ const TechnologyPlatform: React.FC = () => {
                   className="reveal bg-white p-8 rounded-lg shadow-sm border border-navy/10"
                   style={{ transitionDelay: '0.8s' }}
                 >
-                  <h3 className="font-serif text-2xl text-navy mb-4 flex items-center">
+                  <h3 className="font-display text-2xl text-navy mb-4 flex items-center">
                     <Lock className="h-6 w-6 mr-3 text-gold" />
                     Data-at-Rest Protection
                   </h3>
@@ -209,7 +209,7 @@ const TechnologyPlatform: React.FC = () => {
                   className="reveal bg-white p-8 rounded-lg shadow-sm border border-navy/10"
                   style={{ transitionDelay: '0.9s' }}
                 >
-                  <h3 className="font-serif text-2xl text-navy mb-4 flex items-center">
+                  <h3 className="font-display text-2xl text-navy mb-4 flex items-center">
                     <Shield className="h-6 w-6 mr-3 text-gold" />
                     Data-in-Transit Protection
                   </h3>
@@ -239,7 +239,7 @@ const TechnologyPlatform: React.FC = () => {
                 className="reveal mx-auto max-w-3xl bg-light-gray p-8 rounded-lg border border-navy/10"
                 style={{ transitionDelay: '1.0s' }}
               >
-                <h3 className="font-serif text-xl text-navy mb-4 text-center">Compliance & Certifications</h3>
+                <h3 className="font-display text-xl text-navy mb-4 text-center">Compliance & Certifications</h3>
                 <p className="text-charcoal/80 mb-6 text-center">
                   Our technology infrastructure meets stringent industry standards and regulatory requirements:
                 </p>
@@ -263,7 +263,7 @@ const TechnologyPlatform: React.FC = () => {
                 className="reveal text-center mb-12"
                 style={{ transitionDelay: '1.1s' }}
               >
-                <h2 className="font-serif text-3xl text-navy mb-6">Technology Enhanced by Human Expertise</h2>
+                <h2 className="font-display text-3xl text-navy mb-6">Technology Enhanced by Human Expertise</h2>
                 <p className="text-charcoal/80">
                   While our technology platform provides powerful capabilities, we believe the true value lies in how it amplifies the expertise 
                   of our attorneys rather than replacing their judgment and insight.
@@ -278,10 +278,10 @@ const TechnologyPlatform: React.FC = () => {
                 <div className="space-y-6">
                   <div className="flex items-start">
                     <div className="bg-gold/20 p-3 rounded-lg mr-4 flex-shrink-0">
-                      <span className="text-navy font-serif text-lg">01</span>
+                      <span className="text-navy font-display text-lg">01</span>
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl text-navy mb-2">Augmented Intelligence</h3>
+                      <h3 className="font-display text-xl text-navy mb-2">Augmented Intelligence</h3>
                       <p className="text-charcoal/80">
                         Our technology doesn\'t make decisions—it provides our attorneys with comprehensive insights that enhance their 
                         expertise and judgment, allowing them to focus on strategic thinking rather than routine tasks.
@@ -291,10 +291,10 @@ const TechnologyPlatform: React.FC = () => {
                   
                   <div className="flex items-start">
                     <div className="bg-gold/20 p-3 rounded-lg mr-4 flex-shrink-0">
-                      <span className="text-navy font-serif text-lg">02</span>
+                      <span className="text-navy font-display text-lg">02</span>
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl text-navy mb-2">Seamless Integration</h3>
+                      <h3 className="font-display text-xl text-navy mb-2">Seamless Integration</h3>
                       <p className="text-charcoal/80">
                         Our platform integrates with our attorneys' workflows, providing real-time insights during client meetings 
                         and enabling them to respond to complex questions with data-backed precision.
@@ -304,10 +304,10 @@ const TechnologyPlatform: React.FC = () => {
                   
                   <div className="flex items-start">
                     <div className="bg-gold/20 p-3 rounded-lg mr-4 flex-shrink-0">
-                      <span className="text-navy font-serif text-lg">03</span>
+                      <span className="text-navy font-display text-lg">03</span>
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl text-navy mb-2">Continuous Learning</h3>
+                      <h3 className="font-display text-xl text-navy mb-2">Continuous Learning</h3>
                       <p className="text-charcoal/80">
                         Our systems continuously learn from new legal developments and case outcomes, ensuring our attorneys always 
                         have access to the most current legal knowledge and precedents.
@@ -331,7 +331,7 @@ const TechnologyPlatform: React.FC = () => {
               <div className="bg-navy/10 p-4 rounded-full inline-flex mb-6">
                 <Code className="h-8 w-8 text-navy" />
               </div>
-              <h2 className="font-serif text-3xl text-navy mb-6">Innovation Pipeline</h2>
+              <h2 className="font-display text-3xl text-navy mb-6">Innovation Pipeline</h2>
               <p className="text-charcoal/80 mb-6">
                 Our dedicated technology team continually evaluates emerging technologies to enhance our platform capabilities. 
                 We maintain strategic partnerships with leading research institutions and legal technology innovators to 
