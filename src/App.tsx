@@ -21,8 +21,6 @@ import FAQ from "./pages/FAQ";
 import HowWeWork from "./pages/HowWeWork";
 import TechnologyPlatform from "./pages/TechnologyApproach";
 import CaseStudies from "./pages/CaseStudies";
-import PracticeAreaPage from "./pages/practice/PracticeAreaPage";
-import TestComponent from "./pages/practice/TestComponent";
 import Podcasts from "./pages/Podcasts";
 import ExperienceTheDifference from "./pages/ExperienceTheDifference";
 import FloatingConsultationButton from "./components/FloatingConsultationButton";
@@ -35,35 +33,14 @@ import LicensingService from "./pages/services/Licensing";
 import EntertainmentLawService from "./pages/services/EntertainmentLaw";
 import EmergingTechService from "./pages/services/EmergingTech";
 
-// Import specific practice pages for debugging
-// import IPConsulting from "./pages/practice/IPConsulting";
-// import Licensing from "./pages/practice/Licensing";
-// import SoftwareLicensing from "./pages/practice/SoftwareLicensing";
-import DirectElderLaw from "./pages/practice/DirectElderLaw";
-import DirectSoftwareLicensing from "./pages/practice/DirectSoftwareLicensing";
-import DirectIPLicensing from "./pages/practice/DirectIPLicensing";
-import DirectEntertainmentLaw from "./pages/practice/DirectEntertainmentLaw";
-
-// Import the new direct components
-import DirectDigitalAssetProtection from "./pages/practice/DirectDigitalAssetProtection";
-import DirectIPConsulting from "./pages/practice/DirectIPConsulting";
-import DirectEmergingTech from "./pages/practice/DirectEmergingTech";
-import DirectIntellectualProperty from "./pages/practice/DirectIntellectualProperty";
-import DirectIPAssetProtection from "./pages/practice/DirectIPAssetProtection";
-import DirectRealEstate from "./pages/practice/DirectRealEstate";
-import DirectTrustsEstates from "./pages/practice/DirectTrustsEstates";
-
-// Make sure these imports are at the top of the file
-import EmergingTech from "./pages/practice/EmergingTech";
-import IPLicensing from "./pages/practice/IPLicensing";
-
-// Import the refactored practice page
-import IPLicensingRefactored from "./pages/practice/IPLicensingRefactored";
-import TrustsEstatesRefactored from "./pages/practice/TrustsEstatesRefactored";
-import ElderLawRefactored from "./pages/practice/ElderLawRefactored";
-import IPAssetProtectionRefactored from "./pages/practice/IPAssetProtectionRefactored";
-import RealEstateRefactored from "./pages/practice/RealEstateRefactored";
-import EmergingTechRefactored from "./pages/practice/EmergingTechRefactored";
+// Import the active practice area components
+import IPLicensing from "./pages/practice/active/IPLicensing";
+import TrustsEstates from "./pages/practice/active/TrustsEstates";
+import ElderLaw from "./pages/practice/active/ElderLaw";
+import IPAssetProtection from "./pages/practice/active/IPAssetProtection";
+import RealEstate from "./pages/practice/active/RealEstate";
+import EmergingTech from "./pages/practice/active/EmergingTech";
+import EntertainmentLaw from "./pages/practice/active/EntertainmentLaw";
 
 // Scroll to top component
 const ScrollToTop = () => {
@@ -97,77 +74,46 @@ const AppRoutes = () => {
           </PageErrorBoundary>
         } />
         
-        {/* Test Route */}
-        <Route path="/practice/test" element={
-          <PageErrorBoundary pageName="Practice Area Test">
-            <TestComponent />
-          </PageErrorBoundary>
-        } />
-        
-        {/* Explicit routes for problematic practice areas */}
+        {/* Explicit routes for practice areas */}
         <Route path="/practice/ip-licensing" element={
           <PageErrorBoundary pageName="IP Licensing">
-            <IPLicensingRefactored />
-          </PageErrorBoundary>
-        } />
-        
-        <Route path="/practice/digital-asset-protection" element={
-          <PageErrorBoundary pageName="Digital Asset Protection">
-            <DirectDigitalAssetProtection />
-          </PageErrorBoundary>
-        } />
-        
-        <Route path="/practice/ip-consulting" element={
-          <PageErrorBoundary pageName="IP Consulting">
-            <DirectIPConsulting />
-          </PageErrorBoundary>
-        } />
-        
-        <Route path="/practice/software-licensing" element={
-          <PageErrorBoundary pageName="Software Licensing">
-            <DirectSoftwareLicensing />
+            <IPLicensing />
           </PageErrorBoundary>
         } />
         
         <Route path="/practice/elder-law" element={
           <PageErrorBoundary pageName="Elder Law">
-            <ElderLawRefactored />
+            <ElderLaw />
           </PageErrorBoundary>
         } />
         
         <Route path="/practice/entertainment-law" element={
           <PageErrorBoundary pageName="Entertainment Law">
-            <DirectEntertainmentLaw />
+            <EntertainmentLaw />
           </PageErrorBoundary>
         } />
         
         <Route path="/practice/emerging-tech" element={
           <PageErrorBoundary pageName="Emerging Technology Law">
-            <EmergingTechRefactored />
-          </PageErrorBoundary>
-        } />
-        
-        <Route path="/practice/intellectual-property" element={
-          <PageErrorBoundary pageName="Intellectual Property">
-            <DirectIntellectualProperty />
+            <EmergingTech />
           </PageErrorBoundary>
         } />
         
         <Route path="/practice/ip-asset-protection" element={
           <PageErrorBoundary pageName="IP Asset Protection">
-            <IPAssetProtectionRefactored />
+            <IPAssetProtection />
           </PageErrorBoundary>
         } />
         
         <Route path="/practice/real-estate" element={
           <PageErrorBoundary pageName="Real Estate">
-            <RealEstateRefactored />
+            <RealEstate />
           </PageErrorBoundary>
         } />
         
         <Route path="/practice/trusts-estates" element={
           <PageErrorBoundary pageName="Trusts & Estates">
-            <TrustsEstatesRefactored />
+            <TrustsEstates />
           </PageErrorBoundary>
         } />
         

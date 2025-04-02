@@ -1,62 +1,81 @@
-import { PrincipleType, ProcessStepType } from '@/components/practice/PracticeTemplate';
+import { PrincipleType, ProcessStepType, KeyConsiderationType } from '@/components/practice/PracticeTemplate';
 
 export const ipAssetProtectionData = {
   title: "IP Asset Protection",
-  description: "Our IP Asset Protection practice safeguards your intellectual property through strategic planning, robust documentation, and vigilant enforcement. We secure the foundation of your creative and innovative work against unauthorized use and infringement.",
-  phoneNumber: "(212) 555-0123",
-  phoneLabel: "Ask us about IP Asset Protection",
-  ctaTitle: "Protect Your Innovations — Contact Us Today",
-  ctaDescription: "Schedule a consultation to discuss your IP protection needs and discover how our strategic approach can safeguard your valuable intellectual assets.",
-  ctaButtonText: "Request Your IP Protection Consultation",
-  ctaTagline: "PROTECTING INNOVATION FOR OVER 30 YEARS",
+  description: "Our IP Asset Protection practice helps companies safeguard their intellectual property across global markets. We develop comprehensive strategies to protect patents, trademarks, copyrights, and trade secrets from infringement, dilution, and misappropriation.",
+  phoneNumber: "(212) 555-0125",
+  phoneLabel: "IP Protection Hotline",
+  ctaTitle: "Secure Your Innovation Portfolio",
+  ctaDescription: "Schedule a consultation to assess your intellectual property protection needs and develop a customized strategy to safeguard your company's most valuable assets.",
+  ctaButtonText: "Request IP Protection Consultation",
+  ctaTagline: "COMPREHENSIVE IP PROTECTION STRATEGIES",
 
   // Principles based on the Mondrian aesthetic
   principles: [
     {
       number: "1",
-      title: "Strategic Defense",
-      description: "We develop robust protection strategies that secure your intellectual property assets against infringement and unauthorized use in today's complex digital landscape.",
+      title: "Proactive Monitoring",
+      description: "We implement vigilant monitoring systems to detect potential infringement early, allowing for swift and decisive action before significant damage occurs.",
       color: "mondrian-blue"
     },
     {
       number: "2",
-      title: "Proactive Monitoring",
-      description: "Our approach integrates proactive monitoring systems that identify potential infringements early, allowing for swift and decisive action before significant damage occurs.",
-      color: "mondrian-red"
+      title: "Global Enforcement",
+      description: "Our international network enables cohesive IP protection strategies across jurisdictions, ensuring consistent enforcement of your rights in all relevant markets.",
+      color: "mondrian-yellow"
     },
     {
       number: "3",
-      title: "Global Perspective",
-      description: "We implement protection strategies that function effectively across international borders, ensuring your intellectual assets receive appropriate protection in all relevant markets.",
-      color: "mondrian-yellow"
+      title: "Strategic Valuation",
+      description: "We help quantify the value of your intellectual property assets, informing protection priorities and creating leverage for licensing, partnerships, and transactions.",
+      color: "mondrian-red"
     }
   ] as PrincipleType[],
+
+  // Key Considerations with expanded descriptions (aim for ~25 words for visual balance)
+  keyConsiderations: [
+    {
+      title: "Digital Rights Management",
+      description: "Implement sophisticated legal protections for digital IP. Our integrated approach combines watermarking, encryption, monitoring, and enforcement to prevent unauthorized use across digital platforms.",
+      personaTags: ['Alex Chen', 'David Rodriguez']
+    },
+    {
+      title: "Cross-Border IP Defense",
+      description: "Navigate international IP protection with coordinated global strategies. We develop comprehensive protection plans spanning jurisdictions, accounting for regional differences while ensuring consistent enforcement.",
+      personaTags: ['David Rodriguez']
+    },
+    {
+      title: "Trade Secret Safeguards",
+      description: "Establish robust systems to protect valuable non-patented innovations. Our approach includes security protocols, confidentiality agreements, access controls, and response plans for potential misappropriation.",
+      personaTags: ['Alex Chen']
+    }
+  ] as KeyConsiderationType[],
 
   // Process steps
   process: [
     {
       number: "01",
-      title: "Asset Inventory",
-      description: "We conduct a comprehensive inventory of your intellectual property assets, including patents, trademarks, copyrights, and trade secrets.",
-      color: "mondrian-red"
-    },
-    {
-      number: "02",
-      title: "Vulnerability Assessment",
-      description: "Our team identifies potential vulnerabilities in your current IP protection strategy and areas that require immediate attention.",
+      title: "IP Audit & Assessment",
+      description: "We conduct a comprehensive audit of your intellectual property assets, identifying strengths, vulnerabilities, and gaps in your current protection strategy.",
       color: "mondrian-blue"
     },
     {
+      number: "02",
+      title: "Protection Strategy",
+      description: "Our team develops a tailored protection strategy that prioritizes your most valuable IP assets and addresses specific risks in your industry and markets.",
+      color: "mondrian-red"
+    },
+    {
       number: "03",
-      title: "Protection Implementation",
-      description: "We implement customized protection mechanisms, including registrations, contracts, and monitoring systems tailored to your specific assets.",
+      title: "Implementation",
+      description: "We execute the protection strategy, filing necessary registrations, establishing monitoring systems, and creating enforcement protocols.",
       color: "mondrian-yellow"
     },
     {
       number: "04",
-      title: "Ongoing Enforcement",
-      description: "We establish continuous monitoring and enforcement protocols to ensure long-term protection of your intellectual property portfolio.",
-      color: "mondrian-red"
+      title: "Enforcement & Maintenance",
+      description: "Our team continuously monitors for potential infringement and takes swift action when necessary, while maintaining and renewing IP protections.",
+      color: "mondrian-blue"
     }
   ] as ProcessStepType[],
 
@@ -85,17 +104,17 @@ export const ipAssetProtectionData = {
     {
       title: "IP Licensing",
       path: "ip-licensing",
-      description: "Strategic licensing arrangements to monetize intellectual property assets."
+      description: "Strategic monetization of intellectual property assets."
     },
     {
-      title: "IP Consulting",
-      path: "ip-consulting",
-      description: "Expert consultation on intellectual property strategy and portfolio management."
+      title: "Emerging Technologies",
+      path: "emerging-tech",
+      description: "IP protection for blockchain, AI, and other cutting-edge innovations."
     },
     {
-      title: "Digital Asset Protection",
-      path: "digital-asset-protection",
-      description: "Protection strategies for digital assets in the modern technology landscape."
+      title: "IP Litigation",
+      path: "ip-litigation",
+      description: "Robust defense of intellectual property rights in court proceedings."
     }
   ]
 }; 

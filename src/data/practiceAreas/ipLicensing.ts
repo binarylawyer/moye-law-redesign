@@ -1,61 +1,80 @@
-import { PrincipleType, ProcessStepType } from '@/components/practice/PracticeTemplate';
+import { PrincipleType, ProcessStepType, KeyConsiderationType } from '@/components/practice/PracticeTemplate';
 
 export const ipLicensingData = {
   title: "IP Licensing",
-  description: "Our IP licensing practice helps businesses leverage their innovations, creative works, and brands through strategic licensing programs that generate revenue while maintaining appropriate control over intellectual assets.",
-  phoneNumber: "(212) 555-0123",
-  phoneLabel: "Ask us about IP Licensing",
-  ctaTitle: "Maximize Your IP Value — Contact Us Today",
-  ctaDescription: "Schedule a consultation to discuss your IP licensing needs and discover how our strategic approach can help you generate new revenue from your intellectual assets.",
-  ctaButtonText: "Request Your IP Licensing Consultation",
-  ctaTagline: "STRATEGIC IP MONETIZATION",
+  description: "Our IP Licensing practice helps clients maximize the value of their intellectual property through strategic licensing agreements. We develop customized solutions for technology transfer, brand licensing, content distribution, and joint development ventures.",
+  phoneNumber: "(212) 555-0126",
+  phoneLabel: "IP Licensing Consultation",
+  ctaTitle: "Unlock the Value of Your Intellectual Property",
+  ctaDescription: "Schedule a consultation to explore licensing opportunities that can generate revenue, expand market reach, and create strategic partnerships through your intellectual assets.",
+  ctaButtonText: "Request IP Licensing Strategy Session",
+  ctaTagline: "MAXIMIZING IP VALUE THROUGH STRATEGIC LICENSING",
 
   // Principles based on the Mondrian aesthetic
   principles: [
     {
       number: "1",
-      title: "Value Maximization",
-      description: "We structure licensing agreements to extract maximum value from your intellectual property while maintaining appropriate control and protection of your core assets.",
-      color: "mondrian-red"
+      title: "Value Optimization",
+      description: "We structure licensing arrangements that maximize financial returns while protecting the long-term value and integrity of your intellectual property assets.",
+      color: "mondrian-blue"
     },
     {
       number: "2",
       title: "Strategic Alignment",
-      description: "Our licensing frameworks align with your broader business objectives, ensuring that IP monetization supports rather than constrains your overall growth strategy.",
-      color: "mondrian-blue"
+      description: "Our licensing agreements advance your broader business objectives, whether expanding into new markets, establishing industry standards, or creating strategic partnerships.",
+      color: "mondrian-yellow"
     },
     {
       number: "3",
-      title: "Risk-Balanced Approach",
-      description: "We balance opportunity with protection, creating licensing structures that open new revenue streams while safeguarding against unauthorized use and dilution.",
-      color: "mondrian-yellow"
+      title: "Rights Protection",
+      description: "We include robust protections in every licensing arrangement to maintain control over your intellectual property and prevent unauthorized use or exploitation.",
+      color: "mondrian-red"
     }
   ] as PrincipleType[],
+
+  // Key Considerations with expanded descriptions (aim for ~25 words for visual balance)
+  keyConsiderations: [
+    {
+      title: "Royalty Structure Optimization",
+      description: "Develop sophisticated compensation frameworks aligning incentives and maximizing returns. We balance upfronts, royalties, minimums, milestones, and sub-licensing fees for true market value.",
+      personaTags: ['David Rodriguez', 'Alex Chen']
+    },
+    {
+      title: "Technology Transfer Strategy",
+      description: "Structure comprehensive agreements for complex tech licensing. We protect core IP while enabling implementation, addressing knowledge transfer, support, improvements ownership, and usage restrictions.",
+      personaTags: ['Alex Chen']
+    },
+    {
+      title: "International Licensing Compliance",
+      description: "Navigate multi-jurisdictional licensing with consistent frameworks addressing regional needs. Our global approach considers territories, local regulations, currency, and cross-border enforcement mechanisms.",
+      personaTags: ['David Rodriguez']
+    }
+  ] as KeyConsiderationType[],
 
   // Process steps
   process: [
     {
       number: "01",
-      title: "Strategy Development",
-      description: "We analyze your intellectual property portfolio and business objectives to develop a licensing strategy that maximizes value and aligns with your goals.",
+      title: "Opportunity Assessment",
+      description: "We evaluate your intellectual property portfolio to identify assets with licensing potential and determine optimal licensing strategies for each.",
       color: "mondrian-blue"
     },
     {
       number: "02",
-      title: "Agreement Structuring",
-      description: "Our team crafts licensing agreements with precise terms on usage rights, territories, duration, and compensation structures to protect your interests.",
+      title: "Strategy Development",
+      description: "Our team creates a customized licensing strategy that aligns with your business objectives, market position, and the specific characteristics of your IP assets.",
       color: "mondrian-red"
     },
     {
       number: "03",
-      title: "Negotiation & Execution",
-      description: "We negotiate favorable terms and complete all documentation required to formalize the licensing relationship, ensuring clarity and enforceability.",
+      title: "Agreement Structuring",
+      description: "We draft comprehensive licensing agreements that clearly define rights, obligations, compensation structures, and protections for your intellectual property.",
       color: "mondrian-yellow"
     },
     {
       number: "04",
-      title: "Ongoing Management",
-      description: "We help monitor compliance, manage royalty calculations, and address any issues that arise during the license term to maintain successful relationships.",
+      title: "Management & Enforcement",
+      description: "Our team helps establish systems for ongoing management of licensing relationships, including compliance monitoring, royalty auditing, and dispute resolution.",
       color: "mondrian-blue"
     }
   ] as ProcessStepType[],
@@ -83,19 +102,19 @@ export const ipLicensingData = {
   // Related services
   relatedServices: [
     {
-      title: "IP Consulting",
-      path: "ip-consulting",
-      description: "Strategic guidance for intellectual property portfolio management and monetization."
+      title: "IP Asset Protection",
+      path: "ip-asset-protection",
+      description: "Strategies to protect intellectual property from infringement."
     },
     {
-      title: "Digital Asset Protection",
-      path: "digital-asset-protection",
-      description: "Protecting digital IP and creative works in the digital economy."
+      title: "Technology Transactions",
+      path: "technology-transactions",
+      description: "Legal support for complex technology transfers and acquisitions."
     },
     {
-      title: "Emerging Technologies",
-      path: "emerging-tech",
-      description: "Legal guidance for blockchain, AI, and other emerging technologies."
+      title: "Entertainment Law",
+      path: "entertainment-law",
+      description: "Specialized licensing for media, content, and entertainment properties."
     }
   ]
 }; 

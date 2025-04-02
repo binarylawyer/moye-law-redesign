@@ -32,21 +32,21 @@ export const trustsEstatesData = {
     }
   ] as PrincipleType[],
 
-  // Key Considerations (New Section)
+  // Key Considerations with expanded descriptions (aim for ~25 words for visual balance)
   keyConsiderations: [
     {
       title: "Securing Your Family's Future",
-      description: "Proactive planning is crucial to ensure your family is protected during unexpected life events. Clear directives minimize disputes and provide stability. (Relevant to Barbara)",
+      description: "Proactive planning ensures family protection during unexpected life events. Clear directives minimize disputes and provide stability, addressing concerns important to caregivers like Barbara.",
       personaTags: ['Barbara Miller']
     },
     {
       title: "Protecting Diverse Assets",
-      description: "Modern estates include more than just traditional assets. We help integrate digital assets, intellectual property, and business interests into comprehensive plans. (Relevant to Alex & David)",
+      description: "Modern estates often include digital assets, IP, and business interests. We create comprehensive plans that integrate these diverse holdings alongside traditional wealth components.",
       personaTags: ['Alex Chen', 'David Rodriguez']
     },
     {
       title: "Advanced Wealth Preservation",
-      description: "For high-net-worth individuals, we employ sophisticated trust structures and tax strategies to preserve wealth across generations and protect against unforeseen liabilities. (Relevant to David)",
+      description: "For UHNW individuals, we utilize sophisticated trusts and tax strategies. These techniques preserve wealth across generations and shield assets from unforeseen liabilities or challenges.",
       personaTags: ['David Rodriguez']
     }
   ] as KeyConsiderationType[],

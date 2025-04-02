@@ -32,21 +32,21 @@ export const elderLawData = {
     }
   ] as PrincipleType[],
 
-  // Key Considerations with expanded descriptions for better visual fill
+  // Key Considerations with expanded descriptions (aim for ~25 words for visual balance)
   keyConsiderations: [
     {
       title: "Advance Health Planning",
-      description: "Comprehensive advance health directives provide clarity and peace of mind. They ensure medical wishes are respected and minimize family stress during difficult healthcare decisions. Our approach covers all scenarios and is regularly reviewed.",
+      description: "Comprehensive advance health directives provide clarity and peace of mind. They ensure medical wishes are respected, minimize family stress, and are regularly reviewed.",
       personaTags: ['Barbara Miller']
     },
     {
       title: "Long-Term Care Strategies",
-      description: "Navigating the complex landscape of long-term care options requires forward-thinking legal planning. We develop customized strategies that protect assets while ensuring access to quality care when needed. This includes Medicaid planning and insurance considerations.",
+      description: "Navigating complex long-term care options requires legal planning. We develop strategies protecting assets while ensuring access to quality care, including Medicaid and insurance.",
       personaTags: ['Barbara Miller', 'David Rodriguez']
     },
     {
       title: "Preventing Elder Exploitation",
-      description: "Our protective legal frameworks safeguard vulnerable seniors from financial exploitation and abuse. We implement monitoring systems and legal safeguards that maintain independence while providing necessary oversight to prevent predatory actions.",
+      description: "Our legal frameworks safeguard vulnerable seniors from financial exploitation. We implement monitoring and safeguards that maintain independence while providing necessary oversight against predatory actions.",
       personaTags: ['David Rodriguez', 'Barbara Miller']
     }
   ] as KeyConsiderationType[],

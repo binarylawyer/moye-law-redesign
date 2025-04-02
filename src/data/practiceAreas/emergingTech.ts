@@ -32,21 +32,21 @@ export const emergingTechData = {
     }
   ] as PrincipleType[],
 
-  // Key Considerations with expanded descriptions for better visual fill
+  // Key Considerations with expanded descriptions (aim for ~25 words for visual balance)
   keyConsiderations: [
     {
       title: "Blockchain & Cryptocurrency Compliance",
-      description: "Navigate the evolving regulatory landscape for digital assets and blockchain applications. Our frameworks address securities laws, KYC/AML requirements, smart contract governance, and jurisdictional considerations for decentralized technologies.",
+      description: "Navigate the evolving regulatory landscape for digital assets and blockchain. Our frameworks address securities laws, KYC/AML, smart contracts, and jurisdictional considerations for decentralized tech.",
       personaTags: ['Alex Chen']
     },
     {
       title: "AI Governance & Ethics",
-      description: "Develop robust legal frameworks for artificial intelligence applications that balance innovation with responsibility. We address algorithmic transparency, data bias mitigation, liability frameworks, and compliance with emerging AI regulations.",
+      description: "Develop legal frameworks for AI balancing innovation and responsibility. We address transparency, bias mitigation, liability, and compliance with emerging regulations like the EU AI Act.",
       personaTags: ['Alex Chen', 'David Rodriguez']
     },
     {
       title: "IoT Security & Privacy",
-      description: "Implement comprehensive legal strategies for connected device ecosystems that protect both companies and consumers. Our approach covers data protection, cross-border compliance, security standards, and product liability considerations.",
+      description: "Implement legal strategies for connected devices protecting companies and consumers. Our approach covers data protection, compliance (GDPR, CCPA), security standards, and product liability.",
       personaTags: ['Alex Chen', 'Barbara Miller']
     }
   ] as KeyConsiderationType[],
