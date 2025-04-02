@@ -1,7 +1,7 @@
 import React from 'react';
-import { logger } from '@/utils/logger';
 import PracticeTemplate from '@/components/practice/PracticeTemplate';
 import { trustsEstatesData } from '@/data/practiceAreas/trustsEstates';
+import { logger } from '@/utils/logger';
 
 const TrustsEstatesRefactored: React.FC = () => {
   logger.debug('TrustsEstatesRefactored component rendered');
@@ -14,11 +14,11 @@ const TrustsEstatesRefactored: React.FC = () => {
       keyConsiderations={trustsEstatesData.keyConsiderations}
       process={trustsEstatesData.process}
       phoneNumber={trustsEstatesData.phoneNumber}
-      phoneLabel={trustsEstatesData.phoneLabel}
       ctaTitle={trustsEstatesData.ctaTitle}
       ctaDescription={trustsEstatesData.ctaDescription}
       ctaButtonText={trustsEstatesData.ctaButtonText}
       ctaTagline={trustsEstatesData.ctaTagline}
+      phoneLabel={trustsEstatesData.phoneLabel}
     />
   );
 };

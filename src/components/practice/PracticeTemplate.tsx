@@ -153,12 +153,12 @@ const PracticeTemplate: React.FC<PracticeTemplateProps> = ({
                     // Outer Card: Rectangular frame, padding p-6, thick black border
                     <div 
                       key={index} 
-                      className={`group reveal ${bgColorClass} p-6 border-4 border-black`} 
+                      className={`group reveal ${bgColorClass} p-6 border-4 border-black flex items-center justify-center`} 
                     >
-                      {/* Inner Card: SQUARE, light grey, padding p-3, thinner border, hover, centered content */}
-                      <div className="bg-light-gray p-3 border-2 border-black aspect-square transition-transform duration-300 ease-in-out group-hover:scale-[1.02] h-full flex flex-col justify-center items-center"> 
-                        <h3 className="font-display text-navy text-lg mb-2 text-center">{item.title}</h3>
-                        <p className="text-charcoal/90 text-sm leading-snug text-center">{item.description}</p>
+                      {/* Inner Card: SQUARE, 85% size (10% bigger than before), centered, with more space between title and description */}
+                      <div className="bg-light-gray p-3 border-2 border-black aspect-square transition-transform duration-300 ease-in-out group-hover:scale-[1.02] w-[85%] h-[85%] flex flex-col justify-center items-center"> 
+                        <h3 className="font-display text-navy text-xl mb-5 text-center">{item.title}</h3>
+                        <p className="text-charcoal/90 text-sm leading-relaxed text-center w-[90%]">{item.description}</p>
                       </div>
                     </div>
                   );

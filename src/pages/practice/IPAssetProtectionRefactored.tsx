@@ -1,7 +1,7 @@
 import React from 'react';
-import { logger } from '@/utils/logger';
 import PracticeTemplate from '@/components/practice/PracticeTemplate';
 import { ipAssetProtectionData } from '@/data/practiceAreas/ipAssetProtection';
+import { logger } from '@/utils/logger';
 
 const IPAssetProtectionRefactored: React.FC = () => {
   logger.debug('IPAssetProtectionRefactored component rendered');
@@ -11,13 +11,14 @@ const IPAssetProtectionRefactored: React.FC = () => {
       title={ipAssetProtectionData.title}
       description={ipAssetProtectionData.description}
       principles={ipAssetProtectionData.principles}
+      keyConsiderations={ipAssetProtectionData.keyConsiderations}
       process={ipAssetProtectionData.process}
       phoneNumber={ipAssetProtectionData.phoneNumber}
-      phoneLabel={ipAssetProtectionData.phoneLabel}
       ctaTitle={ipAssetProtectionData.ctaTitle}
       ctaDescription={ipAssetProtectionData.ctaDescription}
       ctaButtonText={ipAssetProtectionData.ctaButtonText}
       ctaTagline={ipAssetProtectionData.ctaTagline}
+      phoneLabel={ipAssetProtectionData.phoneLabel}
     />
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
-import { logger } from '@/utils/logger';
 import PracticeTemplate from '@/components/practice/PracticeTemplate';
 import { emergingTechData } from '@/data/practiceAreas/emergingTech';
+import { logger } from '@/utils/logger';
 
 const EmergingTechRefactored: React.FC = () => {
   logger.debug('EmergingTechRefactored component rendered');
@@ -11,13 +11,14 @@ const EmergingTechRefactored: React.FC = () => {
       title={emergingTechData.title}
       description={emergingTechData.description}
       principles={emergingTechData.principles}
+      keyConsiderations={emergingTechData.keyConsiderations}
       process={emergingTechData.process}
       phoneNumber={emergingTechData.phoneNumber}
-      phoneLabel={emergingTechData.phoneLabel}
       ctaTitle={emergingTechData.ctaTitle}
       ctaDescription={emergingTechData.ctaDescription}
       ctaButtonText={emergingTechData.ctaButtonText}
       ctaTagline={emergingTechData.ctaTagline}
+      phoneLabel={emergingTechData.phoneLabel}
     />
   );
 };

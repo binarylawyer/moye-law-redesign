@@ -1,61 +1,80 @@
-import { PrincipleType, ProcessStepType } from '@/components/practice/PracticeTemplate';
+import { PrincipleType, ProcessStepType, KeyConsiderationType } from '@/components/practice/PracticeTemplate';
 
 export const emergingTechData = {
-  title: "Emerging Technology",
-  description: "Our emerging technology practice provides forward-thinking legal guidance for innovators at the frontier of technological development, addressing novel legal challenges while enabling continued innovation.",
-  phoneNumber: "(212) 555-0123",
-  phoneLabel: "Ask us about Emerging Technology Law",
-  ctaTitle: "Navigate the Future of Tech Law — Contact Us Today",
-  ctaDescription: "Schedule a consultation to discuss your emerging technology legal needs and discover how our innovative approach can help secure your technological future.",
-  ctaButtonText: "Request Your Technology Law Consultation",
-  ctaTagline: "TECH-FORWARD LEGAL SOLUTIONS",
+  title: "Emerging Technology Law",
+  description: "Our Emerging Technology practice sits at the intersection of innovation and regulation. We help clients navigate the complex legal landscape of blockchain, AI, IoT, and other cutting-edge technologies with forward-thinking solutions.",
+  phoneNumber: "(212) 555-0124",
+  phoneLabel: "Emerging Tech Legal Support",
+  ctaTitle: "Lead the Innovation Curve with Solid Legal Backing",
+  ctaDescription: "Schedule a consultation to discuss how our specialized legal expertise can help your emerging technology venture thrive while navigating regulatory challenges.",
+  ctaButtonText: "Book Your Tech Law Consultation",
+  ctaTagline: "LEGAL SOLUTIONS FOR TOMORROW'S TECHNOLOGY",
 
   // Principles based on the Mondrian aesthetic
   principles: [
     {
       number: "1",
-      title: "Future-Oriented Approach",
-      description: "We stay ahead of evolving legal frameworks for emerging technologies, anticipating regulatory developments before they impact your business operations.",
+      title: "Regulatory Foresight",
+      description: "We anticipate regulatory developments in emerging technologies, positioning clients to adapt proactively rather than reactively to changing legal landscapes.",
       color: "mondrian-blue"
     },
     {
       number: "2",
       title: "Technical Fluency",
-      description: "Our team combines deep legal expertise with genuine understanding of technical concepts, enabling meaningful guidance that bridges legal and technical considerations.",
-      color: "mondrian-red"
+      description: "Our attorneys combine legal expertise with deep understanding of emerging technologies, enabling us to craft solutions that address both technical realities and legal requirements.",
+      color: "mondrian-yellow"
     },
     {
       number: "3",
-      title: "Adaptable Frameworks",
-      description: "We create legal structures that accommodate rapid technological change, providing necessary protection while maintaining flexibility for innovation and growth.",
-      color: "mondrian-yellow"
+      title: "Risk Calibration",
+      description: "We help innovative companies balance appropriate risk-taking with legal protection, creating frameworks that enable growth while establishing necessary safeguards.",
+      color: "mondrian-red"
     }
   ] as PrincipleType[],
+
+  // Key Considerations with expanded descriptions for better visual fill
+  keyConsiderations: [
+    {
+      title: "Blockchain & Cryptocurrency Compliance",
+      description: "Navigate the evolving regulatory landscape for digital assets and blockchain applications. Our frameworks address securities laws, KYC/AML requirements, smart contract governance, and jurisdictional considerations for decentralized technologies.",
+      personaTags: ['Alex Chen']
+    },
+    {
+      title: "AI Governance & Ethics",
+      description: "Develop robust legal frameworks for artificial intelligence applications that balance innovation with responsibility. We address algorithmic transparency, data bias mitigation, liability frameworks, and compliance with emerging AI regulations.",
+      personaTags: ['Alex Chen', 'David Rodriguez']
+    },
+    {
+      title: "IoT Security & Privacy",
+      description: "Implement comprehensive legal strategies for connected device ecosystems that protect both companies and consumers. Our approach covers data protection, cross-border compliance, security standards, and product liability considerations.",
+      personaTags: ['Alex Chen', 'Barbara Miller']
+    }
+  ] as KeyConsiderationType[],
 
   // Process steps
   process: [
     {
       number: "01",
       title: "Technology Assessment",
-      description: "We begin with a comprehensive assessment of your technology and its unique legal considerations to identify specific compliance needs and risks.",
+      description: "We conduct a deep evaluation of your technology, identifying unique legal considerations, regulatory touchpoints, and potential compliance challenges.",
       color: "mondrian-blue"
     },
     {
       number: "02",
-      title: "Regulatory Mapping",
-      description: "We identify applicable regulatory frameworks across all relevant jurisdictions, creating a clear compliance roadmap for your technology.",
-      color: "mondrian-yellow"
-    },
-    {
-      number: "03",
-      title: "Risk Mitigation",
-      description: "We develop tailored strategies to address identified legal risks while enabling innovation and technology development.",
+      title: "Risk Mapping",
+      description: "Our team maps potential legal and regulatory risks specific to your technology, prioritizing them based on likelihood, impact, and your business objectives.",
       color: "mondrian-red"
     },
     {
+      number: "03",
+      title: "Compliance Framework",
+      description: "We develop a customized legal and compliance framework that addresses current regulations while building in flexibility for evolving legal landscapes.",
+      color: "mondrian-yellow"
+    },
+    {
       number: "04",
-      title: "Ongoing Advisory",
-      description: "We provide continuous guidance as your technology evolves and regulatory landscapes change, ensuring consistent legal protection.",
+      title: "Implementation & Monitoring",
+      description: "Our team helps implement the legal framework and establishes ongoing monitoring systems to track regulatory developments and adapt strategies accordingly.",
       color: "mondrian-blue"
     }
   ] as ProcessStepType[],
@@ -83,19 +102,19 @@ export const emergingTechData = {
   // Related services
   relatedServices: [
     {
-      title: "IP Licensing",
-      path: "ip-licensing",
-      description: "Strategic frameworks for technology licensing and intellectual property monetization."
+      title: "IP Asset Protection",
+      path: "ip-asset-protection",
+      description: "Protection for your technology innovations and intellectual property."
     },
     {
-      title: "Digital Asset Protection",
-      path: "digital-asset-protection",
-      description: "Comprehensive protection for digital assets, from NFTs to digital IP."
+      title: "Data Privacy",
+      path: "data-privacy",
+      description: "Compliance strategies for data protection regulations worldwide."
     },
     {
-      title: "IP Consulting",
-      path: "ip-consulting",
-      description: "Strategic guidance for intellectual property in emerging technology contexts."
+      title: "Regulatory Compliance",
+      path: "regulatory-compliance",
+      description: "Navigation of complex regulatory environments for emerging tech."
     }
   ]
 }; 

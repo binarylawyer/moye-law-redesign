@@ -1,61 +1,80 @@
-import { PrincipleType, ProcessStepType } from '@/components/practice/PracticeTemplate';
+import { PrincipleType, ProcessStepType, KeyConsiderationType } from '@/components/practice/PracticeTemplate';
 
 export const elderLawData = {
   title: "Elder Law",
-  description: "Our elder law practice provides comprehensive legal services to seniors and their families, addressing the unique challenges that come with aging through strategic protection, thoughtful planning, and compassionate guidance.",
-  phoneNumber: "(212) 555-0123",
-  phoneLabel: "Ask us about Elder Law services",
-  ctaTitle: "Protect Your Future — Contact Us Today",
-  ctaDescription: "Schedule a consultation to discuss your legal needs and discover how our firm's vision and forward-thinking approach can help you.",
-  ctaButtonText: "Request Your Free Consultation",
-  ctaTagline: "30 YEARS OF TRUSTED COUNSEL",
+  description: "Our Elder Law practice provides comprehensive legal solutions for older adults and their families. We address the unique needs of aging clients, including advance healthcare planning, estate management, and protection from elder abuse.",
+  phoneNumber: "(212) 555-0122",
+  phoneLabel: "Elder Care Legal Support",
+  ctaTitle: "Plan for the Future with Confidence",
+  ctaDescription: "Schedule a consultation with our compassionate elder law attorneys to explore solutions that protect dignity, assets, and peace of mind.",
+  ctaButtonText: "Schedule Elder Law Consultation",
+  ctaTagline: "CARING LEGAL GUIDANCE FOR SENIORS AND FAMILIES",
 
   // Principles based on the Mondrian aesthetic
   principles: [
     {
       number: "1",
-      title: "Compassionate Guidance",
-      description: "We believe in providing compassionate legal guidance to seniors and their families. Our team develops thoughtful strategies to protect elderly clients at every stage of life.",
-      color: "mondrian-red"
-    },
-    {
-      number: "2",
-      title: "Family-First Approach",
-      description: "In elder law, family considerations must be prioritized. We implement a family-first approach that ensures your loved ones' needs are addressed with dignity and respect.",
+      title: "Dignity Preservation",
+      description: "We prioritize the dignity and autonomy of our elderly clients, ensuring their wishes are respected and their voice remains central to all legal decisions affecting their lives.",
       color: "mondrian-blue"
     },
     {
-      number: "3",
-      title: "Future-Oriented Planning",
-      description: "Beyond immediate concerns, we focus on creating plans that adapt to changing health and financial needs, integrating both immediate care and long-term provisions.",
+      number: "2",
+      title: "Asset Protection",
+      description: "Our strategies help shield assets from potential healthcare costs while maintaining eligibility for essential benefits and preserving the legacy our clients have built.",
       color: "mondrian-yellow"
+    },
+    {
+      number: "3",
+      title: "Family Support",
+      description: "We provide legal frameworks that empower families to make decisions and provide care for elderly loved ones while minimizing conflict and administrative burden.",
+      color: "mondrian-red"
     }
   ] as PrincipleType[],
+
+  // Key Considerations with expanded descriptions for better visual fill
+  keyConsiderations: [
+    {
+      title: "Advance Health Planning",
+      description: "Comprehensive advance health directives provide clarity and peace of mind. They ensure medical wishes are respected and minimize family stress during difficult healthcare decisions. Our approach covers all scenarios and is regularly reviewed.",
+      personaTags: ['Barbara Miller']
+    },
+    {
+      title: "Long-Term Care Strategies",
+      description: "Navigating the complex landscape of long-term care options requires forward-thinking legal planning. We develop customized strategies that protect assets while ensuring access to quality care when needed. This includes Medicaid planning and insurance considerations.",
+      personaTags: ['Barbara Miller', 'David Rodriguez']
+    },
+    {
+      title: "Preventing Elder Exploitation",
+      description: "Our protective legal frameworks safeguard vulnerable seniors from financial exploitation and abuse. We implement monitoring systems and legal safeguards that maintain independence while providing necessary oversight to prevent predatory actions.",
+      personaTags: ['David Rodriguez', 'Barbara Miller']
+    }
+  ] as KeyConsiderationType[],
 
   // Process steps
   process: [
     {
       number: "01",
       title: "Needs Assessment",
-      description: "We conduct a thorough evaluation of your elderly loved one's current situation, identifying immediate concerns, legal needs, and areas requiring protection.",
-      color: "mondrian-red"
+      description: "We conduct a thorough evaluation of your current situation, including health status, financial resources, family dynamics, and personal goals for aging.",
+      color: "mondrian-blue"
     },
     {
       number: "02",
       title: "Strategy Development",
-      description: "Based on our assessment, we develop a customized elder care plan that aligns with your family's goals, values, and financial resources.",
-      color: "mondrian-blue"
+      description: "Our team creates a comprehensive plan addressing healthcare directives, powers of attorney, estate planning, and long-term care considerations tailored to your needs.",
+      color: "mondrian-red"
     },
     {
       number: "03",
       title: "Documentation",
-      description: "Our team handles all legal documentation with meticulous attention to detail, ensuring all directives, powers of attorney, and healthcare documents are properly executed.",
-      color: "mondrian-red"
+      description: "We prepare and execute all necessary legal documents to implement your plan, ensuring they comply with current laws and clearly express your wishes.",
+      color: "mondrian-yellow"
     },
     {
       number: "04",
       title: "Ongoing Support",
-      description: "We provide continuous legal guidance as your loved one's needs evolve, helping you navigate changing healthcare requirements and financial situations.",
+      description: "Our relationship continues with regular reviews and updates as your health, family circumstances, or applicable laws change over time.",
       color: "mondrian-blue"
     }
   ] as ProcessStepType[],
@@ -83,19 +102,19 @@ export const elderLawData = {
   // Related services
   relatedServices: [
     {
-      title: "Trusts & Estates",
+      title: "Estate Planning",
       path: "trusts-estates",
-      description: "Comprehensive planning for wealth preservation and asset distribution."
+      description: "Comprehensive planning to protect assets and direct their distribution."
     },
     {
-      title: "Healthcare Law",
-      path: "healthcare-law",
-      description: "Legal guidance on healthcare decisions and medical directives."
+      title: "Healthcare Advocacy",
+      path: "healthcare-advocacy",
+      description: "Legal representation in healthcare decisions and disputes."
     },
     {
-      title: "Asset Protection",
-      path: "digital-asset-protection",
-      description: "Strategies to protect assets while ensuring eligibility for needed benefits."
+      title: "Guardianship",
+      path: "guardianship",
+      description: "Legal authority to make decisions for incapacitated individuals."
     }
   ]
 }; 
