@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
-import { motion, useScroll } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ServiceConsideration } from '@/types/services';
 import { 
   Brush, 
-  FileContract, 
+  FilePlus, 
   Scale, 
   Shield, 
   BookOpen, 
@@ -19,18 +19,86 @@ interface ServiceConsiderationsProps {
 }
 
 // Icons for cards
-const CARD_ICONS = [Shield, FileContract, Brush, Scale, BookOpen, Search, Layers, Award, FileText];
+const CARD_ICONS = [Shield, FilePlus, Brush, Scale, BookOpen, Search, Layers, Award, FileText];
 
 const ServiceConsiderations: React.FC<ServiceConsiderationsProps> = ({
   considerations,
   title = "Frequently Asked Questions"
 }) => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"]
-  });
+  const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
+  const headingWrapperRef = useRef<HTMLDivElement>(null);
+  const cardsContainerRef = useRef<HTMLDivElement>(null);
+  
+  // Track which cards are hovered
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  // State for heading position
+  const [headingPosition, setHeadingPosition] = useState<'static' | 'fixed' | 'bottom'>('static');
+  const [headingStyles, setHeadingStyles] = useState<React.CSSProperties>({});
+
+  // Fixed heading positioning logic
+  useEffect(() => {
+    if (!sectionRef.current || !headingRef.current || !headingWrapperRef.current || !cardsContainerRef.current) {
+      return;
+    }
+
+    const updateHeadingPosition = () => {
+      const sectionRect = sectionRef.current!.getBoundingClientRect();
+      const headingRect = headingRef.current!.getBoundingClientRect();
+      const cardsRect = cardsContainerRef.current!.getBoundingClientRect();
+      const wrapperRect = headingWrapperRef.current!.getBoundingClientRect();
+      
+      const topOffset = 80; // Top padding when fixed
+      const sectionTop = sectionRect.top;
+      const sectionBottom = sectionRect.bottom;
+      const headingHeight = headingRect.height;
+      const cardsBottom = cardsRect.bottom;
+      
+      // Get the initial offset before any scrolling happens
+      const initialTop = wrapperRect.top - sectionTop;
+      
+      if (window.scrollY > sectionTop + initialTop - topOffset) {
+        // If we've scrolled past where the heading should start being fixed
+        if (window.scrollY + topOffset + headingHeight < sectionTop + cardsRect.height) {
+          // Fixed position as we scroll through the cards
+          setHeadingPosition('fixed');
+          setHeadingStyles({
+            position: 'fixed',
+            top: `${topOffset}px`,
+            width: `${wrapperRect.width}px`
+          });
+        } else {
+          // Bottom position when we've scrolled to the end of the cards
+          setHeadingPosition('bottom');
+          setHeadingStyles({
+            position: 'absolute',
+            top: `${cardsRect.height - headingHeight}px`,
+            width: `${wrapperRect.width}px`
+          });
+        }
+      } else {
+        // Above the sticky point, normal positioning
+        setHeadingPosition('static');
+        setHeadingStyles({
+          position: 'static',
+          top: 'auto',
+          width: 'auto'
+        });
+      }
+    };
+
+    // Initial positioning
+    updateHeadingPosition();
+    
+    // Update on scroll and resize
+    window.addEventListener('scroll', updateHeadingPosition);
+    window.addEventListener('resize', updateHeadingPosition);
+    
+    return () => {
+      window.removeEventListener('scroll', updateHeadingPosition);
+      window.removeEventListener('resize', updateHeadingPosition);
+    };
+  }, []);
 
   // Add additional placeholder cards if needed to reach minimum of 7
   const allCards = considerations.length >= 7 
@@ -52,46 +120,59 @@ const ServiceConsiderations: React.FC<ServiceConsiderationsProps> = ({
     <section 
       ref={sectionRef}
       className="py-24 md:py-40 bg-gray-50 relative overflow-hidden"
+      style={{ minHeight: '100vh' }}
     >
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 gap-x-12 lg:gap-x-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 gap-x-8 lg:gap-x-16">
           {/* Fixed left column with title and description */}
-          <div className="lg:col-span-3 lg:sticky lg:top-32 self-start">
-            <motion.h2 
-              className="text-3xl md:text-4xl font-display font-normal mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+          <div 
+            ref={headingWrapperRef}
+            className="lg:col-span-3 relative"
+          >
+            <div
+              ref={headingRef}
+              style={{
+                ...headingStyles,
+                transition: 'all 0.2s ease'
+              }}
             >
-              {title}
-            </motion.h2>
-            <motion.p
-              className="text-gray-700 mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              Key considerations when navigating the legal aspects of art and entertainment.
-            </motion.p>
-            <motion.div 
-              className="w-16 h-1 bg-[#8B0000]"
-              initial={{ width: 0 }}
-              whileInView={{ width: 64 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            />
+              <motion.h2 
+                className="text-3xl md:text-4xl font-display font-normal mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                {title}
+              </motion.h2>
+              <motion.p
+                className="text-gray-700 mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                Key considerations when navigating the legal aspects of art and entertainment.
+              </motion.p>
+              <motion.div 
+                className="w-16 h-1 bg-[#8B0000]"
+                initial={{ width: 0 }}
+                whileInView={{ width: 64 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              />
+            </div>
           </div>
           
           {/* Scrolling cards on the right */}
           <div 
-            ref={containerRef}
+            ref={cardsContainerRef}
             className="lg:col-span-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
           >
             {displayCards.map((card, idx) => {
               // Use modulo to assign icons and keep within bounds
               const IconComponent = CARD_ICONS[idx % CARD_ICONS.length];
+              const isHovered = hoveredCard === idx;
               
               return (
                 <motion.div
@@ -104,8 +185,11 @@ const ServiceConsiderations: React.FC<ServiceConsiderationsProps> = ({
                   whileHover={{ 
                     y: -8, 
                     boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
+                    zIndex: 10,
                     transition: { duration: 0.2 }
                   }}
+                  onHoverStart={() => setHoveredCard(idx)}
+                  onHoverEnd={() => setHoveredCard(null)}
                 >
                   {/* Card header with colored accent */}
                   <div 
@@ -118,15 +202,15 @@ const ServiceConsiderations: React.FC<ServiceConsiderationsProps> = ({
                     }`}
                   />
                   
-                  {/* Card content */}
-                  <div className="p-6 md:p-8 h-full flex flex-col">
+                  {/* Card content - Reducing size a bit */}
+                  <div className="p-5 md:p-6 h-full flex flex-col">
                     {/* Icon with animation */}
-                    <div className="mb-6 flex items-center">
+                    <div className="mb-3 flex items-center">
                       <motion.div
-                        className={`p-3 rounded-full bg-gray-50 group-hover:bg-gray-100 transition-colors duration-300`}
+                        className={`p-2 rounded-full bg-gray-50 group-hover:bg-gray-100 transition-colors duration-300`}
                         whileHover={{ rotate: 5 }}
                       >
-                        <IconComponent size={24} className={`
+                        <IconComponent size={20} className={`
                           transition-colors duration-300
                           ${idx % 5 === 0 ? 'text-[#D42E12]' : 
                             idx % 5 === 1 ? 'text-[#0A2342]' : 
@@ -137,30 +221,45 @@ const ServiceConsiderations: React.FC<ServiceConsiderationsProps> = ({
                       </motion.div>
                     </div>
                     
-                    {/* Title with hover effect */}
-                    <h3 className="text-xl font-display mb-4 group-hover:text-[#0A2342] transition-colors duration-300">
+                    {/* Title with hover effect - Slightly smaller */}
+                    <h3 className="text-lg font-display mb-3 group-hover:text-[#0A2342] transition-colors duration-300">
                       {card.title}
                     </h3>
                     
-                    {/* Description */}
-                    <p className="text-gray-700 text-base leading-relaxed">
+                    {/* Description - Truncated by default */}
+                    <p className="text-gray-700 text-sm leading-relaxed line-clamp-2 group-hover:line-clamp-none">
                       {card.description}
                     </p>
                     
-                    {/* Read more indicator that appears on hover */}
-                    <div className="mt-auto pt-4 overflow-hidden">
-                      <motion.div 
-                        className="flex items-center text-sm font-medium text-[#0A2342] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        initial={{ y: 20 }}
-                        whileInView={{ y: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <span>Read more</span>
-                        <svg className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </motion.div>
-                    </div>
+                    {/* Expandable content that drops down on hover */}
+                    <AnimatePresence>
+                      {isHovered && (
+                        <motion.div 
+                          className="mt-3 pt-3 border-t border-gray-100"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <p className="text-gray-600 text-xs">
+                            Our specialized attorneys provide comprehensive counsel on all aspects of {card.title.toLowerCase()}, 
+                            ensuring your creative and business interests remain protected throughout the process.
+                          </p>
+                          
+                          <motion.div 
+                            className="flex items-center text-xs font-medium text-[#0A2342] mt-3"
+                            initial={{ x: -10, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ delay: 0.1 }}
+                          >
+                            <span>Learn more</span>
+                            <svg className="ml-1 w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </motion.div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </motion.div>
               );
