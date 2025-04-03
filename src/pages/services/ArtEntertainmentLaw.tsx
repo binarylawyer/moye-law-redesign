@@ -47,15 +47,39 @@ const artEntertainmentLawData: Partial<ServiceData> = {
   considerations: [
     {
       title: "Copyright Protection Strategies",
-      description: "Developing comprehensive strategies to protect creative works across multiple platforms and jurisdictions."
+      description: "Developing comprehensive strategies to protect creative works across multiple platforms and jurisdictions. We ensure your intellectual property is secured with the appropriate copyright registrations, monitoring for infringement, and enforcement procedures tailored to your creative field."
     },
     {
       title: "Contract Negotiation",
-      description: "Securing favorable terms in representation, licensing, distribution, and collaboration agreements."
+      description: "Securing favorable terms in representation, licensing, distribution, and collaboration agreements. Our attorneys analyze every clause to ensure your interests are protected while maximizing the value of your creative work through strategic negotiation."
     },
     {
       title: "Legacy Planning for Artists",
-      description: "Ensuring your creative legacy is preserved and managed according to your wishes."
+      description: "Ensuring your creative legacy is preserved and managed according to your wishes. We develop comprehensive estate plans for artists that address the unique challenges of managing intellectual property rights, royalty streams, and physical works after your lifetime."
+    },
+    {
+      title: "Digital Rights Management",
+      description: "Navigating the rapidly evolving landscape of online distribution, streaming platforms, and digital exhibitions. We help you retain control over your content while maximizing exposure and monetization opportunities in digital environments."
+    },
+    {
+      title: "Art Authentication & Provenance",
+      description: "Establishing and verifying the authenticity and ownership history of artwork. Our team works with experts to document provenance, implement authentication protocols, and address disputes regarding attribution or ownership of valuable works."
+    },
+    {
+      title: "International Rights Protection",
+      description: "Securing your creative rights across global markets and jurisdictions. We coordinate with international partners to ensure your intellectual property is protected worldwide, addressing the complexities of different legal systems and treaty protections."
+    },
+    {
+      title: "Financing & Investment Structures",
+      description: "Developing optimal legal frameworks for creative project funding. Whether you're seeking investors for a film project, structuring gallery financing, or exploring innovative funding models like crowdfunding, we craft agreements that protect creators while attracting necessary capital."
+    },
+    {
+      title: "Fair Use & Creative Freedom",
+      description: "Navigating the balance between creative expression and intellectual property rights. We provide guidance on appropriation art, sampling, parody, and other practices that involve using existing works, helping you understand when fair use applies and when licensing is required."
+    },
+    {
+      title: "Dispute Resolution",
+      description: "Representing creative professionals in conflicts related to contracts, intellectual property, and professional relationships. We emphasize efficient resolution strategies that protect your reputation and creative interests while minimizing disruption to your artistic practice."
     }
   ],
 

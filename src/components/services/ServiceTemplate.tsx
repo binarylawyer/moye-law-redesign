@@ -58,38 +58,40 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
         description={description}
       />
       
-      {/* Main Content - Remove container constraints to allow full-width sections */}
-      <main className="space-y-16 md:space-y-0">
+      {/* Main Content - MOMA-inspired layout with more deliberate spacing */}
+      <main className="min-h-screen">
         
-        {/* Featured Content Section */}
-        <section>
+        {/* Featured Content Section - Full width with museum-like presentation */}
+        <section className="mb-24 md:mb-40">
           <ServiceFeaturedContent content={featuredContent} />
         </section>
         
-        {/* Service Features */}
-        <section>
+        {/* Service Features - Offset grid with museum exhibit feel */}
+        <section className="mb-24 md:mb-36 bg-gray-50 py-20">
           <ServiceFeature features={features} />
         </section>
         
-        {/* Process Section */}
-        <section>
+        {/* Process Section - Breathing room with gallery-like spacing */}
+        <section className="mb-24 md:mb-36 max-w-7xl mx-auto px-4 lg:px-8">
           <ServiceProcess process={process} />
         </section>
         
-        {/* Key Considerations */}
-        <section>
-          <ServiceConsiderations considerations={considerations} />
-        </section>
-        
-        {/* Additional Custom Content */}
+        {/* Additional Custom Content - Museum-like flexibility */}
         {children && (
-          <section>
+          <section className="mb-24 md:mb-36">
              {children}
           </section>
         )}
         
-        {/* Related Services */}
-        <section>
+        {/* Key Considerations - MOMA-style whitespace and layout */}
+        {considerations && considerations.length > 0 && (
+          <section className="mb-24 md:mb-36 bg-white py-20">
+            <ServiceConsiderations considerations={considerations} />
+          </section>
+        )}
+        
+        {/* Related Services - Gallery-like presentation */}
+        <section className="mb-24 md:mb-36 max-w-7xl mx-auto px-4 lg:px-8">
           <ServiceRelated relatedServices={relatedServices} />
         </section>
         
