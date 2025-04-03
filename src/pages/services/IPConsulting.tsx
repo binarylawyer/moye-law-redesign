@@ -1,60 +1,62 @@
 import React from 'react';
 import { FileText, Lightbulb, Scale, Globe } from 'lucide-react';
 import ServiceTemplate from '@/components/services/ServiceTemplate';
-import ServiceHero from '@/components/services/ServiceHero';
-import ServiceContent from '@/components/services/ServiceContent';
-import ServiceProcess from '@/components/services/ServiceProcess';
-import ServiceRelated from '@/components/services/ServiceRelated';
-import ServiceFeatureImage from '@/components/services/ServiceFeatureImage';
+import { ServiceData, ServiceFeature, Process, RelatedService } from '@/types/services';
 
-const IPConsulting: React.FC = () => {
-  const consultingServices = [
+const ipConsultingData: Partial<ServiceData> = {
+  title: "IP Consulting Services",
+  description: "Strategic intellectual property guidance for businesses seeking to maximize value and competitive advantage.",
+  
+  features: [
     {
-      icon: <FileText className="h-10 w-10 text-black" />,
+      icon: 'FileText',
       title: "IP Audit & Portfolio Management",
       description: "Comprehensive evaluation and strategic management of intellectual property assets."
     },
     {
-      icon: <Lightbulb className="h-10 w-10 text-black" />,
+      icon: 'Lightbulb',
       title: "IP Strategy Development",
       description: "Forward-looking IP strategies aligned with business objectives and market opportunities."
     },
     {
-      icon: <Scale className="h-10 w-10 text-black" />,
+      icon: 'Scale',
       title: "IP Valuation & Monetization",
       description: "Expert analysis of IP value and development of strategic monetization pathways."
     },
     {
-      icon: <Globe className="h-10 w-10 text-black" />,
+      icon: 'Globe',
       title: "Global IP Protection",
       description: "International strategies to secure and defend intellectual property across borders."
     }
-  ];
+  ],
 
-  const serviceSteps = [
-    {
-      title: "Discovery & Assessment",
-      description: "We begin with a thorough evaluation of your existing intellectual property assets, business objectives, and competitive landscape. This phase includes identifying registered and unregistered IP, assessing protection status, and uncovering untapped opportunities."
-    },
-    {
-      title: "Strategy Development",
-      description: "Based on our assessment, we develop a comprehensive IP strategy tailored to your specific needs and goals. This includes recommendations for protection measures, monetization opportunities, and competitive positioning."
-    },
-    {
-      title: "Implementation Planning",
-      description: "We create a detailed implementation plan with clear timelines, responsibilities, and resource requirements. This includes prioritization of actions based on business impact and resource constraints."
-    },
-    {
-      title: "Execution Support",
-      description: "We provide ongoing support during the implementation of your IP strategy, including coordination with specialized counsel for registrations, documentation development, and team training."
-    },
-    {
-      title: "Review & Optimization",
-      description: "We conduct regular reviews of your IP strategy implementation, measuring results against objectives and recommending adjustments as business needs and market conditions evolve."
-    }
-  ];
+  process: {
+    title: "Our Consulting Process",
+    steps: [
+      {
+        title: "Discovery & Assessment",
+        description: "We begin with a thorough evaluation of your existing intellectual property assets, business objectives, and competitive landscape. This phase includes identifying registered and unregistered IP, assessing protection status, and uncovering untapped opportunities."
+      },
+      {
+        title: "Strategy Development",
+        description: "Based on our assessment, we develop a comprehensive IP strategy tailored to your specific needs and goals. This includes recommendations for protection measures, monetization opportunities, and competitive positioning."
+      },
+      {
+        title: "Implementation Planning",
+        description: "We create a detailed implementation plan with clear timelines, responsibilities, and resource requirements. This includes prioritization of actions based on business impact and resource constraints."
+      },
+      {
+        title: "Execution Support",
+        description: "We provide ongoing support during the implementation of your IP strategy, including coordination with specialized counsel for registrations, documentation development, and team training."
+      },
+      {
+        title: "Review & Optimization",
+        description: "We conduct regular reviews of your IP strategy implementation, measuring results against objectives and recommending adjustments as business needs and market conditions evolve."
+      }
+    ]
+  },
 
-  const relatedServices = [
+  relatedServices: [
     {
       title: "IP Licensing",
       path: "/services/ip-licensing",
@@ -70,112 +72,42 @@ const IPConsulting: React.FC = () => {
       path: "/services/emerging-tech",
       description: "Legal frameworks for businesses leveraging emerging technologies like blockchain, AI, and IoT."
     }
-  ];
+  ],
 
+  featuredContent: { 
+      title: "Unlocking IP Value", 
+      content: [
+            "Intellectual property represents one of the most valuable assets for modern businesses, yet it often remains underdeveloped and underutilized.",
+            "Our IP Consulting practice helps clients identify, protect, and leverage intellectual property to create competitive advantages and generate revenue.",
+            "We work with businesses of all sizes, from startups to established enterprises, to develop and implement intellectual property strategies that support broader business objectives."
+          ],
+      callToAction: "Learn More", 
+      imageSrc: "/images/placeholder.jpg", 
+      imageAlt: "Placeholder" 
+  },
+  considerations: [],
+  ctaTitle: "Maximize Your IP Value",
+  ctaDescription: "Contact us today to discuss your IP consulting needs.",
+  ctaButtonText: "Schedule Consultation",
+  phoneNumber: "(555) 555-IPCS"
+};
+
+const IPConsulting: React.FC = () => {
   return (
-    <ServiceTemplate serviceName="IP Consulting" serviceId="ip-consulting">
-      <ServiceHero 
-        title="IP Consulting Services"
-        description="Strategic intellectual property guidance for businesses seeking to maximize value and competitive advantage."
-      />
-      
-      <ServiceContent 
-        title="Unlocking IP Value" 
-        variant="default"
-        decorationPosition="left"
-        decorationVariant={3}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div>
-            <p className="text-lg mb-6">
-              Intellectual property represents one of the most valuable assets for modern businesses, yet it often remains underdeveloped and underutilized.
-            </p>
-            <p className="text-lg mb-6">
-              Our IP Consulting practice helps clients identify, protect, and leverage intellectual property to create competitive advantages and generate revenue.
-            </p>
-            <p className="text-lg">
-              We work with businesses of all sizes, from startups to established enterprises, to develop and implement intellectual property strategies that support broader business objectives.
-            </p>
-          </div>
-          <div className="bg-gray-50 p-6 mondrian-border">
-            <h3 className="font-display text-xl text-black mb-4">Our Expertise Covers:</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start">
-                <div className="h-6 w-6 mondrian-red flex items-center justify-center mr-3 mt-1">
-                  <span className="text-white font-medium">✓</span>
-                </div>
-                <span>Patents and technical innovations</span>
-              </li>
-              <li className="flex items-start">
-                <div className="h-6 w-6 mondrian-blue flex items-center justify-center mr-3 mt-1">
-                  <span className="text-white font-medium">✓</span>
-                </div>
-                <span>Trademarks and branding assets</span>
-              </li>
-              <li className="flex items-start">
-                <div className="h-6 w-6 mondrian-yellow flex items-center justify-center mr-3 mt-1">
-                  <span className="text-black font-medium">✓</span>
-                </div>
-                <span>Copyright and creative works</span>
-              </li>
-              <li className="flex items-start">
-                <div className="h-6 w-6 mondrian-light-blue flex items-center justify-center mr-3 mt-1">
-                  <span className="text-white font-medium">✓</span>
-                </div>
-                <span>Trade secrets and confidential information</span>
-              </li>
-              <li className="flex items-start">
-                <div className="h-6 w-6 mondrian-light-yellow flex items-center justify-center mr-3 mt-1">
-                  <span className="text-black font-medium">✓</span>
-                </div>
-                <span>Data and database rights</span>
-              </li>
-              <li className="flex items-start">
-                <div className="h-6 w-6 mondrian-red flex items-center justify-center mr-3 mt-1">
-                  <span className="text-white font-medium">✓</span>
-                </div>
-                <span>IP portfolio management</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </ServiceContent>
-
-      <ServiceFeatureImage
-        featureTitle="Strategic IP Management Solutions"
-        featureDescription="Our IP consulting services help businesses identify, protect, and leverage their intellectual property assets. We provide tailored strategies that align with your business goals and enhance your competitive position in the market."
-        callToActionText="Schedule an IP consultation"
-        variant="primary"
-      />
-      
-      <ServiceContent 
-        title="Our Consulting Services" 
-        variant="alternate"
-        decorationPosition="right"
-        decorationVariant={2}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {consultingServices.map((service, idx) => (
-            <div key={idx} className="mondrian-border p-6 bg-white">
-              <div className="mb-6">
-                {service.icon}
-              </div>
-              <h3 className="font-display text-xl text-black mb-4">{service.title}</h3>
-              <p className="text-black/80">{service.description}</p>
-            </div>
-          ))}
-        </div>
-      </ServiceContent>
-      
-      <ServiceProcess
-        title="Our Consulting Process"
-        steps={serviceSteps}
-      />
-      
-      <ServiceRelated
-        title="Related Services"
-        items={relatedServices}
-      />
+    <ServiceTemplate 
+      serviceName={ipConsultingData.title!}
+      serviceId="ip-consulting"
+      description={ipConsultingData.description!}
+      featuredContent={ipConsultingData.featuredContent!}
+      features={ipConsultingData.features as ServiceFeature[]}
+      considerations={ipConsultingData.considerations!}
+      process={ipConsultingData.process as Process}
+      relatedServices={ipConsultingData.relatedServices as RelatedService[]}
+      ctaTitle={ipConsultingData.ctaTitle!}
+      ctaDescription={ipConsultingData.ctaDescription!}
+      ctaButtonText={ipConsultingData.ctaButtonText!}
+      phoneNumber={ipConsultingData.phoneNumber}
+    >
     </ServiceTemplate>
   );
 };

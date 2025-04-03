@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import { useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import PageErrorBoundary from "./components/PageErrorBoundary";
+import Layout from "./components/Layout";
 import { logger } from "./utils/logger";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -60,120 +61,122 @@ const AppRoutes = () => {
     <>
       <ScrollToTop />
       <FloatingConsultationButton />
-      <Routes>
-        <Route path="/" element={
-          <PageErrorBoundary pageName="Home Page">
-            <Index />
-          </PageErrorBoundary>
-        } />
-        
-        {/* Practice Routes */}
-        <Route path="/practice" element={
-          <PageErrorBoundary pageName="Practice Areas">
-            <Practice />
-          </PageErrorBoundary>
-        } />
-        
-        {/* Explicit routes for practice areas */}
-        <Route path="/practice/ip-licensing" element={
-          <PageErrorBoundary pageName="IP Licensing">
-            <IPLicensing />
-          </PageErrorBoundary>
-        } />
-        
-        <Route path="/practice/elder-law" element={
-          <PageErrorBoundary pageName="Elder Law">
-            <ElderLaw />
-          </PageErrorBoundary>
-        } />
-        
-        <Route path="/practice/entertainment-law" element={
-          <PageErrorBoundary pageName="Entertainment Law">
-            <EntertainmentLaw />
-          </PageErrorBoundary>
-        } />
-        
-        <Route path="/practice/emerging-tech" element={
-          <PageErrorBoundary pageName="Emerging Technology Law">
-            <EmergingTech />
-          </PageErrorBoundary>
-        } />
-        
-        <Route path="/practice/ip-asset-protection" element={
-          <PageErrorBoundary pageName="IP Asset Protection">
-            <IPAssetProtection />
-          </PageErrorBoundary>
-        } />
-        
-        <Route path="/practice/real-estate" element={
-          <PageErrorBoundary pageName="Real Estate">
-            <RealEstate />
-          </PageErrorBoundary>
-        } />
-        
-        <Route path="/practice/trusts-estates" element={
-          <PageErrorBoundary pageName="Trusts & Estates">
-            <TrustsEstates />
-          </PageErrorBoundary>
-        } />
-        
-        {/* Other Main Routes */}
-        <Route path="/about" element={
-          <PageErrorBoundary pageName="About Us">
-            <About />
-          </PageErrorBoundary>
-        } />
-        <Route path="/team" element={
-          <PageErrorBoundary pageName="Our Team">
-            <Team />
-          </PageErrorBoundary>
-        } />
-        <Route path="/team/:memberId" element={
-          <PageErrorBoundary pageName="Team Member Profile">
-            <TeamMemberProfile />
-          </PageErrorBoundary>
-        } />
-        <Route path="/contact" element={
-          <PageErrorBoundary pageName="Contact Us">
-            <Contact />
-          </PageErrorBoundary>
-        } />
-        
-        {/* Resources Routes */}
-        <Route path="/resources" element={
-          <PageErrorBoundary pageName="Resources">
-            <Resources />
-          </PageErrorBoundary>
-        } />
-        
-        {/* Other routes can be similarly wrapped with PageErrorBoundary */}
-        <Route path="/resources/articles" element={<Articles />} />
-        <Route path="/resources/podcasts" element={<Podcasts />} />
-        <Route path="/resources/faq" element={<FAQ />} />
-        <Route path="/resources/how-we-work" element={<HowWeWork />} />
-        <Route path="/resources/technology-approach" element={<TechnologyPlatform />} />
-        <Route path="/resources/case-studies" element={<CaseStudies />} />
-        <Route path="/resources/:slug" element={<ResourceDetail />} />
-        
-        {/* Services Routes */}
-        <Route path="/services/digital-asset-protection" element={<DigitalAssetProtectionService />} />
-        <Route path="/services/ip-consulting" element={<IPConsultingService />} />
-        <Route path="/services/ip-licensing" element={<LicensingService />} />
-        <Route path="/services/entertainment-law" element={<EntertainmentLawService />} />
-        <Route path="/services/emerging-tech" element={<EmergingTechService />} />
-        
-        {/* Direct access route for How We Work */}
-        <Route path="/how-we-work" element={<HowWeWork />} />
-        
-        {/* Experience the Difference page */}
-        <Route path="/experience-the-difference" element={<ExperienceTheDifference />} />
-        
-        {/* Error Testing Page */}
-        <Route path="/error-test" element={<ErrorTestPage />} />
-        
-        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={
+            <PageErrorBoundary pageName="Home Page">
+              <Index />
+            </PageErrorBoundary>
+          } />
+          
+          {/* Practice Routes */}
+          <Route path="/practice" element={
+            <PageErrorBoundary pageName="Practice Areas">
+              <Practice />
+            </PageErrorBoundary>
+          } />
+          
+          {/* Explicit routes for practice areas */}
+          <Route path="/practice/ip-licensing" element={
+            <PageErrorBoundary pageName="IP Licensing">
+              <IPLicensing />
+            </PageErrorBoundary>
+          } />
+          
+          <Route path="/practice/elder-law" element={
+            <PageErrorBoundary pageName="Elder Law">
+              <ElderLaw />
+            </PageErrorBoundary>
+          } />
+          
+          <Route path="/practice/entertainment-law" element={
+            <PageErrorBoundary pageName="Entertainment Law">
+              <EntertainmentLaw />
+            </PageErrorBoundary>
+          } />
+          
+          <Route path="/practice/emerging-tech" element={
+            <PageErrorBoundary pageName="Emerging Technology Law">
+              <EmergingTech />
+            </PageErrorBoundary>
+          } />
+          
+          <Route path="/practice/ip-asset-protection" element={
+            <PageErrorBoundary pageName="IP Asset Protection">
+              <IPAssetProtection />
+            </PageErrorBoundary>
+          } />
+          
+          <Route path="/practice/real-estate" element={
+            <PageErrorBoundary pageName="Real Estate">
+              <RealEstate />
+            </PageErrorBoundary>
+          } />
+          
+          <Route path="/practice/trusts-estates" element={
+            <PageErrorBoundary pageName="Trusts & Estates">
+              <TrustsEstates />
+            </PageErrorBoundary>
+          } />
+          
+          {/* Other Main Routes */}
+          <Route path="/about" element={
+            <PageErrorBoundary pageName="About Us">
+              <About />
+            </PageErrorBoundary>
+          } />
+          <Route path="/team" element={
+            <PageErrorBoundary pageName="Our Team">
+              <Team />
+            </PageErrorBoundary>
+          } />
+          <Route path="/team/:memberId" element={
+            <PageErrorBoundary pageName="Team Member Profile">
+              <TeamMemberProfile />
+            </PageErrorBoundary>
+          } />
+          <Route path="/contact" element={
+            <PageErrorBoundary pageName="Contact Us">
+              <Contact />
+            </PageErrorBoundary>
+          } />
+          
+          {/* Resources Routes */}
+          <Route path="/resources" element={
+            <PageErrorBoundary pageName="Resources">
+              <Resources />
+            </PageErrorBoundary>
+          } />
+          
+          {/* Other routes can be similarly wrapped with PageErrorBoundary */}
+          <Route path="/resources/articles" element={<Articles />} />
+          <Route path="/resources/podcasts" element={<Podcasts />} />
+          <Route path="/resources/faq" element={<FAQ />} />
+          <Route path="/resources/how-we-work" element={<HowWeWork />} />
+          <Route path="/resources/technology-approach" element={<TechnologyPlatform />} />
+          <Route path="/resources/case-studies" element={<CaseStudies />} />
+          <Route path="/resources/:slug" element={<ResourceDetail />} />
+          
+          {/* Services Routes */}
+          <Route path="/services/digital-asset-protection" element={<DigitalAssetProtectionService />} />
+          <Route path="/services/ip-consulting" element={<IPConsultingService />} />
+          <Route path="/services/ip-licensing" element={<LicensingService />} />
+          <Route path="/services/entertainment-law" element={<EntertainmentLawService />} />
+          <Route path="/services/emerging-tech" element={<EmergingTechService />} />
+          
+          {/* Direct access route for How We Work */}
+          <Route path="/how-we-work" element={<HowWeWork />} />
+          
+          {/* Experience the Difference page */}
+          <Route path="/experience-the-difference" element={<ExperienceTheDifference />} />
+          
+          {/* Error Testing Page */}
+          <Route path="/error-test" element={<ErrorTestPage />} />
+          
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Layout>
     </>
   );
 };

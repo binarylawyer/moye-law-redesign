@@ -88,7 +88,7 @@ export const SEMANTIC_COLORS = {
 // Specific UI component color configurations
 export const COMPONENT_COLORS = {
   header: {
-    background: withOpacity(BRAND_COLORS.white, 0.9),
+    background: withOpacity(BRAND_COLORS.white, 0.97),
     text: BRAND_COLORS.navy,
     border: BRAND_COLORS.black,
     hover: BRAND_COLORS.mondrianRed,

@@ -44,9 +44,11 @@ const Header: React.FC = () => {
   const headerBackground = useMemo(() => ({
     backgroundColor: isScrolled 
       ? COMPONENT_COLORS.header.background 
-      : 'rgba(255, 255, 255, 0.5)',
+      : isHomePage
+        ? 'rgba(255, 255, 255, 0.85)' // Higher opacity for home page when not scrolled
+        : 'rgba(255, 255, 255, 0.65)', // Default opacity for other pages when not scrolled
     backdropFilter: 'blur(15px)'
-  }), [isScrolled]);
+  }), [isScrolled, isHomePage]);
 
   // Memoize navigation data to prevent unnecessary re-renders
   const navigationData = useMemo(() => ({
@@ -71,20 +73,20 @@ const Header: React.FC = () => {
         <div className="absolute top-0 h-full w-1 bg-black/20 line-animation-2"></div>
 
         {/* Mondrian-inspired color blocks */}
-        <div className="absolute top-0 left-0 w-12 h-full mondrian-red opacity-10"></div>
-        <div className="absolute top-0 right-0 w-12 h-full mondrian-blue opacity-10"></div>
+        <div className="absolute top-0 left-0 w-12 h-full mondrian-red opacity-5"></div>
+        <div className="absolute top-0 right-0 w-12 h-full mondrian-blue opacity-5"></div>
         
         {/* Mondrian-inspired horizontal lines */}
-        <div className="absolute top-0 left-0 w-full h-1 flex border-b-2 border-black/20">
-          <div className="w-1/5 h-full bg-[#D6001C]/30"></div>
+        <div className="absolute top-0 left-0 w-full h-1 flex border-b-2 border-black/10">
+          <div className="w-1/5 h-full bg-[#D6001C]/20"></div>
           <div className="w-3/5 h-full bg-transparent"></div>
-          <div className="w-1/5 h-full bg-[#003B98]/30"></div>
+          <div className="w-1/5 h-full bg-[#003B98]/20"></div>
         </div>
         
         {/* Bottom accent */}
         <div className="absolute bottom-0 left-0 w-full h-1 flex">
           <div className="w-2/3 h-full bg-transparent"></div>
-          <div className="w-1/3 h-full bg-[#FFD500]/30"></div>
+          <div className="w-1/3 h-full bg-[#FFD500]/20"></div>
         </div>
       </div>
       

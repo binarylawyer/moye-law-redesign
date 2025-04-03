@@ -14,10 +14,10 @@ export const practiceAreas = [
 
 export const specializedServices = [
   { title: "IP Consulting", path: "/services/ip-consulting" },
-  { title: "Licensing Solutions", path: "/services/ip-licensing" },
+  { title: "Licensing Solutions", path: "/services/licensing" },
   { title: "Digital Asset Protection", path: "/services/digital-asset-protection" },
-  { title: "Entertainment Law", path: "/services/entertainment-law" },
   { title: "Emerging Tech", path: "/services/emerging-tech" },
+  { title: "Entertainment Law", path: "/services/entertainment-law" },
 ];
 
 export const resourcesItems = [

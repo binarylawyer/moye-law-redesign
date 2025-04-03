@@ -1,193 +1,124 @@
-import React, { ReactNode, useEffect, useState, Children, isValidElement } from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import MondrianDividerCTA from '@/components/MondrianDividerCTA';
-import { specializedServiceData, getServiceByName } from '@/data/practiceAreasData'; // We'll keep using the same data source
-import ServiceHero from './ServiceHero';
-import CallToAction from '@/components/shared/CallToAction';
+import React, { useEffect } from 'react';
+import ServiceHero from '@/components/services/ServiceHero';
+import ServiceFeature from '@/components/services/ServiceFeature';
+import ServiceConsiderations from '@/components/services/ServiceConsiderations';
+import ServiceProcess from '@/components/services/ServiceProcess';
+import ServiceCTA from '@/components/services/ServiceCTA';
+import ServiceRelated from '@/components/services/ServiceRelated';
+import ServiceFeaturedContent from '@/components/services/ServiceFeaturedContent';
 import { logger } from '@/utils/logger';
+import { ServiceFeature as ServiceFeatureType, FeaturedContent, ServiceConsideration, Process, RelatedService } from '@/types/services';
 
 interface ServiceTemplateProps {
-  children: ReactNode;
   serviceName: string;
-  serviceId?: string;
+  serviceId: string;
+  description: string;
+  featuredContent: FeaturedContent;
+  features: ServiceFeatureType[];
+  considerations: ServiceConsideration[];
+  process: Process;
+  relatedServices: RelatedService[];
+  ctaTitle: string;
+  ctaDescription: string;
+  ctaButtonText: string;
+  phoneNumber?: string;
+  children?: React.ReactNode;
 }
 
-const ServiceTemplate: React.FC<ServiceTemplateProps> = ({ 
-  children, 
+const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
   serviceName,
-  serviceId
+  serviceId,
+  description,
+  featuredContent,
+  features,
+  considerations,
+  process,
+  relatedServices,
+  ctaTitle,
+  ctaDescription,
+  ctaButtonText,
+  phoneNumber,
+  children,
 }) => {
-  const [serviceInfo, setServiceInfo] = useState<{title: string, description: string} | null>(null);
-  
-  // Find service data if it exists
   useEffect(() => {
-    try {
-      if (serviceId) {
-        logger.debug('ServiceTemplate: Looking for service with ID:', serviceId);
-        
-        // Log available services to help with debugging
-        const availableServices = specializedServiceData?.map?.(s => s.id).join(', ') || 'No services available';
-        logger.debug('Available services:', availableServices);
-        
-        // First try with the exact ID
-        const foundService = specializedServiceData?.find?.(service => 
-          service.id === serviceId ||
-          service.id.replace(/-/g, '') === serviceId.replace(/-/g, '')
-        );
-        
-        if (foundService) {
-          setServiceInfo({
-            title: foundService.title,
-            description: foundService.description
-          });
-          logger.debug('Service info found by exact ID match:', foundService.id, foundService.title);
-        } else {
-          // If not found by ID, try to match by normalized name
-          const normalizedId = serviceId.toLowerCase().replace(/\s+/g, '-');
-          logger.debug('Trying normalized ID:', normalizedId);
-          
-          const serviceByName = specializedServiceData?.find?.(service => {
-            const normalizedTitle = service.title?.toLowerCase().replace(/\s+/g, '-');
-            const normalizedShortTitle = service.shortTitle?.toLowerCase().replace(/\s+/g, '-');
-            
-            logger.debug(`Comparing with: ${service.id} (${normalizedTitle}, ${normalizedShortTitle})`);
-            
-            return normalizedTitle === normalizedId || normalizedShortTitle === normalizedId;
-          });
-
-          if (serviceByName) {
-            setServiceInfo({
-              title: serviceByName.title,
-              description: serviceByName.description
-            });
-            logger.debug('Service info found by name:', serviceByName.title, serviceByName.description);
-          } else {
-            // Fallback to the serviceName if no service found
-            logger.warn(`No service info found for ID: ${serviceId}. Using serviceName instead.`);
-            setServiceInfo({
-              title: serviceName,
-              description: `${serviceName} provided by Moye Law.`
-            });
-          }
-        }
-      } else {
-        // Set a default if no serviceId is provided
-        setServiceInfo({
-          title: serviceName,
-          description: `${serviceName} provided by Moye Law.`
-        });
-      }
-    } catch (error) {
-      logger.error('Error in ServiceTemplate when finding service info:', error);
-      // Set a fallback in case of error
-      setServiceInfo({
-        title: serviceName,
-        description: `${serviceName} provided by Moye Law.`
-      });
-    }
-  }, [serviceId, serviceName]);
-
-  // Function to render the hero directly if we have service info
-  const renderHero = () => {
-    if (!serviceInfo) return null;
+    // Log component mount for debugging
+    logger.debug(`ServiceTemplate mounted: ${serviceName} (${serviceId})`);
     
-    return (
-      <section className="py-12 md:py-16 relative overflow-hidden">
-        <div className="container mx-auto px-8">
-          <div className="mondrian-grid">
-            {/* Mondrian-style colored block - color determined by title */}
-            <div className={`col-span-3 ${getMondrianColor(serviceInfo.title)}`}></div>
-            
-            {/* Content in white block with Mondrian border */}
-            <div className="col-span-6 mondrian-grid-item bg-white p-6 text-center">
-              <h1 className="reveal font-display text-black text-4xl md:text-5xl mb-6 !opacity-100">
-                {serviceInfo.title}
-              </h1>
-              <p className="reveal text-xl text-black/80 mx-auto !opacity-100">
-                {serviceInfo.description}
-              </p>
-            </div>
-            
-            {/* White block with black border */}
-            <div className="col-span-3 mondrian-white border-r-4 border-b-4 border-black"></div>
-          </div>
-        </div>
-      </section>
-    );
-  };
+    // Simple animation system
+    const elements = document.querySelectorAll('[data-animation]');
+    elements.forEach(element => {
+      const delay = element.getAttribute('data-animation-delay') || '0';
+      setTimeout(() => {
+        element.classList.add('animate-in');
+      }, parseInt(delay));
+    });
+    
+    // Clean up
+    return () => {
+      logger.debug(`ServiceTemplate unmounted: ${serviceName}`);
+    };
+  }, [serviceName, serviceId]);
   
-  // Helper function to determine color based on first letter of title
-  const getMondrianColor = (title: string = '') => {
-    const firstLetter = (title || '').toLowerCase().charAt(0);
-    if (firstLetter <= 'h') return 'mondrian-red';
-    if (firstLetter <= 'p') return 'mondrian-blue';
-    return 'mondrian-yellow';
-  };
-
-  // Function to check if children contain a ServiceHero
-  const hasHeroComponent = () => {
-    let hasHero = false;
-    try {
-      Children.forEach(children, (child) => {
-        if (isValidElement(child)) {
-          // Check if the component is ServiceHero by name or type
-          const componentName = typeof child.type === 'function' 
-            ? (child.type as any).name 
-            : typeof child.type === 'string' ? child.type : '';
-          
-          if (componentName === 'ServiceHero' || child.type === ServiceHero) {
-            hasHero = true;
-          }
-        }
-      });
-    } catch (error) {
-      logger.error('Error checking for hero component:', error);
-    }
-    return hasHero;
-  };
-
-  // Check if children have any content
-  const hasContent = () => {
-    return Children.count(children) > 0;
-  };
-
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <Header />
+    // Apply a base background and ensure it spans full width
+    <div className="service-page bg-white" data-service-id={serviceId}>
+      {/* Hero Section - Assuming full width or contained within its own section */}
+      <ServiceHero 
+        title={serviceName}
+        description={description}
+      />
       
-      <main className="flex-grow pt-48 relative">
-        {/* Decorative Mondrian lines that extend beyond screen width */}
-        <div className="absolute top-64 left-0 w-full h-4 mondrian-blue -z-10"></div>
-        <div className="absolute top-[32rem] left-0 w-full h-4 mondrian-red -z-10"></div>
+      {/* Main Content Wrapper - Use container for centered content with padding */}
+      {/* We can potentially add Mondrian grid classes here if all content follows a strict grid */}
+      <main className="container mx-auto px-4 py-16 md:py-24 space-y-16 md:space-y-24">
         
-        {/* If we have service info and no hero in children, render our own hero */}
-        {serviceInfo && !hasHeroComponent() && renderHero()}
-        
-        {/* Always render children with no space between components */}
-        <div className="space-y-0 [&>*]:mb-0">
-          {children}
+        {/* Featured Content Section */}
+        {/* Wrap each section to allow individual styling/borders if needed */}
+        <div className="content-section">
+          <ServiceFeaturedContent content={featuredContent} />
         </div>
         
-        {/* If there's no content, add a placeholder to help guide users */}
-        {!hasContent() && (
-          <div className="max-w-7xl mx-auto px-8 mb-16 py-8 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50">
-            <p className="text-center text-gray-500 italic">Add service-specific content here</p>
+        {/* Service Features */}
+        <div className="content-section">
+          <ServiceFeature features={features} />
+        </div>
+        
+        {/* Key Considerations */}
+        <div className="content-section">
+          <ServiceConsiderations considerations={considerations} />
+        </div>
+        
+        {/* Process */}
+        <div className="content-section">
+          <ServiceProcess process={process} />
+        </div>
+        
+        {/* Additional Custom Content */}
+        {children && (
+          <div className="content-section">
+             {children}
           </div>
         )}
         
-        {/* Consistent Mondrian divider with CTA specific to service */}
-        <div className="max-w-7xl mx-auto px-8 mb-1">
-          <MondrianDividerCTA 
-            text={`Have questions about ${serviceName}? Call us for a free consultation:`}
+        {/* Related Services */}
+        <div className="content-section">
+          <ServiceRelated 
+            relatedServices={relatedServices}
           />
         </div>
         
-        {/* New Mondrian-inspired Call To Action */}
-        <CallToAction />
-      </main>
+        {/* Call to Action - Often full-width or distinct layout, maybe outside main */}
+        {/* We'll keep it separate for now */}
+        
+      </main> { /* End Main Content Wrapper */}
       
-      <Footer />
+      {/* Call to Action Section - Could be full width with its own background/borders */}
+      <ServiceCTA
+        title={ctaTitle}
+        description={ctaDescription}
+        buttonText={ctaButtonText}
+        phoneNumber={phoneNumber}
+      />
     </div>
   );
 };

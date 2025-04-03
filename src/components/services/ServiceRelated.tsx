@@ -1,48 +1,50 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRightIcon } from '@radix-ui/react-icons';
-import { specializedServicePathMap } from '@/data/practiceAreasData';
-
-interface RelatedItem {
-  title: string;
-  path: string;
-  description: string;
-}
+import { RelatedService } from '@/types/services';
+import { Icon } from '@/components/ui/Icon';
 
 interface ServiceRelatedProps {
-  title: string;
-  items: RelatedItem[];
+  title?: string;
+  relatedServices?: RelatedService[];
 }
 
-const ServiceRelated: React.FC<ServiceRelatedProps> = ({ title, items }) => {
-  // Helper function to ensure path has the proper format
-  const getPath = (path: string) => {
-    // If it's already a full path with /, return it
-    if (path.startsWith('/')) {
-      return path;
-    }
-    
-    // Default to services prefix - change this from practice prefix
-    return `/services/${path}`;
-  };
+const ServiceRelated: React.FC<ServiceRelatedProps> = ({
+  title = 'Related Services',
+  relatedServices = []
+}) => {
+  // If no related services, don't render the component
+  if (!relatedServices || relatedServices.length === 0) {
+    return null;
+  }
 
   return (
-    <section className="bg-gray-50 py-8">
-      <div className="container mx-auto px-8">
-        <h2 className="font-display text-3xl text-center mb-6">{title || "Related Services"}</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {items.map((item, idx) => (
-            <div key={idx} className="mondrian-border bg-white p-5 flex flex-col h-full">
-              <h3 className="font-display text-xl text-black mb-2">{item.title}</h3>
-              <p className="text-black/80 mb-3 flex-grow">{item.description}</p>
-              <Link 
-                to={getPath(item.path)} 
-                className="inline-flex items-center mt-auto text-primary font-medium hover:text-primary/80 transition-colors"
-              >
-                Learn more <ArrowRightIcon className="ml-2 h-4 w-4" />
-              </Link>
-            </div>
+    <section className="py-16 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <div className="mb-12 text-center" data-animation="fade-in">
+          <h2 className="text-3xl md:text-4xl font-display mb-4">{title}</h2>
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            Additional legal services that complement your current needs
+          </p>
+        </div>
+
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          {relatedServices.map((service, idx) => (
+            <Link 
+              to={service.path} 
+              key={idx}
+              className="bg-white mondrian-border hover:shadow-lg transition-all duration-300 group"
+              data-animation="fade-in"
+              data-animation-delay={`${idx * 100}`}
+            >
+              <div className="p-6">
+                <h3 className="font-display text-xl mb-3">{service.title}</h3>
+                <p className="text-gray-700 mb-4">{service.description}</p>
+                <div className="flex items-center text-primary font-medium group-hover:translate-x-1 transition-transform duration-300">
+                  Learn more
+                  <Icon name="ChevronRight" className="ml-1 w-5 h-5" />
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

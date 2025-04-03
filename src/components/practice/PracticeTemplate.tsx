@@ -85,13 +85,16 @@ const PracticeTemplate: React.FC<PracticeTemplateProps> = ({
         <section className="py-16">
           <div className="container mx-auto px-8">
             <div className="flex flex-col md:flex-row">
-              {/* Mondrian composition on left */}
-              <div className="w-full md:w-1/3 h-64 md:h-auto">
+              {/* Mondrian composition on left - changed from 1/3 to 1/4 width */}
+              <div className="w-full md:w-1/4 flex-shrink-0 h-64 md:h-auto">
                 <MondrianClassicComposition />
               </div>
               
-              {/* White content block */}
-              <div className="bg-white border-4 border-black p-8 md:p-12 w-full md:w-2/3">
+              {/* Added spacing between Mondrian and content */}
+              <div className="bg-white w-full md:w-16 p-8 hidden md:block"></div>
+              
+              {/* White content block - adjusted width */}
+              <div className="bg-white border-4 border-black p-8 md:p-12 w-full md:flex-1 text-center">
                 <h1 className="font-display text-black text-4xl md:text-5xl lg:text-6xl mb-8">{title}</h1>
                 <p className="text-xl text-black/80">
                   {description}

@@ -1,0 +1,73 @@
+/* Animation utilities for service pages */
+
+/* Base animation styles */
+[data-animation] {
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+[data-animation].animate-in {
+  opacity: 1;
+}
+
+/* Fade in animation */
+[data-animation="fade-in"] {
+  opacity: 0;
+}
+
+[data-animation="fade-in"].animate-in {
+  opacity: 1;
+}
+
+/* Slide in from left */
+[data-animation="slide-in-left"] {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+[data-animation="slide-in-left"].animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide in from right */
+[data-animation="slide-in-right"] {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+[data-animation="slide-in-right"].animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide in from bottom */
+[data-animation="slide-in-bottom"] {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+[data-animation="slide-in-bottom"].animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scale in animation */
+[data-animation="scale-in"] {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+[data-animation="scale-in"].animate-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Custom animations for specific components */
+.service-feature-item.animate-in {
+  transition-delay: calc(var(--index) * 100ms);
+}
+
+.service-process-step.animate-in {
+  transition-delay: calc(var(--index) * 150ms);
+} 

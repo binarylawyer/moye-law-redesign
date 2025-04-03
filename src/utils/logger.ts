@@ -186,6 +186,14 @@ const logger = {
     if (isProduction && enabledLogLevels.error) {
       sendToLogService('error', message, error, opts);
     }
+  },
+
+  // Track specific UI events if needed
+  trackEvent: (eventName: string, properties?: Record<string, any>) => {
+    if (import.meta.env.MODE === 'development') {
+      console.log(`[EVENT] ${eventName}`, properties || {});
+    }
+    // In production, this would send to analytics service
   }
 };
 

@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MondrianClassicComposition from '@/components/MondrianClassicComposition';
 import { Link } from 'react-router-dom';
-import '../../styles/mondrian.css';
+import '@/styles/mondrian.css';
 
 // Content sections
 const entertainmentLawAreas = [

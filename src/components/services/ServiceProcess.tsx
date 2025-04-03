@@ -1,67 +1,65 @@
 import React from 'react';
-
-interface ProcessStep {
-  title: string;
-  description: string;
-}
+import { Process } from '@/types/services';
 
 interface ServiceProcessProps {
-  title?: string;
-  steps: ProcessStep[];
+  process: Process;
 }
 
-const ServiceProcess: React.FC<ServiceProcessProps> = ({ 
-  title = "Our Process", 
-  steps 
-}) => {
+const ServiceProcess: React.FC<ServiceProcessProps> = ({ process }) => {
+  // Add null check for safety, though ServiceTemplate should always pass it now
+  if (!process) return null; 
+  
+  const { title, steps } = process;
+
+  // Determine grid columns based on number of steps for responsiveness
+  const gridColsClass = steps.length <= 3 ? 'md:grid-cols-3' : 
+                        steps.length === 4 ? 'md:grid-cols-4' : 
+                        'md:grid-cols-3 lg:grid-cols-5'; // Default for 5+
+
   return (
-    <section className="py-8">
-      <div className="container mx-auto px-8">
-        <div className="mondrian-grid mb-6">
-          <div className="col-span-3 mondrian-light-blue"></div>
-          <div className="col-span-6 mondrian-grid-item bg-white p-6 text-center">
-            <h2 className="reveal font-display text-black text-3xl mb-3">{title}</h2>
-          </div>
-          <div className="col-span-3 mondrian-white border-r-4 border-b-4 border-black"></div>
-        </div>
-        
-        <div className="max-w-5xl mx-auto">
-          {steps.map((step, index) => (
-            <div 
-              key={index} 
-              className="reveal mondrian-grid mb-3"
-              style={{ transitionDelay: `${0.1 * index}s` }}
-            >
-              {/* For even indices, show red block and content */}
-              {index % 2 === 0 && (
-                <>
-                  <div className="col-span-12 md:col-span-3 mondrian-red flex items-center justify-center p-4">
-                    <span className="font-display text-white text-3xl">0{index + 1}</span>
-                  </div>
-                  <div className="col-span-12 md:col-span-9 mondrian-grid-item bg-white p-5">
-                    <h3 className="font-display text-black text-xl mb-2">{step.title}</h3>
-                    <p className="text-black/80">{step.description}</p>
-                  </div>
-                </>
-              )}
-              
-              {/* For odd indices, show blue block and content */}
-              {index % 2 === 1 && (
-                <>
-                  <div className="col-span-12 md:col-span-9 mondrian-grid-item bg-white p-5">
-                    <h3 className="font-display text-black text-xl mb-2">{step.title}</h3>
-                    <p className="text-black/80">{step.description}</p>
-                  </div>
-                  <div className="col-span-12 md:col-span-3 mondrian-light-blue flex items-center justify-center p-4">
-                    <span className="font-display text-white text-3xl">0{index + 1}</span>
-                  </div>
-                </>
-              )}
-            </div>
-          ))}
-        </div>
+    // Remove outer section padding
+    <div className="process-section">
+      {/* Title Area */}
+      <div className="mb-12 text-center md:text-left">
+        <h2 className="text-3xl md:text-4xl font-display mb-4 text-primary">{title}</h2>
+        {/* Optional description if added to Process type later */}
+        {/* <p className="text-lg text-gray-700 max-w-3xl mx-auto md:mx-0">Optional description here</p> */}
       </div>
-    </section>
+
+      {/* Mondrian Grid for Process Steps */}
+      <div className={`grid grid-cols-1 ${gridColsClass} gap-0 mondrian-border`}> {/* Add main border */}
+        {steps.map((step, idx) => {
+          // Assign Mondrian colors cyclically
+          const colors = ['mondrian-red', 'mondrian-blue', 'mondrian-yellow'];
+          const colorClass = colors[idx % colors.length];
+          
+          // Determine border classes based on position in grid
+          // This logic is simplified and might need refinement for perfect grid lines across rows
+          const borderClasses = `mondrian-border-t ${idx > 0 ? 'md:border-l-4' : 'md:border-l-0'} border-black`;
+
+          return (
+            <div 
+              key={idx}
+              // Apply dynamic borders and padding
+              className={`p-6 md:p-8 flex flex-col ${borderClasses}`}
+              data-animation="fade-in"
+              data-animation-delay={`${idx * 100}`}
+            >
+              {/* Step Number with Color Accent */}
+              <div className="mb-4 flex items-center">
+                 <span className={`inline-block w-8 h-8 mr-3 flex items-center justify-center font-display text-sm text-white ${colorClass}`}>
+                   {String(idx + 1).padStart(2, '0')}
+                 </span>
+                 <h3 className="font-display text-xl text-primary flex-1">{step.title}</h3>
+              </div>
+                            
+              {/* Step Description */}
+              <p className="text-gray-700 flex-grow">{step.description}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 };
 

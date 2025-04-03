@@ -350,4 +350,73 @@
 .mondrian-button.red {
   background-color: #D6001C;
   color: white;
+}
+
+/* Mondrian-inspired design system */
+
+/* Colors */
+:root {
+  --mondrian-red: #E72F24;
+  --mondrian-blue: #004D9D;
+  --mondrian-yellow: #F9D245;
+  --mondrian-white: #FFFFFF;
+  --mondrian-black: #0D0D0D;
+}
+
+/* Border styles */
+.mondrian-border {
+  border: 3px solid var(--mondrian-black);
+}
+
+.mondrian-border-thin {
+  border: 2px solid var(--mondrian-black);
+}
+
+/* Background colors */
+.bg-primary {
+  background-color: var(--mondrian-red);
+}
+
+.bg-mondrian-red {
+  background-color: var(--mondrian-red);
+}
+
+.bg-mondrian-blue {
+  background-color: var(--mondrian-blue);
+}
+
+.bg-mondrian-yellow {
+  background-color: var(--mondrian-yellow);
+}
+
+/* Text colors */
+.text-primary {
+  color: var(--mondrian-red);
+}
+
+/* Layout compositions */
+.mondrian-composition {
+  position: relative;
+}
+
+.mondrian-composition::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--mondrian-yellow);
+  z-index: 1;
+}
+
+.mondrian-composition::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  background-color: var(--mondrian-blue);
+  z-index: 1;
 } 

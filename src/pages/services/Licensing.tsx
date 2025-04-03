@@ -1,132 +1,117 @@
 import React from 'react';
 import ServiceTemplate from '@/components/services/ServiceTemplate';
-import ServiceHero from '@/components/services/ServiceHero';
-import ServiceContent from '@/components/services/ServiceContent';
-import ServiceProcess from '@/components/services/ServiceProcess';
-import ServiceRelated from '@/components/services/ServiceRelated';
-import ServiceFeatureImage from '@/components/services/ServiceFeatureImage';
+import { ServiceData, ServiceFeature, Process, RelatedService, FeaturedContent, ServiceConsideration } from '@/types/services';
 
-const Licensing: React.FC = () => {
-  const licensingServices = [
+// Define the data structure matching ServiceData
+const licensingData: Partial<ServiceData> = {
+  title: "Licensing Solutions",
+  description: "Strategic licensing frameworks to unlock the value of intellectual property and proprietary assets.",
+
+  featuredContent: { 
+      title: "Monetizing Your Assets Through Licensing", 
+      content: [
+        "Intellectual property and other proprietary assets often hold significant untapped commercial potential. Our Licensing Solutions practice helps businesses structure and negotiate agreements that unlock this value through strategic licensing.",
+        "We work with licensors and licensees across diverse industries to create frameworks that facilitate technology transfer, brand extension, content distribution, and other commercial arrangements.",
+        "Our approach combines deep legal expertise in intellectual property and contract law with a keen understanding of business strategy, ensuring licensing deals align with our clients' broader commercial objectives."
+      ],
+      callToAction: "Explore licensing opportunities", 
+      imageSrc: "/images/placeholder-licensing.jpg", // Placeholder
+      imageAlt: "Licensing Solutions Placeholder" // Placeholder
+  },
+
+  // Map licensingServices to features structure
+  features: [
     {
       title: "Technology Licensing",
-      description: "Strategic agreements for software, patents, and technical innovations that maximize value while protecting intellectual assets."
+      description: "Structuring agreements for the transfer and use of patented technologies and technical know-how.",
+      icon: "Code" 
     },
     {
-      title: "Content & Media Licensing",
-      description: "Structured frameworks for licensing creative works, from digital content to entertainment properties."
+      title: "Brand Licensing",
+      description: "Developing frameworks for trademark and brand extensions into new product categories or markets.",
+      icon: "Tag"
     },
     {
-      title: "Trademark & Brand Licensing",
-      description: "Brand extension and merchandising agreements that protect brand integrity while opening new revenue streams."
+      title: "Content Licensing",
+      description: "Negotiating agreements for the distribution and use of creative works across various media platforms.",
+      icon: "DocumentText"
     },
     {
-      title: "Cross-Border Licensing",
-      description: "International licensing strategies that navigate complex jurisdictional requirements and maximize global opportunities."
+      title: "Franchise Agreements",
+      description: "Comprehensive legal support for structuring, negotiating, and managing franchise systems.",
+      icon: "OfficeBuilding"
     }
-  ];
+  ],
 
-  const serviceSteps = [
-    {
-      title: "Asset Assessment",
-      description: "We begin with a thorough evaluation of your licensable intellectual property, identifying the most valuable assets and optimal licensing strategies for each."
-    },
-    {
-      title: "Market Analysis",
-      description: "We research potential licensing partners, markets, and opportunities, evaluating competitive offerings and identifying the most promising licensing avenues."
-    },
-    {
-      title: "Strategic Planning",
-      description: "We develop a comprehensive licensing strategy aligned with your business objectives, from revenue generation to market expansion or technology adoption."
-    },
-    {
-      title: "Agreement Development",
-      description: "We craft customized licensing agreements that protect your intellectual property while establishing clear terms for usage, compensation, quality control, and compliance."
-    },
-    {
-      title: "Ongoing Management",
-      description: "We provide continuous support to monitor compliance, manage renewals, and optimize your licensing program as market conditions and business objectives evolve."
-    }
-  ];
+  considerations: [], // Placeholder
 
-  const relatedServices = [
+  process: {
+    title: "Our Licensing Process",
+    steps: [
+      {
+        title: "Asset Identification & Valuation",
+        description: "We identify licensable assets (IP, technology, data, brand elements) and assess their commercial potential and market value to inform licensing strategy."
+      },
+      {
+        title: "Strategy Development",
+        description: "We collaborate to define clear licensing objectives, target markets or partners, and key deal parameters (scope, territory, exclusivity, financial terms)."
+      },
+      {
+        title: "Partner Sourcing & Due Diligence",
+        description: "We assist in identifying potential licensing partners and conduct thorough due diligence to assess their capabilities, financial stability, and strategic fit."
+      },
+      {
+        title: "Negotiation & Agreement Drafting",
+        description: "Our attorneys lead negotiations and draft comprehensive licensing agreements that protect client interests while fostering productive partnerships."
+      },
+      {
+        title: "Ongoing Relationship Management",
+        description: "We provide guidance on managing the licensing relationship, including compliance monitoring, royalty tracking, and dispute resolution support."
+      }
+    ]
+  },
+
+  relatedServices: [
     {
       title: "IP Consulting",
       path: "/services/ip-consulting",
-      description: "Strategic guidance for managing and maximizing the value of your intellectual property assets."
+      description: "Strategic advice on managing and leveraging intellectual property portfolios for licensing success."
     },
     {
-      title: "Digital Asset Protection",
-      path: "/services/digital-asset-protection",
-      description: "Comprehensive legal protection for digital assets, from NFTs to domain names and digital IP."
+      title: "Intellectual Property",
+      path: "/services/intellectual-property", // Assuming path
+      description: "Core legal services for securing and enforcing the IP assets that underpin licensing deals."
     },
     {
-      title: "Entertainment Law",
-      path: "/services/entertainment-law",
-      description: "Legal counsel for entertainment properties, content licensing, and media ventures."
+      title: "Emerging Tech",
+      path: "/services/emerging-tech",
+      description: "Specialized licensing guidance for technologies like AI, blockchain, and IoT software."
     }
-  ];
+  ],
 
+  ctaTitle: "Unlock Your Asset Value", // Placeholder
+  ctaDescription: "Leverage strategic licensing to generate new revenue streams and expand market reach.", // Placeholder
+  ctaButtonText: "Discuss Licensing Strategies", // Placeholder
+  phoneNumber: "(555) 555-LICN" // Placeholder
+};
+
+const Licensing: React.FC = () => {
   return (
-    <ServiceTemplate serviceName="IP Licensing" serviceId="ip-licensing">
-      <ServiceHero 
-        title="IP Licensing Solutions"
-        description="Structured frameworks for monetizing and leveraging intellectual property through strategic licensing arrangements."
-      />
-      
-      <ServiceContent 
-        title="Unlocking IP Value Through Strategic Licensing" 
-        variant="default"
-        decorationPosition="right"
-        decorationVariant={2}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-1 gap-10">
-          <div>
-            <p className="text-lg mb-6">
-              Intellectual property licensing transforms static IP assets into dynamic revenue streams and strategic advantages. Our IP Licensing practice helps clients leverage their intellectual property through carefully structured licensing arrangements.
-            </p>
-            <p className="text-lg mb-6">
-              We work with innovators, creators, and businesses to develop licensing strategies that extend market reach, generate revenue, and maintain control over valuable intellectual assets.
-            </p>
-            <p className="text-lg">
-              Our expertise spans technology, content, and brand licensing across multiple industries, enabling us to craft licensing solutions tailored to your specific intellectual property portfolio and business objectives.
-            </p>
-          </div>
-        </div>
-      </ServiceContent>
-      
-      <ServiceFeatureImage
-        featureTitle="Transform Your IP into Revenue"
-        featureDescription="Our licensing expertise helps you develop strategic frameworks that maximize the value of your intellectual property while maintaining control and protecting your core assets. We'll help you navigate complex licensing arrangements to create sustainable revenue streams."
-        callToActionText="Explore licensing opportunities"
-        variant="secondary"
-      />
-      
-      <ServiceContent 
-        title="Licensing Solutions" 
-        variant="alternate"
-        decorationPosition="left"
-        decorationVariant={5}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {licensingServices.map((service, idx) => (
-            <div key={idx} className="mondrian-border p-6 bg-white">
-              <h3 className="font-display text-xl text-black mb-4">{service.title}</h3>
-              <p className="text-black/80">{service.description}</p>
-            </div>
-          ))}
-        </div>
-      </ServiceContent>
-      
-      <ServiceProcess
-        title="Our Licensing Process"
-        steps={serviceSteps}
-      />
-      
-      <ServiceRelated
-        title="Related Services"
-        items={relatedServices}
-      />
+    <ServiceTemplate 
+      serviceName={licensingData.title!}
+      serviceId="licensing"
+      description={licensingData.description!}
+      featuredContent={licensingData.featuredContent!}
+      features={licensingData.features as ServiceFeature[]}
+      considerations={licensingData.considerations!}
+      process={licensingData.process as Process}
+      relatedServices={licensingData.relatedServices as RelatedService[]}
+      ctaTitle={licensingData.ctaTitle!}
+      ctaDescription={licensingData.ctaDescription!}
+      ctaButtonText={licensingData.ctaButtonText!}
+      phoneNumber={licensingData.phoneNumber}
+    >
+      {/* Remove children previously rendered here manually */}
     </ServiceTemplate>
   );
 };
