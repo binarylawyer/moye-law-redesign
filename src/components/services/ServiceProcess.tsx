@@ -16,7 +16,7 @@ const ServiceProcess: React.FC<ServiceProcessProps> = ({ process }) => {
   return (
     <div ref={containerRef} className="py-20 md:py-32">
       {/* Section Title - Large, minimal typography with ample space */}
-      <div className="container mx-auto px-4 mb-16 md:mb-24">
+      <div className="container mx-auto px-4 md:px-8 max-w-6xl mb-16 md:mb-24">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -28,7 +28,7 @@ const ServiceProcess: React.FC<ServiceProcessProps> = ({ process }) => {
       </div>
 
       {/* Gallery-style Grid Layout */}
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 md:px-8 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20">
           {/* Map through each step */}
           {steps.map((step, idx) => (

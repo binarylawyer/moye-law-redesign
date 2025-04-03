@@ -14,9 +14,9 @@ const probateData: Partial<ServiceData> = {
           "Moye Law helps executors and families through every step of estate administration in New York, explaining each step in plain English so you're never left in the dark.",
           "Our firm leverages modern tools to streamline probate, using secure online document sharing and software to track deadlines and filings, aiming for quicker resolution and less hassle for you."
       ],
-      callToAction: "Ease the burden of probate", // Placeholder CTA
-      imageSrc: "/images/services/probate-featured.jpg", // Placeholder image
-      imageAlt: "Hands signing legal documents for estate administration" // Placeholder alt text
+      callToAction: "Ease the burden of probate",
+      imageSrc: "/images/services/probate-administration-document.jpg",
+      imageAlt: "Professional reviewing estate documents and probate paperwork"
   },
 
   // Define features based on scope of services from doc

@@ -15,8 +15,8 @@ const licensingTransactionsData: Partial<ServiceData> = {
         "We combine deep legal expertise in IP and contract law with business acumen to ensure deals align with broader commercial objectives."
       ],
       callToAction: "Structure your next deal", 
-      imageSrc: "/images/services/licensing-transactions-featured.jpg",
-      imageAlt: "Negotiating licensing and transaction agreements"
+      imageSrc: "/images/services/licensing-transactions.jpg",
+      imageAlt: "Professional contract signing and licensing negotiation"
   },
 
   // Update features for Licensing & Transactions focus

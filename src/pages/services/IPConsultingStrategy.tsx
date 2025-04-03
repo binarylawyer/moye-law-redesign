@@ -74,8 +74,8 @@ const ipConsultingStrategyData: Partial<ServiceData> = {
             "We develop bespoke IP strategies aligned with broader business objectives for companies of all sizes."
           ],
       callToAction: "Develop Your IP Strategy", 
-      imageSrc: "/images/services/ip-strategy-featured.jpg", // Update image if desired
-      imageAlt: "Strategic planning session for intellectual property" 
+      imageSrc: "/images/services/ip-consulting-workspace.jpg",
+      imageAlt: "Creative professional workspace with intellectual property visualization"
   },
   considerations: [], // Add relevant Q&As if possible
   ctaTitle: "Elevate Your IP Strategy", // Updated CTA title

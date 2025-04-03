@@ -14,8 +14,8 @@ const digitalAssetTechData: Partial<ServiceData> = {
           "Our proactive approach identifies risks early and establishes robust legal frameworks for protection and compliance."
       ],
       callToAction: "Secure your digital & tech assets", 
-      imageSrc: "/images/services/digital-tech-featured.jpg",
-      imageAlt: "Digital assets and technology protection concept"
+      imageSrc: "/images/services/digital-asset-protection.jpg",
+      imageAlt: "Abstract digital security representation with technology workspace"
   },
 
   features: [

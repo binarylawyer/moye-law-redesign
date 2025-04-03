@@ -14,9 +14,9 @@ const elderLawData: Partial<ServiceData> = {
           "At Moye Law, we stand by your family through this journey. As a family-run firm, we treat your family as our own – providing clear, patient legal guidance on elder law matters so you never feel alone.",
           "Our innovative approach means we stay on top of changing elder care laws and use modern tools to keep documents organized and accessible, ensuring you're always one step ahead."
       ],
-      callToAction: "Find compassionate guidance", // Placeholder CTA
-      imageSrc: "/images/services/elder-law-featured.jpg", // Placeholder image
-      imageAlt: "Senior receiving care and legal support" // Placeholder alt text
+      callToAction: "Find compassionate guidance",
+      imageSrc: "/images/services/elder-law-consultation.jpg",
+      imageAlt: "Professional senior care consultation with multigenerational family"
   },
 
   // Define features based on scope of services from doc

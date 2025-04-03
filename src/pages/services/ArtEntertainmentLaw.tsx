@@ -15,8 +15,8 @@ const artEntertainmentLawData: Partial<ServiceData> = {
         "Our attorneys combine deep industry knowledge with legal expertise to provide practical, results-oriented advice tailored to the specific needs of creative professionals and businesses."
       ],
       callToAction: "Protect your creative vision", 
-      imageSrc: "/images/services/art-entertainment-featured.jpg",
-      imageAlt: "Art gallery display and film set collage"
+      imageSrc: "/images/services/art-entertainment-law.jpg",
+      imageAlt: "Creative industry setting with artistic workspace"
   },
 
   // Update features combining Art and Entertainment elements
