@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ConsultationCTA from '@/components/ConsultationCTA';
@@ -79,144 +77,138 @@ const caseStudies: CaseStudy[] = [
 
 const CaseStudies: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <Header />
+    <main className="flex-grow pt-48 relative overflow-hidden">
+      <ResourcePageHeader 
+        title="Client Success Stories"
+        description="Real-world examples of how we've helped clients navigate complex legal challenges while protecting what matters most. All case studies are anonymized to protect client confidentiality."
+        variant="red"
+      />
       
-      <main className="flex-grow pt-48 relative overflow-hidden">
-        <ResourcePageHeader 
-          title="Client Success Stories"
-          description="Real-world examples of how we've helped clients navigate complex legal challenges while protecting what matters most. All case studies are anonymized to protect client confidentiality."
-          variant="red"
-        />
-        
-        {/* Horizontal lines extending beyond screen width - Position 1 */}
-        <div className="absolute w-[150vw] h-4 mondrian-light-blue left-[-25vw] top-[32%] z-10"></div>
-        <div className="absolute w-[150vw] h-2 mondrian-blue left-[-25vw] top-[38%] z-10"></div>
-        
-        {/* Case Studies Layout */}
-        <section className="py-20 relative">
-          <div className="container mx-auto px-8">
-            <div className="relative z-20">
-              {caseStudies.map((study, index) => (
+      {/* Horizontal lines extending beyond screen width - Position 1 */}
+      <div className="absolute w-[150vw] h-4 mondrian-light-blue left-[-25vw] top-[32%] z-10"></div>
+      <div className="absolute w-[150vw] h-2 mondrian-blue left-[-25vw] top-[38%] z-10"></div>
+      
+      {/* Case Studies Layout */}
+      <section className="py-20 relative">
+        <div className="container mx-auto px-8">
+          <div className="relative z-20">
+            {caseStudies.map((study, index) => (
+              <div 
+                key={study.id} 
+                className={`
+                  mb-20 relative
+                  ${index % 2 === 0 ? 'ml-0 md:ml-12' : 'mr-0 md:mr-12 ml-auto'}
+                  ${index % 2 === 0 ? 'max-w-3xl' : 'max-w-4xl'}
+                `}
+              >
+                {/* Multiple decorative squares for more Mondrian-like composition */}
                 <div 
-                  key={study.id} 
                   className={`
-                    mb-20 relative
-                    ${index % 2 === 0 ? 'ml-0 md:ml-12' : 'mr-0 md:mr-12 ml-auto'}
-                    ${index % 2 === 0 ? 'max-w-3xl' : 'max-w-4xl'}
+                    absolute w-12 h-12 mondrian-border z-10
+                    ${index % 5 === 0 ? 'mondrian-red' : 
+                      index % 5 === 1 ? 'mondrian-light-yellow' : 
+                      index % 5 === 2 ? 'mondrian-blue' : 
+                      index % 5 === 3 ? 'mondrian-light-blue' : 'mondrian-yellow'}
+                    ${index % 2 === 0 ? 'top-[-16px] left-[-16px]' : 'bottom-[-16px] right-[-16px]'}
                   `}
-                >
-                  {/* Multiple decorative squares for more Mondrian-like composition */}
-                  <div 
-                    className={`
-                      absolute w-12 h-12 mondrian-border z-10
-                      ${index % 5 === 0 ? 'mondrian-red' : 
-                        index % 5 === 1 ? 'mondrian-light-yellow' : 
-                        index % 5 === 2 ? 'mondrian-blue' : 
-                        index % 5 === 3 ? 'mondrian-light-blue' : 'mondrian-yellow'}
-                      ${index % 2 === 0 ? 'top-[-16px] left-[-16px]' : 'bottom-[-16px] right-[-16px]'}
-                    `}
-                  ></div>
-                  
-                  {/* Second decorative square for asymmetry */}
-                  <div 
-                    className={`
-                      absolute w-8 h-8 mondrian-border z-10
-                      ${index % 5 === 0 ? 'mondrian-light-blue' : 
-                        index % 5 === 1 ? 'mondrian-red' : 
-                        index % 5 === 2 ? 'mondrian-light-yellow' : 
-                        index % 5 === 3 ? 'mondrian-yellow' : 'mondrian-blue'}
-                      ${index % 2 === 0 ? 'bottom-[16px] right-[-8px]' : 'top-[20px] left-[-8px]'}
-                    `}
-                  ></div>
-                  
-                  {/* Study content */}
-                  <div className="bg-white mondrian-border p-8">
-                    <div className="flex flex-col md:flex-row gap-8">
-                      <div className="md:w-3/4">
-                        <h2 className="font-display text-2xl text-black mb-3">{study.title}</h2>
-                        <p className="text-sm text-black/70 mb-6">Client: {study.clientType}</p>
-                        
-                        <div className="mb-6">
-                          <h3 className="font-medium text-black mb-2">Challenge</h3>
-                          <p className="text-black/80">{study.challenge}</p>
-                        </div>
-                        
-                        <div className="mb-6">
-                          <h3 className="font-medium text-black mb-2">Solution</h3>
-                          <p className="text-black/80">{study.solution}</p>
-                        </div>
+                ></div>
+                
+                {/* Second decorative square for asymmetry */}
+                <div 
+                  className={`
+                    absolute w-8 h-8 mondrian-border z-10
+                    ${index % 5 === 0 ? 'mondrian-light-blue' : 
+                      index % 5 === 1 ? 'mondrian-red' : 
+                      index % 5 === 2 ? 'mondrian-light-yellow' : 
+                      index % 5 === 3 ? 'mondrian-yellow' : 'mondrian-blue'}
+                    ${index % 2 === 0 ? 'bottom-[16px] right-[-8px]' : 'top-[20px] left-[-8px]'}
+                  `}
+                ></div>
+                
+                {/* Study content */}
+                <div className="bg-white mondrian-border p-8">
+                  <div className="flex flex-col md:flex-row gap-8">
+                    <div className="md:w-3/4">
+                      <h2 className="font-display text-2xl text-black mb-3">{study.title}</h2>
+                      <p className="text-sm text-black/70 mb-6">Client: {study.clientType}</p>
+                      
+                      <div className="mb-6">
+                        <h3 className="font-medium text-black mb-2">Challenge</h3>
+                        <p className="text-black/80">{study.challenge}</p>
                       </div>
                       
-                      <div className="md:w-1/4">
-                        <div 
-                          className={`
-                            p-4 h-full
-                            ${index % 5 === 0 ? 'mondrian-light-yellow' : 
-                              index % 5 === 1 ? 'mondrian-light-blue' : 
-                              index % 5 === 2 ? 'mondrian-yellow' : 
-                              index % 5 === 3 ? 'mondrian-blue' : 'mondrian-red'}
-                            ${index % 5 === 4 ? 'text-white' : 'text-black'}
-                            mondrian-border
-                          `}
-                        >
-                          <h3 className="font-medium mb-2">Results</h3>
-                          <ul className="list-none pl-0">
-                            {study.results.map((result, idx) => (
-                              <li key={idx} className="mb-2 text-sm">{result}</li>
-                            ))}
-                          </ul>
-                        </div>
+                      <div className="mb-6">
+                        <h3 className="font-medium text-black mb-2">Solution</h3>
+                        <p className="text-black/80">{study.solution}</p>
                       </div>
                     </div>
                     
-                    <div className="mt-8 text-right">
-                      <Link 
-                        to={study.practiceAreaPath} 
-                        className="text-black border-b-2 border-black hover:text-[#D6001C] transition-colors flex items-center justify-end"
+                    <div className="md:w-1/4">
+                      <div 
+                        className={`
+                          p-4 h-full
+                          ${index % 5 === 0 ? 'mondrian-light-yellow' : 
+                            index % 5 === 1 ? 'mondrian-light-blue' : 
+                            index % 5 === 2 ? 'mondrian-yellow' : 
+                            index % 5 === 3 ? 'mondrian-blue' : 'mondrian-red'}
+                          ${index % 5 === 4 ? 'text-white' : 'text-black'}
+                          mondrian-border
+                        `}
                       >
-                        Learn more about {study.practiceArea}
-                        <ArrowRight className="ml-2" size={16} />
-                      </Link>
+                        <h3 className="font-medium mb-2">Results</h3>
+                        <ul className="list-none pl-0">
+                          {study.results.map((result, idx) => (
+                            <li key={idx} className="mb-2 text-sm">{result}</li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
+                  
+                  <div className="mt-8 text-right">
+                    <Link 
+                      to={study.practiceAreaPath} 
+                      className="text-black border-b-2 border-black hover:text-[#D6001C] transition-colors flex items-center justify-end"
+                    >
+                      Learn more about {study.practiceArea}
+                      <ArrowRight className="ml-2" size={16} />
+                    </Link>
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-        
-        {/* Horizontal lines extending beyond screen width - Position 2 */}
-        <div className="absolute w-[150vw] h-3 mondrian-light-yellow right-[-25vw] bottom-[28%] z-10"></div>
-        <div className="absolute w-[150vw] h-4 mondrian-red right-[-25vw] bottom-[25%] z-10"></div>
-        
-        {/* CTA Section with mondrian-style grid background */}
-        <section className="py-24 relative z-20">
-          <div className="container mx-auto px-8">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="mondrian-highlight">
-                <div className="absolute top-[-12px] left-[-12px] w-24 h-24 mondrian-light-blue mondrian-border z-0"></div>
-                <div className="absolute bottom-[-12px] right-[-12px] w-20 h-20 mondrian-light-yellow mondrian-border z-0"></div>
-                
-                <h2 className="font-display text-3xl text-black mb-6 relative z-10">Your Success Story Begins Here</h2>
-                <p className="text-lg mb-8 max-w-2xl mx-auto text-black/80">
-                  Every client journey begins with a conversation. Contact us to discuss how we can help you achieve your legal and financial goals.
-                </p>
-                <Link to="/contact">
-                  <Button className="bg-[#D6001C] hover:bg-[#D6001C]/90 text-white px-8 py-6 mondrian-border">
-                    Schedule a Consultation
-                  </Button>
-                </Link>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* Horizontal lines extending beyond screen width - Position 2 */}
+      <div className="absolute w-[150vw] h-3 mondrian-light-yellow right-[-25vw] bottom-[28%] z-10"></div>
+      <div className="absolute w-[150vw] h-4 mondrian-red right-[-25vw] bottom-[25%] z-10"></div>
+      
+      {/* CTA Section with mondrian-style grid background */}
+      <section className="py-24 relative z-20">
+        <div className="container mx-auto px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="mondrian-highlight">
+              <div className="absolute top-[-12px] left-[-12px] w-24 h-24 mondrian-light-blue mondrian-border z-0"></div>
+              <div className="absolute bottom-[-12px] right-[-12px] w-20 h-20 mondrian-light-yellow mondrian-border z-0"></div>
+              
+              <h2 className="font-display text-3xl text-black mb-6 relative z-10">Your Success Story Begins Here</h2>
+              <p className="text-lg mb-8 max-w-2xl mx-auto text-black/80">
+                Every client journey begins with a conversation. Contact us to discuss how we can help you achieve your legal and financial goals.
+              </p>
+              <Link to="/contact">
+                <Button className="bg-[#D6001C] hover:bg-[#D6001C]/90 text-white px-8 py-6 mondrian-border">
+                  Schedule a Consultation
+                </Button>
+              </Link>
             </div>
           </div>
-        </section>
-        
-        <ConsultationCTA />
-      </main>
+        </div>
+      </section>
       
-      <Footer />
-    </div>
+      <ConsultationCTA />
+    </main>
   );
 };
 

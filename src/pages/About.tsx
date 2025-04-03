@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Shield, Briefcase, Lightbulb, Scale, FileCheck } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -38,7 +36,6 @@ const About: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
       <main className="pt-48">
         {/* Hero Section with Mondrian styling */}
         <section className="py-20 md:py-24 bg-white relative">
@@ -277,7 +274,6 @@ const About: React.FC = () => {
         {/* Extra whitespace section */}
         <div className="h-24 md:h-40"></div>
       </main>
-      <Footer />
     </div>
   );
 };

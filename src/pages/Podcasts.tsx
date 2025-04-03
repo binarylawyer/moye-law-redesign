@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import PodcastList from "../components/podcasts/PodcastList";
 import ConsultationCTA from "../components/ConsultationCTA";
 import ResourcePageHeader from "../components/resources/ResourcePageHeader";
@@ -12,20 +10,16 @@ const Podcasts: React.FC = () => {
   const podcasts = podcastData;
 
   return (
-    <>
-      <Header />
-      <main className="pt-48 bg-white">
-        <ResourcePageHeader 
-          title="Moye Law Podcast Series"
-          description="Listen to our AI-driven podcast series exploring complex legal topics in a clear, accessible format. Get expert insights on estate planning, intellectual property protection, and other specialized areas."
-          variant="blue"
-        />
-        <PodcastList customPodcasts={podcasts} />
-        <ConsultationCTA />
-      </main>
-      <Footer />
+    <main className="pt-48 bg-white">
+      <ResourcePageHeader 
+        title="Moye Law Podcast Series"
+        description="Listen to our AI-driven podcast series exploring complex legal topics in a clear, accessible format. Get expert insights on estate planning, intellectual property protection, and other specialized areas."
+        variant="blue"
+      />
+      <PodcastList customPodcasts={podcasts} />
+      <ConsultationCTA />
       <Toaster />
-    </>
+    </main>
   );
 };
 

@@ -11,12 +11,13 @@ const artEntertainmentLawData: Partial<ServiceData> = {
       title: "Navigating the Creative Industries",
       content: [
         "The art and entertainment worlds operate under unique legal rules and business practices. Our practice provides specialized counsel to help clients navigate complex deals, protect creative assets, and manage industry relationships.",
-        "We represent a diverse range of clients, including visual artists, collectors, galleries, filmmakers, musicians, and digital media ventures.",
-        "Our attorneys combine deep industry knowledge with legal expertise to provide practical, results-oriented advice tailored to the specific needs of creative professionals and businesses."
+        "We represent a diverse range of clients, including visual artists, collectors, galleries, filmmakers, musicians, and digital media ventures. Our approach combines traditional legal expertise with forward-thinking strategies for the digital age.",
+        "Our attorneys combine deep industry knowledge with legal expertise to provide practical, results-oriented advice tailored to the specific needs of creative professionals and businesses.",
+        "Whether you're negotiating a major distribution deal, protecting your artistic legacy, or launching a new creative venture, our team understands both the legal complexities and the unique considerations of the creative process."
       ],
       callToAction: "Protect your creative vision", 
-      imageSrc: "/images/services/art-entertainment-law.jpg",
-      imageAlt: "Creative industry setting with artistic workspace"
+      imageSrc: "/videos/art-entertainment.mp4",
+      imageAlt: "Video showcasing art and entertainment legal services"
   },
 
   // Update features combining Art and Entertainment elements
@@ -43,7 +44,20 @@ const artEntertainmentLawData: Partial<ServiceData> = {
     }
   ],
 
-  considerations: [],
+  considerations: [
+    {
+      title: "Copyright Protection Strategies",
+      description: "Developing comprehensive strategies to protect creative works across multiple platforms and jurisdictions."
+    },
+    {
+      title: "Contract Negotiation",
+      description: "Securing favorable terms in representation, licensing, distribution, and collaboration agreements."
+    },
+    {
+      title: "Legacy Planning for Artists",
+      description: "Ensuring your creative legacy is preserved and managed according to your wishes."
+    }
+  ],
 
   process: {
     title: "Our Art & Entertainment Law Process",
@@ -104,7 +118,7 @@ const ArtEntertainmentLaw: React.FC = () => {
       description={artEntertainmentLawData.description!}
       featuredContent={artEntertainmentLawData.featuredContent!}
       features={artEntertainmentLawData.features as ServiceFeature[]}
-      considerations={artEntertainmentLawData.considerations!}
+      considerations={artEntertainmentLawData.considerations as ServiceConsideration[]}
       process={artEntertainmentLawData.process as Process}
       relatedServices={artEntertainmentLawData.relatedServices as RelatedService[]}
       ctaTitle={artEntertainmentLawData.ctaTitle!}
