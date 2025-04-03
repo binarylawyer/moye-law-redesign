@@ -27,12 +27,14 @@ import ExperienceTheDifference from "./pages/ExperienceTheDifference";
 import FloatingConsultationButton from "./components/FloatingConsultationButton";
 import ErrorTestPage from "./pages/ErrorTest";
 
-// Services imports
-import DigitalAssetProtectionService from "./pages/services/DigitalAssetProtection";
-import IPConsultingService from "./pages/services/IPConsulting";
-import LicensingService from "./pages/services/Licensing";
-import EntertainmentLawService from "./pages/services/EntertainmentLaw";
-import EmergingTechService from "./pages/services/EmergingTech";
+// ** NEW/UPDATED Service Page Imports **
+import EstatePlanningService from "./pages/services/EstatePlanning";
+import ElderLawService from "./pages/services/ElderLaw";
+import ProbateService from "./pages/services/ProbateAdministration";
+import IPConsultingStrategyService from "./pages/services/IPConsultingStrategy";
+import DigitalAssetTechProtectionService from "./pages/services/DigitalAssetTechProtection";
+import LicensingTransactionsService from "./pages/services/LicensingTransactions";
+import ArtEntertainmentLawService from "./pages/services/ArtEntertainmentLaw";
 
 // Import the active practice area components
 import IPLicensing from "./pages/practice/active/IPLicensing";
@@ -157,12 +159,14 @@ const AppRoutes = () => {
           <Route path="/resources/case-studies" element={<CaseStudies />} />
           <Route path="/resources/:slug" element={<ResourceDetail />} />
           
-          {/* Services Routes */}
-          <Route path="/services/digital-asset-protection" element={<DigitalAssetProtectionService />} />
-          <Route path="/services/ip-consulting" element={<IPConsultingService />} />
-          <Route path="/services/ip-licensing" element={<LicensingService />} />
-          <Route path="/services/entertainment-law" element={<EntertainmentLawService />} />
-          <Route path="/services/emerging-tech" element={<EmergingTechService />} />
+          {/* Updated Services Routes */}
+          <Route path="/services/estate-planning" element={<EstatePlanningService />} />
+          <Route path="/services/elder-law" element={<ElderLawService />} />
+          <Route path="/services/probate-administration" element={<ProbateService />} />
+          <Route path="/services/ip-consulting-strategy" element={<IPConsultingStrategyService />} />
+          <Route path="/services/digital-asset-tech-protection" element={<DigitalAssetTechProtectionService />} />
+          <Route path="/services/licensing-transactions" element={<LicensingTransactionsService />} />
+          <Route path="/services/art-entertainment-law" element={<ArtEntertainmentLawService />} />
           
           {/* Direct access route for How We Work */}
           <Route path="/how-we-work" element={<HowWeWork />} />

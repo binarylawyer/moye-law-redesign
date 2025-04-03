@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+// Remove Header and Footer imports as Layout provides them
+// import Header from '@/components/Header';
+// import Footer from '@/components/Footer';
 import MondrianClassicComposition from '@/components/MondrianClassicComposition';
 import { Link } from 'react-router-dom';
 import '../../styles/mondrian.css';
@@ -78,8 +79,9 @@ const PracticeTemplate: React.FC<PracticeTemplateProps> = ({
   }, []); // Empty dependency array ensures this runs only once on mount
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
+    // Remove min-h-screen if Layout handles it
+    <div className="bg-white"> 
+      {/* <Header /> REMOVED */}
       <main className="pt-32 md:pt-40">
         {/* Hero Section */}
         <section className="py-16">
@@ -171,10 +173,11 @@ const PracticeTemplate: React.FC<PracticeTemplateProps> = ({
           </section>
         )}
         
-        {/* Process Section */}
-        <section className="py-16">
+        {/* Process Section - Reverted to 2-Column Layout */}
+        <section className="py-24 bg-white">
           <div className="container mx-auto px-8">
-            <div className="mondrian-grid mb-16">
+            <div className="mondrian-grid mb-20">
+              {/* Title bar for Process Section */}
               <div className="col-span-3 mondrian-white border-r-4 border-b-4 border-black"></div>
               <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
                 <h2 className="font-display text-black text-3xl mb-8">Our Process</h2>
@@ -182,58 +185,29 @@ const PracticeTemplate: React.FC<PracticeTemplateProps> = ({
               <div className="col-span-3 mondrian-red"></div>
             </div>
             
-            <div className="space-y-8 max-w-5xl mx-auto">
-              {/* Process step 1 */}
-              <div className="flex flex-col md:flex-row">
-                <div className={`${process[0].color} w-full md:w-48 flex-shrink-0 flex items-center justify-center p-8`}>
-                  <span className="font-display text-white text-3xl font-bold">{process[0].number}</span>
-                </div>
-                <div className="bg-white p-6 border-4 border-black flex-grow">
-                  <h3 className="font-display text-black text-2xl mb-4">{process[0].title}</h3>
-                  <p className="text-black/80 text-lg">{process[0].description}</p>
-                </div>
-              </div>
-              
-              {/* Process step 2 */}
-              <div className="flex flex-col md:flex-row-reverse">
-                <div className={`${process[1].color} w-full md:w-48 flex-shrink-0 flex items-center justify-center p-8`}>
-                  <span className="font-display text-white text-3xl font-bold">{process[1].number}</span>
-                </div>
-                <div className="bg-white p-6 border-4 border-black flex-grow">
-                  <h3 className="font-display text-black text-2xl mb-4">{process[1].title}</h3>
-                  <p className="text-black/80 text-lg">{process[1].description}</p>
-                </div>
-              </div>
-              
-              {/* Process step 3 */}
-              <div className="flex flex-col md:flex-row">
-                <div className={`${process[2].color} w-full md:w-48 flex-shrink-0 flex items-center justify-center p-8`}>
-                  <span className="font-display text-white text-3xl font-bold">{process[2].number}</span>
-                </div>
-                <div className="bg-white p-6 border-4 border-black flex-grow">
-                  <h3 className="font-display text-black text-2xl mb-4">{process[2].title}</h3>
-                  <p className="text-black/80 text-lg">{process[2].description}</p>
-                </div>
-              </div>
-              
-              {/* Process step 4 with Mondrian decoration */}
-              <div className="flex flex-col md:flex-row-reverse">
-                <div className={`${process[3].color} w-full md:w-48 flex-shrink-0 flex items-center justify-center p-8`}>
-                  <span className="font-display text-white text-3xl font-bold">{process[3].number}</span>
-                </div>
-                <div className="bg-white p-6 border-4 border-black flex-grow relative">
-                  <h3 className="font-display text-black text-2xl mb-4">{process[3].title}</h3>
-                  <p className="text-black/80 text-lg">{process[3].description}</p>
-                  
-                  {/* Small Mondrian decoration in bottom right */}
-                  <div className="absolute bottom-3 right-3 w-24 h-24 grid grid-cols-2 grid-rows-2 gap-1">
-                    <div className="mondrian-red"></div>
-                    <div className="bg-white border border-black"></div>
-                    <div className="bg-white border border-black"></div>
-                    <div className="mondrian-yellow"></div>
+            {/* Grid for Process Steps - Reverted to 2 columns, map all steps */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-5xl mx-auto"> 
+              {/* Map ALL process steps */}
+              {process.map((step, index) => (
+                <div 
+                  key={index} 
+                  // Use original padding p-8 
+                  className="reveal bg-white p-8 border-4 border-black flex flex-col" 
+                >
+                  {/* Top section with number and title */}
+                  <div className="flex items-center mb-6 pb-4 border-b-2 border-gray-200">
+                    {/* Number block with corresponding Mondrian color */}
+                    <div className={`${step.color} w-16 h-16 flex-shrink-0 flex items-center justify-center mr-6`}>
+                      <span className="font-display text-white text-2xl font-bold">{step.number}</span>
+                    </div>
+                    {/* Title */}
+                    <h3 className="font-display text-primary text-2xl flex-grow">{step.title}</h3>
                   </div>
+                  
+                  {/* Description */}
+                  <p className="text-black/80 text-lg flex-grow">{step.description}</p>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -252,42 +226,40 @@ const PracticeTemplate: React.FC<PracticeTemplateProps> = ({
         </section>
         
         {/* CTA Section */}
-        <div className="max-w-7xl mx-auto px-8 mb-1">
-          <section className="py-16 bg-white">
-            <div className="container mx-auto px-4">
-              <div className="flex flex-col md:flex-row">
-                {/* Mondrian composition for the left section */}
-                <div className="w-full md:w-1/4 flex-shrink-0 h-64 md:h-auto">
-                  <MondrianClassicComposition />
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-8 max-w-6xl">
+            <div className="mondrian-grid grid-cols-1 md:grid-cols-12">
+                {/* Text content area (span 7) */}
+                <div className="md:col-span-7 p-8 md:p-12 flex flex-col justify-center mondrian-border-r">
+                    <p className="uppercase text-sm font-semibold tracking-widest text-gray-500 mb-4">
+                        {ctaTagline}
+                    </p>
+                    <h2 className="text-3xl md:text-4xl font-display mb-4 text-primary">
+                        {ctaTitle}
+                    </h2>
+                    <p className="text-lg text-gray-700 mb-8">
+                        {ctaDescription}
+                    </p>
+                    <div className="flex flex-col sm:flex-row items-start gap-4">
+                        <Link 
+                            to="/contact" 
+                            className="inline-flex items-center justify-center px-8 py-3 border-2 border-black bg-gold text-black font-semibold text-lg hover:bg-black hover:text-gold transition-colors duration-300 mondrian-interactive">
+                            {ctaButtonText} <span className="ml-2">→</span>
+                        </Link>
+                    </div>
                 </div>
-                
-                <div className="bg-white w-full md:w-16 p-8 hidden md:block"></div>
-                
-                <div className="bg-white w-full md:flex-1 p-8 border-4 border-black">
-                  <h2 className="font-display text-3xl mb-4">{ctaTitle}</h2>
-                  <p className="mb-6">{ctaDescription}</p>
-                  
-                  <div className="inline-block bg-white border-2 border-black px-8 py-3 font-medium">
-                    {ctaTagline}
-                  </div>
+                {/* Mondrian color blocks area (span 5) */}
+                <div className="hidden md:grid md:col-span-5 grid-rows-2 grid-cols-3 gap-0">
+                    <div className="col-span-2 row-span-1 mondrian-blue"></div>
+                    <div className="col-span-1 row-span-1 mondrian-white mondrian-border-l"></div>
+                    <div className="col-span-1 row-span-1 mondrian-red mondrian-border-t"></div>
+                    <div className="col-span-2 row-span-1 mondrian-yellow mondrian-border-l mondrian-border-t"></div>
                 </div>
-                
-                <div className="bg-gray-200 w-full md:w-1/6 p-8"></div>
-              </div>
-              
-              <div className="mt-8 text-center">
-                <Link to="/contact" className="mondrian-blue hover:bg-blue-700 text-white font-bold py-3 px-6 border-2 border-black inline-flex items-center">
-                  {ctaButtonText}
-                  <svg className="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-                  </svg>
-                </Link>
-              </div>
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
       </main>
-      <Footer />
+      {/* <Footer /> REMOVED */}
     </div>
   );
 };

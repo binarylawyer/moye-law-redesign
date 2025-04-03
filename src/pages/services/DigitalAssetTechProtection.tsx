@@ -2,115 +2,115 @@ import React from 'react';
 import ServiceTemplate from '@/components/services/ServiceTemplate';
 import { ServiceData, ServiceFeature, Process, RelatedService, FeaturedContent, ServiceConsideration } from '@/types/services';
 
-const emergingTechData: Partial<ServiceData> = {
-  title: "Emerging Technology Law",
-  description: "Forward-looking legal solutions for pioneers at the frontier of technological innovation.",
+const digitalAssetTechData: Partial<ServiceData> = {
+  title: "Digital Asset & Tech Protection",
+  description: "Comprehensive legal frameworks to safeguard digital assets and mitigate risks in emerging technologies.",
 
   featuredContent: { 
-      title: "Legal Guidance for the Digital Frontier", 
+      title: "Protecting Value in the Digital & Tech Frontier", 
       content: [
-          "The rapid pace of technological innovation creates new legal challenges that traditional frameworks struggle to address. Our Emerging Technology practice bridges this gap, providing forward-thinking legal guidance for businesses operating at the cutting edge.",
-          "We combine deep technical understanding with legal expertise to help innovative companies navigate uncertain regulatory waters, protect their intellectual assets, and structure their operations for sustainable growth.",
-          "Our team stays at the forefront of both technological developments and legal trends, ensuring that our clients receive advice that is not just current but anticipatory of future changes in this dynamic landscape."
+          "As assets become increasingly digital and technologies rapidly evolve, specialized protection strategies are crucial.",
+          "We combine deep technical understanding with legal expertise to help innovators and businesses secure digital assets (NFTs, crypto, data) and navigate the legal complexities of AI, blockchain, and IoT.",
+          "Our proactive approach identifies risks early and establishes robust legal frameworks for protection and compliance."
       ],
-      callToAction: "Future-proof your innovation", 
-      imageSrc: "/images/placeholder-tech.jpg",
-      imageAlt: "Emerging Tech Placeholder"
+      callToAction: "Secure your digital & tech assets", 
+      imageSrc: "/images/services/digital-tech-featured.jpg",
+      imageAlt: "Digital assets and technology protection concept"
   },
 
   features: [
     {
-      title: "Blockchain & Cryptocurrency",
-      description: "Legal frameworks for blockchain applications, token offerings, smart contracts, and cryptocurrency ventures.",
-      icon: "CubeTransparent"
+      title: "Digital Asset Security (NFTs, Crypto)",
+      description: "Legal frameworks for securing cryptocurrencies, NFTs, wallet security protocols, and smart contract audits.",
+      icon: "ShieldCheck"
     },
     {
-      title: "Artificial Intelligence",
-      description: "Navigating the complex legal landscape of AI development, data usage, liability, and intellectual property protection.",
+      title: "Emerging Tech Compliance (AI, Blockchain)",
+      description: "Navigating the legal landscape of AI ethics, data usage, liability, blockchain regulations, and IoT compliance.",
        icon: "Chip"
     },
     {
-      title: "Internet of Things (IoT)",
-      description: "Addressing privacy, security, and regulatory compliance for connected devices and systems.",
-       icon: "Wifi"
+      title: "Technology IP Protection",
+      description: "Safeguarding intellectual property for algorithms, software, databases, and other tech innovations.",
+       icon: "Code"
     },
     {
-      title: "Automated Systems",
-      description: "Legal guidance for robotic process automation, autonomous vehicles, and other automated technologies.",
-      icon: "Cog"
+      title: "Data Privacy & Security",
+      description: "Implementing legal safeguards for data assets, including GDPR/CCPA compliance and secure data handling protocols.",
+      icon: "LockClosed"
     }
   ],
   
   considerations: [],
 
   process: {
-    title: "Our Approach to Emerging Tech",
+    title: "Our Protection & Compliance Process",
     steps: [
       {
-        title: "Technology Assessment",
-        description: "We begin by thoroughly understanding your technology, its applications, and the specific legal challenges it presents in current and future regulatory environments."
+        title: "Asset & Technology Audit",
+        description: "Comprehensive inventory and assessment of your digital assets and technology stack to identify vulnerabilities and legal needs."
       },
       {
-        title: "Risk Mapping",
-        description: "We identify and map potential legal and regulatory risks specific to emerging technologies, from privacy concerns to liability frameworks and intellectual property protection."
+        title: "Risk & Compliance Mapping",
+        description: "We identify potential legal, regulatory, and security risks specific to your assets and technologies."
       },
       {
-        title: "Compliance Framework",
-        description: "We develop a tailored compliance strategy that addresses current regulations while anticipating forthcoming legal developments in this rapidly evolving space."
+        title: "Protection Strategy Design",
+        description: "Developing tailored legal and technical safeguard strategies, including IP protection and compliance frameworks."
       },
       {
-        title: "Implementation Support",
-        description: "We provide practical guidance on implementing legal safeguards, including contract structures, terms of service, privacy policies, and operational protocols."
+        title: "Implementation & Documentation",
+        description: "Guiding the implementation of safeguards, drafting necessary policies (privacy, terms) and legal documents."
       },
       {
-        title: "Ongoing Monitoring",
-        description: "We continuously track regulatory developments and evolving case law to ensure your legal framework remains current with the rapidly changing landscape of technology law."
+        title: "Ongoing Monitoring & Adaptation",
+        description: "Continuously tracking regulatory changes and evolving threats to maintain robust protection."
       }
     ]
   },
 
   relatedServices: [
     {
-      title: "IP Consulting",
-      path: "/services/ip-consulting",
-      description: "Strategic guidance for managing and maximizing the value of your intellectual property assets."
+      title: "IP Consulting & Strategy",
+      path: "/services/ip-consulting-strategy",
+      description: "Strategic guidance on the intellectual property aspects of your digital assets and technology."
     },
     {
-      title: "Digital Asset Protection",
-      path: "/services/digital-asset-protection",
-      description: "Comprehensive legal protection for digital assets, from NFTs to domain names and digital IP."
+      title: "Licensing & Transactions",
+      path: "/services/licensing-transactions",
+      description: "Structuring deals for licensing technology, data, or digital assets."
     },
     {
-      title: "Entertainment Law",
-      path: "/services/entertainment-law",
-      description: "Legal counsel for entertainment properties, content licensing, and media ventures."
+      title: "Art & Entertainment Law",
+      path: "/services/art-entertainment-law",
+      description: "Addressing legal issues for digital art, NFTs, and technology use in creative industries."
     }
   ],
 
-  ctaTitle: "Navigate the Future",
-  ctaDescription: "Partner with us to address the legal complexities of your innovations.",
-  ctaButtonText: "Discuss Your Tech Venture",
-  phoneNumber: "(555) 555-TECH"
+  ctaTitle: "Safeguard Your Digital Future",
+  ctaDescription: "Partner with us to implement forward-thinking legal protections for your valuable digital assets and technological innovations.",
+  ctaButtonText: "Discuss Protection Strategies",
+  phoneNumber: "(555) 555-DAPR"
 };
 
-const EmergingTech: React.FC = () => {
+const DigitalAssetTechProtection: React.FC = () => {
   return (
     <ServiceTemplate 
-      serviceName={emergingTechData.title!} 
-      serviceId="emerging-tech"
-      description={emergingTechData.description!}
-      featuredContent={emergingTechData.featuredContent!}
-      features={emergingTechData.features as ServiceFeature[]}
-      considerations={emergingTechData.considerations!}
-      process={emergingTechData.process as Process}
-      relatedServices={emergingTechData.relatedServices as RelatedService[]}
-      ctaTitle={emergingTechData.ctaTitle!}
-      ctaDescription={emergingTechData.ctaDescription!}
-      ctaButtonText={emergingTechData.ctaButtonText!}
-      phoneNumber={emergingTechData.phoneNumber}
+      serviceName={digitalAssetTechData.title!} 
+      serviceId="digital-asset-tech-protection"
+      description={digitalAssetTechData.description!}
+      featuredContent={digitalAssetTechData.featuredContent!}
+      features={digitalAssetTechData.features as ServiceFeature[]}
+      considerations={digitalAssetTechData.considerations!}
+      process={digitalAssetTechData.process as Process}
+      relatedServices={digitalAssetTechData.relatedServices as RelatedService[]}
+      ctaTitle={digitalAssetTechData.ctaTitle!}
+      ctaDescription={digitalAssetTechData.ctaDescription!}
+      ctaButtonText={digitalAssetTechData.ctaButtonText!}
+      phoneNumber={digitalAssetTechData.phoneNumber}
     >
     </ServiceTemplate>
   );
 };
 
-export default EmergingTech; 
+export default DigitalAssetTechProtection; 

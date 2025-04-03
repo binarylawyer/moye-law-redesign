@@ -1,73 +1,71 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { specializedServices } from './navigation/NavigationData';
+import { practiceAreas, specializedServices } from './navigation/NavigationData';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-gray-800 py-24 border-t border-gray-700">
+    <footer className="bg-primary text-gray-200 py-12 border-t border-gray-700">
       <div className="container mx-auto px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           {/* Logo and copyright */}
-          <div className="md:col-span-4">
-            <Link to="/" className="text-[#f5f2e8] font-display text-2xl hover:opacity-80 transition duration-200">
+          <div className="md:col-span-3">
+            <Link to="/" className="text-white font-display text-xl hover:opacity-80 transition duration-200">
               MOYE LAW
             </Link>
-            <p className="mt-4 text-base text-[#f5f2e8]/80">
+            <p className="mt-3 text-sm text-gray-300">
               Family Values, Future-Forward Solutions
             </p>
-            <p className="mt-8 text-base text-[#f5f2e8]/80">
+            <p className="mt-6 text-xs text-gray-400">
               © {currentYear} Moye Law Firm.
             </p>
-            <p className="text-base text-[#f5f2e8]/80">
+            <p className="text-xs text-gray-400 mb-4">
               All rights reserved.
             </p>
+            <Link 
+              to="/contact" 
+              className="text-sm text-gold hover:text-white transition-colors font-semibold mt-2 inline-block"
+            >
+               Request Consultation →
+            </Link>
           </div>
           
           {/* Navigation */}
           <nav className="md:col-span-2">
-            <p className="font-medium text-[#f5f2e8] mb-4 font-display text-lg">Navigate</p>
-            <ul className="space-y-3">
-              <li><Link to="/practice" className="text-base text-[#f5f2e8]/80 hover:text-[#f5f2e8] transition-colors">Practice</Link></li>
-              <li><Link to="/about" className="text-base text-[#f5f2e8]/80 hover:text-[#f5f2e8] transition-colors">About</Link></li>
-              <li><Link to="/resources" className="text-base text-[#f5f2e8]/80 hover:text-[#f5f2e8] transition-colors">Resources</Link></li>
-              <li><Link to="/contact" className="text-base text-[#f5f2e8]/80 hover:text-[#f5f2e8] transition-colors">Contact</Link></li>
+            <p className="font-semibold text-white mb-3 font-display text-base">Navigate</p>
+            <ul className="space-y-2">
+              <li><Link to="/practice" className="text-sm text-gray-300 hover:text-white transition-colors">Practice</Link></li>
+              <li><Link to="/about" className="text-sm text-gray-300 hover:text-white transition-colors">About</Link></li>
+              <li><Link to="/resources" className="text-sm text-gray-300 hover:text-white transition-colors">Resources</Link></li>
+              <li><Link to="/contact" className="text-sm text-gray-300 hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </nav>
           
           {/* Practice Areas */}
           <nav className="md:col-span-3">
-            <p className="font-medium text-[#f5f2e8] mb-4 font-display text-lg">Practice Areas</p>
-            <ul className="space-y-3">
-              <li><Link to="/practice/trusts-estates" className="text-base text-[#f5f2e8]/80 hover:text-[#f5f2e8] transition-colors">Trusts & Estates</Link></li>
-              <li><Link to="/practice/elder-law" className="text-base text-[#f5f2e8]/80 hover:text-[#f5f2e8] transition-colors">Elder Law</Link></li>
-              <li><Link to="/practice/ip-licensing" className="text-base text-[#f5f2e8]/80 hover:text-[#f5f2e8] transition-colors">IP Licensing</Link></li>
-              <li><Link to="/practice/ip-asset-protection" className="text-base text-[#f5f2e8]/80 hover:text-[#f5f2e8] transition-colors">IP Asset Protection</Link></li>
-              <li><Link to="/practice/real-estate" className="text-base text-[#f5f2e8]/80 hover:text-[#f5f2e8] transition-colors">Real Estate</Link></li>
-              <li><Link to="/practice/emerging-tech" className="text-base text-[#f5f2e8]/80 hover:text-[#f5f2e8] transition-colors">Emerging Tech</Link></li>
+            <p className="font-semibold text-white mb-3 font-display text-base">Practice Areas</p>
+            <ul className="space-y-2">
+              {practiceAreas.slice(0, 6).map((area) => (
+                <li key={area.path}><Link to={area.path} className="text-sm text-gray-300 hover:text-white transition-colors">{area.title}</Link></li>
+              ))}
             </ul>
           </nav>
           
           {/* Services */}
-          <nav className="md:col-span-3">
-            <p className="font-medium text-[#f5f2e8] mb-4 font-display text-lg">Services</p>
-            <ul className="space-y-3">
-              {specializedServices.map((service, index) => (
-                <li key={index}>
+          <nav className="md:col-span-4">
+            <p className="font-semibold text-white mb-3 font-display text-base">Services</p>
+            <ul className="space-y-1">
+              {specializedServices.slice(0, 7).map((service) => (
+                <li key={service.path}>
                   <Link 
                     to={service.path} 
-                    className="text-base text-[#f5f2e8]/80 hover:text-[#f5f2e8] transition-colors"
+                    className="text-sm text-gray-300 hover:text-white transition-colors"
                   >
                     {service.title}
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link to="/contact" className="text-base text-[#f5f2e8]/80 hover:text-[#f5f2e8] transition-colors">
-                  Request a Consultation
-                </Link>
-              </li>
             </ul>
           </nav>
         </div>

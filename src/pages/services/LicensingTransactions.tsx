@@ -2,118 +2,104 @@ import React from 'react';
 import ServiceTemplate from '@/components/services/ServiceTemplate';
 import { ServiceData, ServiceFeature, Process, RelatedService, FeaturedContent, ServiceConsideration } from '@/types/services';
 
-// Define the data structure matching ServiceData
-const licensingData: Partial<ServiceData> = {
-  title: "Licensing Solutions",
-  description: "Strategic licensing frameworks to unlock the value of intellectual property and proprietary assets.",
+// Rename data structure and adjust title/content
+const licensingTransactionsData: Partial<ServiceData> = {
+  title: "Licensing & Transactions",
+  description: "Structuring and negotiating strategic licensing agreements and technology transactions.",
 
   featuredContent: { 
-      title: "Monetizing Your Assets Through Licensing", 
+      title: "Monetizing Assets Through Deals",
       content: [
-        "Intellectual property and other proprietary assets often hold significant untapped commercial potential. Our Licensing Solutions practice helps businesses structure and negotiate agreements that unlock this value through strategic licensing.",
-        "We work with licensors and licensees across diverse industries to create frameworks that facilitate technology transfer, brand extension, content distribution, and other commercial arrangements.",
-        "Our approach combines deep legal expertise in intellectual property and contract law with a keen understanding of business strategy, ensuring licensing deals align with our clients' broader commercial objectives."
+        "Intellectual property and proprietary assets hold significant commercial potential unlocked through strategic deals.",
+        "Our Licensing & Transactions practice helps businesses structure, negotiate, and close agreements that capture this value, facilitating technology transfer, brand extension, and commercial partnerships.",
+        "We combine deep legal expertise in IP and contract law with business acumen to ensure deals align with broader commercial objectives."
       ],
-      callToAction: "Explore licensing opportunities", 
-      imageSrc: "/images/placeholder-licensing.jpg", // Placeholder
-      imageAlt: "Licensing Solutions Placeholder" // Placeholder
+      callToAction: "Structure your next deal", 
+      imageSrc: "/images/services/licensing-transactions-featured.jpg",
+      imageAlt: "Negotiating licensing and transaction agreements"
   },
 
-  // Map licensingServices to features structure
+  // Update features for Licensing & Transactions focus
   features: [
     {
-      title: "Technology Licensing",
-      description: "Structuring agreements for the transfer and use of patented technologies and technical know-how.",
+      title: "Technology Licensing Deals",
+      description: "Structuring and negotiating agreements for software, patents, data, and technical know-how transfer.",
       icon: "Code" 
     },
     {
-      title: "Brand Licensing",
-      description: "Developing frameworks for trademark and brand extensions into new product categories or markets.",
+      title: "Brand & Content Licensing",
+      description: "Developing frameworks and negotiating deals for trademark, brand, and creative content licensing.",
       icon: "Tag"
     },
     {
-      title: "Content Licensing",
-      description: "Negotiating agreements for the distribution and use of creative works across various media platforms.",
+      title: "Strategic Tech Transactions",
+      description: "Legal support for joint ventures, R&D agreements, tech acquisitions, and complex commercial contracts.",
       icon: "DocumentText"
     },
     {
-      title: "Franchise Agreements",
-      description: "Comprehensive legal support for structuring, negotiating, and managing franchise systems.",
+      title: "Franchise & Distribution Agreements",
+      description: "Comprehensive legal support for structuring, negotiating, and managing franchise and distribution systems.",
       icon: "OfficeBuilding"
     }
   ],
 
-  considerations: [], // Placeholder
+  considerations: [],
 
+  // Adjust process steps for deal focus
   process: {
-    title: "Our Licensing Process",
+    title: "Our Licensing & Transaction Process",
     steps: [
-      {
-        title: "Asset Identification & Valuation",
-        description: "We identify licensable assets (IP, technology, data, brand elements) and assess their commercial potential and market value to inform licensing strategy."
-      },
-      {
-        title: "Strategy Development",
-        description: "We collaborate to define clear licensing objectives, target markets or partners, and key deal parameters (scope, territory, exclusivity, financial terms)."
-      },
-      {
-        title: "Partner Sourcing & Due Diligence",
-        description: "We assist in identifying potential licensing partners and conduct thorough due diligence to assess their capabilities, financial stability, and strategic fit."
-      },
-      {
-        title: "Negotiation & Agreement Drafting",
-        description: "Our attorneys lead negotiations and draft comprehensive licensing agreements that protect client interests while fostering productive partnerships."
-      },
-      {
-        title: "Ongoing Relationship Management",
-        description: "We provide guidance on managing the licensing relationship, including compliance monitoring, royalty tracking, and dispute resolution support."
-      }
+      { title: "Deal Strategy & Valuation", description: "Identifying licensable/transactable assets, assessing commercial potential, and defining strategic deal objectives." },
+      { title: "Partner Identification & Due Diligence", description: "Assisting in identifying potential partners/counterparties and conducting thorough due diligence." },
+      { title: "Term Sheet & Structure Negotiation", description: "Developing key deal terms and negotiating the structure of the licensing agreement or transaction." },
+      { title: "Agreement Drafting & Negotiation", description: "Drafting comprehensive agreements and leading negotiations to protect client interests and achieve goals." },
+      { title: "Closing & Post-Deal Support", description: "Managing the closing process and providing guidance on post-transaction integration or relationship management." }
     ]
   },
 
+  // Update related services paths
   relatedServices: [
     {
-      title: "IP Consulting",
-      path: "/services/ip-consulting",
-      description: "Strategic advice on managing and leveraging intellectual property portfolios for licensing success."
+      title: "IP Consulting & Strategy",
+      path: "/services/ip-consulting-strategy",
+      description: "Aligning licensing and transaction activities with overall intellectual property strategy."
     },
     {
-      title: "Intellectual Property",
-      path: "/services/intellectual-property", // Assuming path
-      description: "Core legal services for securing and enforcing the IP assets that underpin licensing deals."
+      title: "Digital Asset & Tech Protection",
+      path: "/services/digital-asset-tech-protection",
+      description: "Ensuring underlying digital assets and technology are properly protected before transacting."
     },
     {
-      title: "Emerging Tech",
-      path: "/services/emerging-tech",
-      description: "Specialized licensing guidance for technologies like AI, blockchain, and IoT software."
+      title: "Art & Entertainment Law",
+      path: "/services/art-entertainment-law",
+      description: "Specialized transaction support for creative works, media rights, and entertainment properties."
     }
   ],
 
-  ctaTitle: "Unlock Your Asset Value", // Placeholder
-  ctaDescription: "Leverage strategic licensing to generate new revenue streams and expand market reach.", // Placeholder
-  ctaButtonText: "Discuss Licensing Strategies", // Placeholder
-  phoneNumber: "(555) 555-LICN" // Placeholder
+  ctaTitle: "Close Your Next Strategic Deal",
+  ctaDescription: "Leverage strategic licensing and transactions to generate revenue, acquire technology, or expand market reach.",
+  ctaButtonText: "Discuss Your Deal Needs",
+  phoneNumber: "(555) 555-DEAL"
 };
 
-const Licensing: React.FC = () => {
+// Rename component
+const LicensingTransactions: React.FC = () => {
   return (
     <ServiceTemplate 
-      serviceName={licensingData.title!}
-      serviceId="licensing"
-      description={licensingData.description!}
-      featuredContent={licensingData.featuredContent!}
-      features={licensingData.features as ServiceFeature[]}
-      considerations={licensingData.considerations!}
-      process={licensingData.process as Process}
-      relatedServices={licensingData.relatedServices as RelatedService[]}
-      ctaTitle={licensingData.ctaTitle!}
-      ctaDescription={licensingData.ctaDescription!}
-      ctaButtonText={licensingData.ctaButtonText!}
-      phoneNumber={licensingData.phoneNumber}
-    >
-      {/* Remove children previously rendered here manually */}
-    </ServiceTemplate>
+      serviceName={licensingTransactionsData.title!}
+      serviceId="licensing-transactions"
+      description={licensingTransactionsData.description!}
+      featuredContent={licensingTransactionsData.featuredContent!}
+      features={licensingTransactionsData.features as ServiceFeature[]}
+      considerations={licensingTransactionsData.considerations!}
+      process={licensingTransactionsData.process as Process}
+      relatedServices={licensingTransactionsData.relatedServices as RelatedService[]}
+      ctaTitle={licensingTransactionsData.ctaTitle!}
+      ctaDescription={licensingTransactionsData.ctaDescription!}
+      ctaButtonText={licensingTransactionsData.ctaButtonText!}
+      phoneNumber={licensingTransactionsData.phoneNumber}
+    />
   );
 };
 
-export default Licensing; 
+export default LicensingTransactions; 

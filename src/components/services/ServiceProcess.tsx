@@ -6,55 +6,48 @@ interface ServiceProcessProps {
 }
 
 const ServiceProcess: React.FC<ServiceProcessProps> = ({ process }) => {
-  // Add null check for safety, though ServiceTemplate should always pass it now
   if (!process) return null; 
   
   const { title, steps } = process;
 
-  // Determine grid columns based on number of steps for responsiveness
-  const gridColsClass = steps.length <= 3 ? 'md:grid-cols-3' : 
-                        steps.length === 4 ? 'md:grid-cols-4' : 
-                        'md:grid-cols-3 lg:grid-cols-5'; // Default for 5+
-
   return (
-    // Remove outer section padding
     <div className="process-section">
       {/* Title Area */}
       <div className="mb-12 text-center md:text-left">
         <h2 className="text-3xl md:text-4xl font-display mb-4 text-primary">{title}</h2>
-        {/* Optional description if added to Process type later */}
-        {/* <p className="text-lg text-gray-700 max-w-3xl mx-auto md:mx-0">Optional description here</p> */}
       </div>
 
-      {/* Mondrian Grid for Process Steps */}
-      <div className={`grid grid-cols-1 ${gridColsClass} gap-0 mondrian-border`}> {/* Add main border */}
-        {steps.map((step, idx) => {
-          // Assign Mondrian colors cyclically
+      {/* Mondrian Grid for Process Steps - 3 columns, wider gap, wider container */}
+      {/* Apply border to the container, not individual items unless needed for internal lines */}
+      <div className={`grid grid-cols-1 md:grid-cols-3 gap-16 max-w-7xl mx-auto`}> {/* Use gap-16, max-w-7xl */}
+        {/* Slice to show only the first 3 steps */}
+        {steps.slice(0, 3).map((step, idx) => {
           const colors = ['mondrian-red', 'mondrian-blue', 'mondrian-yellow'];
           const colorClass = colors[idx % colors.length];
-          
-          // Determine border classes based on position in grid
-          // This logic is simplified and might need refinement for perfect grid lines across rows
-          const borderClasses = `mondrian-border-t ${idx > 0 ? 'md:border-l-4' : 'md:border-l-0'} border-black`;
+          // Use border color utility based on the background color class
+          const borderColorClass = colorClass.replace('bg-', 'border-'); 
 
           return (
+            // Each step is a card with thick border and large padding
             <div 
               key={idx}
-              // Apply dynamic borders and padding
-              className={`p-6 md:p-8 flex flex-col ${borderClasses}`}
+              className={`reveal bg-white p-12 border-4 border-black flex flex-col`}
               data-animation="fade-in"
               data-animation-delay={`${idx * 100}`}
             >
-              {/* Step Number with Color Accent */}
-              <div className="mb-4 flex items-center">
-                 <span className={`inline-block w-8 h-8 mr-3 flex items-center justify-center font-display text-sm text-white ${colorClass}`}>
+              {/* Simplified Top section like in PracticeTemplate */}
+              <div className="flex items-start mb-6 pb-4 border-b-2 border-gray-200">
+                 {/* Number with Color Border */}
+                 <span 
+                   className={`flex-shrink-0 w-12 h-12 flex items-center justify-center font-display text-xl font-bold mr-6 border-4 ${borderColorClass}`}>
                    {String(idx + 1).padStart(2, '0')}
                  </span>
-                 <h3 className="font-display text-xl text-primary flex-1">{step.title}</h3>
+                 {/* Title */}
+                 <h3 className="font-display text-primary text-2xl pt-2">{step.title}</h3>
               </div>
                             
               {/* Step Description */}
-              <p className="text-gray-700 flex-grow">{step.description}</p>
+              <p className="text-gray-700 text-lg flex-grow">{step.description}</p>
             </div>
           );
         })}
