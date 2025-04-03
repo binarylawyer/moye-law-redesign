@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 // Simplified props
 interface ServiceHeroProps {
@@ -8,38 +9,36 @@ interface ServiceHeroProps {
 
 const ServiceHero: React.FC<ServiceHeroProps> = ({ title, description }) => {
   return (
-    // REMOVE top padding - it will be handled by Layout's main element
-    <section className="bg-white pb-16 md:pb-24 mondrian-border-b"> {/* Removed pt-40, adjusted md:py-24 to md:pb-24 */}
-      <div className="container mx-auto px-4">
-        {/* Simple 2-column grid layout */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-0 items-stretch min-h-[30vh]"> {/* Added min-height */}
+    <section className="bg-white pt-32 pb-24 md:pt-40 md:pb-32">
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="flex flex-col items-start max-w-4xl">
+          {/* Large, minimal title */}
+          <motion.h1 
+            className="text-5xl md:text-7xl font-display font-normal tracking-tight text-black mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {title}
+          </motion.h1>
           
-          {/* Text Content Area (Span 7 columns on medium screens) */}
-          <div className="md:col-span-7 flex flex-col justify-center pr-8 md:pr-12 py-8">
-            <h1 
-              className="text-4xl md:text-6xl font-display mb-6 text-primary" // Use primary text color
-              data-animation="fade-in"
-            >
-              {title}
-            </h1>
-            
-            <p 
-              className="text-lg md:text-xl text-gray-700 max-w-3xl" // Use readable gray text
-              data-animation="fade-in"
-              data-animation-delay="150"
-            >
-              {description}
-            </p>
-          </div>
-
-          {/* Mondrian Color Block Area (Span 5 columns on medium screens) */}
-          {/* Add a thick left border to separate from text */}
-          {/* Ensure block stretches to fill height */}
-          <div className="hidden md:flex md:col-span-5 mondrian-red mondrian-border-l items-stretch">
-             {/* Content inside block, if any, should also allow stretching */}
-             {/* <span className="mondrian-text-on-color text-sm opacity-50 self-center">M</span> */}
-          </div>
-
+          {/* Description with ample whitespace */}
+          <motion.p 
+            className="text-lg md:text-xl text-gray-800 max-w-2xl leading-relaxed font-sans"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            {description}
+          </motion.p>
+          
+          {/* Minimal accent line - inspired by MoMA's subtle separators */}
+          <motion.div 
+            className="mt-20 w-24 h-px bg-black"
+            initial={{ width: 0 }}
+            animate={{ width: 96 }}
+            transition={{ duration: 1, delay: 0.8 }}
+          />
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { RelatedService } from '@/types/services';
 // Using span for placeholder icon
 // import { Icon } from '@/components/ui/Icon';
@@ -12,7 +13,7 @@ interface ServiceRelatedProps {
 }
 
 const ServiceRelated: React.FC<ServiceRelatedProps> = ({
-  title = 'Related Services',
+  title = 'Explore Related Services',
   relatedServices = []
 }) => {
   // If no related services, don't render the component
@@ -21,49 +22,55 @@ const ServiceRelated: React.FC<ServiceRelatedProps> = ({
   }
 
   return (
-    // Remove outer section padding and bg-gray-50
-    <div className="related-services-section">
-      {/* Title Area */}
-      <div className="mb-12 text-center md:text-left">
-        <h2 className="text-3xl md:text-4xl font-display mb-4 text-primary">{title}</h2>
-        {/* Removed subtitle */}
-      </div>
+    <div className="related-services-section py-16 md:py-28">
+      {/* Gallery-style title */}
+      <motion.h2 
+        className="text-3xl md:text-5xl font-display font-normal tracking-tight mb-16 md:mb-24"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        {title}
+      </motion.h2>
 
-      {/* Grid for Related Services */}
-      {/* Using Mondrian grid with gap-0 and borders on items */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-0 mondrian-border">
-        {relatedServices.map((service, idx) => {
-           // Define border classes dynamically for a 3-column grid
-          const isLastInRow = (idx + 1) % 3 === 0;
-          const isLastRow = idx >= relatedServices.length - (relatedServices.length % 3 === 0 ? 3 : relatedServices.length % 3);
-          const borderClasses = `mondrian-border-t ${idx % 3 !== 0 ? 'md:border-l-4' : 'md:border-l-0'} ${isLastInRow ? 'md:border-r-0' : 'md:border-r-4'} ${isLastRow ? 'border-b-0' : 'md:border-b-4'} border-black`;
-
-          // Assign Mondrian colors cyclically
-          const colors = ['mondrian-blue', 'mondrian-yellow', 'mondrian-red'];
-          const colorClass = colors[idx % colors.length];
-
-          return (
+      {/* Gallery Grid - MoMA inspired with generous spacing */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16">
+        {relatedServices.map((service, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: idx * 0.1 }}
+          >
             <Link 
               to={service.path} 
-              key={idx}
-              // Apply dynamic borders and padding, make background white
-              className={`group block p-6 md:p-8 bg-white mondrian-interactive ${borderClasses}`}
-              data-animation="fade-in"
-              data-animation-delay={`${idx * 100}`}
+              className="group block h-full"
             >
-              {/* Add a colored top border accent */}
-              <div className={`h-2 mb-4 ${colorClass}`}></div> 
+              {/* Minimal separator line in Mondrian color */}
+              <div className={`w-12 h-px mb-6 ${
+                idx % 3 === 0 ? 'bg-mondrian-blue' : 
+                idx % 3 === 1 ? 'bg-mondrian-red' : 
+                'bg-mondrian-yellow'
+              }`}></div>
               
-              <h3 className="font-display text-xl text-black mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
-              <p className="text-gray-700 mb-4">{service.description}</p>
-              <div className="flex items-center text-primary font-semibold group-hover:translate-x-1 transition-transform duration-300">
-                Learn more
-                <span className="ml-1">→</span> {/* Simple arrow */}
-                {/* <Icon name="ChevronRight" className="ml-1 w-5 h-5" /> */}
-              </div>
+              {/* Clean typography */}
+              <h3 className="font-display text-xl md:text-2xl text-black mb-4 group-hover:text-gray-700 transition-colors duration-300">
+                {service.title}
+              </h3>
+              
+              <p className="text-gray-700 font-sans leading-relaxed mb-6">
+                {service.description}
+              </p>
+              
+              {/* Subtle "view" link */}
+              <span className="inline-block text-black text-sm font-medium group-hover:translate-x-1 transition-transform duration-300">
+                View <span className="ml-1 font-normal">→</span>
+              </span>
             </Link>
-          );
-        })}
+          </motion.div>
+        ))}
       </div>
     </div>
   );

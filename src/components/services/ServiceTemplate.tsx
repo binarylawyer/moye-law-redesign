@@ -44,15 +44,6 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
     // Log component mount for debugging
     logger.debug(`ServiceTemplate mounted: ${serviceName} (${serviceId})`);
     
-    // Simple animation system
-    const elements = document.querySelectorAll('[data-animation]');
-    elements.forEach(element => {
-      const delay = element.getAttribute('data-animation-delay') || '0';
-      setTimeout(() => {
-        element.classList.add('animate-in');
-      }, parseInt(delay));
-    });
-    
     // Clean up
     return () => {
       logger.debug(`ServiceTemplate unmounted: ${serviceName}`);
@@ -60,59 +51,52 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
   }, [serviceName, serviceId]);
   
   return (
-    // Apply a base background and ensure it spans full width
+    // Apply clean white background with no borders
     <div className="service-page bg-white" data-service-id={serviceId}>
-      {/* Hero Section - Assuming full width or contained within its own section */}
+      {/* Hero Section */}
       <ServiceHero 
         title={serviceName}
         description={description}
       />
       
-      {/* Main Content Wrapper - Use container for centered content with padding */}
-      {/* We can potentially add Mondrian grid classes here if all content follows a strict grid */}
-      <main className="container mx-auto px-4 py-16 md:py-24 space-y-16 md:space-y-24">
+      {/* Main Content - Remove container constraints to allow full-width sections */}
+      <main className="space-y-16 md:space-y-0">
         
         {/* Featured Content Section */}
-        {/* Wrap each section to allow individual styling/borders if needed */}
-        <div className="content-section">
+        <section>
           <ServiceFeaturedContent content={featuredContent} />
-        </div>
+        </section>
         
         {/* Service Features */}
-        <div className="content-section">
+        <section>
           <ServiceFeature features={features} />
-        </div>
+        </section>
+        
+        {/* Process Section */}
+        <section>
+          <ServiceProcess process={process} />
+        </section>
         
         {/* Key Considerations */}
-        <div className="content-section">
+        <section>
           <ServiceConsiderations considerations={considerations} />
-        </div>
-        
-        {/* Process */}
-        <div className="content-section">
-          <ServiceProcess process={process} />
-        </div>
+        </section>
         
         {/* Additional Custom Content */}
         {children && (
-          <div className="content-section">
+          <section>
              {children}
-          </div>
+          </section>
         )}
         
         {/* Related Services */}
-        <div className="content-section">
-          <ServiceRelated 
-            relatedServices={relatedServices}
-          />
-        </div>
+        <section>
+          <ServiceRelated relatedServices={relatedServices} />
+        </section>
         
-        {/* Call to Action - Often full-width or distinct layout, maybe outside main */}
-        {/* We'll keep it separate for now */}
-        
-      </main> { /* End Main Content Wrapper */}
+      </main>
       
-      {/* Call to Action Section - Could be full width with its own background/borders */}
+      {/* Call to Action Section */}
       <ServiceCTA
         title={ctaTitle}
         description={ctaDescription}

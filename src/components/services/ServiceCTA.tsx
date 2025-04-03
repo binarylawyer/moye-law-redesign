@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 // Assuming Icon component maps names to SVGs or similar
 // import { Icon } from '@/components/ui/Icon'; 
 // Using a simple span for icon placeholder for now
@@ -21,56 +22,91 @@ const ServiceCTA: React.FC<ServiceCTAProps> = ({
   ctaTagline // Destructure tagline
 }) => {
   return (
-    // Use white background for the section
-    <section className="py-16 md:py-24 bg-white">
-      <div className="container mx-auto px-4">
-        {/* Use mondrian-grid for layout */}
-        <div className="mondrian-grid grid-cols-1 md:grid-cols-12">
-
-          {/* Text content area (span 7) */}
-          <div className="md:col-span-7 p-8 md:p-12 flex flex-col justify-center mondrian-border-r">
-            {/* Optional Tagline */}
-            {ctaTagline && (
-              <p className="uppercase text-sm font-semibold tracking-widest text-gray-500 mb-4" data-animation="fade-in">
-                {ctaTagline}
-              </p>
-            )}
-            <h2 className="text-3xl md:text-4xl font-display mb-4 text-primary" data-animation="fade-in" data-animation-delay="100">
-              {title}
-            </h2>
-            <p className="text-lg text-gray-700 mb-8" data-animation="fade-in" data-animation-delay="200">
+    <section className="py-16 bg-white border-t border-black/10">
+      <div className="container mx-auto px-4 max-w-6xl">
+        {/* Refined CTA Container */}
+        <div className="flex flex-col md:flex-row items-stretch rounded-none overflow-hidden">
+          
+          {/* Left Content Area - Text and CTA */}
+          <div className="w-full md:w-2/3 p-8 md:p-12 flex flex-col justify-center relative">
+            {/* Subtle accent line */}
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-navy hidden md:block"></div>
+            
+            {/* Headline with luxury feel */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="mb-8"
+            >
+              {ctaTagline && (
+                <p className="uppercase text-xs font-sans tracking-widest text-gray-500 mb-2">
+                  {ctaTagline}
+                </p>
+              )}
+              <h2 className="text-2xl md:text-3xl font-display font-medium text-navy leading-tight">
+                {title}
+              </h2>
+            </motion.div>
+            
+            {/* Description with refined typography */}
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-base text-gray-700 mb-8 max-w-xl font-sans leading-relaxed"
+            >
               {description}
-            </p>
-            <div className="flex flex-col sm:flex-row items-start gap-4" data-animation="fade-in" data-animation-delay="300">
+            </motion.p>
+            
+            {/* More elegant action buttons */}
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="flex flex-col sm:flex-row items-start gap-6"
+            >
               <Link 
                 to="/contact" 
-                // Use gold color for primary CTA button, black text
-                className="inline-flex items-center justify-center px-8 py-3 border-2 border-black bg-gold text-black font-semibold text-lg hover:bg-black hover:text-gold transition-colors duration-300 mondrian-interactive"
+                className="group relative overflow-hidden px-8 py-3 border border-navy bg-navy text-white font-sans font-medium text-sm hover:bg-navy/90 transition-colors duration-300"
               >
-                {buttonText} <span className="ml-2">→</span>
+                {/* Subtle slide animation on hover */}
+                <span className="relative z-10 flex items-center">
+                  {buttonText}
+                  <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                </span>
               </Link>
+              
               {phoneNumber && (
                 <a 
                   href={`tel:${phoneNumber.replace(/[^0-9]/g, '')}`}
-                  // Secondary button style: black border, white bg, primary text
-                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-black bg-white text-primary font-semibold text-lg hover:bg-gray-100 transition-colors duration-300 mondrian-interactive"
+                  className="flex items-center text-navy hover:text-gold transition-colors duration-300 font-sans"
                 >
-                  <Icon name="Phone" className="mr-2 h-5 w-5" />
-                  {phoneNumber}
+                  <Icon name="Phone" className="mr-2 h-4 w-4" />
+                  <span className="text-sm font-medium">{phoneNumber}</span>
                 </a>
               )}
+            </motion.div>
+          </div>
+          
+          {/* Right Area - Refined Mondrian Design */}
+          <div className="hidden md:block md:w-1/3 relative">
+            {/* Elegant Mondrian-inspired pattern */}
+            <div className="h-full grid grid-cols-3 grid-rows-3">
+              <div className="col-span-2 row-span-2 bg-white border-l border-black/10"></div>
+              <div className="col-span-1 row-span-2 mondrian-blue opacity-90"></div>
+              <div className="col-span-1 row-span-1 mondrian-yellow opacity-90"></div>
+              <div className="col-span-1 row-span-1 bg-white border-t border-l border-black/10"></div>
+              <div className="col-span-1 row-span-1 mondrian-red opacity-90"></div>
             </div>
+            
+            {/* Subtle diagonal line element */}
+            <div className="absolute top-1/2 left-0 w-full h-px bg-black/10 -rotate-12 transform origin-center"></div>
           </div>
-
-          {/* Mondrian color blocks area (span 5) */}
-          <div className="hidden md:grid md:col-span-5 grid-rows-2 grid-cols-3 gap-0">
-              {/* Example color block layout */}
-              <div className="col-span-2 row-span-1 mondrian-blue"></div>
-              <div className="col-span-1 row-span-1 mondrian-white mondrian-border-l"></div>
-              <div className="col-span-1 row-span-1 mondrian-red mondrian-border-t"></div>
-              <div className="col-span-2 row-span-1 mondrian-yellow mondrian-border-l mondrian-border-t"></div>
-          </div>
-
+          
         </div>
       </div>
     </section>
