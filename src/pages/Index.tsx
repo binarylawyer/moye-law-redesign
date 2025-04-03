@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
-import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import MondrianIntro from '@/components/MondrianIntro';
 import PracticeAreas from '@/components/PracticeAreas';
 import Approach from '@/components/Approach';
-import Footer from '@/components/Footer';
 import CallToAction from '@/components/shared/CallToAction';
 import '../styles/mondrian.css';
 import { useLocation } from 'react-router-dom';
@@ -60,7 +58,6 @@ const Index = () => {
   
   return (
     <div className="min-h-screen bg-white">
-      <Header />
       <main className="overflow-hidden">
         <Hero />
         <MondrianIntro />
@@ -68,7 +65,6 @@ const Index = () => {
         <Approach />
         <CallToAction />
       </main>
-      <Footer />
     </div>
   );
 };

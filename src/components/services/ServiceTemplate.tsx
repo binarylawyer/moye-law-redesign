@@ -51,8 +51,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
   }, [serviceName, serviceId]);
   
   return (
-    // Apply clean white background with no borders
-    <div className="service-page bg-white" data-service-id={serviceId}>
+    <>
       {/* Hero Section */}
       <ServiceHero 
         title={serviceName}
@@ -103,7 +102,7 @@ const ServiceTemplate: React.FC<ServiceTemplateProps> = ({
         buttonText={ctaButtonText}
         phoneNumber={phoneNumber}
       />
-    </div>
+    </>
   );
 };
 
