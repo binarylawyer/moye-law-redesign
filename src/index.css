@@ -523,3 +523,42 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
   0% { background-color: rgba(201, 157, 86, 0.2); }
   100% { background-color: transparent; }
 }
+
+/* Mondrian Colors */
+.mondrian-red {
+  @apply bg-red-600;
+}
+
+.mondrian-blue {
+  @apply bg-blue-600;
+}
+
+.mondrian-yellow {
+  @apply bg-yellow-400;
+}
+
+/* Mondrian Border Colors */
+.border-mondrian-red {
+  @apply border-red-600;
+}
+
+.border-mondrian-blue {
+  @apply border-blue-600;
+}
+
+.border-mondrian-yellow {
+  @apply border-yellow-400;
+}
+
+/* Mondrian Text Colors */
+.text-mondrian-red {
+  @apply text-red-600;
+}
+
+.text-mondrian-blue {
+  @apply text-blue-600;
+}
+
+.text-mondrian-yellow {
+  @apply text-yellow-400;
+}

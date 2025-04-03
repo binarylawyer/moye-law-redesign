@@ -1,54 +1,108 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Process } from '@/types/services';
+import { motion, useInView } from 'framer-motion';
 
 interface ServiceProcessProps {
   process: Process;
 }
 
+// Color sequence configuration
+const colorSequence = [
+  { main: 'mondrian-blue', accent: 'mondrian-red' },
+  { main: 'mondrian-red', accent: 'mondrian-yellow' },
+  { main: 'mondrian-yellow', accent: 'mondrian-blue' }
+];
+
+// Mondrian Connector Component
+const MondrianConnector = ({ currentColor, nextColor }: { currentColor: string; nextColor: string }) => (
+  <div className="grid grid-cols-3 grid-rows-2 w-24 h-16 mx-auto my-8 transform -rotate-6">
+    <div className={`${currentColor} col-span-2 border-2 border-black`}></div>
+    <div className="bg-white border-2 border-black"></div>
+    <div className="bg-white border-2 border-black"></div>
+    <div className={`${nextColor} col-span-2 border-2 border-black`}></div>
+  </div>
+);
+
 const ServiceProcess: React.FC<ServiceProcessProps> = ({ process }) => {
-  if (!process) return null; 
-  
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-10%" });
+
+  if (!process) return null;
   const { title, steps } = process;
 
   return (
-    <div className="process-section">
+    <div ref={containerRef} className="process-section py-16">
       {/* Title Area */}
-      <div className="mb-12 text-center md:text-left">
-        <h2 className="text-3xl md:text-4xl font-display mb-4 text-primary">{title}</h2>
-      </div>
+      <motion.div 
+        className="mb-12 text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+      >
+        <h2 className="text-3xl md:text-4xl font-display font-semibold mb-4">{title}</h2>
+      </motion.div>
 
-      {/* Mondrian Grid for Process Steps - 3 columns, wider gap, wider container */}
-      {/* Apply border to the container, not individual items unless needed for internal lines */}
-      <div className={`grid grid-cols-1 md:grid-cols-3 gap-16 max-w-7xl mx-auto`}> {/* Use gap-16, max-w-7xl */}
-        {/* Slice to show only the first 3 steps */}
-        {steps.slice(0, 3).map((step, idx) => {
-          const colors = ['mondrian-red', 'mondrian-blue', 'mondrian-yellow'];
-          const colorClass = colors[idx % colors.length];
-          // Use border color utility based on the background color class
-          const borderColorClass = colorClass.replace('bg-', 'border-'); 
+      {/* Steps Container */}
+      <div className="max-w-6xl mx-auto">
+        {steps.map((step, idx) => {
+          const colors = colorSequence[idx % colorSequence.length];
+          const nextColors = colorSequence[(idx + 1) % colorSequence.length];
 
           return (
-            // Each step is a card with thick border and large padding
-            <div 
+            <motion.div 
               key={idx}
-              className={`reveal bg-white p-12 border-4 border-black flex flex-col`}
-              data-animation="fade-in"
-              data-animation-delay={`${idx * 100}`}
+              className="relative"
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.5, delay: idx * 0.2 }}
             >
-              {/* Simplified Top section like in PracticeTemplate */}
-              <div className="flex items-start mb-6 pb-4 border-b-2 border-gray-200">
-                 {/* Number with Color Border */}
-                 <span 
-                   className={`flex-shrink-0 w-12 h-12 flex items-center justify-center font-display text-xl font-bold mr-6 border-4 ${borderColorClass}`}>
-                   {String(idx + 1).padStart(2, '0')}
-                 </span>
-                 {/* Title */}
-                 <h3 className="font-display text-primary text-2xl pt-2">{step.title}</h3>
+              {/* Step Card */}
+              <div 
+                className={`
+                  bg-white p-8 border-4 border-black 
+                  hover:shadow-xl transition-shadow duration-300
+                  ${colors.main} bg-opacity-5
+                `}
+              >
+                {/* Number and Title */}
+                <div className="flex items-center mb-6">
+                  <div className={`
+                    ${colors.main} w-16 h-16 
+                    flex items-center justify-center 
+                    border-4 border-black
+                    font-display font-bold text-2xl
+                  `}>
+                    {String(idx + 1).padStart(2, '0')}
+                  </div>
+                  <h3 className="font-display text-2xl ml-6">{step.title}</h3>
+                </div>
+
+                {/* Description */}
+                <p className="font-sans text-lg text-gray-700 ml-22">
+                  {step.description}
+                </p>
+
+                {/* Accent Line */}
+                <div className={`
+                  absolute left-0 top-0 bottom-0 w-1 
+                  ${colors.accent}
+                `}></div>
               </div>
-                            
-              {/* Step Description */}
-              <p className="text-gray-700 text-lg flex-grow">{step.description}</p>
-            </div>
+
+              {/* Connector between steps */}
+              {idx < steps.length - 1 && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.4, delay: idx * 0.2 + 0.3 }}
+                >
+                  <MondrianConnector 
+                    currentColor={colors.main} 
+                    nextColor={nextColors.main} 
+                  />
+                </motion.div>
+              )}
+            </motion.div>
           );
         })}
       </div>
