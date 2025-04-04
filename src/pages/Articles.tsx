@@ -380,7 +380,7 @@ const Articles: React.FC = () => {
                   
                   <div className="flex justify-between items-center mt-auto">
                     <Link 
-                      to={`/resources/${research.slug}`}
+                      to={`/research/${research.slug}`}
                       className="text-black border-b-2 border-black hover:text-[#D6001C] transition-colors text-sm font-medium inline-flex items-center"
                     >
                       Read Full Paper

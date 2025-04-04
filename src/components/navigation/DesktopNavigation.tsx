@@ -234,7 +234,8 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
                   "bg-[#4D80D4] text-white", // Blue
                   "bg-[#FFEB80] text-black", // Yellow
                   "bg-[#00A650] text-white", // Green again
-                  "bg-[#D6001C] text-white"  // Red again
+                  "bg-[#D6001C] text-white", // Red again
+                  "bg-[#4D80D4] text-white"  // Blue again
                 ];
                 
                 return (

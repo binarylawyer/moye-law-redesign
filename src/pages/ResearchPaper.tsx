@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Download, ChevronLeft, FileText, Share2, BookmarkPlus, Users, Scale, Database, Globe, Shield, Briefcase } from 'lucide-react';
+import { Download, ChevronLeft, ChevronRight, FileText, Share2, BookmarkPlus, Users, Scale, Database, Globe, Shield, Briefcase } from 'lucide-react';
 import ConsultationCTA from "../components/ConsultationCTA";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -78,11 +78,11 @@ const researchPaperData: ResearchPaperDetailed = {
   references: [
     "Johnson v. TrustTech Solutions, 287 Cal.App.4th 783 (2022).",
     "Estate of Williams, 73 Misc.3d, 1214(A) (N.Y. Sur. Ct. 2021).",
-    "Securities and Exchange Commission, "Use of Artificial Intelligence in Investment Management," Guidance Release No. IM-3478 (June 2023).",
-    "American Bar Association, Ethics Opinion 2023-01, "Ethical Obligations When Using Artificial Intelligence in Legal Practice" (March 2023).",
-    "Caplan, A. & Purser, K. (2022). "Algorithmic Fiduciaries: Rethinking Legal Personhood for the AI Era." Yale Journal of Law & Technology, 24(1), 45-87.",
-    "Lee, J. & Martinez, C. (2023). "Trust Automation: Technical and Legal Perspectives." Stanford Technology Law Review, 26(2), 211-240.",
-    "Morgan, D. (2022). "Bias in Automated Inheritance Systems: Implications for Wealth Inequality." Journal of Estate Planning, 35(4), 112-131."
+    "Securities and Exchange Commission, \"Use of Artificial Intelligence in Investment Management,\" Guidance Release No. IM-3478 (June 2023).",
+    "American Bar Association, Ethics Opinion 2023-01, \"Ethical Obligations When Using Artificial Intelligence in Legal Practice\" (March 2023).",
+    "Caplan, A. & Purser, K. (2022). \"Algorithmic Fiduciaries: Rethinking Legal Personhood for the AI Era.\" Yale Journal of Law & Technology, 24(1), 45-87.",
+    "Lee, J. & Martinez, C. (2023). \"Trust Automation: Technical and Legal Perspectives.\" Stanford Technology Law Review, 26(2), 211-240.",
+    "Morgan, D. (2022). \"Bias in Automated Inheritance Systems: Implications for Wealth Inequality.\" Journal of Estate Planning, 35(4), 112-131."
   ],
   acknowledgements: "The authors gratefully acknowledge the support of the Digital Law Research Initiative at Stanford University. We also thank our colleagues at the AI & Legal Ethics Working Group for their valuable feedback on earlier drafts."
 };

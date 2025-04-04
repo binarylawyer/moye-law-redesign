@@ -350,11 +350,11 @@ const ArtsMediaLaw: React.FC = () => {
             <p className="text-gray-700">Explore our specialized arts and media practice areas, each addressing the distinct legal needs of creative professionals and organizations.</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {practiceAreas.map((area) => (
               <div 
                 key={area.id} 
-                className={`border-2 ${area.color} p-8 rounded-md transition-all duration-300 hover:shadow-lg ${area.bgcolor} flex flex-col h-full`}
+                className={`border-2 ${area.color} p-8 rounded-md transition-all duration-300 hover:shadow-lg ${area.bgcolor} flex flex-col`}
               >
                 <div className="mb-6">
                   {area.icon}

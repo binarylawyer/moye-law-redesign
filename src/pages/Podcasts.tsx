@@ -222,7 +222,7 @@ const Podcasts: React.FC = () => {
               <span className="relative z-10">Estate Planning Insights</span>
               <span className="absolute left-0 bottom-0 h-3 w-24 mondrian-yellow -z-0"></span>
             </h2>
-            <Link to="/resources/estate-planning-podcasts" className="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+            <Link to="/resources/podcasts/estate-planning" className="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
               View all
               <ChevronRight className="w-4 h-4 ml-1" />
             </Link>
@@ -324,7 +324,7 @@ const Podcasts: React.FC = () => {
               <span className="relative z-10">Digital Asset & IP Insights</span>
               <span className="absolute left-0 bottom-0 h-3 w-24 mondrian-red -z-0"></span>
             </h2>
-            <Link to="/resources/ip-podcasts" className="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+            <Link to="/resources/podcasts/tech-ip" className="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
               View all
               <ChevronRight className="w-4 h-4 ml-1" />
             </Link>

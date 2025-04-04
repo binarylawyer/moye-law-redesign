@@ -1,4 +1,4 @@
-export type ResourceCategory = 'article' | 'guide' | 'faq' | 'case-study' | 'whitepaper';
+export type ResourceCategory = 'article' | 'guide' | 'faq' | 'case-study' | 'whitepaper' | 'research';
 
 export interface Resource {
   id: string;
@@ -11,6 +11,7 @@ export interface Resource {
   featuredImage?: string;
   content?: string;
   tags?: string[];
+  clientOnly: boolean;
 }
 
 export const resources: Resource[] = [
@@ -67,7 +68,8 @@ export const resources: Resource[] = [
       - Relocations to different states or countries
 
       Working with a team of specialized advisors ensures your estate plan remains aligned with your goals and adapted to changing circumstances.
-    `
+    `,
+    clientOnly: false
   },
   {
     id: '2',
@@ -140,7 +142,8 @@ export const resources: Resource[] = [
       - Updates to relevant laws and regulations
 
       Working with advisors who understand both the technical and legal aspects of digital assets is essential for effective planning in this rapidly evolving area.
-    `
+    `,
+    clientOnly: false
   },
   {
     id: '3',
@@ -223,7 +226,8 @@ export const resources: Resource[] = [
       - Credit and attribution provisions
 
       Working with legal advisors who specialize in art law ensures your collection receives the protection it deserves while maximizing its value as part of your overall estate plan.
-    `
+    `,
+    clientOnly: false
   },
   {
     id: '4',
@@ -314,7 +318,8 @@ export const resources: Resource[] = [
       - State-specific inheritance taxes
 
       Effective cross-border planning requires ongoing attention to changing laws and circumstances across all relevant jurisdictions.
-    `
+    `,
+    clientOnly: false
   },
   {
     id: '5',
@@ -357,7 +362,8 @@ export const resources: Resource[] = [
 
       ### How can I include digital assets in my estate plan?
       Including digital assets in your estate plan requires specialized documentation that grants your fiduciaries legal authority to access and manage these assets. This includes creating a comprehensive digital asset inventory, secure methods for passing access credentials, explicit authorization language in your estate planning documents, and potentially establishing digital asset trusts. Given the technical and legal complexity of digital assets, we recommend working with our team to create a customized digital asset succession plan.
-    `
+    `,
+    clientOnly: false
   },
   {
     id: '6',
@@ -450,7 +456,8 @@ export const resources: Resource[] = [
       - Better support for family education and governance initiatives
 
       This case illustrates how our integrated approach to family office legal coordination creates value beyond traditional legal services, supporting the family's broader wealth management objectives while improving efficiency and reducing costs.
-    `
+    `,
+    clientOnly: false
   },
   {
     id: '7',
@@ -549,7 +556,8 @@ export const resources: Resource[] = [
       ## Conclusion
 
       Successful business succession requires balancing technical planning with thoughtful attention to family dynamics. Working with advisors who understand both aspects ensures the continued prosperity of the business while preserving family harmony.
-    `
+    `,
+    clientOnly: false
   },
   {
     id: '8',
@@ -660,7 +668,8 @@ export const resources: Resource[] = [
       ## Conclusion
 
       While technology will never completely replace the human judgment and empathy needed in estate administration, these tools are dramatically improving efficiency and transparency. Executors and administrators who embrace these technologies can provide better service to beneficiaries while reducing the time and cost of administration.
-    `
+    `,
+    clientOnly: false
   },
   {
     id: '9',
@@ -809,7 +818,8 @@ export const resources: Resource[] = [
       ## Conclusion
 
       Effective charitable giving requires aligning philanthropic goals with appropriate strategies and vehicles. Working with advisors who understand both the technical aspects and your personal values ensures your giving achieves maximum impact for both your chosen causes and your overall financial plan.
-    `
+    `,
+    clientOnly: false
   },
   {
     id: '10',
@@ -958,7 +968,8 @@ export const resources: Resource[] = [
       ## Conclusion
 
       Our structured process is designed to provide confidence and clarity while delivering exceptional legal outcomes. We recognize that each client's situation is unique, and we adapt our approach accordingly while maintaining consistent quality and attention to detail. We view our client relationships as long-term partnerships built on trust, communication, and mutual respect.
-    `
+    `,
+    clientOnly: false
   },
   {
     id: '20',
@@ -1001,7 +1012,8 @@ export const resources: Resource[] = [
       This shows how multiple main sections are formatted and spaced in the document.
       
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque, justo nec egestas vulputate, felis nisl varius est, vitae feugiat magna lacus vel lectus. Phasellus tincidunt commodo ipsum, sit amet lobortis sapien pellentesque sit amet.
-    `
+    `,
+    clientOnly: false
   },
   {
     id: '11',
@@ -1159,6 +1171,43 @@ export const resources: Resource[] = [
       ---
 
       *This article demonstrates various Markdown formatting capabilities, including headings, bold and italic text, lists, blockquotes, tables, and paragraph styling. It has been crafted to test how these elements render in your content management system while providing relevant content for your firm's technology-forward positioning.*
-    `
+    `,
+    clientOnly: false
+  },
+  {
+    id: "research-1",
+    title: "Algorithmic Estate Planning: Automated Decision Systems in Wealth Distribution",
+    description: "This paper examines the legal implications of using artificial intelligence and algorithmic systems to automate estate planning decisions. We analyze recent case law regarding algorithmic decision-making and propose a framework for compliance with fiduciary responsibilities.",
+    date: "2023-11-15",
+    category: "research",
+    author: "Dr. Emily Chen, Prof. Michael Rodriguez, J.D.",
+    tags: ["Estate Planning", "AI/ML", "Automation", "Fiduciary Law"],
+    slug: "algorithmic-estate-planning",
+    content: "",
+    clientOnly: false
+  },
+  {
+    id: "research-2",
+    title: "Cross-Jurisdictional NFT Protection: A Comparative Analysis",
+    description: "This research evaluates how different legal jurisdictions approach the protection of non-fungible tokens (NFTs) and digital art. Through analysis of recent litigation in the United States, European Union, and Singapore, we identify emerging legal frameworks and propose harmonization strategies.",
+    date: "2023-09-22",
+    category: "research",
+    author: "Dr. James Wilson, Sarah Matthews, Esq.",
+    tags: ["Digital Assets", "NFTs", "Intellectual Property", "International Law"],
+    slug: "cross-jurisdictional-nft-protection",
+    content: "",
+    clientOnly: true
+  },
+  {
+    id: "research-3",
+    title: "Emerging Contract Protocols: Smart Contract Enforceability in Elder Care Arrangements",
+    description: "This paper investigates the legal enforceability of blockchain-based smart contracts in elder care arrangements. We analyze current statutory frameworks, identify gaps in existing law, and propose model legislation that balances technological innovation with elder protection principles.",
+    date: "2023-10-05",
+    category: "research",
+    author: "Prof. David Thompson, J.D., Dr. Lisa Nguyen",
+    tags: ["Elder Law", "Smart Contracts", "Elder Care", "Legislative Frameworks"],
+    slug: "smart-contracts-elder-care",
+    content: "",
+    clientOnly: false
   }
 ];

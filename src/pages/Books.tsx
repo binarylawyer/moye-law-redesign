@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Book, Lock, Download, ChevronRight, FileText, Users, Shield, Database, Briefcase, Scale, Globe } from 'lucide-react';
+import { Book, Lock, Download, ChevronRight, FileText, Users, Shield, Database, Briefcase, Scale, Globe, Mic } from 'lucide-react';
 import ResourcePageHeader from "../components/resources/ResourcePageHeader";
 import ConsultationCTA from "../components/ConsultationCTA";
 import { Toaster } from "@/components/ui/toaster";
@@ -340,7 +340,7 @@ const Books: React.FC = () => {
                 <h3 className="font-display text-xl mb-3">Research Publications</h3>
                 <p className="text-gray-600 mb-6">Access our in-depth research on complex legal issues and emerging practice areas.</p>
                 <a 
-                  href="/resources/research"
+                  href="/research"
                   className="inline-flex items-center text-red-600 hover:text-red-800 font-medium"
                 >
                   View Research

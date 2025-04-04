@@ -23,10 +23,16 @@ import HowWeWork from "./pages/HowWeWork";
 import TechnologyPlatform from "./pages/TechnologyApproach";
 import CaseStudies from "./pages/CaseStudies";
 import Podcasts from "./pages/Podcasts";
+import Books from "./pages/Books";
+import Research from "./pages/Research";
+import ResearchPaper from "./pages/ResearchPaper";
+import EstatePlanningPodcasts from "./pages/podcasts/EstatePlanningPodcasts";
+import TechIPPodcasts from "./pages/podcasts/TechIPPodcasts";
 import ExperienceTheDifference from "./pages/ExperienceTheDifference";
 import FloatingConsultationButton from "./components/FloatingConsultationButton";
 import ErrorTestPage from "./pages/ErrorTest";
 import Services from "./pages/Services";
+import ClientChat from "./pages/ClientChat";
 
 // ** NEW/UPDATED Service Page Imports **
 import EstatePlanningService from "./pages/services/EstatePlanning";
@@ -276,11 +282,17 @@ const AppRoutes = () => {
           {/* Other routes can be similarly wrapped with PageErrorBoundary */}
           <Route path="/resources/articles" element={<Articles />} />
           <Route path="/resources/podcasts" element={<Podcasts />} />
+          <Route path="/resources/podcasts/estate-planning" element={<EstatePlanningPodcasts />} />
+          <Route path="/resources/podcasts/tech-ip" element={<TechIPPodcasts />} />
+          <Route path="/books" element={<Books />} />
+          <Route path="/research" element={<Research />} />
+          <Route path="/research/:slug" element={<ResearchPaper />} />
           <Route path="/resources/faq" element={<FAQ />} />
           <Route path="/resources/how-we-work" element={<HowWeWork />} />
           <Route path="/resources/technology-approach" element={<TechnologyPlatform />} />
           <Route path="/resources/case-studies" element={<CaseStudies />} />
           <Route path="/resources/:slug" element={<ResourceDetail />} />
+          <Route path="/client-chat" element={<ClientChat />} />
           
           {/* Updated Services Routes */}
           <Route path="/services/estate-planning" element={<EstatePlanningService />} />

@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
 import ResourcePageHeader from "../components/resources/ResourcePageHeader";
 import ConsultationCTA from "../components/ConsultationCTA";
-import { Send, User, Bot } from "lucide-react";
+import { Send, User, Bot, Lock } from "lucide-react";
+import { Link } from 'react-router-dom';
 
 // Chat message type
 interface ChatMessage {
@@ -118,78 +119,101 @@ const FAQ: React.FC = () => {
       {/* Chat interface */}
       <section className="py-12 md:py-16 bg-light-gray">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-            {/* Chat messages area */}
-            <div className="p-4 h-[500px] overflow-y-auto">
-              <div className="space-y-4">
-                {messages.map(message => (
-                  <div 
-                    key={message.id} 
-                    className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
-                  >
-                    <div className={`flex items-start max-w-[80%] ${message.isUser ? 'flex-row-reverse' : 'flex-row'}`}>
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${message.isUser ? 'ml-3 mondrian-blue text-white' : 'mr-3 mondrian-yellow'}`}>
-                        {message.isUser ? <User size={16} /> : <Bot size={16} />}
-                      </div>
-                      <div 
-                        className={`p-3 rounded-lg ${message.isUser 
-                          ? 'bg-navy text-white rounded-tr-none' 
-                          : 'bg-gray-100 text-gray-800 rounded-tl-none'}`}
-                      >
-                        <p className="text-sm">{message.text}</p>
-                        <span className="block text-xs mt-1 opacity-70">
-                          {message.timestamp.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-                {isLoading && (
-                  <div className="flex justify-start">
-                    <div className="flex items-start max-w-[80%]">
-                      <div className="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center flex-shrink-0 mr-3 mondrian-yellow">
-                        <Bot size={16} />
-                      </div>
-                      <div className="p-3 rounded-lg bg-gray-100 text-gray-800 rounded-tl-none">
-                        <div className="flex space-x-1">
-                          <div className="w-2 h-2 rounded-full bg-gray-400 animate-bounce" style={{animationDelay: '0ms'}}></div>
-                          <div className="w-2 h-2 rounded-full bg-gray-400 animate-bounce" style={{animationDelay: '150ms'}}></div>
-                          <div className="w-2 h-2 rounded-full bg-gray-400 animate-bounce" style={{animationDelay: '300ms'}}></div>
+          <div className="max-w-3xl mx-auto">
+            {/* Status indicator */}
+            <div className="bg-white p-4 rounded-t-lg border border-gray-200 border-b-0 flex justify-between items-center">
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full mr-2 bg-yellow-500"></div>
+                <span className="text-sm font-medium">
+                  General Legal Assistant (Free)
+                </span>
+              </div>
+              
+              <Link 
+                to="/client-chat"
+                className="flex items-center text-sm text-blue-600 hover:text-blue-800"
+              >
+                <Lock size={16} className="mr-1" />
+                Client Premium Chat
+              </Link>
+            </div>
+            
+            <div className="bg-white rounded-b-lg shadow-sm border border-gray-200 overflow-hidden">
+              {/* Chat messages area */}
+              <div className="p-4 h-[500px] overflow-y-auto">
+                <div className="space-y-4">
+                  {messages.map(message => (
+                    <div 
+                      key={message.id} 
+                      className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
+                    >
+                      <div className={`flex items-start max-w-[80%] ${message.isUser ? 'flex-row-reverse' : 'flex-row'}`}>
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${message.isUser ? 'ml-3 mondrian-blue text-white' : 'mr-3 mondrian-yellow'}`}>
+                          {message.isUser ? <User size={16} /> : <Bot size={16} />}
+                        </div>
+                        <div 
+                          className={`p-3 rounded-lg ${message.isUser 
+                            ? 'bg-navy text-white rounded-tr-none' 
+                            : 'bg-gray-100 text-gray-800 rounded-tl-none'}`}
+                        >
+                          <p className="text-sm">{message.text}</p>
+                          <span className="block text-xs mt-1 opacity-70">
+                            {message.timestamp.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                          </span>
                         </div>
                       </div>
                     </div>
-                  </div>
-                )}
-                <div ref={messagesEndRef} />
+                  ))}
+                  {isLoading && (
+                    <div className="flex justify-start">
+                      <div className="flex items-start max-w-[80%]">
+                        <div className="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center flex-shrink-0 mr-3 mondrian-yellow">
+                          <Bot size={16} />
+                        </div>
+                        <div className="p-3 rounded-lg bg-gray-100 text-gray-800 rounded-tl-none">
+                          <div className="flex space-x-1">
+                            <div className="w-2 h-2 rounded-full bg-gray-400 animate-bounce" style={{animationDelay: '0ms'}}></div>
+                            <div className="w-2 h-2 rounded-full bg-gray-400 animate-bounce" style={{animationDelay: '150ms'}}></div>
+                            <div className="w-2 h-2 rounded-full bg-gray-400 animate-bounce" style={{animationDelay: '300ms'}}></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  <div ref={messagesEndRef} />
+                </div>
+              </div>
+              
+              {/* Chat input area */}
+              <div className="border-t border-gray-200 p-4 bg-gray-50">
+                <form onSubmit={handleSubmit} className="flex items-center">
+                  <input
+                    type="text"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    placeholder="Type your question here..."
+                    className="flex-grow py-2 px-4 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent"
+                  />
+                  <button 
+                    type="submit" 
+                    className="bg-navy text-white py-2 px-4 rounded-r-md hover:bg-navy/90 focus:outline-none focus:ring-2 focus:ring-navy focus:ring-offset-2"
+                    disabled={isLoading}
+                  >
+                    <Send size={18} />
+                  </button>
+                </form>
               </div>
             </div>
             
-            {/* Chat input area */}
-            <div className="border-t border-gray-200 p-4 bg-gray-50">
-              <form onSubmit={handleSubmit} className="flex items-center">
-                <input
-                  type="text"
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  placeholder="Type your question here..."
-                  className="flex-grow py-2 px-4 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent"
-                />
-                <button 
-                  type="submit" 
-                  className="bg-navy text-white py-2 px-4 rounded-r-md hover:bg-navy/90 focus:outline-none focus:ring-2 focus:ring-navy focus:ring-offset-2"
-                  disabled={isLoading}
-                >
-                  <Send size={18} />
-                </button>
-              </form>
+            {/* Additional help text */}
+            <div className="max-w-3xl mx-auto mt-8 text-center">
+              <p className="text-black/80 text-sm">
+                Need more personalized assistance? Our legal team is ready to help.
+              </p>
+              <p className="text-black/80 text-sm mt-2">
+                Existing clients can access <Link to="/client-chat" className="text-blue-600 hover:underline">premium AI chat</Link> with personalized case information.
+              </p>
             </div>
-          </div>
-          
-          {/* Additional help text */}
-          <div className="max-w-3xl mx-auto mt-8 text-center">
-            <p className="text-black/80 text-sm">
-              Need more personalized assistance? Our legal team is ready to help.
-            </p>
           </div>
         </div>
       </section>
