@@ -110,6 +110,11 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
                   "bg-[#4D80D4] text-white"  // Blue again
                 ];
                 
+                // Display shorter versions of long titles to prevent ellipsis
+                let displayTitle = area.title;
+                if (area.title === "Intellectual Property") displayTitle = "IP";
+                if (area.title === "Emerging Technology") displayTitle = "Emerging Tech";
+                
                 return (
                   <Link
                     key={area.path}
@@ -119,7 +124,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
                     <span className={`${badgeColors[index]} w-6 h-6 flex-shrink-0 inline-flex items-center justify-center mr-2 text-xs font-medium rounded-full shadow-sm transition-transform group-hover:scale-110`}>
                       {index + 1}
                     </span>
-                    <span className="group-hover:text-[#D6001C] text-base font-medium truncate">{area.title}</span>
+                    <span className="group-hover:text-[#D6001C] text-base font-medium whitespace-normal">{displayTitle}</span>
                   </Link>
                 );
               })}

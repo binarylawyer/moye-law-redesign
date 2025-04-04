@@ -1,9 +1,9 @@
 export const practiceAreas = [
-  { title: "Intellectual Property", path: "/practice/intellectual-property" },
+  { title: "IP", path: "/practice/intellectual-property" },
   { title: "Estate & Legacy", path: "/practice/estate-legacy" },
   { title: "Arts & Media Law", path: "/practice/arts-media-law" },
   { title: "Real Estate", path: "/practice/real-estate-hub" },
-  { title: "Emerging Technology", path: "/practice/emerging-technology-hub" },
+  { title: "Emerging Tech", path: "/practice/emerging-technology-hub" },
   // The following pages will be accessible through the hub pages instead of directly in the navigation
   // { title: "IP Licensing", path: "/practice/ip-licensing" },
   // { title: "IP Asset Protection", path: "/practice/ip-asset-protection" },
