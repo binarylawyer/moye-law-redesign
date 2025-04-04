@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, FileText, Shield, Code, Lightbulb, Globe, Cpu, Activity, Film, TrendingUp, DollarSign, Check, ChevronRight, BarChart, Award } from 'lucide-react';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import MondrianClassicComposition from '@/components/MondrianClassicComposition';
 
 const IntellectualProperty: React.FC = () => {
@@ -131,7 +130,7 @@ const IntellectualProperty: React.FC = () => {
     },
     {
       id: "digital-asset-tech-protection",
-      title: "Digital Asset & Tech Protection",
+      title: "Digital Asset & Emerging Technology",
       description: "Specific protection strategies for digital assets and technologies with unique security considerations.",
       path: "/services/digital-asset-tech-protection",
       color: "border-[#00A650]",
@@ -582,8 +581,6 @@ const IntellectualProperty: React.FC = () => {
           </Link>
         </div>
       </section>
-      
-      <Footer />
     </div>
   );
 };

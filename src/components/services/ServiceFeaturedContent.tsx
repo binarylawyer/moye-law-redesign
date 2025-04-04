@@ -75,46 +75,53 @@ const ServiceFeaturedContent: React.FC<ServiceFeaturedContentProps> = ({ content
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <div className="relative overflow-hidden rounded-md shadow-md">
-                {isVideo ? (
-                  // Video with constraints
-                  <div className="relative w-full aspect-video max-h-[440px]">
-                    <video
-                      ref={videoRef}
-                      className="w-full h-full object-cover"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                    >
-                      <source src={imageSrc} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                    {/* Art gallery-style indigo/blue filter overlay with darker opacity */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#1E3A8A]/85 to-[#3B82F6]/75 mix-blend-multiply"></div>
-                    {/* Additional texture overlay for gallery aesthetic */}
-                    <div className="absolute inset-0 mix-blend-overlay" style={{ 
-                      backgroundImage: 'url("/images/textures/subtle-grain.png")',
-                      opacity: 0.25
-                    }}></div>
-                  </div>
-                ) : (
-                  // Image with filter overlay - matching video style exactly
-                  <div className="relative w-full aspect-video max-h-[440px]">
-                    <img
-                      src={imageSrc}
-                      alt={imageAlt || title}
-                      className="w-full h-full object-cover"
-                    />
-                    {/* Using identical filter overlay as videos for consistency */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#1E3A8A]/85 to-[#3B82F6]/75 mix-blend-multiply"></div>
-                    {/* Additional texture overlay for gallery aesthetic */}
-                    <div className="absolute inset-0 mix-blend-overlay" style={{ 
-                      backgroundImage: 'url("/images/textures/subtle-grain.png")',
-                      opacity: 0.25
-                    }}></div>
-                  </div>
-                )}
+              <div className="relative">
+                {/* Mondrian-inspired frame */}
+                <div className="relative border-8 border-black p-4 bg-white">
+                  {isVideo ? (
+                    // Video with constraints
+                    <div className="relative w-full aspect-video">
+                      <video
+                        ref={videoRef}
+                        className="w-full h-full object-cover"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      >
+                        <source src={imageSrc} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                      {/* Dark blue filter overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#1E3A8A]/85 to-[#3B82F6]/75 mix-blend-multiply"></div>
+                      {/* Additional texture overlay for gallery aesthetic */}
+                      <div className="absolute inset-0 mix-blend-overlay" style={{ 
+                        backgroundImage: 'url("/images/textures/subtle-grain.png")',
+                        opacity: 0.25
+                      }}></div>
+                    </div>
+                  ) : (
+                    // Image 
+                    <div className="relative w-full aspect-video">
+                      <img
+                        src={imageSrc}
+                        alt={imageAlt || title}
+                        className="w-full h-full object-cover"
+                      />
+                      {/* Dark blue filter overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#1E3A8A]/85 to-[#3B82F6]/75 mix-blend-multiply"></div>
+                      {/* Additional texture overlay for gallery aesthetic */}
+                      <div className="absolute inset-0 mix-blend-overlay" style={{ 
+                        backgroundImage: 'url("/images/textures/subtle-grain.png")',
+                        opacity: 0.25
+                      }}></div>
+                    </div>
+                  )}
+                  {/* Decorative color blocks */}
+                  <div className="absolute top-0 left-0 w-24 h-8 bg-[#FFD500] -translate-x-4 -translate-y-4 -z-10"></div>
+                  <div className="absolute bottom-0 right-0 w-16 h-16 bg-[#003B98] translate-x-4 translate-y-4 -z-10"></div>
+                </div>
+                
                 {/* Gallery-style minimal caption */}
                 <p className="mt-3 text-sm text-gray-500 font-sans italic">{imageAlt}</p>
               </div>

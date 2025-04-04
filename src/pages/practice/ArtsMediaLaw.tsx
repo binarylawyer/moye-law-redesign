@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Image, Film, Music, PenTool, Award, Monitor, Radio, Copyright, Globe, Check, ExternalLink } from 'lucide-react';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import MondrianClassicComposition from '@/components/MondrianClassicComposition';
 
 const ArtsMediaLaw: React.FC = () => {
@@ -674,8 +673,6 @@ const ArtsMediaLaw: React.FC = () => {
           </Link>
         </div>
       </section>
-      
-      <Footer />
     </div>
   );
 };

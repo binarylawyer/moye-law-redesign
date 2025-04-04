@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Building, Home, FileText, PenTool, BarChart } from 'lucide-react';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import MondrianClassicComposition from '@/components/MondrianClassicComposition';
 
 const RealEstateHub: React.FC = () => {
@@ -293,8 +292,6 @@ const RealEstateHub: React.FC = () => {
           </Link>
         </div>
       </section>
-      
-      <Footer />
     </div>
   );
 };

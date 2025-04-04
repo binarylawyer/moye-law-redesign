@@ -1,6 +1,6 @@
 import React from 'react';
 // Lucide icons might need updating/replacing if not used by ServiceTemplate features
-// import { FileText, Lightbulb, Scale, Globe } from 'lucide-react'; 
+import { FileText, Lightbulb, Scale, Globe, Brain, Target, TrendingUp, Compass } from 'lucide-react'; 
 import ServiceTemplate from '@/components/services/ServiceTemplate';
 import { ServiceData, ServiceFeature, Process, RelatedService, FeaturedContent, ServiceConsideration } from '@/types/services'; // Import necessary types
 
@@ -52,7 +52,7 @@ const ipConsultingStrategyData: Partial<ServiceData> = {
     {
       title: "Digital Asset & Emerging Technology",
       path: "/services/digital-asset-tech-protection",
-      description: "Developing protection mechanisms for innovations at the forefront of digital transformation and technological evolution."
+      description: "Implementing protection mechanisms for digital assets based on strategic intellectual property guidance."
     },
     {
       title: "Art & Entertainment Law",
@@ -116,7 +116,48 @@ const ipConsultingStrategyData: Partial<ServiceData> = {
   ctaTitle: "Elevate Your Intellectual Property Strategy",
   ctaDescription: "Engage with advisors who understand that effective IP strategy balances technical protection, market positioning, and legacy preservation. Our approach harmonizes innovation protection with your broader vision.",
   ctaButtonText: "Arrange a Confidential Consultation",
-  phoneNumber: "(555) 555-IPST"
+  phoneNumber: "(555) 555-IPST",
+  
+  technicalInnovation: {
+    title: "Technical Innovation in IP Strategy",
+    description: "Our approach to intellectual property consulting employs advanced analytical models and proprietary methodologies to maximize the strategic value of your innovations.",
+    leftContent: [
+      {
+        title: "Predictive IP Landscape Analysis",
+        description: "We utilize advanced data analytics and machine learning algorithms to forecast intellectual property trends, anticipate competitor movements, and identify emerging technology whitespace."
+      },
+      {
+        title: "Strategic IP Modeling",
+        description: "Our proprietary modeling frameworks provide quantitative assessments of portfolio strength, competitive positioning, and market coverage, enabling precision-guided IP investment decisions."
+      },
+      {
+        title: "Innovation Trajectory Mapping",
+        description: "We employ sophisticated visualization tools to map innovation pathways, identify critical protection points, and develop comprehensive IP strategies that safeguard future developments."
+      }
+    ],
+    rightContent: [
+      {
+        icon: <Brain className="h-8 w-8" />,
+        label: "AI-Enhanced Analysis",
+        color: "bg-indigo-600"
+      },
+      {
+        icon: <Target className="h-8 w-8" />,
+        label: "Strategic Mapping",
+        color: "bg-teal-600"
+      },
+      {
+        icon: <TrendingUp className="h-8 w-8" />,
+        label: "Predictive Analytics",
+        color: "bg-amber-500"
+      },
+      {
+        icon: <Compass className="h-8 w-8" />,
+        label: "Portfolio Optimization",
+        color: "bg-rose-600"
+      }
+    ]
+  }
 };
 
 const IPConsultingStrategy: React.FC = () => {
@@ -134,6 +175,7 @@ const IPConsultingStrategy: React.FC = () => {
       ctaDescription={ipConsultingStrategyData.ctaDescription!}
       ctaButtonText={ipConsultingStrategyData.ctaButtonText!}
       phoneNumber={ipConsultingStrategyData.phoneNumber}
+      technicalInnovation={ipConsultingStrategyData.technicalInnovation}
     />
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import ServiceTemplate from '@/components/services/ServiceTemplate';
 import { ServiceData, ServiceFeature, Process, RelatedService, FeaturedContent, ServiceConsideration } from '@/types/services'; // Import necessary types
+import { Clock, FileText, ShieldCheck, Users, Exclamation, UserGroup, LinkIcon, Calendar, Clipboard } from 'lucide-react';
 
 // Define the data structure matching ServiceData using content from the planning document
 const elderLawData: Partial<ServiceData> = {
@@ -100,18 +101,18 @@ const elderLawData: Partial<ServiceData> = {
   relatedServices: [
     {
       title: "Estate Planning",
-      path: "/services/estate-planning", 
-      description: "Ensuring wills, trusts, and overall estate plans align with elder care needs."
+      path: "/services/estate-planning",
+      description: "Comprehensive estate planning services that integrate senior care considerations and wealth preservation."
     },
     {
-      title: "Probate Administration",
-      path: "/services/probate-administration", 
-      description: "Handling estate matters after a loved one passes, often linked to elder law planning."
+      title: "Probate & Estate Administration",
+      path: "/services/probate-administration",
+      description: "Assistance with navigating probate processes and estate administration for aging clients."
     },
     {
-      title: "Digital Asset & Tech Protection",
-      path: "/services/digital-asset-tech-protection", 
-      description: "Protecting digital accounts and assets for seniors, including social media and cryptocurrency holdings."
+      title: "Digital Asset & Emerging Technology",
+      path: "/services/digital-asset-tech-protection",
+      description: "Digital legacy planning and protection of online accounts, passwords, and digital assets for seniors."
     }
   ],
   
@@ -119,7 +120,48 @@ const elderLawData: Partial<ServiceData> = {
   ctaTitle: "Navigate Elder Care with Confidence",
   ctaDescription: "Making decisions for an aging loved one is challenging. Let our family help yours. Contact us for compassionate guidance and expert legal solutions.",
   ctaButtonText: "Request an Elder Law Consultation", 
-  phoneNumber: "(555) 555-ELDR" // Placeholder
+  phoneNumber: "(555) 555-ELDR", // Placeholder
+  
+  technicalInnovation: {
+    title: "Technical Innovation with a Human Touch",
+    description: "Our approach to elder law combines empathetic care with innovative technology solutions, making the process more manageable for busy professionals caring for aging parents.",
+    leftContent: [
+      {
+        title: "Caregiver Coordination Platform",
+        description: "We provide access to our secure digital platform that helps busy family members coordinate care schedules, share medical updates, and store important documents in one accessible location."
+      },
+      {
+        title: "Remote Consultation Framework",
+        description: "Our virtual meeting system allows family members across different locations to participate in important care discussions with legal counsel, ensuring everyone stays informed and involved."
+      },
+      {
+        title: "Document Monitoring System",
+        description: "We implement automated tracking of important deadlines, renewal dates, and changing regulations that might affect your loved one's care plan, providing peace of mind through proactive alerts."
+      }
+    ],
+    rightContent: [
+      {
+        icon: <Clock className="h-8 w-8" />,
+        label: "Time-Saving Solutions",
+        color: "bg-teal-600"
+      },
+      {
+        icon: <LinkIcon className="h-8 w-8" />,
+        label: "Family Connection Tools",
+        color: "bg-blue-500"
+      },
+      {
+        icon: <Calendar className="h-8 w-8" />,
+        label: "Care Scheduling",
+        color: "bg-purple-600"
+      },
+      {
+        icon: <Clipboard className="h-8 w-8" />,
+        label: "Document Management",
+        color: "bg-amber-500"
+      }
+    ]
+  }
 };
 
 
@@ -138,6 +180,7 @@ const ElderLaw: React.FC = () => {
       ctaDescription={elderLawData.ctaDescription!}
       ctaButtonText={elderLawData.ctaButtonText!}
       phoneNumber={elderLawData.phoneNumber}
+      technicalInnovation={elderLawData.technicalInnovation}
     />
   );
 };

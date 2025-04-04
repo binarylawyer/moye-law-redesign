@@ -34,7 +34,7 @@ const Services = () => {
     },
     {
       id: "digital-asset-tech-protection",
-      title: "Digital Asset & Tech Protection",
+      title: "Digital Asset & Emerging Technology",
       description: "Forward-looking legal frameworks that safeguard digital assets, cryptocurrencies, and technology innovations.",
       path: "/services/digital-asset-tech-protection",
       color: "bg-white",
@@ -203,7 +203,7 @@ const Services = () => {
                   <div className="bg-[#D6001C] h-32"></div>
                 </div>
                 <div className="p-6">
-                  <h2 className="font-display text-2xl mb-3">Digital Asset & Tech Protection</h2>
+                  <h2 className="font-display text-2xl mb-3">Digital Asset & Emerging Technology</h2>
                   <p className="text-black/80 mb-5">
                     Forward-looking legal frameworks that safeguard digital assets, cryptocurrencies, and technology innovations.
                   </p>

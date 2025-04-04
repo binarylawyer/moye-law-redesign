@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Zap, Database, Cpu, Award, BarChart } from 'lucide-react';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import MondrianClassicComposition from '@/components/MondrianClassicComposition';
 
 const EmergingTechnologyHub: React.FC = () => {
@@ -81,7 +80,7 @@ const EmergingTechnologyHub: React.FC = () => {
   const relatedServices = [
     {
       id: "digital-asset-tech-protection",
-      title: "Digital Asset & Tech Protection",
+      title: "Digital Asset & Emerging Technology",
       description: "Structured services for protecting technological innovation through strategic utilization of intellectual property mechanisms.",
       path: "/services/digital-asset-tech-protection",
       color: "border-[#00A650]",
@@ -312,7 +311,6 @@ const EmergingTechnologyHub: React.FC = () => {
         </div>
       </section>
       
-      <Footer />
     </div>
   );
 };

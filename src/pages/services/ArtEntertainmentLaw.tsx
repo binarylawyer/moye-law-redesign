@@ -1,6 +1,7 @@
 import React from 'react';
 import ServiceTemplate from '@/components/services/ServiceTemplate';
 import { ServiceData, ServiceFeature, Process, RelatedService, FeaturedContent, ServiceConsideration } from '@/types/services';
+import { Palette, Music, Film, BookOpen, Sparkles, UserGroup, ColorSwatch } from 'lucide-react';
 
 // Enhanced data structure with persona-focused content
 const artEntertainmentLawData: Partial<ServiceData> = {
@@ -111,26 +112,67 @@ const artEntertainmentLawData: Partial<ServiceData> = {
 
   relatedServices: [
     {
+      title: "Licensing & Transactions",
+      path: "/services/licensing-transactions",
+      description: "Expertise in structuring, negotiating, and documenting complex licensing arrangements for creative and artistic works."
+    },
+    {
       title: "IP Consulting & Strategy",
       path: "/services/ip-consulting-strategy",
-      description: "Forward-looking intellectual property strategies that protect creative assets while enabling strategic growth and adaptation."
+      description: "Strategic guidance on protecting and monetizing intellectual property in the arts, media, and entertainment sectors."
     },
     {
       title: "Digital Asset & Emerging Technology",
       path: "/services/digital-asset-tech-protection",
-      description: "Sophisticated protection frameworks for creative works in digital formats and integration with emerging technologies."
-    },
-    {
-      title: "Licensing & Strategic Transactions",
-      path: "/services/licensing-transactions",
-      description: "Crafting licensing agreements and transaction structures that maintain creative control while maximizing distribution potential."
+      description: "Specialized protection for digital creative works, NFTs, and art technology innovations."
     }
   ],
   
   ctaTitle: "Secure Your Creative Legacy",
   ctaDescription: "Engage with legal counsel that understands the profound value of creative expression. Our approach balances traditional protection with innovative strategies for a rapidly evolving creative landscape.",
   ctaButtonText: "Arrange a Confidential Consultation",
-  phoneNumber: "(555) 555-ARTS"
+  phoneNumber: "(555) 555-ARTS",
+  
+  technicalInnovation: {
+    title: "Technical Innovation in Creative Industries",
+    description: "Our approach to art and entertainment law incorporates cutting-edge technologies and innovative frameworks to protect creative works in an evolving digital landscape.",
+    leftContent: [
+      {
+        title: "Digital Authentication Systems",
+        description: "We implement blockchain-based provenance and authentication solutions that create immutable records for creative works, ensuring verifiable ownership across physical and digital realms."
+      },
+      {
+        title: "AI-Assisted Creative Rights Management",
+        description: "Our innovative frameworks address the complex copyright considerations of AI-assisted creation, establishing clear ownership and royalty structures for collaborative human-AI works."
+      },
+      {
+        title: "Metaverse Rights Architecture",
+        description: "We design comprehensive legal frameworks for creative expression in virtual worlds, addressing the unique challenges of digital property, performance rights, and avatar licensing."
+      }
+    ],
+    rightContent: [
+      {
+        icon: <Palette className="h-8 w-8" />,
+        label: "Digital Art Protection",
+        color: "bg-pink-600"
+      },
+      {
+        icon: <Music className="h-8 w-8" />,
+        label: "Smart Royalty Systems",
+        color: "bg-blue-500"
+      },
+      {
+        icon: <Film className="h-8 w-8" />,
+        label: "Content Distribution",
+        color: "bg-amber-600"
+      },
+      {
+        icon: <BookOpen className="h-8 w-8" />,
+        label: "IP Registration Tools",
+        color: "bg-emerald-600"
+      }
+    ]
+  }
 };
 
 // Rename component
@@ -149,6 +191,7 @@ const ArtEntertainmentLaw: React.FC = () => {
       ctaDescription={artEntertainmentLawData.ctaDescription!}
       ctaButtonText={artEntertainmentLawData.ctaButtonText!}
       phoneNumber={artEntertainmentLawData.phoneNumber}
+      technicalInnovation={artEntertainmentLawData.technicalInnovation}
     />
   );
 };

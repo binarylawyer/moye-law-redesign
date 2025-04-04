@@ -1,6 +1,7 @@
 import React from 'react';
 import ServiceTemplate from '@/components/services/ServiceTemplate';
 import { ServiceData, ServiceFeature, Process, RelatedService, FeaturedContent, ServiceConsideration } from '@/types/services';
+import { Cpu, Database, Lock, Zap, Code, ShieldCheck } from 'lucide-react';
 
 const digitalAssetTechData: Partial<ServiceData> = {
   title: "Digital Asset & Emerging Technology",
@@ -15,8 +16,8 @@ const digitalAssetTechData: Partial<ServiceData> = {
           "Whether you're implementing AI systems that require ethical governance, preserving digital wealth for future generations, or navigating regulatory complexities of emerging technologies, we provide counsel that respects both technical sophistication and human context."
       ],
       callToAction: "Secure your digital future", 
-      imageSrc: "/images/services/digital-asset-protection.jpg",
-      imageAlt: "Sophisticated visualization of digital security architecture in a modern technological environment"
+      imageSrc: "/videos/dancing-robots.mp4",
+      imageAlt: "Advanced robotics demonstrating the intersection of AI and choreographed movement in emerging technology"
   },
 
   features: [
@@ -128,7 +129,48 @@ const digitalAssetTechData: Partial<ServiceData> = {
   ctaTitle: "Secure Your Technological Future",
   ctaDescription: "Engage with counsel that understands both the technical complexity and strategic implications of digital innovation. Our approach balances robust protection with the flexibility required for technological evolution.",
   ctaButtonText: "Arrange a Confidential Consultation",
-  phoneNumber: "(555) 555-TECH"
+  phoneNumber: "(555) 555-TECH",
+  
+  technicalInnovation: {
+    title: "Technical Innovation at the Frontier",
+    description: "Our approach to digital assets and emerging technologies combines deep technical understanding with pioneering legal frameworks, ensuring protection without limiting innovation potential.",
+    leftContent: [
+      {
+        title: "Algorithmic Protection Architecture",
+        description: "We develop sophisticated legal frameworks that protect proprietary algorithms and AI systems while enabling their strategic deployment and evolution in competitive environments."
+      },
+      {
+        title: "Digital Asset Security Engineering",
+        description: "Our methodologies secure digital assets through layered protection systems that address both technical vulnerabilities and legal exposure points across multiple jurisdictions."
+      },
+      {
+        title: "Emerging Technology Governance",
+        description: "We architect adaptive governance frameworks for blockchain, AI, and other emerging technologies that maintain compliance while positioning for competitive advantage."
+      }
+    ],
+    rightContent: [
+      {
+        icon: <Cpu className="h-8 w-8" />,
+        label: "AI & Machine Learning",
+        color: "bg-blue-600"
+      },
+      {
+        icon: <Database className="h-8 w-8" />,
+        label: "Blockchain & Distributed Ledger",
+        color: "bg-purple-600"
+      },
+      {
+        icon: <Lock className="h-8 w-8" />,
+        label: "Cryptography & Security",
+        color: "bg-red-600"
+      },
+      {
+        icon: <Zap className="h-8 w-8" />,
+        label: "Quantum Computing",
+        color: "bg-yellow-500"
+      }
+    ]
+  }
 };
 
 const DigitalAssetTechProtection: React.FC = () => {
@@ -146,6 +188,7 @@ const DigitalAssetTechProtection: React.FC = () => {
       ctaDescription={digitalAssetTechData.ctaDescription!}
       ctaButtonText={digitalAssetTechData.ctaButtonText!}
       phoneNumber={digitalAssetTechData.phoneNumber}
+      technicalInnovation={digitalAssetTechData.technicalInnovation}
     >
     </ServiceTemplate>
   );

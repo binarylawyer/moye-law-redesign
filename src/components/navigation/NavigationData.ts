@@ -18,7 +18,7 @@ export const specializedServices = [
   { title: "Estate Planning", path: "/services/estate-planning" },
   { title: "Probate & Estate Administration", path: "/services/probate-administration" },
   { title: "IP Consulting & Strategy", path: "/services/ip-consulting-strategy" },
-  { title: "Digital Asset & Tech Protection", path: "/services/digital-asset-tech-protection" },
+  { title: "Digital Asset & Emerging Technology", path: "/services/digital-asset-tech-protection" },
   { title: "Licensing & Transactions", path: "/services/licensing-transactions" },
   { title: "Art & Entertainment Law", path: "/services/art-entertainment-law" },
 ];

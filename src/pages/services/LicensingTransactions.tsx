@@ -1,6 +1,7 @@
 import React from 'react';
 import ServiceTemplate from '@/components/services/ServiceTemplate';
 import { ServiceData, ServiceFeature, Process, RelatedService, FeaturedContent, ServiceConsideration } from '@/types/services';
+import { Briefcase, FileContract, BarChart, Network2, Code, Tag, DocumentText, OfficeBuilding } from 'lucide-react';
 
 // Rename data structure and adjust title/content
 const licensingTransactionsData: Partial<ServiceData> = {
@@ -15,8 +16,8 @@ const licensingTransactionsData: Partial<ServiceData> = {
         "We combine deep legal expertise in IP and contract law with business acumen to ensure deals align with broader commercial objectives."
       ],
       callToAction: "Structure your next deal", 
-      imageSrc: "/images/services/licensing-transactions.jpg",
-      imageAlt: "Professional contract signing and licensing negotiation"
+      imageSrc: "/videos/monetizing-assets.mp4",
+      imageAlt: "Strategic business transaction and asset monetization process visualized"
   },
 
   // Update features for Licensing & Transactions focus
@@ -99,7 +100,7 @@ const licensingTransactionsData: Partial<ServiceData> = {
       description: "Aligning licensing and transaction activities with overall intellectual property strategy."
     },
     {
-      title: "Digital Asset & Tech Protection",
+      title: "Digital Asset & Emerging Technology",
       path: "/services/digital-asset-tech-protection",
       description: "Ensuring underlying digital assets and technology are properly protected before transacting."
     },
@@ -113,7 +114,48 @@ const licensingTransactionsData: Partial<ServiceData> = {
   ctaTitle: "Close Your Next Strategic Deal",
   ctaDescription: "Leverage strategic licensing and transactions to generate revenue, acquire technology, or expand market reach.",
   ctaButtonText: "Discuss Your Deal Needs",
-  phoneNumber: "(555) 555-DEAL"
+  phoneNumber: "(555) 555-DEAL",
+  
+  technicalInnovation: {
+    title: "Technical Innovation in Deal Structures",
+    description: "Our approach to licensing and transactions employs advanced deal engineering techniques and leverages data analytics to create optimal agreements for our clients.",
+    leftContent: [
+      {
+        title: "Deal Analytics Engine",
+        description: "We employ proprietary data analytics to benchmark key terms, identify leverage points, and optimize deal structures based on market conditions and precedent transactions."
+      },
+      {
+        title: "Advanced Contract Architecture",
+        description: "Our transaction team builds sophisticated agreement structures that protect intellectual property while enabling strategic deployment across diverse business models and territories."
+      },
+      {
+        title: "Value Capture Frameworks",
+        description: "We design innovative royalty structures, milestone payments, and value sharing mechanisms that align incentives and maximize returns from licensed intellectual property."
+      }
+    ],
+    rightContent: [
+      {
+        icon: <FileContract className="h-8 w-8" />,
+        label: "Smart Contract Integration",
+        color: "bg-green-600"
+      },
+      {
+        icon: <BarChart className="h-8 w-8" />,
+        label: "Deal Analytics",
+        color: "bg-blue-500"
+      },
+      {
+        icon: <Network2 className="h-8 w-8" />,
+        label: "Cross-Border Frameworks",
+        color: "bg-purple-600"
+      },
+      {
+        icon: <Briefcase className="h-8 w-8" />,
+        label: "Value-Based Structuring",
+        color: "bg-red-500"
+      }
+    ]
+  }
 };
 
 // Rename component
@@ -132,6 +174,7 @@ const LicensingTransactions: React.FC = () => {
       ctaDescription={licensingTransactionsData.ctaDescription!}
       ctaButtonText={licensingTransactionsData.ctaButtonText!}
       phoneNumber={licensingTransactionsData.phoneNumber}
+      technicalInnovation={licensingTransactionsData.technicalInnovation}
     />
   );
 };

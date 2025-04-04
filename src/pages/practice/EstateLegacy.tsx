@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Landmark, History, FileText, Briefcase, Database, Laptop, Home, Users, TrendingUp, Check, ChevronDown, ChevronUp, Award, BarChart } from 'lucide-react';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import MondrianClassicComposition from '@/components/MondrianClassicComposition';
 
 const EstateLegacy: React.FC = () => {
@@ -697,8 +696,6 @@ const EstateLegacy: React.FC = () => {
           </Link>
         </div>
       </section>
-      
-      <Footer />
     </div>
   );
 };
