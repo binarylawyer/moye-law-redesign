@@ -1,7 +1,15 @@
 import React, { useRef, useEffect } from 'react';
 import ConsultationCTA from "../components/ConsultationCTA";
 import ResourcePageHeader from "../components/resources/ResourcePageHeader";
-import { Shield, Brain, Lock, Database, Code, Zap, ServerCrash, MicrochipIcon, ShieldCheck } from 'lucide-react';
+import { Shield, Brain, Lock, Database, Code, Zap, ServerCrash, MicrochipIcon, ShieldCheck, Quote } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const TechnologyPlatform: React.FC = () => {
   const elementsRef = useRef<Array<HTMLElement | null>>([]);
@@ -245,6 +253,110 @@ const TechnologyPlatform: React.FC = () => {
                 <div className="bg-white p-3 rounded text-center text-navy font-medium text-sm border border-navy/10">SOC 2 Type II</div>
                 <div className="bg-white p-3 rounded text-center text-navy font-medium text-sm border border-navy/10">ISO 27001</div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Innovator Testimonials - NEW SECTION */}
+      <section className="py-16 bg-navy/5">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div 
+              ref={el => elementsRef.current[15] = el}
+              className="reveal text-center mb-12"
+              style={{ transitionDelay: '1.1s' }}
+            >
+              <div className="bg-gold/20 p-4 rounded-full inline-flex mb-6">
+                <Quote className="h-8 w-8 text-gold" />
+              </div>
+              <h2 className="font-display text-3xl text-navy mb-6">Tech Innovator Experiences</h2>
+              <p className="text-charcoal/80 max-w-3xl mx-auto">
+                Hear from founders, digital asset holders, and tech executives who have benefited from our tech-forward legal approach.
+              </p>
+            </div>
+            
+            <div
+              ref={el => elementsRef.current[16] = el}
+              className="reveal px-4"
+              style={{ transitionDelay: '1.2s' }}
+            >
+              <Carousel opts={{ loop: true }}>
+                <CarouselContent>
+                  {/* Testimonial 1 - Tech Startup Founder */}
+                  <CarouselItem className="md:basis-1/1 p-4">
+                    <div className="bg-white p-8 rounded-lg shadow-sm border border-navy/10">
+                      <div className="flex flex-col items-center text-center mb-6">
+                        <Avatar className="h-16 w-16 border-2 border-gold/20 mb-4">
+                          <AvatarFallback className="bg-navy/10 text-navy font-medium">AC</AvatarFallback>
+                        </Avatar>
+                        <h3 className="text-navy font-medium">Alex C.</h3>
+                        <p className="text-navy/60 text-sm">Founder & CEO, Fintech Startup</p>
+                      </div>
+                      
+                      <blockquote className="text-navy/80 italic mb-6">
+                        "Moye Law brought the perfect blend of technical understanding and legal expertise to our complex digital asset protection needs. They not only understood our technical stack but could translate it into robust legal frameworks. I've never worked with attorneys who could speak both languages so fluently."
+                      </blockquote>
+                      
+                      <div className="flex justify-center gap-2">
+                        <span className="inline-block px-3 py-1 rounded-full bg-navy/5 text-navy/70 text-xs font-medium">Digital Assets</span>
+                        <span className="inline-block px-3 py-1 rounded-full bg-navy/5 text-navy/70 text-xs font-medium">IP Protection</span>
+                        <span className="inline-block px-3 py-1 rounded-full bg-navy/5 text-navy/70 text-xs font-medium">Estate Planning</span>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                  
+                  {/* Testimonial 2 - CTO */}
+                  <CarouselItem className="md:basis-1/1 p-4">
+                    <div className="bg-white p-8 rounded-lg shadow-sm border border-navy/10">
+                      <div className="flex flex-col items-center text-center mb-6">
+                        <Avatar className="h-16 w-16 border-2 border-gold/20 mb-4">
+                          <AvatarFallback className="bg-navy/10 text-navy font-medium">SK</AvatarFallback>
+                        </Avatar>
+                        <h3 className="text-navy font-medium">Sarah K.</h3>
+                        <p className="text-navy/60 text-sm">CTO, Enterprise Software Company</p>
+                      </div>
+                      
+                      <blockquote className="text-navy/80 italic mb-6">
+                        "As someone who values security and efficiency, I was impressed by Moye Law's approach. Their DoD-level security protocols meant I could trust them with sensitive data, and their AI-enhanced document review found nuances in our IP agreements that would have been easy to miss. This team thinks like engineers while delivering exceptional legal counsel."
+                      </blockquote>
+                      
+                      <div className="flex justify-center gap-2">
+                        <span className="inline-block px-3 py-1 rounded-full bg-navy/5 text-navy/70 text-xs font-medium">Security</span>
+                        <span className="inline-block px-3 py-1 rounded-full bg-navy/5 text-navy/70 text-xs font-medium">IP Licensing</span>
+                        <span className="inline-block px-3 py-1 rounded-full bg-navy/5 text-navy/70 text-xs font-medium">Document Review</span>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                  
+                  {/* Testimonial 3 - Crypto Investor */}
+                  <CarouselItem className="md:basis-1/1 p-4">
+                    <div className="bg-white p-8 rounded-lg shadow-sm border border-navy/10">
+                      <div className="flex flex-col items-center text-center mb-6">
+                        <Avatar className="h-16 w-16 border-2 border-gold/20 mb-4">
+                          <AvatarFallback className="bg-navy/10 text-navy font-medium">MR</AvatarFallback>
+                        </Avatar>
+                        <h3 className="text-navy font-medium">Michael R.</h3>
+                        <p className="text-navy/60 text-sm">Cryptocurrency Investor & Advisor</p>
+                      </div>
+                      
+                      <blockquote className="text-navy/80 italic mb-6">
+                        "Finding attorneys who truly understand blockchain, NFTs, and crypto tax implications is nearly impossible. Moye Law stands apart with their cutting-edge knowledge and forward-thinking approach to digital asset protection. They created an estate plan that perfectly addressed my complex crypto portfolio and NFT collections."
+                      </blockquote>
+                      
+                      <div className="flex justify-center gap-2">
+                        <span className="inline-block px-3 py-1 rounded-full bg-navy/5 text-navy/70 text-xs font-medium">Cryptocurrency</span>
+                        <span className="inline-block px-3 py-1 rounded-full bg-navy/5 text-navy/70 text-xs font-medium">Blockchain</span>
+                        <span className="inline-block px-3 py-1 rounded-full bg-navy/5 text-navy/70 text-xs font-medium">NFTs</span>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                </CarouselContent>
+                <div className="flex items-center justify-center mt-6">
+                  <CarouselPrevious className="relative static translate-y-0 mr-4" />
+                  <CarouselNext className="relative static translate-y-0" />
+                </div>
+              </Carousel>
             </div>
           </div>
         </div>

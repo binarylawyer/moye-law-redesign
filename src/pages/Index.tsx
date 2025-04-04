@@ -4,6 +4,8 @@ import MondrianIntro from '@/components/MondrianIntro';
 import PracticeAreas from '@/components/PracticeAreas';
 import Approach from '@/components/Approach';
 import CallToAction from '@/components/shared/CallToAction';
+import PersonaPathways from '@/components/PersonaPathways';
+import TrustIndicators from '@/components/TrustIndicators';
 import '../styles/mondrian.css';
 import { useLocation } from 'react-router-dom';
 
@@ -39,6 +41,8 @@ const Index = () => {
     console.log("PracticeAreas is defined:", !!PracticeAreas);
     console.log("Approach is defined:", !!Approach);
     console.log("CallToAction is defined:", !!CallToAction);
+    console.log("PersonaPathways is defined:", !!PersonaPathways);
+    console.log("TrustIndicators is defined:", !!TrustIndicators);
     
     // Add DOM check after render
     setTimeout(() => {
@@ -60,6 +64,8 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <main className="overflow-hidden">
         <Hero />
+        <TrustIndicators />
+        <PersonaPathways />
         <MondrianIntro />
         <PracticeAreas />
         <Approach />

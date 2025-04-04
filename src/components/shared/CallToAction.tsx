@@ -3,7 +3,19 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
-const CallToAction = () => {
+interface CallToActionProps {
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  buttonLink?: string;
+}
+
+const CallToAction: React.FC<CallToActionProps> = ({
+  title = "Protect Your Future — Contact Us Today",
+  description = "Schedule a consultation to discuss your legal needs and discover how our firm's vision and forward-thinking approach can help you.",
+  buttonText = "Request Your Free Consultation",
+  buttonLink = "/contact"
+}) => {
   return (
     <section className="py-16 bg-white relative moye-cta-component">
       <div className="container mx-auto px-8 max-w-7xl relative">
@@ -12,10 +24,10 @@ const CallToAction = () => {
           <div className="col-span-1 mondrian-light-blue"></div>
           <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
             <h2 className="reveal font-display text-3xl md:text-4xl text-black mb-4">
-              Protect Your Future —<br />Contact Us Today
+              {title}
             </h2>
             <p className="reveal text-black/80 mb-6" style={{ transitionDelay: '0.1s' }}>
-              Schedule a consultation to discuss your legal needs<br />and discover how our firm's vision and forward-thinking approach can help you.
+              {description}
             </p>
             <div className="flex justify-center mt-8">
               <div className="inline-block border-4 border-black p-3">
@@ -23,9 +35,9 @@ const CallToAction = () => {
               </div>
             </div>
             <div className="flex justify-center mt-6">
-              <Link to="/contact">
+              <Link to={buttonLink}>
                 <Button className="mondrian-button light-yellow text-black">
-                  Request Your Free Consultation <ArrowRight className="ml-2 h-4 w-4" />
+                  {buttonText} <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
             </div>

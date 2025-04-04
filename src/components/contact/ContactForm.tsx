@@ -18,6 +18,14 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { sanitizeFormData } from '@/utils/formSanitization';
 import { logger } from '@/utils/logger';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 // Form schema definition
 const formSchema = z.object({
@@ -25,6 +33,12 @@ const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   phone: z.string().optional(),
   message: z.string().min(10, "Please provide more details about your inquiry"),
+  serviceInterest: z.string({
+    required_error: "Please select an area of interest",
+  }),
+  communicationPreference: z.string({
+    required_error: "Please select your preferred communication method",
+  }),
   confidentiality: z.boolean().refine(val => val === true, {
     message: "You must agree to our confidentiality terms"
   })
@@ -49,9 +63,25 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
       email: "",
       phone: "",
       message: "",
+      serviceInterest: "",
+      communicationPreference: "email",
       confidentiality: false
     }
   });
+  
+  // Service interest options grouped by persona focus
+  const serviceOptions = [
+    { value: "estate-planning", label: "Estate Planning", group: "All Clients" },
+    { value: "elder-law", label: "Elder Law & Medicaid Planning", group: "Caregiver Focus" },
+    { value: "probate", label: "Probate & Estate Administration", group: "All Clients" },
+    { value: "trust-formation", label: "Trust Formation & Administration", group: "Legacy Builders" },
+    { value: "digital-assets", label: "Digital Asset Protection", group: "Tech Innovators" },
+    { value: "intellectual-property", label: "Intellectual Property", group: "Tech Innovators" },
+    { value: "family-governance", label: "Family Governance & Wealth Preservation", group: "Legacy Builders" },
+    { value: "art-law", label: "Art & Cultural Property Law", group: "Legacy Builders" },
+    { value: "business-succession", label: "Business Succession Planning", group: "Tech Innovators/Legacy Builders" },
+    { value: "other", label: "Other Legal Matter", group: "All Clients" },
+  ];
   
   // Handle form submission
   const onSubmit = async (data: FormValues) => {
@@ -104,7 +134,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
           </div>
           <h3 className="text-xl font-medium text-gray-900 mb-2">Thank You</h3>
           <p className="text-gray-600 mb-6">
-            Your consultation request has been received. A member of our team will contact you within 1 business day.
+            Your consultation request has been received. A member of our team will contact you within 1 business day using your preferred communication method.
           </p>
           <Button 
             onClick={() => setIsSubmitted(false)} 
@@ -161,6 +191,41 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
               />
             </div>
             
+            {/* Service Interest Selection */}
+            <FormField
+              control={form.control}
+              name="serviceInterest"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-navy">Primary Area of Interest</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select the service you're interested in" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {/* Group options by persona focus */}
+                      {["All Clients", "Tech Innovators", "Caregiver Focus", "Legacy Builders", "Tech Innovators/Legacy Builders"].map(group => (
+                        <React.Fragment key={group}>
+                          <div className="px-2 py-1.5 text-sm font-medium text-muted-foreground">{group}</div>
+                          {serviceOptions
+                            .filter(option => option.group === group)
+                            .map(option => (
+                              <SelectItem key={option.value} value={option.value}>
+                                {option.label}
+                              </SelectItem>
+                            ))
+                          }
+                        </React.Fragment>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            
             <FormField
               control={form.control}
               name="message"
@@ -173,6 +238,38 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
                       className="min-h-[120px]" 
                       {...field} 
                     />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            
+            {/* Communication Preference */}
+            <FormField
+              control={form.control}
+              name="communicationPreference"
+              render={({ field }) => (
+                <FormItem className="space-y-3">
+                  <FormLabel className="text-navy">Preferred Communication Method</FormLabel>
+                  <FormControl>
+                    <RadioGroup
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                      className="flex flex-col space-y-1"
+                    >
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="email" id="email" />
+                        <FormLabel htmlFor="email" className="font-normal cursor-pointer">Email</FormLabel>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="phone" id="phone" />
+                        <FormLabel htmlFor="phone" className="font-normal cursor-pointer">Phone</FormLabel>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="video" id="video" />
+                        <FormLabel htmlFor="video" className="font-normal cursor-pointer">Video Conference</FormLabel>
+                      </div>
+                    </RadioGroup>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -209,7 +306,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
             </Button>
             
             <p className="text-xs text-charcoal/60">
-              You'll receive a response within 1 business day
+              You'll receive a response within 1 business day via your preferred communication method
             </p>
           </form>
         </Form>

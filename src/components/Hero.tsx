@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
-const Hero = () => {
+const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   
@@ -43,75 +44,61 @@ const Hero = () => {
   }, []);
   
   return (
-    <div className="relative border-b-4 border-black" ref={heroRef}>
-      {/* Video container - full height */}
-      <div className="h-screen overflow-hidden relative">
-        {/* Video with horizontal movement effect */}
-        <div className="absolute inset-0 w-[120%] h-full overflow-hidden">
-          <video 
-            ref={videoRef}
-            autoPlay 
-            muted 
-            loop 
-            playsInline
-            className="absolute top-0 left-0 w-full h-full object-cover transition-transform"
-          >
-            <source src="/videos/legal-craftsmanship.mp4" type="video/mp4" />
-          </video>
-          
-          {/* Pure Mondrian style overlay with strong black lines */}
-          <div className="absolute inset-0">
-            {/* Vertical lines */}
-            <div className="absolute top-0 left-1/4 h-full w-1 bg-black/70"></div>
-            <div className="absolute top-0 right-1/3 h-full w-1 bg-black/70"></div>
-            
-            {/* Horizontal lines */}
-            <div className="absolute top-1/3 left-0 right-0 h-1 bg-black/70"></div>
-            <div className="absolute bottom-1/4 left-0 right-0 h-1 bg-black/70"></div>
-            
-            {/* Color blocks - more prominent Mondrian style */}
-            <div className="absolute top-0 left-0 w-1/5 h-1/3 bg-[#D6001C]/30"></div>
-            <div className="absolute bottom-0 right-0 w-1/4 h-1/2 bg-[#003B98]/30"></div>
-            <div className="absolute top-1/3 right-1/4 w-1/6 h-1/4 bg-[#FFD500]/30"></div>
-          </div>
-          
-          {/* Black overlay for readability */}
-          <div className="absolute inset-0 bg-black/50"></div>
-        </div>
-      </div>
+    <section className="hero-section pt-32 pb-16 md:pb-24 bg-white relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-64 h-64 -translate-x-1/2 -translate-y-1/2 bg-gold opacity-5 rounded-full"></div>
+      <div className="absolute bottom-0 right-0 w-80 h-80 translate-x-1/3 translate-y-1/3 bg-navy opacity-5 rounded-full"></div>
       
-      {/* Bold Mondrian-inspired horizontal line directly under hero */}
-      <div className="h-4 w-full flex border-t-4 border-black">
-        <div className="w-1/5 bg-[#D6001C] border-r-4 border-black"></div>
-        <div className="w-2/5 bg-white border-r-4 border-black"></div>
-        <div className="w-1/5 bg-[#003B98] border-r-4 border-black"></div>
-        <div className="w-1/5 bg-[#FFD500]"></div>
-      </div>
+      {/* Mondrian-inspired horizontal lines */}
+      <div className="absolute top-1/4 left-0 w-full h-2 bg-gold opacity-10"></div>
+      <div className="absolute bottom-1/4 left-0 w-full h-2 bg-navy opacity-10"></div>
       
-      {/* Content positioned over the video */}
-      <div className="absolute inset-0 flex items-center">
-        <div className="container mx-auto px-8">
-          <div className="max-w-lg">
-            <h1 className="font-display text-4xl md:text-5xl text-white font-light mb-4 reveal">
-              Mondrian-Inspired <span className="text-[#FFD500]">Legal Excellence</span>
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-navy mb-6 leading-tight">
+              Family Values,<br />
+              <span className="text-gold">Future-Forward</span> Legal Solutions
             </h1>
-            
-            {/* 30 year anniversary highlight - bolder Mondrian style */}
-            <div className="relative mt-8 ml-2 reveal border-l-4 border-[#D6001C]" style={{ transitionDelay: '0.2s' }}>
-              <p className="text-white text-lg pl-3 py-1">
-                <span className="font-medium">Established 1994</span> — <span className="text-[#FFD500]">30 years</span> of legal excellence
-              </p>
+            <p className="text-xl md:text-2xl text-navy/70 max-w-3xl mx-auto mb-8">
+              Sophisticated legal strategies with personal attention, powered by innovative technology.
+            </p>
+            <div className="flex flex-col md:flex-row gap-4 justify-center">
+              <Link 
+                to="/contact" 
+                className="inline-flex items-center justify-center px-8 py-3 font-sans text-lg text-white bg-gold hover:bg-gold/90 rounded-md transition-colors"
+              >
+                Schedule a Consultation <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+              <Link 
+                to="/experience-the-difference" 
+                className="inline-flex items-center justify-center px-8 py-3 font-sans text-lg text-navy border-2 border-navy hover:bg-navy/5 rounded-md transition-colors"
+              >
+                Our Approach
+              </Link>
+            </div>
+          </div>
+          
+          {/* Key Benefits Section - Addresses all three personas */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+            <div className="bg-light-gray p-8 rounded-lg border border-navy/10 hover:border-navy/20 transition-all">
+              <h3 className="font-display text-xl text-navy mb-3">For Innovators</h3>
+              <p className="text-navy/70">Tech-forward legal strategies for protecting digital assets, IP, and startup equity.</p>
             </div>
             
-            {/* Add a subtle pointer to scroll */}
-            <div className="mt-12 reveal flex items-center" style={{ transitionDelay: '0.3s' }}>
-              <div className="h-1 w-8 bg-white/50"></div>
-              <span className="text-white/70 text-sm pl-2">Scroll to explore</span>
+            <div className="bg-light-gray p-8 rounded-lg border border-navy/10 hover:border-navy/20 transition-all">
+              <h3 className="font-display text-xl text-navy mb-3">For Caregivers</h3>
+              <p className="text-navy/70">Compassionate counsel for estate planning and elder care challenges for your family.</p>
+            </div>
+            
+            <div className="bg-light-gray p-8 rounded-lg border border-navy/10 hover:border-navy/20 transition-all">
+              <h3 className="font-display text-xl text-navy mb-3">For Legacy Builders</h3>
+              <p className="text-navy/70">Sophisticated strategies for multigenerational wealth preservation and family governance.</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

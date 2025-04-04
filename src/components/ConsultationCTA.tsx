@@ -1,98 +1,107 @@
-import React from 'react';
-import { Link } from "react-router-dom";
-import { ArrowRight, Lock, Phone } from 'lucide-react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Users, Laptop, Building } from 'lucide-react';
 
-const ConsultationCTA = () => {
+const ConsultationCTA: React.FC = () => {
+  const [selectedPersona, setSelectedPersona] = useState<string | null>(null);
+  
+  const personas = [
+    {
+      id: "tech",
+      icon: <Laptop className="h-5 w-5" />,
+      name: "Tech Innovator",
+      description: "Digital asset protection & IP strategies",
+      ctaText: "Protect Your Digital Assets"
+    },
+    {
+      id: "caregiver",
+      icon: <Users className="h-5 w-5" />,
+      name: "Executive Caregiver",
+      description: "Elder law & complex estate planning",
+      ctaText: "Support Your Family"
+    },
+    {
+      id: "legacy",
+      icon: <Building className="h-5 w-5" />,
+      name: "Legacy Builder",
+      description: "Multi-generational wealth preservation",
+      ctaText: "Secure Your Legacy"
+    }
+  ];
+  
   return (
-    <section className="py-24 bg-white relative">
-      <div className="container mx-auto px-8 max-w-7xl relative">
-        {/* Pure Mondrian composition */}
-        <div className="mondrian-grid mb-6">
-          {/* Top row with asymmetrical blocks */}
-          <div className="col-span-2 mondrian-red"></div>
-          <div className="col-span-1 mondrian-light-blue"></div>
-          
-          {/* Main content box with thick border */}
-          <div className="col-span-6 mondrian-grid-item bg-white p-10">
-            <div className="text-center">
-              <h2 className="reveal font-display text-4xl md:text-5xl text-black mb-8 tracking-tight">
-                Protect Your Future – Contact Us Today
-              </h2>
-              
-              <div className="w-40 h-2 bg-black mx-auto mb-8"></div>
-              
-              <p className="reveal text-xl mb-12 text-black/80 max-w-2xl mx-auto leading-relaxed" style={{ transitionDelay: '0.1s' }}>
-                Schedule a consultation to discuss your legal needs and discover how our family values and forward-thinking approach can benefit you.
-              </p>
-              
-              {/* 30 years highlight - pure Mondrian style */}
-              <div className="reveal mb-12" style={{ transitionDelay: '0.15s' }}>
-                <div className="inline-block border-4 border-black p-4 relative mx-auto flex items-center">
-                  <div className="w-16 h-full mondrian-light-yellow border-r-4 border-black"></div>
-                  <span className="text-xl font-medium pl-4">
-                    <span className="font-bold">30 YEARS</span> OF TRUSTED COUNSEL
-                  </span>
-                </div>
-              </div>
-              
-              <div className="reveal mb-8" style={{ transitionDelay: '0.2s' }}>
-                <Link to="/contact">
-                  <button className="mondrian-button light-yellow text-xl py-5 px-12">
-                    Request Your Free Consultation
-                    <ArrowRight className="inline-block ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                  </button>
-                </Link>
-              </div>
-              
-              <div className="border-t-4 border-black pt-6 mt-12 inline-block">
-                <p className="reveal text-sm text-black/80 flex items-center justify-center" style={{ transitionDelay: '0.3s' }}>
-                  <Lock className="h-4 w-4 mr-2" />
-                  All consultations are protected by attorney-client privilege
-                </p>
-              </div>
+    <section className="py-16 bg-light-gray">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-4xl text-navy mb-4">
+              Ready for Legal Guidance That Fits Your Needs?
+            </h2>
+            <p className="text-navy/70 text-lg max-w-2xl mx-auto mb-8">
+              Select your situation below for a consultation experience tailored to your specific challenges and goals.
+            </p>
+            
+            {/* Persona Selection */}
+            <div className="flex flex-col md:flex-row gap-4 justify-center mb-10">
+              {personas.map((persona) => (
+                <button
+                  key={persona.id}
+                  onClick={() => setSelectedPersona(persona.id)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${
+                    selectedPersona === persona.id 
+                      ? 'bg-gold text-white' 
+                      : 'bg-white text-navy hover:bg-navy/5'
+                  }`}
+                >
+                  {persona.icon}
+                  <span>{persona.name}</span>
+                </button>
+              ))}
             </div>
-          </div>
-          
-          {/* Right side asymmetrical blocks */}
-          <div className="col-span-2 mondrian-blue"></div>
-          <div className="col-span-1 mondrian-light-yellow"></div>
-          
-          {/* Bottom row with more asymmetrical blocks */}
-          <div className="col-span-3 bg-white"></div>
-          <div className="col-span-2 mondrian-light-blue"></div>
-          <div className="col-span-3 bg-white"></div>
-          <div className="col-span-1 mondrian-yellow"></div>
-          <div className="col-span-3 mondrian-light-yellow"></div>
-        </div>
-        
-        {/* Redesigned Pure Mondrian-style grid beneath - shorter height with more asymmetry */}
-        <div className="mondrian-grid h-16 relative">
-          {/* Left side - broken into asymmetrical colored blocks */}
-          <div className="col-span-1 flex flex-col h-full">
-            <div className="h-1/2 mondrian-red"></div>
-            <div className="h-1/2 mondrian-light-blue"></div>
-          </div>
-          <div className="col-span-1 flex flex-col h-full">
-            <div className="h-2/3 mondrian-light-yellow"></div>
-            <div className="h-1/3 bg-white"></div>
-          </div>
-          
-          {/* Middle section with CTA */}
-          <div className="col-span-8 flex items-center justify-center bg-white h-full border-l-4 border-r-4 border-black">
-            <Link to="/contact" className="flex items-center font-medium text-lg hover:underline">
-              <Phone className="h-4 w-4 mr-2" />
-              Contact us for a private consultation (212) 555-0123
-            </Link>
-          </div>
-          
-          {/* Right side - broken into asymmetrical colored blocks */}
-          <div className="col-span-1 flex flex-col h-full">
-            <div className="h-1/3 mondrian-blue"></div>
-            <div className="h-2/3 mondrian-light-yellow"></div>
-          </div>
-          <div className="col-span-1 flex flex-col h-full">
-            <div className="h-3/5 bg-white"></div>
-            <div className="h-2/5 mondrian-yellow"></div>
+            
+            {/* CTA Box that changes based on selection */}
+            <div className="bg-white p-8 rounded-lg shadow-sm border border-navy/10">
+              {selectedPersona ? (
+                <div className="max-w-lg mx-auto">
+                  <h3 className="font-display text-2xl text-navy mb-4">
+                    {personas.find(p => p.id === selectedPersona)?.ctaText}
+                  </h3>
+                  <p className="text-navy/70 mb-6">
+                    {selectedPersona === "tech" && 
+                      "Our technology-focused consultation includes a deep dive into your digital assets, IP portfolio, and future innovation plans."}
+                    {selectedPersona === "caregiver" && 
+                      "Our executive-friendly consultation respects your time constraints while addressing your family's immediate and long-term needs."}
+                    {selectedPersona === "legacy" && 
+                      "Our legacy planning consultation provides sophisticated strategies for preserving wealth and values across generations."}
+                  </p>
+                  <Link 
+                    to={`/contact?persona=${selectedPersona}`}
+                    className="inline-flex items-center justify-center px-6 py-3 bg-gold text-white rounded-md hover:bg-gold/90 transition-colors"
+                  >
+                    Schedule Your Consultation <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </div>
+              ) : (
+                <div className="max-w-lg mx-auto">
+                  <h3 className="font-display text-2xl text-navy mb-4">
+                    Schedule Your Consultation
+                  </h3>
+                  <p className="text-navy/70 mb-6">
+                    Select your situation above or schedule a general consultation to discuss your legal needs with our experienced team.
+                  </p>
+                  <Link 
+                    to="/contact"
+                    className="inline-flex items-center justify-center px-6 py-3 bg-gold text-white rounded-md hover:bg-gold/90 transition-colors"
+                  >
+                    Request Consultation <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </div>
+              )}
+            </div>
+            
+            <p className="text-navy/50 text-sm mt-6">
+              Initial consultations are confidential and scheduled at your convenience
+            </p>
           </div>
         </div>
       </div>
