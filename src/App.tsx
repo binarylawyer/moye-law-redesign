@@ -26,6 +26,7 @@ import Podcasts from "./pages/Podcasts";
 import ExperienceTheDifference from "./pages/ExperienceTheDifference";
 import FloatingConsultationButton from "./components/FloatingConsultationButton";
 import ErrorTestPage from "./pages/ErrorTest";
+import Services from "./pages/Services";
 
 // ** NEW/UPDATED Service Page Imports **
 import EstatePlanningService from "./pages/services/EstatePlanning";
@@ -93,6 +94,12 @@ const AppRoutes = () => {
           <Route path="/practice" element={
             <PageErrorBoundary pageName="Practice Areas">
               <Practice />
+            </PageErrorBoundary>
+          } />
+          
+          <Route path="/services" element={
+            <PageErrorBoundary pageName="Services">
+              <Services />
             </PageErrorBoundary>
           } />
           

@@ -59,55 +59,60 @@ const Practice: React.FC = () => {
       description: "Forward-thinking legal guidance for AI, blockchain, and other cutting-edge technologies.",
       benefit: "Navigate the legal complexities of tomorrow's technologies with expert counsel.",
       path: "/practice/emerging-technology-hub"
-    },
-    {
-      id: "elder-law",
-      title: "Elder Law",
-      description: "Compassionate legal support for seniors and their families addressing aging-related challenges.",
-      benefit: "Ensuring dignity, security, and peace of mind for older adults.",
-      path: "/practice/elder-law"
     }
   ];
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main className="pt-24 md:pt-32">
-        <section className="py-48 md:py-64">
-          <div className="container mx-auto px-24 md:px-32">
-            <h1 className="reveal font-sans text-primary text-4xl md:text-5xl lg:text-6xl mb-32 md:mb-48 text-center font-light">
-              Areas of Practice
-            </h1>
-            <p className="reveal text-center max-w-2xl mx-auto text-charcoal/80 mb-48 md:mb-64 leading-relaxed">
-              Moye Law provides specialized legal services at the intersection of tradition and innovation, 
-              with particular focus on wealth preservation, intellectual property, and emerging technologies.
-            </p>
-            
-            {/* Updated grid layout to make cards wider and less narrow */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-32 md:gap-48">
+      <main className="pt-32 md:pt-40">
+        {/* Hero Section with Title - Mondrian Style */}
+        <section className="py-12 md:py-16">
+          <div className="container mx-auto px-8">
+            <div className="grid grid-cols-12 gap-0 border-4 border-black">
+              <div className="col-span-3 bg-[#D6001C]"></div>
+              <div className="col-span-6 bg-white p-8 text-center">
+                <h1 className="font-display text-4xl md:text-5xl text-black mb-6">
+                  Practice Areas
+                </h1>
+                <p className="text-black/80 text-lg md:text-xl">
+                  Specialized legal expertise serving high-net-worth individuals and their families.
+                </p>
+              </div>
+              <div className="col-span-3 bg-[#003B98]"></div>
+            </div>
+          </div>
+        </section>
+        
+        <section className="py-16 md:py-24">
+          <div className="container mx-auto px-8">
+            {/* Practice Areas Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {practiceAreas.map((practice, index) => (
                 <div 
                   key={practice.id}
-                  className="reveal border border-primary-light/30 bg-white p-32 rounded-md hover:shadow-md transition-all duration-300 flex flex-col"
+                  className="reveal border-4 border-black bg-white overflow-hidden flex flex-col visible"
                   style={{ transitionDelay: `${0.1 * (index % 2)}s` }}
                 >
-                  <h3 className="font-sans text-primary mb-16 text-xl font-medium">{practice.title}</h3>
-                  <p className="text-charcoal/80 mb-16 leading-relaxed">{practice.description}</p>
-                  
-                  {practice.benefit && (
-                    <p className="text-primary-muted mb-16 italic leading-relaxed">
-                      {practice.benefit}
-                    </p>
-                  )}
-                  
-                  <div className="mt-auto pt-16">
-                    <Link 
-                      to={practice.path} 
-                      className="inline-flex items-center font-sans text-primary hover:text-gold transition-colors"
-                      aria-label={`Learn more about ${practice.title}`}
-                    >
-                      Learn more <ChevronRight className="ml-8 h-4 w-4" />
-                    </Link>
+                  <div className={`h-2 w-1/3 ${index % 3 === 0 ? 'bg-[#D6001C]' : index % 3 === 1 ? 'bg-[#003B98]' : 'bg-[#FFD500]'} mt-6 ml-6`}></div>
+                  <div className="p-6">
+                    <h3 className="font-display text-2xl text-black mb-4">{practice.title}</h3>
+                    <p className="text-black/80 mb-4">{practice.description}</p>
+                    
+                    {practice.benefit && (
+                      <p className="text-black/60 mb-8 italic">
+                        {practice.benefit}
+                      </p>
+                    )}
+                    
+                    <div className="mt-auto">
+                      <Link 
+                        to={practice.path} 
+                        className="inline-flex items-center text-black hover:text-[#D6001C] transition-colors"
+                      >
+                        Learn more <ChevronRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}

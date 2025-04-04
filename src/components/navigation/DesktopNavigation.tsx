@@ -181,6 +181,13 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
                 );
               })}
             </div>
+            
+            <div className="mt-4 pt-2 border-t-2 border-black/30">
+              <Link to="/services" className="text-[#4D80D4] hover:text-[#D6001C] flex items-center transition-colors font-display text-sm group">
+                <span className="bg-[#FFEB80] text-black w-5 h-5 inline-flex items-center justify-center mr-2 text-xs font-medium rounded-full shadow-sm group-hover:bg-[#D6001C] group-hover:text-white transition-colors">→</span>
+                View All Services
+              </Link>
+            </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
         

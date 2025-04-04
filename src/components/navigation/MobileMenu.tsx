@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from "react-router-dom";
 
@@ -41,9 +40,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           </Link>
         ))}
         
-        <div className="font-display text-2xl text-navy hover:text-gold transition-colors">
+        <Link 
+          to="/services" 
+          className="font-display text-2xl text-navy hover:text-gold transition-colors"
+          onClick={() => setMobileMenuOpen(false)}
+        >
           Services
-        </div>
+        </Link>
         
         {specializedServices.map((service) => (
           <Link
