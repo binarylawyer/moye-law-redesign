@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { FileText, BarChart3, Shield, ShieldCheck } from 'lucide-react';
+import { FileText, BarChart, Shield, ShieldCheck } from 'lucide-react';
 
 const LicensingAreas: React.FC = () => {
   const licensingAreas = [
@@ -10,7 +9,7 @@ const LicensingAreas: React.FC = () => {
       description: "Comprehensive licensing agreements for software products, platforms, and technology solutions."
     },
     {
-      icon: <BarChart3 className="h-10 w-10 text-gold" />,
+      icon: <BarChart className="h-10 w-10 text-gold" />,
       title: "Content & Media Licensing",
       description: "Strategic agreements for content distribution, publishing rights, and media usage."
     },

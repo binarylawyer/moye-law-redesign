@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, LightBulb, BarChart, FileText, Search, TrendingUp, Target, Shield, Check, Briefcase, DollarSign, Award } from 'lucide-react';
+import { ArrowRight, Lightbulb, BarChart, FileText, Search, TrendingUp, Target, Shield, Check, Briefcase, DollarSign, Award } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MondrianClassicComposition from '@/components/MondrianClassicComposition';
@@ -85,7 +85,7 @@ const IPConsulting: React.FC = () => {
       bgColor: "bg-[#FFEB80]/5"
     },
     {
-      icon: <LightBulb className="h-8 w-8 text-[#4D80D4]" />,
+      icon: <Lightbulb className="h-8 w-8 text-[#4D80D4]" />,
       title: "Innovation Management",
       description: "Strategic frameworks for capturing, evaluating, and protecting intellectual property throughout the innovation development cycle.",
       color: "border-[#4D80D4]",
@@ -147,7 +147,7 @@ const IPConsulting: React.FC = () => {
   const personaPathways = [
     {
       persona: "For Innovators",
-      icon: <LightBulb className="h-8 w-8 text-[#4D80D4]" />,
+      icon: <Lightbulb className="h-8 w-8 text-[#4D80D4]" />,
       heading: "Innovation Protection",
       description: "We guide innovative companies through the development of intellectual property strategies that maximize protection while supporting continued innovation and growth.",
       color: "border-[#4D80D4]",

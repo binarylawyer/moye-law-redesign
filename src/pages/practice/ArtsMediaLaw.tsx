@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Image, Film, Music, PenTool, Award, GlobeIcon, Monitor, Radio, Copyright, Globe, Check, ExternalLink } from 'lucide-react';
+import { ArrowRight, Image, Film, Music, PenTool, Award, Monitor, Radio, Copyright, Globe, Check, ExternalLink } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MondrianClassicComposition from '@/components/MondrianClassicComposition';
@@ -66,7 +66,8 @@ const ArtsMediaLaw: React.FC = () => {
       icon: <Image className="h-10 w-10 text-[#D6001C]" />,
       path: "/practice/art-law",
       color: "border-[#D6001C]",
-      bgcolor: "bg-[#D6001C]/5"
+      bgcolor: "bg-[#D6001C]/5",
+      textColor: "text-[#D6001C]"
     },
     {
       id: "entertainment-law",
@@ -75,7 +76,8 @@ const ArtsMediaLaw: React.FC = () => {
       icon: <Film className="h-10 w-10 text-[#4D80D4]" />,
       path: "/practice/entertainment-law",
       color: "border-[#4D80D4]",
-      bgcolor: "bg-[#4D80D4]/5"
+      bgcolor: "bg-[#4D80D4]/5",
+      textColor: "text-[#4D80D4]"
     },
     {
       id: "digital-media-law",
@@ -84,7 +86,8 @@ const ArtsMediaLaw: React.FC = () => {
       icon: <Monitor className="h-10 w-10 text-[#00A650]" />,
       path: "/practice/digital-media-law",
       color: "border-[#00A650]",
-      bgcolor: "bg-[#00A650]/5"
+      bgcolor: "bg-[#00A650]/5",
+      textColor: "text-[#00A650]"
     }
   ];
 
