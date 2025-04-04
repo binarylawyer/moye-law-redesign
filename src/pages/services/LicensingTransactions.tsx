@@ -1,7 +1,7 @@
 import React from 'react';
 import ServiceTemplate from '@/components/services/ServiceTemplate';
 import { ServiceData, ServiceFeature, Process, RelatedService, FeaturedContent, ServiceConsideration } from '@/types/services';
-import { Briefcase, FileContract, BarChart, Network2, Code, Tag, DocumentText, OfficeBuilding } from 'lucide-react';
+import { Briefcase, FileCheck, BarChart2, Network, Code, Tag, FileText, Building } from 'lucide-react';
 
 // Rename data structure and adjust title/content
 const licensingTransactionsData: Partial<ServiceData> = {
@@ -35,12 +35,12 @@ const licensingTransactionsData: Partial<ServiceData> = {
     {
       title: "Strategic Tech Transactions",
       description: "Legal support for joint ventures, R&D agreements, tech acquisitions, and complex commercial contracts.",
-      icon: "DocumentText"
+      icon: "FileText"
     },
     {
       title: "Franchise & Distribution Agreements",
       description: "Comprehensive legal support for structuring, negotiating, and managing franchise and distribution systems.",
-      icon: "OfficeBuilding"
+      icon: "Building"
     }
   ],
 
@@ -135,17 +135,17 @@ const licensingTransactionsData: Partial<ServiceData> = {
     ],
     rightContent: [
       {
-        icon: <FileContract className="h-8 w-8" />,
+        icon: <FileCheck className="h-8 w-8" />,
         label: "Smart Contract Integration",
         color: "bg-green-600"
       },
       {
-        icon: <BarChart className="h-8 w-8" />,
+        icon: <BarChart2 className="h-8 w-8" />,
         label: "Deal Analytics",
         color: "bg-blue-500"
       },
       {
-        icon: <Network2 className="h-8 w-8" />,
+        icon: <Network className="h-8 w-8" />,
         label: "Cross-Border Frameworks",
         color: "bg-purple-600"
       },

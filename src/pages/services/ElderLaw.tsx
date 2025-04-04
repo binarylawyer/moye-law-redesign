@@ -1,7 +1,7 @@
 import React from 'react';
 import ServiceTemplate from '@/components/services/ServiceTemplate';
 import { ServiceData, ServiceFeature, Process, RelatedService, FeaturedContent, ServiceConsideration } from '@/types/services'; // Import necessary types
-import { Clock, FileText, ShieldCheck, Users, Exclamation, UserGroup, LinkIcon, Calendar, Clipboard } from 'lucide-react';
+import { Clock, FileText, Shield, Users, AlertTriangle, UserPlus, Link, Calendar, Clipboard } from 'lucide-react';
 
 // Define the data structure matching ServiceData using content from the planning document
 const elderLawData: Partial<ServiceData> = {
@@ -25,12 +25,12 @@ const elderLawData: Partial<ServiceData> = {
     {
       title: "Medicaid & Long-Term Care Planning",
       description: "Strategies to qualify for Medicaid, protect assets from nursing home costs, and ensure quality care.",
-      icon: "ShieldCheck" // Example icon
+      icon: "Shield" // Example icon
     },
     {
       title: "Estate Planning for Seniors",
       description: "Wills, powers of attorney, and health care directives to make sure your loved one's wishes are honored.",
-      icon: "DocumentText" 
+      icon: "FileText" 
     },
     {
       title: "Guardianship & Capacity Planning",
@@ -40,12 +40,12 @@ const elderLawData: Partial<ServiceData> = {
     {
       title: "Elder Abuse Protection",
       description: "Legal remedies and counsel if you suspect financial exploitation or elder abuse.",
-       icon: "Exclamation"
+       icon: "AlertTriangle"
     },
      {
       title: "Coordinating Care Teams",
       description: "We work closely with your financial advisors, care managers, and family members to create a united plan.",
-       icon: "UserGroup"
+       icon: "UserPlus"
     }
   ],
   
@@ -146,7 +146,7 @@ const elderLawData: Partial<ServiceData> = {
         color: "bg-teal-600"
       },
       {
-        icon: <LinkIcon className="h-8 w-8" />,
+        icon: <Link className="h-8 w-8" />,
         label: "Family Connection Tools",
         color: "bg-blue-500"
       },

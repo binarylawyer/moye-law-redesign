@@ -7,7 +7,7 @@ interface ServiceFeaturedContentProps {
 }
 
 const ServiceFeaturedContent: React.FC<ServiceFeaturedContentProps> = ({ content }) => {
-  const { title, content: paragraphs, imageSrc, imageAlt } = content;
+  const { title, content: paragraphs, imageSrc, imageAlt, callToAction } = content;
   const videoRef = useRef<HTMLVideoElement>(null);
   
   // Check if the source is a video (ends with mp4, webm, etc.)
@@ -31,13 +31,17 @@ const ServiceFeaturedContent: React.FC<ServiceFeaturedContentProps> = ({ content
     };
   }, []);
 
+  // Split paragraphs for before and after media
+  const beforeMediaParagraphs = paragraphs.slice(0, 2);
+  const afterMediaParagraphs = paragraphs.slice(2);
+
   return (
     <div className="py-16 md:py-28">
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-        {/* Repositioned layout with media aligned with title */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12">
-          {/* Title and content section - now in left columns */}
-          <div className="md:col-span-6 lg:col-span-5">
+        {/* Updated layout for text wrapping around media */}
+        <div className="grid grid-cols-12 gap-6 md:gap-12">
+          {/* Title and initial paragraphs on the left */}
+          <div className="col-span-12 md:col-span-5">
             {/* Title with gallery spacing */}
             <motion.h2 
               className="text-3xl md:text-4xl font-display font-normal tracking-tight mb-8 md:mb-10 max-w-3xl"
@@ -49,9 +53,9 @@ const ServiceFeaturedContent: React.FC<ServiceFeaturedContentProps> = ({ content
               {title}
             </motion.h2>
             
-            {/* Paragraphs below title */}
+            {/* First two paragraphs beside the image */}
             <div className="text-wrapper">
-              {paragraphs.map((paragraph, idx) => (
+              {beforeMediaParagraphs.map((paragraph, idx) => (
                 <motion.p 
                   key={idx} 
                   className="text-base md:text-lg text-gray-700 font-sans leading-relaxed mb-6"
@@ -66,10 +70,10 @@ const ServiceFeaturedContent: React.FC<ServiceFeaturedContentProps> = ({ content
             </div>
           </div>
           
-          {/* Media section - now in right columns, aligned with top */}
+          {/* Media section - aligned right */}
           {imageSrc && (
             <motion.div 
-              className="md:col-span-6 lg:col-span-7 relative z-10"
+              className="col-span-12 md:col-span-7 relative z-10"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -127,6 +131,37 @@ const ServiceFeaturedContent: React.FC<ServiceFeaturedContentProps> = ({ content
               </div>
             </motion.div>
           )}
+          
+          {/* Remaining paragraphs that wrap below the image */}
+          <div className="col-span-12 mt-8">
+            <div className="text-wrapper">
+              {afterMediaParagraphs.map((paragraph, idx) => (
+                <motion.p 
+                  key={idx + beforeMediaParagraphs.length} 
+                  className="text-base md:text-lg text-gray-700 font-sans leading-relaxed mb-6"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 + (idx + beforeMediaParagraphs.length) * 0.1 }}
+                >
+                  {paragraph}
+                </motion.p>
+              ))}
+              
+              {/* Call to action if provided */}
+              {callToAction && (
+                <motion.p
+                  className="text-base md:text-lg font-medium text-[#003B98] mt-8"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                >
+                  {callToAction}
+                </motion.p>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>

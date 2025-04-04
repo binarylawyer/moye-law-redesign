@@ -1,7 +1,7 @@
 import React from 'react';
 import ServiceTemplate from '@/components/services/ServiceTemplate';
 import { ServiceData, ServiceFeature, Process, RelatedService, FeaturedContent, ServiceConsideration } from '@/types/services';
-import { Palette, Music, Film, BookOpen, Sparkles, UserGroup, ColorSwatch } from 'lucide-react';
+import { Palette, Music, Film, BookOpen, Sparkles, Users, PaintBucket } from 'lucide-react';
 
 // Enhanced data structure with persona-focused content
 const artEntertainmentLawData: Partial<ServiceData> = {
@@ -26,7 +26,7 @@ const artEntertainmentLawData: Partial<ServiceData> = {
     {
       title: "Fine Art Transactions & Advisory",
       description: "Discreet counsel for significant acquisitions, commissions, authentication, provenance verification, and heritage collection management.",
-      icon: "ColorSwatch"
+      icon: "PaintBucket"
     },
     {
       title: "Film, Television & Digital Media",
@@ -41,7 +41,7 @@ const artEntertainmentLawData: Partial<ServiceData> = {
     {
       title: "Talent & Representation",
       description: "Cultivating enduring relationships through meticulous negotiation of representation agreements that honor creative integrity while maximizing opportunity.",
-      icon: "UserGroup"
+      icon: "Users"
     }
   ],
 

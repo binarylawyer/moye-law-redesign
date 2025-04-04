@@ -1,7 +1,7 @@
 import React from 'react';
 import ServiceTemplate from '@/components/services/ServiceTemplate';
 import { ServiceData, ServiceFeature, Process, RelatedService, FeaturedContent, ServiceConsideration } from '@/types/services';
-import { Cpu, Database, Lock, Zap, Code, ShieldCheck } from 'lucide-react';
+import { Cpu, Database, Lock, Zap, Code, Shield, CircuitBoard, LockKeyhole } from 'lucide-react';
 
 const digitalAssetTechData: Partial<ServiceData> = {
   title: "Digital Asset & Emerging Technology",
@@ -24,12 +24,12 @@ const digitalAssetTechData: Partial<ServiceData> = {
     {
       title: "AI Governance & Ethical Implementation",
       description: "Sophisticated frameworks for artificial intelligence deployment that balance innovation with responsibility, addressing bias mitigation, transparency requirements, and liability considerations.",
-      icon: "Chip"
+      icon: "CircuitBoard"
     },
     {
       title: "Digital Asset Security Architecture",
       description: "Comprehensive protection systems for digital wealth including cryptocurrencies, tokenized assets, and digital collections, with emphasis on multi-generational security and access protocols.",
-      icon: "ShieldCheck"
+      icon: "Shield"
     },
     {
       title: "Technological Innovation Protection",
@@ -39,7 +39,7 @@ const digitalAssetTechData: Partial<ServiceData> = {
     {
       title: "Data Governance & Privacy Engineering",
       description: "Architecting privacy-centric data frameworks that ensure regulatory compliance while enabling strategic data utilization across global operations and partnerships.",
-      icon: "LockClosed"
+      icon: "LockKeyhole"
     }
   ],
   
