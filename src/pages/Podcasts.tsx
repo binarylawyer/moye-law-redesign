@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mic, Book, ScrollText, ChevronRight, PlayCircle, Waveform, Share2, BookmarkPlus, Headphones } from 'lucide-react';
+import { Mic, Book, ScrollText, ChevronRight, PlayCircle, Activity, Share2, BookmarkPlus, Headphones } from 'lucide-react';
 import ConsultationCTA from "../components/ConsultationCTA";
 import ResourcePageHeader from "../components/resources/ResourcePageHeader";
 import { podcastData } from "../data/podcastData";
@@ -235,54 +235,79 @@ const Podcasts: React.FC = () => {
                 className="bg-white mondrian-border hover:shadow-lg transition-shadow cursor-pointer"
                 onClick={() => setSelectedPodcast(podcast)}
               >
-                {/* Visual audio waveform representation (decorative) */}
-                <div className="h-24 bg-gray-100 overflow-hidden relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Waveform className="w-16 h-16 text-gray-300" />
-                    <PlayCircle className="w-10 h-10 text-blue-600 absolute hover:scale-110 transition-transform" />
+                {/* Mondrian-style audio visualization */}
+                <div className="h-32 relative border-b-2 border-black overflow-hidden">
+                  {/* Mondrian grid layout */}
+                  <div className="absolute inset-0 grid grid-cols-8 grid-rows-4 gap-1 p-1">
+                    {/* Dynamic pattern based on podcast index */}
+                    {index % 4 === 0 ? (
+                      <>
+                        <div className="col-span-5 row-span-3 bg-blue-600 border border-black"></div>
+                        <div className="col-span-3 row-span-1 bg-white border border-black"></div>
+                        <div className="col-span-3 row-span-2 bg-red-600 border border-black"></div>
+                        <div className="col-span-2 row-span-1 bg-yellow-400 border border-black"></div>
+                        <div className="col-span-3 row-span-1 bg-white border border-black"></div>
+                        <div className="col-span-3 row-span-1 bg-yellow-400 border border-black"></div>
+                        <div className="col-span-5 row-span-1 bg-white border border-black"></div>
+                      </>
+                    ) : index % 4 === 1 ? (
+                      <>
+                        <div className="col-span-3 row-span-2 bg-yellow-400 border border-black"></div>
+                        <div className="col-span-5 row-span-1 bg-white border border-black"></div>
+                        <div className="col-span-5 row-span-1 bg-red-600 border border-black"></div>
+                        <div className="col-span-3 row-span-2 bg-white border border-black"></div>
+                        <div className="col-span-5 row-span-2 bg-blue-600 border border-black"></div>
+                      </>
+                    ) : index % 4 === 2 ? (
+                      <>
+                        <div className="col-span-4 row-span-2 bg-red-600 border border-black"></div>
+                        <div className="col-span-4 row-span-1 bg-white border border-black"></div>
+                        <div className="col-span-4 row-span-1 bg-blue-600 border border-black"></div>
+                        <div className="col-span-2 row-span-2 bg-yellow-400 border border-black"></div>
+                        <div className="col-span-2 row-span-2 bg-white border border-black"></div>
+                        <div className="col-span-4 row-span-2 bg-white border border-black"></div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="col-span-2 row-span-4 bg-white border border-black"></div>
+                        <div className="col-span-3 row-span-2 bg-blue-600 border border-black"></div>
+                        <div className="col-span-3 row-span-1 bg-red-600 border border-black"></div>
+                        <div className="col-span-3 row-span-1 bg-yellow-400 border border-black"></div>
+                        <div className="col-span-6 row-span-2 bg-white border border-black"></div>
+                      </>
+                    )}
                   </div>
-                  <div className="absolute inset-0 flex items-end">
-                    {Array.from({ length: 50 }).map((_, i) => (
-                      <div 
-                        key={i}
-                        className="w-1 mx-[2px] bg-blue-500 opacity-30"
-                        style={{ 
-                          height: `${Math.sin(i * 0.2) * 40 + 30}%`,
-                          opacity: i % 4 === 0 ? 0.7 : 0.3
-                        }}
-                      ></div>
-                    ))}
+
+                  {/* Play button overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center z-10">
+                    <div className="w-12 h-12 flex items-center justify-center bg-white border-2 border-black rounded-full hover:scale-110 transition-transform">
+                      <PlayCircle className="w-10 h-10 text-blue-600" />
+                    </div>
                   </div>
                 </div>
-                
+                  
                 <div className="p-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-xs font-medium bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                  <div className="flex items-center mb-2">
+                    <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                      {podcast.topics[0]}
+                    </span>
+                    <span className="text-xs text-gray-500 ml-2">
                       {podcast.duration}
                     </span>
-                    <span className="text-xs text-gray-500">
-                      {new Date(podcast.date).toLocaleDateString('en-US', { 
-                        month: 'short',
-                        day: 'numeric'
-                      })}
-                    </span>
                   </div>
-                  
-                  <h3 className="font-display text-lg mb-2 line-clamp-2">{podcast.title}</h3>
-                  
-                  <p className="text-sm text-gray-600 mb-3 line-clamp-2">{podcast.description}</p>
-                  
-                  <div className="flex flex-wrap gap-1">
-                    {podcast.topics.slice(0, 2).map((topic, idx) => (
-                      <span key={idx} className="text-xs px-2 py-0.5 bg-gray-100 text-gray-700">
-                        {topic}
-                      </span>
-                    ))}
-                    {podcast.topics.length > 2 && (
-                      <span className="text-xs px-2 py-0.5 bg-gray-100 text-gray-700">
-                        +{podcast.topics.length - 2}
-                      </span>
-                    )}
+                  <h3 className="font-display text-lg mb-2 line-clamp-2">
+                    {podcast.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 line-clamp-2 mb-3">
+                    {podcast.description}
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-gray-500">
+                      {new Date(podcast.date).toLocaleDateString()}
+                    </span>
+                    <button className="text-sm text-blue-600 hover:text-blue-800">
+                      Listen now
+                    </button>
                   </div>
                 </div>
               </div>
@@ -312,54 +337,78 @@ const Podcasts: React.FC = () => {
                 className="bg-white mondrian-border hover:shadow-lg transition-shadow cursor-pointer"
                 onClick={() => setSelectedPodcast(podcast)}
               >
-                {/* Visual audio waveform representation (decorative) */}
-                <div className="h-24 bg-gray-100 overflow-hidden relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Waveform className="w-16 h-16 text-gray-300" />
-                    <PlayCircle className="w-10 h-10 text-red-600 absolute hover:scale-110 transition-transform" />
+                {/* Mondrian-style audio visualization */}
+                <div className="h-32 relative border-b-2 border-black overflow-hidden">
+                  {/* Mondrian grid layout */}
+                  <div className="absolute inset-0 grid grid-cols-8 grid-rows-4 gap-1 p-1">
+                    {/* Dynamic pattern based on podcast index - different patterns for tech section */}
+                    {index % 4 === 0 ? (
+                      <>
+                        <div className="col-span-2 row-span-1 bg-yellow-400 border border-black"></div>
+                        <div className="col-span-4 row-span-1 bg-white border border-black"></div>
+                        <div className="col-span-2 row-span-1 bg-red-600 border border-black"></div>
+                        <div className="col-span-2 row-span-3 bg-blue-600 border border-black"></div>
+                        <div className="col-span-6 row-span-2 bg-white border border-black"></div>
+                        <div className="col-span-3 row-span-1 bg-red-600 border border-black"></div>
+                        <div className="col-span-3 row-span-1 bg-yellow-400 border border-black"></div>
+                      </>
+                    ) : index % 4 === 1 ? (
+                      <>
+                        <div className="col-span-8 row-span-1 bg-red-600 border border-black"></div>
+                        <div className="col-span-3 row-span-3 bg-white border border-black"></div>
+                        <div className="col-span-5 row-span-1 bg-blue-600 border border-black"></div>
+                        <div className="col-span-2 row-span-2 bg-yellow-400 border border-black"></div>
+                        <div className="col-span-3 row-span-2 bg-white border border-black"></div>
+                      </>
+                    ) : index % 4 === 2 ? (
+                      <>
+                        <div className="col-span-5 row-span-2 bg-blue-600 border border-black"></div>
+                        <div className="col-span-3 row-span-4 bg-white border border-black"></div>
+                        <div className="col-span-2 row-span-1 bg-white border border-black"></div>
+                        <div className="col-span-3 row-span-1 bg-red-600 border border-black"></div>
+                        <div className="col-span-5 row-span-1 bg-yellow-400 border border-black"></div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="col-span-4 row-span-1 bg-yellow-400 border border-black"></div>
+                        <div className="col-span-4 row-span-1 bg-white border border-black"></div>
+                        <div className="col-span-2 row-span-3 bg-red-600 border border-black"></div>
+                        <div className="col-span-6 row-span-2 bg-blue-600 border border-black"></div>
+                        <div className="col-span-6 row-span-1 bg-white border border-black"></div>
+                      </>
+                    )}
                   </div>
-                  <div className="absolute inset-0 flex items-end">
-                    {Array.from({ length: 50 }).map((_, i) => (
-                      <div 
-                        key={i}
-                        className="w-1 mx-[2px] bg-red-500 opacity-30"
-                        style={{ 
-                          height: `${Math.cos(i * 0.2) * 40 + 40}%`,
-                          opacity: i % 3 === 0 ? 0.7 : 0.3
-                        }}
-                      ></div>
-                    ))}
+
+                  {/* Play button overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center z-10">
+                    <div className="w-12 h-12 flex items-center justify-center bg-white border-2 border-black rounded-full hover:scale-110 transition-transform">
+                      <PlayCircle className="w-10 h-10 text-red-600" />
+                    </div>
                   </div>
                 </div>
-                
+                  
                 <div className="p-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-xs font-medium bg-red-100 text-red-800 px-2 py-1 rounded">
+                  <div className="flex items-center mb-2">
+                    <span className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">
+                      {podcast.topics[0]}
+                    </span>
+                    <span className="text-xs text-gray-500 ml-2">
                       {podcast.duration}
                     </span>
-                    <span className="text-xs text-gray-500">
-                      {new Date(podcast.date).toLocaleDateString('en-US', { 
-                        month: 'short',
-                        day: 'numeric'
-                      })}
-                    </span>
                   </div>
-                  
-                  <h3 className="font-display text-lg mb-2 line-clamp-2">{podcast.title}</h3>
-                  
-                  <p className="text-sm text-gray-600 mb-3 line-clamp-2">{podcast.description}</p>
-                  
-                  <div className="flex flex-wrap gap-1">
-                    {podcast.topics.slice(0, 2).map((topic, idx) => (
-                      <span key={idx} className="text-xs px-2 py-0.5 bg-gray-100 text-gray-700">
-                        {topic}
-                      </span>
-                    ))}
-                    {podcast.topics.length > 2 && (
-                      <span className="text-xs px-2 py-0.5 bg-gray-100 text-gray-700">
-                        +{podcast.topics.length - 2}
-                      </span>
-                    )}
+                  <h3 className="font-display text-lg mb-2 line-clamp-2">
+                    {podcast.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 line-clamp-2 mb-3">
+                    {podcast.description}
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-gray-500">
+                      {new Date(podcast.date).toLocaleDateString()}
+                    </span>
+                    <button className="text-sm text-red-600 hover:text-red-800">
+                      Listen now
+                    </button>
                   </div>
                 </div>
               </div>

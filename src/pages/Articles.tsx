@@ -328,6 +328,91 @@ const Articles: React.FC = () => {
         </div>
       </section>
 
+      {/* Research Section - Academic Papers and Analysis */}
+      <section className="py-16 md:py-24 bg-gray-50 border-t-4 border-black">
+        <div className="container mx-auto px-4">
+          {/* Mondrian-style title container */}
+          <div className="mondrian-grid mb-16">
+            <div className="col-span-3 mondrian-blue"></div>
+            <div className="col-span-6 mondrian-grid-item bg-white p-8 text-center">
+              <h2 className="font-display text-3xl md:text-4xl text-black mb-6">
+                Academic Research & Analysis
+              </h2>
+              <p className="text-black/80 text-lg">
+                In-depth scholarly articles and comprehensive legal research from our expert team.
+              </p>
+            </div>
+            <div className="col-span-3 mondrian-yellow"></div>
+          </div>
+
+          {/* Research Papers */}
+          <div className="mondrian-grid">
+            {resources
+              .filter(resource => resource.category === 'research')
+              .slice(0, 3)
+              .map((research, index) => (
+                <div 
+                  key={research.id}
+                  className="col-span-12 md:col-span-4 mondrian-grid-item bg-white p-6 border-2 border-black flex flex-col"
+                >
+                  <div className={`h-3 ${
+                    index % 3 === 0 ? 'mondrian-blue' : 
+                    index % 3 === 1 ? 'mondrian-red' : 
+                    'mondrian-yellow'
+                  } w-${index % 2 === 0 ? '1/2' : '2/3'} mb-4`}></div>
+                  
+                  <div className="flex items-center mb-4">
+                    <span className="text-xs font-medium bg-white border-2 border-black px-2 py-1">
+                      Research
+                    </span>
+                    <span className="text-xs text-black/60 ml-3">
+                      {research.date}
+                    </span>
+                  </div>
+                  
+                  <h3 className="font-display text-xl text-black mb-3">
+                    {research.title}
+                  </h3>
+                  
+                  <p className="text-black/80 text-sm mb-4 line-clamp-3 flex-grow">
+                    {research.description}
+                  </p>
+                  
+                  <div className="flex justify-between items-center mt-auto">
+                    <Link 
+                      to={`/resources/${research.slug}`}
+                      className="text-black border-b-2 border-black hover:text-[#D6001C] transition-colors text-sm font-medium inline-flex items-center"
+                    >
+                      Read Full Paper
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </Link>
+                    
+                    {research.clientOnly && (
+                      <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                        Client Access
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+          </div>
+          
+          <div className="mt-12 text-center">
+            <Link 
+              to="/research"
+              className="inline-flex items-center bg-white border-2 border-black px-6 py-2 font-medium hover:bg-black hover:text-white transition-colors"
+            >
+              View All Research
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Mondrian-style divider */}
       <div className="mondrian-divider max-w-7xl mx-auto mb-16">
         <div className="mondrian-divider-red"></div>
