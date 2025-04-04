@@ -23,86 +23,49 @@ const Practice: React.FC = () => {
     };
   }, []);
 
-  // Practice areas aligned with personas from knowledge file
+  // Updated practice areas to follow the hub-and-spoke model
   const practiceAreas = [
     {
-      id: "trusts-estates",
-      title: "Trusts & Estates",
-      description: "Comprehensive planning for wealth preservation, asset distribution, and legacy protection.",
-      persona: "David (Prudent Investor)",
-      benefit: "Preserve family wealth across generations with sophisticated trust strategies.",
-      path: "/practice/trusts-estates"
+      id: "intellectual-property",
+      title: "Intellectual Property",
+      description: "Strategic protection and monetization of intellectual property assets in the digital age.",
+      benefit: "Comprehensive IP services including patents, trademarks, copyrights, and trade secrets.",
+      path: "/practice/intellectual-property"
+    },
+    {
+      id: "estate-legacy",
+      title: "Estate & Legacy",
+      description: "Holistic wealth preservation, succession planning, and elder care solutions for families and individuals.",
+      benefit: "Preserving wealth and ensuring your legacy for generations to come.",
+      path: "/practice/estate-legacy"
+    },
+    {
+      id: "arts-media-law",
+      title: "Arts & Media Law",
+      description: "Legal support for artists, creators, and media professionals in traditional and digital spaces.",
+      benefit: "Protecting creative works and navigating the complex entertainment industry landscape.",
+      path: "/practice/arts-media-law"
+    },
+    {
+      id: "real-estate-hub",
+      title: "Real Estate",
+      description: "Sophisticated counsel for property transactions, development projects, and real estate investments.",
+      benefit: "Navigate complex property matters with confidence and strategic planning.",
+      path: "/practice/real-estate-hub"
+    },
+    {
+      id: "emerging-technology-hub",
+      title: "Emerging Technology",
+      description: "Forward-thinking legal guidance for AI, blockchain, and other cutting-edge technologies.",
+      benefit: "Navigate the legal complexities of tomorrow's technologies with expert counsel.",
+      path: "/practice/emerging-technology-hub"
     },
     {
       id: "elder-law",
       title: "Elder Law",
-      description: "Comprehensive planning for aging family members with compassion and foresight.",
-      persona: "Barbara (Executive & Caregiver)",
-      benefit: "Ensure peace of mind with expert guidance on elder care and Medicaid planning.",
+      description: "Compassionate legal support for seniors and their families addressing aging-related challenges.",
+      benefit: "Ensuring dignity, security, and peace of mind for older adults.",
       path: "/practice/elder-law"
-    },
-    {
-      id: "intellectual-property",
-      title: "Intellectual Property",
-      description: "Protection for entrepreneurs and innovators in the digital economy.",
-      persona: "Alex (Tech Innovator)",
-      benefit: "Secure your digital assets and IP with forward-thinking legal protection.",
-      path: "/practice/intellectual-property"
-    },
-    {
-      id: "ip-asset-protection",
-      title: "IP Asset Protection",
-      description: "Strategic safeguarding of intellectual property assets against infringement and unauthorized use.",
-      persona: "Alex (Tech Innovator)",
-      benefit: "Protect your innovations with robust IP protection strategies.",
-      path: "/practice/ip-asset-protection"
-    },
-    {
-      id: "software-licensing",
-      title: "Software Licensing",
-      description: "Strategic protection and monetization of software assets and intellectual property.",
-      persona: "Alex (Tech Innovator)",
-      benefit: "Maximize the value of your software while ensuring proper legal protection.",
-      path: "/practice/software-licensing"
-    },
-    {
-      id: "ip-licensing",
-      title: "IP Licensing",
-      description: "Maximizing the value of intellectual assets through strategic licensing agreements.",
-      persona: "Alex (Tech Innovator)",
-      benefit: "Transform intellectual property into revenue streams with expert licensing strategies.",
-      path: "/practice/ip-licensing"
-    },
-    {
-      id: "entertainment-law",
-      title: "Entertainment Law",
-      description: "Legal guidance for creators, performers, and entertainment businesses.",
-      benefit: "Protect creative works and negotiate favorable agreements in the entertainment industry.",
-      path: "/practice/entertainment-law"
-    },
-    {
-      id: "real-estate",
-      title: "Real Estate",
-      description: "Sophisticated counsel for complex real estate transactions and investments.",
-      persona: "David (Prudent Investor)",
-      benefit: "Navigate complex property transactions with confidence and strategic tax planning.",
-      path: "/practice/real-estate"
-    },
-    {
-      id: "emerging-tech",
-      title: "Emerging Technology",
-      description: "Legal solutions for cutting-edge technologies and innovation ventures.",
-      persona: "Alex (Tech Innovator)",
-      benefit: "Navigate the legal complexities of tomorrow's technologies with forward-thinking counsel.",
-      path: "/practice/emerging-tech"
-    },
-    {
-      id: "digital-asset-protection",
-      title: "Digital Asset Protection",
-      description: "Safeguarding digital properties and assets in the modern technology landscape.",
-      persona: "Alex (Tech Innovator)",
-      benefit: "Secure your digital future with comprehensive protection strategies.",
-      path: "/practice/digital-asset-protection"
     }
   ];
 
