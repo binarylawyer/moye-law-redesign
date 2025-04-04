@@ -48,11 +48,40 @@ const elderLawData: Partial<ServiceData> = {
     }
   ],
   
-  // Placeholder considerations
+  // Updated considerations with proper property names and persona-focused content
   considerations: [
-    { question: "What is the difference between Medicare and Medicaid?", answer: "Medicare is federal health insurance primarily for those 65+, while Medicaid is a state/federal program providing health coverage for low-income individuals, often used for long-term care costs." },
-    { question: "How can we protect assets from nursing home costs?", answer: "Strategies often involve specific types of trusts (like Medicaid Asset Protection Trusts), strategic gifting, and careful timing based on look-back periods. Planning early is key." },
-    { question: "What is a health care proxy or directive?", answer: "These legal documents allow you to appoint someone to make healthcare decisions for you if you become unable to do so yourself, and can outline your wishes regarding medical treatment." }
+    {
+      title: "Medicare vs. Medicaid Planning",
+      description: "While Medicare provides health insurance for those 65+, Medicaid covers long-term care costs for those who qualify financially. Our flat-fee Medicaid planning service helps families navigate qualification requirements without depleting assets. For tech professionals with aging parents, we offer digital document management systems. For family stewards, we provide clear qualification timelines. For wealth preservationists, we structure assets to maintain family legacy while qualifying for benefits."
+    },
+    {
+      title: "Asset Protection Strategies",
+      description: "Protecting assets from long-term care costs requires advance planning. Our subscription service includes annual reviews of protection strategies, including irrevocable trusts, strategic gifting, and conversion of countable assets to exempt assets. We emphasize different approaches based on your priorities: business continuation for entrepreneurs, family home preservation for traditionalists, and investment portfolio protection for wealth-focused clients."
+    },
+    {
+      title: "Health Care Directives & Proxies",
+      description: "Advanced healthcare directives and proxies ensure medical decisions align with your loved one's wishes when they cannot communicate. Our flat-fee elder planning package includes comprehensive healthcare documentation with digital accessibility features for families. Documents are crafted with your specific values in mind, whether prioritizing cutting-edge treatments, family-centered care approaches, or legacy-minded end-of-life considerations."
+    },
+    {
+      title: "Technology Solutions for Caregivers",
+      description: "Our elder law services incorporate technology solutions to ease caregiver burden. The subscription model includes access to our digital portal for document sharing, care team coordination, and medication management tools. For tech-savvy clients, we integrate smart home monitoring solutions. For family-focused clients, we emphasize communication tools. For legacy-minded clients, we incorporate digital archive capabilities."
+    },
+    {
+      title: "Guardianship Alternatives",
+      description: "Before pursuing guardianship, we explore less restrictive alternatives that preserve autonomy. Our flat-fee consultation explores supported decision-making agreements, advance directives, and limited financial management tools. This person-centered approach respects individual dignity while ensuring necessary protection, aligning with values across our client personas."
+    },
+    {
+      title: "Assisted Living & Nursing Home Contracts",
+      description: "Our elder law services include review and negotiation of facility contracts at a transparent flat rate. We identify problematic clauses, negotiate better terms, and ensure financial arrangements align with Medicaid planning. For tech entrepreneurs, we analyze digital care monitoring provisions. For family stewards, we emphasize visitation rights. For wealth-focused clients, we scrutinize fee structures."
+    },
+    {
+      title: "Veterans Benefits Coordination",
+      description: "Our elder law subscription includes coordination of veterans benefits with other planning strategies. For eligible veterans and surviving spouses, Aid & Attendance benefits can provide additional monthly income for care costs without the strict look-back periods of Medicaid. Our service includes complete application preparation and coordination with existing benefit programs."
+    },
+    {
+      title: "Family Caregiver Agreements",
+      description: "Formal caregiver agreements allow family members to be compensated for care while potentially reducing Medicaid countable assets. Our flat-fee service includes properly structured agreements that withstand program scrutiny. These documents protect both the elder and the caregiver, providing clarity about care expectations, compensation, and responsibilities."
+    }
   ],
 
   // Define process steps
@@ -80,9 +109,9 @@ const elderLawData: Partial<ServiceData> = {
       description: "Handling estate matters after a loved one passes, often linked to elder law planning."
     },
     {
-      title: "Real Estate Services", // Assuming a Real Estate service page might exist
-      path: "/services/real-estate", 
-      description: "Assistance with property transfers or sales related to elder care planning."
+      title: "Digital Asset & Tech Protection",
+      path: "/services/digital-asset-tech-protection", 
+      description: "Protecting digital accounts and assets for seniors, including social media and cryptocurrency holdings."
     }
   ],
   

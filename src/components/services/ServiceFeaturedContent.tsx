@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FeaturedContent } from '@/types/services';
 
@@ -8,13 +8,28 @@ interface ServiceFeaturedContentProps {
 
 const ServiceFeaturedContent: React.FC<ServiceFeaturedContentProps> = ({ content }) => {
   const { title, content: paragraphs, imageSrc, imageAlt } = content;
+  const videoRef = useRef<HTMLVideoElement>(null);
   
   // Check if the source is a video (ends with mp4, webm, etc.)
   const isVideo = imageSrc?.match(/\.(mp4|webm|ogg)$/i);
 
-  // Split paragraphs to wrap text around media
-  const firstParagraph = paragraphs[0];
-  const wrappingParagraphs = paragraphs.slice(1);
+  // Effect to handle custom video looping at 6 seconds
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleTimeUpdate = () => {
+      if (video.currentTime >= 6) {
+        video.currentTime = 0;
+      }
+    };
+
+    video.addEventListener('timeupdate', handleTimeUpdate);
+    
+    return () => {
+      video.removeEventListener('timeupdate', handleTimeUpdate);
+    };
+  }, []);
 
   return (
     <div className="py-16 md:py-28">
@@ -30,91 +45,68 @@ const ServiceFeaturedContent: React.FC<ServiceFeaturedContentProps> = ({ content
           {title}
         </motion.h2>
         
-        <div className="relative">
-          {/* First paragraph and media side by side */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start mb-8">
-            {/* First paragraph */}
+        <div className="relative clearfix">
+          {/* Media (Image or Video) with float */}
+          {imageSrc && (
             <motion.div 
-              className="lg:col-span-5 xl:col-span-5"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="float-right ml-12 mb-8 w-full md:w-2/5 lg:w-5/12 relative z-10"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <motion.p 
-                className="text-base md:text-lg text-gray-700 font-sans leading-relaxed"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                {firstParagraph}
-              </motion.p>
+              <div className="relative overflow-hidden rounded-md shadow-md">
+                {isVideo ? (
+                  // Video with constraints
+                  <div className="relative w-full aspect-video">
+                    <video
+                      ref={videoRef}
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    >
+                      <source src={imageSrc} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                    {/* Art gallery-style indigo/blue filter overlay with darker opacity */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#1E3A8A]/85 to-[#3B82F6]/75 mix-blend-multiply"></div>
+                    {/* Additional texture overlay for gallery aesthetic */}
+                    <div className="absolute inset-0 mix-blend-overlay" style={{ 
+                      backgroundImage: 'url("/images/textures/subtle-grain.png")',
+                      opacity: 0.25
+                    }}></div>
+                  </div>
+                ) : (
+                  // Image with filter overlay
+                  <div className="relative">
+                    <img
+                      src={imageSrc}
+                      alt={imageAlt || title}
+                      className="w-full h-auto object-cover filter brightness-90 contrast-105"
+                    />
+                    {/* Art gallery-style indigo/blue filter overlay for images too */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-[#1E3A8A]/65 to-[#3B82F6]/45 mix-blend-multiply"></div>
+                    {/* Additional texture overlay for gallery aesthetic */}
+                    <div className="absolute inset-0 mix-blend-overlay" style={{ 
+                      backgroundImage: 'url("/images/textures/subtle-grain.png")',
+                      opacity: 0.25
+                    }}></div>
+                  </div>
+                )}
+                {/* Gallery-style minimal caption */}
+                <p className="mt-3 text-sm text-gray-500 font-sans italic">{imageAlt}</p>
+              </div>
             </motion.div>
-            
-            {/* Media (Image or Video) */}
-            {imageSrc && (
-              <motion.div 
-                className="lg:col-span-7 xl:col-span-7"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-              >
-                <div className="relative overflow-hidden rounded-md shadow-md">
-                  {isVideo ? (
-                    // Video with constraints
-                    <div className="relative w-full aspect-video">
-                      <video
-                        className="w-full h-full object-cover"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                      >
-                        <source src={imageSrc} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
-                      {/* Art gallery-style red filter overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#8B0000]/60 to-[#8B0000]/40 mix-blend-multiply"></div>
-                      {/* Additional texture overlay for gallery aesthetic */}
-                      <div className="absolute inset-0 mix-blend-overlay" style={{ 
-                        backgroundImage: 'url("/images/textures/subtle-grain.png")',
-                        opacity: 0.15 
-                      }}></div>
-                    </div>
-                  ) : (
-                    // Image with filter overlay
-                    <div className="relative">
-                      <img
-                        src={imageSrc}
-                        alt={imageAlt || title}
-                        className="w-full h-auto object-cover filter brightness-90 contrast-105"
-                      />
-                      {/* Art gallery-style red filter overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-tr from-[#8B0000]/40 to-[#8B0000]/20 mix-blend-multiply"></div>
-                      {/* Additional texture overlay for gallery aesthetic */}
-                      <div className="absolute inset-0 mix-blend-overlay" style={{ 
-                        backgroundImage: 'url("/images/textures/subtle-grain.png")',
-                        opacity: 0.15 
-                      }}></div>
-                    </div>
-                  )}
-                  {/* Gallery-style minimal caption */}
-                  <p className="mt-3 text-sm text-gray-500 font-sans italic">{imageAlt}</p>
-                </div>
-              </motion.div>
-            )}
-          </div>
+          )}
           
-          {/* Remaining paragraphs wrap around in full width */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {wrappingParagraphs.map((paragraph, idx) => (
+          {/* Paragraphs that wrap around the media */}
+          <div className="text-wrapper">
+            {paragraphs.map((paragraph, idx) => (
               <motion.p 
                 key={idx} 
-                className={`text-base md:text-lg text-gray-700 font-sans leading-relaxed
-                  ${idx === 0 ? 'lg:col-span-12' : 'lg:col-span-6'} 
-                  ${idx % 2 !== 0 ? 'lg:col-start-7' : 'lg:col-start-1'}`}
+                className="text-base md:text-lg text-gray-700 font-sans leading-relaxed mb-6"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}

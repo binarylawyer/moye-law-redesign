@@ -48,11 +48,40 @@ const probateData: Partial<ServiceData> = {
     }
   ],
   
-  // Placeholder considerations
+  // Updated considerations with proper property names and persona-focused content
   considerations: [
-    { question: "What is probate and is it always required?", answer: "Probate is the court-supervised process of validating a will and distributing assets. It's often required if assets are solely in the deceased's name, but assets in trusts or with beneficiary designations may avoid it." },
-    { question: "How long does probate take in New York?", answer: "The timeline varies greatly depending on estate complexity, court schedules, and potential disputes. Simple estates might take 6-9 months, while complex ones can take over a year." },
-    { question: "What are the duties of an executor?", answer: "An executor gathers assets, pays debts and taxes, manages estate property, communicates with beneficiaries, and distributes remaining assets according to the will, all under court oversight." }
+    {
+      title: "Understanding Probate Necessity",
+      description: "Probate is required for assets solely in the deceased's name, while properly structured trusts, joint ownership, and beneficiary designations can avoid probate. Our flat-fee probate assessment evaluates whether simplified proceedings are possible. For tech entrepreneurs with digital assets, we provide specialized guidance. For family-focused clients, we explain how family property transfers work. For wealth preservationists, we analyze tax implications of various transfer methods."
+    },
+    {
+      title: "Probate Timeline & Efficiency",
+      description: "While traditional probate in New York can take 6-18 months depending on complexity, our streamlined process using digital document management typically reduces delays by 30%. Our flat-fee probate service includes all court filings with no hidden costs. For busy professionals, we prioritize virtual proceedings. For family stewards, we expedite family home transfers. For legacy-focused clients, we coordinate business continuity during administration."
+    },
+    {
+      title: "Executor Responsibilities & Support",
+      description: "An executor must inventory assets, pay debts and taxes, manage estate property, and distribute assets according to the will. Our subscription support service provides ongoing guidance, deadline management, and document preparation throughout your term as executor. This eliminates hourly billing concerns during a lengthy administration and provides peace of mind regardless of your experience level."
+    },
+    {
+      title: "Digital Asset Administration",
+      description: "Modern estates increasingly include digital assets like cryptocurrency, online accounts, and digital intellectual property. Our specialized flat-fee digital asset administration service includes identification, access recovery, valuation, and proper transfer of these assets. This service addresses the unique needs of tech-savvy clients while ensuring all beneficiaries receive their proper digital inheritance."
+    },
+    {
+      title: "Business Continuity During Probate",
+      description: "When a deceased owned business interests, maintaining operations during probate is critical. Our business continuity service provides interim management documentation, stakeholder communication protocols, and succession implementation at a transparent flat fee. This service is particularly valuable for entrepreneurial clients who prioritize preserving business value during transition."
+    },
+    {
+      title: "Multi-Jurisdictional Estate Coordination",
+      description: "For estates with assets in multiple states or countries, our multi-jurisdiction service coordinates ancillary probate proceedings at predictable flat rates. This prevents delays often experienced when different attorneys handle different jurisdictions without coordination. The service includes documentation standardization, simultaneous filings, and consolidated reporting to beneficiaries."
+    },
+    {
+      title: "Probate Alternative Analysis",
+      description: "In some situations, alternatives to formal probate may be available. Our flat-fee assessment evaluates eligibility for small estate proceedings, voluntary administration, or non-probate transfers. For all client personas, this offers potential savings in time, court costs, and privacy concerns compared to traditional probate."
+    },
+    {
+      title: "Estate Litigation Prevention",
+      description: "Our subscription-based probate communication service helps prevent beneficiary disputes through proactive transparency. The service includes regular stakeholder updates, documentation of executor decisions, and mediation of potential conflicts before they escalate to costly litigation. This approach preserves both family relationships and estate assets."
+    }
   ],
 
   // Define process steps
@@ -80,9 +109,9 @@ const probateData: Partial<ServiceData> = {
       description: "Addressing issues that may arise during probate related to prior long-term care or Medicaid planning."
     },
     {
-      title: "Real Estate Services",
-      path: "/services/real-estate", 
-      description: "Handling the sale or transfer of real property held within the estate."
+      title: "IP Consulting & Strategy",
+      path: "/services/ip-consulting-strategy", 
+      description: "Managing intellectual property assets and digital legacy as part of estate administration."
     }
   ],
   

@@ -4,97 +4,130 @@ import React from 'react';
 import ServiceTemplate from '@/components/services/ServiceTemplate';
 import { ServiceData, ServiceFeature, Process, RelatedService, FeaturedContent, ServiceConsideration } from '@/types/services'; // Import necessary types
 
-// Rename data structure and adjust title/content for Strategy focus
+// Enhanced data with persona-focused content
 const ipConsultingStrategyData: Partial<ServiceData> = {
-  title: "IP Consulting & Strategy", // Updated Title
-  description: "Strategic intellectual property guidance to maximize asset value and align with business objectives.", // Updated Description
+  title: "IP Consulting & Strategy", 
+  description: "Strategic intellectual property guidance for innovators, family enterprises, and wealth preservation—where vision meets protection.", 
   
-  // Update features if needed to reflect strategy focus
   features: [
     {
-      icon: 'FileText', // Keep icons as placeholders or update if needed
-      title: "IP Audit & Portfolio Strategy", // Updated feature title
-      description: "Comprehensive evaluation and strategic planning for managing IP assets effectively."
+      icon: 'FileText',
+      title: "IP Portfolio Architecture",
+      description: "Comprehensive evaluation and strategic design of intellectual property frameworks that align with both immediate innovation goals and long-term legacy planning."
     },
     {
       icon: 'Lightbulb',
-      title: "IP Commercialization Strategy", // Updated feature title
-      description: "Developing pathways for monetization, including licensing and strategic partnerships."
+      title: "Strategic IP Monetization",
+      description: "Crafting sophisticated pathways for intellectual property value extraction through licensing frameworks, strategic partnerships, and market positioning."
     },
     {
       icon: 'Scale',
-      title: "IP Due Diligence & Valuation", // Updated feature title
-      description: "Expert analysis of IP value and risk assessment for transactions or investments."
+      title: "IP Valuation & Transaction Intelligence",
+      description: "Precision analysis of intellectual property value across contexts, with discreet assessment of acquisition opportunities and risk profiles."
     },
     {
       icon: 'Globe',
-      title: "Global IP Strategy & Protection", // Updated feature title
-      description: "Formulating international strategies to secure and defend intellectual property across key markets."
+      title: "Global IP Portfolio Governance",
+      description: "Orchestrating cohesive international strategies to secure intellectual assets across jurisdictions while navigating cultural and regulatory landscapes."
     }
   ], 
 
-  // Keep process steps or adjust if strategy process differs
   process: {
-    title: "Our Strategic Consulting Process", // Updated process title
+    title: "Our Strategic Consulting Process", 
     steps: [
-      // Steps seem generally applicable, keeping them
-      { title: "Discovery & Assessment", description: "We begin with a thorough evaluation of your existing intellectual property assets, business objectives, and competitive landscape." },
-      { title: "Strategy Formulation", description: "Based on our assessment, we develop a comprehensive IP strategy tailored to your specific needs, focusing on protection, monetization, and competitive positioning." }, // Slightly rephrased
-      { title: "Implementation Roadmap", description: "We create a detailed implementation plan with clear timelines, responsibilities, and resource requirements, prioritizing actions based on impact." }, // Slightly rephrased
-      { title: "Execution & Advisory", description: "We provide ongoing strategic advice during implementation, coordinating with counsel and stakeholders." }, // Slightly rephrased
-      { title: "Performance Review & Optimization", description: "We conduct regular reviews of your IP strategy, measuring results against objectives and recommending adjustments." } // Slightly rephrased
+      { title: "Discovery & Contextual Assessment", description: "Beginning with a nuanced evaluation of your intellectual property landscape within the context of your industry position, growth trajectory, and long-term vision." },
+      { title: "Strategic Framework Development", description: "Architecting a comprehensive intellectual property strategy that balances protection, monetization potential, and competitive positioning while considering both market evolution and succession planning." },
+      { title: "Implementation Architecture", description: "Creating a detailed execution framework with clear milestones, responsibility allocation, and resource requirements, prioritized by strategic importance and time sensitivity." },
+      { title: "Strategic Advisory Partnership", description: "Providing ongoing counsel during implementation, serving as the orchestrating intelligence between legal counsel, technical teams, and executive stakeholders." },
+      { title: "Continuous Refinement", description: "Conducting periodic strategic reviews with sophisticated analysis of outcomes against objectives, ensuring the strategy evolves with emerging technologies and market shifts." }
     ]
   },
 
-  // Update related services paths based on new naming convention
   relatedServices: [
     {
-      title: "Licensing & Transactions",
-      path: "/services/licensing-transactions", // Updated path
-      description: "Structuring frameworks and negotiating deals for monetizing intellectual property."
+      title: "Licensing & Strategic Transactions",
+      path: "/services/licensing-transactions",
+      description: "Crafting sophisticated frameworks for intellectual property monetization while preserving control and future optionality."
     },
     {
-      title: "Digital Asset & Tech Protection",
-      path: "/services/digital-asset-tech-protection", // Updated path
-      description: "Protecting digital innovations, data, and technology assets."
+      title: "Digital Asset & Emerging Technology",
+      path: "/services/digital-asset-tech-protection",
+      description: "Developing protection mechanisms for innovations at the forefront of digital transformation and technological evolution."
     },
     {
       title: "Art & Entertainment Law",
-      path: "/services/art-entertainment-law", // Updated path
-      description: "Specialized IP strategies for creative works and entertainment properties."
+      path: "/services/art-entertainment-law",
+      description: "Creating bespoke intellectual property strategies for creative works that honor artistic integrity while establishing enduring value."
     }
   ],
 
-  // Update other fields if needed
   featuredContent: { 
-      title: "Strategic IP for Business Growth", // Updated title
+      title: "Intellectual Property as Strategic Architecture",
       content: [
-            "Intellectual property represents critical value, yet it often remains underleveraged strategically.",
-            "Our IP Consulting & Strategy practice helps clients identify, protect, and deploy IP to create competitive advantages and drive revenue.",
-            "We develop bespoke IP strategies aligned with broader business objectives for companies of all sizes."
+            "In a landscape where innovation increasingly defines enterprise value, intellectual property transcends legal designation to become the structural framework of organizational worth. Our approach recognizes IP not merely as assets to protect, but as strategic instruments to deploy with precision.",
+            "The IP Consulting & Strategy practice serves visionaries across the spectrum—from technology pioneers redefining industries to family enterprises preserving multi-generational innovation legacies. We understand that behind each patent, trademark, or trade secret lies both market opportunity and heritage significance.",
+            "Through decades navigating the evolving IP landscape, we've developed methodologies that balance aggressive protection with strategic deployment. This measured approach allows our clients to extract immediate value while preserving long-term optionality in markets yet to emerge.",
+            "Whether you're architecting an IP portfolio to secure investment, transitioning intellectual assets to the next generation, or positioning for acquisition, we provide counsel that respects both the technical complexity and the human dimension of innovation protection."
           ],
-      callToAction: "Develop Your IP Strategy", 
+      callToAction: "Architect Your IP Strategy", 
       imageSrc: "/images/services/ip-consulting-workspace.jpg",
-      imageAlt: "Creative professional workspace with intellectual property visualization"
+      imageAlt: "Sophisticated workspace showcasing intellectual property strategy visualization"
   },
-  considerations: [], // Add relevant Q&As if possible
-  ctaTitle: "Elevate Your IP Strategy", // Updated CTA title
-  ctaDescription: "Contact us today to discuss how strategic IP consulting can benefit your business.", 
-  ctaButtonText: "Schedule Strategy Session", // Updated button text
-  phoneNumber: "(555) 555-IPST" // Updated placeholder phone
+  
+  considerations: [
+    {
+      title: "AI-Generated Innovation & IP Rights",
+      description: "Navigating the complex intersection of artificial intelligence and intellectual property creation. We help establish clear frameworks for ownership, attribution, and protection of AI-assisted innovations while developing strategies that anticipate regulatory evolution. Our approach balances maximizing protection with maintaining the flexibility required in this rapidly developing space."
+    },
+    {
+      title: "IP Portfolio Succession Planning",
+      description: "Architecting robust transitions of intellectual property across generations. We develop governance frameworks that preserve innovation value while ensuring appropriate stewardship of technical knowledge and market positioning. Our solutions address both legal mechanics and the nuanced considerations of maintaining innovation culture through succession events."
+    },
+    {
+      title: "Strategic IP Acquisition & Integration",
+      description: "Orchestrating intellectual property acquisitions that enhance portfolio coherence and market position. We conduct sophisticated due diligence that evaluates not only legal standing but strategic fit and cultural alignment. Our integration methodologies ensure smooth absorption of acquired IP into existing frameworks without disruption to innovation momentum."
+    },
+    {
+      title: "Competitive Intelligence Through IP Analysis",
+      description: "Deriving strategic insights from competitors' intellectual property activities. We transform technical patent information into actionable business intelligence, identifying emerging threats, potential partnerships, and market trajectory indicators. This intelligence informs not only defensive positioning but proactive innovation direction."
+    },
+    {
+      title: "Global IP Harmonization Strategy",
+      description: "Creating unified intellectual property protection that transcends jurisdictional boundaries. We architect global strategies that maintain consistent protection while adapting to local nuances in law, business practice, and enforcement realities. Our approach balances comprehensive coverage with resource efficiency."
+    },
+    {
+      title: "Licensing Architecture & Governance",
+      description: "Designing sophisticated licensing frameworks that balance revenue generation with strategic control. We develop structures that extract appropriate value while maintaining future optionality and preventing market cannibalization. Our governance models ensure ongoing alignment between licensing activities and evolving business objectives."
+    },
+    {
+      title: "IP Valuation Beyond Metrics",
+      description: "Developing nuanced understanding of intellectual property value that transcends standard valuation methodologies. We incorporate strategic positioning, optionality value, and defensive worth alongside traditional metrics. This comprehensive approach ensures decisions reflect true intellectual asset value rather than merely quantifiable measures."
+    },
+    {
+      title: "Open Innovation & Collaborative IP",
+      description: "Crafting frameworks for innovation partnerships that balance knowledge sharing with appropriate protection. We design contribution and ownership structures that encourage collaboration while maintaining clear rights allocation. Our models adapt to varied partnership contexts from research institutions to joint ventures."
+    },
+    {
+      title: "IP Risk Mitigation Architecture",
+      description: "Building comprehensive risk management systems for intellectual property assets and activities. We develop protocols for monitoring, assessing, and addressing infringement threats, validity challenges, and regulatory shifts. Our frameworks incorporate both preventative measures and response strategies calibrated to risk levels."
+    }
+  ],
+  
+  ctaTitle: "Elevate Your Intellectual Property Strategy",
+  ctaDescription: "Engage with advisors who understand that effective IP strategy balances technical protection, market positioning, and legacy preservation. Our approach harmonizes innovation protection with your broader vision.",
+  ctaButtonText: "Arrange a Confidential Consultation",
+  phoneNumber: "(555) 555-IPST"
 };
 
-// Rename component
 const IPConsultingStrategy: React.FC = () => {
-
   return (
     <ServiceTemplate 
       serviceName={ipConsultingStrategyData.title!} 
-      serviceId="ip-consulting-strategy" // Updated serviceId
+      serviceId="ip-consulting-strategy"
       description={ipConsultingStrategyData.description!}
       featuredContent={ipConsultingStrategyData.featuredContent!}
       features={ipConsultingStrategyData.features as ServiceFeature[]}
-      considerations={ipConsultingStrategyData.considerations!}
+      considerations={ipConsultingStrategyData.considerations as ServiceConsideration[]}
       process={ipConsultingStrategyData.process as Process}
       relatedServices={ipConsultingStrategyData.relatedServices as RelatedService[]}
       ctaTitle={ipConsultingStrategyData.ctaTitle!}
@@ -105,5 +138,4 @@ const IPConsultingStrategy: React.FC = () => {
   );
 };
 
-// Update export name
 export default IPConsultingStrategy; 

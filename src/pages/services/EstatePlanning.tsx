@@ -54,11 +54,44 @@ const estatePlanningData: Partial<ServiceData> = {
     }
   ],
   
-  // Placeholder considerations - these should be specific Q&As
+  // Enhanced considerations with correct property names and persona-focused content
   considerations: [
-    { question: "When should I start estate planning?", answer: "It's generally advisable to start planning as soon as you have assets or dependents, regardless of age. Major life events like marriage, children, or starting a business are also key times to plan or update." },
-    { question: "What's the difference between a will and a trust?", answer: "A will outlines asset distribution after death and goes through probate court. A trust can manage assets during your lifetime and after death, often avoiding probate." },
-    { question: "How does AI help in estate planning?", answer: "AI assists with accuracy in document review, identifies potential planning opportunities based on data, and helps streamline the process, allowing us more time for personalized counsel." }
+    {
+      title: "When To Begin Estate Planning",
+      description: "Estate planning should begin the moment you acquire significant assets or have dependents, regardless of age. For tech entrepreneurs, this means addressing equity considerations early. For family stewards, planning should coincide with key life milestones. For wealth preservationists, comprehensive planning should be reviewed annually as tax laws evolve. Our flat-fee model makes it accessible to begin this process without concern for mounting hourly costs."
+    },
+    {
+      title: "Wills vs. Trusts in Modern Planning",
+      description: "While a will designates asset distribution through probate, trusts offer additional privacy, control, and probate avoidance. For digital asset holders, specialized trusts can address cryptocurrency and online accounts. For family-focused clients, trusts provide enhanced protection for children and vulnerable beneficiaries. For legacy-minded clients, dynasty trusts and other sophisticated vehicles preserve wealth across generations. Our flat-fee service includes both will and trust options at transparent pricing."
+    },
+    {
+      title: "Technology-Enhanced Documentation",
+      description: "Our firm employs advanced technology to draft and analyze estate planning documents with exceptional precision while maintaining the human oversight essential for personalized planning. This approach allows us to offer premium-quality documentation at flat-fee rates that traditional firms cannot match. Digital document management also enables secure, immediate access to your estate plans when needed, ensuring your representatives are never without critical information."
+    },
+    {
+      title: "Digital Asset Protection Strategies",
+      description: "Digital assets require specialized planning approaches beyond traditional estate planning. We incorporate provisions for cryptocurrency wallets, NFTs, domain names, social media accounts, and intellectual property. Our subscription service includes regular updates to your digital asset inventory and access protocols, ensuring these valuable assets remain protected as technologies evolve."
+    },
+    {
+      title: "Family Business Succession Planning",
+      description: "Transitioning family businesses requires balancing operational continuity with equitable distribution among heirs. Our planning process addresses leadership transition, equity distribution, buy-sell provisions, and tax-efficient transfer strategies. The flat-fee approach includes all necessary documentation and coordination with business counsel to ensure seamless implementation."
+    },
+    {
+      title: "Multi-Jurisdictional Estate Considerations",
+      description: "For clients with assets in multiple states or countries, coordination between jurisdictions is essential. Our estate planning packages include property assignment strategies that minimize multi-state probate and navigate competing tax regimes. The subscription model provides ongoing monitoring of changing state laws that might affect your plan's effectiveness."
+    },
+    {
+      title: "Charitable Planning & Legacy Design",
+      description: "Strategic philanthropy can both reduce tax burdens and create meaningful legacy impact. We structure charitable vehicles including foundations, donor-advised funds, and charitable trusts as part of comprehensive estate plans. Our flat-fee charitable planning service includes all documentation and initial registration requirements for these entities."
+    },
+    {
+      title: "Healthcare Directives & Medical Planning",
+      description: "Comprehensive estate planning addresses not only asset distribution but healthcare decision-making. Our packages include advanced healthcare directives, HIPAA authorizations, and medical powers of attorney customized to your specific wishes. These critical documents are provided within our transparent flat-fee structure, ensuring complete protection."
+    },
+    {
+      title: "Annual Plan Review & Updates",
+      description: "Estate plans require regular review as laws change and life circumstances evolve. Our subscription service includes annual reviews, unlimited minor updates, and priority scheduling for major revisions. This proactive maintenance ensures your plan remains current without unpredictable hourly billing concerns."
+    }
   ],
 
   // Define process steps (can be adapted from other services or created specific to EP)

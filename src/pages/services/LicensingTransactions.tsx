@@ -43,7 +43,41 @@ const licensingTransactionsData: Partial<ServiceData> = {
     }
   ],
 
-  considerations: [],
+  // Add considerations for the FAQ section
+  considerations: [
+    {
+      title: "Strategic Licensing Value Maximization",
+      description: "Effective licensing programs balance immediate revenue with long-term strategic value. Our flat-fee licensing structure assessment helps identify optimal pricing models, exclusivity parameters, and term structures. For tech entrepreneurs, we emphasize scalability and integration flexibility. For family-focused clients, we prioritize relationship preservation in collaborative agreements. For wealth-minded clients, we structure tiered royalty frameworks that maximize long-term returns."
+    },
+    {
+      title: "IP Due Diligence in Transactions",
+      description: "Thorough intellectual property due diligence is critical to successful technology transactions. Our subscription-based transaction support includes comprehensive IP portfolio verification, freedom-to-operate analysis, and infringement risk assessment. This approach provides predictable costs for complex transactions while ensuring no hidden IP issues compromise deal value. The service includes regular updates as transaction parameters evolve."
+    },
+    {
+      title: "Cross-Border Licensing Considerations",
+      description: "International licensing agreements must navigate complex jurisdictional differences in IP protection, enforcement mechanisms, and contract interpretation. Our fixed-fee international licensing service addresses these challenges through carefully structured choice of law provisions, dispute resolution frameworks, and territory-specific compliance mechanisms tailored to each client's global footprint and risk tolerance."
+    },
+    {
+      title: "Technology Transfer & Integration",
+      description: "Successful technology transfer extends beyond legal documentation to practical implementation considerations. Our technology transfer packages include not only comprehensive legal agreements but also knowledge transfer protocols, integration milestone frameworks, and performance verification standards. This approach ensures that licensed technology delivers anticipated value across organizational boundaries."
+    },
+    {
+      title: "Revenue Recognition & Licensing Structure",
+      description: "Licensing structures significantly impact financial reporting and revenue recognition. Our licensing financial impact analysis provides transparent guidance on structuring agreements to optimize accounting treatment while maintaining legal protections. For entrepreneurs seeking investment, we emphasize structures that enhance company valuation. For established enterprises, we focus on frameworks that provide reporting consistency."
+    },
+    {
+      title: "Open Source Compliance in Commercial Agreements",
+      description: "Commercial agreements involving software must carefully address open source components and their corresponding license obligations. Our open source compliance service includes comprehensive inventory assessment, obligation mapping, and integration guidance for commercial deployments. This flat-fee service helps prevent costly compliance issues while maintaining the benefits of open source resources."
+    },
+    {
+      title: "Transaction Negotiation Strategies",
+      description: "Effective negotiation strategies balance leverage utilization with relationship preservation. Our transaction preparation service provides comprehensive assessment of negotiation positions, prioritization frameworks for deal terms, and fallback positions that protect core interests. For all personas, we emphasize approaches that secure favorable terms without compromising long-term partnership potential."
+    },
+    {
+      title: "Post-Transaction Relationship Management",
+      description: "The period immediately following transaction completion is critical to long-term success. Our post-transaction support subscription includes implementation monitoring, compliance verification, and relationship management protocols. This service ensures that agreements translate into successful operational relationships that deliver anticipated value for all parties."
+    }
+  ],
 
   // Adjust process steps for deal focus
   process: {

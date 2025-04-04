@@ -147,6 +147,46 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
         continue;
       }
       
+      // Handle image with text wrapping
+      const imageMatch = line.match(/!\[(.*?)\]\((.*?)\)(?:{(.*?)})?/);
+      if (imageMatch) {
+        const altText = imageMatch[1];
+        const imageSrc = imageMatch[2];
+        const options = imageMatch[3] || '';
+        
+        // Parse options for positioning (left/right) and size
+        const position = options.includes('left') ? 'left' : 
+                       options.includes('right') ? 'right' : 'center';
+        const size = options.includes('small') ? 'small' : 
+                   options.includes('medium') ? 'medium' : 'large';
+        
+        const sizeClasses = {
+          small: 'w-1/4',
+          medium: 'w-1/3',
+          large: 'w-1/2'
+        };
+        
+        const floatClasses = {
+          left: 'float-left mr-6 mb-3',
+          right: 'float-right ml-6 mb-3',
+          center: 'mx-auto my-6'
+        };
+        
+        elements.push(
+          <div 
+            key={`img-${i}`} 
+            className={`${sizeClasses[size as keyof typeof sizeClasses]} ${floatClasses[position as keyof typeof floatClasses]} relative`}
+          >
+            <img 
+              src={imageSrc} 
+              alt={altText}
+              className="w-full h-auto rounded-md shadow-md border-2 border-gray-100"
+            />
+          </div>
+        );
+        continue;
+      }
+      
       // Process list items - check for various list markers
       if (line.match(/^[-*+]\s+/)) {
         // If this is the first list item, start a new unordered list
@@ -330,7 +370,7 @@ const ResourceContent = ({ content }: ResourceContentProps) => {
         <div className="max-w-5xl mx-auto">
           {/* Mondrian styled container with multi-colored borders */}
           <div className={`bg-white p-6 md:p-8 ${borders.top} ${borders.right} ${borders.bottom} ${borders.left}`}>
-            <div className="prose prose-base max-w-none prose-headings:font-display prose-headings:text-navy prose-p:text-charcoal/80 prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-ul:list-disc prose-ol:list-decimal">
+            <div className="prose prose-base max-w-none prose-headings:font-display prose-headings:text-navy prose-p:text-charcoal/80 prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-ul:list-disc prose-ol:list-decimal clearfix">
               <div className="markdown-content">
                 {renderContent()}
               </div>
