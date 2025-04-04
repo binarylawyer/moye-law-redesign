@@ -15,14 +15,6 @@ const PracticeAreas = () => {
       imageUrl: "/images/practice-areas/estate-planning.jpg"
     },
     {
-      id: "elder-law",
-      title: "Elder Law",
-      description: "Compassionate legal guidance for aging loved ones, including Medicaid planning and caregiving arrangements.",
-      path: "/practice/elder-law",
-      color: "bg-white",
-      accent: "mondrian-blue"
-    },
-    {
       id: "probate",
       title: "Probate & Administration",
       description: "Guiding families through estate settlement with efficiency and care.",
@@ -108,7 +100,7 @@ const PracticeAreas = () => {
           {/* Yellow block - top right */}
           <div className="col-span-4 mondrian-yellow mondrian-grid-item"></div>
           
-          {/* Elder Law */}
+          {/* Probate */}
           <div className="col-span-5 mondrian-grid-item bg-white p-6">
             <h3 className="font-display text-2xl text-black mb-3">
               {practiceAreas[1].title}
@@ -118,7 +110,7 @@ const PracticeAreas = () => {
             </p>
             <Link 
               to={practiceAreas[1].path} 
-              className="inline-flex items-center group text-black hover:text-[#003B98]"
+              className="inline-flex items-center group text-black hover:text-[#FFD500]"
             >
               Learn more <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -127,7 +119,7 @@ const PracticeAreas = () => {
           {/* Blue block */}
           <div className="col-span-4 mondrian-blue mondrian-grid-item"></div>
           
-          {/* Probate */}
+          {/* IP */}
           <div className="col-span-4 mondrian-grid-item bg-white p-6">
             <h3 className="font-display text-2xl text-black mb-3">
               {practiceAreas[2].title}
@@ -137,7 +129,7 @@ const PracticeAreas = () => {
             </p>
             <Link 
               to={practiceAreas[2].path} 
-              className="inline-flex items-center group text-black hover:text-[#FFD500]"
+              className="inline-flex items-center group text-black hover:text-[#D6001C]"
             >
               Learn more <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -146,22 +138,6 @@ const PracticeAreas = () => {
           {/* Art Law - large unit */}
           <div className="col-span-8 mondrian-grid-item bg-white p-6">
             <h3 className="font-display text-3xl text-black mb-3">
-              {practiceAreas[4].title}
-            </h3>
-            <p className="text-black/80 mb-5">
-              {practiceAreas[4].description}
-            </p>
-            <Link 
-              to={practiceAreas[4].path} 
-              className="inline-flex items-center group text-black hover:text-[#003B98]"
-            >
-              Learn more <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-          
-          {/* IP and Tech Law - bottom row */}
-          <div className="col-span-6 mondrian-grid-item bg-white p-6">
-            <h3 className="font-display text-2xl text-black mb-3">
               {practiceAreas[3].title}
             </h3>
             <p className="text-black/80 mb-5">
@@ -169,7 +145,23 @@ const PracticeAreas = () => {
             </p>
             <Link 
               to={practiceAreas[3].path} 
-              className="inline-flex items-center group text-black hover:text-[#D6001C]"
+              className="inline-flex items-center group text-black hover:text-[#003B98]"
+            >
+              Learn more <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+          
+          {/* Empty and Tech Law - bottom row */}
+          <div className="col-span-6 mondrian-grid-item bg-white p-6">
+            <h3 className="font-display text-2xl text-black mb-3">
+              {practiceAreas[4].title}
+            </h3>
+            <p className="text-black/80 mb-5">
+              {practiceAreas[4].description}
+            </p>
+            <Link 
+              to={practiceAreas[4].path} 
+              className="inline-flex items-center group text-black hover:text-[#FFD500]"
             >
               Learn more <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -177,20 +169,7 @@ const PracticeAreas = () => {
           
           <div className="col-span-2 mondrian-red mondrian-grid-item"></div>
           
-          <div className="col-span-4 mondrian-grid-item bg-white p-6">
-            <h3 className="font-display text-2xl text-black mb-3">
-              {practiceAreas[5].title}
-            </h3>
-            <p className="text-black/80 mb-5">
-              {practiceAreas[5].description}
-            </p>
-            <Link 
-              to={practiceAreas[5].path} 
-              className="inline-flex items-center group text-black hover:text-[#FFD500]"
-            >
-              Learn more <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
+          <div className="col-span-4 mondrian-grid-item bg-white"></div>
         </div>
 
         {/* Authentic Mondrian-style divider */}

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Shield, Lock, Database, Globe, Key, Server, Wallet, Check, Briefcase, DollarSign, AlertTriangle } from 'lucide-react';
+import { ArrowRight, Shield, Lock, Database, Globe, Key, Server, Wallet, Check, Briefcase, DollarSign, AlertTriangle, FileText } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MondrianClassicComposition from '@/components/MondrianClassicComposition';

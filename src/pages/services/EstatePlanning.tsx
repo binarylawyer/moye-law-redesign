@@ -16,8 +16,8 @@ const estatePlanningData: Partial<ServiceData> = {
           "This technology, combined with our attorneys' meticulous oversight, ensures your plan is airtight and up-to-date."
       ],
       callToAction: "Secure your legacy today", // Placeholder or refined CTA
-      imageSrc: "/images/services/family reviewing trust with attorney.jpg", // Updated to use the actual image
-      imageAlt: "Family reviewing trust documents with attorney in elegant office setting" // More descriptive alt text
+      imageSrc: "/videos/white-haired-white-jacket-couple.mp4", // Changed to video file
+      imageAlt: "Senior couple discussing estate planning with their attorney" // Updated alt text
   },
 
   // Define features based on scope of services from doc

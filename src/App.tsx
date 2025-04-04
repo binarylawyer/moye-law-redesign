@@ -54,6 +54,7 @@ import InnovationPatentLaw from "./pages/practice/active/InnovationPatentLaw";
 import AIMachineLearning from "./pages/practice/active/AIMachineLearning";
 import BlockchainDigitalAssets from "./pages/practice/active/BlockchainDigitalAssets";
 import RealEstateTransactions from "./pages/practice/active/RealEstateTransactions";
+import DigitalMediaLaw from "./pages/practice/active/DigitalMediaLaw";
 
 // Import hub pages
 import IntellectualProperty from "./pages/practice/IntellectualProperty";
@@ -227,6 +228,12 @@ const AppRoutes = () => {
           <Route path="/practice/real-estate-transactions" element={
             <PageErrorBoundary pageName="Real Estate Transactions">
               <RealEstateTransactions />
+            </PageErrorBoundary>
+          } />
+          
+          <Route path="/practice/digital-media-law" element={
+            <PageErrorBoundary pageName="Digital Media Law">
+              <DigitalMediaLaw />
             </PageErrorBoundary>
           } />
           

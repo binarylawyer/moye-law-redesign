@@ -70,8 +70,8 @@ const ipConsultingStrategyData: Partial<ServiceData> = {
             "Whether you're architecting an IP portfolio to secure investment, transitioning intellectual assets to the next generation, or positioning for acquisition, we provide counsel that respects both the technical complexity and the human dimension of innovation protection."
           ],
       callToAction: "Architect Your IP Strategy", 
-      imageSrc: "/images/services/ip-consulting-workspace.jpg",
-      imageAlt: "Sophisticated workspace showcasing intellectual property strategy visualization"
+      imageSrc: "/videos/4 men staring at computer screen.mp4",
+      imageAlt: "Innovation team analyzing intellectual property strategy and digital assets"
   },
   
   considerations: [
