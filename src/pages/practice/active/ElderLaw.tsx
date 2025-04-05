@@ -1,8 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, HeartHandshake, Clock, BookOpen, Shield, Columns, CalendarCheck, Award, Users, FileText, MessageSquareShare } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import MondrianClassicComposition from '@/components/MondrianClassicComposition';
 import { elderLawData } from '@/data/practiceAreas/elderLaw';
 import { logger } from '@/utils/logger';
@@ -146,8 +144,6 @@ const ElderLaw: React.FC = () => {
   
   return (
     <div className="min-h-screen bg-white">
-      <Header />
-      
       {/* Hero Section with Mondrian-inspired design */}
       <section className="pt-32 md:pt-40 pb-16">
         <div className="container mx-auto px-8">
@@ -419,8 +415,6 @@ const ElderLaw: React.FC = () => {
         buttonText="Request Executive Consultation"
         buttonLink="/contact"
       />
-      
-      <Footer />
     </div>
   );
 };

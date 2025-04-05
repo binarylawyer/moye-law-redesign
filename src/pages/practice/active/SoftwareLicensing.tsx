@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Code, FileText, Server, Database, Globe, Users, Shield, Check, Briefcase, DollarSign, Book } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import MondrianClassicComposition from '@/components/MondrianClassicComposition';
 import { logger } from '@/utils/logger';
 
@@ -209,8 +207,6 @@ const SoftwareLicensing: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
-      
       {/* Hero Section with Mondrian-inspired design */}
       <section className="pt-32 md:pt-40 pb-16">
         <div className="container mx-auto px-8">
@@ -446,8 +442,6 @@ const SoftwareLicensing: React.FC = () => {
           </Link>
         </div>
       </section>
-      
-      <Footer />
     </div>
   );
 };

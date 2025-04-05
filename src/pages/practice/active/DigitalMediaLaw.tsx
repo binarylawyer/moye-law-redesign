@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Monitor, Globe, Play, Video, Radio, Smartphone, Laptop, Cloud, Share2, Check, Briefcase, DollarSign } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import MondrianClassicComposition from '@/components/MondrianClassicComposition';
 import { logger } from '@/utils/logger';
 
@@ -206,8 +204,6 @@ const DigitalMediaLaw: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
-      
       {/* Hero Section with Mondrian-inspired design */}
       <section className="pt-32 md:pt-40 pb-16">
         <div className="container mx-auto px-8">
@@ -441,8 +437,6 @@ const DigitalMediaLaw: React.FC = () => {
           </div>
         </div>
       </section>
-      
-      <Footer />
     </div>
   );
 };
