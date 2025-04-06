@@ -70,6 +70,19 @@ import ArtsMediaLaw from "./pages/practice/ArtsMediaLaw";
 import RealEstateHub from "./pages/practice/RealEstateHub";
 import EmergingTechnologyHub from "./pages/practice/EmergingTechnologyHub";
 
+// Declare gtag function for TypeScript
+declare global {
+  interface Window {
+    // More specific types for gtag arguments
+    gtag: (
+      command: 'config' | 'js' | 'event',
+      targetIdOrEventName: string,
+      params?: Record<string, string | number | boolean | undefined>
+    ) => void;
+    dataLayer: unknown[]; // Use unknown[] instead of any[]
+  }
+}
+
 // Scroll to top component
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -84,6 +97,21 @@ const ScrollToTop = () => {
 const queryClient = new QueryClient();
 
 const AppRoutes = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Check if gtag function exists on the window object
+    if (typeof window.gtag === 'function') {
+      // Send page view event to Google Analytics
+      window.gtag('config', 'G-LCB4ZJ4848', {
+        page_path: location.pathname + location.search, // Use current path
+      });
+      logger.info(`GA Pageview tracked: ${location.pathname + location.search}`);
+    } else {
+      logger.warn('window.gtag function not found. GA script might be blocked or not loaded.');
+    }
+  }, [location]); // Dependency array ensures this runs on location change
+
   return (
     <>
       <ScrollToTop />

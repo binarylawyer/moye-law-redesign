@@ -41,8 +41,15 @@
     <!-- Add canonical URL -->
     <link rel="canonical" href="https://yourwebsite.com" />
 
-    <!-- Updated CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' 'unsafe-inline' https://cdn.gpteng.co https://static.cloudflareinsights.com; img-src 'self' data: https:; connect-src 'self' https://api.yourwebsite.com;">
+    <!-- Updated CSP to allow Google Analytics -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self'; 
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+        font-src 'self' https://fonts.gstatic.com data:; 
+        script-src 'self' 'unsafe-inline' https://cdn.gpteng.co https://static.cloudflareinsights.com https://www.googletagmanager.com; 
+        img-src 'self' data: https: https://www.googletagmanager.com; 
+        connect-src 'self' https://api.yourwebsite.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;
+    ">
     
     <!-- Other security headers -->
     <meta http-equiv="X-Frame-Options" content="DENY">
@@ -68,6 +75,17 @@
         }
       }(window.location))
     </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCB4ZJ4848"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-LCB4ZJ4848');
+    </script>
+    <!-- End Google tag -->
   </head>
 
   <body>
