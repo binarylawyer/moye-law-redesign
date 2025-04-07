@@ -151,6 +151,75 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
         input: {
           main: path.resolve(__dirname, 'index.html'),
         },
+        output: {
+          manualChunks: {
+            // Core React libraries
+            'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+            
+            // UI Component libraries
+            'ui-components': [
+              '@radix-ui/react-navigation-menu',
+              '@radix-ui/react-dialog',
+              '@radix-ui/react-tooltip',
+              '@radix-ui/react-slot',
+              'lucide-react',
+              'class-variance-authority',
+              'clsx',
+              'tailwind-merge'
+            ],
+            
+            // Form and data validation
+            'form-validation': ['zod', 'react-hook-form', '@hookform/resolvers/zod'],
+            
+            // Practice area pages
+            'practice-areas': [
+              './src/pages/practice/active/IPLicensing.tsx',
+              './src/pages/practice/active/TrustsEstates.tsx',
+              './src/pages/practice/active/ElderLaw.tsx',
+              './src/pages/practice/active/IPAssetProtection.tsx',
+              './src/pages/practice/active/RealEstate.tsx',
+              './src/pages/practice/active/EmergingTech.tsx',
+              './src/pages/practice/active/EntertainmentLaw.tsx',
+              './src/pages/practice/active/SoftwareLicensing.tsx',
+              './src/pages/practice/active/IPConsulting.tsx',
+              './src/pages/practice/active/DigitalAssetProtection.tsx',
+              './src/pages/practice/active/ProbateAdministration.tsx',
+              './src/pages/practice/active/ArtLaw.tsx',
+              './src/pages/practice/active/RealEstateConsulting.tsx',
+              './src/pages/practice/active/InnovationPatentLaw.tsx',
+              './src/pages/practice/active/AIMachineLearning.tsx',
+              './src/pages/practice/active/BlockchainDigitalAssets.tsx',
+              './src/pages/practice/active/RealEstateTransactions.tsx',
+              './src/pages/practice/active/DigitalMediaLaw.tsx'
+            ],
+            
+            // Service pages
+            'services': [
+              './src/pages/services/EstatePlanning.tsx',
+              './src/pages/services/ElderLaw.tsx',
+              './src/pages/services/ProbateAdministration.tsx',
+              './src/pages/services/IPConsultingStrategy.tsx',
+              './src/pages/services/DigitalAssetTechProtection.tsx',
+              './src/pages/services/LicensingTransactions.tsx',
+              './src/pages/services/ArtEntertainmentLaw.tsx'
+            ],
+            
+            // Resource pages
+            'resources': [
+              './src/pages/Resources.tsx',
+              './src/pages/Articles.tsx',
+              './src/pages/ResourceDetail.tsx',
+              './src/pages/FAQ.tsx',
+              './src/pages/HowWeWork.tsx',
+              './src/pages/TechnologyApproach.tsx',
+              './src/pages/CaseStudies.tsx',
+              './src/pages/Books.tsx',
+              './src/pages/BookDetail.tsx',
+              './src/pages/Research.tsx',
+              './src/pages/ResearchPaper.tsx'
+            ]
+          }
+        }
       },
     },
     optimizeDeps: {

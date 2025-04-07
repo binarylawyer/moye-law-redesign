@@ -10,7 +10,7 @@ import Layout from "./components/Layout";
 import { logger } from "./utils/logger";
 import FloatingConsultationButton from "./components/FloatingConsultationButton";
 
-// --- Revert: Bring back static imports ---
+// --- Static Imports Restored ---
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Practice from "./pages/Practice";
@@ -72,8 +72,7 @@ import EstateLegacy from "./pages/practice/EstateLegacy";
 import ArtsMediaLaw from "./pages/practice/ArtsMediaLaw";
 import RealEstateHub from "./pages/practice/RealEstateHub";
 import EmergingTechnologyHub from "./pages/practice/EmergingTechnologyHub";
-// --- End Revert ---
-
+// --- End Static Imports ---
 
 // Declare gtag function for TypeScript
 declare global {
@@ -122,13 +121,10 @@ const AppRoutes = () => {
       <ScrollToTop />
       <FloatingConsultationButton />
       <Layout>
+        {/* No Suspense wrapper */}
         <Routes>
-          <Route path="/" element={
-            <PageErrorBoundary pageName="Home Page">
-              <Index />
-            </PageErrorBoundary>
-          } />
-          
+          {/* Routes use static imports */}
+          <Route path="/" element={<PageErrorBoundary pageName="Home Page"><Index /></PageErrorBoundary>} />
           <Route path="/practice" element={<PageErrorBoundary pageName="Practice Areas"><Practice /></PageErrorBoundary>} />
           <Route path="/services" element={<PageErrorBoundary pageName="Services"><Services /></PageErrorBoundary>} />
           <Route path="/practice/intellectual-property" element={<PageErrorBoundary pageName="Intellectual Property"><IntellectualProperty /></PageErrorBoundary>} />
