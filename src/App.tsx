@@ -26,6 +26,7 @@ import Podcasts from "./pages/Podcasts";
 import Books from "./pages/Books";
 import Research from "./pages/Research";
 import ResearchPaper from "./pages/ResearchPaper";
+import BookDetail from "./pages/BookDetail";
 import EstatePlanningPodcasts from "./pages/podcasts/EstatePlanningPodcasts";
 import TechIPPodcasts from "./pages/podcasts/TechIPPodcasts";
 import ExperienceTheDifference from "./pages/ExperienceTheDifference";
@@ -313,6 +314,7 @@ const AppRoutes = () => {
           <Route path="/resources/podcasts/estate-planning" element={<EstatePlanningPodcasts />} />
           <Route path="/resources/podcasts/tech-ip" element={<TechIPPodcasts />} />
           <Route path="/books" element={<Books />} />
+          <Route path="/books/:slug" element={<BookDetail />} />
           <Route path="/research" element={<Research />} />
           <Route path="/research/:slug" element={<ResearchPaper />} />
           <Route path="/resources/faq" element={<FAQ />} />

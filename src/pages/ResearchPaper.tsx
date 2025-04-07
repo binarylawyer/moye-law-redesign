@@ -1,8 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Download, ChevronLeft, ChevronRight, FileText, Share2, BookmarkPlus, Users, Scale, Database, Globe, Shield, Briefcase } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
 import ConsultationCTA from "../components/ConsultationCTA";
 import { Toaster } from "@/components/ui/toaster";
+import { researchPapers, ResearchPaper as ResearchPaperType } from '../data/researchData';
+
+// --- Icon Mapping Helper ---
+// Type guard to check if a key is a valid Lucide icon name
+function isValidIconName(name: string): name is keyof typeof LucideIcons {
+  return name in LucideIcons;
+}
+
+const IconComponent = ({ name, className }: { name: string, className?: string }) => {
+  if (isValidIconName(name)) {
+    const Icon = LucideIcons[name];
+    return <Icon className={className} />;
+  } 
+  // Return a default icon or null if name is invalid
+  return <LucideIcons.FileText className={className} />; // Default icon
+};
+// --- End Icon Mapping Helper ---
 
 // Sample research paper data structure with extended fields for the detail view
 interface ResearchPaperDetailed {
@@ -52,7 +69,7 @@ const researchPaperData: ResearchPaperDetailed = {
   pdfSize: "1.2 MB",
   citation: "Chen, E. & Rodriguez, M. (2023). Algorithmic Estate Planning: Automated Decision Systems in Wealth Distribution. Journal of Digital Law, 12(4), 78-92.",
   slug: "algorithmic-estate-planning",
-  icon: <Database className="h-8 w-8" />,
+  icon: <LucideIcons.Database className="h-8 w-8" />,
   sections: [
     {
       title: "Introduction",
@@ -87,23 +104,26 @@ const researchPaperData: ResearchPaperDetailed = {
   acknowledgements: "The authors gratefully acknowledge the support of the Digital Law Research Initiative at Stanford University. We also thank our colleagues at the AI & Legal Ethics Working Group for their valuable feedback on earlier drafts."
 };
 
-const ResearchPaper: React.FC = () => {
+const ResearchPaperPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState(0);
   
-  // In a real application, you would fetch the paper data based on the slug
-  // Here we're just using the sample data
-  const paper = researchPaperData;
+  // Find the paper data based on the slug using useMemo
+  const paper = useMemo(() => { 
+    return researchPapers.find(p => p.slug === slug);
+  }, [slug]);
   
   useEffect(() => {
-    // Simulate loading state
-    const timer = setTimeout(() => {
+    if (paper) {
       setIsLoading(false);
-    }, 800);
-    
-    return () => clearTimeout(timer);
-  }, [slug]);
+    } else {
+      // Handle paper not found - maybe set loading to false and show error later
+      // Or redirect? For now, just stop loading.
+      setIsLoading(false); 
+    }
+    window.scrollTo(0, 0); // Scroll to top when slug changes or paper loads
+  }, [paper]); // Depend on the memoized paper object
   
   if (isLoading) {
     return (
@@ -128,6 +148,21 @@ const ResearchPaper: React.FC = () => {
     );
   }
   
+  if (!paper) {
+    // Render a not found message or component if paper is null after loading
+    return (
+      <main className="pt-32 bg-white min-h-screen">
+        <div className="container mx-auto px-4 text-center py-16">
+          <h1 className="text-2xl font-bold mb-4">Research Paper Not Found</h1>
+          <p className="mb-8">Sorry, we couldn't find the research paper you were looking for.</p>
+          <Link to="/research" className="text-blue-600 hover:underline">
+            Back to Research List
+          </Link>
+        </div>
+      </main>
+    );
+  }
+  
   return (
     <main className="pt-32 bg-white">
       {/* Back to research button */}
@@ -136,7 +171,7 @@ const ResearchPaper: React.FC = () => {
           to="/research"
           className="inline-flex items-center text-blue-600 hover:text-blue-800"
         >
-          <ChevronLeft className="w-4 h-4 mr-1" />
+          <LucideIcons.ChevronLeft className="w-4 h-4 mr-1" />
           Back to Research
         </Link>
       </div>
@@ -147,7 +182,8 @@ const ResearchPaper: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center mb-6">
               <div className="bg-blue-100 p-3 rounded-full mr-4">
-                {paper.icon}
+                {/* Render Icon using helper */} 
+                <IconComponent name={paper.icon} className="h-8 w-8" /> 
               </div>
               <div>
                 <span className="text-sm font-medium bg-gray-100 text-gray-800 px-3 py-1 rounded">
@@ -187,7 +223,7 @@ const ResearchPaper: React.FC = () => {
                 {paper.authors.map((author, index) => (
                   <div key={index} className="flex items-start">
                     <div className="bg-gray-200 rounded-full p-3 mr-3">
-                      <Users className="h-6 w-6 text-gray-700" />
+                      <LucideIcons.Users className="h-6 w-6 text-gray-700" />
                     </div>
                     <div>
                       <h3 className="font-medium">{author.name}</h3>
@@ -203,17 +239,18 @@ const ResearchPaper: React.FC = () => {
             <div className="flex flex-wrap gap-4 mb-8 pt-4 border-t border-gray-200">
               <a
                 href={paper.downloadUrl}
+                download
                 className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
               >
-                <Download className="w-4 h-4 mr-2" />
+                <LucideIcons.Download className="w-4 h-4 mr-2" />
                 Download PDF ({paper.pdfSize})
               </a>
               <button className="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-800 rounded hover:bg-gray-200 transition-colors">
-                <Share2 className="w-4 h-4 mr-2" />
+                <LucideIcons.Share2 className="w-4 h-4 mr-2" />
                 Share
               </button>
               <button className="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-800 rounded hover:bg-gray-200 transition-colors">
-                <BookmarkPlus className="w-4 h-4 mr-2" />
+                <LucideIcons.BookmarkPlus className="w-4 h-4 mr-2" />
                 Save
               </button>
             </div>
@@ -329,7 +366,7 @@ const ResearchPaper: React.FC = () => {
                   className="text-blue-600 hover:text-blue-800 text-sm font-medium inline-flex items-center"
                 >
                   View Paper
-                  <ChevronRight className="w-4 h-4 ml-1" />
+                  <LucideIcons.ChevronRight className="w-4 h-4 ml-1" />
                 </Link>
               </div>
               
@@ -348,7 +385,7 @@ const ResearchPaper: React.FC = () => {
                   className="text-blue-600 hover:text-blue-800 text-sm font-medium inline-flex items-center"
                 >
                   View Paper
-                  <ChevronRight className="w-4 h-4 ml-1" />
+                  <LucideIcons.ChevronRight className="w-4 h-4 ml-1" />
                 </Link>
               </div>
             </div>
@@ -362,4 +399,4 @@ const ResearchPaper: React.FC = () => {
   );
 };
 
-export default ResearchPaper; 
+export default ResearchPaperPage; 

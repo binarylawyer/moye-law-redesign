@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { resources } from '../data/resourcesData';
+import { resources as articles } from '../data/articlesData';
 import ConsultationCTA from "../components/ConsultationCTA";
 
 const ITEMS_PER_PAGE = 9;
@@ -14,7 +14,7 @@ const Articles: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   // Get all articles
-  const allArticles = resources.filter(resource => resource.category === 'article');
+  const allArticles = articles.filter(resource => resource.category === 'article');
   
   // Get featured articles (newest 3 articles)
   const featuredArticles = allArticles
@@ -347,7 +347,7 @@ const Articles: React.FC = () => {
 
           {/* Research Papers */}
           <div className="mondrian-grid">
-            {resources
+            {articles
               .filter(resource => resource.category === 'research')
               .slice(0, 3)
               .map((research, index) => (

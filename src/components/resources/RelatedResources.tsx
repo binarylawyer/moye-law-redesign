@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Resource } from '../../data/resourcesData';
+import { Resource } from '../../data/articlesData';
 import { Calendar } from 'lucide-react';
 import MondrianDecoration from '@/components/MondrianDecoration';
 

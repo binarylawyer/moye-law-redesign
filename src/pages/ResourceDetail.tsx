@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { resources, Resource } from '../data/resourcesData';
+import { resources as articles, Resource } from '../data/articlesData';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ConsultationCTA from "../components/ConsultationCTA";
@@ -24,9 +24,9 @@ const ResourceDetail = () => {
     setLoading(true);
     
     console.log('Current slug:', slug);
-    console.log('All available slugs:', resources.map(r => r.slug));
+    console.log('All available slugs:', articles.map(r => r.slug));
     
-    const foundResource = resources.find(r => r.slug === slug) || null;
+    const foundResource = articles.find(r => r.slug === slug) || null;
     
     console.log('Found resource:', foundResource);
     
@@ -42,7 +42,7 @@ const ResourceDetail = () => {
     setResource(foundResource);
     
     if (foundResource && foundResource.tags && foundResource.tags.length > 0) {
-      const related = resources
+      const related = articles
         .filter(r => 
           r.id !== foundResource.id && 
           r.tags && 

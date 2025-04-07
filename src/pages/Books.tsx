@@ -1,140 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Book, Lock, Download, ChevronRight, FileText, Users, Shield, Database, Briefcase, Scale, Globe, Mic } from 'lucide-react';
 import ResourcePageHeader from "../components/resources/ResourcePageHeader";
 import ConsultationCTA from "../components/ConsultationCTA";
 import { Toaster } from "@/components/ui/toaster";
-
-// Define the book data structure
-interface BookData {
-  id: string;
-  title: string;
-  author: string;
-  cover: string;
-  description: string;
-  pages: number;
-  publishDate: string;
-  clientOnly: boolean;
-  downloadUrl: string;
-  category: string;
-  relatedPracticeArea: string;
-  icon: React.ReactNode;
-}
-
-// Sample book data
-const books: BookData[] = [
-  {
-    id: "book-1",
-    title: "The Digital Estate: Planning for Your Online Legacy",
-    author: "Moye Law Digital Asset Team",
-    cover: "/images/books/digital-estate-planning.jpg",
-    description: "A comprehensive guide to protecting and transferring digital assets as part of your estate plan. Includes practical worksheets and implementation strategies.",
-    pages: 78,
-    publishDate: "2023-10-15",
-    clientOnly: false,
-    downloadUrl: "#digital-estate-planning",
-    category: "Estate Planning",
-    relatedPracticeArea: "Digital Asset & Emerging Technology",
-    icon: <Database className="h-8 w-8" />
-  },
-  {
-    id: "book-2",
-    title: "Safeguarding AI Innovation: Legal Frameworks for Tech Founders",
-    author: "Moye Law IP Team",
-    cover: "/images/books/ai-innovation-legal-guide.jpg",
-    description: "Learn how to protect AI innovations through patents, trade secrets, and strategic contracts. Includes case studies and compliance checklists.",
-    pages: 92,
-    publishDate: "2023-09-02",
-    clientOnly: true,
-    downloadUrl: "#ai-innovation-framework",
-    category: "Intellectual Property",
-    relatedPracticeArea: "IP Consulting & Strategy",
-    icon: <Shield className="h-8 w-8" />
-  },
-  {
-    id: "book-3",
-    title: "Smart Contracts & Digital Transactions: A Legal Guide",
-    author: "Moye Law Transactions Team",
-    cover: "/images/books/smart-contracts-guide.jpg",
-    description: "A practical guide to implementing legally sound smart contracts and digital transactions. Includes regulatory considerations and enforcement mechanisms.",
-    pages: 64,
-    publishDate: "2023-11-20",
-    clientOnly: false,
-    downloadUrl: "#smart-contracts-guide",
-    category: "Transactions",
-    relatedPracticeArea: "Licensing & Transactions",
-    icon: <Briefcase className="h-8 w-8" />
-  },
-  {
-    id: "book-4",
-    title: "Family Wealth Preservation: Multi-Generational Planning Strategies",
-    author: "Moye Law Estate Team",
-    cover: "/images/books/family-wealth-preservation.jpg",
-    description: "Advanced strategies for preserving family wealth across generations. Covers trusts, family governance, and tax optimization techniques.",
-    pages: 110,
-    publishDate: "2023-08-15",
-    clientOnly: true,
-    downloadUrl: "#wealth-preservation-strategies",
-    category: "Estate Planning",
-    relatedPracticeArea: "Estate Planning",
-    icon: <Users className="h-8 w-8" />
-  },
-  {
-    id: "book-5",
-    title: "Creative Rights in the Digital Age: A Guidebook for Artists",
-    author: "Moye Law Arts Team",
-    cover: "/images/books/creative-rights-digital-age.jpg",
-    description: "Protecting creative works in the digital landscape. Covers copyright, licensing, and emerging issues in NFTs and digital art.",
-    pages: 86,
-    publishDate: "2023-07-10",
-    clientOnly: false,
-    downloadUrl: "#creative-rights-guidebook",
-    category: "Arts & Entertainment",
-    relatedPracticeArea: "Art & Entertainment Law",
-    icon: <FileText className="h-8 w-8" />
-  },
-  {
-    id: "book-6",
-    title: "Elder Care Legal Frameworks: Preparing for Later Life Transitions",
-    author: "Moye Law Elder Law Team",
-    cover: "/images/books/elder-care-frameworks.jpg",
-    description: "A comprehensive guide to the legal aspects of aging. Covers healthcare directives, asset protection, and caregiving arrangements.",
-    pages: 72,
-    publishDate: "2023-12-05",
-    clientOnly: false,
-    downloadUrl: "#elder-care-frameworks",
-    category: "Elder Law",
-    relatedPracticeArea: "Elder Law",
-    icon: <Users className="h-8 w-8" />
-  },
-  {
-    id: "book-7",
-    title: "Global IP Strategy: Cross-Border Protection Frameworks",
-    author: "Moye Law International IP Team",
-    cover: "/images/books/global-ip-strategy.jpg",
-    description: "Strategic approaches to protecting intellectual property across multiple jurisdictions. Includes enforcement mechanisms and treaty considerations.",
-    pages: 98,
-    publishDate: "2023-06-22",
-    clientOnly: true,
-    downloadUrl: "#global-ip-strategy",
-    category: "Intellectual Property",
-    relatedPracticeArea: "IP Consulting & Strategy",
-    icon: <Globe className="h-8 w-8" />
-  },
-  {
-    id: "book-8",
-    title: "Startup Legal Playbook: From Formation to Exit",
-    author: "Moye Law Business Team",
-    cover: "/images/books/startup-legal-playbook.jpg",
-    description: "Essential legal guidance for technology startups at every stage. Covers entity formation, equity arrangements, IP strategy, and exit planning.",
-    pages: 124,
-    publishDate: "2023-05-14",
-    clientOnly: false,
-    downloadUrl: "#startup-legal-playbook",
-    category: "Business Law",
-    relatedPracticeArea: "Licensing & Transactions",
-    icon: <Scale className="h-8 w-8" />
-  }
-];
+import { books, Book as BookType } from '../data/booksData';
+import { Button } from "@/components/ui/button";
 
 // Book categories
 const categories = Array.from(new Set(books.map(book => book.category)));
@@ -221,66 +92,58 @@ const Books: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {filteredBooks.map(book => (
-              <div
+              <Link 
                 key={book.id}
-                className={`bg-white border-2 border-black overflow-hidden transition-all duration-300 ${
+                to={`/books/${book.slug}`}
+                className={`block bg-white border-2 border-black overflow-hidden transition-all duration-300 group ${
                   book.clientOnly && !isLoggedIn
-                    ? 'opacity-70 grayscale'
+                    ? 'opacity-70 grayscale pointer-events-none'
                     : 'hover:shadow-xl'
                 }`}
               >
-                {/* Book Cover */}
                 <div className="relative aspect-[2/3] bg-gray-100 overflow-hidden">
-                  {/* Placeholder cover with icon */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-gray-800 to-black text-white">
-                    <div className="bg-white text-black p-4 rounded-full mb-4">
-                      {book.icon}
+                    <div className="bg-white text-black p-4 rounded-full mb-4 transform transition-transform duration-300 group-hover:scale-110">
+                      <Book className="h-8 w-8" />
                     </div>
                     <div className="text-center px-4">
-                      <div className="font-display text-lg">{book.title}</div>
+                      <div className="font-display text-lg transition-colors duration-300 group-hover:text-yellow-300">{book.title}</div>
                       <div className="text-sm text-gray-300 mt-2">{book.author}</div>
                     </div>
                   </div>
                 </div>
                 
-                {/* Book Info */}
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-3">
                     <span className="text-xs font-medium bg-yellow-100 text-yellow-800 px-2 py-1 rounded">
                       {book.category}
                     </span>
-                    <span className="text-xs text-gray-500">
-                      {book.pages} pages
-                    </span>
-                  </div>
-                  
-                  <h3 className="font-display text-xl mb-2">{book.title}</h3>
-                  <p className="text-sm text-gray-600 mb-4 line-clamp-3">{book.description}</p>
-                  
-                  <div className="mt-4 pt-4 border-t border-gray-200">
-                    <div className="flex justify-between items-center">
-                      <span className="text-xs text-gray-500">
-                        Published: {new Date(book.publishDate).toLocaleDateString()}
+                    {book.clientOnly && (
+                      <span className="text-xs font-medium bg-red-100 text-red-800 px-2 py-1 rounded flex items-center">
+                        <Lock className="h-3 w-3 mr-1" /> Client Only
                       </span>
-                      
-                      {book.clientOnly && !isLoggedIn ? (
-                        <div className="flex items-center text-gray-500">
-                          <Lock className="h-4 w-4 mr-1" />
-                          <span className="text-sm">Client Only</span>
-                        </div>
-                      ) : (
-                        <a
-                          href={book.downloadUrl}
-                          className="inline-flex items-center px-3 py-1 bg-black text-white text-sm rounded hover:bg-gray-800 transition-colors"
-                        >
-                          <Download className="h-4 w-4 mr-1" />
-                          Download
-                        </a>
-                      )}
-                    </div>
+                    )}
+                  </div>
+                  <h3 className="font-medium mb-2 line-clamp-2 group-hover:text-navy transition-colors duration-300">
+                    {book.title}
+                  </h3>
+                  <p className="text-xs text-gray-500 mb-4">
+                    {book.pages ? `${book.pages} pages | ` : ''} Published: {book.publicationDate}
+                  </p>
+                  
+                  <div className="mt-auto pt-4 border-t border-gray-100">
+                    {book.clientOnly && !isLoggedIn ? (
+                      <Button variant="outline" size="sm" disabled className="w-full">
+                        <Lock className="w-4 h-4 mr-2" /> Login to View
+                      </Button>
+                    ) : (
+                      <Button variant="outline" size="sm" className="w-full bg-transparent border-black text-black hover:bg-black hover:text-white transition-colors duration-300">
+                        View Details <ChevronRight className="w-4 h-4 ml-1" />
+                      </Button>
+                    )}
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

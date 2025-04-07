@@ -1,5 +1,5 @@
 import React from 'react';
-import { Resource } from '../../data/resourcesData';
+import { Resource } from '../../data/articlesData';
 import { Calendar } from 'lucide-react';
 
 interface ResourceHeaderProps {

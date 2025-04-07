@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import ConsultationCTA from "../components/ConsultationCTA";
-import { resources, ResourceCategory } from "../data/resourcesData";
+import { resources as articles, ResourceCategory } from "../data/articlesData";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Headphones } from "lucide-react";
@@ -34,13 +34,13 @@ const Resources: React.FC = () => {
 
   // Filter resources based on selected category
   const filteredResources = selectedCategory === 'all' 
-    ? resources 
-    : resources.filter(resource => resource.category === selectedCategory);
+    ? articles 
+    : articles.filter(resource => resource.category === selectedCategory);
 
   // Group resources by category for featured sections
-  const articles = resources.filter(resource => resource.category === 'article').slice(0, 3);
-  const guides = resources.filter(resource => resource.category === 'guide').slice(0, 2);
-  const caseStudies = resources.filter(resource => resource.category === 'case-study').slice(0, 1);
+  const featuredArticles = articles.filter(resource => resource.category === 'article').slice(0, 3);
+  const guides = articles.filter(resource => resource.category === 'guide').slice(0, 2);
+  const caseStudies = articles.filter(resource => resource.category === 'case-study').slice(0, 1);
 
   return (
     <main className="pt-48 bg-white">
@@ -78,7 +78,7 @@ const Resources: React.FC = () => {
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
-              {articles.map((resource, index) => (
+              {featuredArticles.map((resource, index) => (
                 <div 
                   key={resource.id}
                   ref={el => elementsRef.current[3 + index] = el}
