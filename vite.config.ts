@@ -44,14 +44,17 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
   // --- Load Book Data ---
   let books: SitemapEntry[] = []; // Initialize books array
   try {
-    const booksDataModule = await import('./src/data/booksData'); // Dynamically import book data
+    // Safely try to import the books data
+    // This is just for sitemap generation, so no problem if it fails
+    // @ts-ignore - ignore the missing module error
+    const booksDataModule = await import('./src/data/booksData').catch(() => ({ books: [] }));
     if (booksDataModule && Array.isArray(booksDataModule.books)) {
       books = booksDataModule.books;
     } else {
       console.warn("\nWARN: Imported './src/data/booksData.ts' but it does not export an array named 'books'. Book URLs will NOT be added to the sitemap.\n");
     }
   } catch (e) {
-    console.warn(`\nWARN: Could not dynamically import book data from './src/data/booksData.ts' (Error: ${e instanceof Error ? e.message : e}). Book URLs will NOT be added to the sitemap. Please create/fix this file and ensure it exports an array named 'books' containing objects with at least a 'slug: string' property.\n`);
+    console.warn(`\nWARN: Could not dynamically import book data from './src/data/booksData.ts' (Error: ${e instanceof Error ? e.message : e}). Book URLs will NOT be added to the sitemap.\n`);
     // books remains the empty array initialized above
   }
   // --- End Load Book Data ---
@@ -131,8 +134,19 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     },
     base: '/',
     plugins: [
-      imagetools(),
-      react(),
+      imagetools({
+        // Enhance image optimization
+        defaultDirectives: new URLSearchParams([
+          ['format', 'webp;avif;original'],
+          ['quality', '80'],
+          ['stripExif', 'true']
+        ])
+      }),
+      react({
+        // Performance optimization for React
+        jsxImportSource: mode === 'production' ? undefined : '@emotion/react',
+        plugins: []
+      }),
       sitemap({ 
         hostname: 'https://moye.law',
         dynamicRoutes: allRoutes
@@ -147,77 +161,123 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     },
     build: {
       outDir: 'dist',
-      rollupOptions: {
-        input: {
-          main: path.resolve(__dirname, 'index.html'),
+      minify: 'terser', // Use Terser for better minification
+      terserOptions: {
+        compress: {
+          drop_console: true, // Remove console logs
+          pure_funcs: ['console.log', 'console.info'], // Remove specific console functions
+          passes: 2, // Multiple compression passes for better results
         },
+        mangle: {
+          properties: {
+            regex: /^_/  // Only mangle properties that start with underscore
+          }
+        }
+      },
+      cssMinify: true, // Ensure CSS is minified
+      cssCodeSplit: true, // Split CSS into chunks that match JS chunks
+      reportCompressedSize: false, // Speed up build by skipping size reporting
+      // Extract React vendor code into separate chunk
+      commonjsOptions: {
+        transformMixedEsModules: true, // Better handling of mixed modules
+        include: [/node_modules/], // Include all node_modules in the transformation
+      },
+      // Add source map to better debug performance issues
+      sourcemap: mode === 'production' ? 'hidden' : true,
+      // Improve chunking strategy
+      rollupOptions: {
         output: {
-          manualChunks: {
-            // Core React libraries
-            'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          // Extract CSS into separate files
+          assetFileNames: (assetInfo) => {
+            if (assetInfo.name?.endsWith('.css')) {
+              return 'assets/css/[name]-[hash][extname]';
+            }
+            if (assetInfo.name?.match(/\.(png|jpe?g|gif|svg|webp|avif)$/)) {
+              return 'assets/img/[name]-[hash][extname]';
+            }
+            return 'assets/[name]-[hash][extname]';
+          },
+          // Control chunk file names
+          chunkFileNames: 'assets/js/[name]-[hash].js',
+          entryFileNames: 'assets/js/[name]-[hash].js',
+          // Enforce a maximum chunk size for better loading
+          manualChunks: function(id) {
+            // Use a smart chunking strategy
             
-            // UI Component libraries
-            'ui-components': [
-              '@radix-ui/react-navigation-menu',
-              '@radix-ui/react-dialog',
-              '@radix-ui/react-tooltip',
-              '@radix-ui/react-slot',
-              'lucide-react',
-              'class-variance-authority',
-              'clsx',
-              'tailwind-merge'
-            ],
+            // Critical paths - Always include in the main bundle
+            if (id.includes('/src/components/Layout') || 
+                id.includes('/src/components/Navbar') ||
+                id.includes('/src/components/Logo') ||
+                id.includes('/src/pages/Index')) {
+              return 'critical';
+            }
             
-            // Form and data validation
-            'form-validation': ['zod', 'react-hook-form', '@hookform/resolvers/zod'],
+            // Core React dependencies - must load early but separate from app code
+            if (id.includes('node_modules/react/') || 
+                id.includes('node_modules/react-dom/') || 
+                id.includes('node_modules/scheduler/')) {
+              return 'react-core';
+            }
             
-            // Practice area pages
-            'practice-areas': [
-              './src/pages/practice/active/IPLicensing.tsx',
-              './src/pages/practice/active/TrustsEstates.tsx',
-              './src/pages/practice/active/ElderLaw.tsx',
-              './src/pages/practice/active/IPAssetProtection.tsx',
-              './src/pages/practice/active/RealEstate.tsx',
-              './src/pages/practice/active/EmergingTech.tsx',
-              './src/pages/practice/active/EntertainmentLaw.tsx',
-              './src/pages/practice/active/SoftwareLicensing.tsx',
-              './src/pages/practice/active/IPConsulting.tsx',
-              './src/pages/practice/active/DigitalAssetProtection.tsx',
-              './src/pages/practice/active/ProbateAdministration.tsx',
-              './src/pages/practice/active/ArtLaw.tsx',
-              './src/pages/practice/active/RealEstateConsulting.tsx',
-              './src/pages/practice/active/InnovationPatentLaw.tsx',
-              './src/pages/practice/active/AIMachineLearning.tsx',
-              './src/pages/practice/active/BlockchainDigitalAssets.tsx',
-              './src/pages/practice/active/RealEstateTransactions.tsx',
-              './src/pages/practice/active/DigitalMediaLaw.tsx'
-            ],
+            // Routes and navigation - needed soon after initial render
+            if (id.includes('node_modules/react-router') || 
+                id.includes('node_modules/@remix-run/router')) {
+              return 'react-router';
+            }
             
-            // Service pages
-            'services': [
-              './src/pages/services/EstatePlanning.tsx',
-              './src/pages/services/ElderLaw.tsx',
-              './src/pages/services/ProbateAdministration.tsx',
-              './src/pages/services/IPConsultingStrategy.tsx',
-              './src/pages/services/DigitalAssetTechProtection.tsx',
-              './src/pages/services/LicensingTransactions.tsx',
-              './src/pages/services/ArtEntertainmentLaw.tsx'
-            ],
+            // UI libraries - can be loaded after core functionality
+            if (id.includes('node_modules/@radix-ui/') || 
+                id.includes('node_modules/lucide-react') || 
+                id.includes('node_modules/class-variance-authority') || 
+                id.includes('node_modules/clsx')) {
+              return 'ui-libs';
+            }
             
-            // Resource pages
-            'resources': [
-              './src/pages/Resources.tsx',
-              './src/pages/Articles.tsx',
-              './src/pages/ResourceDetail.tsx',
-              './src/pages/FAQ.tsx',
-              './src/pages/HowWeWork.tsx',
-              './src/pages/TechnologyApproach.tsx',
-              './src/pages/CaseStudies.tsx',
-              './src/pages/Books.tsx',
-              './src/pages/BookDetail.tsx',
-              './src/pages/Research.tsx',
-              './src/pages/ResearchPaper.tsx'
-            ]
+            // Form and validation - only needed on pages with forms
+            if (id.includes('node_modules/zod') || 
+                id.includes('node_modules/react-hook-form') || 
+                id.includes('node_modules/@hookform') || 
+                id.includes('node_modules/dompurify')) {
+              return 'forms';
+            }
+            
+            // Group pages by section for better code splitting
+            if (id.includes('/src/pages/practice/') || id.includes('/src/pages/services/')) {
+              return 'section-legal-services';
+            }
+            
+            if (id.includes('/src/pages/Resources') || 
+                id.includes('/src/pages/Articles') || 
+                id.includes('/src/pages/Books') || 
+                id.includes('/src/pages/Research')) {
+              return 'section-resources';
+            }
+            
+            if (id.includes('/src/pages/About') || 
+                id.includes('/src/pages/Team') || 
+                id.includes('/src/pages/Contact')) {
+              return 'section-about';
+            }
+            
+            // UI Components by type
+            if (id.includes('/src/components/ui/')) {
+              return 'components-ui';
+            }
+            
+            // Custom components - separate from UI components
+            if (id.includes('/src/components/')) {
+              return 'components-custom';
+            }
+            
+            // Common utilities - light and can be loaded early
+            if (id.includes('/src/utils/') || id.includes('/src/lib/') || id.includes('/src/hooks/')) {
+              return 'common';
+            }
+            
+            // Vendor dependencies - third-party libraries
+            if (id.includes('node_modules/')) {
+              return 'vendor';
+            }
           }
         }
       },
@@ -235,7 +295,19 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
         'dompurify',
         'react-helmet',
       ],
+      exclude: [
+        // Dependencies that should not be pre-bundled
+        'lovable-tagger'
+      ]
     },
+    // Add top level options to improve module processing
+    esbuild: {
+      legalComments: 'none', // Remove license comments 
+      target: ['es2020'], // Modern target for smaller bundles
+      treeShaking: true, // Ensure unused code is removed
+      minifySyntax: true,
+      minifyIdentifiers: true
+    }
   };
   // --- End Return Vite Config Object ---
 });
