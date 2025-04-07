@@ -1,103 +1,86 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
-import DesktopNavigation from './navigation/DesktopNavigation';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { X, Menu } from 'lucide-react';
 import MobileMenu from './navigation/MobileMenu';
 import { practiceAreas, specializedServices, resourcesItems } from './navigation/NavigationData';
-import { COMPONENT_COLORS } from '@/utils/colors';
+import DesktopNavigation from './navigation/DesktopNavigation';
 
 const Header: React.FC = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  // Keep isScrolled state ONLY for passing to DesktopNavigation if needed, but remove its effect on Header styles for now
   const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Memoize toggle function to prevent recreation on each render
-  const toggleMobileMenu = useCallback(() => {
-    setMobileMenuOpen(prev => !prev);
-  }, []);
-
-  // Use a single effect for scroll handling
-  useEffect(() => {
-    // Check initial scroll position on mount
-    const initialScroll = window.scrollY;
-    setIsScrolled(initialScroll > 20);
-    
-    // Use throttled event handler for better performance
-    let ticking = false;
-    
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 20);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Memoize the header background style
-  const headerBackground = useMemo(() => ({
-    backgroundColor: isScrolled 
-      ? COMPONENT_COLORS.header.background 
-      : isHomePage
-        ? 'rgba(255, 255, 255, 0.85)' // Higher opacity for home page when not scrolled
-        : 'rgba(255, 255, 255, 0.65)', // Default opacity for other pages when not scrolled
-    backdropFilter: 'blur(15px)'
-  }), [isScrolled, isHomePage]);
-
-  // Memoize navigation data to prevent unnecessary re-renders
-  const navigationData = useMemo(() => ({
+  // Navigation data
+  const navigationData = {
     practiceAreas,
     specializedServices,
     resourcesItems
-  }), []);
+  };
 
+  // Toggle mobile menu
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+  
+  // Update isScrolled state, but don't use it for header classes yet
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      setIsScrolled(currentScrollPos > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []); 
+  
+  // --- TEMPORARY SIMPLIFICATION --- 
+  // Hardcode styles to test if dynamic changes are the issue
+  const headerBackgroundClass = "bg-white text-primary shadow-md"; // Always use the scrolled background
+  const headerHeightClass = "h-16"; // Always use the scrolled height
+  const backdropClass = "backdrop-blur-sm"; // Always apply backdrop blur
+  // --------------------------------
+  
+  // Transition for smooth appearance changes (keep for potential future use)
+  const transitionClass = "transition-all duration-300 ease-in-out";
+  
+  // Style for header positioning (remains fixed)
+  const headerStyle: React.CSSProperties = {
+    position: 'fixed', 
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 50,
+  };
+  
+  // Final class uses the temporarily hardcoded values
+  const finalHeaderClass = `${headerBackgroundClass} ${headerHeightClass} ${backdropClass} ${transitionClass} ${mobileMenuOpen ? 'bg-white text-primary' : ''}`;
+  
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b-4 border-black ${
-        isScrolled ? 'h-[80px]' : 'h-[100px]'
-      }`}
+      className={finalHeaderClass}
+      style={headerStyle}
     >
-      {/* Enhanced Mondrian-style background with more translucent frosted glass effect */}
-      <div 
-        className="absolute inset-0 overflow-hidden"
-        style={headerBackground}
-      >
-        {/* Replace JS-controlled animations with CSS animations for better performance */}
-        <div className="absolute top-0 h-full w-1 bg-black/20 line-animation-1"></div>
-        <div className="absolute top-0 h-full w-1 bg-black/20 line-animation-2"></div>
-
-        {/* Mondrian-inspired color blocks */}
-        <div className="absolute top-0 left-0 w-12 h-full mondrian-red opacity-5"></div>
-        <div className="absolute top-0 right-0 w-12 h-full mondrian-blue opacity-5"></div>
-        
-        {/* Mondrian-inspired horizontal lines */}
-        <div className="absolute top-0 left-0 w-full h-1 flex border-b-2 border-black/10">
-          <div className="w-1/5 h-full bg-[#D6001C]/20"></div>
-          <div className="w-3/5 h-full bg-transparent"></div>
-          <div className="w-1/5 h-full bg-[#003B98]/20"></div>
-        </div>
-        
-        {/* Bottom accent */}
-        <div className="absolute bottom-0 left-0 w-full h-1 flex">
-          <div className="w-2/3 h-full bg-transparent"></div>
-          <div className="w-1/3 h-full bg-[#FFD500]/20"></div>
-        </div>
-      </div>
-      
       <div className="container mx-auto px-4 md:px-12 flex justify-between items-center h-full relative">
         <Link 
           to="/" 
           className="z-10 flex items-center hover:opacity-80 transition duration-200"
+          aria-label="Moye Law - Home"
         >
-          <span className="font-display font-bold text-3xl tracking-tight">
-            MOYE LAW
-          </span>
+          {/* Revert to original logo size */}
+          <img 
+            src="/logos/moye-logo.webp" 
+            alt="MOYE LAW" 
+            width="180" 
+            height="40"
+            className="h-10 w-auto" 
+            loading="eager"
+            fetchPriority="high"
+          />
+          
+          {/* Accessibility hidden text for screen readers */}
+          <span className="sr-only">MOYE LAW</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -133,5 +116,4 @@ const Header: React.FC = () => {
   );
 };
 
-// Export as memoized component to prevent unnecessary re-renders
-export default React.memo(Header);
+export default Header;
