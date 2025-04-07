@@ -5,8 +5,27 @@ import MobileMenu from './navigation/MobileMenu';
 import { practiceAreas, specializedServices, resourcesItems } from './navigation/NavigationData';
 import DesktopNavigation from './navigation/DesktopNavigation';
 
+/**
+ * Header Component
+ * 
+ * IMPORTANT IMPLEMENTATION NOTES:
+ * This header implementation uses a combination of:
+ * 1. Fixed positioning (via inline styles) to ensure stable positioning that never disappears on scroll
+ * 2. Dynamic styling based on scroll position for visual enhancements
+ * 3. Controlled transitions for smooth visual changes
+ * 
+ * PREVIOUS ISSUES SOLVED:
+ * - Disappearing header: Fixed by ensuring consistent positioning via inline styles
+ * - Moving too high on scroll: Fixed by using explicit height values and fixed positioning
+ * - Poor contrast: Addressed with proper background opacity and shadows
+ * 
+ * APPROACH:
+ * The key to this implementation is that we separate the POSITIONING from the VISUAL EFFECTS.
+ * The header positioning never changes (always fixed at top), while the visual appearance
+ * (height, transparency, spacing) changes smoothly based on scroll position.
+ */
 const Header: React.FC = () => {
-  // Keep isScrolled state ONLY for passing to DesktopNavigation if needed, but remove its effect on Header styles for now
+  // Track if page is scrolled for visual effects
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -22,69 +41,107 @@ const Header: React.FC = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
   
-  // Update isScrolled state, but don't use it for header classes yet
+  /**
+   * Scroll Detection
+   * 
+   * This effect ONLY changes a state variable for VISUAL effects.
+   * It does NOT directly manipulate the DOM or positioning.
+   * The threshold of 20px provides a small buffer before transitions occur.
+   */
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollPos = window.scrollY;
-      setIsScrolled(currentScrollPos > 20);
+      setIsScrolled(window.scrollY > 20);
     };
+    
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll(); // Check initial position
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []); 
+  }, []);
   
-  // --- TEMPORARY SIMPLIFICATION --- 
-  // Hardcode styles to test if dynamic changes are the issue
-  const headerBackgroundClass = "bg-white text-primary shadow-md"; // Always use the scrolled background
-  const headerHeightClass = "h-16"; // Always use the scrolled height
-  const backdropClass = "backdrop-blur-sm"; // Always apply backdrop blur
-  // --------------------------------
-  
-  // Transition for smooth appearance changes (keep for potential future use)
-  const transitionClass = "transition-all duration-300 ease-in-out";
-  
-  // Style for header positioning (remains fixed)
+  /**
+   * Header Styling
+   * 
+   * CRITICAL: These inline styles ensure the header is ALWAYS fixed and visible.
+   * Using inline styles guarantees these critical positioning properties aren't 
+   * accidentally overridden by CSS classes.
+   * 
+   * KEY PROPERTIES:
+   * - position: 'fixed' - Always keeps header in viewport
+   * - top: 0 - Anchors to top of viewport
+   * - zIndex: 100 - Ensures header is above all other content
+   * - transition - Enables smooth animation between states
+   * 
+   * DYNAMIC PROPERTIES:
+   * - height - Taller when at top of page, shorter when scrolled
+   * - backgroundColor - Solid when at top, semi-transparent when scrolled
+   * - boxShadow - None at top, subtle shadow when scrolled for visual separation
+   */
   const headerStyle: React.CSSProperties = {
-    position: 'fixed', 
-    top: 0,
+    position: 'fixed', // CRITICAL: This keeps the header in place
+    top: 0,            // CRITICAL: This places it at the top of the viewport
     left: 0,
     right: 0,
-    zIndex: 50,
+    zIndex: 100,       // Ensures header appears above all content
+    transition: 'height 0.3s ease, background-color 0.3s ease',
+    height: isScrolled ? '64px' : '80px', // Taller at top, slimmer when scrolled
+    backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.85)' : 'white', // Semi-transparent when scrolled
+    boxShadow: isScrolled ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
   };
   
-  // Final class uses the temporarily hardcoded values
-  const finalHeaderClass = `${headerBackgroundClass} ${headerHeightClass} ${backdropClass} ${transitionClass} ${mobileMenuOpen ? 'bg-white text-primary' : ''}`;
+  /**
+   * Visual Adaptations
+   * 
+   * These variables control how visual elements adapt to scroll position:
+   * - Logo gets larger when at the top of the page
+   * - Navigation spacing changes to balance the layout
+   * 
+   * NOTE: These do NOT affect positioning, only appearance.
+   */
+  // Logo size changes based on scroll
+  const logoSize = isScrolled ? "h-10" : "h-12";
+  
+  // Navigation container spacing changes
+  const navSpacing = isScrolled ? "space-x-4" : "space-x-8";
   
   return (
-    <header 
-      className={finalHeaderClass}
-      style={headerStyle}
-    >
+    <header style={headerStyle}>
+      {/* 
+        Container div with full height to ensure content is vertically centered
+        within the header regardless of its current height.
+      */}
       <div className="container mx-auto px-4 md:px-12 flex justify-between items-center h-full relative">
         <Link 
           to="/" 
           className="z-10 flex items-center hover:opacity-80 transition duration-200"
           aria-label="Moye Law - Home"
         >
-          {/* Revert to original logo size */}
+          {/* 
+            Dynamic logo sizing:
+            - Both the attributes (width/height) and the CSS class change
+            - The transition creates a smooth size change
+          */}
           <img 
             src="/logos/moye-logo.webp" 
             alt="MOYE LAW" 
-            width="180" 
-            height="40"
-            className="h-10 w-auto" 
+            width={isScrolled ? "180" : "216"} 
+            height={isScrolled ? "40" : "48"}
+            className={`${logoSize} w-auto transition-all duration-300`} 
             loading="eager"
             fetchPriority="high"
           />
           
-          {/* Accessibility hidden text for screen readers */}
           <span className="sr-only">MOYE LAW</span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:block z-10">
+        {/* 
+          Desktop Navigation with dynamic spacing
+          - Space between navigation items adjusts based on scroll position
+          - Passes isScrolled to DesktopNavigation for consistent styling
+        */}
+        <div className={`hidden md:block z-10 ${navSpacing} transition-all duration-300`}>
           <DesktopNavigation 
             practiceAreas={navigationData.practiceAreas}
             specializedServices={navigationData.specializedServices}

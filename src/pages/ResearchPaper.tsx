@@ -4,6 +4,7 @@ import * as LucideIcons from 'lucide-react';
 import ConsultationCTA from "../components/ConsultationCTA";
 import { Toaster } from "@/components/ui/toaster";
 import { researchPapers, ResearchPaper as ResearchPaperType } from '../data/researchData';
+import ResourcePageHeader from "../components/resources/ResourcePageHeader";
 
 // --- Icon Mapping Helper ---
 // Type guard to check if a key is a valid Lucide icon name
@@ -169,38 +170,37 @@ const ResearchPaperPage: React.FC = () => {
       <div className="container mx-auto px-4 mb-8">
         <Link
           to="/research"
-          className="inline-flex items-center text-blue-600 hover:text-blue-800"
+          className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
         >
           <LucideIcons.ChevronLeft className="w-4 h-4 mr-1" />
-          Back to Research
+          <span>Back to All Research</span>
         </Link>
       </div>
       
-      {/* Paper Header */}
-      <header className="border-t-4 border-blue-600 bg-white">
-        <div className="container mx-auto px-4 py-12">
+      {/* Replace the existing paper header with ResourcePageHeader */}
+      <ResourcePageHeader
+        title={paper?.title || "Research Paper"}
+        description={paper?.abstract || "No abstract available"}
+        variant="blue"
+      />
+      
+      {/* Content after header */}
+      <section className="py-8 border-t border-gray-200">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="flex items-center mb-6">
-              <div className="bg-blue-100 p-3 rounded-full mr-4">
-                {/* Render Icon using helper */} 
-                <IconComponent name={paper.icon} className="h-8 w-8" /> 
-              </div>
-              <div>
+            {/* Paper metadata with topics and category */}
+            <div className="flex flex-wrap gap-3 mb-6">
+              {paper?.category && (
                 <span className="text-sm font-medium bg-gray-100 text-gray-800 px-3 py-1 rounded">
                   {paper.category}
                 </span>
-                <span className="text-sm text-gray-500 ml-3">
+              )}
+              {paper?.publicationDate && (
+                <span className="text-sm text-gray-500 ml-2">
                   Published: {paper.publicationDate}
                 </span>
-              </div>
-            </div>
-            
-            <h1 className="font-display text-3xl md:text-4xl text-black mb-6">
-              {paper.title}
-            </h1>
-            
-            <div className="flex flex-wrap gap-3 mb-6">
-              {paper.topics.map(topic => (
+              )}
+              {paper?.topics && paper.topics.length > 0 && paper.topics.map(topic => (
                 <span
                   key={topic}
                   className="text-sm bg-blue-50 text-blue-800 px-3 py-1 rounded-full"
@@ -210,41 +210,39 @@ const ResearchPaperPage: React.FC = () => {
               ))}
             </div>
             
-            <div className="border-l-4 border-blue-600 pl-4 py-2 bg-gray-50 mb-8">
-              <p className="text-gray-700 italic">
-                {paper.abstract}
-              </p>
-            </div>
-            
             {/* Authors */}
-            <div className="mb-8">
-              <h2 className="text-xl font-medium mb-4">Authors</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {paper.authors.map((author, index) => (
-                  <div key={index} className="flex items-start">
-                    <div className="bg-gray-200 rounded-full p-3 mr-3">
-                      <LucideIcons.Users className="h-6 w-6 text-gray-700" />
+            {paper?.authors && paper.authors.length > 0 && (
+              <div className="mb-8">
+                <h2 className="text-xl font-medium mb-4">Authors</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {paper.authors.map((author, index) => (
+                    <div key={index} className="flex items-start">
+                      <div className="bg-gray-200 rounded-full p-3 mr-3">
+                        <LucideIcons.Users className="h-6 w-6 text-gray-700" />
+                      </div>
+                      <div>
+                        <h3 className="font-medium">{author.name}</h3>
+                        <p className="text-sm text-gray-600 mb-1">{author.credentials}</p>
+                        <p className="text-sm text-gray-700">{author.bio}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-medium">{author.name}</h3>
-                      <p className="text-sm text-gray-600 mb-1">{author.credentials}</p>
-                      <p className="text-sm text-gray-700">{author.bio}</p>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
             
             {/* Actions */}
             <div className="flex flex-wrap gap-4 mb-8 pt-4 border-t border-gray-200">
-              <a
-                href={paper.downloadUrl}
-                download
-                className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
-              >
-                <LucideIcons.Download className="w-4 h-4 mr-2" />
-                Download PDF ({paper.pdfSize})
-              </a>
+              {paper?.downloadUrl && (
+                <a
+                  href={paper.downloadUrl}
+                  download
+                  className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+                >
+                  <LucideIcons.Download className="w-4 h-4 mr-2" />
+                  Download PDF ({paper.pdfSize || "Unknown size"})
+                </a>
+              )}
               <button className="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-800 rounded hover:bg-gray-200 transition-colors">
                 <LucideIcons.Share2 className="w-4 h-4 mr-2" />
                 Share
@@ -256,91 +254,99 @@ const ResearchPaperPage: React.FC = () => {
             </div>
             
             {/* Citation */}
-            <div className="bg-gray-50 p-4 mb-8 rounded border border-gray-200">
-              <h3 className="font-medium mb-2">Cite This Paper</h3>
-              <p className="text-sm text-gray-700">{paper.citation}</p>
-            </div>
+            {paper?.citation && (
+              <div className="bg-gray-50 p-4 mb-8 rounded border border-gray-200">
+                <h3 className="font-medium mb-2">Cite This Paper</h3>
+                <p className="text-sm text-gray-700">{paper.citation}</p>
+              </div>
+            )}
           </div>
         </div>
-      </header>
+      </section>
       
       {/* Paper Content */}
       <section className="bg-white py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             {/* Table of Contents */}
-            <div className="mb-8 lg:flex lg:gap-8">
-              <div className="lg:w-1/4 mb-6 lg:mb-0">
-                <div className="sticky top-32">
-                  <h2 className="text-lg font-medium mb-4">Contents</h2>
-                  <nav className="flex flex-col space-y-2">
-                    {paper.sections.map((section, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setActiveSection(index)}
-                        className={`text-left px-3 py-2 text-sm border-l-2 hover:bg-gray-50 transition-colors ${
-                          activeSection === index 
-                            ? 'border-blue-600 bg-blue-50 text-blue-800 font-medium' 
-                            : 'border-gray-200 text-gray-700'
-                        }`}
-                      >
-                        {section.title}
-                      </button>
-                    ))}
-                    <button
-                      onClick={() => setActiveSection(paper.sections.length)}
-                      className={`text-left px-3 py-2 text-sm border-l-2 hover:bg-gray-50 transition-colors ${
-                        activeSection === paper.sections.length 
-                          ? 'border-blue-600 bg-blue-50 text-blue-800 font-medium' 
-                          : 'border-gray-200 text-gray-700'
-                      }`}
-                    >
-                      References
-                    </button>
-                  </nav>
-                </div>
-              </div>
-              
-              {/* Content */}
-              <div className="lg:w-3/4">
-                {paper.sections.map((section, index) => (
-                  <div
-                    key={index}
-                    id={`section-${index}`}
-                    className="mb-8 scroll-mt-32"
-                  >
-                    <h2 className="text-2xl font-display mb-4">{section.title}</h2>
-                    <div className="prose prose-blue max-w-none">
-                      {section.content.split('\n\n').map((paragraph, pIndex) => (
-                        <p key={pIndex} className="mb-4 leading-relaxed text-gray-800">
-                          {paragraph}
-                        </p>
+            {paper?.sections && paper.sections.length > 0 && (
+              <div className="mb-8 lg:flex lg:gap-8">
+                <div className="lg:w-1/4 mb-6 lg:mb-0">
+                  <div className="sticky top-32">
+                    <h2 className="text-lg font-medium mb-4">Contents</h2>
+                    <nav className="flex flex-col space-y-2">
+                      {paper.sections.map((section, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setActiveSection(index)}
+                          className={`text-left px-3 py-2 text-sm border-l-2 hover:bg-gray-50 transition-colors ${
+                            activeSection === index 
+                              ? 'border-blue-600 bg-blue-50 text-blue-800 font-medium' 
+                              : 'border-gray-200 text-gray-700'
+                          }`}
+                        >
+                          {section.title}
+                        </button>
                       ))}
-                    </div>
+                      {paper.references && paper.references.length > 0 && (
+                        <button
+                          onClick={() => setActiveSection(paper.sections.length)}
+                          className={`text-left px-3 py-2 text-sm border-l-2 hover:bg-gray-50 transition-colors ${
+                            activeSection === paper.sections.length 
+                              ? 'border-blue-600 bg-blue-50 text-blue-800 font-medium' 
+                              : 'border-gray-200 text-gray-700'
+                          }`}
+                        >
+                          References
+                        </button>
+                      )}
+                    </nav>
                   </div>
-                ))}
-                
-                {/* References */}
-                <div id="references" className="mb-8 scroll-mt-32">
-                  <h2 className="text-2xl font-display mb-4">References</h2>
-                  <ul className="list-decimal pl-6 space-y-2">
-                    {paper.references.map((reference, index) => (
-                      <li key={index} className="text-gray-800">
-                        {reference}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
                 
-                {/* Acknowledgements */}
-                {paper.acknowledgements && (
-                  <div id="acknowledgements" className="mb-8">
-                    <h2 className="text-2xl font-display mb-4">Acknowledgements</h2>
-                    <p className="text-gray-800">{paper.acknowledgements}</p>
-                  </div>
-                )}
+                {/* Content */}
+                <div className="lg:w-3/4">
+                  {paper.sections.map((section, index) => (
+                    <div
+                      key={index}
+                      id={`section-${index}`}
+                      className="mb-8 scroll-mt-32"
+                    >
+                      <h2 className="text-2xl font-display mb-4">{section.title}</h2>
+                      <div className="prose prose-blue max-w-none">
+                        {section.content.split('\n\n').map((paragraph, pIndex) => (
+                          <p key={pIndex} className="mb-4 leading-relaxed text-gray-800">
+                            {paragraph}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                  
+                  {/* References */}
+                  {paper.references && paper.references.length > 0 && (
+                    <div id="references" className="mb-8 scroll-mt-32">
+                      <h2 className="text-2xl font-display mb-4">References</h2>
+                      <ul className="list-decimal pl-6 space-y-2">
+                        {paper.references.map((reference, index) => (
+                          <li key={index} className="text-gray-800">
+                            {reference}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  
+                  {/* Acknowledgements */}
+                  {paper.acknowledgements && (
+                    <div id="acknowledgements" className="mb-8">
+                      <h2 className="text-2xl font-display mb-4">Acknowledgements</h2>
+                      <p className="text-gray-800">{paper.acknowledgements}</p>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
