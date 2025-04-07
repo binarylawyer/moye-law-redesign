@@ -1,130 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { FileText, Download, ChevronRight, Users, Scale, Database, Globe, Shield, Briefcase } from 'lucide-react';
+import { FileText, Download, ChevronRight, Users, Scale, Database, Globe, Shield, Briefcase, Lock } from 'lucide-react';
 import ResourcePageHeader from "../components/resources/ResourcePageHeader";
 import ConsultationCTA from "../components/ConsultationCTA";
 import { Toaster } from "@/components/ui/toaster";
+import { researchPapers, ResearchPaper } from '../data/researchData';
+import { Button } from "@/components/ui/button";
 
-// Define research paper data structure
-interface ResearchPaper {
-  id: string;
-  title: string;
-  authors: string[];
-  abstract: string;
-  publicationDate: string;
-  category: string;
-  topics: string[];
-  clientOnly: boolean;
-  downloadUrl: string;
-  pdfSize: string;
-  citation: string;
-  slug: string;
-  icon: React.ReactNode;
+// Icon Helper (copied from ResearchPaperPage, consider moving to utils)
+import * as LucideIcons from 'lucide-react';
+function isValidIconName(name: string): name is keyof typeof LucideIcons {
+  return name in LucideIcons;
 }
-
-// Sample research papers
-const researchPapers: ResearchPaper[] = [
-  {
-    id: "paper-1",
-    title: "Algorithmic Estate Planning: Automated Decision Systems in Wealth Distribution",
-    authors: ["Dr. Emily Chen", "Prof. Michael Rodriguez, J.D."],
-    abstract: "This paper examines the legal implications of using artificial intelligence and algorithmic systems to automate estate planning decisions. We analyze recent case law regarding algorithmic decision-making and propose a framework for compliance with fiduciary responsibilities.",
-    publicationDate: "2023-11-15",
-    category: "Estate Planning",
-    topics: ["AI/ML", "Automation", "Fiduciary Law"],
-    clientOnly: false,
-    downloadUrl: "/papers/algorithmic-estate-planning.pdf",
-    pdfSize: "1.2 MB",
-    citation: "Chen, E. & Rodriguez, M. (2023). Algorithmic Estate Planning: Automated Decision Systems in Wealth Distribution. Journal of Digital Law, 12(4), 78-92.",
-    slug: "algorithmic-estate-planning",
-    icon: <Database className="h-8 w-8" />
-  },
-  {
-    id: "paper-2",
-    title: "Cross-Jurisdictional NFT Protection: A Comparative Analysis",
-    authors: ["Dr. James Wilson", "Sarah Matthews, Esq."],
-    abstract: "This research evaluates how different legal jurisdictions approach the protection of non-fungible tokens (NFTs) and digital art. Through analysis of recent litigation in the United States, European Union, and Singapore, we identify emerging legal frameworks and propose harmonization strategies.",
-    publicationDate: "2023-09-22",
-    category: "Digital Assets",
-    topics: ["NFTs", "Intellectual Property", "International Law"],
-    clientOnly: true,
-    downloadUrl: "/papers/cross-jurisdictional-nft-protection.pdf",
-    pdfSize: "2.4 MB",
-    citation: "Wilson, J. & Matthews, S. (2023). Cross-Jurisdictional NFT Protection: A Comparative Analysis. International Journal of Digital Property Law, 8(2), 145-167.",
-    slug: "cross-jurisdictional-nft-protection",
-    icon: <Globe className="h-8 w-8" />
-  },
-  {
-    id: "paper-3",
-    title: "Emerging Contract Protocols: Smart Contract Enforceability in Elder Care Arrangements",
-    authors: ["Prof. David Thompson, J.D.", "Dr. Lisa Nguyen"],
-    abstract: "This paper investigates the legal enforceability of blockchain-based smart contracts in elder care arrangements. We analyze current statutory frameworks, identify gaps in existing law, and propose model legislation that balances technological innovation with elder protection principles.",
-    publicationDate: "2023-10-05",
-    category: "Elder Law",
-    topics: ["Smart Contracts", "Elder Care", "Legislative Frameworks"],
-    clientOnly: false,
-    downloadUrl: "/papers/smart-contracts-elder-care.pdf",
-    pdfSize: "1.8 MB",
-    citation: "Thompson, D. & Nguyen, L. (2023). Emerging Contract Protocols: Smart Contract Enforceability in Elder Care Arrangements. Elder Law Review, 15(3), 210-228.",
-    slug: "smart-contracts-elder-care",
-    icon: <Users className="h-8 w-8" />
-  },
-  {
-    id: "paper-4",
-    title: "Licensing Limitations in Generative AI: Implications for Creative Industries",
-    authors: ["Dr. Alexandra Park", "Jonathan Lee, Esq."],
-    abstract: "This paper examines the emerging licensing challenges posed by generative AI technologies in creative industries. We analyze recent copyright litigation involving AI-generated works and propose a framework for equitable licensing structures that protect both human creators and technological innovation.",
-    publicationDate: "2023-12-10",
-    category: "Intellectual Property",
-    topics: ["Generative AI", "Copyright", "Creative Industries"],
-    clientOnly: true,
-    downloadUrl: "/papers/generative-ai-licensing.pdf",
-    pdfSize: "2.1 MB",
-    citation: "Park, A. & Lee, J. (2023). Licensing Limitations in Generative AI: Implications for Creative Industries. Technology Law Review, 19(4), 302-318.",
-    slug: "generative-ai-licensing",
-    icon: <Shield className="h-8 w-8" />
-  },
-  {
-    id: "paper-5",
-    title: "Multi-Generational Business Structures: Tax Optimization Strategies for Family-Owned Tech Companies",
-    authors: ["Prof. Richard Davis, J.D.", "Dr. Maria Gonzalez"],
-    abstract: "This research analyzes optimal business structures for transferring technology companies across multiple generations. We compare various trust instruments, corporate forms, and intellectual property holding strategies to maximize tax efficiency while preserving family control.",
-    publicationDate: "2023-08-18",
-    category: "Business Law",
-    topics: ["Family Business", "Tax Planning", "Succession Planning"],
-    clientOnly: false,
-    downloadUrl: "/papers/multi-generational-tech-business.pdf",
-    pdfSize: "1.9 MB",
-    citation: "Davis, R. & Gonzalez, M. (2023). Multi-Generational Business Structures: Tax Optimization Strategies for Family-Owned Tech Companies. Journal of Business Planning, 22(2), 178-195.",
-    slug: "multi-generational-tech-business",
-    icon: <Briefcase className="h-8 w-8" />
-  },
-  {
-    id: "paper-6",
-    title: "Algorithmic Bias in Legal Technology: Impacts on Access to Justice",
-    authors: ["Dr. Samantha Wong", "Thomas Rivera, J.D."],
-    abstract: "This paper investigates how algorithmic bias in legal technology tools affects access to justice for underserved communities. Through empirical analysis of automated legal document systems, we identify patterns of bias and propose technical and policy interventions to mitigate disparate impacts.",
-    publicationDate: "2024-01-15",
-    category: "Legal Technology",
-    topics: ["Algorithm Bias", "Access to Justice", "Legal Ethics"],
-    clientOnly: false,
-    downloadUrl: "/papers/algorithmic-bias-legal-tech.pdf",
-    pdfSize: "1.7 MB",
-    citation: "Wong, S. & Rivera, T. (2024). Algorithmic Bias in Legal Technology: Impacts on Access to Justice. Journal of Legal Technology, 7(1), 45-63.",
-    slug: "algorithmic-bias-legal-tech",
-    icon: <Scale className="h-8 w-8" />
+const IconComponent = ({ name, className }: { name: string, className?: string }) => {
+  if (isValidIconName(name)) {
+    const Icon = LucideIcons[name];
+    return <Icon className={className} />;
   }
-];
-
-// Get all categories and topics for filtering
-const categories = Array.from(new Set(researchPapers.map(paper => paper.category)));
-const allTopics = Array.from(new Set(researchPapers.flatMap(paper => paper.topics)));
+  return <LucideIcons.FileText className={className} />; // Default icon
+};
 
 const Research: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn] = useState(false); // This would normally come from auth context
+
+  // Define categories and topics inside the component using useMemo
+  const categories = useMemo(() => 
+    Array.from(new Set(researchPapers.map(paper => paper.category)))
+  , []); // Empty dependency array - only calculate once
+
+  const allTopics = useMemo(() => 
+    Array.from(new Set(researchPapers.flatMap(paper => paper.topics || [])))
+  , []); // Empty dependency array - only calculate once
 
   // Simulate loading state
   useEffect(() => {
@@ -148,7 +57,7 @@ const Research: React.FC = () => {
   const filteredPapers = researchPapers.filter(paper => {
     const matchesCategory = activeCategory === 'All' || paper.category === activeCategory;
     const matchesTopics = selectedTopics.length === 0 || 
-      selectedTopics.every(topic => paper.topics.includes(topic));
+      selectedTopics.every(topic => paper.topics?.includes(topic));
     
     return matchesCategory && matchesTopics;
   });
@@ -243,110 +152,70 @@ const Research: React.FC = () => {
           {filteredPapers.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {filteredPapers.map((paper, index) => (
-                <div
+                <Link
                   key={paper.id}
-                  className={`bg-white ${
+                  to={`/research/${paper.slug}`}
+                  className={`block bg-white ${
                     index % 2 === 0 ? 'border-l-8 border-l-blue-600' : 'border-l-8 border-l-red-600'
-                  } border-t-2 border-r-2 border-b-2 border-black p-0 ${
-                    paper.clientOnly && !isLoggedIn
-                      ? 'opacity-70 grayscale'
-                      : 'hover:shadow-lg'
-                  } transition-all`}
+                  } border-t-2 border-r-2 border-b-2 border-black p-6 transition-shadow duration-300 group hover:shadow-lg ${
+                    paper.clientOnly && !isLoggedIn ? 'opacity-70 grayscale pointer-events-none' : ''
+                  }`}
                 >
-                  <div className="p-6">
-                    {/* Paper header */}
-                    <div className="flex justify-between items-start mb-3">
-                      <div className="flex items-center">
-                        <div className={`p-2 mr-4 ${
+                  <div className="flex flex-col h-full">
+                    {/* Top section with icon and category */}
+                    <div className="flex justify-between items-start mb-4">
+                      <div className={`p-2 rounded-full ${
                           index % 2 === 0 ? 'bg-blue-100' : 'bg-red-100'
-                        } rounded-full`}>
-                          {paper.icon}
-                        </div>
-                        <div>
-                          <span className="text-xs font-medium bg-gray-100 text-gray-800 px-2 py-1 rounded">
-                            {paper.category}
-                          </span>
-                          {paper.clientOnly && (
-                            <span className="ml-2 text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">
-                              Client Only
-                            </span>
-                          )}
-                        </div>
+                        }`}>
+                        <IconComponent name={paper.iconName} className={`h-7 w-7 ${index % 2 === 0 ? 'text-blue-700' : 'text-red-700'}`} />
                       </div>
-                      <span className="text-xs text-gray-500">
-                        {paper.publicationDate}
-                      </span>
+                      {paper.clientOnly && (
+                        <span className="text-xs font-medium bg-red-100 text-red-800 px-2 py-1 rounded flex items-center">
+                          <Lock className="h-3 w-3 mr-1" /> Client Only
+                        </span>
+                      )}
                     </div>
                     
-                    {/* Paper title */}
-                    <h2 className="font-display text-xl font-medium text-black mb-3">
+                    {/* Title */}
+                    <h3 className="font-display text-xl text-black mb-3 flex-grow group-hover:text-navy transition-colors duration-300">
                       {paper.title}
-                    </h2>
+                    </h3>
                     
                     {/* Authors */}
-                    <p className="text-sm text-gray-700 mb-4">
-                      By {paper.authors.join(', ')}
+                    <p className="text-sm text-gray-600 mb-4">
+                      By {paper.authors.map(a => a.name).join(', ')}
                     </p>
                     
                     {/* Abstract */}
-                    <p className="text-sm text-gray-600 mb-4">
+                    <p className="text-sm text-gray-700 line-clamp-3 mb-6 flex-grow">
                       {paper.abstract}
                     </p>
                     
-                    {/* Topics */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {paper.topics.map(topic => (
-                        <span 
-                          key={topic}
-                          className="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded"
-                        >
-                          {topic}
-                        </span>
-                      ))}
-                    </div>
-                    
-                    {/* Citation */}
-                    <div className="bg-gray-50 p-3 mb-4 text-xs text-gray-700 border border-gray-200">
-                      <strong>Citation:</strong> {paper.citation}
-                    </div>
-                    
-                    {/* Actions */}
-                    <div className="flex justify-between items-center">
-                      <Link
-                        to={`/research/${paper.slug}`}
-                        className="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center"
-                      >
-                        View Full Paper
-                        <ChevronRight className="w-4 h-4 ml-1" />
-                      </Link>
-                      
-                      <a
-                        href={paper.clientOnly && !isLoggedIn ? "#login-required" : paper.downloadUrl}
-                        className={`inline-flex items-center text-sm ${
-                          paper.clientOnly && !isLoggedIn
-                            ? 'text-gray-400 cursor-not-allowed'
-                            : 'text-blue-600 hover:text-blue-800'
-                        }`}
+                    {/* Footer with date and action */}
+                    <div className="mt-auto pt-4 border-t border-gray-200 flex justify-between items-center">
+                      <span className="text-xs text-gray-500">
+                        {new Date(paper.publicationDate).toLocaleDateString()}
+                      </span>
+                      <Button 
+                        variant="link"
+                        size="sm"
+                        className="text-navy group-hover:text-gold p-0 h-auto font-semibold"
                         onClick={(e) => {
                           if (paper.clientOnly && !isLoggedIn) {
-                            e.preventDefault();
-                            // Would normally show login modal
-                            alert("Please log in to download client-only research papers");
+                            e.preventDefault(); 
                           }
                         }}
                       >
-                        <Download className="w-4 h-4 mr-1" />
-                        Download PDF ({paper.pdfSize})
-                      </a>
+                        Read More <ChevronRight className="w-4 h-4 ml-1" />
+                      </Button>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           ) : (
-            <div className="text-center py-16 border-4 border-black">
-              <h3 className="text-xl mb-2">No research papers found</h3>
-              <p className="text-gray-600">Try adjusting your search filters</p>
+            <div className="text-center py-12">
+              <p className="text-gray-600">No research papers match the selected filters.</p>
             </div>
           )}
         </div>
