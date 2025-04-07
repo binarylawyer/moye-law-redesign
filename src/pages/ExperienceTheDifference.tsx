@@ -57,6 +57,8 @@ const ExperienceTheDifference = () => {
                     src="/images/family.jpg" 
                     alt="Family values at Moye Law" 
                     className="w-full h-auto object-cover"
+                    width={600}
+                    height={400}
                   />
                   <div className="absolute top-0 left-0 w-24 h-8 bg-[#FFD500] -translate-x-4 -translate-y-4 -z-10"></div>
                   <div className="absolute bottom-0 right-0 w-16 h-16 bg-[#003B98] translate-x-4 translate-y-4 -z-10"></div>

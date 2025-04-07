@@ -95,11 +95,9 @@ const Header: React.FC = () => {
           to="/" 
           className="z-10 flex items-center hover:opacity-80 transition duration-200"
         >
-          <img 
-            src="/logos/Untitled-3-Moye_AB2.jpeg"
-            alt="Moye Law Logo"
-            className="h-12 md:h-14 w-auto transition-all duration-300"
-          />
+          <span className="font-display font-bold text-3xl tracking-tight">
+            MOYE LAW
+          </span>
         </Link>
 
         {/* Desktop Navigation */}

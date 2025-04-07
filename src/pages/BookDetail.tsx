@@ -82,6 +82,8 @@ const BookDetailPage: React.FC = () => {
                     src={book.coverImageUrl}
                     alt={`${book.title} cover`}
                     className="rounded-lg shadow-md w-full"
+                    width={300}
+                    height={450}
                   />
                 </div>
               )}

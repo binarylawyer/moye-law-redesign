@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import sitemap from 'vite-plugin-sitemap';
+import { imagetools } from 'vite-imagetools';
 
 // --- Data Imports for Dynamic Routes ---
 import { resources as articles, Resource } from './src/data/articlesData'; // Renamed, aliased as articles
@@ -130,6 +131,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     },
     base: '/',
     plugins: [
+      imagetools(),
       react(),
       sitemap({ 
         hostname: 'https://moye.law',

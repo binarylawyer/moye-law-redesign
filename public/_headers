@@ -1,0 +1,48 @@
+# _headers file for Netlify
+
+# Cache static assets aggressively (1 year)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache images, fonts, PDFs for a long time (1 year)
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+/*.jpeg
+  Cache-Control: public, max-age=31536000, immutable
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+/*.gif
+  Cache-Control: public, max-age=31536000, immutable
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/*.pdf
+  Cache-Control: public, max-age=31536000
+
+# Don't cache HTML files
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Security Headers (can be added here or in netlify.toml)
+/*
+  # Example: Add X-Frame-Options (already set via meta tag, but header is preferred)
+  # X-Frame-Options: DENY
+  
+  # Example: Add X-Content-Type-Options (already set via meta tag, but header is preferred)
+  # X-Content-Type-Options: nosniff
+  
+  # Example: Referrer Policy
+  # Referrer-Policy: strict-origin-when-cross-origin
+  
+  # Example: Permissions Policy
+  # Permissions-Policy: geolocation=(), microphone=(), camera=()
+  
+  # Example: Strict-Transport-Security (only if site uses HTTPS exclusively)
+  # Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+</rewritten_file> 
