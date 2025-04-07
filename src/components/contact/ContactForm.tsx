@@ -97,14 +97,21 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
       }
       
       // Simulate form submission with a delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // await new Promise(resolve => setTimeout(resolve, 1000)); // Keep or remove simulation as needed
       
-      // In a real app, this would be an API call
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(sanitizedData)
-      // });
+      // API call to the backend
+      const response = await fetch('http://localhost:3001/api/contact', { // Updated URL
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(sanitizedData)
+      });
+
+      if (!response.ok) {
+        // Handle server errors (e.g., log the error, show a specific message)
+        const errorData = await response.json();
+        logger.error("API submission error:", errorData);
+        throw new Error(errorData.message || 'Failed to submit form to server');
+      }
       
       setIsSubmitted(true);
       toast({
