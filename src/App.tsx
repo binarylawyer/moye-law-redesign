@@ -1,16 +1,20 @@
+import React, { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import PageErrorBoundary from "./components/PageErrorBoundary";
 import Layout from "./components/Layout";
 import { logger } from "./utils/logger";
+import FloatingConsultationButton from "./components/FloatingConsultationButton";
+
+// --- Revert: Bring back static imports ---
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Practice from "./pages/Practice";
+import Services from "./pages/Services";
 import Team from "./pages/Team";
 import TeamMemberProfile from "./pages/TeamMemberProfile";
 import About from "./pages/About";
@@ -24,18 +28,16 @@ import TechnologyPlatform from "./pages/TechnologyApproach";
 import CaseStudies from "./pages/CaseStudies";
 import Podcasts from "./pages/Podcasts";
 import Books from "./pages/Books";
-import Research from "./pages/Research";
-import ResearchPaper from "./pages/ResearchPaper";
 import BookDetail from "./pages/BookDetail";
+import Research from "./pages/Research";
+import ResearchPaperPage from "./pages/ResearchPaper";
 import EstatePlanningPodcasts from "./pages/podcasts/EstatePlanningPodcasts";
 import TechIPPodcasts from "./pages/podcasts/TechIPPodcasts";
 import ExperienceTheDifference from "./pages/ExperienceTheDifference";
-import FloatingConsultationButton from "./components/FloatingConsultationButton";
 import ErrorTestPage from "./pages/ErrorTest";
-import Services from "./pages/Services";
 import ClientChat from "./pages/ClientChat";
 
-// ** NEW/UPDATED Service Page Imports **
+// Service Pages
 import EstatePlanningService from "./pages/services/EstatePlanning";
 import ElderLawService from "./pages/services/ElderLaw";
 import ProbateService from "./pages/services/ProbateAdministration";
@@ -44,7 +46,7 @@ import DigitalAssetTechProtectionService from "./pages/services/DigitalAssetTech
 import LicensingTransactionsService from "./pages/services/LicensingTransactions";
 import ArtEntertainmentLawService from "./pages/services/ArtEntertainmentLaw";
 
-// Import the active practice area components
+// Active Practice Area Pages
 import IPLicensing from "./pages/practice/active/IPLicensing";
 import TrustsEstates from "./pages/practice/active/TrustsEstates";
 import ElderLaw from "./pages/practice/active/ElderLaw";
@@ -64,12 +66,14 @@ import BlockchainDigitalAssets from "./pages/practice/active/BlockchainDigitalAs
 import RealEstateTransactions from "./pages/practice/active/RealEstateTransactions";
 import DigitalMediaLaw from "./pages/practice/active/DigitalMediaLaw";
 
-// Import hub pages
+// Hub Pages
 import IntellectualProperty from "./pages/practice/IntellectualProperty";
 import EstateLegacy from "./pages/practice/EstateLegacy";
 import ArtsMediaLaw from "./pages/practice/ArtsMediaLaw";
 import RealEstateHub from "./pages/practice/RealEstateHub";
 import EmergingTechnologyHub from "./pages/practice/EmergingTechnologyHub";
+// --- End Revert ---
+
 
 // Declare gtag function for TypeScript
 declare global {
@@ -125,190 +129,36 @@ const AppRoutes = () => {
             </PageErrorBoundary>
           } />
           
-          {/* Practice Routes */}
-          <Route path="/practice" element={
-            <PageErrorBoundary pageName="Practice Areas">
-              <Practice />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/services" element={
-            <PageErrorBoundary pageName="Services">
-              <Services />
-            </PageErrorBoundary>
-          } />
-          
-          {/* Hub pages */}
-          <Route path="/practice/intellectual-property" element={
-            <PageErrorBoundary pageName="Intellectual Property">
-              <IntellectualProperty />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/estate-legacy" element={
-            <PageErrorBoundary pageName="Estate & Legacy">
-              <EstateLegacy />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/arts-media-law" element={
-            <PageErrorBoundary pageName="Arts & Media Law">
-              <ArtsMediaLaw />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/real-estate-hub" element={
-            <PageErrorBoundary pageName="Real Estate">
-              <RealEstateHub />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/emerging-technology-hub" element={
-            <PageErrorBoundary pageName="Emerging Technology">
-              <EmergingTechnologyHub />
-            </PageErrorBoundary>
-          } />
-          
-          {/* Individual practice areas - existing ones */}
-          <Route path="/practice/ip-licensing" element={
-            <PageErrorBoundary pageName="IP Licensing">
-              <IPLicensing />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/elder-law" element={
-            <PageErrorBoundary pageName="Elder Law">
-              <ElderLaw />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/entertainment-law" element={
-            <PageErrorBoundary pageName="Entertainment Law">
-              <EntertainmentLaw />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/emerging-tech" element={
-            <PageErrorBoundary pageName="Emerging Technology Law">
-              <EmergingTech />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/ip-asset-protection" element={
-            <PageErrorBoundary pageName="IP Asset Protection">
-              <IPAssetProtection />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/real-estate" element={
-            <PageErrorBoundary pageName="Real Estate">
-              <RealEstate />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/trusts-estates" element={
-            <PageErrorBoundary pageName="Trusts & Estates">
-              <TrustsEstates />
-            </PageErrorBoundary>
-          } />
-          
-          {/* Individual practice areas - new ones */}
-          <Route path="/practice/software-licensing" element={
-            <PageErrorBoundary pageName="Software Licensing">
-              <SoftwareLicensing />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/ip-consulting" element={
-            <PageErrorBoundary pageName="IP Consulting">
-              <IPConsulting />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/digital-asset-protection" element={
-            <PageErrorBoundary pageName="Digital Asset Protection">
-              <DigitalAssetProtection />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/probate-administration" element={
-            <PageErrorBoundary pageName="Probate Administration">
-              <ProbateAdministration />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/art-law" element={
-            <PageErrorBoundary pageName="Art Law">
-              <ArtLaw />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/real-estate-consulting" element={
-            <PageErrorBoundary pageName="Real Estate Consulting">
-              <RealEstateConsulting />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/innovation-patent-law" element={
-            <PageErrorBoundary pageName="Innovation Patent Law">
-              <InnovationPatentLaw />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/ai-machine-learning" element={
-            <PageErrorBoundary pageName="AI & Machine Learning">
-              <AIMachineLearning />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/blockchain-digital-assets" element={
-            <PageErrorBoundary pageName="Blockchain Digital Assets">
-              <BlockchainDigitalAssets />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/real-estate-transactions" element={
-            <PageErrorBoundary pageName="Real Estate Transactions">
-              <RealEstateTransactions />
-            </PageErrorBoundary>
-          } />
-          
-          <Route path="/practice/digital-media-law" element={
-            <PageErrorBoundary pageName="Digital Media Law">
-              <DigitalMediaLaw />
-            </PageErrorBoundary>
-          } />
-          
-          {/* Other Main Routes */}
-          <Route path="/about" element={
-            <PageErrorBoundary pageName="About Us">
-              <About />
-            </PageErrorBoundary>
-          } />
-          <Route path="/team" element={
-            <PageErrorBoundary pageName="Our Team">
-              <Team />
-            </PageErrorBoundary>
-          } />
-          <Route path="/team/:memberId" element={
-            <PageErrorBoundary pageName="Team Member Profile">
-              <TeamMemberProfile />
-            </PageErrorBoundary>
-          } />
-          <Route path="/contact" element={
-            <PageErrorBoundary pageName="Contact Us">
-              <Contact />
-            </PageErrorBoundary>
-          } />
-          
-          {/* Resources Routes */}
-          <Route path="/resources" element={
-            <PageErrorBoundary pageName="Resources">
-              <Resources />
-            </PageErrorBoundary>
-          } />
-          
-          {/* Other routes can be similarly wrapped with PageErrorBoundary */}
+          <Route path="/practice" element={<PageErrorBoundary pageName="Practice Areas"><Practice /></PageErrorBoundary>} />
+          <Route path="/services" element={<PageErrorBoundary pageName="Services"><Services /></PageErrorBoundary>} />
+          <Route path="/practice/intellectual-property" element={<PageErrorBoundary pageName="Intellectual Property"><IntellectualProperty /></PageErrorBoundary>} />
+          <Route path="/practice/estate-legacy" element={<PageErrorBoundary pageName="Estate & Legacy"><EstateLegacy /></PageErrorBoundary>} />
+          <Route path="/practice/arts-media-law" element={<PageErrorBoundary pageName="Arts & Media Law"><ArtsMediaLaw /></PageErrorBoundary>} />
+          <Route path="/practice/real-estate-hub" element={<PageErrorBoundary pageName="Real Estate"><RealEstateHub /></PageErrorBoundary>} />
+          <Route path="/practice/emerging-technology-hub" element={<PageErrorBoundary pageName="Emerging Technology"><EmergingTechnologyHub /></PageErrorBoundary>} />
+          <Route path="/practice/ip-licensing" element={<PageErrorBoundary pageName="IP Licensing"><IPLicensing /></PageErrorBoundary>} />
+          <Route path="/practice/elder-law" element={<PageErrorBoundary pageName="Elder Law"><ElderLaw /></PageErrorBoundary>} />
+          <Route path="/practice/entertainment-law" element={<PageErrorBoundary pageName="Entertainment Law"><EntertainmentLaw /></PageErrorBoundary>} />
+          <Route path="/practice/emerging-tech" element={<PageErrorBoundary pageName="Emerging Technology Law"><EmergingTech /></PageErrorBoundary>} />
+          <Route path="/practice/ip-asset-protection" element={<PageErrorBoundary pageName="IP Asset Protection"><IPAssetProtection /></PageErrorBoundary>} />
+          <Route path="/practice/real-estate" element={<PageErrorBoundary pageName="Real Estate"><RealEstate /></PageErrorBoundary>} />
+          <Route path="/practice/trusts-estates" element={<PageErrorBoundary pageName="Trusts & Estates"><TrustsEstates /></PageErrorBoundary>} />
+          <Route path="/practice/software-licensing" element={<PageErrorBoundary pageName="Software Licensing"><SoftwareLicensing /></PageErrorBoundary>} />
+          <Route path="/practice/ip-consulting" element={<PageErrorBoundary pageName="IP Consulting"><IPConsulting /></PageErrorBoundary>} />
+          <Route path="/practice/digital-asset-protection" element={<PageErrorBoundary pageName="Digital Asset Protection"><DigitalAssetProtection /></PageErrorBoundary>} />
+          <Route path="/practice/probate-administration" element={<PageErrorBoundary pageName="Probate Administration"><ProbateAdministration /></PageErrorBoundary>} />
+          <Route path="/practice/art-law" element={<PageErrorBoundary pageName="Art Law"><ArtLaw /></PageErrorBoundary>} />
+          <Route path="/practice/real-estate-consulting" element={<PageErrorBoundary pageName="Real Estate Consulting"><RealEstateConsulting /></PageErrorBoundary>} />
+          <Route path="/practice/innovation-patent-law" element={<PageErrorBoundary pageName="Innovation Patent Law"><InnovationPatentLaw /></PageErrorBoundary>} />
+          <Route path="/practice/ai-machine-learning" element={<PageErrorBoundary pageName="AI & Machine Learning"><AIMachineLearning /></PageErrorBoundary>} />
+          <Route path="/practice/blockchain-digital-assets" element={<PageErrorBoundary pageName="Blockchain Digital Assets"><BlockchainDigitalAssets /></PageErrorBoundary>} />
+          <Route path="/practice/real-estate-transactions" element={<PageErrorBoundary pageName="Real Estate Transactions"><RealEstateTransactions /></PageErrorBoundary>} />
+          <Route path="/practice/digital-media-law" element={<PageErrorBoundary pageName="Digital Media Law"><DigitalMediaLaw /></PageErrorBoundary>} />
+          <Route path="/about" element={<PageErrorBoundary pageName="About Us"><About /></PageErrorBoundary>} />
+          <Route path="/team" element={<PageErrorBoundary pageName="Our Team"><Team /></PageErrorBoundary>} />
+          <Route path="/team/:memberId" element={<PageErrorBoundary pageName="Team Member Profile"><TeamMemberProfile /></PageErrorBoundary>} />
+          <Route path="/contact" element={<PageErrorBoundary pageName="Contact Us"><Contact /></PageErrorBoundary>} />
+          <Route path="/resources" element={<PageErrorBoundary pageName="Resources"><Resources /></PageErrorBoundary>} />
           <Route path="/resources/articles" element={<Articles />} />
           <Route path="/resources/podcasts" element={<Podcasts />} />
           <Route path="/resources/podcasts/estate-planning" element={<EstatePlanningPodcasts />} />
@@ -316,15 +166,13 @@ const AppRoutes = () => {
           <Route path="/books" element={<Books />} />
           <Route path="/books/:slug" element={<BookDetail />} />
           <Route path="/research" element={<Research />} />
-          <Route path="/research/:slug" element={<ResearchPaper />} />
+          <Route path="/research/:slug" element={<ResearchPaperPage />} />
           <Route path="/resources/faq" element={<FAQ />} />
           <Route path="/resources/how-we-work" element={<HowWeWork />} />
           <Route path="/resources/technology-approach" element={<TechnologyPlatform />} />
           <Route path="/resources/case-studies" element={<CaseStudies />} />
           <Route path="/resources/:slug" element={<ResourceDetail />} />
           <Route path="/client-chat" element={<ClientChat />} />
-          
-          {/* Updated Services Routes */}
           <Route path="/services/estate-planning" element={<EstatePlanningService />} />
           <Route path="/services/elder-law" element={<ElderLawService />} />
           <Route path="/services/probate-administration" element={<ProbateService />} />
@@ -332,17 +180,10 @@ const AppRoutes = () => {
           <Route path="/services/digital-asset-tech-protection" element={<DigitalAssetTechProtectionService />} />
           <Route path="/services/licensing-transactions" element={<LicensingTransactionsService />} />
           <Route path="/services/art-entertainment-law" element={<ArtEntertainmentLawService />} />
-          
-          {/* Direct access route for How We Work */}
           <Route path="/how-we-work" element={<HowWeWork />} />
-          
-          {/* Experience the Difference page */}
           <Route path="/experience-the-difference" element={<ExperienceTheDifference />} />
-          
-          {/* Error Testing Page */}
           <Route path="/error-test" element={<ErrorTestPage />} />
-          
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
