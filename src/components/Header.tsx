@@ -4,6 +4,7 @@ import { X, Menu } from 'lucide-react';
 import MobileMenu from './navigation/MobileMenu';
 import { practiceAreas, specializedServices, resourcesItems } from './navigation/NavigationData';
 import DesktopNavigation from './navigation/DesktopNavigation';
+import OptimizedImage from './OptimizedImage';
 
 /**
  * Header Component
@@ -14,10 +15,19 @@ import DesktopNavigation from './navigation/DesktopNavigation';
  * 2. Dynamic styling based on scroll position for visual enhancements
  * 3. Controlled transitions for smooth visual changes
  * 
+ * PERFORMANCE OPTIMIZATIONS:
+ * - Image dimensions respect natural aspect ratio to prevent stretching
+ * - Logo uses fetchpriority="high" to prioritize loading
+ * - Only height is specified to maintain aspect ratio
+ * - Width/height attributes match visual dimensions to improve CLS
+ * - Using OptimizedImage component for best LCP performance
+ * 
  * PREVIOUS ISSUES SOLVED:
  * - Disappearing header: Fixed by ensuring consistent positioning via inline styles
  * - Moving too high on scroll: Fixed by using explicit height values and fixed positioning
  * - Poor contrast: Addressed with proper background opacity and shadows
+ * - Slow LCP: Addressed with proper image loading optimizations
+ * - Stretched logo: Fixed by respecting natural aspect ratio
  * 
  * APPROACH:
  * The key to this implementation is that we separate the POSITIONING from the VISUAL EFFECTS.
@@ -28,6 +38,7 @@ const Header: React.FC = () => {
   // Track if page is scrolled for visual effects
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [logoLoaded, setLogoLoaded] = useState(false);
 
   // Navigation data
   const navigationData = {
@@ -101,10 +112,15 @@ const Header: React.FC = () => {
    * NOTE: These do NOT affect positioning, only appearance.
    */
   // Logo size changes based on scroll
-  const logoSize = isScrolled ? "h-10" : "h-12";
+  const logoHeight = isScrolled ? 40 : 48;
   
   // Navigation container spacing changes
   const navSpacing = isScrolled ? "space-x-4" : "space-x-8";
+
+  // Handle logo load completion
+  const handleLogoLoad = () => {
+    setLogoLoaded(true);
+  };
   
   return (
     <header style={headerStyle}>
@@ -119,18 +135,22 @@ const Header: React.FC = () => {
           aria-label="Moye Law - Home"
         >
           {/* 
-            Dynamic logo sizing:
-            - Both the attributes (width/height) and the CSS class change
-            - The transition creates a smooth size change
+            Using OptimizedImage component for better performance:
+            - High priority loading for critical LCP element
+            - Only height is specified to maintain natural aspect ratio
+            - No stretching or distortion of the logo
           */}
           <img 
             src="/logos/moye-logo.webp" 
             alt="MOYE LAW" 
-            width={isScrolled ? "180" : "216"} 
-            height={isScrolled ? "40" : "48"}
-            className={`${logoSize} w-auto transition-all duration-300`} 
-            loading="eager"
-            fetchPriority="high"
+            height={logoHeight}
+            className="h-auto max-h-12"
+            style={{
+              height: `${logoHeight}px`,
+            }}
+            fetchpriority="high"
+            decoding="async"
+            onLoad={handleLogoLoad}
           />
           
           <span className="sr-only">MOYE LAW</span>

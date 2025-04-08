@@ -115,6 +115,19 @@ const ResearchPaperPage: React.FC = () => {
     return researchPapers.find(p => p.slug === slug);
   }, [slug]);
   
+  // Find related papers based on same category or shared topics
+  const relatedPapers = useMemo(() => {
+    if (!paper) return [];
+    
+    return researchPapers
+      .filter(p => p.id !== paper.id) // Exclude current paper
+      .filter(p => 
+        p.category === paper.category || // Same category
+        (paper.topics && p.topics && p.topics.some(topic => paper.topics.includes(topic))) // Shared topics
+      )
+      .slice(0, 2); // Limit to 2 related papers
+  }, [paper]);
+  
   useEffect(() => {
     if (paper) {
       setIsLoading(false);
@@ -352,52 +365,42 @@ const ResearchPaperPage: React.FC = () => {
       </section>
       
       {/* Related Research Section */}
-      <section className="bg-gray-50 py-12 border-t-4 border-black">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-display mb-6">Related Research</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-white border-l-4 border-blue-600 border-t border-r border-b p-4 hover:shadow-md transition-shadow">
-                <span className="text-xs font-medium bg-gray-100 text-gray-800 px-2 py-1 rounded">
-                  Estate Planning
-                </span>
-                <h3 className="font-medium text-lg mt-2 mb-1">
-                  Digital Asset Security in Estate Administration
-                </h3>
-                <p className="text-sm text-gray-600 mb-2">
-                  A technical analysis of security protocols for digital asset transfer in estate contexts.
-                </p>
-                <Link
-                  to="/research/digital-asset-security"
-                  className="text-blue-600 hover:text-blue-800 text-sm font-medium inline-flex items-center"
-                >
-                  View Paper
-                  <LucideIcons.ChevronRight className="w-4 h-4 ml-1" />
-                </Link>
-              </div>
-              
-              <div className="bg-white border-l-4 border-red-600 border-t border-r border-b p-4 hover:shadow-md transition-shadow">
-                <span className="text-xs font-medium bg-gray-100 text-gray-800 px-2 py-1 rounded">
-                  Legal Technology
-                </span>
-                <h3 className="font-medium text-lg mt-2 mb-1">
-                  Regulatory Approaches to Legal Automation
-                </h3>
-                <p className="text-sm text-gray-600 mb-2">
-                  Comparative analysis of how different jurisdictions regulate automated legal services.
-                </p>
-                <Link
-                  to="/research/regulatory-approaches-legal-automation"
-                  className="text-blue-600 hover:text-blue-800 text-sm font-medium inline-flex items-center"
-                >
-                  View Paper
-                  <LucideIcons.ChevronRight className="w-4 h-4 ml-1" />
-                </Link>
+      {relatedPapers && relatedPapers.length > 0 ? (
+        <section className="bg-gray-50 py-12 border-t-4 border-black">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-display mb-6">Related Research</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {relatedPapers.map((relatedPaper, index) => (
+                  <div 
+                    key={relatedPaper.id}
+                    className={`bg-white border-l-4 ${
+                      index % 2 === 0 ? 'border-blue-600' : 'border-red-600'
+                    } border-t border-r border-b p-4 hover:shadow-md transition-shadow`}
+                  >
+                    <span className="text-xs font-medium bg-gray-100 text-gray-800 px-2 py-1 rounded">
+                      {relatedPaper.category}
+                    </span>
+                    <h3 className="font-medium text-lg mt-2 mb-1">
+                      {relatedPaper.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-2 line-clamp-2">
+                      {relatedPaper.abstract}
+                    </p>
+                    <Link
+                      to={`/research/${relatedPaper.slug}`}
+                      className="text-blue-600 hover:text-blue-800 text-sm font-medium inline-flex items-center"
+                    >
+                      View Paper
+                      <LucideIcons.ChevronRight className="w-4 h-4 ml-1" />
+                    </Link>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
       
       <ConsultationCTA />
       <Toaster />

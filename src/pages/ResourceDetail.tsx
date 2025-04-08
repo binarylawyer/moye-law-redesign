@@ -46,7 +46,10 @@ const ResourceDetail = () => {
         .filter(r => 
           r.id !== foundResource.id && 
           r.tags && 
-          r.tags.some(tag => foundResource.tags?.includes(tag))
+          r.tags.some(tag => 
+            foundResource.tags && 
+            foundResource.tags.includes(tag)
+          )
         )
         .slice(0, 3);
       setRelatedResources(related);
@@ -107,11 +110,11 @@ const ResourceDetail = () => {
         </div>
         
         <div ref={el => elementsRef.current[1] = el} className="reveal visible">
-          <ResourceContent content={resource?.content} />
+          <ResourceContent content={resource?.content || ""} />
         </div>
         
         {/* Related Resources with Mondrian styling */}
-        {relatedResources.length > 0 && (
+        {relatedResources && relatedResources.length > 0 && (
           <div ref={el => elementsRef.current[2] = el} className="reveal visible">
             <div className="py-8">
               <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Moye Law - Family Values, Future-Forward Legal Solutions"
+    />
+    
+    <!-- Critical CSS for fast rendering of header and logo -->
+    <style>
+      /* Critical styles for header and logo to reduce LCP time */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: 80px;
+        background-color: white;
+      }
+      
+      /* Container and logo initial rendering */
+      .container {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      
+      /* Ensure the logo renders with correct dimensions and natural aspect ratio */
+      header img {
+        height: 48px;
+        width: auto; /* Let width auto-adjust to maintain aspect ratio */
+        max-height: 48px;
+      }
+      
+      /* Ensure LCP element gets proper priority */
+      img[fetchpriority="high"] {
+        content-visibility: auto;
+      }
+      
+      /* Flex display for header layout */
+      .flex {
+        display: flex;
+      }
+      
+      .items-center {
+        align-items: center;
+      }
+      
+      .justify-between {
+        justify-content: space-between;
+      }
+      
+      .h-full {
+        height: 100%;
+      }
+    </style>
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/logos/moye-logo.webp" as="image" type="image/webp" fetchpriority="high" />
+    
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <title>Moye Law - Family Values, Future-Forward Legal Solutions</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html> 
