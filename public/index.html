@@ -10,6 +10,30 @@
       content="Moye Law - Family Values, Future-Forward Legal Solutions"
     />
     
+    <!-- Script loading strategy -->
+    <script type="text/javascript">
+      // Immediate script loading for critical resources
+      window.addEventListener('load', function() {
+        // Mark document as loaded to enable rendering
+        document.documentElement.classList.add('js-loaded');
+        
+        // Defer loading non-critical third-party scripts
+        setTimeout(function() {
+          // Google Tag Manager and other analytics can be loaded after page is visible
+          const gtagScript = document.createElement('script');
+          gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-LCB4ZJ4848';
+          gtagScript.async = true;
+          document.head.appendChild(gtagScript);
+          
+          // Initialize gtag after loading
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LCB4ZJ4848');
+        }, 3000); // Defer by 3 seconds to prioritize content rendering
+      });
+    </script>
+    
     <!-- Critical CSS for fast rendering of header and logo -->
     <style>
       /* Critical styles for header and logo to reduce LCP time */
@@ -58,6 +82,12 @@
       
       .h-full {
         height: 100%;
+      }
+      
+      /* Enable first contentful paint ASAP */
+      .js-loaded .reveal-on-load {
+        visibility: visible !important;
+        opacity: 1 !important;
       }
     </style>
     
