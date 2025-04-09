@@ -42,20 +42,8 @@
     <!-- Add canonical URL -->
     <link rel="canonical" href="https://yourwebsite.com" />
 
-    <!-- Updated CSP to allow Google Analytics -->
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self'; 
-        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
-        font-src 'self' https://fonts.gstatic.com data:; 
-        script-src 'self' 'unsafe-inline' https://cdn.gpteng.co https://static.cloudflareinsights.com https://www.googletagmanager.com; 
-        img-src 'self' data: https: https://www.googletagmanager.com; 
-        connect-src 'self' https://api.yourwebsite.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.firebaseio.com https://*.googleapis.com https://firestore.googleapis.com https://*.cloudfunctions.net https://*.firebase.googleapis.com https://*.firebase.app https://firebase.googleapis.com https://*.firebaseapp.com;
-    ">
+    <!-- Security headers are now managed via Netlify _headers file -->
     
-    <!-- Other security headers -->
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-
     <!-- Add more meta tags -->
     <link rel="alternate" hreflang="es" href="https://yoursite.com/es/" />
     <meta name="geo.region" content="US" />

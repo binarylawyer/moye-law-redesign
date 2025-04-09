@@ -1,6 +1,5 @@
-
-import React, { useState } from "react";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import React, { useState, useEffect } from "react";
+import { collection, addDoc, serverTimestamp, getDocs } from "firebase/firestore";
 import { db, trackFormStep, trackFormSubmission } from "@/lib/firebase";
 import { captureMetadata } from "@/utils/metadata";
 import { useToast } from "@/components/ui/use-toast";
@@ -32,11 +31,35 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [submissionError, setSubmissionError] = useState<string | null>(null);
+  const [firebaseStatus, setFirebaseStatus] = useState<'checking' | 'ok' | 'error'>('checking');
+  
+  // Check Firebase connectivity when component mounts
+  useEffect(() => {
+    const checkFirebaseConnection = async () => {
+      try {
+        console.log("Checking Firebase connection...");
+        // Try to fetch a single document to test the connection
+        const querySnapshot = await getDocs(collection(db, "contactFormSubmissions"));
+        console.log("Firebase connection successful!");
+        setFirebaseStatus('ok');
+      } catch (error) {
+        console.error("Firebase connection error:", error);
+        setFirebaseStatus('error');
+      }
+    };
+    
+    checkFirebaseConnection();
+  }, []);
   
   // Handle persona selection from Step 1
   const handlePersonaSelect = (persona: string) => {
+    console.log("Selected persona:", persona);
     // Track step completion in analytics
-    trackFormStep(1, persona);
+    try {
+      trackFormStep(1, persona);
+    } catch (error) {
+      console.error("Error tracking form step:", error);
+    }
     
     setFormData({ ...formData, persona });
     setCurrentStep(2);
@@ -44,8 +67,13 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
   
   // Handle conditional form data from Step 2
   const handleStep2Submit = (data: any) => {
+    console.log("Step 2 data:", data);
     // Track step completion in analytics
-    trackFormStep(2, formData.persona);
+    try {
+      trackFormStep(2, formData.persona);
+    } catch (error) {
+      console.error("Error tracking step 2:", error);
+    }
     
     // Prepare data for storage based on persona
     setFormData({
@@ -62,6 +90,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
     setSubmissionError(null);
     
     try {
+      console.log("Submitting contact info:", contactData);
       // Track step completion in analytics
       trackFormStep(3, formData.persona);
       
@@ -153,6 +182,13 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
   return (
     <ErrorBoundary>
       <div className={`form-container max-w-2xl mx-auto p-4 md:p-6 bg-white rounded-lg shadow-md ${className}`}>
+        {firebaseStatus === 'error' && (
+          <div className="mb-4 p-3 bg-amber-50 border border-amber-200 text-amber-700 rounded">
+            <p className="font-medium">Firebase connection issue detected</p>
+            <p className="text-sm">There may be connectivity issues with our form service. If you have problems submitting the form, please contact us directly.</p>
+          </div>
+        )}
+        
         {!isComplete && <FormProgress currentStep={currentStep} totalSteps={3} />}
         {submissionError && (
           <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded">
