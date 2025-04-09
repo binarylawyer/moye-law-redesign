@@ -38,7 +38,6 @@ const ContactInfo: React.FC<ContactInfoProps> = ({
 }) => {
   // Referral source options
   const referralOptions = [
-    { value: "none", label: "Select an option" },
     { value: "Google", label: "Google Search" },
     { value: "Referral", label: "Referral from a Friend/Colleague" },
     { value: "Social Media", label: "Social Media" },
@@ -54,7 +53,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({
       email: '',
       phone: '',
       incentive_requested: true,
-      referral_source: 'none'
+      referral_source: 'Google'
     }
   });
   

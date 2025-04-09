@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 import ContactHero from "../components/contact/ContactHero";
 import MultiStepForm from "../components/contact/MultiStepForm";
 import OfficeLocations from "../components/contact/OfficeLocations";
@@ -191,21 +190,7 @@ const Contact: React.FC = () => {
              </div>
            </div>
         </section>
-        
-        {/* Confidentiality Statement (Remains Fourth) */}
-        <section
-          ref={el => elementsRef.current[3] = el}
-          className="py-12 md:py-16 reveal"
-          style={{ transitionDelay: '0.4s' }}
-        >
-          <div className="container mx-auto px-6">
-            <div className="max-w-3xl mx-auto">
-              <PrivacyMessage />
-            </div>
-          </div>
-        </section>
       </main>
-      <Footer />
     </div>
   );
 };
