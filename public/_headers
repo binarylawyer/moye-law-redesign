@@ -28,21 +28,11 @@
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
 
-# Security Headers (can be added here or in netlify.toml)
+# Security Headers
 /*
-  # Example: Add X-Frame-Options (already set via meta tag, but header is preferred)
-  # X-Frame-Options: DENY
-  
-  # Example: Add X-Content-Type-Options (already set via meta tag, but header is preferred)
-  # X-Content-Type-Options: nosniff
-  
-  # Example: Referrer Policy
-  # Referrer-Policy: strict-origin-when-cross-origin
-  
-  # Example: Permissions Policy
-  # Permissions-Policy: geolocation=(), microphone=(), camera=()
-  
-  # Example: Strict-Transport-Security (only if site uses HTTPS exclusively)
-  # Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-
+  X-Frame-Options: SAMEORIGIN
+  Content-Security-Policy: default-src 'self'; connect-src 'self' https://*.google-analytics.com https://analytics.google.com https://*.googletagmanager.com https://www.google-analytics.com https://firestore.googleapis.com https://*.firebaseio.com https://*.googleapis.com https://*.cloudfunctions.net https://*.firebase.googleapis.com https://*.firebase.app https://firebase.googleapis.com https://*.firebaseapp.com https://identitytoolkit.googleapis.com wss://*.firebaseio.com; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://www.google-analytics.com https://*.firebase.com https://*.firebaseio.com; style-src 'self' 'unsafe-inline';
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
 </rewritten_file> 
