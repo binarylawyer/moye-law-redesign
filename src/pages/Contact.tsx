@@ -54,31 +54,12 @@ const Contact: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow bg-white">
-        {/* Contact Form Section (NOW FIRST & More Compact) */}
+      <main className="flex-grow pt-16 bg-white">
+        {/* Hero Section (Now MORE Compact) - BACK AS FIRST SECTION */}
         <section
           ref={el => elementsRef.current[0] = el}
-          className="py-6 bg-light-gray reveal"
-          style={{ transitionDelay: '0.1s' }}
-        >
-          <div className="container mx-auto px-6">
-            <div className="max-w-4xl mx-auto">
-               <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                 <h2 className="font-display text-2xl text-navy mb-2">Get Personalized Legal Support</h2>
-                 <p className="text-gray-600 mb-4">
-                   Use our guided form to tell us about your specific needs and receive a free estate planning book.
-                 </p>
-                 <MultiStepForm />
-               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Hero Section (NOW SECOND & Made MORE Compact) */}
-        <section
-          ref={el => elementsRef.current[1] = el}
           className="py-6 reveal"
-          style={{ transitionDelay: '0.2s' }}
+          style={{ transitionDelay: '0.1s' }}
         >
           <div className="container mx-auto px-6">
             {/* Centered & Shrunken Header Block */}
@@ -141,6 +122,25 @@ const Contact: React.FC = () => {
           </div>
         </section>
 
+        {/* Contact Form Section (Compact) - NOW SECOND SECTION AGAIN */}
+        <section
+          ref={el => elementsRef.current[1] = el}
+          className="py-6 bg-light-gray reveal"
+          style={{ transitionDelay: '0.2s' }}
+        >
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto">
+               <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                 <h2 className="font-display text-2xl text-navy mb-2">Quick 3-Step Form for Tailored Legal Guidance</h2>
+                 <p className="text-gray-600 mb-4">
+                   Our simple guided questionnaire takes just minutes to complete. You'll receive a personalized strategy and free estate planning book.
+                 </p>
+                 <MultiStepForm />
+               </div>
+            </div>
+          </div>
+        </section>
+
         {/* Office Locations and Trust Section (Remains Third) */}
         <section
           ref={el => elementsRef.current[2] = el}
@@ -149,10 +149,32 @@ const Contact: React.FC = () => {
         >
            <div className="container mx-auto px-6">
              <div className="max-w-4xl mx-auto">
+                {/* New York address only with phone number */}
                 <div className="mb-12">
-                  <OfficeLocations />
+                  <h2 className="font-display text-2xl text-navy mb-4">Our Office</h2>
+                  <div className="flex flex-wrap items-center gap-6">
+                    <div className="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gold mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      <div className="text-gray-800">
+                        <div>600 Mamaroneck Avenue</div>
+                        <div>Suite 400</div>
+                        <div>Harrison, NY 10528</div>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gold mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                      <span className="text-gray-800">(800) 579-MOYE (6693)</span>
+                    </div>
+                  </div>
                 </div>
 
+                {/* Trust Indicators (unchanged) */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {trustIndicators.map((indicator, index) => (
                     <div key={index} className="bg-white p-4 rounded-md border border-gray-100 flex items-start">
