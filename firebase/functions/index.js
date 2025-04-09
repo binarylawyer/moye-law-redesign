@@ -1,7 +1,10 @@
-const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const nodemailer = require("nodemailer");
 const validator = require('validator');
+
+// Import Firebase Functions 
+const functions = require("firebase-functions");
+const { onDocumentCreated } = functions.firestore;
 
 admin.initializeApp();
 const db = admin.firestore();
@@ -71,11 +74,18 @@ try {
 
 
 // --- Cloud Function: Send Book Incentive Email ---
-exports.sendBookIncentive = functions.firestore
-    .document("contactFormSubmissions/{docId}")
-    .onCreate(async (snap, context) => {
-      const docId = context.params.docId;
-      const formData = snap.data();
+exports.sendBookIncentive = onDocumentCreated(
+    "contactFormSubmissions/{docId}", 
+    async (event) => {
+      const snapshot = event.data;
+      const docId = event.params.docId;
+      
+      if (!snapshot) {
+        functions.logger.warn(`No data found for docId: ${docId}`);
+        return null;
+      }
+      
+      const formData = snapshot.data();
       functions.logger.info(`Processing incentive request for docId: ${docId}`, {structuredData: true});
 
       // Re-validate config at runtime (optional, provides extra safety)
@@ -203,11 +213,18 @@ exports.sendBookIncentive = functions.firestore
 
 
 // --- Cloud Function: Notify Team of New Submission ---
-exports.notifyTeamOfNewSubmission = functions.firestore
-    .document("contactFormSubmissions/{docId}")
-    .onCreate(async (snap, context) => {
-      const docId = context.params.docId;
-      const formData = snap.data();
+exports.notifyTeamOfNewSubmission = onDocumentCreated(
+    "contactFormSubmissions/{docId}",
+    async (event) => {
+      const snapshot = event.data;
+      const docId = event.params.docId;
+      
+      if (!snapshot) {
+        functions.logger.warn(`No data found for docId: ${docId}`);
+        return null;
+      }
+      
+      const formData = snapshot.data();
       const submissionTime = formData.timestamp.toDate().toLocaleString("en-US", { timeZone: "America/New_York" }); // Example formatting
       functions.logger.info(`Processing team notification for docId: ${docId}`, {structuredData: true});
 

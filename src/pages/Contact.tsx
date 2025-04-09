@@ -32,25 +32,6 @@ const Contact: React.FC = () => {
     };
   }, []);
 
-  // Client testimonials for trust building
-  const testimonials = [
-    {
-      quote: "Our entire estate plan was handled with efficiency and true digital-first approach. Highly recommended for tech entrepreneurs.",
-      author: "Alex C., Founder & CEO",
-      persona: "Tech Innovator"
-    },
-    {
-      quote: "They made complex legal issues around my parents' care approachable and gave me peace of mind during a difficult time.",
-      author: "Barbara M., Financial Executive",
-      persona: "Executive Caregiver"
-    },
-    {
-      quote: "Their sophisticated approach to wealth preservation across generations aligned perfectly with my family's needs.",
-      author: "David R., Family Office Director",
-      persona: "Wealth Patriarch"
-    }
-  ];
-
   // Trust indicators
   const trustIndicators = [
     {
@@ -180,7 +161,7 @@ const Contact: React.FC = () => {
                 </div>
               </div>
               
-              {/* Right Side: Office Locations and Testimonials */}
+              {/* Right Side: Office Locations */}
               <div 
                 ref={el => elementsRef.current[2] = el}
                 className="reveal lg:col-span-5"
@@ -188,26 +169,6 @@ const Contact: React.FC = () => {
               >
                 {/* Office Locations */}
                 <OfficeLocations className="mb-8" />
-                
-                {/* Testimonials */}
-                <div className="bg-white p-6 rounded-lg border border-gray-100 shadow-sm">
-                  <h3 className="font-display text-xl text-navy mb-4">Client Experiences</h3>
-                  <div className="space-y-6">
-                    {testimonials.map((testimonial, index) => (
-                      <div key={index} className="relative">
-                        <blockquote className="italic text-charcoal/80 text-sm mb-2 pl-4 border-l-2 border-gold">
-                          "{testimonial.quote}"
-                        </blockquote>
-                        <div className="flex justify-between items-center">
-                          <p className="text-sm font-medium text-navy">{testimonial.author}</p>
-                          <span className="text-xs px-2 py-1 bg-gray-100 rounded-full">
-                            {testimonial.persona}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
           </div>

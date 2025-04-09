@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { logger } from '@/utils/logger';
 
 interface Props {
-  children: React.ReactNode;
-  fallback?: React.ReactNode;
+  children: ReactNode;
+  fallback?: ReactNode;
   onError?: (error: Error, errorInfo: React.ErrorInfo) => void;
 }
 
@@ -17,17 +17,18 @@ interface State {
  * Enhanced Error Boundary that provides better error handling and recovery options
  * Captures errors in React component tree and displays a fallback UI
  */
-class ErrorBoundary extends React.Component<Props, State> {
-  public state: State = {
-    hasError: false
-  };
+export class ErrorBoundary extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = { hasError: false };
+  }
 
-  public static getDerivedStateFromError(error: Error): State {
+  static getDerivedStateFromError(error: Error): State {
     // Update state so the next render will show the fallback UI
     return { hasError: true, error };
   }
 
-  public componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     // Log the error to our logging service
     logger.error('Uncaught error in component:', error);
     
@@ -48,7 +49,7 @@ class ErrorBoundary extends React.Component<Props, State> {
     window.location.reload();
   };
 
-  public render() {
+  render(): ReactNode {
     if (this.state.hasError) {
       // Use custom fallback if provided
       if (this.props.fallback) {
@@ -121,4 +122,5 @@ class ErrorBoundary extends React.Component<Props, State> {
   }
 }
 
+// Add default export while keeping named export
 export default ErrorBoundary;
