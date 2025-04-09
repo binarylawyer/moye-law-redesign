@@ -45,7 +45,6 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
   try {
     // Safely try to import the books data
     // This is just for sitemap generation, so no problem if it fails
-    // @ts-ignore - ignore the missing module error
     const booksDataModule = await import('./src/data/booksData').catch(() => ({ books: [] }));
     if (booksDataModule && Array.isArray(booksDataModule.books)) {
       books = booksDataModule.books;
@@ -158,24 +157,26 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     },
     build: {
       outDir: 'dist',
-      // Temporarily disable minification to diagnose production error
-      minify: false,
-      //minify: 'terser', // Use Terser for better minification
+      // Use esbuild for minification - faster and potentially avoids Terser issues
+      minify: 'esbuild',
+      // Commenting out Terser options as they are not used with esbuild
+      /*
       terserOptions: {
         compress: {
-          drop_console: true, // Remove console logs
-          pure_funcs: ['console.log', 'console.info'], // Remove specific console functions
-          passes: 2, // Multiple compression passes for better results
+          drop_console: true, 
+          pure_funcs: ['console.log', 'console.info'], 
+          passes: 2, 
         },
         mangle: {
           properties: {
-            regex: /^_/  // Only mangle properties that start with underscore
+            regex: /^_/  
           }
         }
       },
-      cssMinify: true, // Ensure CSS is minified
-      cssCodeSplit: true, // Split CSS into chunks that match JS chunks
-      reportCompressedSize: false, // Speed up build by skipping size reporting
+      */
+      cssMinify: true, 
+      cssCodeSplit: true, 
+      reportCompressedSize: true, // Re-enable compressed size reporting
       // Extract React vendor code into separate chunk
       commonjsOptions: {
         transformMixedEsModules: true, // Better handling of mixed modules
