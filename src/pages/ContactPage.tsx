@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '@/components/Layout';
 import ContactHero from '@/components/contact/ContactHero';
@@ -31,4 +32,4 @@ const ContactPage: React.FC = () => {
   );
 };
 
-export default ContactPage; 
+export default ContactPage;
