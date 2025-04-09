@@ -30,7 +30,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     // Log the error to our logging service
-    logger.error('Uncaught error in component:', error);
+    logger.error('Uncaught error in component:', error, errorInfo);
     
     // Call onError callback if provided
     this.props.onError?.(error, errorInfo);
@@ -82,8 +82,9 @@ export class ErrorBoundary extends Component<Props, State> {
                 We encountered an error while rendering this page.
               </p>
               
-              {/* Show error message in development only */}
-              {import.meta.env.MODE !== 'production' && this.state.error && (
+              {/* TEMPORARILY show error details in ALL modes for debugging */}
+              {/* {import.meta.env.MODE !== 'production' && this.state.error && ( */} 
+              {this.state.error && (
                 <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-md text-left">
                   <p className="text-sm font-medium text-red-800">{this.state.error.name}: {this.state.error.message}</p>
                   {this.state.errorInfo && (
