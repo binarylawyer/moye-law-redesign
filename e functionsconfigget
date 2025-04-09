@@ -1,0 +1,162 @@
+[1mdiff --cc functions/index.js[m
+[1mindex 09f6cd9,6e1e83f..0000000[m
+[1m--- a/functions/index.js[m
+[1m+++ b/functions/index.js[m
+[36m@@@ -1,325 -1,231 +1,514 @@@[m
+[32m+ [m
+  const functions = require('firebase-functions');[m
+  const admin = require('firebase-admin');[m
+  const nodemailer = require('nodemailer');[m
+[32m +const validator = require('validator');[m
+  [m
+  // Initialize Firebase Admin SDK[m
+  admin.initializeApp();[m
+[32m +const db = admin.firestore();[m
+[32m +[m
+[32m +// --- Constants for Persona Strings ---[m
+[32m +const PERSONA_TECH = "Protect My Startup's Future";[m
+[32m +const PERSONA_CAREGIVER = "Plan Care for My Aging Parent";[m
+[32m +const PERSONA_BUILDER = "Build My Multi-Generational Legacy";[m
+[32m +[m
+[32m +// --- Configuration Validation ---[m
+[32m +const assertValidConfig = () => {[m
+[32m +  const config = functions.config();[m
+[32m +[m
+[32m +  // Required email settings[m
+[32m +  const requiredEmailKeys = ['user', 'password', 'default_from'];[m
+[32m +  requiredEmailKeys.forEach(key => {[m
+[32m +    if (!config.email?.[key]) {[m
+[32m +      throw new Error(`Missing email.${key} in Firebase config`);[m
+[32m +    }[m
+[32m +    // Validate email format only for keys that are expected to be emails[m
+[32m +    if (key === 'user' || key === 'default_from') {[m
+[32m +      // Extract just the email part if it's in "Display Name <email>" format[m
+[32m +      let emailToValidate = config.email[key];[m
+[32m +      const matches = emailToValidate.match(/<([^>]+)>/);[m
+[32m +      if (matches && matches[1]) {[m
+[32m +        // If in format "Name <email>", extract just the email part[m
+[32m +        emailToValidate = matches[1];[m
+[32m +      }[m
+[32m +      [m
+[32m +      if (!validator.isEmail(emailToValidate)) {[m
+[32m +        throw new Error(`Invalid email format for email.${key}: ${config.email[key]}`);[m
+[32m +      }[m
+[32m +    }[m
+[32m +  });[m
+[32m +[m
+[32m +  // Team notification addresses[m
+[32m +  const teams = {[m
+[32m +    [PERSONA_TECH]: 'tech_innovator_team',[m
+[32m +    [PERSONA_CAREGIVER]: 'executive_caregiver_team',[m
+[32m +    [PERSONA_BUILDER]: 'wealth_patriarch_team'[m
+[32m +  };[m
+[32m +[m
+[32m +  Object.keys(teams).forEach(personaKey => {[m
+[32m +    const configKey = teams[personaKey];[m
+[32m +    const email = config.notifications?.[configKey];[m
+[32m +    if (!email) {[m
+[32m +      console.warn(`Missing notification email config notifications.${configKey} for persona: "${personaKey}". Skipping validation for this team.`);[m
+[32m +    } else {[m
+[32m +      // Extract just the email part if it's in "Display Name <email>" format[m
+[32m +      let emailToValidate = email;[m
+[32m +      const matches = emailToValidate.match(/<([^>]+)>/);[m
+[32m +      if (matches && matches[1]) {[m
+[32m +        // If in format "Name <email>", extract just the email part[m
+[32m +        emailToValidate = matches[1];[m
+[32m +      }[m
+[32m +      [m
+[32m +      if (!validator.isEmail(emailToValidate)) {[m
+[32m +        throw new Error(`Invalid email format for notifications.${configKey}: ${email}`);[m
+[32m +      }[m
+[32m +    }[m
+[32m +  });[m
+[32m +[m
+[32m +  // Security checks (optional but recommended)[m
+[32m +  if (process.env.FUNCTIONS_EMULATOR !== 'true' &&[m
+[32m +      config.email.user?.includes('dev')) {[m
+[32m +    console.warn('Warning: Potentially using development credentials in a non-emulator environment!');[m
+[32m +  }[m
+[32m +};[m
+[32m +[m
+[32m +// Validate configuration immediately on function load[m
+[32m +try {[m
+[32m +  assertValidConfig();[m
+[32m +  functions.logger.info("Firebase Functions configuration validated successfully.");[m
+[32m +} catch (error) {[m
+[32m +  functions.logger.error("❌ Invalid Firebase Functions configuration:", error.message);[m
+[32m +}[m
+  [m
+  /**[m
+   * Cloud Function that sends a book incentive email when a new form submission is created[m
+   * Triggered by new document creation in the contactFormSubmissions collection[m
+   */[m
+  exports.sendBookIncentive = functions.firestore[m
+[31m -  .document('contactFormSubmissions/{formId}')[m
+[32m +  .document('contactFormSubmissions/{docId}')[m
+    .onCreate(async (snap, context) => {[m
+[32m +    const docId = context.params.docId;[m
+      const formData = snap.data();[m
+[31m -    const formId = context.params.formId;[m
+[31m -    [m
+[31m -    // Only send if incentive was requested and there's a valid email[m
+[31m -    if (!formData.incentive_requested || !formData.contact_info.email) {[m
+[31m -      return admin.firestore().collection('contactFormSubmissions').doc(formId).update({[m
+[31m -        reward_delivery_status: "Not Requested",[m
+[31m -      });[m
+[31m -    }[m
+      [m
+[32m +    // Debug: Log entire document contents[m
+[32m +    console.log("DOCUMENT CONTENTS:", JSON.stringify(formData, null, 2));[m
+[32m +    functions.logger.info(`Processing incentive request for docId: ${docId}`, {structuredData: true});[m
+[32m +[m
+[32m +    // Re-validate config at runtime[m
+      try {[m
+[32m++<<<<<<< HEAD[m
+[32m +      assertValidConfig();[m
+[32m++=======[m
+[32m+       // Set up email transporter using Gmail credentials from Firebase config[m
+[32m+       // IMPORTANT: You must set these using:[m
+[32m+       // firebase functions:config:set email.user="your-gmail@gmail.com" email.password="your-app-password"[m
+[32m+       const transporter = nodemailer.createTransport({[m
+[32m+         service: 'gmail',[m
+[32m+         auth: {[m
+[32m+           user: functions.config().email.user,[m
+[32m+           pass: functions.config().email.password[m
+[32m+         }[m
+[32m+       });[m
+[32m+       [m
+[32m+       // Determine which book PDF to send based on persona[m
+[32m+       let bookFilename = '';[m
+[32m+       let emailSubject = '';[m
+[32m+       let emailBody = '';[m
+[32m+       [m
+[32m+       switch(formData.persona) {[m
+[32m+         case "Protect My Startup's Future":[m
+[32m+           bookFilename = 'tech-founders-estate-guide.pdf';[m
+[32m+           emailSubject = 'Your Tech Founder Estate Planning Guide';[m
+[32m+           emailBody = `[m
+[32m+             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">[m
+[32m+               <h2 style="color: #0A2342;">Your Tech Founder Estate Planning Guide</h2>[m
+[32m+               <p>Dear ${formData.contact_info.name},</p>[m
+[32m+               <p>Thank you for your interest in protecting your startup's future. Attached is your free book on estate planning strategies specifically designed for tech entrepreneurs and founders.</p>[m
+[32m+               <p>Here's what you'll learn:</p>[m
+[32m+               <ul>[m
+[32m+                 <li>How to protect your intellectual property in your estate plan</li>[m
+[32m+                 <li>Strategies for digital asset succession planning</li>[m
+[32m+                 <li>Tax optimization techniques for startup equity</li>[m
+[32m+                 <li>Common pitfalls tech founders face in estate planning</li>[m
+[32m+               </ul>[m
+[32m+               <p>A member of our team will reach out within one business day to schedule a personalized consultation.</p>[m
+[32m+               <p>Best regards,<br>Christopher Moye<br>Moye Law</p>[m
+[32m+             </div>[m
+[32m+           `;[m
+[32m+           break;[m
+[32m+           [m
+[32m+         case "Plan Care for My Aging Parent":[m
+[32m+           bookFilename = 'elder-care-planning-guide.pdf';[m
+[32m+           emailSubject = 'Your Elder Care Planning Guide';[m
+[32m+           emailBody = `[m
+[32m+             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">[m
+[32m+               <h2 style="color: #0A2342;">Your Elder Care Planning Guide</h2>[m
+[32m+               <p>Dear ${formData.contact_info.name},</p>[m
+[32m+               <p>Thank you for your interest in planning care for your aging parent. Attached is your free book on elder
