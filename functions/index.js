@@ -1,3 +1,4 @@
+
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const nodemailer = require('nodemailer');
@@ -23,26 +24,15 @@ exports.sendBookIncentive = functions.firestore
     }
     
     try {
-      // Set up email transporter (you would configure with your SMTP settings)
-      // For production, you should set these values in Firebase Functions config
+      // Set up email transporter using Gmail credentials from Firebase config
+      // IMPORTANT: You must set these using:
+      // firebase functions:config:set email.user="your-gmail@gmail.com" email.password="your-app-password"
       const transporter = nodemailer.createTransport({
-        // For Gmail, you might use:
         service: 'gmail',
         auth: {
-          user: functions.config().email ? functions.config().email.user : 'your-email@gmail.com',
-          pass: functions.config().email ? functions.config().email.password : 'your-app-password'
+          user: functions.config().email.user,
+          pass: functions.config().email.password
         }
-        
-        // Or for a custom SMTP server:
-        /*
-        host: functions.config().smtp.host,
-        port: functions.config().smtp.port,
-        secure: true,
-        auth: {
-          user: functions.config().smtp.user,
-          pass: functions.config().smtp.password
-        }
-        */
       });
       
       // Determine which book PDF to send based on persona
@@ -152,7 +142,7 @@ exports.sendBookIncentive = functions.firestore
       
       // For demonstration purposes, send email without attachment
       await transporter.sendMail({
-        from: '"Moye Law" <contact@example.com>',
+        from: '"Moye Law" <' + functions.config().email.user + '>',
         to: formData.contact_info.email,
         subject: emailSubject,
         html: emailBody,
@@ -186,12 +176,12 @@ exports.notifyTeamOfNewSubmission = functions.firestore
     const formId = context.params.formId;
     
     try {
-      // Setup email transport (same as above)
+      // Setup email transport using Gmail credentials from Firebase config
       const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: functions.config().email ? functions.config().email.user : 'your-email@gmail.com',
-          pass: functions.config().email ? functions.config().email.password : 'your-app-password'
+          user: functions.config().email.user,
+          pass: functions.config().email.password
         }
       });
       
@@ -212,7 +202,7 @@ exports.notifyTeamOfNewSubmission = functions.firestore
       
       // Send notification email to appropriate team
       await transporter.sendMail({
-        from: '"Moye Law Form System" <noreply@example.com>',
+        from: '"Moye Law Form System" <' + functions.config().email.user + '>',
         to: teamEmail,
         subject: `New ${formData.persona} Lead Submission`,
         html: `
@@ -238,4 +228,4 @@ exports.notifyTeamOfNewSubmission = functions.firestore
       console.error('Error sending team notification:', error);
       return null;
     }
-  }); 
+  });

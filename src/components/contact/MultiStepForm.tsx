@@ -1,9 +1,10 @@
+
 import React, { useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db, trackFormStep, trackFormSubmission } from "@/lib/firebase";
 import { captureMetadata } from "@/utils/metadata";
 import { useToast } from "@/components/ui/use-toast";
-import { ErrorBoundary } from "@/components/ErrorBoundary";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import FormProgress from "./FormProgress";
 import PersonaSelection from "./PersonaSelection";
 import TechInnovatorForm from "./TechInnovatorForm";
@@ -30,6 +31,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
+  const [submissionError, setSubmissionError] = useState<string | null>(null);
   
   // Handle persona selection from Step 1
   const handlePersonaSelect = (persona: string) => {
@@ -45,27 +47,10 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
     // Track step completion in analytics
     trackFormStep(2, formData.persona);
     
-    // Map the persona to the correct database field
-    let step2Key = "";
-    switch(formData.persona) {
-      case "Protect My Startup's Future":
-        step2Key = "tech_innovator";
-        break;
-      case "Plan Care for My Aging Parent":
-        step2Key = "caregiver";
-        break;
-      case "Manage Multi-Generational Wealth":
-        step2Key = "legacy_builder";
-        break;
-      default:
-        step2Key = "other";
-    }
-    
+    // Prepare data for storage based on persona
     setFormData({
       ...formData,
-      step2_data: {
-        [step2Key]: data
-      }
+      step2_data: data
     });
     
     setCurrentStep(3);
@@ -74,6 +59,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
   // Handle contact info submission from Step 3
   const handleStep3Submit = async (contactData: any) => {
     setIsSubmitting(true);
+    setSubmissionError(null);
     
     try {
       // Track step completion in analytics
@@ -92,6 +78,8 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
         metadata
       };
       
+      console.log("Submitting form data to Firestore:", finalData);
+      
       // Save to Firestore
       const docRef = await addDoc(collection(db, "contactFormSubmissions"), finalData);
       console.log("Document written with ID: ", docRef.id);
@@ -100,25 +88,26 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
       trackFormSubmission(formData.persona, contactData.incentive_requested);
       
       // Show success message
+      toast({
+        title: "Form Submitted Successfully",
+        description: "We've received your information and will be in touch soon.",
+      });
+      
       setIsComplete(true);
       setCurrentStep(4);
       
-      // Future integration point: Update client portal if applicable
-      /* 
-      TODO: In the future, this would be a good place to:
-      1. Check if the email exists in the client portal
-      2. Link this submission to the client's document library
-      3. Create a client record if they don't exist yet
-      Example code:
-      const clientPortalService = new ClientPortalService();
-      await clientPortalService.linkSubmissionToClient(docRef.id, contactData.email);
-      */
-      
     } catch (error) {
       console.error("Error submitting form:", error);
+      
+      let errorMessage = "There was a problem submitting your request. Please try again.";
+      if (error instanceof Error) {
+        errorMessage = `Error: ${error.message}`;
+        setSubmissionError(error.message);
+      }
+      
       toast({
         title: "Submission Error",
-        description: "There was a problem submitting your request. Please try again.",
+        description: errorMessage,
         variant: "destructive"
       });
     } finally {
@@ -165,10 +154,17 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
     <ErrorBoundary>
       <div className={`form-container max-w-2xl mx-auto p-4 md:p-6 bg-white rounded-lg shadow-md ${className}`}>
         {!isComplete && <FormProgress currentStep={currentStep} totalSteps={3} />}
+        {submissionError && (
+          <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded">
+            <p className="font-medium">There was a problem with your submission:</p>
+            <p>{submissionError}</p>
+            <p className="mt-2 text-sm">Please try again or contact us directly.</p>
+          </div>
+        )}
         {renderCurrentStep()}
       </div>
     </ErrorBoundary>
   );
 };
 
-export default MultiStepForm; 
+export default MultiStepForm;
