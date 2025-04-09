@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { motion } from "framer-motion";
 
 interface PersonaSelectionProps {
   onSelect: (persona: string) => void;
@@ -8,36 +7,12 @@ interface PersonaSelectionProps {
 const PersonaSelection: React.FC<PersonaSelectionProps> = ({ onSelect }) => {
   // Log when component mounts
   useEffect(() => {
-    console.log("PersonaSelection component mounted");
-    
-    // Check if framer-motion is available
-    if (typeof motion !== 'function' && typeof motion !== 'object') {
-      console.error("Framer motion not available:", motion);
-    } else {
-      console.log("Framer motion initialized properly");
-    }
-    
+    console.log("PersonaSelection component mounted (motion removed for testing)");
     return () => {
       console.log("PersonaSelection component unmounted");
     };
   }, []);
-  
-  // Animation variants for staggered card entrance
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: { 
-        staggerChildren: 0.2
-      }
-    }
-  };
-  
-  const cardVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1 }
-  };
-  
+
   // Enhanced click handler with logging
   const handlePersonaSelect = (persona: string) => {
     console.log(`Persona card clicked: "${persona}"`);
@@ -59,19 +34,14 @@ const PersonaSelection: React.FC<PersonaSelectionProps> = ({ onSelect }) => {
         Select the option that best describes your needs:
       </p>
       
-      <motion.div 
+      {/* Standard div instead of motion.div */}
+      <div 
         className="grid md:grid-cols-3 gap-4"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        onAnimationStart={() => console.log("Container animation started")}
-        onAnimationComplete={() => console.log("Container animation completed")}
       >
-        <motion.button 
+        {/* Standard button instead of motion.button */}
+        <button 
           onClick={() => handlePersonaSelect("Protect My Startup's Future")}
           className="persona-button p-6 border-2 border-gray-200 rounded-lg hover:border-gold hover:shadow-lg transition-all bg-white text-left flex flex-col h-full"
-          variants={cardVariants}
-          whileHover={{ scale: 1.03 }}
           data-persona="tech"
         >
           <span className="text-4xl mb-4">🚀</span>
@@ -81,13 +51,12 @@ const PersonaSelection: React.FC<PersonaSelectionProps> = ({ onSelect }) => {
           <p className="text-gray-600 text-sm">
             For tech founders seeking to protect intellectual property and digital assets
           </p>
-        </motion.button>
+        </button>
         
-        <motion.button 
+        {/* Standard button instead of motion.button */}
+        <button 
           onClick={() => handlePersonaSelect("Plan Care for My Aging Parent")}
           className="persona-button p-6 border-2 border-gray-200 rounded-lg hover:border-gold hover:shadow-lg transition-all bg-white text-left flex flex-col h-full"
-          variants={cardVariants}
-          whileHover={{ scale: 1.03 }}
           data-persona="caregiver"
         >
           <span className="text-4xl mb-4">👨‍👩‍👧</span>
@@ -97,13 +66,12 @@ const PersonaSelection: React.FC<PersonaSelectionProps> = ({ onSelect }) => {
           <p className="text-gray-600 text-sm">
             For professionals balancing career with elder care responsibilities
           </p>
-        </motion.button>
+        </button>
         
-        <motion.button 
+        {/* Standard button instead of motion.button */}
+        <button 
           onClick={() => handlePersonaSelect("Manage Multi-Generational Wealth")}
           className="persona-button p-6 border-2 border-gray-200 rounded-lg hover:border-gold hover:shadow-lg transition-all bg-white text-left flex flex-col h-full"
-          variants={cardVariants}
-          whileHover={{ scale: 1.03 }}
           data-persona="wealth"
         >
           <span className="text-4xl mb-4">💼</span>
@@ -113,33 +81,11 @@ const PersonaSelection: React.FC<PersonaSelectionProps> = ({ onSelect }) => {
           <p className="text-gray-600 text-sm">
             For high-net-worth individuals focused on legacy and tax planning
           </p>
-        </motion.button>
-      </motion.div>
-      
-      {/* Fallback buttons if animation is causing issues */}
-      <div className="mt-6 pt-6 border-t border-gray-100 hidden">
-        <p className="text-sm text-gray-500 mb-4">If you experience any issues with the options above, please use these alternatives:</p>
-        <div className="flex flex-wrap gap-2 justify-center">
-          <button 
-            onClick={() => handlePersonaSelect("Protect My Startup's Future")}
-            className="px-4 py-2 bg-navy text-white rounded-md text-sm"
-          >
-            Tech Founder
-          </button>
-          <button 
-            onClick={() => handlePersonaSelect("Plan Care for My Aging Parent")}
-            className="px-4 py-2 bg-navy text-white rounded-md text-sm"
-          >
-            Caregiver
-          </button>
-          <button 
-            onClick={() => handlePersonaSelect("Manage Multi-Generational Wealth")}
-            className="px-4 py-2 bg-navy text-white rounded-md text-sm"
-          >
-            Wealth Manager
-          </button>
-        </div>
+        </button>
       </div>
+      
+      {/* Fallback buttons (can likely be removed later) */}
+      {/* <div className="mt-6 pt-6 border-t border-gray-100 hidden"> ... </div> */}
     </div>
   );
 };
