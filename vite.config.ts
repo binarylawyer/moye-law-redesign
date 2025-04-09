@@ -218,12 +218,12 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
             
             // Routes and navigation - needed soon after initial render
             if (id.includes('node_modules/react-router') || 
-                id.includes('node_modules/@remix-run/router')) {
+                id.includes('/node_modules/@remix-run/router')) {
               return 'react-router';
             }
             
-            // UI libraries - can be loaded after core functionality
-            if (id.includes('node_modules/@radix-ui/') || 
+            // UI libraries (excluding Radix UI, which will go to vendor)
+            if (// id.includes('node_modules/@radix-ui/') || // Keep Radix in vendor chunk
                 id.includes('node_modules/lucide-react') || 
                 id.includes('node_modules/class-variance-authority') || 
                 id.includes('node_modules/clsx')) {
@@ -271,7 +271,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
               return 'common';
             }
             
-            // Vendor dependencies - third-party libraries
+            // Vendor dependencies - third-party libraries (now includes Radix UI)
             if (id.includes('node_modules/')) {
               return 'vendor';
             }
