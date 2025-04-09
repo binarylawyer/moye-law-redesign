@@ -6,6 +6,7 @@ import { useToast } from "@/components/ui/use-toast";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import FormProgress from "./FormProgress";
 import PersonaSelection from "./PersonaSelection";
+import SimplePersonaSelection from "./SimplePersonaSelection";
 import TechInnovatorForm from "./TechInnovatorForm";
 import CaregiverForm from "./CaregiverForm";
 import LegacyBuilderForm from "./LegacyBuilderForm";
@@ -15,6 +16,10 @@ import ThankYou from "./ThankYou";
 interface MultiStepFormProps {
   className?: string;
 }
+
+// Determine if we're in production mode
+const isProduction = import.meta.env.PROD === true || import.meta.env.MODE === 'production';
+console.log("App mode:", isProduction ? "PRODUCTION" : "DEVELOPMENT");
 
 const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
   const { toast } = useToast();
@@ -32,9 +37,18 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
   const [isComplete, setIsComplete] = useState(false);
   const [submissionError, setSubmissionError] = useState<string | null>(null);
   const [firebaseStatus, setFirebaseStatus] = useState<'checking'|'ok'|'error'|'warning'>('checking');
+  // Use PersonaSelection by default (we'll keep the toggle for testing)
+  const [useSimpleUI, setUseSimpleUI] = useState(false);
   
   // Check Firebase connectivity when component mounts
   useEffect(() => {
+    // Log environment information
+    console.log("Environment:", {
+      production: isProduction,
+      apiKey: import.meta.env.VITE_FIREBASE_API_KEY ? "present" : "missing",
+      firebaseAuthDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN ? "present" : "missing",
+    });
+    
     // Fallback for non-browser environments or SSR
     if (typeof window === 'undefined') return;
     
@@ -223,7 +237,10 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
   const renderCurrentStep = () => {
     switch (currentStep) {
       case 1:
-        return <PersonaSelection onSelect={handlePersonaSelect} />;
+        // Use the regular PersonaSelection by default, with SimplePersonaSelection as a fallback option
+        return useSimpleUI 
+          ? <SimplePersonaSelection onSelect={handlePersonaSelect} />
+          : <PersonaSelection onSelect={handlePersonaSelect} />;
       case 2:
         if (formData.persona === "Protect My Startup's Future") {
           return <TechInnovatorForm 
@@ -283,6 +300,21 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
             <p className="font-medium">There was a problem with your submission:</p>
             <p>{submissionError}</p>
             <p className="mt-2 text-sm">Please try again or contact us directly.</p>
+          </div>
+        )}
+        
+        {/* UI version toggle for testing */}
+        {!isProduction && (
+          <div className="mb-4 p-2 bg-gray-100 text-xs flex items-center justify-end">
+            <label className="flex items-center">
+              <span className="mr-2">Use simple UI:</span>
+              <input 
+                type="checkbox" 
+                checked={useSimpleUI} 
+                onChange={e => setUseSimpleUI(e.target.checked)} 
+                className="h-4 w-4"
+              />
+            </label>
           </div>
         )}
         

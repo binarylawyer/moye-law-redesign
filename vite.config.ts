@@ -1,7 +1,6 @@
 import { defineConfig, UserConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
 import sitemap from 'vite-plugin-sitemap';
 import { imagetools } from 'vite-imagetools';
 
@@ -151,8 +150,6 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
         hostname: 'https://moye.law',
         dynamicRoutes: allRoutes
       }),
-      mode === 'development' &&
-      componentTagger(),
     ].filter(Boolean),
     resolve: {
       alias: {
@@ -294,10 +291,6 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
         '@hookform/resolvers/zod',
         'dompurify',
         'react-helmet',
-      ],
-      exclude: [
-        // Dependencies that should not be pre-bundled
-        'lovable-tagger'
       ]
     },
     // Add top level options to improve module processing
