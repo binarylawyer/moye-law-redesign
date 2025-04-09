@@ -54,99 +54,106 @@ const Contact: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow pt-32 bg-white">
-        {/* Hero Section with Mondrian-inspired design */}
-        <section 
+      <main className="flex-grow bg-white">
+        {/* Contact Form Section (NOW FIRST & More Compact) */}
+        <section
           ref={el => elementsRef.current[0] = el}
-          className="py-16 md:py-24 reveal"
+          className="py-6 bg-light-gray reveal"
+          style={{ transitionDelay: '0.1s' }}
         >
           <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-              {/* Left side with Mondrian-style blocks */}
-              <div className="md:col-span-5 relative">
-                <div className="absolute top-0 left-0 w-full h-4 bg-[#D6001C]"></div>
-                <div className="absolute bottom-0 left-0 w-4 h-full bg-[#4D80D4]"></div>
-                <div className="absolute bottom-0 right-0 w-full h-4 bg-[#FFEB80]"></div>
-                <div className="bg-white border-4 border-black p-8 md:p-12 min-h-[300px] flex items-center">
-                  <div>
-                    <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-black mb-6">
-                      Partner with Forward-Thinking Legal Counsel
-                    </h1>
-                    <p className="text-xl text-black/80">
-                      Schedule a confidential consultation to discuss how our tech-forward approach can protect your legal interests.
-                    </p>
-                  </div>
+            <div className="max-w-4xl mx-auto">
+               <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                 <h2 className="font-display text-2xl text-navy mb-2">Get Personalized Legal Support</h2>
+                 <p className="text-gray-600 mb-4">
+                   Use our guided form to tell us about your specific needs and receive a free estate planning book.
+                 </p>
+                 <MultiStepForm />
+               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Hero Section (NOW SECOND & Made MORE Compact) */}
+        <section
+          ref={el => elementsRef.current[1] = el}
+          className="py-6 reveal"
+          style={{ transitionDelay: '0.2s' }}
+        >
+          <div className="container mx-auto px-6">
+            {/* Centered & Shrunken Header Block */}
+            <div className="max-w-3xl mx-auto mb-4">
+              <div className="bg-white border-2 border-black p-6 md:p-8 flex items-center">
+                <div>
+                  <h1 className="font-display text-2xl md:text-3xl text-black mb-4">
+                    Partner with Forward-Thinking Legal Counsel
+                  </h1>
+                  <p className="text-base text-black/80">
+                    Schedule a confidential consultation to discuss how our tech-forward approach can protect your legal interests.
+                  </p>
                 </div>
               </div>
-              
-              {/* Right side with value proposition */}
-              <div className="md:col-span-7 flex flex-col justify-center">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {/* Tech Innovator */}
-                  <div className="border-l-4 border-[#4D80D4] p-6 bg-[#4D80D4]/5 rounded-r-md">
-                    <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-full bg-[#4D80D4]/20 flex items-center justify-center mr-3">
-                        <User className="h-5 w-5 text-[#4D80D4]" />
-                      </div>
-                      <h3 className="font-display text-lg">For Tech Innovators</h3>
+            </div>
+
+            {/* Shrunken Persona Cards Below Header Block */}
+            <div className="max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {/* Tech Innovator (Shrunken) */}
+                <div className="border-l-2 border-[#4D80D4] p-4 bg-[#4D80D4]/5 rounded-r-sm">
+                  <div className="flex items-center mb-2">
+                    <div className="w-6 h-6 rounded-full bg-[#4D80D4]/20 flex items-center justify-center mr-2">
+                      <User className="h-4 w-4 text-[#4D80D4]" />
                     </div>
-                    <p className="text-charcoal/80">
-                      Digital asset protection and IP strategies designed for founders and digital-first businesses.
-                    </p>
+                    <h3 className="font-display text-base font-medium">For Tech Innovators</h3>
                   </div>
-                  
-                  {/* Executive Caregiver */}
-                  <div className="border-l-4 border-[#D6001C] p-6 bg-[#D6001C]/5 rounded-r-md">
-                    <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-full bg-[#D6001C]/20 flex items-center justify-center mr-3">
-                        <User className="h-5 w-5 text-[#D6001C]" />
-                      </div>
-                      <h3 className="font-display text-lg">For Caregivers</h3>
+                  <p className="text-sm text-charcoal/80">
+                    Digital asset protection and IP strategies designed for founders and digital-first businesses.
+                  </p>
+                </div>
+
+                {/* Executive Caregiver (Shrunken) */}
+                <div className="border-l-2 border-[#D6001C] p-4 bg-[#D6001C]/5 rounded-r-sm">
+                  <div className="flex items-center mb-2">
+                    <div className="w-6 h-6 rounded-full bg-[#D6001C]/20 flex items-center justify-center mr-2">
+                      <User className="h-4 w-4 text-[#D6001C]" />
                     </div>
-                    <p className="text-charcoal/80">
-                      Comprehensive elder law and estate planning for those balancing career and family care responsibilities.
-                    </p>
+                    <h3 className="font-display text-base font-medium">For Caregivers</h3>
                   </div>
-                  
-                  {/* Wealth Patriarch */}
-                  <div className="border-l-4 border-[#FFEB80] p-6 bg-[#FFEB80]/5 rounded-r-md sm:col-span-2">
-                    <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-full bg-[#FFEB80]/20 flex items-center justify-center mr-3">
-                        <User className="h-5 w-5 text-black" />
-                      </div>
-                      <h3 className="font-display text-lg">For Wealth Stewards</h3>
+                  <p className="text-sm text-charcoal/80">
+                    Comprehensive elder law and estate planning for those balancing career and family care responsibilities.
+                  </p>
+                </div>
+
+                {/* Wealth Patriarch (Shrunken) */}
+                <div className="border-l-2 border-[#FFEB80] p-4 bg-[#FFEB80]/5 rounded-r-sm">
+                  <div className="flex items-center mb-2">
+                    <div className="w-6 h-6 rounded-full bg-[#FFEB80]/20 flex items-center justify-center mr-2">
+                      <User className="h-4 w-4 text-black" />
                     </div>
-                    <p className="text-charcoal/80">
-                      Sophisticated multi-generational planning and asset protection strategies for significant wealth preservation.
-                    </p>
+                    <h3 className="font-display text-base font-medium">For Wealth Stewards</h3>
                   </div>
+                  <p className="text-sm text-charcoal/80">
+                    Sophisticated multi-generational planning and asset protection strategies for significant wealth preservation.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Contact Form and Trust Building Section */}
-        <section className="py-16 bg-light-gray">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-              
-              {/* Multi-Step Contact Form */}
-              <div 
-                ref={el => elementsRef.current[1] = el}
-                className="reveal lg:col-span-7"
-                style={{ transitionDelay: '0.2s' }}
-              >
-                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                  <h2 className="font-display text-2xl text-navy mb-6">Get Personalized Legal Support</h2>
-                  <p className="text-gray-600 mb-6">
-                    Use our guided form to tell us about your specific needs and receive a free estate planning book.
-                  </p>
-                  <MultiStepForm />
+        {/* Office Locations and Trust Section (Remains Third) */}
+        <section
+          ref={el => elementsRef.current[2] = el}
+          className="py-16 bg-white reveal"
+          style={{ transitionDelay: '0.3s' }}
+        >
+           <div className="container mx-auto px-6">
+             <div className="max-w-4xl mx-auto">
+                <div className="mb-12">
+                  <OfficeLocations />
                 </div>
-                
-                {/* Trust Indicators */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {trustIndicators.map((indicator, index) => (
                     <div key={index} className="bg-white p-4 rounded-md border border-gray-100 flex items-start">
                       <div className="mr-3 mt-1">
@@ -159,29 +166,18 @@ const Contact: React.FC = () => {
                     </div>
                   ))}
                 </div>
-              </div>
-              
-              {/* Right Side: Office Locations */}
-              <div 
-                ref={el => elementsRef.current[2] = el}
-                className="reveal lg:col-span-5"
-                style={{ transitionDelay: '0.3s' }}
-              >
-                {/* Office Locations */}
-                <OfficeLocations className="mb-8" />
-              </div>
-            </div>
-          </div>
+             </div>
+           </div>
         </section>
         
-        {/* Confidentiality Statement */}
-        <section className="py-12 md:py-16">
+        {/* Confidentiality Statement (Remains Fourth) */}
+        <section
+          ref={el => elementsRef.current[3] = el}
+          className="py-12 md:py-16 reveal"
+          style={{ transitionDelay: '0.4s' }}
+        >
           <div className="container mx-auto px-6">
-            <div 
-              ref={el => elementsRef.current[3] = el}
-              className="reveal max-w-3xl mx-auto"
-              style={{ transitionDelay: '0.4s' }}
-            >
+            <div className="max-w-3xl mx-auto">
               <PrivacyMessage />
             </div>
           </div>
