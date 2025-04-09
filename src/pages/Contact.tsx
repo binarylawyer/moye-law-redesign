@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import ContactForm from "../components/contact/ContactForm";
+import ContactHero from "../components/contact/ContactHero";
+import MultiStepForm from "../components/contact/MultiStepForm";
 import OfficeLocations from "../components/contact/OfficeLocations";
 import PrivacyMessage from "../components/contact/PrivacyMessage";
 import { Clock, MessageSquare, ShieldCheck, User } from 'lucide-react';
@@ -149,13 +150,19 @@ const Contact: React.FC = () => {
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
               
-              {/* Contact Form */}
+              {/* Multi-Step Contact Form */}
               <div 
                 ref={el => elementsRef.current[1] = el}
                 className="reveal lg:col-span-7"
                 style={{ transitionDelay: '0.2s' }}
               >
-                <ContactForm />
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                  <h2 className="font-display text-2xl text-navy mb-6">Get Personalized Legal Support</h2>
+                  <p className="text-gray-600 mb-6">
+                    Use our guided form to tell us about your specific needs and receive a free estate planning book.
+                  </p>
+                  <MultiStepForm />
+                </div>
                 
                 {/* Trust Indicators */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">

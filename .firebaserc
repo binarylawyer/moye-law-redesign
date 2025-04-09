@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "your-firebase-project-id",
+    "prod": "moyelaw-e3158"
+  },
+  "targets": {},
+  "etags": {}
+}
