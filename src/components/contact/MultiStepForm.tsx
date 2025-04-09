@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { collection, addDoc, serverTimestamp, getDocs } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, getDocs, getFirestore } from "firebase/firestore";
 import { db, trackFormStep, trackFormSubmission } from "@/lib/firebase";
 import { captureMetadata } from "@/utils/metadata";
 import { useToast } from "@/components/ui/use-toast";
@@ -31,57 +31,98 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [submissionError, setSubmissionError] = useState<string | null>(null);
-  const [firebaseStatus, setFirebaseStatus] = useState<'checking' | 'ok' | 'error'>('checking');
+  const [firebaseStatus, setFirebaseStatus] = useState<'checking'|'ok'|'error'|'warning'>('checking');
   
   // Check Firebase connectivity when component mounts
   useEffect(() => {
-    const checkFirebaseConnection = async () => {
+    // Fallback for non-browser environments or SSR
+    if (typeof window === 'undefined') return;
+    
+    const testFirebase = async () => {
       try {
-        console.log("Checking Firebase connection...");
-        // Try to fetch a single document to test the connection
-        const querySnapshot = await getDocs(collection(db, "contactFormSubmissions"));
-        console.log("Firebase connection successful!");
-        setFirebaseStatus('ok');
+        console.log("Testing Firebase Firestore connection...");
+        
+        // Check if db is null (will be null if Firebase failed to initialize)
+        if (!db) {
+          console.warn("Firebase Firestore is null");
+          setFirebaseStatus('error');
+          return;
+        }
+        
+        console.log("Firestore instance:", db);
+        
+        // Try to create a reference to a collection
+        try {
+          // We don't need to check typeof db.collection here because we're using 
+          // the modular Firebase v9 API - collection is imported separately
+          // and the db is just passed as an argument
+          const collectionRef = collection(db, "contactFormSubmissions");
+          console.log("Collection reference created:", collectionRef);
+          
+          // Check if the reference is valid
+          if (collectionRef) {
+            console.log("Firebase Firestore collection reference created successfully");
+            setFirebaseStatus('ok');
+          } else {
+            console.warn("Collection reference is invalid");
+            setFirebaseStatus('warning');
+          }
+        } catch (collectionError) {
+          console.error("Error accessing Firestore collection:", collectionError);
+          setFirebaseStatus('warning');
+        }
       } catch (error) {
-        console.error("Firebase connection error:", error);
+        console.error("Firebase connection test failed:", error);
         setFirebaseStatus('error');
       }
     };
     
-    checkFirebaseConnection();
+    // Run the test
+    testFirebase();
   }, []);
   
   // Handle persona selection from Step 1
   const handlePersonaSelect = (persona: string) => {
-    console.log("Selected persona:", persona);
-    // Track step completion in analytics
     try {
+      console.log("Selected persona:", persona);
+      // Track step completion in analytics
       trackFormStep(1, persona);
+      
+      // Update form data and move to next step
+      setFormData({ ...formData, persona });
+      setCurrentStep(2);
     } catch (error) {
-      console.error("Error tracking form step:", error);
+      console.error("Error handling persona selection:", error);
+      toast({
+        title: "Navigation Error",
+        description: "There was a problem moving to the next step. Please try again.",
+        variant: "destructive"
+      });
     }
-    
-    setFormData({ ...formData, persona });
-    setCurrentStep(2);
   };
   
   // Handle conditional form data from Step 2
   const handleStep2Submit = (data: any) => {
-    console.log("Step 2 data:", data);
-    // Track step completion in analytics
     try {
+      console.log("Step 2 data:", data);
+      // Track step completion in analytics
       trackFormStep(2, formData.persona);
+      
+      // Prepare data for storage based on persona
+      setFormData({
+        ...formData,
+        step2_data: data
+      });
+      
+      setCurrentStep(3);
     } catch (error) {
-      console.error("Error tracking step 2:", error);
+      console.error("Error handling step 2 submission:", error);
+      toast({
+        title: "Navigation Error",
+        description: "There was a problem moving to the next step. Please try again.",
+        variant: "destructive"
+      });
     }
-    
-    // Prepare data for storage based on persona
-    setFormData({
-      ...formData,
-      step2_data: data
-    });
-    
-    setCurrentStep(3);
   };
   
   // Handle contact info submission from Step 3
@@ -91,6 +132,17 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
     
     try {
       console.log("Submitting contact info:", contactData);
+      
+      // Validate if Firebase is working before proceeding
+      if (firebaseStatus === 'error') {
+        throw new Error("Firebase connection is not available. Please try again later.");
+      }
+      
+      // Validate db is available
+      if (!db) {
+        throw new Error("Firebase Firestore is not initialized");
+      }
+      
       // Track step completion in analytics
       trackFormStep(3, formData.persona);
       
@@ -109,29 +161,52 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
       
       console.log("Submitting form data to Firestore:", finalData);
       
-      // Save to Firestore
-      const docRef = await addDoc(collection(db, "contactFormSubmissions"), finalData);
-      console.log("Document written with ID: ", docRef.id);
-      
-      // Track form submission in analytics
-      trackFormSubmission(formData.persona, contactData.incentive_requested);
-      
-      // Show success message
-      toast({
-        title: "Form Submitted Successfully",
-        description: "We've received your information and will be in touch soon."
-      });
-      
-      setIsComplete(true);
-      setCurrentStep(4);
+      // Save to Firestore with proper error handling
+      try {
+        // Ensure collection reference is valid
+        const submissionsCollection = collection(db, "contactFormSubmissions");
+        
+        if (!submissionsCollection) {
+          throw new Error("Could not access form submissions collection");
+        }
+        
+        console.log("Submission collection reference:", submissionsCollection);
+        
+        // Save data
+        const docRef = await addDoc(submissionsCollection, finalData);
+        console.log("Document written with ID: ", docRef.id);
+        
+        // Track form submission in analytics
+        trackFormSubmission(formData.persona, contactData.incentive_requested);
+        
+        // Show success message
+        toast({
+          title: "Form Submitted Successfully",
+          description: "We've received your information and will be in touch soon."
+        });
+        
+        setIsComplete(true);
+        setCurrentStep(4);
+      } catch (firestoreError) {
+        console.error("Firestore submission error:", firestoreError);
+        throw new Error(`Database error: ${firestoreError.message || "Unknown error"}`);
+      }
       
     } catch (error) {
       console.error("Error submitting form:", error);
       
+      // Create user-friendly error message
       let errorMessage = "There was a problem submitting your request. Please try again.";
+      
       if (error instanceof Error) {
-        errorMessage = `Error: ${error.message}`;
-        setSubmissionError(error.message);
+        // Format error message for display
+        if (error.message.includes("Firebase") || error.message.includes("Database")) {
+          errorMessage = "We're having trouble connecting to our services. Please try again later or contact us directly.";
+        } else {
+          errorMessage = `Error: ${error.message}`;
+        }
+        
+        setSubmissionError(errorMessage);
       }
       
       toast({
@@ -182,14 +257,27 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
   return (
     <ErrorBoundary>
       <div className={`form-container max-w-2xl mx-auto p-4 md:p-6 bg-white rounded-lg shadow-md ${className}`}>
-        {firebaseStatus === 'error' && (
-          <div className="mb-4 p-3 bg-amber-50 border border-amber-200 text-amber-700 rounded">
-            <p className="font-medium">Firebase connection issue detected</p>
-            <p className="text-sm">There may be connectivity issues with our form service. If you have problems submitting the form, please contact us directly.</p>
+        {(firebaseStatus === 'error' || firebaseStatus === 'warning') && (
+          <div className={`mb-4 p-3 border rounded ${
+            firebaseStatus === 'error' 
+              ? 'bg-red-50 border-red-200 text-red-700' 
+              : 'bg-amber-50 border-amber-200 text-amber-700'
+          }`}>
+            <p className="font-medium">
+              {firebaseStatus === 'error' 
+                ? 'Connection issue detected' 
+                : 'Warning: Limited connectivity'}
+            </p>
+            <p className="text-sm">
+              {firebaseStatus === 'error'
+                ? 'We\'re having trouble connecting to our form service. Please try again later or contact us directly.'
+                : 'There might be connectivity issues with our form service. If you encounter problems submitting, please contact us directly.'}
+            </p>
           </div>
         )}
         
         {!isComplete && <FormProgress currentStep={currentStep} totalSteps={3} />}
+        
         {submissionError && (
           <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded">
             <p className="font-medium">There was a problem with your submission:</p>
@@ -197,6 +285,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
             <p className="mt-2 text-sm">Please try again or contact us directly.</p>
           </div>
         )}
+        
         {renderCurrentStep()}
       </div>
     </ErrorBoundary>

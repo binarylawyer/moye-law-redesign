@@ -31,8 +31,7 @@
 # Security Headers
 /*
   X-Frame-Options: SAMEORIGIN
-  Content-Security-Policy: default-src 'self'; connect-src 'self' https://*.google-analytics.com https://analytics.google.com https://*.googletagmanager.com https://www.google-analytics.com https://firestore.googleapis.com https://*.firebaseio.com https://*.googleapis.com https://*.cloudfunctions.net https://*.firebase.googleapis.com https://*.firebase.app https://firebase.googleapis.com https://*.firebaseapp.com https://identitytoolkit.googleapis.com wss://*.firebaseio.com; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://www.google-analytics.com https://*.firebase.com https://*.firebaseio.com https://cdn.gpteng.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://www.google-analytics.com;
+  Content-Security-Policy: default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline'; font-src * data:;
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-</rewritten_file> 
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload 
