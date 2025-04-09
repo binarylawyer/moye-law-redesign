@@ -56,7 +56,7 @@ export class ErrorBoundary extends Component<Props, State> {
         return this.props.fallback;
       }
 
-      // Default fallback UI with error details and recovery options
+      // Default fallback UI
       return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50">
           <div className="max-w-md w-full p-8 bg-white rounded-lg shadow-lg border border-red-100">
@@ -82,9 +82,8 @@ export class ErrorBoundary extends Component<Props, State> {
                 We encountered an error while rendering this page.
               </p>
               
-              {/* TEMPORARILY show error details in ALL modes for debugging */}
-              {/* {import.meta.env.MODE !== 'production' && this.state.error && ( */} 
-              {this.state.error && (
+              {/* Show error message in development only */}
+              {import.meta.env.MODE !== 'production' && this.state.error && (
                 <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-md text-left">
                   <p className="text-sm font-medium text-red-800">{this.state.error.name}: {this.state.error.message}</p>
                   {this.state.errorInfo && (

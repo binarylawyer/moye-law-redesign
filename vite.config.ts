@@ -158,7 +158,9 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     },
     build: {
       outDir: 'dist',
-      minify: 'terser', // Use Terser for better minification
+      // Temporarily disable minification to diagnose production error
+      minify: false,
+      //minify: 'terser', // Use Terser for better minification
       terserOptions: {
         compress: {
           drop_console: true, // Remove console logs
