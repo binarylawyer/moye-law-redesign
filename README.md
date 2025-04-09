@@ -91,3 +91,25 @@ npm run serve
 ```
 
 This will start the Firebase emulator, allowing you to test function triggers.
+
+## Troubleshooting
+
+If you encounter errors with functions deployment:
+
+1. Make sure you've set up the email configuration:
+   ```bash
+   firebase functions:config:set email.user="your-gmail@gmail.com" email.password="your-app-password"
+   ```
+
+2. Check that the functions directory has all dependencies installed:
+   ```bash
+   cd functions
+   npm install
+   ```
+
+3. Verify your Firebase project is correctly configured:
+   ```bash
+   firebase use moyelaw-e3158
+   ```
+
+4. For `functions.firestore.document is not a function` error, make sure you're using the correct Firestore trigger syntax.

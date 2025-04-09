@@ -90,7 +90,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ className }) => {
       // Show success message
       toast({
         title: "Form Submitted Successfully",
-        description: "We've received your information and will be in touch soon.",
+        description: "We've received your information and will be in touch soon."
       });
       
       setIsComplete(true);
