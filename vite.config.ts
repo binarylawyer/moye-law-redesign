@@ -147,7 +147,8 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       }),
       sitemap({ 
         hostname: 'https://moye.law',
-        dynamicRoutes: allRoutes
+        dynamicRoutes: allRoutes,
+        exclude: ['/404'], 
       }),
     ].filter(Boolean),
     resolve: {
