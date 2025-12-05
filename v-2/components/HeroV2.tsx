@@ -1,199 +1,74 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Terminal, Scale } from 'lucide-react';
 
 /**
- * HeroV2: Hybrid-Mondrian Hero Section
+ * HeroV2: "The Art of Engineering" - Structural Mondrian Grid
  * 
- * KEY CHANGES FROM ORIGINAL:
- * - Deep Navy (#0A2342) grid lines instead of black
- * - 4px border width (Mondrian standard)
- * - Cormorant Garamond for main headline (The Artist)
- * - JetBrains Mono for CTA buttons (The Engineer)
- * - Navy/Gold/Venetian Red color blocks (not primary RGB)
- * - Grid line "drawing" animation on load
+ * Based on Design Spec 2.2:
+ * - 12-Column CSS Grid
+ * - Cols 1-7: The Statement (White Block, Cormorant Garamond)
+ * - Cols 8-12: The Visual (Nested Grid of Navy/Gold/Red)
+ * - "Drawing" grid lines animation
  */
 
 const HeroV2 = () => {
-    const heroRef = useRef<HTMLDivElement>(null);
-    const videoRef = useRef<HTMLVideoElement>(null);
-    const gridRef = useRef<HTMLDivElement>(null);
+    const [typedCode, setTypedCode] = useState('');
+    const fullCode = "const justice = new Law.Builder()\n  .withValues('FAMILY')\n  .withTech('AI_CORE')\n  .build();";
 
-    // Parallax scroll effect
+    // Typing animation for the code snippet
     useEffect(() => {
-        const handleScroll = () => {
-            if (heroRef.current && videoRef.current) {
-                const scrollY = window.scrollY;
-                const offset = scrollY * 0.15;
-                videoRef.current.style.transform = `translateX(${offset}px)`;
-                const opacity = Math.max(0.6, 1 - (scrollY * 0.002));
-                videoRef.current.style.opacity = opacity.toString();
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    // Grid line drawing animation on mount
-    useEffect(() => {
-        const grid = gridRef.current;
-        if (grid) {
-            // Trigger animation by adding class
-            setTimeout(() => {
-                grid.classList.add('grid-drawn');
-            }, 100);
-        }
+        let i = 0;
+        const interval = setInterval(() => {
+            setTypedCode(fullCode.substring(0, i));
+            i++;
+            if (i > fullCode.length) clearInterval(interval);
+        }, 50);
+        return () => clearInterval(interval);
     }, []);
 
     return (
-        <div className="relative border-b-4 border-mondrian-navy" ref={heroRef}>
-            {/* Video container - full height */}
-            <div className="h-screen overflow-hidden relative">
-                {/* Video with parallax effect */}
-                <div className="absolute inset-0 w-[120%] h-full overflow-hidden">
-                    <video
-                        ref={videoRef}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="absolute top-0 left-0 w-full h-full object-cover transition-transform"
-                    >
-                        <source src="/videos/legal-craftsmanship.mp4" type="video/mp4" />
-                    </video>
+        <div className="relative w-full min-h-screen bg-mondrian-navy pt-20 md:pt-24 pb-8 px-4 md:px-8 flex flex-col justify-center">
 
-                    {/* HYBRID-MONDRIAN GRID OVERLAY */}
-                    <div
-                        ref={gridRef}
-                        className="absolute inset-0 grid-lines"
-                    >
-                        {/* Vertical lines - Deep Navy at 4px */}
-                        <div className="absolute top-0 left-1/4 h-full w-1 bg-mondrian-navy/80 grid-line-vertical"></div>
-                        <div className="absolute top-0 right-1/3 h-full w-1 bg-mondrian-navy/80 grid-line-vertical"></div>
+            {/* THE MASTER GRID - 12 Columns */}
+            <div className="max-w-[1800px] mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-0 border-4 border-mondrian-navy bg-mondrian-navy shadow-[16px_16px_0px_0px_#0A2342]">
 
-                        {/* Horizontal lines */}
-                        <div className="absolute top-1/3 left-0 right-0 h-1 bg-mondrian-navy/80 grid-line-horizontal"></div>
-                        <div className="absolute bottom-1/4 left-0 right-0 h-1 bg-mondrian-navy/80 grid-line-horizontal"></div>
+                {/* === COLS 1-7: THE STATEMENT (The Artist) === */}
+                <div className="col-span-1 md:col-span-7 bg-white p-8 md:p-16 flex flex-col justify-center relative min-h-[60vh] border-b-4 md:border-b-0 md:border-r-4 border-mondrian-navy">
+                    {/* Decorative Mondrian accent in top left */}
+                    <div className="absolute top-0 left-0 w-24 h-24 border-r-4 border-b-4 border-mondrian-navy bg-mondrian-red"></div>
 
-                        {/* Mondrian Color Blocks - Navy/Gold/Red palette */}
-                        <div className="absolute top-0 left-0 w-1/5 h-1/3 bg-mondrian-red/25"></div>
-                        <div className="absolute bottom-0 right-0 w-1/4 h-1/2 bg-mondrian-navy/30"></div>
-                        <div className="absolute top-1/3 right-1/4 w-1/6 h-1/4 bg-mondrian-gold/25"></div>
-                    </div>
-
-                    {/* Dark overlay for text readability */}
-                    <div className="absolute inset-0 bg-black/50"></div>
-                </div>
-            </div>
-
-            {/* Mondrian accent strip below hero */}
-            <div className="h-4 w-full flex border-t-4 border-mondrian-navy">
-                <div className="w-1/5 bg-mondrian-red border-r-4 border-mondrian-navy"></div>
-                <div className="w-2/5 bg-white border-r-4 border-mondrian-navy"></div>
-                <div className="w-1/5 bg-mondrian-navy border-r-4 border-mondrian-navy"></div>
-                <div className="w-1/5 bg-mondrian-gold"></div>
-            </div>
-
-            {/* Content overlay - THE BINARY LAWYER typography */}
-            <div className="absolute inset-0 flex items-center">
-                <div className="container mx-auto px-8">
-                    <div className="max-w-3xl">
-                        {/* Headline: Cormorant Garamond (The Artist) */}
-                        <h1 className="font-serif text-4xl md:text-6xl text-white mb-6 font-bold tracking-tight reveal">
-                            Family Values, <br />
-                            <span className="text-mondrian-gold">Future-Forward</span> Legal Solutions
+                    <div className="relative z-10 mt-12">
+                        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-mondrian-navy leading-[0.9] tracking-tight mb-8">
+                            The Intersection of <br />
+                            <span className="italic text-mondrian-gold">Art</span>, Law, <br />
+                            and <span className="font-mono text-4xl md:text-6xl text-mondrian-navy opacity-80">Code</span>.
                         </h1>
 
-                        {/* Subheader: Inter (The Bridge) */}
-                        <p className="font-sans text-xl text-white/80 mb-8 reveal" style={{ transitionDelay: '0.1s' }}>
-                            Sophisticated legal strategies with personal attention, powered by innovative technology.
+                        <p className="font-sans text-xl md:text-2xl text-gray-600 max-w-xl mb-12 leading-relaxed">
+                            We don't just practice law; we engineer outcomes.
+                            Merging traditional legal counsel with the precision of modern technology.
                         </p>
 
-                        {/* CTA Buttons - Binary style */}
-                        <div className="flex flex-col md:flex-row gap-4 mb-12 reveal" style={{ transitionDelay: '0.2s' }}>
-                            {/* Primary: Engineer/Execute style (JetBrains Mono) */}
+                        <div className="flex flex-wrap gap-6">
                             <Link
                                 to="/contact"
-                                className="inline-flex items-center justify-center px-8 py-3 
-                         font-mono text-lg tracking-wide
-                         bg-mondrian-gold text-mondrian-navy
-                         border-4 border-mondrian-navy
-                         hover:bg-mondrian-navy hover:text-mondrian-gold hover:border-mondrian-gold
-                         transition-all duration-75
-                         shadow-[4px_4px_0px_0px_rgba(10,35,66,1)]
-                         hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px]"
+                                className="group relative inline-flex items-center justify-center px-8 py-4 
+                         bg-mondrian-navy text-white font-mono text-lg
+                         border-4 border-mondrian-navy overflow-hidden
+                         hover:text-mondrian-gold transition-colors duration-200"
                             >
-                                &gt; SCHEDULE_CONSULTATION <ArrowRight className="ml-2 h-5 w-5" />
-                            </Link>
-
-                            {/* Secondary: Counsel/Traditional style (Cormorant Garamond) */}
-                            <Link
-                                to="/experience-the-difference"
-                                className="inline-flex items-center justify-center px-8 py-3 
-                         font-serif text-lg italic
-                         text-white border-4 border-white 
-                         hover:bg-white/10
-                         transition-all duration-75"
-                            >
-                                Our Approach
-                            </Link>
-                        </div>
-
-                        {/* 30 year badge - Mondrian accent */}
-                        <div className="relative mt-8 ml-2 reveal border-l-4 border-mondrian-red" style={{ transitionDelay: '0.2s' }}>
-                            <p className="text-white text-lg pl-4 py-1 font-sans">
-                                <span className="font-semibold">Established 1994</span> — <span className="text-mondrian-gold font-bold">30 years</span> of legal excellence
-                            </p>
-                        </div>
-
-                        {/* Scroll indicator */}
-                        <div className="mt-12 reveal flex items-center" style={{ transitionDelay: '0.3s' }}>
-                            <div className="h-1 w-8 bg-mondrian-gold"></div>
-                            <span className="text-white/70 text-sm font-mono pl-2 tracking-wide">scroll_to_explore()</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* CSS for grid line drawing animation */}
-            <style>{`
-        /* Grid lines start at 0 size */
-        .grid-lines .grid-line-vertical {
-          width: 0;
-          transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        .grid-lines .grid-line-horizontal {
-          height: 0;
-          transition: height 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        /* When grid is "drawn", expand to full size */
-        .grid-lines.grid-drawn .grid-line-vertical {
-          width: 4px;
-        }
-        
-        .grid-lines.grid-drawn .grid-line-horizontal {
-          height: 4px;
-        }
-        
-        /* Reveal animation for content */
-        .reveal {
-          opacity: 0;
-          transform: translateY(20px);
-          animation: reveal-in 0.8s ease forwards;
-        }
-        
-        @keyframes reveal-in {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+                                <span className="relative z-10 flex items-center">
+                                    &gt; EXECUTE_STRATEGY <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                                </span>
+                                {/* Hover fill effect */}
+                                <div className="absolute inset-0 bg-black transform translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out"></div>
+                                from {width: 0; height: 0; }
+                                to {width: 100%; height: 100%; }
         }
       `}</style>
-        </div>
-    );
+                        </div>
+                        );
 };
 
-export default HeroV2;
+                        export default HeroV2;

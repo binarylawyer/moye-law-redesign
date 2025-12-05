@@ -39,51 +39,55 @@ export default {
 				'display': [
 					"Montserrat",
 					"ui-sans-serif",
-					"system-ui", 
-					"-apple-system", 
-					"BlinkMacSystemFont", 
-					"Segoe UI", 
-					"Roboto", 
-					"Helvetica Neue", 
-					"Arial", 
+					"system-ui",
+					"-apple-system",
+					"BlinkMacSystemFont",
+					"Segoe UI",
+					"Roboto",
+					"Helvetica Neue",
+					"Arial",
 					"sans-serif"
 				],
 				// Inter for body text (readability bridge)
 				'sans': [
 					"Inter",
 					"ui-sans-serif",
-					"system-ui", 
-					"-apple-system", 
-					"BlinkMacSystemFont", 
-					"Segoe UI", 
-					"Roboto", 
-					"Helvetica Neue", 
-					"Arial", 
+					"system-ui",
+					"-apple-system",
+					"BlinkMacSystemFont",
+					"Segoe UI",
+					"Roboto",
+					"Helvetica Neue",
+					"Arial",
 					"sans-serif"
 				],
 			},
 			fontSize: {
-                'base': '1.125rem',    // Increased base font size
-                'lg': '1.25rem',
-                'xl': '1.375rem',
-                '2xl': '1.5rem',
-                '3xl': '1.75rem',
-                '4xl': '2.25rem',
-                '5xl': '3rem',
-                '6xl': '3.75rem',
-                '7xl': '4.5rem',
-            },
+				'base': '1.125rem',    // Increased base font size
+				'lg': '1.25rem',
+				'xl': '1.375rem',
+				'2xl': '1.5rem',
+				'3xl': '1.75rem',
+				'4xl': '2.25rem',
+				'5xl': '3rem',
+				'6xl': '3.75rem',
+				'7xl': '4.5rem',
+			},
 			colors: {
 				// === HYBRID-MONDRIAN PALETTE ===
 				// Deep Navy replaces Mondrian's black as the grid structure
 				'mondrian': {
 					'navy': '#0A2342',      // Grid lines - The Rule of Law
-					'gold': '#C99D56',      // Luxury/Wealth - CTAs and highlights
-					'red': '#8B0000',       // Venetian Red - Art Law accent (sparse)
-					'white': '#FFFFFF',     // Canvas - The Void
+					'gold': '#C99D56',      // Luxury/Wealth - CTAs
 					'grey': '#F3F4F6',      // Technical/Product backgrounds
+					'white': '#FFFFFF',     // Canvas
+
+					// CLASSIC MONDRIAN PRIMARIES
+					'red': '#E30022',       // Cadmium Red
+					'blue': '#003580',      // Cobalt Blue
+					'yellow': '#FFD700',    // Chrome Yellow
 				},
-				
+
 				// Legacy colors (backward compatibility)
 				'primary': '#4682B4', // Cerulean blue
 				'primary-light': '#B0C4DE',

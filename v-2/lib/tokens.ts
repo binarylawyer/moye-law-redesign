@@ -4,34 +4,6 @@
  * 
  * These tokens enforce the Mondrian grid philosophy:
  * - The Grid is Justice (4px Navy lines)
- * - No rounded corners (perfect rectangles)
- * - Binary typography (Serif for Art, Mono for Engineering)
- */
-
-// === COLOR PALETTE ===
-export const colors = {
-    grid: {
-        primary: '#0A2342',    // Deep Navy - Replaces Mondrian's black
-        width: '4px',          // The Mondrian Standard - never violate this
-    },
-    blocks: {
-        void: '#FFFFFF',       // Pure White - The canvas (70% of surface)
-        structure: '#0A2342',  // Deep Navy - Stability, Authority
-        luxury: '#C99D56',     // Warm Gold - Wealth, Success, CTAs
-        passion: '#8B0000',    // Venetian Red - Art, Urgency (use sparingly)
-        logic: '#F3F4F6',      // Cool Grey - Technical/Product areas
-    },
-    text: {
-        heading: '#0A2342',    // Navy
-        body: '#374151',       // Dark Grey
-        code: '#C99D56',       // Gold (for monospaced accents)
-    }
-};
-
-// === TYPOGRAPHY SYSTEM ===
-// The "Binary" Font Stack
-export const typography = {
-    // The Artist (Headings, Emotional Content)
     artist: {
         family: "'Cormorant Garamond', Georgia, 'Times New Roman', serif",
         usage: 'Main headlines, "Art Law" sections, emotional copy',
