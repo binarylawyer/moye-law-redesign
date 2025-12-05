@@ -8,6 +8,6 @@ export { default as SplitServiceCard } from './SplitServiceCard';
 export { default as PracticeCardV2 } from './PracticeCardV2';
 export { default as MethodologySection } from './MethodologySection';
 
-// Phase 3: Layout & Structure
-// export { default as MondrianLayout } from './MondrianLayout';
-// export { default as MondrianSection } from './MondrianSection';
+// Phase 3 & 4: Layout & Structure
+export { default as MondrianGridWrapper } from './MondrianGridWrapper';
+export { default as LandingPage } from '../pages/LandingPage';
