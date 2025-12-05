@@ -3,6 +3,7 @@ import NavBarV2 from '../components/NavBarV2';
 import HeroV2 from '../components/HeroV2';
 import SplitServiceCard from '../components/SplitServiceCard';
 import MethodologySection from '../components/MethodologySection';
+import PracticeCardV2 from '../components/PracticeCardV2';
 
 /**
  * V2PreviewPage: Showcasing the Hybrid Mondrian Strategy
@@ -65,6 +66,41 @@ const V2PreviewPage = () => {
                             productDesc="USPTO search algorithms, automated filing, and status monitoring. Protect your brand instantly."
                         />
 
+                    </div>
+                </div>
+            </section>
+
+            {/* 5. THE ENGINEERING (Practice Cards) */}
+            <section className="py-24 px-4 md:px-8 bg-mondrian-grey border-b-4 border-mondrian-navy">
+                <div className="container mx-auto">
+                    <div className="mb-16 text-center">
+                        <span className="font-mono text-mondrian-navy text-sm tracking-widest uppercase mb-4 block">
+                            SYSTEM_MODULES
+                        </span>
+                        <h2 className="font-serif text-4xl md:text-5xl text-mondrian-navy font-bold mb-4">
+                            Core Competencies
+                        </h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <PracticeCardV2
+                            title="Art Law"
+                            description="Authentication, title disputes, and gallery representation. We protect the creator."
+                            path="/practice/art-law"
+                            icon={<span className="font-serif text-2xl italic">Al</span>}
+                        />
+                        <PracticeCardV2
+                            title="Estate Planning"
+                            description="For artists, collectors, and innovators. Ensuring your legacy survives you."
+                            path="/practice/estate-planning"
+                            icon={<span className="font-serif text-2xl italic">Ep</span>}
+                        />
+                        <PracticeCardV2
+                            title="Corporate Law"
+                            description="Entity formation, governance, and M&A. Building the structure for your vision."
+                            path="/practice/corporate-law"
+                            icon={<span className="font-serif text-2xl italic">Cl</span>}
+                        />
                     </div>
                 </div>
             </section>
