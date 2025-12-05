@@ -16,7 +16,7 @@ import { ArrowRight } from 'lucide-react';
 
 const HeroV2 = () => {
     const heroRef = useRef<HTMLDivElement>(null);
-    const video Ref = useRef<HTMLVideoElement>(null);
+    const videoRef = useRef<HTMLVideoElement>(null);
     const gridRef = useRef<HTMLDivElement>(null);
 
     // Parallax scroll effect
@@ -157,7 +157,7 @@ const HeroV2 = () => {
             </div>
 
             {/* CSS for grid line drawing animation */}
-            <style jsx>{`
+            <style>{`
         /* Grid lines start at 0 size */
         .grid-lines .grid-line-vertical {
           width: 0;
