@@ -9,28 +9,28 @@ import { resources as articles, Resource } from './src/data/articlesData'; // Re
 
 // --- Define minimal types for data structure ---
 // We only need the slug for the sitemap
-interface SitemapEntry { 
-  slug: string; 
+interface SitemapEntry {
+  slug: string;
 }
 
 // Use the imported Resource type for stronger typing
-interface ResourceStub extends Resource, SitemapEntry {} 
+interface ResourceStub extends Resource, SitemapEntry { }
 
 // Define the expected structure for imported research data
-interface ResearchPaperData { 
-  researchPapers: SitemapEntry[]; 
+interface ResearchPaperData {
+  researchPapers: SitemapEntry[];
 }
 
 // --- Main Async Config Function ---
 export default defineConfig(async ({ mode }): Promise<UserConfig> => {
-  
+
   // --- Load Research Data ---
   let researchPapers: SitemapEntry[] = []; // Use let, declare outside
   try {
     // Use dynamic import()
-    const researchDataModule: ResearchPaperData = await import('./src/data/researchData'); 
+    const researchDataModule: ResearchPaperData = await import('./src/data/researchData');
     if (researchDataModule && Array.isArray(researchDataModule.researchPapers)) {
-       researchPapers = researchDataModule.researchPapers;
+      researchPapers = researchDataModule.researchPapers;
     } else {
       console.warn("\nWARN: Imported './src/data/researchData.ts' but it does not export an array named 'researchPapers'. Research paper URLs will NOT be added to the sitemap.\n");
     }
@@ -145,10 +145,11 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
         jsxImportSource: mode === 'production' ? undefined : '@emotion/react',
         plugins: []
       }),
-      sitemap({ 
+      sitemap({
         hostname: 'https://moye.law',
         dynamicRoutes: allRoutes,
-        exclude: ['/404'], 
+        exclude: ['/404'],
+        generateRobotsTxt: false, // Fix Netlify build error: ENOENT dist/robots.txt
       }),
     ].filter(Boolean),
     resolve: {
@@ -175,8 +176,8 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
         }
       },
       */
-      cssMinify: true, 
-      cssCodeSplit: true, 
+      cssMinify: true,
+      cssCodeSplit: true,
       reportCompressedSize: true, // Re-enable compressed size reporting
       // Extract React vendor code into separate chunk
       commonjsOptions: {
@@ -202,79 +203,79 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
           chunkFileNames: 'assets/js/[name]-[hash].js',
           entryFileNames: 'assets/js/[name]-[hash].js',
           // Enforce a maximum chunk size for better loading
-          manualChunks: function(id) {
+          manualChunks: function (id) {
             // Use a smart chunking strategy
-            
+
             // Critical paths - Always include in the main bundle
-            if (id.includes('/src/components/Layout') || 
-                id.includes('/src/components/Navbar') ||
-                id.includes('/src/components/Logo') ||
-                id.includes('/src/pages/Index')) {
+            if (id.includes('/src/components/Layout') ||
+              id.includes('/src/components/Navbar') ||
+              id.includes('/src/components/Logo') ||
+              id.includes('/src/pages/Index')) {
               return 'critical';
             }
-            
+
             // Core React dependencies - must load early but separate from app code
-            if (id.includes('node_modules/react/') || 
-                id.includes('node_modules/react-dom/') || 
-                id.includes('node_modules/scheduler/')) {
+            if (id.includes('node_modules/react/') ||
+              id.includes('node_modules/react-dom/') ||
+              id.includes('node_modules/scheduler/')) {
               return 'react-core';
             }
-            
+
             // Routes and navigation - needed soon after initial render
-            if (id.includes('node_modules/react-router') || 
-                id.includes('/node_modules/@remix-run/router')) {
+            if (id.includes('node_modules/react-router') ||
+              id.includes('/node_modules/@remix-run/router')) {
               return 'react-router';
             }
-            
+
             // UI libraries (excluding Radix UI, which will go to vendor)
             if (// id.includes('node_modules/@radix-ui/') || // Keep Radix in vendor chunk
-                id.includes('node_modules/lucide-react') || 
-                id.includes('node_modules/class-variance-authority') || 
-                id.includes('node_modules/clsx')) {
+              id.includes('node_modules/lucide-react') ||
+              id.includes('node_modules/class-variance-authority') ||
+              id.includes('node_modules/clsx')) {
               return 'ui-libs';
             }
-            
+
             // Form and validation - only needed on pages with forms
-            if (id.includes('node_modules/zod') || 
-                id.includes('node_modules/react-hook-form') || 
-                id.includes('node_modules/@hookform') || 
-                id.includes('node_modules/dompurify')) {
+            if (id.includes('node_modules/zod') ||
+              id.includes('node_modules/react-hook-form') ||
+              id.includes('node_modules/@hookform') ||
+              id.includes('node_modules/dompurify')) {
               return 'forms';
             }
-            
+
             // Group pages by section for better code splitting
             if (id.includes('/src/pages/practice/') || id.includes('/src/pages/services/')) {
               return 'section-legal-services';
             }
-            
-            if (id.includes('/src/pages/Resources') || 
-                id.includes('/src/pages/Articles') || 
-                id.includes('/src/pages/Books') || 
-                id.includes('/src/pages/Research')) {
+
+            if (id.includes('/src/pages/Resources') ||
+              id.includes('/src/pages/Articles') ||
+              id.includes('/src/pages/Books') ||
+              id.includes('/src/pages/Research')) {
               return 'section-resources';
             }
-            
-            if (id.includes('/src/pages/About') || 
-                id.includes('/src/pages/Team') || 
-                id.includes('/src/pages/Contact')) {
+
+            if (id.includes('/src/pages/About') ||
+              id.includes('/src/pages/Team') ||
+              id.includes('/src/pages/Contact')) {
               return 'section-about';
             }
-            
+
             // UI Components by type
             if (id.includes('/src/components/ui/')) {
               return 'components-ui';
             }
-            
+
             // Custom components - separate from UI components
             if (id.includes('/src/components/')) {
               return 'components-custom';
             }
-            
+
             // Common utilities - light and can be loaded early
             if (id.includes('/src/utils/') || id.includes('/src/lib/') || id.includes('/src/hooks/')) {
               return 'common';
             }
-            
+
             // Vendor dependencies - third-party libraries (now includes Radix UI)
             if (id.includes('node_modules/')) {
               return 'vendor';
