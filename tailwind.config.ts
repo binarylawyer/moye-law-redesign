@@ -19,6 +19,23 @@ export default {
 		},
 		extend: {
 			fontFamily: {
+				// THE BINARY LAWYER: Dual Typography System
+				// The Artist/Lawyer - Elegant, traditional, emotional
+				'serif': [
+					"Cormorant Garamond",
+					"Georgia",
+					"Times New Roman",
+					"serif"
+				],
+				// The Engineer/Coder - Technical, precise, systematic
+				'mono': [
+					"JetBrains Mono",
+					"Fira Code",
+					"Consolas",
+					"Monaco",
+					"monospace"
+				],
+				// Montserrat for modern headlines
 				'display': [
 					"Montserrat",
 					"ui-sans-serif",
@@ -31,6 +48,7 @@ export default {
 					"Arial", 
 					"sans-serif"
 				],
+				// Inter for body text (readability bridge)
 				'sans': [
 					"Inter",
 					"ui-sans-serif",
@@ -56,9 +74,20 @@ export default {
                 '7xl': '4.5rem',
             },
 			colors: {
+				// === HYBRID-MONDRIAN PALETTE ===
+				// Deep Navy replaces Mondrian's black as the grid structure
+				'mondrian': {
+					'navy': '#0A2342',      // Grid lines - The Rule of Law
+					'gold': '#C99D56',      // Luxury/Wealth - CTAs and highlights
+					'red': '#8B0000',       // Venetian Red - Art Law accent (sparse)
+					'white': '#FFFFFF',     // Canvas - The Void
+					'grey': '#F3F4F6',      // Technical/Product backgrounds
+				},
+				
+				// Legacy colors (backward compatibility)
 				'primary': '#4682B4', // Cerulean blue
-				'primary-light': '#B0C4DE', // Lighter cerulean (Light Steel Blue)
-				'primary-muted': '#7BA7CC', // Muted cerulean
+				'primary-light': '#B0C4DE',
+				'primary-muted': '#7BA7CC',
 				'navy': '#0A2342',
 				'gold': '#C99D56',
 				'light-gray': '#F5F5F5',
@@ -121,9 +150,21 @@ export default {
 				'120': '120px',
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				// MONDRIAN GRID: NO ROUNDED CORNERS
+				// Pure rectangles only
+				'none': '0px',
+				DEFAULT: '0px',
+				lg: '0px',
+				md: '0px',
+				sm: '0px'
+			},
+			// Mondrian 4px grid standard
+			borderWidth: {
+				DEFAULT: '1px',
+				'0': '0px',
+				'2': '2px',
+				'4': '4px',  // The Mondrian Standard
+				'8': '8px',
 			},
 			keyframes: {
 				"accordion-down": {
