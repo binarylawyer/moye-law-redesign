@@ -1,136 +1,88 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Terminal, Scale } from 'lucide-react';
+import { ArrowRight, Terminal } from 'lucide-react';
 
 /**
- * HeroV2: "The Art of Engineering" - Structural Mondrian Grid
+ * HeroV2: "The Binary Lawyer" - Golden Ratio Split
  * 
- * Based on Design Spec 2.2:
- * - 12-Column CSS Grid
- * - Cols 1-7: The Statement (White Block, Cormorant Garamond)
- * - Cols 8-12: The Visual (Nested Grid of Navy/Gold/Red)
- * - "Drawing" grid lines animation
+ * Based on Hybrid Mondrian Spec:
+ * - Golden Ratio Split (1.618)
+ * - Block A (60%): The Promise (White, Serif Headline)
+ * - Block B (40%): The Human (Portrait with Glitch Overlay)
+ * - Block C: Nested CTA (Gold)
  */
 
 const HeroV2 = () => {
-    const [typedCode, setTypedCode] = useState('');
-    const fullCode = "const justice = new Law.Builder()\n  .withValues('FAMILY')\n  .withTech('AI_CORE')\n  .build();";
-
-    // Typing animation for the code snippet
-    useEffect(() => {
-        let i = 0;
-        const interval = setInterval(() => {
-            setTypedCode(fullCode.substring(0, i));
-            i++;
-            if (i > fullCode.length) clearInterval(interval);
-        }, 50);
-        return () => clearInterval(interval);
-    }, []);
-
     return (
-        <div className="relative w-full min-h-screen bg-mondrian-navy pt-20 md:pt-24 pb-8 px-4 md:px-8 flex flex-col justify-center">
+        <div className="relative w-full min-h-[90vh] bg-white pt-20 md:pt-24 flex flex-col">
 
-            {/* THE MASTER GRID - 12 Columns */}
-            <div className="max-w-[1800px] mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-0 border-4 border-mondrian-navy bg-mondrian-navy shadow-[16px_16px_0px_0px_#0A2342]">
+            {/* THE MASTER GRID - Golden Ratio Split */}
+            <div className="flex-grow grid grid-cols-1 md:grid-cols-12 h-full border-b-4 border-mondrian-navy">
 
-                {/* === COLS 1-7: THE STATEMENT (The Artist) === */}
-                <div className="col-span-1 md:col-span-7 bg-white p-8 md:p-16 flex flex-col justify-center relative min-h-[60vh] border-b-4 md:border-b-0 md:border-r-4 border-mondrian-navy">
-                    {/* Decorative Mondrian accent in top left */}
-                    <div className="absolute top-0 left-0 w-24 h-24 border-r-4 border-b-4 border-mondrian-navy bg-mondrian-red"></div>
-
-                    <div className="relative z-10 mt-12">
-                        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-mondrian-navy leading-[0.9] tracking-tight mb-8">
-                            The Intersection of <br />
-                            <span className="italic text-mondrian-gold">Art</span>, Law, <br />
-                            and <span className="font-mono text-4xl md:text-6xl text-mondrian-navy opacity-80">Code</span>.
+                {/* === BLOCK A: THE PROMISE (60% approx - Cols 1-7) === */}
+                <div className="col-span-1 md:col-span-7 bg-white p-8 md:p-16 flex flex-col justify-center relative border-r-4 border-mondrian-navy">
+                    <div className="max-w-3xl">
+                        <h1 className="font-serif text-6xl md:text-8xl font-bold text-mondrian-navy leading-[0.9] tracking-tight mb-8">
+                            The Architecture <br />
+                            of <span className="italic text-mondrian-gold">Legacy</span>.
                         </h1>
 
-                        <p className="font-sans text-xl md:text-2xl text-gray-600 max-w-xl mb-12 leading-relaxed">
-                            We don't just practice law; we engineer outcomes.
-                            Merging traditional legal counsel with the precision of modern technology.
+                        <p className="font-sans text-xl md:text-2xl text-gray-600 max-w-xl mb-12 leading-relaxed border-l-4 border-mondrian-gold pl-6">
+                            Family values engineered for a digital future.
+                            We don't just draft documents; we deploy systems.
                         </p>
 
-                        <div className="flex flex-wrap gap-6">
+                        {/* CTA Block - Nested in the layout */}
+                        <div className="inline-flex">
                             <Link
-                                to="/contact"
-                                className="group relative inline-flex items-center justify-center px-8 py-4 
-                         bg-mondrian-navy text-white font-mono text-lg
-                         border-4 border-mondrian-navy overflow-hidden
-                         hover:text-mondrian-gold transition-colors duration-200"
+                                to="/consultation"
+                                className="group relative inline-flex items-center justify-center px-8 py-5 
+                         bg-mondrian-navy text-white font-mono text-lg tracking-wide
+                         border-4 border-mondrian-navy
+                         hover:bg-mondrian-gold hover:text-mondrian-navy hover:border-mondrian-navy
+                         transition-all duration-75 shadow-[8px_8px_0px_0px_#C99D56]"
                             >
-                                <span className="relative z-10 flex items-center">
-                                    &gt; EXECUTE_STRATEGY <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                                </span>
-                                {/* Hover fill effect */}
-                                <div className="absolute inset-0 bg-black transform translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out"></div>
+                                &gt; INITIALIZE_CONSULTATION
+                                <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                             </Link>
                         </div>
                     </div>
                 </div>
 
-                {/* === COLS 8-12: THE VISUAL (The Engineer) === */}
-                <div className="col-span-1 md:col-span-5 grid grid-rows-2 h-full min-h-[60vh]">
-
-                    {/* TOP BLOCK: The "Sushi Stack" Code Snippet */}
-                    <div className="bg-mondrian-navy p-8 border-b-4 border-mondrian-navy relative overflow-hidden group">
-                        {/* Background grid pattern */}
-                        <div className="absolute inset-0 opacity-10"
-                            style={{ backgroundImage: 'linear-gradient(#C99D56 1px, transparent 1px), linear-gradient(90deg, #C99D56 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
-                        </div>
-
-                        {/* Mondrian Accent: Primary Yellow Square */}
-                        <div className="absolute top-0 right-0 w-16 h-16 bg-mondrian-yellow border-l-4 border-b-4 border-mondrian-navy"></div>
-
-                        <div className="relative z-10 h-full flex flex-col justify-between pt-8">
-                            <div className="flex justify-between items-start">
-                                <Terminal className="text-mondrian-gold w-8 h-8" />
-                                <span className="font-mono text-xs text-mondrian-gold/60">sys.admin // root</span>
-                            </div>
-
-                            <div className="font-mono text-mondrian-gold text-lg md:text-xl leading-relaxed">
-                                <span className="text-purple-400">const</span> <span className="text-blue-300">justice</span> = <span className="text-purple-400">new</span> <span className="text-yellow-300">Law</span>.<span className="text-blue-300">Builder</span>()<br />
-                                &nbsp;&nbsp;.<span className="text-blue-300">withValues</span>(<span className="text-green-300">'FAMILY'</span>)<br />
-                                &nbsp;&nbsp;.<span className="text-blue-300">withTech</span>(<span className="text-green-300">'AI_CORE'</span>)<br />
-                                &nbsp;&nbsp;.<span className="text-blue-300">build</span>();<span className="animate-pulse">_</span>
-                            </div>
-
-                            <div className="text-right">
-                                <span className="font-mono text-xs text-white/40">v2.0.24 BUILD_STABLE</span>
-                            </div>
-                        </div>
+                {/* === BLOCK B: THE HUMAN (40% approx - Cols 8-12) === */}
+                <div className="col-span-1 md:col-span-5 bg-mondrian-grey relative overflow-hidden group h-full min-h-[50vh]">
+                    {/* Portrait Placeholder (simulating Christopher Moye) */}
+                    <div className="absolute inset-0 bg-gray-300 flex items-center justify-center">
+                        {/* In production, this would be: <img src="/chris-moye-portrait.jpg" className="w-full h-full object-cover" /> */}
+                        <span className="font-serif text-gray-500 italic text-2xl">Portrait: Christopher Moye</span>
                     </div>
 
-                    {/* BOTTOM BLOCK: Split Primary Colors */}
-                    <div className="grid grid-cols-2 h-full">
-
-                        {/* Primary Red Block: The Invitation */}
-                        <div className="bg-mondrian-red p-8 border-r-4 border-mondrian-navy flex flex-col justify-center items-center text-center hover:bg-[#C2001B] transition-colors cursor-pointer group relative overflow-hidden">
-                            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            <Scale className="w-12 h-12 text-white mb-4 group-hover:scale-110 transition-transform duration-300" />
-                            <h3 className="font-serif text-3xl font-bold text-white mb-2">Counsel</h3>
-                            <p className="font-sans text-white/90 text-sm">Bespoke Legal Strategy</p>
+                    {/* THE GLITCH OVERLAY (Hover Effect) */}
+                    <div className="absolute inset-0 bg-mondrian-navy/90 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col justify-center items-center p-8 backdrop-blur-sm">
+                        {/* Schematic Grid */}
+                        <div className="absolute inset-0 opacity-20"
+                            style={{ backgroundImage: 'linear-gradient(#C99D56 1px, transparent 1px), linear-gradient(90deg, #C99D56 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
                         </div>
 
-                        {/* Primary Blue Block: The Product */}
-                        <div className="bg-mondrian-blue p-8 flex flex-col justify-center items-center text-center hover:bg-[#002A66] transition-colors cursor-pointer group relative overflow-hidden">
-                            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            <div className="w-12 h-12 border-4 border-white flex items-center justify-center mb-4 bg-transparent group-hover:rotate-90 transition-transform duration-500">
-                                <div className="w-4 h-4 bg-white"></div>
+                        {/* Data Points */}
+                        <div className="relative z-10 grid grid-cols-2 gap-8 w-full max-w-md">
+                            <div className="text-center">
+                                <div className="font-mono text-4xl text-mondrian-gold font-bold mb-1">20+</div>
+                                <div className="font-sans text-white text-sm tracking-widest uppercase">Years Practice</div>
                             </div>
-                            <h3 className="font-mono text-xl font-bold text-white mb-2">Product</h3>
-                            <p className="font-sans text-white/80 text-sm">Fixed-Price Solutions</p>
+                            <div className="text-center">
+                                <div className="font-mono text-4xl text-mondrian-gold font-bold mb-1">500+</div>
+                                <div className="font-sans text-white text-sm tracking-widest uppercase">Cases Engineered</div>
+                            </div>
+                            <div className="text-center col-span-2 mt-4">
+                                <div className="inline-flex items-center gap-2 px-4 py-2 border border-mondrian-gold text-mondrian-gold font-mono text-xs">
+                                    <Terminal className="w-4 h-4" /> SYSTEM_ARCHITECT
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            {/* Drawing Animation Styles */}
-            <style>{`
-        @keyframes drawLine {
-          from { width: 0; height: 0; }
-          to { width: 100%; height: 100%; }
-        }
-      `}</style>
         </div>
     );
 };
