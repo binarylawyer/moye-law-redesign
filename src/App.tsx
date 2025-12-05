@@ -37,6 +37,9 @@ import ExperienceTheDifference from "./pages/ExperienceTheDifference";
 import ErrorTestPage from "./pages/ErrorTest";
 import ClientChat from "./pages/ClientChat";
 
+// v-2 Hybrid-Mondrian Component Preview
+import V2PreviewPage from "../v-2/pages/V2PreviewPage";
+
 // Service Pages
 import EstatePlanningService from "./pages/services/EstatePlanning";
 import ElderLawService from "./pages/services/ElderLaw";
@@ -90,11 +93,11 @@ declare global {
 // Scroll to top component
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-  
+
   return null;
 };
 
@@ -180,6 +183,9 @@ const AppRoutes = () => {
           <Route path="/experience-the-difference" element={<ExperienceTheDifference />} />
           <Route path="/error-test" element={<ErrorTestPage />} />
 
+          {/* v-2 Component Preview */}
+          <Route path="/v2-preview" element={<V2PreviewPage />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
@@ -191,7 +197,7 @@ const handleGlobalError = (error: Error, errorInfo: React.ErrorInfo) => {
   logger.error("Global error caught by ErrorBoundary", error, {
     context: { componentStack: errorInfo.componentStack }
   });
-  
+
   // Here you could also send to an error monitoring service
 };
 
