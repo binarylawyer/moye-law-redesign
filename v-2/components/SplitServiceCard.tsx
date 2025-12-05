@@ -8,6 +8,7 @@ import { ArrowRight, Check, Server, Feather, Box, Scale } from 'lucide-react';
  * - Vertical Column Layout
  * - Top Half: The Store/Service (White, Serif)
  * - Bottom Half: The Factory/Product (Grey, Mono)
+ * - STRICT PALETTE: Navy, Gold, White, Grey. No bright primaries.
  */
 
 interface SplitServiceCardProps {

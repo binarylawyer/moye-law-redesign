@@ -5,11 +5,12 @@ import { ArrowRight, Terminal } from 'lucide-react';
 /**
  * HeroV2: "The Binary Lawyer" - Golden Ratio Split
  * 
- * Based on Hybrid Mondrian Spec:
+ * Based on Hybrid Mondrian Spec (System Prompt):
  * - Golden Ratio Split (1.618)
  * - Block A (60%): The Promise (White, Serif Headline)
  * - Block B (40%): The Human (Portrait with Glitch Overlay)
  * - Block C: Nested CTA (Gold)
+ * - NO BRIGHT PRIMARIES. Strict Navy/Gold/White/Grey.
  */
 
 const HeroV2 = () => {
