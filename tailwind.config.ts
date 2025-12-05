@@ -34,6 +34,12 @@ export default {
 					"Monaco",
 					"monospace"
 				],
+				// Legacy 'display' mapped to new Serif for transition
+				'display': [
+					"Cormorant Garamond",
+					"Georgia",
+					"serif"
+				],
 				'sans': [
 					"Inter",
 					"ui-sans-serif",
