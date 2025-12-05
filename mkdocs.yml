@@ -1,0 +1,50 @@
+site_name: Moye Law Design System
+site_description: "The Hybrid-Mondrian Design System and Architecture for Moye Law."
+site_author: "Moye Law Engineering"
+repo_url: "https://github.com/binarylawyer/moye-law-redesign"
+
+theme:
+  name: material
+  palette:
+    # Light mode (The Canvas)
+    - scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+
+    # Dark mode (The Terminal)
+    - scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Design System:
+    - Philosophy: design-system/philosophy.md
+    - Typography: design-system/typography.md
+    - Colors: design-system/colors.md
+    - Layout & Grid: design-system/layout.md
+  - Component Library:
+    - V2 Core (Hybrid Mondrian): components/v2-core.md
+    - V1 Legacy (Audit): components/v1-legacy.md
+  - The Factory (Sushi Stack):
+    - Architecture: factory/architecture.md
+    - Integration Strategy: factory/integration.md
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
