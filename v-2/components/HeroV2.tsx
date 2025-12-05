@@ -63,12 +63,76 @@ const HeroV2 = () => {
                                 </span>
                                 {/* Hover fill effect */}
                                 <div className="absolute inset-0 bg-black transform translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out"></div>
-                                from {width: 0; height: 0; }
-                                to {width: 100%; height: 100%; }
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
+                {/* === COLS 8-12: THE VISUAL (The Engineer) === */}
+                <div className="col-span-1 md:col-span-5 grid grid-rows-2 h-full min-h-[60vh]">
+
+                    {/* TOP BLOCK: The "Sushi Stack" Code Snippet */}
+                    <div className="bg-mondrian-navy p-8 border-b-4 border-mondrian-navy relative overflow-hidden group">
+                        {/* Background grid pattern */}
+                        <div className="absolute inset-0 opacity-10"
+                            style={{ backgroundImage: 'linear-gradient(#C99D56 1px, transparent 1px), linear-gradient(90deg, #C99D56 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
+                        </div>
+
+                        {/* Mondrian Accent: Primary Yellow Square */}
+                        <div className="absolute top-0 right-0 w-16 h-16 bg-mondrian-yellow border-l-4 border-b-4 border-mondrian-navy"></div>
+
+                        <div className="relative z-10 h-full flex flex-col justify-between pt-8">
+                            <div className="flex justify-between items-start">
+                                <Terminal className="text-mondrian-gold w-8 h-8" />
+                                <span className="font-mono text-xs text-mondrian-gold/60">sys.admin // root</span>
+                            </div>
+
+                            <div className="font-mono text-mondrian-gold text-lg md:text-xl leading-relaxed">
+                                <span className="text-purple-400">const</span> <span className="text-blue-300">justice</span> = <span className="text-purple-400">new</span> <span className="text-yellow-300">Law</span>.<span className="text-blue-300">Builder</span>()<br />
+                                &nbsp;&nbsp;.<span className="text-blue-300">withValues</span>(<span className="text-green-300">'FAMILY'</span>)<br />
+                                &nbsp;&nbsp;.<span className="text-blue-300">withTech</span>(<span className="text-green-300">'AI_CORE'</span>)<br />
+                                &nbsp;&nbsp;.<span className="text-blue-300">build</span>();<span className="animate-pulse">_</span>
+                            </div>
+
+                            <div className="text-right">
+                                <span className="font-mono text-xs text-white/40">v2.0.24 BUILD_STABLE</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* BOTTOM BLOCK: Split Primary Colors */}
+                    <div className="grid grid-cols-2 h-full">
+
+                        {/* Primary Red Block: The Invitation */}
+                        <div className="bg-mondrian-red p-8 border-r-4 border-mondrian-navy flex flex-col justify-center items-center text-center hover:bg-[#C2001B] transition-colors cursor-pointer group relative overflow-hidden">
+                            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <Scale className="w-12 h-12 text-white mb-4 group-hover:scale-110 transition-transform duration-300" />
+                            <h3 className="font-serif text-3xl font-bold text-white mb-2">Counsel</h3>
+                            <p className="font-sans text-white/90 text-sm">Bespoke Legal Strategy</p>
+                        </div>
+
+                        {/* Primary Blue Block: The Product */}
+                        <div className="bg-mondrian-blue p-8 flex flex-col justify-center items-center text-center hover:bg-[#002A66] transition-colors cursor-pointer group relative overflow-hidden">
+                            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="w-12 h-12 border-4 border-white flex items-center justify-center mb-4 bg-transparent group-hover:rotate-90 transition-transform duration-500">
+                                <div className="w-4 h-4 bg-white"></div>
+                            </div>
+                            <h3 className="font-mono text-xl font-bold text-white mb-2">Product</h3>
+                            <p className="font-sans text-white/80 text-sm">Fixed-Price Solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Drawing Animation Styles */}
+            <style>{`
+        @keyframes drawLine {
+          from { width: 0; height: 0; }
+          to { width: 100%; height: 100%; }
         }
       `}</style>
-                        </div>
-                        );
+        </div>
+    );
 };
 
-                        export default HeroV2;
+export default HeroV2;
