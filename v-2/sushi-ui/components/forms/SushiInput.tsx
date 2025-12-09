@@ -1,4 +1,17 @@
-className = '',
+import React from 'react';
+import { SushiTheme } from '../../theme/types';
+
+interface SushiInputProps extends React.ComponentProps<'input'> {
+    theme: SushiTheme;
+    label: string;
+    error?: string;
+}
+
+const SushiInput: React.FC<SushiInputProps> = ({
+    theme,
+    label,
+    error,
+    className = '',
     ...props
 }) => {
     const isFactory = theme.name === 'factory';
@@ -28,7 +41,6 @@ className = '',
                         color: theme.colors.text.body,
                         fontFamily: theme.fonts.body,
                         borderRadius: theme.borderRadius,
-                        // Storefront override: bottom border heavier on focus? We'll rely on global focus for now or custom styles
                     }}
                     {...props}
                 />
