@@ -4,6 +4,9 @@ import PracticeCardV2 from "../components/PracticeCardV2";
 import SplitServiceCard from "../components/SplitServiceCard";
 import MondrianGridWrapper from "../components/MondrianGridWrapper";
 import { colors, typography } from "../lib/tokens";
+import SushiCard from "../sushi-ui/components/SushiCard";
+import SushiSplitCard from "../sushi-ui/components/SushiSplitCard"; // Imported but will be used next
+import { StorefrontTheme, FactoryTheme } from "../sushi-ui/theme/themes";
 
 const DesignSystemPage: React.FC = () => {
     return (
@@ -173,6 +176,46 @@ const DesignSystemPage: React.FC = () => {
                         </div>
                     </div>
 
+                </section>
+
+                {/* SECTION 4: SUSHI OS (MONOREPO ABSTRACTION) */}
+                <section className="space-y-8 border-t-4 border-mondrian-navy pt-8">
+                    <h2 className="font-serif text-4xl text-mondrian-navy border-b-4 border-mondrian-navy inline-block pb-2">
+                        4. Sushi OS (The Monorepo Abstraction)
+                    </h2>
+                    <p className="max-w-2xl text-gray-600">
+                        This demonstrates the "Write Once, Brand Anywhere" capability.
+                        The same `SushiCard` component is rendered below using two different themes.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        {/* LEFT: store front */}
+                        <div className="space-y-4">
+                            <h3 className="font-bold text-center bg-gray-100 p-2">Theme: Storefront (Moye Law)</h3>
+                            <div className="p-8 bg-white border border-dashed border-gray-300">
+                                <SushiCard
+                                    theme={StorefrontTheme}
+                                    title="Standard Service"
+                                    description="This is the Moye Law styling for a standard practice area."
+                                    icon={<Shield className="w-6 h-6" />}
+                                />
+                            </div>
+                        </div>
+
+                        {/* RIGHT: factory */}
+                        <div className="space-y-4">
+                            <h3 className="font-bold text-center bg-gray-900 text-white p-2">Theme: Factory (Sushi Kitchen)</h3>
+                            <div className="p-8 bg-gray-900 border border-dashed border-gray-700">
+                                <SushiCard
+                                    theme={FactoryTheme}
+                                    title="System Module"
+                                    description="This is the 'Hacker' styling for the exact same component."
+                                    icon={<Terminal className="w-6 h-6" />}
+                                    metadata="MODULE_TYPE: KERNEL"
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </section>
 
             </div>
