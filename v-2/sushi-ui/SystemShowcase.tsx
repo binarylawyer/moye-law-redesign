@@ -220,56 +220,53 @@ const DesignSystemPage: React.FC = () => {
                     </div>
                 </section>
 
-            </div>
-        </section>
+                {/* SECTION 5: SUSHI FORMS (ATOMIC DESIGN) */}
+                <section className="space-y-8 border-t-4 border-mondrian-navy pt-8">
+                    <h2 className="font-serif text-4xl text-mondrian-navy border-b-4 border-mondrian-navy inline-block pb-2">
+                        5. Sushi Forms (Atomic Inputs)
+                    </h2>
+                    <p className="max-w-2xl text-gray-600">
+                        The same atom (`SushiInput` & `SushiButton`) adapting to the theme.
+                    </p>
 
-                {/* SECTION 5: SUSHI FORMS (ATOMIC DESIGN) */ }
-    <section className="space-y-8 border-t-4 border-mondrian-navy pt-8">
-        <h2 className="font-serif text-4xl text-mondrian-navy border-b-4 border-mondrian-navy inline-block pb-2">
-            5. Sushi Forms (Atomic Inputs)
-        </h2>
-        <p className="max-w-2xl text-gray-600">
-            The same atom (`SushiInput` & `SushiButton`) adapting to the theme.
-        </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        {/* STOREFRONT FORM */}
+                        <div className="p-8 bg-white border-2 border-mondrian-navy">
+                            <h3 className="font-serif text-2xl text-mondrian-navy mb-6">Contact The Firm</h3>
+                            <div className="space-y-4">
+                                <SushiInput theme={StorefrontTheme} label="Client Name" placeholder="Christopher Moye" />
+                                <SushiInput theme={StorefrontTheme} label="Email Address" placeholder="client@example.com" />
+                                <div className="pt-4">
+                                    <SushiButton theme={StorefrontTheme}>
+                                        Request Consultation
+                                    </SushiButton>
+                                </div>
+                            </div>
+                        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* STOREFRONT FORM */}
-            <div className="p-8 bg-white border-2 border-mondrian-navy">
-                <h3 className="font-serif text-2xl text-mondrian-navy mb-6">Contact The Firm</h3>
-                <div className="space-y-4">
-                    <SushiInput theme={StorefrontTheme} label="Client Name" placeholder="Christopher Moye" />
-                    <SushiInput theme={StorefrontTheme} label="Email Address" placeholder="client@example.com" />
-                    <div className="pt-4">
-                        <SushiButton theme={StorefrontTheme}>
-                            Request Consultation
-                        </SushiButton>
+                        {/* FACTORY FORM */}
+                        <div className="p-8 bg-black border-2 border-green-500 font-mono">
+                            <h3 className="text-xl text-green-500 mb-6">{'>'} INITIALIZE_SEQUENCE</h3>
+                            <div className="space-y-4">
+                                <SushiInput theme={FactoryTheme} label="OPERATOR_ID" placeholder="USR_8829" />
+                                <SushiInput theme={FactoryTheme} label="ACCESS_KEY" placeholder="****-****" />
+                                <div className="pt-4">
+                                    <SushiButton theme={FactoryTheme} isLoading={false}>
+                                        EXECUTE
+                                    </SushiButton>
+                                    <div className="h-4"></div>
+                                    <SushiButton theme={FactoryTheme} variant="outline">
+                                        ABORT
+                                    </SushiButton>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
-            </div>
+                </section>
 
-            {/* FACTORY FORM */}
-            <div className="p-8 bg-black border-2 border-green-500 font-mono">
-                <h3 className="text-xl text-green-500 mb-6">{'>'} INITIALIZE_SEQUENCE</h3>
-                <div className="space-y-4">
-                    <SushiInput theme={FactoryTheme} label="OPERATOR_ID" placeholder="USR_8829" />
-                    <SushiInput theme={FactoryTheme} label="ACCESS_KEY" placeholder="****-****" />
-                    <div className="pt-4">
-                        <SushiButton theme={FactoryTheme} isLoading={false}>
-                            EXECUTE
-                        </SushiButton>
-                        <div className="h-4"></div>
-                        <SushiButton theme={FactoryTheme} variant="outline">
-                            ABORT
-                        </SushiButton>
-                    </div>
-                </div>
             </div>
-
         </div>
-    </section>
-
-            </div >
-        </div >
     );
 };
 
