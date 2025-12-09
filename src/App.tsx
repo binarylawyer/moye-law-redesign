@@ -40,7 +40,7 @@ import ClientChat from "./pages/ClientChat";
 // v-2 Hybrid-Mondrian Component Preview
 import V2PreviewPage from "../v-2/pages/V2PreviewPage";
 import LandingPage from "../v-2/pages/LandingPage";
-import DesignSystemPage from "../v-2/pages/DesignSystemPage";
+import SystemShowcase from "../v-2/sushi-ui/SystemShowcase";
 
 // Service Pages
 import EstatePlanningService from "./pages/services/EstatePlanning";
@@ -188,7 +188,7 @@ const AppRoutes = () => {
           {/* v-2 Component Preview */}
           <Route path="/v2-preview" element={<V2PreviewPage />} />
           <Route path="/v2-landing" element={<LandingPage />} />
-          <Route path="/v2-design-system" element={<DesignSystemPage />} />
+          <Route path="/v2-design-system" element={<SystemShowcase />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
