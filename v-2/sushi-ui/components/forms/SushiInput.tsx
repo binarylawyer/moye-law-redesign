@@ -1,17 +1,4 @@
-import React from 'react';
-import { SushiTheme } from '../../theme/types';
-
-interface SushiInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    theme: SushiTheme;
-    label: string;
-    error?: string;
-}
-
-const SushiInput: React.FC<SushiInputProps> = ({
-    theme,
-    label,
-    error,
-    className = '',
+className = '',
     ...props
 }) => {
     const isFactory = theme.name === 'factory';
