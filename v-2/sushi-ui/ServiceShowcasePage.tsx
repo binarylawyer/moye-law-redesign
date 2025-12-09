@@ -21,8 +21,8 @@ const ServiceShowcasePage: React.FC = () => {
             ]
         },
         considerations: [
-            { title: "What about Crypto?", description: "We handle that too." },
-            { title: "Jurisdiction?", description: "Global coverage." }
+            { question: "What about Crypto?", answer: "We handle that too." },
+            { question: "Jurisdiction?", answer: "Global coverage." }
         ],
         related: [
             { title: "IP Law", description: "Classic protection.", path: "#" },
