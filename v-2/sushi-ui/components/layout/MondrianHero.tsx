@@ -53,17 +53,15 @@ const MondrianHero: React.FC = () => {
                         <div className="absolute top-4 right-4 text-emerald-500 animate-pulse">
                             <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
                         </div>
-                        <div className="font-mono text-xs md:text-sm text-gold/80 leading-loose">
-                            <span className="text-gray-500">// Deploying Legacy Protection...</span><br />
-                            <span className="text-purple-400">const</span> <span className="text-blue-300">estatePlan</span> = <span className="text-purple-400">await</span> sushi.<span className="text-yellow-300">build</span>({'{'}<br />
-                            &nbsp;&nbsp;assets: <span className="text-emerald-300">['Trust', 'Crypto', 'Equity']</span>,<br />
-                            &nbsp;&nbsp;beneficiaries: <span className="text-orange-300">Family.tree</span>,<br />
-                            &nbsp;&nbsp;compliance: <span className="text-purple-400">true</span><br />
-                            {'}'});<br />
-                            <br />
-                            <span className="text-gray-500">// System Stable.</span><br />
-                            <span className="text-emerald-500">_</span>
-                        </div>
+                        <span className="text-gray-500">// Deploying Legacy Protection...</span><br />
+                        <span className="text-gold">const</span> <span className="text-white">estatePlan</span> = <span className="text-gold">await</span> Moye.<span className="text-white">architect</span>({'{'}<br />
+                        &nbsp;&nbsp;assets: <span className="text-white">['Trust', 'Equity', 'IP']</span>,<br />
+                        &nbsp;&nbsp;beneficiaries: <span className="text-white">Family.tree</span>,<br />
+                        &nbsp;&nbsp;compliance: <span className="text-gold">true</span><br />
+                        {'}'});<br />
+                        <br />
+                        <span className="text-gray-500">// Governance Online.</span><br />
+                        <span className="text-gold animate-pulse">_</span>
 
                         {/* Hover Reveal */}
                         <div className="absolute inset-0 bg-navy/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">

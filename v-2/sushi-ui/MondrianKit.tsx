@@ -60,12 +60,12 @@ const MondrianKit: React.FC = () => {
                         <SushiSplitCard
                             theme={StorefrontTheme}
                             title="Estate Planning"
-                            topContent={{
+                            serviceSide={{
                                 title: "Legacy Strategy",
                                 description: "Comprehensive multi-generational wealth transfer planning for complex estates.",
                                 icon: <Scale className="w-8 h-8" />
                             }}
-                            bottomContent={{
+                            productSide={{
                                 title: "Basic Will Generator",
                                 description: "Instant document creation for simple estates.",
                                 codeLabel: "Legacy_OS v1.0"
@@ -75,12 +75,12 @@ const MondrianKit: React.FC = () => {
                         <SushiSplitCard
                             theme={StorefrontTheme}
                             title="Intellectual Property"
-                            topContent={{
+                            serviceSide={{
                                 title: "IP Strategy Counsel",
                                 description: "Strategic defense of your brand and creative assets in global markets.",
                                 icon: <FileText className="w-8 h-8" />
                             }}
-                            bottomContent={{
+                            productSide={{
                                 title: "Trademark Bot",
                                 description: "Automated filing and monitoring system.",
                                 codeLabel: "Brand_Guard_AI"
@@ -90,12 +90,12 @@ const MondrianKit: React.FC = () => {
                         <SushiSplitCard
                             theme={StorefrontTheme}
                             title="Business Formation"
-                            topContent={{
+                            serviceSide={{
                                 title: "Corporate Governance",
                                 description: "Structuring your entity for scale, investment, and long-term exit.",
                                 icon: <Box className="w-8 h-8" />
                             }}
-                            bottomContent={{
+                            productSide={{
                                 title: "LLC Launcher",
                                 description: "50-state compliant formation in minutes.",
                                 codeLabel: "Inc_Protocol"
