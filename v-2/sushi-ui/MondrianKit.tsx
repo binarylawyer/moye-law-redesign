@@ -63,7 +63,6 @@ const MondrianKit: React.FC = () => {
                             serviceSide={{
                                 title: "Legacy Strategy",
                                 description: "Comprehensive multi-generational wealth transfer planning for complex estates.",
-                                icon: <Scale className="w-8 h-8" />
                             }}
                             productSide={{
                                 title: "Basic Will Generator",
@@ -78,7 +77,6 @@ const MondrianKit: React.FC = () => {
                             serviceSide={{
                                 title: "IP Strategy Counsel",
                                 description: "Strategic defense of your brand and creative assets in global markets.",
-                                icon: <FileText className="w-8 h-8" />
                             }}
                             productSide={{
                                 title: "Trademark Bot",
@@ -93,7 +91,6 @@ const MondrianKit: React.FC = () => {
                             serviceSide={{
                                 title: "Corporate Governance",
                                 description: "Structuring your entity for scale, investment, and long-term exit.",
-                                icon: <Box className="w-8 h-8" />
                             }}
                             productSide={{
                                 title: "LLC Launcher",

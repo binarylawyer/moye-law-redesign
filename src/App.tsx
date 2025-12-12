@@ -43,6 +43,7 @@ import LandingPage from "../v-2/pages/LandingPage";
 import SystemShowcase from "../v-2/sushi-ui/SystemShowcase";
 import ServiceShowcasePage from "../v-2/sushi-ui/ServiceShowcasePage";
 import MondrianKit from "../v-2/sushi-ui/MondrianKit";
+import HomePage from "../v-2/pages/HomePage";
 
 // Service Pages
 import EstatePlanningService from "./pages/services/EstatePlanning";
@@ -197,6 +198,10 @@ const AppRoutes = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
+      {/* V2 Home outside Layout to avoid double nav */}
+      <Routes>
+        <Route path="/v2-home" element={<HomePage />} />
+      </Routes>
     </>
   );
 };

@@ -6,18 +6,18 @@ interface SushiSplitCardProps {
     theme: SushiTheme;
     title: string; // The overarching practice area (e.g. Estate Planning)
 
-    // LEFT SIDE: The Factory / Product (Engineering)
+    // PRIMARY: The Automated Product (Retail / ATM)
     productSide: {
         title: string;
         description: string;
         codeLabel: string;
+        priceLabel?: string;
     };
 
-    // RIGHT SIDE: The Storefront / Service (Counsel)
+    // UPGRADE: The Custom Service (Private Vault)
     serviceSide: {
         title: string;
         description: string;
-        icon?: React.ReactNode;
     };
 }
 
@@ -29,69 +29,58 @@ const SushiSplitCard: React.FC<SushiSplitCardProps> = ({
 }) => {
     return (
         <div
-            className="w-full h-full flex flex-col lg:flex-row border-4 border-navy shadow-[8px_8px_0px_0px_#0A2342] bg-white group hover:-translate-y-1 transition-transform duration-300"
+            className="w-full flex flex-col border-4 border-navy shadow-[8px_8px_0px_0px_#0A2342] bg-white group hover:-translate-y-1 transition-transform duration-300 h-full"
         >
             {/* ------------------------------------------------------------
-               LEFT CELL: THE PRODUCT (Factory)
-               Spec: Cool Grey, Mono, "Deploy" CTA
-               Target: Tech Innovator
+               TOP CELL: PROMINENT AUTOMATION (Retail/Product)
+               Spec: White/Grey, Clean, "Start Now"
                ------------------------------------------------------------ */}
-            <div className="w-full lg:w-5/12 bg-[#F3F4F6] p-8 flex flex-col justify-between border-b-4 lg:border-b-0 lg:border-r-4 border-navy relative overflow-hidden">
-                {/* Decorative Grid Line */}
-                <div className="absolute top-0 right-8 w-[1px] h-full bg-navy/10 pointer-events-none"></div>
-
-                <div className="relative z-10">
-                    <div className="flex items-center gap-2 mb-6">
-                        <Terminal className="w-5 h-5 text-navy" />
-                        <span className="bg-navy text-white text-xs px-2 py-1 font-mono uppercase tracking-widest">
+            <div className="flex-grow p-8 bg-white text-navy flex flex-col items-start justify-between min-h-[220px]">
+                <div className="w-full">
+                    <div className="flex items-center justify-between mb-4 w-full border-b border-navy/10 pb-4">
+                        <span className="font-serif italic text-xl font-bold">{title}</span>
+                        <div className="bg-gray-100 text-navy text-[10px] px-2 py-1 font-mono uppercase tracking-widest border border-navy/10 rounded-sm">
                             {productSide.codeLabel}
-                        </span>
+                        </div>
                     </div>
 
-                    <h4 className="font-mono text-xl text-navy font-bold mb-3">
+                    <h4 className="font-display text-3xl text-navy mb-3 leading-none">
                         {productSide.title}
                     </h4>
 
-                    <p className="font-mono text-xs text-navy/70 leading-relaxed mb-6">
+                    <p className="font-sans text-gray-500 text-sm leading-relaxed mb-6">
                         {productSide.description}
                     </p>
                 </div>
 
-                <button className="flex items-center gap-2 font-mono text-xs font-bold text-navy uppercase hover:text-gold transition-colors group/btn w-fit">
-                    <span className="text-gold">&gt;</span> DEPLOY_SOLUTION
+                <button className="flex items-center gap-3 font-mono text-xs font-bold text-white bg-navy px-4 py-3 hover:bg-gold hover:text-navy transition-all uppercase tracking-wide w-full justify-center">
+                    <Terminal className="w-4 h-4" />
+                    <span>Launch_Automated_Protocol</span>
                 </button>
             </div>
 
             {/* ------------------------------------------------------------
-               RIGHT CELL: THE SERVICE (Storefront)
-               Spec: White, Serif, "Consult" CTA
-               Target: Caregiver / Prudent Investor
+               BOTTOM STRIP: THE UPGRADE (Private Client)
+               Spec: Gold/Navy, "Exclusive", "Upgrade"
                ------------------------------------------------------------ */}
-            <div className="w-full lg:w-7/12 bg-white p-8 flex flex-col justify-between relative">
+            <div className="bg-[#F3F4F6] border-t-4 border-navy p-6 flex flex-col items-start gap-3 relative overflow-hidden group/upgrade cursor-pointer hover:bg-navy hover:text-white transition-colors">
 
-                <div className="relative z-10">
-                    <div className="flex items-center justify-between mb-6">
-                        {serviceSide.icon && (
-                            <div className="text-navy">{serviceSide.icon}</div>
-                        )}
-                        <span className="font-serif italic text-navy/40 text-lg">
-                            {title}
-                        </span>
-                    </div>
-
-                    <h4 className="font-display text-3xl text-navy mb-4">
-                        {serviceSide.title}
-                    </h4>
-
-                    <p className="font-sans text-gray-600 leading-relaxed text-sm mb-6 max-w-sm">
-                        {serviceSide.description}
-                    </p>
+                {/* Visual Texture */}
+                <div className="absolute top-0 right-0 p-2 opacity-10 group-hover/upgrade:opacity-20 transition-opacity">
+                    <Box className="w-12 h-12" />
                 </div>
 
-                <button className="flex items-center justify-between px-6 py-3 bg-white border-2 border-navy text-navy font-serif italic hover:bg-navy hover:text-white transition-colors w-full sm:w-auto self-start">
-                    <span>Request Counsel</span>
-                    <ArrowRight className="w-4 h-4 ml-4" />
-                </button>
+                <div className="relative z-10 w-full">
+                    <p className="font-serif italic text-sm text-navy/60 group-hover/upgrade:text-gold mb-1">
+                        Need higher capacity?
+                    </p>
+                    <div className="flex items-center justify-between w-full">
+                        <span className="font-display text-lg text-navy group-hover/upgrade:text-white">
+                            Upgrade to {serviceSide.title}
+                        </span>
+                        <ArrowRight className="w-4 h-4 text-navy group-hover/upgrade:text-gold transition-transform group-hover/upgrade:translate-x-1" />
+                    </div>
+                </div>
             </div>
         </div>
     );
