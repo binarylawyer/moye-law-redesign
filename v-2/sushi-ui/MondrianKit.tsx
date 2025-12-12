@@ -1,5 +1,7 @@
 import React from 'react';
 import SushiVideoHero from './components/layout/SushiVideoHero';
+import MondrianHero from './components/layout/MondrianHero';
+import BinaryBio from './components/content/BinaryBio';
 
 const MondrianKit: React.FC = () => {
     return (
@@ -21,17 +23,13 @@ const MondrianKit: React.FC = () => {
             </section>
 
             {/* -----------------------------------------------------------------
-                SECTION 2: MONDRIAN HERO (To Be Built)
+                SECTION 2: MONDRIAN HERO (Static/Structural)
                 ----------------------------------------------------------------- */}
-            <section id="kit-section-2" className="py-24 border-b-4 border-navy relative bg-white">
-                <div className="absolute top-0 left-0 bg-navy text-white px-2 py-1 text-xs font-mono">
+            <section id="kit-section-2" className="relative">
+                <div className="absolute top-0 left-0 bg-navy text-white px-2 py-1 text-xs font-mono z-10">
                     2. Structural Hero (Asymmetrical)
                 </div>
-                <div className="container mx-auto px-6">
-                    <div className="bg-gray-100 h-96 border-4 border-navy flex items-center justify-center text-navy/50 font-mono">
-                        [ Pending Implementation: MondrianHero.tsx ]
-                    </div>
-                </div>
+                <MondrianHero />
             </section>
 
             {/* -----------------------------------------------------------------
@@ -51,15 +49,11 @@ const MondrianKit: React.FC = () => {
             {/* -----------------------------------------------------------------
                 SECTION 4: BINARY BIO TOGGLE (Hover)
                  ----------------------------------------------------------------- */}
-            <section id="kit-section-4" className="py-24 bg-navy border-b-4 border-gold relative">
-                <div className="absolute top-0 left-0 bg-gold text-navy px-2 py-1 text-xs font-mono">
+            <section id="kit-section-4" className="relative">
+                <div className="absolute top-0 left-0 bg-gold text-navy px-2 py-1 text-xs font-mono z-10">
                     4. Binary Bio (Hover Toggle)
                 </div>
-                <div className="container mx-auto px-6">
-                    <div className="bg-navy-800 h-96 border border-white/20 flex items-center justify-center text-white/50 font-mono">
-                        [ Pending Implementation: BinaryBio.tsx ]
-                    </div>
-                </div>
+                <BinaryBio />
             </section>
 
             {/* -----------------------------------------------------------------
