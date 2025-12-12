@@ -1,5 +1,6 @@
 import React from 'react';
 import SushiServiceHero from '../components/layout/SushiServiceHero';
+import SushiVideoHero from '../components/layout/SushiVideoHero'; // Import Video Hero
 import ServiceConsiderations from '@/components/services/ServiceConsiderations'; // Reusing V1 FAQ as requested
 import { ServiceFeature as ServiceFeatureType, ServiceConsideration, Process, RelatedService } from '@/types/services';
 import ServiceFeature from '@/components/services/ServiceFeature';
@@ -13,6 +14,13 @@ interface SushiServiceTemplateProps {
     considerations: ServiceConsideration[];
     process: Process;
     relatedServices: RelatedService[];
+    // New Props for Video Toggle
+    useVideoHero?: boolean;
+    videoData?: {
+        src?: string;
+        ctaText?: string;
+        ctaLink?: string;
+    };
 }
 
 const SushiServiceTemplate: React.FC<SushiServiceTemplateProps> = ({
@@ -21,20 +29,31 @@ const SushiServiceTemplate: React.FC<SushiServiceTemplateProps> = ({
     features,
     considerations,
     process,
-    relatedServices
+    relatedServices,
+    useVideoHero = false,
+    videoData
 }) => {
     return (
         <div className="bg-white min-h-screen">
             {/* -------------------------------------------------------------
-                 SECTION 1: HERO (TIGHTENED)
-                 Component: SushiServiceHero
-                 Desc: Reduced padding, tighter text container.
+                 SECTION 1: HERO (CONDITIONAL)
+                 Component: SushiServiceHero OR SushiVideoHero
                  ------------------------------------------------------------- */}
             <div id="service-hero-section">
-                <SushiServiceHero
-                    title={serviceName}
-                    description={description}
-                />
+                {useVideoHero ? (
+                    <SushiVideoHero
+                        title={serviceName}
+                        subtitle={description}
+                        videoSrc={videoData?.src}
+                        heightClass="h-[60vh]" // Tighter video for service pages
+                        primaryAction={videoData?.ctaText ? { label: videoData.ctaText, path: videoData.ctaLink || '/contact' } : undefined}
+                    />
+                ) : (
+                    <SushiServiceHero
+                        title={serviceName}
+                        description={description}
+                    />
+                )}
             </div>
 
             {/* 2. MAIN CONTENT (Reduced whitespace) */}

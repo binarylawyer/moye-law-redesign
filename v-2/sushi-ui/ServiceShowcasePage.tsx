@@ -38,6 +38,12 @@ const ServiceShowcasePage: React.FC = () => {
             considerations={mockData.considerations}
             process={mockData.process}
             relatedServices={mockData.related}
+            // VIDEO HERO DEMO
+            useVideoHero={true}
+            videoData={{
+                ctaText: "Schedule Consultation",
+                ctaLink: "/contact"
+            }}
         />
     );
 };
