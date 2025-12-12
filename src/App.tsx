@@ -42,6 +42,7 @@ import V2PreviewPage from "../v-2/pages/V2PreviewPage";
 import LandingPage from "../v-2/pages/LandingPage";
 import SystemShowcase from "../v-2/sushi-ui/SystemShowcase";
 import ServiceShowcasePage from "../v-2/sushi-ui/ServiceShowcasePage";
+import MondrianKit from "../v-2/sushi-ui/MondrianKit";
 
 // Service Pages
 import EstatePlanningService from "./pages/services/EstatePlanning";
@@ -191,6 +192,7 @@ const AppRoutes = () => {
           <Route path="/v2-landing" element={<LandingPage />} />
           <Route path="/v2-design-system" element={<SystemShowcase />} />
           <Route path="/v2-service-template" element={<ServiceShowcasePage />} />
+          <Route path="/v2-ui-kit" element={<MondrianKit />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
