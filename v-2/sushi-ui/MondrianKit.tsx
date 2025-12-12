@@ -5,7 +5,11 @@ import BinaryBio from './components/content/BinaryBio';
 import SushiSplitCard from './components/SushiSplitCard';
 import MondrianStats from './components/content/MondrianStats';
 import ExecuteCTA from './components/layout/ExecuteCTA';
-import { themes } from './theme/themes';
+import LegalExhibit from './components/content/LegalExhibit';
+import TechnicalProcess from './components/layout/TechnicalProcess';
+import FeatureGrid from './components/layout/FeatureGrid';
+import TerminalFooter from './components/layout/TerminalFooter';
+import { StorefrontTheme } from './theme/themes';
 import { Box, Scale, FileText } from 'lucide-react';
 
 const MondrianKit: React.FC = () => {
@@ -16,7 +20,7 @@ const MondrianKit: React.FC = () => {
                 ----------------------------------------------------------------- */}
             <section id="kit-section-1" className="relative">
                 <div className="absolute top-4 left-4 z-50 bg-black/50 text-white px-2 text-xs font-mono border border-white/50">
-                    1. Video Hero
+                    1. Video Hero (Parallax)
                 </div>
                 {/* Keeping existing Section 1 content */}
                 <SushiVideoHero
@@ -54,7 +58,7 @@ const MondrianKit: React.FC = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {/* Card 1 */}
                         <SushiSplitCard
-                            theme={themes.storefront}
+                            theme={StorefrontTheme}
                             title="Estate Planning"
                             topContent={{
                                 title: "Legacy Strategy",
@@ -69,7 +73,7 @@ const MondrianKit: React.FC = () => {
                         />
                         {/* Card 2 */}
                         <SushiSplitCard
-                            theme={themes.storefront}
+                            theme={StorefrontTheme}
                             title="Intellectual Property"
                             topContent={{
                                 title: "IP Strategy Counsel",
@@ -84,7 +88,7 @@ const MondrianKit: React.FC = () => {
                         />
                         {/* Card 3 */}
                         <SushiSplitCard
-                            theme={themes.storefront}
+                            theme={StorefrontTheme}
                             title="Business Formation"
                             topContent={{
                                 title: "Corporate Governance",
@@ -122,7 +126,27 @@ const MondrianKit: React.FC = () => {
             </section>
 
             {/* -----------------------------------------------------------------
-                SECTION 8: EXECUTE CTA (Jumped ahead for impact)
+                SECTION 6: CLIENT VOICES (Exhibits)
+                 ----------------------------------------------------------------- */}
+            <section id="kit-section-6" className="relative">
+                <div className="absolute top-0 left-0 bg-gold text-navy px-2 py-1 text-xs font-mono z-10">
+                    6. Client Exhibits
+                </div>
+                <LegalExhibit />
+            </section>
+
+            {/* -----------------------------------------------------------------
+                SECTION 7: PROCESS SCHEMATIC (Manufacturing)
+                 ----------------------------------------------------------------- */}
+            <section id="kit-section-7" className="relative">
+                <div className="absolute top-0 left-0 bg-white text-navy px-2 py-1 text-xs font-mono z-10">
+                    7. Manufacturing Process
+                </div>
+                <TechnicalProcess />
+            </section>
+
+            {/* -----------------------------------------------------------------
+                SECTION 8: EXECUTE CTA
                  ----------------------------------------------------------------- */}
             <section id="kit-section-8" className="relative">
                 <div className="absolute top-0 left-0 bg-gold text-navy px-2 py-1 text-xs font-mono z-10">
@@ -131,10 +155,25 @@ const MondrianKit: React.FC = () => {
                 <ExecuteCTA />
             </section>
 
-            {/* Note: Skipped 6, 7, 9, 10 for now as per user request to 'cycle through' */}
-            <div className="py-24 text-center font-mono text-gray-400 bg-gray-100 border-b-4 border-navy">
-                [ Remaining Sections (6, 7, 9, 10) Loading... ]
-            </div>
+            {/* -----------------------------------------------------------------
+                SECTION 9: FEATURE MATRIX (Bento)
+                 ----------------------------------------------------------------- */}
+            <section id="kit-section-9" className="relative">
+                <div className="absolute top-0 left-0 bg-navy text-white px-2 py-1 text-xs font-mono z-10">
+                    9. Feature Grid (Bento)
+                </div>
+                <FeatureGrid />
+            </section>
+
+            {/* -----------------------------------------------------------------
+                SECTION 10: TERMINAL FOOTER
+                 ----------------------------------------------------------------- */}
+            <section id="kit-section-10" className="relative">
+                <div className="absolute top-0 left-0 bg-emerald-500 text-navy px-2 py-1 text-xs font-mono z-10">
+                    10. Terminal Footer
+                </div>
+                <TerminalFooter />
+            </section>
 
         </div>
     );
