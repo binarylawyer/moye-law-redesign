@@ -20,7 +20,7 @@ const HomePage: React.FC = () => {
     }, [pathname]);
 
     return (
-        <div className="min-h-screen bg-white font-sans selection:bg-navy selection:text-gold">
+        <div className="min-h-screen bg-white font-sans selection:bg-navy selection:text-gold pt-16 md:pt-20">
             {/* 1. SYSTEM STATUS BAR (Navigation) */}
             <NavBarV2 />
 

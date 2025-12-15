@@ -20,7 +20,7 @@ const NavBarV2 = () => {
     ];
 
     return (
-        <nav className="fixed top-0 left-0 w-full z-50 bg-white border-b-4 border-mondrian-navy h-20 md:h-24 flex items-stretch">
+        <nav className="fixed top-0 left-0 w-full z-50 bg-white border-b-4 border-navy h-16 md:h-20 flex items-stretch">
 
             {/* LEFT CELL: BRAND (The Artist) */}
             <div className="flex-shrink-0 px-6 md:px-12 flex items-center border-r-4 border-mondrian-navy bg-white hover:bg-mondrian-grey transition-colors duration-75">
