@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NavBarV2 from '../components/NavBarV2';
 import TerminalFooter from '../sushi-ui/components/layout/TerminalFooter';
-import { FileText, Layout, Monitor, ArrowRight, Briefcase } from 'lucide-react';
+import { FileText, Layout, Monitor, ArrowRight, Briefcase, Layers } from 'lucide-react';
 
 const IndexPage = () => {
     const pages = [

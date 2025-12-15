@@ -2,14 +2,14 @@ import React from 'react';
 import V2PageWrapper from '../components/V2PageWrapper';
 
 // Legacy Components
-import Hero from '../../components/Hero';
-import Approach from '../../components/Approach';
-import TeamMembers from '../../components/TeamMembers';
-import PracticeAreas from '../../components/PracticeAreas';
-import Testimonial from '../../components/Testimonial';
-import ConsultationCTA from '../../components/ConsultationCTA';
-import TrustIndicators from '../../components/TrustIndicators';
-import MondrianIntro from '../../components/MondrianIntro';
+import Hero from '../../src/components/Hero';
+import Approach from '../../src/components/Approach';
+import TeamMembers from '../../src/components/TeamMembers';
+import PracticeAreas from '../../src/components/PracticeAreas';
+import Testimonial from '../../src/components/Testimonial';
+import ConsultationCTA from '../../src/components/ConsultationCTA';
+import TrustIndicators from '../../src/components/TrustIndicators';
+import MondrianIntro from '../../src/components/MondrianIntro';
 
 // Wrapper for Legacy Isolation (attempt to reset V2 resets if needed, or just contain)
 const LegacyContainer = ({ title, children }: { title: string, children: React.ReactNode }) => (
