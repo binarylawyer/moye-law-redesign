@@ -54,19 +54,19 @@ const DesignServicePage = () => {
                         <FunnelTier
                             number="01"
                             title="Retail/Automated"
-                            sub="Self-service compliance engines, form generation, and instant trademark filing. Zero human intervention."
+                            sub="Target: ALEX (The Innovator). Self-service compliance engines, form generation, and instant trademark filing. 'Functional Minimalism'."
                             color="border-gray-200"
                         />
                         <FunnelTier
                             number="02"
                             title="Hybrid/Surgical"
-                            sub="AI-drafted documents reviewed by human experts. Specific problem solving (e.g., dispute resolution)."
+                            sub="Target: BARBARA (The Caregiver). AI-drafted documents reviewed by human experts. Prioritizes 'Safety' and 'Clarity'."
                             color="border-gold"
                         />
                         <FunnelTier
                             number="03"
                             title="Bespoke/Strategic"
-                            sub="Full fractional General Counsel services. Complex M&A, high-stakes litigation, and architectural planning."
+                            sub="Target: DAVID (The Investor). Full fractional General Counsel. Complex M&A and architectural planning. Demands 'Authority' and 'Structure'."
                             color="border-navy"
                         />
                     </div>

@@ -101,6 +101,33 @@ const DesignComponentsPage = () => {
                         </div>
                     </section>
 
+                    {/* COMPLEX ORGANISMS */}
+                    <section className="col-span-1 md:col-span-2">
+                        <h3 className="font-mono text-xs text-gray-400 mb-8 border-b border-gray-200 pb-2">04. COMPLEX ORGANISMS: THE PAIRED SERVICE</h3>
+                        <p className="text-sm text-gray-500 mb-6">The core UX Architecture: Binary Choice.</p>
+
+                        <div className="flex flex-col md:flex-row border-4 border-navy h-48">
+                            {/* LEFT: PRODUCT */}
+                            <div className="w-full md:w-1/3 bg-gray-100 p-6 flex flex-col justify-between border-b-4 md:border-b-0 md:border-r-4 border-navy">
+                                <span className="font-mono text-xs text-gray-400 block">PRODUCT_TIER</span>
+                                <div>
+                                    <div className="font-display text-2xl text-navy">LegacyOS Bundle</div>
+                                    <div className="font-mono text-xs text-gold mt-2">DEPLOY_NOW &rarr;</div>
+                                </div>
+                            </div>
+                            {/* RIGHT: SERVICE */}
+                            <div className="w-full md:w-2/3 bg-white p-6 flex flex-col justify-between">
+                                <span className="font-mono text-xs text-gray-400 block">SERVICE_TIER</span>
+                                <div>
+                                    <h4 className="font-display text-3xl text-navy mb-2">Bespoke Estate Counsel.</h4>
+                                    <p className="font-sans text-sm text-gray-600 max-w-md">
+                                        For complex multi-jurisdictional assets, engage our senior partners for a manually drafted architecture.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
                 </div>
 
             </main>

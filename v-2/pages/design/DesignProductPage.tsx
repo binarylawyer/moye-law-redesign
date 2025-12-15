@@ -79,22 +79,25 @@ const DesignProductPage = () => {
                     </div>
                 </section>
 
-                {/* SECTION 2: AUTOMATED OFFERINGS (PRODUCT) */}
+                {/* SECTION 2: AUTOMATED OFFERINGS (The Factory) */}
                 <section className="mb-32">
                     <div className="flex items-center mb-12">
                         <div className="w-12 h-1 bg-gold mr-4"></div>
-                        <h2 className="font-display text-3xl text-navy">Automated Product Architecture</h2>
+                        <div>
+                            <h2 className="font-display text-3xl text-navy">Automated Product Architecture</h2>
+                            <p className="font-mono text-xs text-gray-400 mt-2">THE FACTORY OUTPUT (LEFT CELL)</p>
+                        </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <ProductCard
-                            title="Compliance Engine"
-                            desc="Fully automated regulatory audits using non-deterministic state machines."
+                            title="LegacyOS Bundle"
+                            desc="Complete estate digitalization and asset mapping. Zero-touch deployment for 'Alex' persona."
                             icon={Shield}
                         />
                         <ProductCard
-                            title="Contract Factory"
-                            desc="Zero-touch document generation for standard commercial agreements."
+                            title="Compliance Engine"
+                            desc="Non-deterministic state machine audits for regulatory environments."
                             icon={Zap}
                         />
                         <ProductCard
@@ -102,6 +105,15 @@ const DesignProductPage = () => {
                             desc="Blockchain-verified intellectual property registration and monitoring."
                             icon={Lock}
                         />
+                    </div>
+
+                    {/* STRATEGY NOTE */}
+                    <div className="mt-8 bg-gray-50 border-l-4 border-navy p-6">
+                        <h4 className="font-mono text-xs font-bold text-navy mb-2">STRATEGY: FACTORY VS STOREFRONT</h4>
+                        <p className="font-sans text-sm text-gray-600">
+                            We sell the <strong>output</strong> of the factory (The "Sushi Kitchen") through the refined storefront.
+                            Clients buy results, not the machinery.
+                        </p>
                     </div>
                 </section>
 
