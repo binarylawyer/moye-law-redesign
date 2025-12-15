@@ -165,8 +165,11 @@ const OpenSesameDoor = ({ doorColor, revealColor, textColor, revealText }: { doo
 
     return (
         // STAGE: Perspective Container
-        // Note: Using arbitrary perspective class until config propagates, but maintained for structure.
-        <div className={`group relative w-full h-full [perspective:1000px] cursor-pointer`}>
+        // Use inline style for perspective to ensure it works regardless of Tailwind config
+        <div
+            className="w-full h-full cursor-pointer relative"
+            style={{ perspective: "1000px" }}
+        >
 
             {/* THE REVEAL (Background Layer - Static) */}
             <div className={`absolute inset-0 z-0 ${revealColor} flex items-center justify-center`}>
@@ -176,12 +179,20 @@ const OpenSesameDoor = ({ doorColor, revealColor, textColor, revealText }: { doo
             </div>
 
             {/* THE DOOR (Foreground Layer - Moving) */}
-            <div className={`absolute inset-0 z-10 ${doorColor} border-4 ${borderColor} origin-left transition-transform duration-600 ease-[cubic-bezier(0.3,0.0,0.2,1)] group-hover:[transform:rotateY(-110deg)] flex items-center justify-center`}>
+            <motion.div
+                className={`absolute inset-0 z-10 ${doorColor} border-4 ${borderColor} origin-left flex items-center justify-center`}
+                initial={{ rotateY: 0 }}
+                whileHover={{ rotateY: -110 }}
+                transition={{
+                    duration: 0.6,
+                    ease: [0.3, 0.0, 0.2, 1] // The Saul Bass Snap
+                }}
+            >
                 <div className="flex flex-col items-center">
                     <span className={`font-display text-2xl ${textColor} mb-1 opacity-100`}>open sesame</span>
                     <div className={`h-[1px] w-8 ${textColor.replace('text-', 'bg-')} opacity-30`}></div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 };
