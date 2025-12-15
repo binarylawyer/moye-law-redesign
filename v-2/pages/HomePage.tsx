@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import NavBarV2 from '../components/NavBarV2';
+import V2PageWrapper from '../components/V2PageWrapper';
 import MondrianHero from '../sushi-ui/components/layout/MondrianHero';
 import MondrianStats from '../sushi-ui/components/content/MondrianStats';
 import TechnicalProcess from '../sushi-ui/components/layout/TechnicalProcess';
 import LegalExhibit from '../sushi-ui/components/content/LegalExhibit';
 import BinaryBio from '../sushi-ui/components/content/BinaryBio';
 import ExecuteCTA from '../sushi-ui/components/layout/ExecuteCTA';
-import TerminalFooter from '../sushi-ui/components/layout/TerminalFooter';
+import SushiSplitCard from '../sushi-ui/components/SushiSplitCard';
 import SushiSplitCard from '../sushi-ui/components/SushiSplitCard';
 import { StorefrontTheme } from '../sushi-ui/theme/themes';
 import { Scale, FileText, Box, Shield, Briefcase, Key } from 'lucide-react';
@@ -20,10 +20,11 @@ const HomePage: React.FC = () => {
     }, [pathname]);
 
     return (
-        <div className="min-h-screen bg-white font-sans selection:bg-navy selection:text-gold pt-16 md:pt-20">
-            {/* 1. SYSTEM STATUS BAR (Navigation) */}
-            <NavBarV2 />
-
+        <V2PageWrapper
+            className="pt-16 md:pt-20"
+            showNav={true}
+            showFooter={true}
+        >
             {/* 2. THE HOOK (Hybrid Concept) */}
             <MondrianHero />
 
@@ -155,9 +156,7 @@ const HomePage: React.FC = () => {
             {/* 8. CONVERSION (Execute) */}
             <ExecuteCTA />
 
-            {/* 9. THE FOOTER (Terminal) */}
-            <TerminalFooter />
-        </div>
+        </V2PageWrapper>
     );
 };
 
