@@ -497,60 +497,75 @@ const StrategyPage = () => {
                         </p>
                     </div>
 
-                    {/* THE KINETIC MONDRIAN GRID */}
-                    <div className="w-full relative h-[800px] border-4 border-navy bg-white overflow-hidden">
+                    {/* THE KINETIC MONDRIAN GRID (ASYMMETRICAL STRUCTURE) */}
+                    <div className="w-full relative h-[900px] border-8 border-navy bg-white overflow-hidden">
 
-                        {/* 1. KINETIC LINES (The Architects) */}
-                        {/* Vertical Line 1 (Left 33%) */}
+                        {/* --- KINETIC INFRASTRUCTURE (The Lines) --- */}
+
+                        {/* 1. THE PRIME VERTICAL (Major Artery - 8px) -- Position: 38.2% (Golden Ratio approx) */}
                         <motion.div
-                            className="absolute top-0 bottom-0 left-1/3 w-1 bg-navy z-20"
+                            className="absolute top-0 bottom-0 left-[38.2%] w-2 bg-navy z-30"
                             initial={{ height: "0%" }}
                             whileInView={{ height: "100%" }}
                             transition={{ duration: 1.2, ease: "easeInOut" }}
                             viewport={{ once: false }}
                         />
-                        {/* Vertical Line 2 (Right 66%) */}
+
+                        {/* 2. THE SECONDARY VERTICAL (Minor - 4px) -- Position: 75% */}
                         <motion.div
-                            className="absolute top-0 bottom-0 left-2/3 w-1 bg-navy z-20"
+                            className="absolute top-0 bottom-0 left-[75%] w-1 bg-navy z-20"
                             initial={{ height: "0%" }}
                             whileInView={{ height: "100%" }}
-                            transition={{ duration: 1.5, delay: 0.2, ease: "easeInOut" }}
+                            transition={{ duration: 1.5, delay: 0.3, ease: "easeInOut" }}
                             viewport={{ once: false }}
                         />
-                        {/* Horizontal Line 1 (Top 40%) */}
+
+                        {/* 3. THE PRIME HORIZONTAL (Major Artery - 8px) -- Position: 25% */}
                         <motion.div
-                            className="absolute left-0 right-0 top-1/3 h-1 bg-navy z-20"
+                            className="absolute left-0 right-0 top-[25%] h-2 bg-navy z-30"
                             initial={{ width: "0%" }}
                             whileInView={{ width: "100%" }}
-                            transition={{ duration: 1.4, delay: 0.1, ease: "easeInOut" }}
+                            transition={{ duration: 1.3, delay: 0.1, ease: "easeInOut" }}
                             viewport={{ once: false }}
                         />
-                        {/* Horizontal Line 2 (Bottom 75%) */}
+
+                        {/* 4. THE SUB HORIZONTAL A (Minor - 4px) -- Position: 60% (Spanning Right Only) */}
                         <motion.div
-                            className="absolute left-0 right-0 top-3/4 h-1 bg-navy z-20"
+                            className="absolute left-[38.2%] right-0 top-[60%] h-1 bg-navy z-20"
                             initial={{ width: "0%" }}
                             whileInView={{ width: "100%" }}
-                            transition={{ duration: 1.6, delay: 0.3, ease: "easeInOut" }}
+                            transition={{ duration: 1.4, delay: 0.4, ease: "easeInOut" }}
+                            viewport={{ once: false }}
+                        />
+
+                        {/* 5. THE SUB HORIZONTAL B (Minor - 4px) -- Position: 85% (Spanning Left Only) */}
+                        <motion.div
+                            className="absolute left-0 right-[61.8%] top-[85%] h-1 bg-navy z-20"
+                            initial={{ width: "0%" }}
+                            whileInView={{ width: "100%" }}
+                            transition={{ duration: 1.6, delay: 0.5, ease: "easeInOut" }}
                             viewport={{ once: false }}
                         />
 
 
-                        {/* 2. THE CONTENT CELLS (Revealed by Motion) */}
+                        {/* --- CONTENT BLOCKS (The Composition) --- */}
 
-                        {/* CELL 1: Top Left (Navy Block) */}
-                        <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-navy p-6 flex flex-col justify-between">
+                        {/* BLOCK A: CORE STRUCTURE (Top Left - Large) */}
+                        {/* Position: 0,0 to 38.2%, 25% */}
+                        <div className="absolute top-0 left-0 w-[38.2%] h-[25%] p-6 flex items-end justify-start">
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 transition={{ delay: 1.0 }}
                             >
-                                <span className="font-mono text-gold text-xs">01. STRUCTURE</span>
-                                <h3 className="font-display text-4xl text-white mt-2">A.</h3>
+                                <h3 className="font-display text-6xl text-navy leading-none">A.</h3>
+                                <span className="font-mono text-xs text-gray-400">PRIME_SECTOR</span>
                             </motion.div>
                         </div>
 
-                        {/* CELL 2: Top Middle (Variant A: Standard Navy) */}
-                        <div className="absolute top-0 left-1/3 w-1/3 h-1/3 overflow-hidden">
+                        {/* BLOCK B: VARIANT C (Top Right - Broad) */}
+                        {/* Position: 38.2%,0 to 100%, 25% */}
+                        <div className="absolute top-0 left-[38.2%] right-0 h-[25%] overflow-hidden">
                             <motion.div
                                 className="w-full h-full"
                                 initial={{ opacity: 0 }}
@@ -559,90 +574,67 @@ const StrategyPage = () => {
                             >
                                 <DuotoneImage
                                     src="/images/real-estate-3-people-right.jpg"
-                                    label="VAR A: STANDARD"
-                                    variant="navy"
-                                />
-                            </motion.div>
-                        </div>
-
-                        {/* CELL 3: Top Right (White Space) */}
-                        <div className="absolute top-0 left-2/3 w-1/3 h-1/3 bg-white p-6">
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                transition={{ delay: 1.4 }}
-                                className="h-full flex items-center justify-center"
-                            >
-                                <div className="w-16 h-16 bg-gray-100 border-4 border-navy"></div>
-                            </motion.div>
-                        </div>
-
-                        {/* CELL 4: Middle Left (Variant B: Luxury Gold) */}
-                        <div className="absolute top-1/3 left-0 w-1/3 h-[41.66%] overflow-hidden">
-                            <motion.div
-                                className="w-full h-full"
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                transition={{ delay: 1.3 }}
-                            >
-                                <DuotoneImage
-                                    src="/images/real-estate-3-people-right.jpg"
-                                    label="VAR B: LUXURY"
-                                    variant="gold"
-                                />
-                            </motion.div>
-                        </div>
-
-                        {/* CELL 5: Middle Center (Gold Block - The 'Energy') */}
-                        <div className="absolute top-1/3 left-1/3 w-1/3 h-[41.66%] bg-gold p-6 flex items-center justify-center">
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: 1.5 }}
-                            >
-                                <span className="font-display text-5xl text-navy">M</span>
-                            </motion.div>
-                        </div>
-
-                        {/* CELL 6: Middle Right (Variant C: Cornflower Warm) */}
-                        <div className="absolute top-1/3 left-2/3 w-1/3 h-[41.66%] overflow-hidden">
-                            <motion.div
-                                className="w-full h-full"
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                transition={{ delay: 1.6 }}
-                            >
-                                <DuotoneImage
-                                    src="/images/real-estate-3-people-right.jpg"
-                                    label="VAR C: CORNFLOWER"
+                                    label="VAR C: CORNFLOWER [WIDE]"
                                     variant="navy-light"
                                 />
                             </motion.div>
                         </div>
 
-                        {/* CELL 7: Bottom Span (Footer of the Grid) */}
-                        <div className="absolute top-3/4 left-0 w-full h-1/4 bg-gray-50 flex items-center justify-center gap-12">
+                        {/* BLOCK C: VARIANT A (Middle Left - Vertical Portrait) */}
+                        {/* Position: 0, 25% to 38.2%, 85% */}
+                        <div className="absolute top-[25%] left-0 w-[38.2%] h-[60%] overflow-hidden border-r-0">
                             <motion.div
+                                className="w-full h-full"
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 1.4 }}
+                            >
+                                <DuotoneImage
+                                    src="/images/real-estate-3-people-right.jpg"
+                                    label="VAR A: STANDARD [TALL]"
+                                    variant="navy"
+                                />
+                            </motion.div>
+                        </div>
+
+                        {/* BLOCK D: THE GOLD ENGINE (Center - High Impact) */}
+                        {/* Position: 38.2%, 25% to 75%, 60% */}
+                        <div className="absolute top-[25%] left-[38.2%] w-[36.8%] h-[35%] bg-gold flex items-center justify-center p-8">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 1.6 }}
+                                className="text-center"
+                            >
+                                <span className="font-serif italic text-navy text-2xl">"Structure is<br />the Strategy."</span>
+                            </motion.div>
+                        </div>
+
+                        {/* BLOCK E: NAVY VOID (Right Side Strip) */}
+                        {/* Position: 75%, 25% to 100%, 60% */}
+                        <div className="absolute top-[25%] left-[75%] right-0 h-[35%] bg-navy"></div>
+
+                        {/* BLOCK F: VARIANT B (Center Right) */}
+                        {/* Position: 38.2%, 60% to 100%, 100% (Note: Needs specific sub-grid) */}
+                        {/* Visual adjustment: 38.2% to 100%, 60% to 100%  */}
+                        <div className="absolute top-[60%] left-[38.2%] right-0 bottom-0 overflow-hidden">
+                            <motion.div
+                                className="w-full h-full"
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 transition={{ delay: 1.8 }}
-                                className="flex gap-8"
                             >
-                                <div className="text-center">
-                                    <div className="font-mono text-xs text-gray-400 mb-1">GRID_TENSION</div>
-                                    <div className="font-display text-2xl text-navy">100%</div>
-                                </div>
-                                <div className="w-[1px] h-12 bg-navy/20"></div>
-                                <div className="text-center">
-                                    <div className="font-mono text-xs text-gray-400 mb-1">INTERSECTION</div>
-                                    <div className="font-display text-2xl text-navy">TRUE</div>
-                                </div>
-                                <div className="w-[1px] h-12 bg-navy/20"></div>
-                                <div className="text-center">
-                                    <div className="font-mono text-xs text-gray-400 mb-1">VARIANT_LOCK</div>
-                                    <div className="font-display text-2xl text-navy">3/3</div>
-                                </div>
+                                <DuotoneImage
+                                    src="/images/real-estate-3-people-right.jpg"
+                                    label="VAR B: LUXURY [MACRO]"
+                                    variant="gold"
+                                />
                             </motion.div>
+                        </div>
+
+                        {/* BLOCK G: BOTTOM LEFT (Footer) */}
+                        <div className="absolute top-[85%] left-0 w-[38.2%] h-[15%] bg-gray-100 flex items-center justify-center">
+                            <span className="font-mono text-[10px] text-navy/50">FIG 09.3 // MONDRIAN_ASYMMETRY</span>
                         </div>
 
                     </div>
