@@ -9,11 +9,21 @@ import { Shield, Cpu, Activity, Lock, Layers, Zap, Scale, Anchor, Monitor } from
  */
 
 // Helper Component for Image Interaction
-const DuotoneImage = ({ src, label }: { src: string, label: string }) => {
+const DuotoneImage = ({ src, label, variant = 'navy' }: { src: string, label: string, variant?: 'navy' | 'gold' }) => {
     const [isHovered, setIsHovered] = React.useState(false);
 
-    // The Strategic Filter: Navy Shadows, Gold Highlights
-    const filterStyle = 'grayscale(100%) sepia(100%) hue-rotate(190deg) saturate(150%) brightness(0.8)';
+    // The Strategic Filters
+    // Navy (#0A2342): Sepia moves to brown, hue-rotate(170deg) moves to deep blue.
+    const navyFilter = 'grayscale(100%) sepia(100%) hue-rotate(170deg) saturate(250%) brightness(0.7) contrast(1.2)';
+
+    // Gold (#C99D56): "Mustardy Sunrise" - Darker, richer, warmer. 
+    // Reduced brightness for "frosted window" effect, tuned hue for mustard.
+    const goldFilter = 'grayscale(100%) sepia(100%) hue-rotate(5deg) saturate(220%) brightness(0.85) contrast(0.95)';
+
+    const activeFilter = variant === 'navy' ? navyFilter : goldFilter;
+    const borderColor = variant === 'navy' ? 'border-navy' : 'border-gold';
+    const activeBorder = variant === 'navy' ? 'group-hover:border-gold' : 'group-hover:border-navy';
+    const textColor = variant === 'navy' ? 'text-navy' : 'text-[#C99D56]'; // using direct hex for text to ensure visibility
 
     return (
         <div
@@ -21,21 +31,21 @@ const DuotoneImage = ({ src, label }: { src: string, label: string }) => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div className="border-4 border-navy overflow-hidden h-64 bg-navy relative transition-all duration-300 group-hover:border-gold">
+            <div className={`border-4 ${borderColor} overflow-hidden h-64 bg-navy relative transition-all duration-300 ${activeBorder}`}>
                 <img
                     src={src}
                     alt={label}
                     className="w-full h-full object-cover transition-all duration-700 ease-out"
                     style={{
-                        filter: isHovered ? 'none' : filterStyle,
+                        filter: isHovered ? 'none' : activeFilter,
                         transform: isHovered ? 'scale(1.05)' : 'scale(1)'
                     }}
                 />
             </div>
-            <div className="mt-2 flex justify-between font-mono text-xs text-navy border-t border-navy/10 pt-2">
+            <div className={`mt-2 flex justify-between font-mono text-xs ${textColor} border-t border-navy/10 pt-2`}>
                 <span className="font-bold">{label}</span>
                 <span className={`transition-colors ${isHovered ? 'text-gold' : 'text-gray-400'}`}>
-                    {isHovered ? 'Filter::Bypassed' : 'Filter::Active'}
+                    {isHovered ? 'Filter::Bypassed' : `Filter::${variant.toUpperCase()}`}
                 </span>
             </div>
         </div>
