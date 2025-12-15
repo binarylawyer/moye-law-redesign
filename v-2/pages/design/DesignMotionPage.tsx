@@ -1,6 +1,5 @@
 import React from 'react';
-import NavBarV2 from '../../components/NavBarV2';
-import TerminalFooter from '../../sushi-ui/components/layout/TerminalFooter';
+import V2PageWrapper from '../../components/V2PageWrapper';
 import { motion } from 'framer-motion';
 
 /* 
@@ -42,10 +41,8 @@ const PromoDoor = ({ title }: { title: string }) => {
 
 const DesignMotionPage = () => {
     return (
-        <div className="min-h-screen bg-white font-sans selection:bg-navy selection:text-gold pt-20">
-            <NavBarV2 />
-
-            <main className="max-w-7xl mx-auto px-6 py-12">
+        <V2PageWrapper className="pt-20">
+            <div className="max-w-7xl mx-auto px-6 py-12">
 
                 {/* HEADER */}
                 <header className="mb-20 border-b-4 border-navy pb-8">
@@ -102,10 +99,8 @@ const DesignMotionPage = () => {
                     </div>
                 </section>
 
-            </main>
-
-            <TerminalFooter />
-        </div>
+            </div>
+        </V2PageWrapper>
     );
 };
 
