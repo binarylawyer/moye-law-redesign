@@ -591,14 +591,17 @@ const StrategyPage = () => {
 
                         {/* BLOCK A: CORE STRUCTURE (Top Left - Large) */}
                         {/* Position: 0,0 to 38.2%, 25% */}
-                        <div className="absolute top-0 left-0 w-[38.2%] h-[25%] p-6 flex items-end justify-start">
+                        <div className="absolute top-0 left-0 w-[38.2%] h-[25%] p-8 flex flex-col justify-end items-start bg-gray-50">
                             <motion.div
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 1.0 }}
                             >
-                                <h3 className="font-display text-6xl text-navy leading-none">A.</h3>
-                                <span className="font-mono text-xs text-gray-400">PRIME_SECTOR</span>
+                                <span className="font-mono text-xs text-gold mb-2 block">01. THE ARCHITECTURE</span>
+                                <h3 className="font-display text-3xl text-navy leading-none mb-2">Valid State<br />Machines.</h3>
+                                <p className="font-sans text-xs text-gray-500 max-w-[200px] leading-relaxed">
+                                    We don't write contracts. We build navigational charts for regulatory environments.
+                                </p>
                             </motion.div>
                         </div>
 
@@ -636,26 +639,24 @@ const StrategyPage = () => {
                             </motion.div>
                         </div>
 
-                        {/* BLOCK D: THE GOLD ENGINE (Center - High Impact) */}
+                        {/* BLOCK D: THE GOLD ENGINE (Center - High Impact) -> OPEN SESAME */}
                         {/* Position: 38.2%, 25% to 75%, 60% */}
-                        <div className="absolute top-[25%] left-[38.2%] w-[36.8%] h-[35%] bg-gold flex items-center justify-center p-8">
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: 1.6 }}
-                                className="text-center"
-                            >
-                                <span className="font-serif italic text-navy text-2xl">"Structure is<br />the Strategy."</span>
-                            </motion.div>
+                        <div className="absolute top-[25%] left-[38.2%] w-[36.8%] h-[35%] overflow-hidden">
+                            <OpenSesameDoor
+                                doorColor="bg-gold"
+                                revealColor="bg-navy"
+                                textColor="text-navy"
+                                revealText="ACCESS GRANTED"
+                            />
                         </div>
 
                         {/* BLOCK E: NAVY VOID (Right Side Strip) */}
                         {/* Position: 75%, 25% to 100%, 60% */}
-                        <div className="absolute top-[25%] left-[75%] right-0 h-[35%] bg-navy"></div>
+                        <div className="absolute top-[25%] left-[75%] right-0 h-[35%] bg-navy flex items-center justify-center">
+                            <div className="rotate-90 text-white font-mono text-xs tracking-widest opacity-30">REG_5.4</div>
+                        </div>
 
                         {/* BLOCK F: VARIANT B (Center Right) */}
-                        {/* Position: 38.2%, 60% to 100%, 100% (Note: Needs specific sub-grid) */}
-                        {/* Visual adjustment: 38.2% to 100%, 60% to 100%  */}
                         <div className="absolute top-[60%] left-[38.2%] right-0 bottom-0 overflow-hidden">
                             <motion.div
                                 className="w-full h-full"
@@ -671,9 +672,14 @@ const StrategyPage = () => {
                             </motion.div>
                         </div>
 
-                        {/* BLOCK G: BOTTOM LEFT (Footer) */}
-                        <div className="absolute top-[85%] left-0 w-[38.2%] h-[15%] bg-gray-100 flex items-center justify-center">
-                            <span className="font-mono text-[10px] text-navy/50">FIG 09.3 // MONDRIAN_ASYMMETRY</span>
+                        {/* BLOCK G: BOTTOM LEFT (Footer) -> OPEN SESAME 2 */}
+                        <div className="absolute top-[85%] left-0 w-[38.2%] h-[15%] overflow-hidden">
+                            <OpenSesameDoor
+                                doorColor="bg-gray-100"
+                                revealColor="bg-gold"
+                                textColor="text-gray-400"
+                                revealText="SYSTEM_UNK"
+                            />
                         </div>
 
                     </div>
