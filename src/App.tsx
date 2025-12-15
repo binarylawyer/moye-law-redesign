@@ -52,6 +52,7 @@ import DesignMotionPage from "../v-2/pages/design/DesignMotionPage";
 import DesignComponentsPage from "../v-2/pages/design/DesignComponentsPage";
 import PracticeIndex from "../v-2/pages/PracticeIndex";
 import FirmProfile from "../v-2/pages/FirmProfile";
+import ContactTerminal from "../v-2/pages/ContactTerminal";
 
 // Service Pages
 import EstatePlanningService from "./pages/services/EstatePlanning";
