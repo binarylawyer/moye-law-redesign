@@ -47,6 +47,35 @@ const IndexPage = () => {
             description: "Original concept with strategic annotations.",
             icon: <FileText className="w-6 h-6 text-gray-400" />,
             status: "Reference"
+        },
+        // --- PHASE 4.75: DESIGN SYSTEM FORMALIZATION ---
+        {
+            title: "Global Product Logic",
+            path: "/v2/design/product",
+            description: "Automated Offerings & The Kinetic Color System (Navy/Gold/Maroon).",
+            icon: <Layout className="w-6 h-6 text-navy" />,
+            status: "System"
+        },
+        {
+            title: "Service Funnel",
+            path: "/v2/design/service",
+            description: "The 5th Wave Service Ladder (Retail -> Bespoke).",
+            icon: <Layout className="w-6 h-6 text-navy" />,
+            status: "System"
+        },
+        {
+            title: "Kinetic Motion",
+            path: "/v2/design/motion",
+            description: "Animation physics, the Saul Bass Door, and Mondrian Lines.",
+            icon: <Layout className="w-6 h-6 text-navy" />,
+            status: "System"
+        },
+        {
+            title: "Component Library",
+            path: "/v2/design/components",
+            description: "Reusable UI Atoms & Molecules (Buttons, Inputs, Alerts).",
+            icon: <Layout className="w-6 h-6 text-navy" />,
+            status: "System"
         }
     ];
 
