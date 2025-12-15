@@ -44,6 +44,14 @@ const IndexPage = () => {
             node: "07"
         },
         {
+            title: "Inquiry Terminal (Contact)",
+            path: "/v2/contact",
+            description: "Factory Data & Input Stream.",
+            icon: <div className="w-6 h-6 border-2 border-navy"></div>,
+            status: "beta",
+            node: "08"
+        },
+        {
             title: "Design System",
             path: "/v2-design-system",
             description: "Typography, Colors, and basic tokens.",
