@@ -21,6 +21,13 @@ const IndexPage = () => {
             status: "Live"
         },
         {
+            title: "Kinetic Strategy (v2.0)",
+            path: "/v2-strategy",
+            description: "The 8 Principles of the new 'Fifth Wave' architecture.",
+            icon: <FileText className="w-6 h-6 text-gold" />,
+            status: "New"
+        },
+        {
             title: "Design System",
             path: "/v2-design-system",
             description: "Typography, Colors, and basic tokens.",
@@ -72,8 +79,8 @@ const IndexPage = () => {
                                     {page.icon}
                                 </div>
                                 <span className={`text-[10px] font-mono uppercase px-2 py-1 border ${page.status === 'Ready' || page.status === 'Live'
-                                        ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                                        : 'bg-gray-50 text-gray-500 border-gray-200'
+                                    ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                                    : 'bg-gray-50 text-gray-500 border-gray-200'
                                     }`}>
                                     {page.status}
                                 </span>
