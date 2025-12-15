@@ -50,6 +50,7 @@ import DesignProductPage from "../v-2/pages/design/DesignProductPage";
 import DesignServicePage from "../v-2/pages/design/DesignServicePage";
 import DesignMotionPage from "../v-2/pages/design/DesignMotionPage";
 import DesignComponentsPage from "../v-2/pages/design/DesignComponentsPage";
+import PracticeIndex from "../v-2/pages/PracticeIndex";
 
 // Service Pages
 import EstatePlanningService from "./pages/services/EstatePlanning";
