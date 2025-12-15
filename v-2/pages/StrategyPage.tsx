@@ -452,6 +452,28 @@ const StrategyPage = () => {
                             However, the grid cannot squash on mobile.
                             <strong>The Rule:</strong> Desktop = Grid / Mobile = Carousel.
                         </p>
+                    </div>
+                </section>
+
+                {/* ------------------------------------------------------------
+                   SECTION 8: THE SEAWALL
+                   Principal: Regulatory Navigation
+                   ------------------------------------------------------------ */}
+                <section className="mb-24">
+                    <div className="flex items-center gap-4 mb-6">
+                        <div className="bg-navy text-white p-3">
+                            <Anchor className="w-6 h-6" />
+                        </div>
+                        <h2 className="font-display text-3xl text-navy">08. The Regulatory Seawall</h2>
+                    </div>
+
+                    <div className="prose prose-lg text-gray-600 mb-8 font-sans">
+                        <p>
+                            The transition to Agentic Law is blocked by <strong>Rule 5.4</strong> (The Seawall).
+                            Our design must navigate this by ensuring "Human in the Loop" optics for the Storefront service,
+                            avoiding any implication of "Unauthorized Practice of Law" by an autonomous agent.
+                        </p>
+                    </div>
                 </section>
 
                 {/* ------------------------------------------------------------
@@ -627,35 +649,10 @@ const StrategyPage = () => {
                 </section>
 
             </div>
-        </section>
 
-                {/* ------------------------------------------------------------
-                   SECTION 8: THE SEAWALL
-                   Principal: Regulatory Navigation
-                   ------------------------------------------------------------ */}
-    <section className="mb-24">
-        <div className="flex items-center gap-4 mb-6">
-            <div className="bg-navy text-white p-3">
-                <Anchor className="w-6 h-6" />
-            </div>
-            <h2 className="font-display text-3xl text-navy">08. The Regulatory Seawall</h2>
+            <TerminalFooter />
         </div>
-
-        <div className="prose prose-lg text-gray-600 mb-8 font-sans">
-            <p>
-                The transition to Agentic Law is blocked by <strong>Rule 5.4</strong> (The Seawall).
-                Our design must navigate this by ensuring "Human in the Loop" optics for the Storefront service,
-                avoiding any implication of "Unauthorized Practice of Law" by an autonomous agent.
-            </p>
-        </div>
-    </section>
-
-            </div >
-
-    <TerminalFooter />
-        </div >
     );
 };
-
 
 export default StrategyPage;
