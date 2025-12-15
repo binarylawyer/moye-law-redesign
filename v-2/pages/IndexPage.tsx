@@ -28,6 +28,13 @@ const IndexPage = () => {
             status: "New"
         },
         {
+            title: "Practice Area Index",
+            path: "/v2/practice",
+            description: "The 'Matrix of Competence' catalog.",
+            icon: <FileText className="w-6 h-6 text-navy" />, // Added icon for consistency
+            status: "beta"
+        },
+        {
             title: "Design System",
             path: "/v2-design-system",
             description: "Typography, Colors, and basic tokens.",
