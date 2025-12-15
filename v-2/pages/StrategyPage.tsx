@@ -9,14 +9,36 @@ import { Shield, Cpu, Activity, Lock, Layers, Zap, Scale, Anchor, Monitor } from
  */
 
 // Helper Component for Image Interaction
-const DuotoneImage = ({ src, label, variant = 'navy' }: { src: string, label: string, variant?: 'navy' | 'gold' }) => {
+const DuotoneImage = ({ src, label, variant = 'navy' }: { src: string, label: string, variant?: 'navy' | 'gold' | 'navy-light' }) => {
     const [isHovered, setIsHovered] = React.useState(false);
 
-    // THE FINAL RECIPE: "Deep Navy Overlay"
-    // 1. Background: #0A2342 (Navy)
-    // 2. Image: Grayscale + Multiply (Maps darks to Navy)
-    // 3. Opacity: Tuned to ~60-70% to let the Navy shine through without being too dark (The "10% lighter" adjustment)
-    // 4. No Gold Overlay.
+    // THE FINAL TUNED RECIPE (As of User's "I like the new gold" Request):
+
+    // Variant Colors & Logic:
+    // 1. 'navy' (The "Gold" Result User Likes): Base Gold (#C99D56) / Navy Overlay (#0A2342) @ 0.6.
+    // 2. 'gold' (The "Luxury" Result): Base White (#FFFFFF) / Gold Overlay (#C99D56) @ 0.6.
+    // 3. 'navy-light' (The New Request): Navy Overlay (#0A2342) @ 0.1 (Very Light).
+
+    let baseColor = '#FFFFFF';
+    let overlayColor = '#0A2342';
+    let overlayOpacity = 0.6;
+
+    if (variant === 'navy') {
+        baseColor = '#C99D56';
+        overlayColor = '#0A2342';
+        overlayOpacity = 0.6;
+    } else if (variant === 'gold') {
+        baseColor = '#FFFFFF';
+        overlayColor = '#C99D56';
+        overlayOpacity = 0.6;
+    } else if (variant === 'navy-light') {
+        // "Navy color that I approved... 10% opacity so that it is very light"
+        baseColor = '#FFFFFF'; // Bright base
+        overlayColor = '#0A2342'; // The Approved Navy
+        overlayOpacity = 0.1; // 10% Opacity
+    }
+
+    const overlayMode = 'lighten';
 
     return (
         <div
@@ -24,10 +46,10 @@ const DuotoneImage = ({ src, label, variant = 'navy' }: { src: string, label: st
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            {/* The Container (Navy Base) */}
+            {/* The Container */}
             <div
-                className={`relative h-64 overflow-hidden border-4 ${variant === 'navy' ? 'border-navy' : 'border-gold'} 
-                ${variant === 'navy' ? 'bg-[#0A2342]' : 'bg-[#C99D56]'} transition-colors duration-300`}
+                className={`relative h-64 overflow-hidden border-4 ${variant.includes('navy') ? 'border-navy' : 'border-gold'} transition-colors duration-300`}
+                style={{ backgroundColor: baseColor }}
             >
 
                 {/* The Image */}
@@ -36,21 +58,30 @@ const DuotoneImage = ({ src, label, variant = 'navy' }: { src: string, label: st
                     alt={label}
                     className="w-full h-full object-cover transition-all duration-700 ease-out"
                     style={{
-                        // Step 1: Kill Color to allow pure blend
+                        // Step 1: Kill Color
                         filter: isHovered ? 'none' : 'grayscale(100%) contrast(1.1)',
-                        // Step 2: Multiply with Navy Background
+                        // Step 2: Multiply with Base
                         mixBlendMode: isHovered ? 'normal' : 'multiply',
-                        // Step 3: Opacity Tuning (Lighter than 100% to avoid "black hole" effect)
-                        opacity: isHovered ? 1 : 0.7,
+                        opacity: isHovered ? 1 : 1,
                         transform: isHovered ? 'scale(1.05)' : 'scale(1)'
                     }}
                 />
 
-                {/* No Gold Overlay - Removed per user request */}
+                {/* The Overlay */}
+                {!isHovered && (
+                    <div
+                        className="absolute inset-0 pointer-events-none"
+                        style={{
+                            backgroundColor: overlayColor,
+                            mixBlendMode: overlayMode,
+                            opacity: overlayOpacity
+                        }}
+                    />
+                )}
 
             </div>
 
-            <div className={`mt-2 flex justify-between font-mono text-xs ${variant === 'navy' ? 'text-navy' : 'text-[#C99D56]'} border-t border-navy/10 pt-2`}>
+            <div className={`mt-2 flex justify-between font-mono text-xs ${variant.includes('navy') ? 'text-navy' : 'text-[#C99D56]'} border-t border-navy/10 pt-2`}>
                 <span className="font-bold">{label}</span>
                 <span className={`transition-colors ${isHovered ? 'text-gold' : 'text-gray-400'}`}>
                     {isHovered ? 'FILTER::BYPASSED' : 'FILTER::ACTIVE'}
