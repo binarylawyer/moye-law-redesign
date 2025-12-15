@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "../v-2/styles/mondrian-reset.css";
-
 /* Make sure our CallToAction component is visible */
 .moye-cta-component {
   display: block !important;
