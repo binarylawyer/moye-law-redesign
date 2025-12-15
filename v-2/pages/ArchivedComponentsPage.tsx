@@ -1,7 +1,7 @@
 import React from 'react';
 import V2PageWrapper from '../components/V2PageWrapper';
 
-// Legacy Components
+// Legacy Components - CORE
 import Hero from '../../src/components/Hero';
 import Approach from '../../src/components/Approach';
 import TeamMembers from '../../src/components/TeamMembers';
@@ -10,6 +10,11 @@ import Testimonial from '../../src/components/Testimonial';
 import ConsultationCTA from '../../src/components/ConsultationCTA';
 import TrustIndicators from '../../src/components/TrustIndicators';
 import MondrianIntro from '../../src/components/MondrianIntro';
+
+// Legacy Components - PRACTICE & SERVICE
+import PracticeAreaHero from '../../src/components/practice/PracticeAreaHero';
+import ServiceHero from '../../src/components/services/ServiceHero';
+import ServiceFeatureImage from '../../src/components/services/ServiceFeatureImage';
 
 // Wrapper for Legacy Isolation (attempt to reset V2 resets if needed, or just contain)
 const LegacyContainer = ({ title, children }: { title: string, children: React.ReactNode }) => (
@@ -52,6 +57,33 @@ const ArchivedComponentsPage = () => {
                     <LegacyContainer title="src/components/MondrianIntro.tsx">
                         <MondrianIntro />
                     </LegacyContainer>
+
+                    {/* PRACTICE AREA HERO (Legacy) */}
+                    <LegacyContainer title="src/components/practice/PracticeAreaHero.tsx">
+                        <PracticeAreaHero
+                            title="Estate Planning"
+                            description="Preserving wealth for future generations through strategic trust architecture."
+                            subtitle="Legacy Protection"
+                        />
+                    </LegacyContainer>
+
+                    {/* SERVICE HERO (Legacy) */}
+                    <LegacyContainer title="src/components/services/ServiceHero.tsx">
+                        <ServiceHero
+                            title="Specific Service"
+                            description="A targeted legal solution for specific needs."
+                        />
+                    </LegacyContainer>
+
+                    {/* SERVICE FEATURE IMAGE (Legacy) */}
+                    <LegacyContainer title="src/components/services/ServiceFeatureImage.tsx">
+                        <ServiceFeatureImage
+                            title="Process Visualization"
+                            description="How we achieve results through structured legal engineering."
+                            imageSrc="/images/legal-process.jpg"
+                        />
+                    </LegacyContainer>
+
 
                     {/* APPROACH */}
                     <LegacyContainer title="src/components/Approach.tsx">
