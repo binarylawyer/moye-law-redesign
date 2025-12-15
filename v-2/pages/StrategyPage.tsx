@@ -12,19 +12,11 @@ import { Shield, Cpu, Activity, Lock, Layers, Zap, Scale, Anchor, Monitor } from
 const DuotoneImage = ({ src, label, variant = 'navy' }: { src: string, label: string, variant?: 'navy' | 'gold' }) => {
     const [isHovered, setIsHovered] = React.useState(false);
 
-    // THE FIXED RECIPE:
-    // To achieve "Navy Shadows, Gold Highlights":
-    // 1. Base Layer: Gold (The Highlight Color)
-    // 2. Image Layer: Grayscale + Multiply (Masks the Gold, creates dark tones)
-    // 3. Overlay Layer: Navy + Lighten (Lifts the deepest blacks to Navy)
-
-    // Variant Colors
-    // Navy Variant: Navy Shadows (#0A2342) / Gold Highlights (#C99D56)
-    // Gold Variant: Gold Shadows (#C99D56) / White Highlights (#FFFFFF)
-
-    const baseColor = variant === 'navy' ? '#C99D56' : '#FFFFFF';
-    const overlayColor = variant === 'navy' ? '#0A2342' : '#C99D56';
-    const overlayMode = 'lighten';
+    // THE FINAL RECIPE: "Deep Navy Overlay"
+    // 1. Background: #0A2342 (Navy)
+    // 2. Image: Grayscale + Multiply (Maps darks to Navy)
+    // 3. Opacity: Tuned to ~60-70% to let the Navy shine through without being too dark (The "10% lighter" adjustment)
+    // 4. No Gold Overlay.
 
     return (
         <div
@@ -32,10 +24,10 @@ const DuotoneImage = ({ src, label, variant = 'navy' }: { src: string, label: st
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            {/* The Container (Base Highlight Color) */}
+            {/* The Container (Navy Base) */}
             <div
-                className={`relative h-64 overflow-hidden border-4 ${variant === 'navy' ? 'border-navy' : 'border-gold'} transition-colors duration-300`}
-                style={{ backgroundColor: baseColor }}
+                className={`relative h-64 overflow-hidden border-4 ${variant === 'navy' ? 'border-navy' : 'border-gold'} 
+                ${variant === 'navy' ? 'bg-[#0A2342]' : 'bg-[#C99D56]'} transition-colors duration-300`}
             >
 
                 {/* The Image */}
@@ -44,32 +36,24 @@ const DuotoneImage = ({ src, label, variant = 'navy' }: { src: string, label: st
                     alt={label}
                     className="w-full h-full object-cover transition-all duration-700 ease-out"
                     style={{
-                        // Step 1: Kill Color
-                        filter: isHovered ? 'none' : 'grayscale(100%) contrast(1.2)',
-                        // Step 2: Multiply with Base (Creates the structure)
+                        // Step 1: Kill Color to allow pure blend
+                        filter: isHovered ? 'none' : 'grayscale(100%) contrast(1.1)',
+                        // Step 2: Multiply with Navy Background
                         mixBlendMode: isHovered ? 'normal' : 'multiply',
-                        opacity: isHovered ? 1 : 1, // Full opacity for multiply to work right
+                        // Step 3: Opacity Tuning (Lighter than 100% to avoid "black hole" effect)
+                        opacity: isHovered ? 1 : 0.7,
                         transform: isHovered ? 'scale(1.05)' : 'scale(1)'
                     }}
                 />
 
-                {/* The Overlay (Shadow Mapper) */}
-                {!isHovered && (
-                    <div
-                        className="absolute inset-0 pointer-events-none"
-                        style={{
-                            backgroundColor: overlayColor,
-                            mixBlendMode: overlayMode
-                        }}
-                    />
-                )}
+                {/* No Gold Overlay - Removed per user request */}
 
             </div>
 
             <div className={`mt-2 flex justify-between font-mono text-xs ${variant === 'navy' ? 'text-navy' : 'text-[#C99D56]'} border-t border-navy/10 pt-2`}>
                 <span className="font-bold">{label}</span>
                 <span className={`transition-colors ${isHovered ? 'text-gold' : 'text-gray-400'}`}>
-                    {isHovered ? 'RECIPE::BYPASSED' : 'RECIPE::active'}
+                    {isHovered ? 'FILTER::BYPASSED' : 'FILTER::ACTIVE'}
                 </span>
             </div>
         </div>
