@@ -60,6 +60,14 @@ const IndexPage = () => {
             node: "99"
         },
         {
+            title: "Archived Resources (Legacy)",
+            path: "/v2/resources-archive",
+            description: "Podcasts, Books, Articles library.",
+            icon: <div className="w-6 h-6 border-2 border-gray-400 rounded-full"></div>,
+            status: "experimental",
+            node: "98"
+        },
+        {
             title: "Design System",
             path: "/v2-design-system",
             description: "Typography, Colors, and basic tokens.",

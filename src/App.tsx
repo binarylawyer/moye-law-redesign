@@ -212,6 +212,7 @@ const AppRoutes = () => {
       <Route path="/v2/firm" element={<FirmProfile />} />
       <Route path="/v2/contact" element={<ContactTerminal />} />
       <Route path="/v2/archive" element={<ArchivedComponentsPage />} />
+      <Route path="/v2/resources-archive" element={<ArchivedResourcesPage />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>
