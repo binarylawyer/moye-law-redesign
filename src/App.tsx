@@ -210,6 +210,7 @@ const AppRoutes = () => {
       <Route path="/v2/practice" element={<PracticeIndex />} />
       <Route path="/v2/firm" element={<FirmProfile />} />
       <Route path="/v2/contact" element={<ContactTerminal />} />
+      <Route path="/v2/archive" element={<ArchivedComponentsPage />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>

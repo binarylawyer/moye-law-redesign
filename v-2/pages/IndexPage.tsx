@@ -52,6 +52,14 @@ const IndexPage = () => {
             node: "08"
         },
         {
+            title: "Archived Components (Legacy)",
+            path: "/v2/archive",
+            description: "Audit gallery of V1 components.",
+            icon: <Layers className="w-6 h-6 text-gray-400" />,
+            status: "experimental",
+            node: "99"
+        },
+        {
             title: "Design System",
             path: "/v2-design-system",
             description: "Typography, Colors, and basic tokens.",
