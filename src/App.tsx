@@ -44,6 +44,7 @@ import SystemShowcase from "../v-2/sushi-ui/SystemShowcase";
 import ServiceShowcasePage from "../v-2/sushi-ui/ServiceShowcasePage";
 import MondrianKit from "../v-2/sushi-ui/MondrianKit";
 import HomePage from "../v-2/pages/HomePage";
+import IndexPage from "../v-2/pages/IndexPage";
 
 // Service Pages
 import EstatePlanningService from "./pages/services/EstatePlanning";
@@ -124,7 +125,7 @@ const AppRoutes = () => {
     }
   }, [location]); // Dependency array ensures this runs on location change
 
-  const isStandalone = location.pathname === '/v2-home';
+  const isStandalone = ['/v2-home', '/v2-index'].includes(location.pathname);
 
   const routes = (
     <Routes>
@@ -192,6 +193,7 @@ const AppRoutes = () => {
       <Route path="/v2-service-template" element={<ServiceShowcasePage />} />
       <Route path="/v2-ui-kit" element={<MondrianKit />} />
       <Route path="/v2-home" element={<HomePage />} />
+      <Route path="/v2-index" element={<IndexPage />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>
