@@ -32,15 +32,20 @@ const DuotoneImage = ({ src, label, variant = 'navy' }: { src: string, label: st
         overlayColor = '#C99D56';
         overlayOpacity = 0.6;
     } else if (variant === 'navy-light') {
-        // "Navy color that I approved... 10% opacity so that it is very light" -> "Make it 20% darker"
-        // User feedback: "It looks grey". Switch to 'normal' blend to force the blue tint.
-        baseColor = '#FFFFFF'; // Bright base
-        overlayColor = '#0A2342'; // The Approved Navy
-        overlayOpacity = 0.3; // 30% Opacity
+        // "Shift to a 70% opacity to test that out"
+        // SOLUTION: Lighter Blue + Warm Base + Multiply + Higher Opacity
+        baseColor = '#FFFFFF';
+        overlayColor = '#6495ED'; // Cornflower Blue
+        overlayOpacity = 0.7; // 70% Opacity
     }
 
-    // Dynamic Blend Mode: 'lighten' for standard/luxury (architectural mapping), 'normal' for light variant (tinting)
-    const overlayMode = variant === 'navy-light' ? 'normal' : 'lighten';
+    // Dynamic Blend Mode
+    const overlayMode = variant === 'navy-light' ? 'multiply' : 'lighten';
+
+    // Dynamic Image Filter (Add Sepia for navy-light warmth)
+    const baseFilter = variant === 'navy-light'
+        ? 'grayscale(100%) sepia(40%) contrast(1.1)' // Warm base
+        : 'grayscale(100%) contrast(1.1)'; // Standard base
 
     return (
         <div
@@ -60,8 +65,8 @@ const DuotoneImage = ({ src, label, variant = 'navy' }: { src: string, label: st
                     alt={label}
                     className="w-full h-full object-cover transition-all duration-700 ease-out"
                     style={{
-                        // Step 1: Kill Color
-                        filter: isHovered ? 'none' : 'grayscale(100%) contrast(1.1)',
+                        // Step 1: Kill Color or Add Warmth
+                        filter: isHovered ? 'none' : baseFilter,
                         // Step 2: Multiply with Base
                         mixBlendMode: isHovered ? 'normal' : 'multiply',
                         opacity: isHovered ? 1 : 1,
