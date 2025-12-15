@@ -12,18 +12,19 @@ import { Shield, Cpu, Activity, Lock, Layers, Zap, Scale, Anchor, Monitor } from
 const DuotoneImage = ({ src, label, variant = 'navy' }: { src: string, label: string, variant?: 'navy' | 'gold' }) => {
     const [isHovered, setIsHovered] = React.useState(false);
 
-    // The Strategic Filters
-    // Navy (#0A2342): Sepia moves to brown, hue-rotate(170deg) moves to deep blue.
-    const navyFilter = 'grayscale(100%) sepia(100%) hue-rotate(170deg) saturate(250%) brightness(0.7) contrast(1.2)';
+    // THE FIXED RECIPE:
+    // To achieve "Navy Shadows, Gold Highlights":
+    // 1. Base Layer: Gold (The Highlight Color)
+    // 2. Image Layer: Grayscale + Multiply (Masks the Gold, creates dark tones)
+    // 3. Overlay Layer: Navy + Lighten (Lifts the deepest blacks to Navy)
 
-    // Gold (#C99D56): "Mustardy Sunrise" - Darker, richer, warmer. 
-    // Reduced brightness for "frosted window" effect, tuned hue for mustard.
-    const goldFilter = 'grayscale(100%) sepia(100%) hue-rotate(5deg) saturate(220%) brightness(0.85) contrast(0.95)';
+    // Variant Colors
+    // Navy Variant: Navy Shadows (#0A2342) / Gold Highlights (#C99D56)
+    // Gold Variant: Gold Shadows (#C99D56) / White Highlights (#FFFFFF)
 
-    const activeFilter = variant === 'navy' ? navyFilter : goldFilter;
-    const borderColor = variant === 'navy' ? 'border-navy' : 'border-gold';
-    const activeBorder = variant === 'navy' ? 'group-hover:border-gold' : 'group-hover:border-navy';
-    const textColor = variant === 'navy' ? 'text-navy' : 'text-[#C99D56]'; // using direct hex for text to ensure visibility
+    const baseColor = variant === 'navy' ? '#C99D56' : '#FFFFFF';
+    const overlayColor = variant === 'navy' ? '#0A2342' : '#C99D56';
+    const overlayMode = 'lighten';
 
     return (
         <div
@@ -31,26 +32,109 @@ const DuotoneImage = ({ src, label, variant = 'navy' }: { src: string, label: st
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div className={`border-4 ${borderColor} overflow-hidden h-64 bg-navy relative transition-all duration-300 ${activeBorder}`}>
+            {/* The Container (Base Highlight Color) */}
+            <div
+                className={`relative h-64 overflow-hidden border-4 ${variant === 'navy' ? 'border-navy' : 'border-gold'} transition-colors duration-300`}
+                style={{ backgroundColor: baseColor }}
+            >
+
+                {/* The Image */}
                 <img
                     src={src}
                     alt={label}
                     className="w-full h-full object-cover transition-all duration-700 ease-out"
                     style={{
-                        filter: isHovered ? 'none' : activeFilter,
+                        // Step 1: Kill Color
+                        filter: isHovered ? 'none' : 'grayscale(100%) contrast(1.2)',
+                        // Step 2: Multiply with Base (Creates the structure)
+                        mixBlendMode: isHovered ? 'normal' : 'multiply',
+                        opacity: isHovered ? 1 : 1, // Full opacity for multiply to work right
                         transform: isHovered ? 'scale(1.05)' : 'scale(1)'
                     }}
                 />
+
+                {/* The Overlay (Shadow Mapper) */}
+                {!isHovered && (
+                    <div
+                        className="absolute inset-0 pointer-events-none"
+                        style={{
+                            backgroundColor: overlayColor,
+                            mixBlendMode: overlayMode
+                        }}
+                    />
+                )}
+
             </div>
-            <div className={`mt-2 flex justify-between font-mono text-xs ${textColor} border-t border-navy/10 pt-2`}>
+
+            <div className={`mt-2 flex justify-between font-mono text-xs ${variant === 'navy' ? 'text-navy' : 'text-[#C99D56]'} border-t border-navy/10 pt-2`}>
                 <span className="font-bold">{label}</span>
                 <span className={`transition-colors ${isHovered ? 'text-gold' : 'text-gray-400'}`}>
-                    {isHovered ? 'Filter::Bypassed' : `Filter::${variant.toUpperCase()}`}
+                    {isHovered ? 'RECIPE::BYPASSED' : 'RECIPE::active'}
                 </span>
             </div>
         </div>
     );
 };
+
+// Demo Component for "Intersect & Reveal"
+const KineticGridDemo = () => {
+    // We simulate the "scroll" or "load" with a simple time-based sequence for this demo
+    // In production, this would use useScroll()
+
+    return (
+        <div className="w-full h-96 bg-gray-50 border-4 border-navy relative overflow-hidden">
+            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2">
+                {/* Quadrant 1: Top Left */}
+                <KineticCell delay={0.2} label="QUADRANT_01" content="Analysis" />
+
+                {/* Quadrant 2: Top Right */}
+                <KineticCell delay={0.8} label="QUADRANT_02" content="Strategy" />
+
+                {/* Quadrant 3: Bottom Left */}
+                <KineticCell delay={1.4} label="QUADRANT_03" content="Execution" />
+
+                {/* Quadrant 4: Bottom Right */}
+                <KineticCell delay={2.0} label="QUADRANT_04" content="Result" />
+            </div>
+
+            {/* The Constructing Lines (The "Architects") */}
+            <motion.div
+                className="absolute top-0 bottom-0 left-1/2 w-1 bg-navy z-20"
+                initial={{ height: "0%" }}
+                whileInView={{ height: "100%" }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                viewport={{ once: false }} // Re-animate on scroll for effect
+            />
+            <motion.div
+                className="absolute left-0 right-0 top-1/2 h-1 bg-navy z-20"
+                initial={{ width: "0%" }}
+                whileInView={{ width: "100%" }}
+                transition={{ duration: 1.5, delay: 0.5, ease: "easeInOut" }}
+                viewport={{ once: false }}
+            />
+
+            <div className="absolute bottom-2 right-2 font-mono text-[10px] text-navy/50">
+                System_Status::Constructing
+            </div>
+        </div>
+    );
+};
+
+const KineticCell = ({ delay, label, content }: { delay: number, label: string, content: string }) => {
+    return (
+        <div className="relative w-full h-full flex items-center justify-center p-4">
+            <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: delay + 0.5 }} // Wait for lines to cross
+                className="text-center"
+            >
+                <div className="font-mono text-[10px] text-gold tracking-widest mb-2">{label}</div>
+                <div className="font-display text-3xl text-navy">{content}</div>
+            </motion.div>
+        </div>
+    )
+}
 
 const StrategyPage = () => {
     return (
@@ -98,17 +182,8 @@ const StrategyPage = () => {
                         </p>
                     </div>
 
-                    {/* VIsual Aid: The Grid Animation Concept */}
-                    <div className="w-full h-64 bg-gray-50 border-4 border-navy relative overflow-hidden flex items-center justify-center">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-[1px] h-full bg-navy animate-pulse absolute left-1/3"></div>
-                            <div className="h-[1px] w-full bg-navy animate-pulse absolute top-1/2"></div>
-                            <span className="font-mono text-navy/50 text-xs mt-32">Grid_Intersection_Event::True</span>
-                        </div>
-                        <span className="font-display text-4xl text-navy z-10 bg-white px-4 py-2 border-2 border-navy">
-                            Opacity: 100%
-                        </span>
-                    </div>
+                    {/* Visual Aid: Kinetic Grid Demo */}
+                    <KineticGridDemo />
                 </section>
 
                 {/* ------------------------------------------------------------
