@@ -158,6 +158,34 @@ const KineticCell = ({ delay, label, content }: { delay: number, label: string, 
     )
 }
 
+// --- HELPER COMPONENT: OPEN SESAME DOOR (3D KINETIC) ---
+const OpenSesameDoor = ({ doorColor, revealColor, textColor, revealText }: { doorColor: string, revealColor: string, textColor: string, revealText?: string }) => {
+    // Determine borders based on door color
+    const borderColor = doorColor.includes('bg-navy') ? 'border-gold' : 'border-navy';
+
+    return (
+        // STAGE: Perspective Container
+        // Note: Using arbitrary perspective class until config propagates, but maintained for structure.
+        <div className={`group relative w-full h-full [perspective:1000px] cursor-pointer`}>
+
+            {/* THE REVEAL (Background Layer - Static) */}
+            <div className={`absolute inset-0 z-0 ${revealColor} flex items-center justify-center`}>
+                <span className={`font-mono text-xs tracking-widest ${textColor} opacity-100`}>
+                    {revealText || "ACCESS_GRANTED"}
+                </span>
+            </div>
+
+            {/* THE DOOR (Foreground Layer - Moving) */}
+            <div className={`absolute inset-0 z-10 ${doorColor} border-4 ${borderColor} origin-left transition-transform duration-600 ease-[cubic-bezier(0.3,0.0,0.2,1)] group-hover:[transform:rotateY(-110deg)] flex items-center justify-center`}>
+                <div className="flex flex-col items-center">
+                    <span className={`font-display text-2xl ${textColor} mb-1 opacity-100`}>open sesame</span>
+                    <div className={`h-[1px] w-8 ${textColor.replace('text-', 'bg-')} opacity-30`}></div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 const StrategyPage = () => {
     return (
         <div className="min-h-screen bg-white font-sans selection:bg-navy selection:text-gold pt-20">

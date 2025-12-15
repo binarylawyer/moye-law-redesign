@@ -109,7 +109,18 @@ export default {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
 				"fade-in": "fade-in 0.5s ease-out forwards",
-			}
+			},
+			// KINETIC MOTION UTILITIES (Saul Bass)
+			perspective: {
+				'1000': '1000px',
+				'1200': '1200px',
+			},
+			rotate: {
+				'-110': '-110deg',
+			},
+			transformOrigin: {
+				'left-center': 'left center',
+			},
 		}
 	},
 	plugins: [
