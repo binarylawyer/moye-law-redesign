@@ -3,54 +3,43 @@
  * Purpose: Enforce the "Rigid Engineering" aesthetic over legacy styles.
  */
 
-@layer base {
+/* 1. GEOMETRY ENFORCEMENT */
+/* No soft corners in the V2 architecture */
+.v2-scope * {
+    border-radius: 0px !important;
+}
 
-    /* 1. GEOMETRY ENFORCEMENT */
-    /* No soft corners in the V2 architecture */
-    .v2-scope * {
-        border-radius: 0px !important;
-    }
+/* 2. TYPOGRAPHY ENFORCEMENT */
+.v2-scope h1,
+.v2-scope h2,
+.v2-scope h3,
+.v2-scope h4,
+.v2-scope h5,
+.v2-scope h6 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    /* Semantic weight for display */
+}
 
-    /* 2. TYPOGRAPHY ENFORCEMENT */
-    .v2-scope h1,
-    .v2-scope h2,
-    .v2-scope h3,
-    .v2-scope h4,
-    .v2-scope h5,
-    .v2-scope h6 {
-        font-family: 'Cormorant Garamond', serif;
-        font-weight: 400;
-        /* Semantic weight for display */
-    }
+/* 3. SCROLLBAR CUSTOMIZATION (The "Timeline") */
+.v2-scope ::-webkit-scrollbar {
+    width: 8px;
+}
 
-    .v2-scope p,
-    .v2-scope a,
-    .v2-scope span,
-    .v2-scope div {
-        /* Default to Inter unless overridden */
-        /* font-family: 'Inter', sans-serif; */
-    }
+.v2-scope ::-webkit-scrollbar-track {
+    background: #F3F4F6;
+    /* Engineering Gray */
+}
 
-    /* 3. SCROLLBAR CUSTOMIZATION (The "Timeline") */
-    .v2-scope ::-webkit-scrollbar {
-        width: 8px;
-    }
+.v2-scope ::-webkit-scrollbar-thumb {
+    background: #0A2342;
+    /* Navy Ink */
+    border: 2px solid #F3F4F6;
+}
 
-    .v2-scope ::-webkit-scrollbar-track {
-        background: #F3F4F6;
-        /* Engineering Gray */
-    }
-
-    .v2-scope ::-webkit-scrollbar-thumb {
-        background: #0A2342;
-        /* Navy Ink */
-        border: 2px solid #F3F4F6;
-    }
-
-    .v2-scope ::-webkit-scrollbar-thumb:hover {
-        background: #C99D56;
-        /* Gold Interaction */
-    }
+.v2-scope ::-webkit-scrollbar-thumb:hover {
+    background: #C99D56;
+    /* Gold Interaction */
 }
 
 /* 4. UTILITY CLASSES (Mondrian Specifics) */

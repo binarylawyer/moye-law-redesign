@@ -7,7 +7,6 @@ import LegalExhibit from '../sushi-ui/components/content/LegalExhibit';
 import BinaryBio from '../sushi-ui/components/content/BinaryBio';
 import ExecuteCTA from '../sushi-ui/components/layout/ExecuteCTA';
 import SushiSplitCard from '../sushi-ui/components/SushiSplitCard';
-import SushiSplitCard from '../sushi-ui/components/SushiSplitCard';
 import { StorefrontTheme } from '../sushi-ui/theme/themes';
 import { Scale, FileText, Box, Shield, Briefcase, Key } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
