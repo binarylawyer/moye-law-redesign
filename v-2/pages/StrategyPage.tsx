@@ -32,13 +32,15 @@ const DuotoneImage = ({ src, label, variant = 'navy' }: { src: string, label: st
         overlayColor = '#C99D56';
         overlayOpacity = 0.6;
     } else if (variant === 'navy-light') {
-        // "Navy color that I approved... 10% opacity so that it is very light"
+        // "Navy color that I approved... 10% opacity so that it is very light" -> "Make it 20% darker"
+        // User feedback: "It looks grey". Switch to 'normal' blend to force the blue tint.
         baseColor = '#FFFFFF'; // Bright base
         overlayColor = '#0A2342'; // The Approved Navy
-        overlayOpacity = 0.1; // 10% Opacity
+        overlayOpacity = 0.3; // 30% Opacity
     }
 
-    const overlayMode = 'lighten';
+    // Dynamic Blend Mode: 'lighten' for standard/luxury (architectural mapping), 'normal' for light variant (tinting)
+    const overlayMode = variant === 'navy-light' ? 'normal' : 'lighten';
 
     return (
         <div
@@ -405,6 +407,24 @@ const StrategyPage = () => {
                             src="/assets/v2/handshake.png"
                             label="FIG 02.2: HUMANITY [GOLD]"
                             variant="gold"
+                        />
+                    </div>
+
+                    {/* DUOTONE GALLERY: NAVY LIGHT VARIANT */}
+                    <div className="mb-4 flex items-center gap-2 mt-12">
+                        <div className="w-4 h-4 bg-navy opacity-10"></div>
+                        <span className="font-mono text-xs font-bold text-navy">VARIANT C: PURE NAVY (10% OPACITY)</span>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <DuotoneImage
+                            src="/assets/v2/architecture.png"
+                            label="FIG 03.1: STRUCTURE [LIGHT NAVY]"
+                            variant="navy-light"
+                        />
+                        <DuotoneImage
+                            src="/assets/v2/handshake.png"
+                            label="FIG 03.2: HUMANITY [LIGHT NAVY]"
+                            variant="navy-light"
                         />
                     </div>
                 </section>
