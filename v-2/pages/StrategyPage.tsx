@@ -427,8 +427,8 @@ const StrategyPage = () => {
                             variant="navy-light"
                         />
                         <DuotoneImage
-                            src="/assets/v2/handshake.png"
-                            label="FIG 03.2: HUMANITY [LIGHT NAVY]"
+                            src="/images/test-image-1.jpg"
+                            label="FIG 03.2: TEST IMAGE [LIGHT NAVY]"
                             variant="navy-light"
                         />
                     </div>
