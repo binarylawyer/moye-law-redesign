@@ -4,7 +4,7 @@ import V2PageWrapper from '../components/V2PageWrapper';
 // Legacy Components and Data
 import PodcastList from '../../src/components/podcasts/PodcastList';
 import RelatedResources from '../../src/components/resources/RelatedResources';
-import { articles } from '../../src/data/articlesData';
+import { resources as articles } from '../../src/data/articlesData';
 import { books } from '../../src/data/booksData';
 
 const ArchivedResourcesPage = () => {

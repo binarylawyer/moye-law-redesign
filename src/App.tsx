@@ -54,6 +54,7 @@ import PracticeIndex from "../v-2/pages/PracticeIndex";
 import FirmProfile from "../v-2/pages/FirmProfile";
 import ContactTerminal from "../v-2/pages/ContactTerminal";
 import ArchivedComponentsPage from "../v-2/pages/ArchivedComponentsPage";
+import ArchivedResourcesPage from "../v-2/pages/ArchivedResourcesPage";
 
 // Service Pages
 import EstatePlanningService from "./pages/services/EstatePlanning";

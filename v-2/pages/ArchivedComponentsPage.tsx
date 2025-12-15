@@ -78,9 +78,9 @@ const ArchivedComponentsPage = () => {
                     {/* SERVICE FEATURE IMAGE (Legacy) */}
                     <LegacyContainer title="src/components/services/ServiceFeatureImage.tsx">
                         <ServiceFeatureImage
-                            title="Process Visualization"
-                            description="How we achieve results through structured legal engineering."
-                            imageSrc="/images/legal-process.jpg"
+                            featureTitle="Process Visualization"
+                            featureDescription="How we achieve results through structured legal engineering."
+                            imagePath="/images/legal-process.jpg"
                         />
                     </LegacyContainer>
 
