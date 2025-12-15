@@ -31,8 +31,17 @@ const IndexPage = () => {
             title: "Practice Area Index",
             path: "/v2/practice",
             description: "The 'Matrix of Competence' catalog.",
-            icon: <FileText className="w-6 h-6 text-navy" />, // Added icon for consistency
-            status: "beta"
+            icon: <FileText className="w-6 h-6 text-navy" />,
+            status: "beta",
+            node: "06"
+        },
+        {
+            title: "Firm Profile (The Architects)",
+            path: "/v2/firm",
+            description: "Leadership & Kinetic Manifesto.",
+            icon: <Briefcase className="w-6 h-6 text-navy" />,
+            status: "beta",
+            node: "07"
         },
         {
             title: "Design System",
