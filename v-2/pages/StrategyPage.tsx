@@ -165,10 +165,13 @@ const OpenSesameDoor = ({ doorColor, revealColor, textColor, revealText }: { doo
 
     return (
         // STAGE: Perspective Container
-        // Use inline style for perspective to ensure it works regardless of Tailwind config
-        <div
+        // We move the 'initial' and 'whileHover' props here (the static container) 
+        // to prevents the "flicker/jump" glitch when the door rotates away from the mouse.
+        <motion.div
             className="w-full h-full cursor-pointer relative"
             style={{ perspective: "1000px" }}
+            initial="closed"
+            whileHover="open"
         >
 
             {/* THE REVEAL (Background Layer - Static) */}
@@ -181,11 +184,13 @@ const OpenSesameDoor = ({ doorColor, revealColor, textColor, revealText }: { doo
             {/* THE DOOR (Foreground Layer - Moving) */}
             <motion.div
                 className={`absolute inset-0 z-10 ${doorColor} border-4 ${borderColor} origin-left flex items-center justify-center`}
-                initial={{ rotateY: 0 }}
-                whileHover={{ rotateY: -110 }}
+                variants={{
+                    closed: { rotateY: 0 },
+                    open: { rotateY: -110 }
+                }}
                 transition={{
-                    duration: 0.6,
-                    ease: [0.3, 0.0, 0.2, 1] // The Saul Bass Snap
+                    duration: 1.2, // Slower for "nervous" clients (Calm Authority)
+                    ease: [0.25, 0.46, 0.45, 0.94] // "Quad Out" - smoother, less snappy than the previous "Back" ease
                 }}
             >
                 <div className="flex flex-col items-center">
@@ -193,7 +198,7 @@ const OpenSesameDoor = ({ doorColor, revealColor, textColor, revealText }: { doo
                     <div className={`h-[1px] w-8 ${textColor.replace('text-', 'bg-')} opacity-30`}></div>
                 </div>
             </motion.div>
-        </div>
+        </motion.div>
     );
 };
 
