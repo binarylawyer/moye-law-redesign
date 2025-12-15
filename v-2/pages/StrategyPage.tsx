@@ -5,9 +5,43 @@ import { motion } from 'framer-motion';
 import { Shield, Cpu, Activity, Lock, Layers, Zap, Scale, Anchor, Monitor } from 'lucide-react';
 
 /**
- * StrategyPage: A "Thinking Page" to visualize the new design system principles.
  * Structure: 8 Narrative Sections explaining the shift to Kinetic Structuralism.
  */
+
+// Helper Component for Image Interaction
+const DuotoneImage = ({ src, label }: { src: string, label: string }) => {
+    const [isHovered, setIsHovered] = React.useState(false);
+
+    // The Strategic Filter: Navy Shadows, Gold Highlights
+    const filterStyle = 'grayscale(100%) sepia(100%) hue-rotate(190deg) saturate(150%) brightness(0.8)';
+
+    return (
+        <div
+            className="group relative cursor-crosshair"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            <div className="border-4 border-navy overflow-hidden h-64 bg-navy relative transition-all duration-300 group-hover:border-gold">
+                <img
+                    src={src}
+                    alt={label}
+                    className="w-full h-full object-cover transition-all duration-700 ease-out"
+                    style={{
+                        filter: isHovered ? 'none' : filterStyle,
+                        transform: isHovered ? 'scale(1.05)' : 'scale(1)'
+                    }}
+                />
+            </div>
+            <div className="mt-2 flex justify-between font-mono text-xs text-navy border-t border-navy/10 pt-2">
+                <span className="font-bold">{label}</span>
+                <span className={`transition-colors ${isHovered ? 'text-gold' : 'text-gray-400'}`}>
+                    {isHovered ? 'Filter::Bypassed' : 'Filter::Active'}
+                </span>
+            </div>
+        </div>
+    );
+};
+
 const StrategyPage = () => {
     return (
         <div className="min-h-screen bg-white font-sans selection:bg-navy selection:text-gold pt-20">
@@ -231,11 +265,23 @@ const StrategyPage = () => {
                         </p>
                     </div>
 
-                    <div className="w-full h-40 bg-navy flex items-center justify-center relative overflow-hidden">
+                    <div className="w-full h-40 bg-navy flex items-center justify-center relative overflow-hidden mb-8">
                         <div className="absolute inset-0 bg-gradient-to-tr from-navy to-gold opacity-50 mix-blend-overlay"></div>
                         <span className="relative z-10 text-white font-serif italic text-2xl">
                             Humanity, Architected.
                         </span>
+                    </div>
+
+                    {/* DUOTONE GALLERY */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <DuotoneImage
+                            src="/assets/v2/architecture.png"
+                            label="FIG 01.1: STRUCTURE"
+                        />
+                        <DuotoneImage
+                            src="/assets/v2/handshake.png"
+                            label="FIG 01.2: HUMANITY"
+                        />
                     </div>
                 </section>
 
