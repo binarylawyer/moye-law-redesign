@@ -452,34 +452,208 @@ const StrategyPage = () => {
                             However, the grid cannot squash on mobile.
                             <strong>The Rule:</strong> Desktop = Grid / Mobile = Carousel.
                         </p>
+                </section>
+
+                {/* ------------------------------------------------------------
+                   SECTION 9: KINETIC MONDRIAN SHOWCASE (LIVE PROOF)
+                   Principal: Extended Composition
+                   ------------------------------------------------------------ */}
+                <section className="mb-24">
+                    <div className="flex items-center gap-4 mb-6">
+                        <div className="bg-navy text-white p-3">
+                            <Monitor className="w-6 h-6" />
+                        </div>
+                        <h2 className="font-display text-3xl text-navy">09. Kinetic Mondrian (Live Proof)</h2>
+                    </div>
+
+                    <div className="prose prose-lg text-gray-600 mb-8 font-sans">
+                        <p>
+                            A living demonstration of the <strong>Unified Design System</strong>.
+                            Observing the interplay of primary structures (Navy), energy accents (Gold),
+                            and the three distinct imaging protocols on a single subject.
+                            The grid lines construct the frame, revealing the content only upon intersection.
+                        </p>
+                    </div>
+
+                    {/* THE KINETIC MONDRIAN GRID */}
+                    <div className="w-full relative h-[800px] border-4 border-navy bg-white overflow-hidden">
+
+                        {/* 1. KINETIC LINES (The Architects) */}
+                        {/* Vertical Line 1 (Left 33%) */}
+                        <motion.div
+                            className="absolute top-0 bottom-0 left-1/3 w-1 bg-navy z-20"
+                            initial={{ height: "0%" }}
+                            whileInView={{ height: "100%" }}
+                            transition={{ duration: 1.2, ease: "easeInOut" }}
+                            viewport={{ once: false }}
+                        />
+                        {/* Vertical Line 2 (Right 66%) */}
+                        <motion.div
+                            className="absolute top-0 bottom-0 left-2/3 w-1 bg-navy z-20"
+                            initial={{ height: "0%" }}
+                            whileInView={{ height: "100%" }}
+                            transition={{ duration: 1.5, delay: 0.2, ease: "easeInOut" }}
+                            viewport={{ once: false }}
+                        />
+                        {/* Horizontal Line 1 (Top 40%) */}
+                        <motion.div
+                            className="absolute left-0 right-0 top-1/3 h-1 bg-navy z-20"
+                            initial={{ width: "0%" }}
+                            whileInView={{ width: "100%" }}
+                            transition={{ duration: 1.4, delay: 0.1, ease: "easeInOut" }}
+                            viewport={{ once: false }}
+                        />
+                        {/* Horizontal Line 2 (Bottom 75%) */}
+                        <motion.div
+                            className="absolute left-0 right-0 top-3/4 h-1 bg-navy z-20"
+                            initial={{ width: "0%" }}
+                            whileInView={{ width: "100%" }}
+                            transition={{ duration: 1.6, delay: 0.3, ease: "easeInOut" }}
+                            viewport={{ once: false }}
+                        />
+
+
+                        {/* 2. THE CONTENT CELLS (Revealed by Motion) */}
+
+                        {/* CELL 1: Top Left (Navy Block) */}
+                        <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-navy p-6 flex flex-col justify-between">
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 1.0 }}
+                            >
+                                <span className="font-mono text-gold text-xs">01. STRUCTURE</span>
+                                <h3 className="font-display text-4xl text-white mt-2">A.</h3>
+                            </motion.div>
+                        </div>
+
+                        {/* CELL 2: Top Middle (Variant A: Standard Navy) */}
+                        <div className="absolute top-0 left-1/3 w-1/3 h-1/3 overflow-hidden">
+                            <motion.div
+                                className="w-full h-full"
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 1.2 }}
+                            >
+                                <DuotoneImage
+                                    src="/images/real-estate-3-people-right.jpg"
+                                    label="VAR A: STANDARD"
+                                    variant="navy"
+                                />
+                            </motion.div>
+                        </div>
+
+                        {/* CELL 3: Top Right (White Space) */}
+                        <div className="absolute top-0 left-2/3 w-1/3 h-1/3 bg-white p-6">
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 1.4 }}
+                                className="h-full flex items-center justify-center"
+                            >
+                                <div className="w-16 h-16 bg-gray-100 border-4 border-navy"></div>
+                            </motion.div>
+                        </div>
+
+                        {/* CELL 4: Middle Left (Variant B: Luxury Gold) */}
+                        <div className="absolute top-1/3 left-0 w-1/3 h-[41.66%] overflow-hidden">
+                            <motion.div
+                                className="w-full h-full"
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 1.3 }}
+                            >
+                                <DuotoneImage
+                                    src="/images/real-estate-3-people-right.jpg"
+                                    label="VAR B: LUXURY"
+                                    variant="gold"
+                                />
+                            </motion.div>
+                        </div>
+
+                        {/* CELL 5: Middle Center (Gold Block - The 'Energy') */}
+                        <div className="absolute top-1/3 left-1/3 w-1/3 h-[41.66%] bg-gold p-6 flex items-center justify-center">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 1.5 }}
+                            >
+                                <span className="font-display text-5xl text-navy">M</span>
+                            </motion.div>
+                        </div>
+
+                        {/* CELL 6: Middle Right (Variant C: Cornflower Warm) */}
+                        <div className="absolute top-1/3 left-2/3 w-1/3 h-[41.66%] overflow-hidden">
+                            <motion.div
+                                className="w-full h-full"
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 1.6 }}
+                            >
+                                <DuotoneImage
+                                    src="/images/real-estate-3-people-right.jpg"
+                                    label="VAR C: CORNFLOWER"
+                                    variant="navy-light"
+                                />
+                            </motion.div>
+                        </div>
+
+                        {/* CELL 7: Bottom Span (Footer of the Grid) */}
+                        <div className="absolute top-3/4 left-0 w-full h-1/4 bg-gray-50 flex items-center justify-center gap-12">
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 1.8 }}
+                                className="flex gap-8"
+                            >
+                                <div className="text-center">
+                                    <div className="font-mono text-xs text-gray-400 mb-1">GRID_TENSION</div>
+                                    <div className="font-display text-2xl text-navy">100%</div>
+                                </div>
+                                <div className="w-[1px] h-12 bg-navy/20"></div>
+                                <div className="text-center">
+                                    <div className="font-mono text-xs text-gray-400 mb-1">INTERSECTION</div>
+                                    <div className="font-display text-2xl text-navy">TRUE</div>
+                                </div>
+                                <div className="w-[1px] h-12 bg-navy/20"></div>
+                                <div className="text-center">
+                                    <div className="font-mono text-xs text-gray-400 mb-1">VARIANT_LOCK</div>
+                                    <div className="font-display text-2xl text-navy">3/3</div>
+                                </div>
+                            </motion.div>
+                        </div>
+
                     </div>
                 </section>
+
+            </div>
+        </section>
 
                 {/* ------------------------------------------------------------
                    SECTION 8: THE SEAWALL
                    Principal: Regulatory Navigation
                    ------------------------------------------------------------ */}
-                <section className="mb-24">
-                    <div className="flex items-center gap-4 mb-6">
-                        <div className="bg-navy text-white p-3">
-                            <Anchor className="w-6 h-6" />
-                        </div>
-                        <h2 className="font-display text-3xl text-navy">08. The Regulatory Seawall</h2>
-                    </div>
-
-                    <div className="prose prose-lg text-gray-600 mb-8 font-sans">
-                        <p>
-                            The transition to Agentic Law is blocked by <strong>Rule 5.4</strong> (The Seawall).
-                            Our design must navigate this by ensuring "Human in the Loop" optics for the Storefront service,
-                            avoiding any implication of "Unauthorized Practice of Law" by an autonomous agent.
-                        </p>
-                    </div>
-                </section>
-
+    <section className="mb-24">
+        <div className="flex items-center gap-4 mb-6">
+            <div className="bg-navy text-white p-3">
+                <Anchor className="w-6 h-6" />
             </div>
-
-            <TerminalFooter />
+            <h2 className="font-display text-3xl text-navy">08. The Regulatory Seawall</h2>
         </div>
+
+        <div className="prose prose-lg text-gray-600 mb-8 font-sans">
+            <p>
+                The transition to Agentic Law is blocked by <strong>Rule 5.4</strong> (The Seawall).
+                Our design must navigate this by ensuring "Human in the Loop" optics for the Storefront service,
+                avoiding any implication of "Unauthorized Practice of Law" by an autonomous agent.
+            </p>
+        </div>
+    </section>
+
+            </div >
+
+    <TerminalFooter />
+        </div >
     );
 };
 
