@@ -272,15 +272,39 @@ const StrategyPage = () => {
                         </span>
                     </div>
 
-                    {/* DUOTONE GALLERY */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* DUOTONE GALLERY: NAVY VARIANT */}
+                    <div className="mb-4 flex items-center gap-2">
+                        <div className="w-4 h-4 bg-navy"></div>
+                        <span className="font-mono text-xs font-bold text-navy">VARIANT A: ENGINEERING (NAVY MAP)</span>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                         <DuotoneImage
                             src="/assets/v2/architecture.png"
-                            label="FIG 01.1: STRUCTURE"
+                            label="FIG 01.1: STRUCTURE [NAVY]"
+                            variant="navy"
                         />
                         <DuotoneImage
                             src="/assets/v2/handshake.png"
-                            label="FIG 01.2: HUMANITY"
+                            label="FIG 01.2: HUMANITY [NAVY]"
+                            variant="navy"
+                        />
+                    </div>
+
+                    {/* DUOTONE GALLERY: GOLD VARIANT */}
+                    <div className="mb-4 flex items-center gap-2">
+                        <div className="w-4 h-4 bg-gold"></div>
+                        <span className="font-mono text-xs font-bold text-navy">VARIANT B: LUXURY (GOLD MAP)</span>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <DuotoneImage
+                            src="/assets/v2/architecture.png"
+                            label="FIG 02.1: STRUCTURE [GOLD]"
+                            variant="gold"
+                        />
+                        <DuotoneImage
+                            src="/assets/v2/handshake.png"
+                            label="FIG 02.2: HUMANITY [GOLD]"
+                            variant="gold"
                         />
                     </div>
                 </section>
