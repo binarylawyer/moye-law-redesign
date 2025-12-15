@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "../v-2/styles/mondrian-reset.css";
+
 /* Make sure our CallToAction component is visible */
 .moye-cta-component {
   display: block !important;
@@ -10,17 +12,24 @@
 }
 
 /* Make sure all essential sections are explicitly visible */
-section.py-20.bg-white.relative, /* MondrianIntro */
-section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8 > div.max-w-2xl), /* PracticeAreas */
-.moye-approach-section, /* Approach - with special class */
-section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div.mondrian-grid.mb-16) /* Approach - by structure */ {
+section.py-20.bg-white.relative,
+/* MondrianIntro */
+section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8 > div.max-w-2xl),
+/* PracticeAreas */
+.moye-approach-section,
+/* Approach - with special class */
+section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div.mondrian-grid.mb-16)
+
+/* Approach - by structure */
+  {
   display: block !important;
 }
 
 /* Add prominent section marker for debugging */
 .moye-approach-section {
   border-top: 8px solid red !important;
-  display: block !important; /* Ensure the approach section is always visible */
+  display: block !important;
+  /* Ensure the approach section is always visible */
 }
 
 /* Improved dropdown animation keyframes */
@@ -30,6 +39,7 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
     transform: translateY(-8px);
     box-shadow: 0 0 0 rgba(0, 0, 0, 0);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -43,6 +53,7 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
     transform: translateY(0);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   }
+
   100% {
     opacity: 0;
     transform: translateY(-8px);
@@ -56,6 +67,7 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
     opacity: 0;
     transform: translateX(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -66,25 +78,31 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
   body {
     @apply font-sans text-base md:text-lg;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-serif;
-    letter-spacing: -0.02em; /* Tracking-tight per spec */
+    letter-spacing: -0.02em;
+    /* Tracking-tight per spec */
   }
-  
+
   h1 {
     @apply text-5xl md:text-6xl lg:text-7xl;
     font-size: clamp(2.5rem, 5vw, 4.5rem);
   }
-  
+
   h2 {
     @apply text-3xl md:text-4xl lg:text-5xl;
   }
-  
+
   h3 {
     @apply text-2xl md:text-3xl;
   }
-  
+
   p {
     @apply leading-relaxed text-base md:text-lg lg:text-xl;
     line-height: 1.8;
@@ -92,22 +110,40 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
 }
 
 @layer utilities {
+
   /* Animation for dropdown menus */
   .animate-dropdown {
     animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
-  
+
   .animate-dropdown-leave {
     animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
-  
+
   /* Animation for dropdown items with staggered delay */
-  .dropdown-item-1 { animation: fadeIn 0.3s ease-out 0.05s both; }
-  .dropdown-item-2 { animation: fadeIn 0.3s ease-out 0.1s both; }
-  .dropdown-item-3 { animation: fadeIn 0.3s ease-out 0.15s both; }
-  .dropdown-item-4 { animation: fadeIn 0.3s ease-out 0.2s both; }
-  .dropdown-item-5 { animation: fadeIn 0.3s ease-out 0.25s both; }
-  .dropdown-item-6 { animation: fadeIn 0.3s ease-out 0.3s both; }
+  .dropdown-item-1 {
+    animation: fadeIn 0.3s ease-out 0.05s both;
+  }
+
+  .dropdown-item-2 {
+    animation: fadeIn 0.3s ease-out 0.1s both;
+  }
+
+  .dropdown-item-3 {
+    animation: fadeIn 0.3s ease-out 0.15s both;
+  }
+
+  .dropdown-item-4 {
+    animation: fadeIn 0.3s ease-out 0.2s both;
+  }
+
+  .dropdown-item-5 {
+    animation: fadeIn 0.3s ease-out 0.25s both;
+  }
+
+  .dropdown-item-6 {
+    animation: fadeIn 0.3s ease-out 0.3s both;
+  }
 
   /* Animation classes for reveal animations */
   .reveal {
@@ -115,7 +151,7 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
     transform: translateY(20px);
     transition: opacity 0.8s ease, transform 0.8s ease;
   }
-  
+
   .reveal.visible {
     opacity: 1;
     transform: translateY(0);
@@ -125,21 +161,21 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
   .nav-link {
     @apply text-navy hover:text-gold transition-colors text-lg relative;
   }
-  
+
   .nav-link-active {
     @apply font-medium;
   }
-  
+
   /* Hover underline effect */
   .hover-underline {
     @apply relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-gold after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
   }
-  
+
   /* Spacing utilities */
   .section-spacing {
     @apply py-40 md:py-56 lg:py-72;
   }
-  
+
   .content-spacing {
     @apply mb-20 md:mb-32;
   }
@@ -155,17 +191,31 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
   }
 
   /* Add consistent spacing scale */
-  .space-xs { @apply p-2 md:p-3; }
-  .space-sm { @apply p-4 md:p-6; }
-  .space-md { @apply p-6 md:p-8; }
-  .space-lg { @apply p-8 md:p-12; }
-  .space-xl { @apply p-12 md:p-16; }
+  .space-xs {
+    @apply p-2 md:p-3;
+  }
+
+  .space-sm {
+    @apply p-4 md:p-6;
+  }
+
+  .space-md {
+    @apply p-6 md:p-8;
+  }
+
+  .space-lg {
+    @apply p-8 md:p-12;
+  }
+
+  .space-xl {
+    @apply p-12 md:p-16;
+  }
 
   /* Add better touch targets */
   .touch-target {
     @apply min-h-[44px] min-w-[44px];
   }
-  
+
   /* Add mobile-specific navigation */
   .mobile-nav {
     @apply fixed bottom-0 w-full bg-white shadow-lg md:hidden;
@@ -195,12 +245,12 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
   .page-transition {
     @apply transition-opacity duration-300;
   }
-  
+
   /* Add hover effects for cards */
   .card-hover {
     @apply transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg;
   }
-  
+
   /* Add loading animations */
   .loading-skeleton {
     @apply animate-pulse bg-gray-200 rounded;
@@ -209,7 +259,8 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
   /* Add video player styles */
   .video-container {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio */
   }
 
   .video-container iframe {
@@ -232,12 +283,15 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
 
   /* Hide scrollbar but keep functionality */
   .hide-scrollbar {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
   }
-  
+
   .hide-scrollbar::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
+    /* Chrome, Safari, Opera */
   }
 }
 
@@ -301,16 +355,18 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
   .no-print {
     display: none;
   }
-  
+
   .print-only {
     display: block;
   }
-  
+
   /* Ensure proper page breaks */
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     page-break-after: avoid;
   }
-  
+
   img {
     page-break-inside: avoid;
   }
@@ -318,7 +374,8 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
 
 /* Markdown Content Styling */
 .markdown-content {
-  color: #2D3142; /* Charcoal color */
+  color: #2D3142;
+  /* Charcoal color */
   padding: 0;
   width: 100%;
   background-color: white;
@@ -330,7 +387,8 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
 .markdown-content h4,
 .markdown-content h5,
 .markdown-content h6 {
-  color: #0A2342; /* Navy */
+  color: #0A2342;
+  /* Navy */
   font-family: 'Montserrat', sans-serif;
   margin-top: 1.5em;
   margin-bottom: 0.75em;
@@ -364,7 +422,8 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
 }
 
 .markdown-content a {
-  color: #C99D56; /* Gold */
+  color: #C99D56;
+  /* Gold */
   text-decoration: none;
 }
 
@@ -392,7 +451,8 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
 }
 
 .markdown-content blockquote {
-  border-left: 4px solid #C99D56; /* Gold */
+  border-left: 4px solid #C99D56;
+  /* Gold */
   padding-left: 1rem;
   margin-left: 0;
   margin-right: 0;
@@ -420,12 +480,14 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
   background-color: transparent;
   padding: 0;
   font-size: 0.9em;
-  color: #0A2342; /* Navy */
+  color: #0A2342;
+  /* Navy */
 }
 
 .markdown-content strong {
   font-weight: 600;
-  color: #2D3142; /* Charcoal */
+  color: #2D3142;
+  /* Charcoal */
 }
 
 .markdown-content img {
@@ -436,9 +498,17 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
 }
 
 @keyframes highlight-pulse {
-  0% { background-color: rgba(201, 157, 86, 0.1); }
-  50% { background-color: rgba(201, 157, 86, 0.2); }
-  100% { background-color: rgba(201, 157, 86, 0); }
+  0% {
+    background-color: rgba(201, 157, 86, 0.1);
+  }
+
+  50% {
+    background-color: rgba(201, 157, 86, 0.2);
+  }
+
+  100% {
+    background-color: rgba(201, 157, 86, 0);
+  }
 }
 
 .highlight-section {
@@ -448,13 +518,14 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
 }
 
 /* Additional typography overrides */
-.prose h1, 
-.prose h2, 
+.prose h1,
+.prose h2,
 .prose h3,
 .prose h4,
 .prose h5,
 .prose h6 {
-  color: #0A2342; /* Navy color */
+  color: #0A2342;
+  /* Navy color */
   font-family: 'Montserrat', sans-serif;
   margin-top: 1.5em;
   margin-bottom: 0.75em;
@@ -504,7 +575,8 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
 }
 
 .prose a {
-  color: #C99D56; /* Gold */
+  color: #C99D56;
+  /* Gold */
   text-decoration: none;
 }
 
@@ -525,8 +597,13 @@ section.py-24.bg-white.relative:has(> div.container.mx-auto.px-8.max-w-7xl > div
 }
 
 @keyframes highlight-section {
-  0% { background-color: rgba(201, 157, 86, 0.2); }
-  100% { background-color: transparent; }
+  0% {
+    background-color: rgba(201, 157, 86, 0.2);
+  }
+
+  100% {
+    background-color: transparent;
+  }
 }
 
 /* Mondrian Colors */
