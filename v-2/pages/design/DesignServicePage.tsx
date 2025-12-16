@@ -1,5 +1,6 @@
 import React from 'react';
 import V2PageWrapper from '../../components/V2PageWrapper';
+import ServiceConsiderations from '@/components/services/ServiceConsiderations';
 
 /* 
  * DESIGN SYSTEM NODE 02: SERVICE FUNNEL
@@ -19,6 +20,13 @@ const FunnelTier = ({ number, title, sub, color }: { number: string, title: stri
 );
 
 const DesignServicePage = () => {
+    // Mock Data for Component Demo
+    const mockConsiderations = [
+        { question: "How does the 'Funnel' model work?", answer: "Users self-select their tiered entry point (Retail vs Bespoke) based on their complexity needs." },
+        { question: "Can standard components be used here?", answer: "Yes, we are reusing the 'ServiceConsiderations' component from the V1 Legacy system to maintain consistent FAQ behavior." },
+        { question: "Why 'ServiceConsiderations'?", answer: "It creates a structured Q&A format that matches the 'Considerations' phase of the legal process." }
+    ];
+
     return (
         <V2PageWrapper className="pt-20">
             <div className="max-w-7xl mx-auto px-6 py-12">
@@ -29,7 +37,7 @@ const DesignServicePage = () => {
                     <h1 className="font-display text-6xl text-navy leading-none">Service Funnel <br />Architecture.</h1>
                 </header>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-32">
 
                     {/* LEFT: EXPLAINER */}
                     <div className="lg:col-span-1 border-r-4 border-gray-100 pr-8">
@@ -69,6 +77,21 @@ const DesignServicePage = () => {
                     </div>
 
                 </div>
+
+                {/* FAQ COMPONENT DEMO */}
+                <section className="border-t-4 border-navy pt-12">
+                    <div className="flex items-center mb-8">
+                        <div className="w-12 h-1 bg-gold mr-4"></div>
+                        <h2 className="font-display text-3xl text-navy">Component: Service Considerations (FAQ)</h2>
+                    </div>
+                    <p className="font-mono text-xs text-gray-500 mb-8 max-w-xl">
+                        Implementation of <code>ServiceConsiderations.tsx</code> from the legacy system, styled for V2 context. This component should be used on all Service Pages.
+                    </p>
+                    {/* Render the actual component */}
+                    <div className="bg-gray-50 p-4 border border-gray-200">
+                        <ServiceConsiderations considerations={mockConsiderations} />
+                    </div>
+                </section>
 
             </div>
         </V2PageWrapper>
