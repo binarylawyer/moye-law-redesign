@@ -68,6 +68,14 @@ const IndexPage = () => {
             node: "98"
         },
         {
+            title: "Archived Forms (Legacy)",
+            path: "/v2/forms-archive",
+            description: "Contact & Intake Logic.",
+            icon: <div className="w-6 h-6 border border-gray-400"></div>,
+            status: "experimental",
+            node: "97"
+        },
+        {
             title: "Design System",
             path: "/v2-design-system",
             description: "Typography, Colors, and basic tokens.",
