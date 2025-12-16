@@ -7,26 +7,16 @@ import { FileText, Layout, Monitor, ArrowRight, Briefcase, Layers } from 'lucide
 const IndexPage = () => {
     const pages = [
         {
+        // --- PRODUCTION ---
+        {
             title: "Production Homepage",
             path: "/v2-home",
             description: "The primary entry point. 'Tiffany's Model' with tiered service cards.",
             icon: <Layout className="w-6 h-6 text-gold" />,
             status: "Ready"
         },
-        {
-            title: "Mondrian UI Kit",
-            path: "/v2-ui-kit",
-            description: "The component library showcase (Split Cards, Hero, Grid, etc.).",
-            icon: <Monitor className="w-6 h-6 text-navy" />,
-            status: "Live"
-        },
-        {
-            title: "Kinetic Strategy (v2.0)",
-            path: "/v2-strategy",
-            description: "The 8 Principles of the new 'Fifth Wave' architecture.",
-            icon: <FileText className="w-6 h-6 text-gold" />,
-            status: "New"
-        },
+
+        // --- CORE MODULES ---
         {
             title: "Practice Area Index",
             path: "/v2/practice",
@@ -51,52 +41,8 @@ const IndexPage = () => {
             status: "beta",
             node: "08"
         },
-        {
-            title: "Archived Components (Legacy)",
-            path: "/v2/archive",
-            description: "Audit gallery of V1 components.",
-            icon: <Layers className="w-6 h-6 text-gray-400" />,
-            status: "experimental",
-            node: "99"
-        },
-        {
-            title: "Archived Resources (Legacy)",
-            path: "/v2/resources-archive",
-            description: "Podcasts, Books, Articles library.",
-            icon: <div className="w-6 h-6 border-2 border-gray-400 rounded-full"></div>,
-            status: "experimental",
-            node: "98"
-        },
-        {
-            title: "Archived Forms (Legacy)",
-            path: "/v2/forms-archive",
-            description: "Contact & Intake Logic.",
-            icon: <div className="w-6 h-6 border border-gray-400"></div>,
-            status: "experimental",
-            node: "97"
-        },
-        {
-            title: "Design System",
-            path: "/v2-design-system",
-            description: "Typography, Colors, and basic tokens.",
-            icon: <FileText className="w-6 h-6 text-navy" />,
-            status: "Draft"
-        },
-        {
-            title: "Service Template",
-            path: "/v2-service-template",
-            description: "Template for individual service pages (Estate Planning, etc.).",
-            icon: <Layout className="w-6 h-6 text-gray-400" />,
-            status: "Prototype"
-        },
-        {
-            title: "Annotated Landing",
-            path: "/v2-landing",
-            description: "Original concept with strategic annotations.",
-            icon: <FileText className="w-6 h-6 text-gray-400" />,
-            status: "Reference"
-        },
-        // --- PHASE 4.75: DESIGN SYSTEM FORMALIZATION ---
+
+        // --- DESIGN SYSTEM (RULES) ---
         {
             title: "Atomic Foundations",
             path: "/v2/design/foundations",
@@ -107,7 +53,7 @@ const IndexPage = () => {
         {
             title: "Global Product Logic",
             path: "/v2/design/product",
-            description: "Automated Offerings & The Kinetic Color System (Navy/Gold/Maroon).",
+            description: "Automated Offerings (LegacyOS) Strategy.",
             icon: <Layout className="w-6 h-6 text-navy" />,
             status: "System"
         },
@@ -131,6 +77,31 @@ const IndexPage = () => {
             description: "Reusable UI Atoms & Molecules (Buttons, Inputs, Alerts).",
             icon: <Layout className="w-6 h-6 text-navy" />,
             status: "System"
+        },
+
+        // --- STRATEGY & ARCHIVE ---
+        {
+            title: "Kinetic Strategy (v2.0)",
+            path: "/v2-strategy",
+            description: "The 8 Principles of the new 'Fifth Wave' architecture.",
+            icon: <FileText className="w-6 h-6 text-gold" />,
+            status: "New"
+        },
+        {
+            title: "Archived Resources (Legacy)",
+            path: "/v2/resources-archive",
+            description: "Podcasts, Books, Articles library.",
+            icon: <Layers className="w-6 h-6 text-gray-400" />,
+            status: "Archive",
+            node: "98"
+        },
+        {
+            title: "Archived Forms (Legacy)",
+            path: "/v2/forms-archive",
+            description: "Contact & Intake Logic.",
+            icon: <div className="w-6 h-6 border border-gray-400"></div>,
+            status: "Archive",
+            node: "97"
         }
     ];
 

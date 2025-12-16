@@ -57,54 +57,7 @@ const DesignProductPage = () => {
                     </div>
                 </header>
 
-                {/* SECTION 1: THE COLOR PALETTE */}
-                <section className="mb-32">
-                    <div className="flex items-center mb-12">
-                        <div className="w-12 h-1 bg-gold mr-4"></div>
-                        <div>
-                            <h2 className="font-display text-3xl text-navy">The Master Color Index</h2>
-                            <p className="font-mono text-xs text-gray-400 mt-2">COMPREHENSIVE AUDIT OF ALL SYSTEM COLORS</p>
-                        </div>
-                    </div>
-
-                    {/* 1.1 CORE BRAND IDENTITY (V2) */}
-                    <h3 className="font-mono text-sm font-bold text-navy mb-6 border-b border-gray-200 pb-2">1. CORE IDENTITY (V2 SYSTEM)</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-                        <ColorBlock name="MOYE NAVY" hex="#0A2342" usage="Structural Grid, Typography, Headers" />
-                        <ColorBlock name="MOYE GOLD" hex="#C99D56" usage="Action, Emphasis, Keylines" />
-                        <ColorBlock name="VENETIAN RED" hex="#8B0000" usage="Art Law, Critical Alerts" />
-                        <ColorBlock name="ENGINEERING GRAY" hex="#F3F4F6" usage="Backgrounds, Technical Data" />
-                    </div>
-
-                    {/* 1.2 MONDRIAN AUTHENTIC (LEGACY/ARTISTIC) */}
-                    <div className="flex justify-between items-end mb-6 border-b border-gray-200 pb-2">
-                        <h3 className="font-mono text-sm font-bold text-navy">2. MONDRIAN AUTOMATA (AUTHENTIC)</h3>
-                        <span className="font-mono text-[10px] text-red-600 bg-red-50 px-2 py-1">SOURCE: src/styles/mondrian.css</span>
-                    </div>
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-16">
-                        <ColorBlock name="MONDRIAN RED" hex="#D6001C" usage="Primary Accent" />
-                        <ColorBlock name="MONDRIAN BLUE" hex="#003B98" usage="Secondary Accent" />
-                        <ColorBlock name="MONDRIAN YELLOW" hex="#FFD500" usage="Highlights" />
-                        <ColorBlock name="LIGHT BLUE" hex="#4D80D4" usage="Supporting Element" />
-                        <ColorBlock name="LIGHT YELLOW" hex="#FFEB80" usage="Supporting Element" />
-                    </div>
-
-                    {/* 1.3 EXTENDED & LEGACY (QUARANTINED) */}
-                    <div className="flex justify-between items-end mb-6 border-b border-gray-200 pb-2">
-                        <h3 className="font-mono text-sm font-bold text-gray-400">3. EXTENDED / LEGACY (QUARANTINED)</h3>
-                        <span className="font-mono text-[10px] text-gray-400">SOURCE: src/index.css</span>
-                    </div>
-                    <div className="grid grid-cols-2 md:grid-cols-6 gap-4 opacity-75">
-                        <ColorBlock name="LEGACY BLUE" hex="#4682B4" usage="Old Links (SteelBlue)" />
-                        <ColorBlock name="CERULEAN" hex="#4A90E2" usage="Accent Variable" />
-                        <ColorBlock name="OCEAN" hex="#0EA5E9" usage="Marketing Gradient" />
-                        <ColorBlock name="PASTEL BLUE" hex="#D3E4FD" usage="Background variant" />
-                        <ColorBlock name="SOFT GOLD" hex="#F2E3C9" usage="Background variant" />
-                    </div>
-
-                </section>
-
-                {/* SECTION 2: AUTOMATED OFFERINGS (The Factory) */}
+                {/* SECTION 1: AUTOMATED OFFERINGS (The Factory) */}
                 <section className="mb-32">
                     <div className="flex items-center mb-12">
                         <div className="w-12 h-1 bg-gold mr-4"></div>
@@ -139,28 +92,6 @@ const DesignProductPage = () => {
                             We sell the <strong>output</strong> of the factory (The "Sushi Kitchen") through the refined storefront.
                             Clients buy results, not the machinery.
                         </p>
-                    </div>
-                </section>
-
-                {/* SECTION 3: TYPOGRAPHY RULES */}
-                <section className="mb-12">
-                    <div className="flex items-center mb-12">
-                        <div className="w-12 h-1 bg-gold mr-4"></div>
-                        <h2 className="font-display text-3xl text-navy">Typography Hierarchy</h2>
-                    </div>
-                    <div className="border-l-4 border-navy pl-12 space-y-12">
-                        <div>
-                            <span className="font-mono text-xs text-gray-400 block mb-2">DISPLAY (H1 - H3)</span>
-                            <div className="font-display text-6xl text-navy">Cormorant Garamond</div>
-                        </div>
-                        <div>
-                            <span className="font-mono text-xs text-gray-400 block mb-2">BODY / UI</span>
-                            <div className="font-sans text-4xl text-navy">Inter (San Francisco)</div>
-                        </div>
-                        <div>
-                            <span className="font-mono text-xs text-gray-400 block mb-2">DATA / TECHNICAL</span>
-                            <div className="font-mono text-2xl text-navy">JetBrains Mono</div>
-                        </div>
                     </div>
                 </section>
 
