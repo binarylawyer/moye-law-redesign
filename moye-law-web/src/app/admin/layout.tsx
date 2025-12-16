@@ -30,6 +30,7 @@ export default function AdminLayout({
         { name: 'Colors', path: '/admin/design/colors', icon: Palette },
         { name: 'Typography', path: '/admin/design/typography', icon: Type },
         { name: 'Components', path: '/admin/design/components', icon: Component },
+        { name: 'Protocols', path: '/admin/design/protocol', icon: Terminal },
     ];
 
     return (
