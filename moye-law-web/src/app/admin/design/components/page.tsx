@@ -1,3 +1,4 @@
+"use client";
 
 import HeroV2 from "@/components/layout/HeroV2";
 import SplitServiceCard from "@/components/content/SplitServiceCard";
