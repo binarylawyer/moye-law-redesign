@@ -1,12 +1,5 @@
 "use client";
 
-import { createClient } from '@/lib/supabase/client'; // Use the client-side helper we made earlier or make a new one? 
-// actually we need a browser client helper for this one. 
-// I'll re-export the createClient from @supabase/supabase-js in a new file or use the existing one if compatible.
-// The existing `lib/supabase/client.ts` uses `createClient` from `@supabase/supabase-js`. 
-// Whatever, let's just use the direct import here for simplicity or update the helper.
-// Recommended pattern for SSR auth is using `createBrowserClient` from `@supabase/ssr`.
-
 import { createBrowserClient } from '@supabase/ssr'
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
