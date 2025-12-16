@@ -98,6 +98,13 @@ const IndexPage = () => {
         },
         // --- PHASE 4.75: DESIGN SYSTEM FORMALIZATION ---
         {
+            title: "Atomic Foundations",
+            path: "/v2/design/foundations",
+            description: "The Master Index: Colors, Typography, and Fonts.",
+            icon: <Layout className="w-6 h-6 text-navy" />,
+            status: "System"
+        },
+        {
             title: "Global Product Logic",
             path: "/v2/design/product",
             description: "Automated Offerings & The Kinetic Color System (Navy/Gold/Maroon).",
