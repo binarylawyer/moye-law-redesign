@@ -10,7 +10,7 @@ const contactSchema = z.object({
     name: z.string().min(2, "Name is required"),
     email: z.string().email("Invalid email"),
     phone: z.string().optional(),
-    incentive: z.boolean().default(false),
+    incentive: z.boolean(),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -24,7 +24,12 @@ interface V2ContactInfoProps {
 export const V2ContactInfo: React.FC<V2ContactInfoProps> = ({ onSubmit, onBack, isLoading }) => {
     const { register, handleSubmit, formState: { errors } } = useForm<ContactFormData>({
         resolver: zodResolver(contactSchema),
-        defaultValues: { incentive: true }
+        defaultValues: {
+            name: '',
+            email: '',
+            phone: '',
+            incentive: true
+        }
     });
 
     return (
