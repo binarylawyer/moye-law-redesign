@@ -5,6 +5,8 @@ import V2PageWrapper from '../components/V2PageWrapper';
 
 // Legacy Components and Data
 import PodcastList from '../../src/components/podcasts/PodcastList';
+import PodcastHero from '../../src/components/podcasts/PodcastHero';
+import PodcastPlayer from '../../src/components/podcasts/PodcastPlayer';
 import RelatedResources from '../../src/components/resources/RelatedResources';
 import { resources as articles } from '../../src/data/articlesData';
 import { books } from '../../src/data/booksData';
@@ -93,7 +95,22 @@ const ArchivedResourcesPage = () => {
                     {/* PODCASTS */}
                     <div className="border-4 border-gray-200 p-8 bg-gray-50">
                         <h2 className="font-display text-3xl text-navy mb-8">Audio Broadcasts (Podcasts)</h2>
+
+                        {/* 1. HERO COMPONENT */}
+                        <div className="mb-8 border-2 border-gray-300">
+                            <div className="bg-navy text-white p-2 font-mono text-xs uppercase tracking-widest">Component: PodcastHero</div>
+                            <PodcastHero />
+                        </div>
+
+                        {/* 2. PLAYER COMPONENT */}
+                        <div className="mb-8 border-2 border-gray-300">
+                            <div className="bg-navy text-white p-2 font-mono text-xs uppercase tracking-widest">Component: PodcastPlayer (Example)</div>
+                            <PodcastPlayer url="https://example.com/audio.mp3" title="Sample Episode: The Digital Legacy" episodeNumber={1} seasonNumber={1} />
+                        </div>
+
+                        {/* 3. LIST COMPONENT */}
                         <div className="bg-white border-2 border-gray-300">
+                            <div className="bg-navy text-white p-2 font-mono text-xs uppercase tracking-widest">Component: PodcastList</div>
                             <PodcastList />
                         </div>
                     </div>
