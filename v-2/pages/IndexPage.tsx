@@ -6,7 +6,6 @@ import { FileText, Layout, Monitor, ArrowRight, Briefcase, Layers } from 'lucide
 
 const IndexPage = () => {
     const pages = [
-        {
         // --- PRODUCTION ---
         {
             title: "Production Homepage",
