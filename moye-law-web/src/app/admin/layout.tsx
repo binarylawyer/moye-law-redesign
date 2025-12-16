@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { LayoutDashboard, Palette, Type, Component, Lock, LogOut } from 'lucide-react';
+import { LayoutDashboard, Palette, Type, Component, Lock, LogOut, Terminal } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { supabase } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
