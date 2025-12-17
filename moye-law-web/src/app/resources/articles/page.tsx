@@ -19,7 +19,7 @@ interface ResourceItem {
 export const dynamic = 'force-dynamic';
 
 export default async function ArticlesListPage() {
-    const supabase = createClient();
+    const supabase = await createClient();
     const { data: articles } = await supabase
         .from('articles')
         .select('*')
