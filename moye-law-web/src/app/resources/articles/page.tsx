@@ -2,9 +2,19 @@ import React from 'react';
 import { createClient } from '@/lib/supabase/server';
 import NavBarV2 from '@/components/layout/NavBarV2';
 import TerminalFooter from '@/components/layout/TerminalFooter';
-import { ResourcesGrid, ResourceItem } from '@/components/resources/ResourcesGrid';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+
+interface ResourceItem {
+    id: string;
+    type: string;
+    title: string;
+    description: string;
+    date: string;
+    slug: string;
+    imageUrl?: string;
+    category: string;
+}
 
 export const dynamic = 'force-dynamic';
 
