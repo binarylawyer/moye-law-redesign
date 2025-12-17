@@ -65,11 +65,6 @@ const resources: Resource[] = [
     }
 ];
 
-const Tabs = ({ children, defaultValue, className }: { children: React.ReactNode, defaultValue: string, className?: string }) => {
-    // This is a simplified internal tabs component
-    return <div className={className}>{children}</div>;
-};
-
 export default function ResourcesGrid() {
     const [activeTab, setActiveTab] = useState<string>("all");
 
