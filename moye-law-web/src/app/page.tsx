@@ -2,6 +2,7 @@ import NavBarV2 from "@/components/layout/NavBarV2";
 import TerminalFooter from "@/components/layout/TerminalFooter";
 import HeroV2 from "@/components/layout/HeroV2";
 import SplitServiceCard from "@/components/content/SplitServiceCard";
+import FeatureGrid from "@/components/layout/FeatureGrid";
 
 export default function Home() {
   return (
@@ -10,6 +11,9 @@ export default function Home() {
 
       <main className="pt-20">
         <HeroV2 />
+
+        {/* SECTION 9: FEATURE GRID TEST */}
+        <FeatureGrid />
 
         {/* 4. THE PAIRING (Binary Choice Services) */}
         <section id="services" className="py-24 bg-grey border-b-4 border-navy relative">
