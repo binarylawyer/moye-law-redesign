@@ -1,0 +1,103 @@
+import React from 'react';
+import V2PageWrapper from '../../components/V2PageWrapper';
+import { motion } from 'framer-motion';
+import { Shield, Zap, Lock, Grid } from 'lucide-react';
+
+/* 
+ * DESIGN SYSTEM NODE 01: PRODUCT & COLOR
+ * Purpose: Define Automated Offerings & The Kinetic Color System
+ */
+
+const ColorBlock = ({ name, hex, usage }: { name: string, hex: string, usage: string }) => (
+    <div className="flex flex-col space-y-2">
+        <div className="h-32 w-full border-4 border-navy relative group overflow-hidden">
+            <div className="absolute inset-0" style={{ backgroundColor: hex }}></div>
+            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </div>
+        <div className="font-mono text-xs text-navy border-l-2 border-gold pl-2">
+            <div className="font-bold">{name}</div>
+            <div className="text-gray-500">{hex}</div>
+            <div className="text-[10px] uppercase tracking-wider text-gold mt-1">{usage}</div>
+        </div>
+    </div>
+);
+
+const ProductCard = ({ title, desc, icon: Icon }: { title: string, desc: string, icon: any }) => (
+    <div className="border-4 border-navy p-6 hover:bg-navy group transition-colors duration-500 cursor-pointer relative overflow-hidden">
+        <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-20">
+            <Icon size={120} strokeWidth={1} />
+        </div>
+        <div className="relative z-10">
+            <div className="w-12 h-12 bg-gold flex items-center justify-center mb-4 text-navy">
+                <Icon size={24} />
+            </div>
+            <h3 className="font-display text-2xl text-navy group-hover:text-white mb-2">{title}</h3>
+            <p className="font-sans text-sm text-gray-500 group-hover:text-gray-300 leading-relaxed max-w-xs">{desc}</p>
+        </div>
+        <div className="absolute bottom-0 left-0 w-0 h-1 bg-gold group-hover:w-full transition-all duration-700 ease-in-out"></div>
+    </div>
+);
+
+const DesignProductPage = () => {
+    return (
+        <V2PageWrapper className="pt-20">
+            <div className="max-w-7xl mx-auto px-6 py-12">
+
+                {/* HEADER */}
+                <header className="mb-20 border-b-4 border-navy pb-8">
+                    <div className="flex justify-between items-end">
+                        <div>
+                            <span className="font-mono text-gold text-xs tracking-[0.3em] uppercase block mb-4">Design System v2.1</span>
+                            <h1 className="font-display text-6xl text-navy leading-none">Global Product <br />& Color Logic.</h1>
+                        </div>
+                        <div className="text-right hidden md:block">
+                            <div className="font-mono text-xs text-navy/50">NODE: 01</div>
+                            <div className="font-mono text-xs text-navy/50">STATUS: ACTIVE</div>
+                        </div>
+                    </div>
+                </header>
+
+                {/* SECTION 1: AUTOMATED OFFERINGS (The Factory) */}
+                <section className="mb-32">
+                    <div className="flex items-center mb-12">
+                        <div className="w-12 h-1 bg-gold mr-4"></div>
+                        <div>
+                            <h2 className="font-display text-3xl text-navy">Automated Product Architecture</h2>
+                            <p className="font-mono text-xs text-gray-400 mt-2">THE FACTORY OUTPUT (LEFT CELL)</p>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <ProductCard
+                            title="LegacyOS Bundle"
+                            desc="Complete estate digitalization and asset mapping. Zero-touch deployment for 'Alex' persona."
+                            icon={Shield}
+                        />
+                        <ProductCard
+                            title="Compliance Engine"
+                            desc="Non-deterministic state machine audits for regulatory environments."
+                            icon={Zap}
+                        />
+                        <ProductCard
+                            title="IP Fortress"
+                            desc="Blockchain-verified intellectual property registration and monitoring."
+                            icon={Lock}
+                        />
+                    </div>
+
+                    {/* STRATEGY NOTE */}
+                    <div className="mt-8 bg-gray-50 border-l-4 border-navy p-6">
+                        <h4 className="font-mono text-xs font-bold text-navy mb-2">STRATEGY: FACTORY VS STOREFRONT</h4>
+                        <p className="font-sans text-sm text-gray-600">
+                            We sell the <strong>output</strong> of the factory (The "Sushi Kitchen") through the refined storefront.
+                            Clients buy results, not the machinery.
+                        </p>
+                    </div>
+                </section>
+
+            </div>
+        </V2PageWrapper>
+    );
+};
+
+export default DesignProductPage;
