@@ -9,7 +9,7 @@ import { ArrowLeft } from 'lucide-react';
 export const dynamic = 'force-dynamic';
 
 export default async function BooksPage() {
-    const supabase = createClient();
+    const supabase = await createClient();
     const { data: books } = await supabase.from('books').select('*').order('created_at', { ascending: false });
 
     // Map DB to Props
