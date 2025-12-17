@@ -63,7 +63,8 @@ const IntellectualProperty = () => {
             icon: <FileText className="h-10 w-10 text-[#D6001C]" />,
             path: "/practice/ip-licensing",
             color: "border-[#D6001C]",
-            bgcolor: "bg-[#D6001C]/5"
+            bgcolor: "bg-[#D6001C]/5",
+            textColor: "text-[#D6001C]"
         },
         {
             id: "ip-asset-protection",
@@ -72,7 +73,8 @@ const IntellectualProperty = () => {
             icon: <Shield className="h-10 w-10 text-[#4D80D4]" />,
             path: "/practice/ip-asset-protection",
             color: "border-[#4D80D4]",
-            bgcolor: "bg-[#4D80D4]/5"
+            bgcolor: "bg-[#4D80D4]/5",
+            textColor: "text-[#4D80D4]"
         },
         {
             id: "software-licensing",
@@ -81,7 +83,8 @@ const IntellectualProperty = () => {
             icon: <Code className="h-10 w-10 text-[#00A650]" />,
             path: "/practice/software-licensing",
             color: "border-[#00A650]",
-            bgcolor: "bg-[#00A650]/5"
+            bgcolor: "bg-[#00A650]/5",
+            textColor: "text-[#00A650]"
         },
         {
             id: "digital-asset-protection",
@@ -100,7 +103,8 @@ const IntellectualProperty = () => {
             icon: <Lightbulb className="h-10 w-10 text-[#D6001C]" />,
             path: "/practice/ip-consulting",
             color: "border-[#D6001C]",
-            bgcolor: "bg-[#D6001C]/5"
+            bgcolor: "bg-[#D6001C]/5",
+            textColor: "text-[#D6001C]"
         },
         // Added extra item to balance grid if needed, or keep as is.
     ];

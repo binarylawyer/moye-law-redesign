@@ -46,7 +46,8 @@ const EmergingTechnologyHub = () => {
             icon: <Cpu className="h-10 w-10 text-[#4D80D4]" />,
             path: "/practice/ai-machine-learning",
             color: "border-[#4D80D4]",
-            bgcolor: "bg-[#4D80D4]/5"
+            bgcolor: "bg-[#4D80D4]/5",
+            textColor: "text-[#4D80D4]"
         },
         {
             id: "blockchain-digital-assets",
@@ -55,7 +56,8 @@ const EmergingTechnologyHub = () => {
             icon: <Database className="h-10 w-10 text-[#D6001C]" />,
             path: "/practice/blockchain-digital-assets",
             color: "border-[#D6001C]",
-            bgcolor: "bg-[#D6001C]/5"
+            bgcolor: "bg-[#D6001C]/5",
+            textColor: "text-[#D6001C]"
         },
         {
             id: "innovation-patent-law",

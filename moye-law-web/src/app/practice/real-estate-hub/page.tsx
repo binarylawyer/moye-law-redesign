@@ -46,7 +46,8 @@ const RealEstateHub = () => {
             icon: <Building className="h-10 w-10 text-[#D6001C]" />,
             path: "/practice/real-estate-transactions",
             color: "border-[#D6001C]",
-            bgcolor: "bg-[#D6001C]/5"
+            bgcolor: "bg-[#D6001C]/5",
+            textColor: "text-[#D6001C]"
         },
         {
             id: "real-estate-consulting",
@@ -55,7 +56,8 @@ const RealEstateHub = () => {
             icon: <BarChart className="h-10 w-10 text-[#4D80D4]" />,
             path: "/practice/real-estate-consulting",
             color: "border-[#4D80D4]",
-            bgcolor: "bg-[#4D80D4]/5"
+            bgcolor: "bg-[#4D80D4]/5",
+            textColor: "text-[#4D80D4]"
         }
     ];
 
