@@ -36,23 +36,30 @@ export default function HowWeWorkPage() {
             <main className="pt-32 pb-24">
                 {/* HERO SECTION */}
                 <section className="container mx-auto px-4 md:px-8 max-w-7xl mb-24 md:mb-32">
-                    <MondrianGrid
-                        className="min-h-[60vh]"
-                        slot1={<div className="bg-red-700 w-full h-full" />}
-                        slot2={
-                            <div className="flex flex-col justify-center items-center h-full p-8 text-center bg-white">
-                                <RevealContent>
-                                    <h1 className="font-display text-5xl md:text-7xl mb-6 text-navy tracking-tight">
-                                        How We Work
-                                    </h1>
-                                    <p className="font-sans text-xl text-gray-600 max-w-lg mx-auto leading-relaxed">
-                                        The intersection of traditional legal expertise and forward-thinking innovation.
-                                    </p>
-                                </RevealContent>
+                    <section className="container mx-auto px-4 md:px-8 max-w-7xl mb-24 md:mb-32">
+                        <div className="grid grid-cols-1 md:grid-cols-12 min-h-[60vh] border-4 border-navy">
+                            {/* SLOT 1: Red Block */}
+                            <div className="md:col-span-1 bg-red-700 min-h-[100px] md:min-h-full border-b-4 md:border-b-0 md:border-r-4 border-navy"></div>
+
+                            {/* SLOT 2: Content Block */}
+                            <div className="md:col-span-10 bg-white relative flex flex-col justify-center items-center p-8 text-center md:border-r-4 border-navy overflow-hidden">
+                                <MondrianGrid />
+                                <div className="relative z-10">
+                                    <RevealContent>
+                                        <h1 className="font-display text-5xl md:text-7xl mb-6 text-navy tracking-tight">
+                                            How We Work
+                                        </h1>
+                                        <p className="font-sans text-xl text-gray-600 max-w-lg mx-auto leading-relaxed">
+                                            The intersection of traditional legal expertise and forward-thinking innovation.
+                                        </p>
+                                    </RevealContent>
+                                </div>
                             </div>
-                        }
-                        slot3={<div className="bg-yellow-400 w-full h-full" />}
-                    />
+
+                            {/* SLOT 3: Yellow Block */}
+                            <div className="md:col-span-1 bg-yellow-400 min-h-[100px] md:min-h-full border-t-4 md:border-t-0 border-navy"></div>
+                        </div>
+                    </section>
                 </section>
 
                 {/* PHILOSOPHY SECTION */}
