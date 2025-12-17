@@ -46,6 +46,7 @@ import MondrianKit from "../v-2/sushi-ui/MondrianKit";
 import HomePage from "../v-2/pages/HomePage";
 import IndexPage from "../v-2/pages/IndexPage";
 import StrategyPage from "../v-2/pages/StrategyPage";
+import DesignFoundationsPage from "../v-2/pages/design/DesignFoundationsPage";
 import DesignProductPage from "../v-2/pages/design/DesignProductPage";
 import DesignServicePage from "../v-2/pages/design/DesignServicePage";
 import DesignMotionPage from "../v-2/pages/design/DesignMotionPage";
