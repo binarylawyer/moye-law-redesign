@@ -9,6 +9,7 @@ const NavBarV2 = () => {
         { name: 'Practice Areas', path: '/practice' },
         { name: 'The Firm', path: '/firm' },
         { name: 'Resources', path: '/resources' },
+        { name: 'Admin', path: '/admin/design' },
     ];
 
     return (
