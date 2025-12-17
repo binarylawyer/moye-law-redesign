@@ -7,7 +7,7 @@ import { Headphones, FileText, BookOpen, Layers, Search } from 'lucide-react';
 
 export type ResourceType = 'article' | 'guide' | 'whitepaper' | 'case-study' | 'podcast' | 'faq' | 'book';
 
-interface Resource {
+export interface ResourceItem {
     id: string;
     title: string;
     type: ResourceType;
@@ -15,9 +15,11 @@ interface Resource {
     date: string;
     description: string;
     link: string;
+    slug?: string;
+    imageUrl?: string;
 }
 
-const resources: Resource[] = [
+const resources: ResourceItem[] = [
     {
         id: "1",
         title: "The Estate Tax Cliff: 2026 Preparation Guide",
@@ -65,13 +67,19 @@ const resources: Resource[] = [
     }
 ];
 
-export default function ResourcesGrid() {
+interface ResourcesGridProps {
+    initialItems?: ResourceItem[];
+}
+
+export default function ResourcesGrid({ initialItems }: ResourcesGridProps) {
+    // If initialItems provided (from DB), use them. Else use static fallback.
+    const items = initialItems || resources;
     const [activeTab, setActiveTab] = useState<string>("all");
 
     // Filter logic
     const filteredResources = activeTab === "all"
-        ? resources
-        : resources.filter(r => r.type === activeTab || (activeTab === "guides" && (r.type === "guide" || r.type === "whitepaper")));
+        ? items
+        : items.filter(r => r.type === activeTab || (activeTab === "guides" && (r.type === "guide" || r.type === "whitepaper")));
 
     const tabs = [
         { id: "all", label: "All Resources" },
@@ -100,8 +108,8 @@ export default function ResourcesGrid() {
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
                                 className={`px-6 py-3 text-sm font-mono tracking-wide uppercase transition-all duration-300 relative ${activeTab === tab.id
-                                        ? 'text-navy font-bold bg-white border-t-4 border-navy -mb-[2px] border-x border-x-gray-200'
-                                        : 'text-gray-500 hover:text-navy hover:bg-gray-100'
+                                    ? 'text-navy font-bold bg-white border-t-4 border-navy -mb-[2px] border-x border-x-gray-200'
+                                    : 'text-gray-500 hover:text-navy hover:bg-gray-100'
                                     }`}
                             >
                                 {activeTab === tab.id && (

@@ -3,14 +3,14 @@ import { createClient } from '@/lib/supabase/server';
 import NavBarV2 from '@/components/layout/NavBarV2';
 import TerminalFooter from '@/components/layout/TerminalFooter';
 import { FAQChat } from '@/components/resources/FAQChat';
-import FAQGrid from '@/components/ui/FAQGrid';
+import { FAQGrid } from '@/components/ui/FAQGrid';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
 export default async function FAQPage() {
-    const supabase = createClient();
+    const supabase = await createClient();
     const { data: faqs } = await supabase.from('faqs').select('*').order('category');
 
     // Group FAQs by category manually or just pass to FAQGrid (which expects { question, answer }[])
@@ -27,8 +27,8 @@ export default async function FAQPage() {
         if (!faqs || faqs.length === 0) {
             // Fallback
             return <FAQGrid items={[
-                { question: "How do I get started?", answer: "Contact us to schedule a consultation." },
-                { question: "Do you handle international probate?", answer: "Yes, we specialize in cross-border estates." }
+                { title: "How do I get started?", description: "Contact us to schedule a consultation." },
+                { title: "Do you handle international probate?", description: "Yes, we specialize in cross-border estates." }
             ]} />;
         }
 
@@ -38,8 +38,8 @@ export default async function FAQPage() {
                 <div className="space-y-16">
                     {categories.map(cat => {
                         const catFaqs = faqs.filter(f => f.category === cat).map(f => ({
-                            question: f.question,
-                            answer: f.answer
+                            title: f.question,
+                            description: f.answer
                         }));
                         return (
                             <div key={cat}>
@@ -52,7 +52,7 @@ export default async function FAQPage() {
             );
         }
 
-        return <FAQGrid items={faqs.map(f => ({ question: f.question, answer: f.answer }))} />;
+        return <FAQGrid items={faqs.map(f => ({ title: f.question, description: f.answer }))} />;
     };
 
     return (

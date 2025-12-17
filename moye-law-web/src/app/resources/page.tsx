@@ -2,7 +2,7 @@ import React from 'react';
 import { createClient } from '@/lib/supabase/server';
 import NavBarV2 from '@/components/layout/NavBarV2';
 import TerminalFooter from '@/components/layout/TerminalFooter';
-import { ResourcesGrid, ResourceItem, ResourceType } from '@/components/resources/ResourcesGrid';
+import ResourcesGrid, { ResourceItem, ResourceType } from '@/components/resources/ResourcesGrid';
 import { OpenSesameDoor } from '@/components/ui/OpenSesameDoor';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
@@ -10,7 +10,7 @@ import { ArrowRight } from 'lucide-react';
 export const dynamic = 'force-dynamic';
 
 export default async function ResourcesPage() {
-    const supabase = createClient();
+    const supabase = await createClient();
 
     // Parallel fetch from all resource tables
     const [articlesRes, podcastsRes, caseStudiesRes, booksRes] = await Promise.all([
@@ -31,6 +31,7 @@ export default async function ResourcesPage() {
         description: row.summary || row.content?.substring(0, 150) || 'No description available',
         date: new Date(row.published_at || row.created_at).toLocaleDateString(),
         slug: row.slug,
+        link: `/resources/articles/${row.slug}`,
         imageUrl: row.image_url,
         category: row.tags?.[0] || 'General'
     });
@@ -42,6 +43,7 @@ export default async function ResourcesPage() {
         description: row.description || '',
         date: new Date(row.published_at || row.created_at).toLocaleDateString(),
         slug: row.slug,
+        link: `/resources/podcasts/${row.slug}`,
         imageUrl: '/images/podcast-cover-placeholder.jpg', // Placeholder
         category: 'Audio'
     });
@@ -53,6 +55,7 @@ export default async function ResourcesPage() {
         description: row.challenge || '',
         date: new Date(row.created_at).toLocaleDateString(),
         slug: row.slug,
+        link: `/resources/case-studies/${row.slug}`,
         imageUrl: row.image_url,
         category: row.client_type
     });
@@ -72,6 +75,7 @@ export default async function ResourcesPage() {
                 description: "How to protect your digital assets in an increasingly virtual world. A guide for crypto-investors and online entrepreneurs.",
                 date: "Oct 12, 2024",
                 slug: "future-of-digital-legacy",
+                link: "/resources/articles/future-of-digital-legacy",
                 category: "Estate Planning"
             },
             {
@@ -81,6 +85,7 @@ export default async function ResourcesPage() {
                 description: "Listen to our latest discussion on the changing landscape of estate taxes and how standard trusts are adapting.",
                 date: "Nov 01, 2024",
                 slug: "trusts-and-taxes-ep4",
+                link: "/resources/podcasts/trusts-and-taxes-ep4",
                 category: "Tax Strategy"
             },
             {
@@ -90,6 +95,7 @@ export default async function ResourcesPage() {
                 description: "How we structured a multi-jurisdictional estate plan for a family with assets in NY, London, and Singapore.",
                 date: "Sep 15, 2024",
                 slug: "global-portfolio-protection",
+                link: "/resources/case-studies/global-portfolio-protection",
                 category: "International"
             },
             {
@@ -99,6 +105,7 @@ export default async function ResourcesPage() {
                 description: "A comprehensive checklist for new executors in New York State. What you need to know about probate and timelines.",
                 date: "Dec 05, 2024",
                 slug: "executors-handbook-2025",
+                link: "/resources/articles/executors-handbook-2025",
                 category: "Probate"
             },
             {
@@ -108,6 +115,7 @@ export default async function ResourcesPage() {
                 description: "Why family businesses need to treat their brand and IP as core assets in succession planning.",
                 date: "Aug 20, 2024",
                 slug: "ip-for-families",
+                link: "/resources/articles/ip-for-families",
                 category: "IP Strategy"
             }
         ];
@@ -146,11 +154,8 @@ export default async function ResourcesPage() {
                         <div className="h-[400px] w-full flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden relative">
                             <div className="transform scale-75">
                                 <OpenSesameDoor
-                                    isOpen={true}
-                                    doorColor="bg-navy"
-                                    revealColor="bg-gold"
-                                    textColor="text-white"
-                                    borderColor="border-navy"
+                                    title="Open Wisdom"
+                                    revealedText="ENTER"
                                 />
                             </div>
                             <div className="absolute bottom-4 right-4 text-xs font-mono text-gray-400">

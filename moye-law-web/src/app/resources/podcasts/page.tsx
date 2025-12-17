@@ -9,7 +9,7 @@ import { ArrowLeft } from 'lucide-react';
 export const dynamic = 'force-dynamic';
 
 export default async function PodcastPage() {
-    const supabase = createClient();
+    const supabase = await createClient();
     const { data: podcasts } = await supabase.from('podcasts').select('*').order('published_at', { ascending: false });
 
     // Helper to map DB to PodcastEpisode
