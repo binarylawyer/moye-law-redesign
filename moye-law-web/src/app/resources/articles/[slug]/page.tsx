@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ArticleDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    const supabase = createClient();
+    const supabase = await createClient();
 
     const { data: article } = await supabase
         .from('articles')
