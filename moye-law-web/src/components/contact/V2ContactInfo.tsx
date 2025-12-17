@@ -10,6 +10,8 @@ const contactSchema = z.object({
     name: z.string().min(2, "Name is required"),
     email: z.string().email("Invalid email"),
     phone: z.string().optional(),
+    projectScope: z.string().min(10, "Please provide a brief description (min 10 chars)"),
+    assetValue: z.string().optional(),
     incentive: z.boolean(),
 });
 
@@ -28,6 +30,8 @@ export const V2ContactInfo: React.FC<V2ContactInfoProps> = ({ onSubmit, onBack, 
             name: '',
             email: '',
             phone: '',
+            projectScope: '',
+            assetValue: 'undisclosed',
             incentive: true
         }
     });
@@ -55,6 +59,29 @@ export const V2ContactInfo: React.FC<V2ContactInfoProps> = ({ onSubmit, onBack, 
                 <div>
                     <label className="block font-mono text-xs font-bold text-navy mb-1">PHONE (OPTIONAL)</label>
                     <input {...register('phone')} className="w-full border-2 border-gray-200 p-3 font-mono text-sm focus:border-navy focus:outline-none bg-gray-50" placeholder="+1 (555) 000-0000" />
+                </div>
+
+                {/* PROJECT SCOPE */}
+                <div>
+                    <label className="block font-mono text-xs font-bold text-navy mb-1">PROJECT_SCOPE</label>
+                    <textarea
+                        {...register('projectScope')}
+                        className="w-full border-2 border-gray-200 p-3 font-mono text-sm focus:border-navy focus:outline-none bg-gray-50 h-24 resize-none"
+                        placeholder="Briefly describe your legal needs or objectives..."
+                    />
+                    {errors.projectScope && <p className="text-red-600 text-xs mt-1 font-mono">{errors.projectScope.message}</p>}
+                </div>
+
+                {/* ASSET VALUE */}
+                <div>
+                    <label className="block font-mono text-xs font-bold text-navy mb-1">ESTIMATED_ASSET_VALUE</label>
+                    <select {...register('assetValue')} className="w-full border-2 border-gray-200 p-3 font-mono text-sm focus:border-navy focus:outline-none bg-gray-50">
+                        <option value="undisclosed">Prefer not to say</option>
+                        <option value="<1M">Under $1M</option>
+                        <option value="1M-5M">$1M - $5M</option>
+                        <option value="5M-20M">$5M - $20M</option>
+                        <option value="20M+">$20M+</option>
+                    </select>
                 </div>
 
                 <div className="flex items-start gap-3 p-4 bg-gold/10 border border-gold/20">

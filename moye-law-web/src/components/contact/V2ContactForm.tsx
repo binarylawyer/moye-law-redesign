@@ -32,13 +32,16 @@ export default function V2ContactForm() {
                     contact_data: {
                         name: data.name,
                         email: data.email,
-                        phone: data.phone
+                        phone: data.phone,
+                        project_scope: data.projectScope,
+                        asset_value: data.assetValue
                     },
                     incentive_requested: data.incentive,
                     status: 'new',
                     metadata: {
                         userAgent: navigator.userAgent,
-                        timestamp: new Date().toISOString()
+                        timestamp: new Date().toISOString(),
+                        routing_priority: data.assetValue === '20M+' ? 'high' : 'standard'
                     }
                 });
 
