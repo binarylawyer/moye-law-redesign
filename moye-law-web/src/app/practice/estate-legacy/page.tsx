@@ -75,7 +75,8 @@ const EstateLegacy = () => {
             icon: <Landmark className="h-10 w-10 text-[#4D80D4]" />,
             path: "/practice/trusts-estates",
             color: "border-[#4D80D4]",
-            bgcolor: "bg-[#4D80D4]/5"
+            bgcolor: "bg-[#4D80D4]/5",
+            textColor: "text-[#4D80D4]"
         },
         {
             id: "elder-law",
@@ -84,7 +85,8 @@ const EstateLegacy = () => {
             icon: <History className="h-10 w-10 text-[#D6001C]" />,
             path: "/practice/elder-law",
             color: "border-[#D6001C]",
-            bgcolor: "bg-[#D6001C]/5"
+            bgcolor: "bg-[#D6001C]/5",
+            textColor: "text-[#D6001C]"
         },
         {
             id: "probate-administration",
@@ -93,7 +95,8 @@ const EstateLegacy = () => {
             icon: <FileText className="h-10 w-10 text-[#00A650]" />,
             path: "/practice/probate-administration",
             color: "border-[#00A650]",
-            bgcolor: "bg-[#00A650]/5"
+            bgcolor: "bg-[#00A650]/5",
+            textColor: "text-[#00A650]"
         }
     ];
 
