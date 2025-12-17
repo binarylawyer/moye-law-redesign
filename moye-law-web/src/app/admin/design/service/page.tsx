@@ -60,7 +60,7 @@ export default function DesignServicePage() {
                             <div className="w-12 h-1 bg-gold mr-4"></div>
                             <div>
                                 <h2 className="font-display text-3xl text-navy">The "Invisible Concierge" Funnel</h2>
-                                <p className="font-mono text-xs text-gray-400 mt-2">RETAIL ENTRY -> HIGH VALUE ROUTING</p>
+                                <p className="font-mono text-xs text-gray-400 mt-2">RETAIL ENTRY -&gt; HIGH VALUE ROUTING</p>
                             </div>
                         </div>
 

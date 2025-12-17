@@ -4,7 +4,7 @@ import React from 'react';
 import NavBarV2 from '@/components/layout/NavBarV2';
 import TerminalFooter from '@/components/layout/TerminalFooter';
 import { MondrianGrid, RevealContent } from '@/components/ui/MondrianGrid';
-import { FeatureGrid } from '@/components/layout/FeatureGrid';
+import FeatureGrid from '@/components/layout/FeatureGrid';
 import { ProcessTimeline } from '@/components/ui/ProcessTimeline';
 import { Clock, Target, Zap, CheckCircle, Shield, ArrowRight } from 'lucide-react';
 import Link from 'next/link';

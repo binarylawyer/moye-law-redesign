@@ -3,129 +3,174 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'; // Assuming these exist, if not I'll use standard buttons
 import { Headphones, FileText, BookOpen, Layers, Search } from 'lucide-react';
 
 export type ResourceType = 'article' | 'guide' | 'whitepaper' | 'case-study' | 'podcast' | 'faq' | 'book';
 
-export interface ResourceItem {
+interface Resource {
     id: string;
-    type: ResourceType;
     title: string;
-    description: string;
+    type: ResourceType;
+    category: string;
     date: string;
-    slug: string;
-    imageUrl?: string;
-    category?: string; // e.g. "Estate Planning"
+    description: string;
+    link: string;
 }
 
-interface ResourcesGridProps {
-    initialItems: ResourceItem[];
-}
+const resources: Resource[] = [
+    {
+        id: "1",
+        title: "The Estate Tax Cliff: 2026 Preparation Guide",
+        type: "guide",
+        category: "Estate Planning",
+        date: "Oct 2024",
+        description: "A comprehensive analysis of the upcoming sunset of TCJA exemption limits.",
+        link: "/resources/articles/estate-tax-2026"
+    },
+    {
+        id: "2",
+        title: "Legacy Code: Digital Assets in Probate",
+        type: "whitepaper",
+        category: "Digital Assets",
+        date: "Sep 2024",
+        description: "Technical and legal frameworks for passing on cryptocurrency and NFT portfolios.",
+        link: "/resources/articles/digital-assets-probate"
+    },
+    {
+        id: "3",
+        title: "Trust Decanting 101",
+        type: "article",
+        category: "Trust Administration",
+        date: "Aug 2024",
+        description: "When and how to modify an irrevocable trust using modern decanting statutes.",
+        link: "/resources/articles/trust-decanting"
+    },
+    {
+        id: "4",
+        title: "Episode 42: The Art of the Buy-Sell Agreement",
+        type: "podcast",
+        category: "Business Law",
+        date: "July 2024",
+        description: "Interview with Moye Law founder on structuring business continuity.",
+        link: "/resources/podcasts/42-buy-sell"
+    },
+    {
+        id: "5",
+        title: "Medicaid Look-Back Period Explained",
+        type: "faq",
+        category: "Elder Law",
+        date: "June 2024",
+        description: "Understanding the 5-year rule and asset protection strategies.",
+        link: "/resources/faq/medicaid-look-back"
+    }
+];
 
-export const ResourcesGrid: React.FC<ResourcesGridProps> = ({ initialItems }) => {
-    const [filter, setFilter] = useState<ResourceType | 'all'>('all');
+const Tabs = ({ children, defaultValue, className }: { children: React.ReactNode, defaultValue: string, className?: string }) => {
+    // This is a simplified internal tabs component
+    return <div className={className}>{children}</div>;
+};
 
-    const filteredItems = filter === 'all'
-        ? initialItems
-        : initialItems.filter(item => item.type === filter);
+export default function ResourcesGrid() {
+    const [activeTab, setActiveTab] = useState<string>("all");
 
-    // Helper to get icon based on type
-    const getIcon = (type: ResourceType) => {
-        switch (type) {
-            case 'podcast': return <Headphones className="w-4 h-4 text-white" />;
-            case 'case-study': return <Search className="w-4 h-4 text-white" />;
-            case 'book': return <BookOpen className="w-4 h-4 text-white" />;
-            default: return <FileText className="w-4 h-4 text-white" />;
-        }
-    };
+    // Filter logic
+    const filteredResources = activeTab === "all"
+        ? resources
+        : resources.filter(r => r.type === activeTab || (activeTab === "guides" && (r.type === "guide" || r.type === "whitepaper")));
 
-    // Helper for color badge
-    const getBadgeColor = (type: ResourceType) => {
-        switch (type) {
-            case 'podcast': return 'bg-gold';
-            case 'case-study': return 'bg-navy';
-            case 'book': return 'bg-red-700';
-            default: return 'bg-blue-600';
-        }
-    };
+    const tabs = [
+        { id: "all", label: "All Resources" },
+        { id: "article", label: "Articles" },
+        { id: "guides", label: "Guides & Papers" },
+        { id: "podcast", label: "Podcasts" },
+        { id: "faq", label: "FAQs" }
+    ];
 
     return (
-        <div className="w-full">
-            <Tabs defaultValue="all" className="w-full mb-12" onValueChange={(val) => setFilter(val as any)}>
-                <div className="flex justify-center mb-12">
-                    <TabsList className="bg-gray-100 p-1 rounded-lg inline-flex flex-wrap justify-center overflow-x-auto max-w-full">
-                        <TabsTrigger value="all" className="px-6 py-2 data-[state=active]:bg-white data-[state=active]:shadow-sm rounded-md transition-all">All Resources</TabsTrigger>
-                        <TabsTrigger value="article" className="px-6 py-2 data-[state=active]:bg-white data-[state=active]:shadow-sm rounded-md transition-all">Articles</TabsTrigger>
-                        <TabsTrigger value="podcast" className="px-6 py-2 data-[state=active]:bg-white data-[state=active]:shadow-sm rounded-md transition-all">Podcasts</TabsTrigger>
-                        <TabsTrigger value="case-study" className="px-6 py-2 data-[state=active]:bg-white data-[state=active]:shadow-sm rounded-md transition-all">Case Studies</TabsTrigger>
-                        <TabsTrigger value="guide" className="px-6 py-2 data-[state=active]:bg-white data-[state=active]:shadow-sm rounded-md transition-all">Guides</TabsTrigger>
-                    </TabsList>
+        <section className="py-24 bg-gray-50 min-h-screen">
+            <div className="container mx-auto px-6 max-w-7xl">
+
+                <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+                    <div>
+                        <span className="font-mono text-xs text-navy tracking-widest uppercase mb-2 block">Knowledge Base</span>
+                        <h2 className="font-display text-4xl text-navy">Legal Intelligence</h2>
+                    </div>
                 </div>
 
-                <div className="min-h-[500px]">
-                    <AnimatePresence mode="popLayout">
-                        <motion.div
-                            key={filter}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
-                            transition={{ duration: 0.3 }}
-                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                        >
-                            {filteredItems.map((item, idx) => (
-                                <div
-                                    key={item.id}
-                                    className="group bg-white border-2 border-transparent hover:border-navy transition-all duration-300 rounded-lg overflow-hidden flex flex-col h-full shadow-sm hover:shadow-lg"
-                                >
-                                    {/* Card Header Image / Placeholder */}
-                                    <div className="h-48 bg-gray-100 relative overflow-hidden">
-                                        {item.imageUrl ? (
-                                            // eslint-disable-next-line @next/next/no-img-element
-                                            <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                                        ) : (
-                                            <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-300">
-                                                <Layers className="w-12 h-12" />
+                {/* VISUAL TABS IMPLEMENTATION */}
+                <div className="w-full mb-12">
+                    <div className="flex flex-wrap gap-2 border-b-2 border-gray-200 pb-1">
+                        {tabs.map((tab) => (
+                            <button
+                                key={tab.id}
+                                onClick={() => setActiveTab(tab.id)}
+                                className={`px-6 py-3 text-sm font-mono tracking-wide uppercase transition-all duration-300 relative ${activeTab === tab.id
+                                        ? 'text-navy font-bold bg-white border-t-4 border-navy -mb-[2px] border-x border-x-gray-200'
+                                        : 'text-gray-500 hover:text-navy hover:bg-gray-100'
+                                    }`}
+                            >
+                                {activeTab === tab.id && (
+                                    <span className="absolute top-0 left-0 right-0 h-1 bg-gold"></span>
+                                )}
+                                {tab.label}
+                            </button>
+                        ))}
+                    </div>
+
+                    <div className="mt-8">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeTab}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.3 }}
+                                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                            >
+                                {filteredResources.map((resource) => (
+                                    <Link key={resource.id} href={resource.link} className="group block h-full">
+                                        <div className="bg-white border-2 border-transparent p-8 h-full flex flex-col hover:border-navy hover:shadow-[8px_8px_0px_0px_rgba(10,35,66,1)] transition-all duration-300">
+                                            <div className="flex justify-between items-start mb-6">
+                                                <div className="p-3 bg-gray-50 group-hover:bg-navy group-hover:text-gold transition-colors duration-300">
+                                                    {resource.type === 'podcast' && <Headphones className="w-6 h-6" />}
+                                                    {resource.type === 'guide' && <BookOpen className="w-6 h-6" />}
+                                                    {resource.type === 'whitepaper' && <Layers className="w-6 h-6" />}
+                                                    {(resource.type === 'article' || resource.type === 'faq') && <FileText className="w-6 h-6" />}
+                                                </div>
+                                                <span className="font-mono text-xs text-gray-400 group-hover:text-navy transition-colors">{resource.date}</span>
                                             </div>
-                                        )}
-                                        <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold text-white flex items-center gap-2 ${getBadgeColor(item.type)}`}>
-                                            {getIcon(item.type)}
-                                            <span className="uppercase tracking-wider">{item.type.replace('-', ' ')}</span>
+
+                                            <div className="mb-4">
+                                                <span className="inline-block px-2 py-1 bg-gray-100 text-[10px] font-mono uppercase tracking-wider text-navy mb-3">
+                                                    {resource.category}
+                                                </span>
+                                                <h3 className="font-display text-xl text-navy group-hover:text-gold transition-colors duration-300 min-h-[3.5rem]">
+                                                    {resource.title}
+                                                </h3>
+                                            </div>
+
+                                            <p className="font-sans text-sm text-gray-600 line-clamp-3 mb-6 flex-grow">
+                                                {resource.description}
+                                            </p>
+
+                                            <div className="flex items-center text-xs font-bold text-navy uppercase tracking-widest group-hover:underline decoration-gold underline-offset-4">
+                                                Read Resource
+                                            </div>
                                         </div>
-                                    </div>
+                                    </Link>
+                                ))}
+                            </motion.div>
+                        </AnimatePresence>
 
-                                    {/* Card Content */}
-                                    <div className="p-6 flex flex-col flex-grow">
-                                        <div className="text-xs text-gray-500 mb-2 font-mono flex justify-between items-center">
-                                            <span>{item.date}</span>
-                                            {item.category && <span className="text-navy font-semibold">{item.category}</span>}
-                                        </div>
-                                        <h3 className="font-display text-xl text-navy mb-3 group-hover:text-blue-700 transition-colors">
-                                            {item.title}
-                                        </h3>
-                                        <p className="text-gray-600 text-sm line-clamp-3 mb-6 flex-grow">
-                                            {item.description}
-                                        </p>
-
-                                        <Link
-                                            href={`/resources/${item.type === 'article' ? 'articles/' : ''}${item.slug}`}
-                                            className="text-navy font-bold text-sm hover:underline mt-auto flex items-center"
-                                        >
-                                            Read Full {item.type === 'case-study' ? 'Story' : 'Entry'}
-                                        </Link>
-                                    </div>
-                                </div>
-                            ))}
-
-                            {filteredItems.length === 0 && (
-                                <div className="col-span-full py-12 text-center text-gray-500">
-                                    No resources found for this category.
-                                </div>
-                            )}
-                        </motion.div>
-                    </AnimatePresence>
+                        {filteredResources.length === 0 && (
+                            <div className="text-center py-24 bg-white border-2 border-dashed border-gray-300">
+                                <Search className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+                                <p className="font-mono text-gray-400">NO_DATA_FOUND</p>
+                            </div>
+                        )}
+                    </div>
                 </div>
-            </Tabs>
-        </div>
+            </div>
+        </section>
     );
-};
+}
