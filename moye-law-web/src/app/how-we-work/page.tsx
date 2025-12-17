@@ -4,7 +4,7 @@ import React from 'react';
 import NavBarV2 from '@/components/layout/NavBarV2';
 import TerminalFooter from '@/components/layout/TerminalFooter';
 import { MondrianGrid, RevealContent } from '@/components/ui/MondrianGrid';
-import FeatureGrid from '@/components/layout/FeatureGrid';
+
 import { ProcessTimeline } from '@/components/ui/ProcessTimeline';
 import { Clock, Target, Zap, CheckCircle, Shield, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
@@ -106,8 +106,8 @@ export default function HowWeWorkPage() {
                         </div>
                     </RevealContent>
 
-                    <FeatureGrid
-                        features={[
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {[
                             {
                                 title: "Personalized Attention",
                                 description: "Your relationship with us is intimate and exclusive. We limit our client roster to ensure each receives our undivided attention.",
@@ -132,8 +132,18 @@ export default function HowWeWorkPage() {
                                 icon: <CheckCircle className="text-white w-8 h-8" />,
                                 color: "bg-gray-900"
                             }
-                        ]}
-                    />
+                        ].map((feature, idx) => (
+                            <div key={idx} className={`${feature.color} p-8 md:p-12 text-white border-4 border-navy hover:scale-[1.02] transition-transform duration-300`}>
+                                <div className="mb-6">{feature.icon}</div>
+                                <h3 className={`font-display text-2xl md:text-3xl mb-4 ${feature.color === 'bg-yellow-400' ? 'text-navy' : 'text-white'}`}>
+                                    {feature.title}
+                                </h3>
+                                <p className={`font-sans leading-relaxed ${feature.color === 'bg-yellow-400' ? 'text-navy/80' : 'text-white/80'}`}>
+                                    {feature.description}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
 
                     <div className="flex justify-center mt-16">
                         <Link href="/contact" className="inline-flex items-center px-8 py-4 bg-yellow-400 border-4 border-navy text-navy font-display text-xl hover:bg-red-700 hover:text-white transition-all transform hover:-translate-y-1 hover:shadow-lg">
