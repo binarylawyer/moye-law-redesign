@@ -78,3 +78,5 @@ export const MondrianClassicComposition: React.FC<MondrianClassicCompositionProp
         </div>
     );
 };
+
+export default MondrianClassicComposition;
