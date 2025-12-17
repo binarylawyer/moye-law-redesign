@@ -278,9 +278,7 @@ export default function StrategyPage() {
                             {/* BLOCK D: THE GOLD ENGINE (Open Sesame) */}
                             <div className="absolute top-[25%] left-[38.2%] w-[36.8%] h-[35%] overflow-hidden">
                                 <OpenSesameDoor
-                                    doorColor="bg-gold"
-                                    revealColor="bg-navy"
-                                    textColor="text-navy"
+                                    title="Strategy"
                                     revealedText="ACCESS GRANTED"
                                 />
                             </div>
