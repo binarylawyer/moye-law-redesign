@@ -49,7 +49,9 @@ export default function DesignMotionPage() {
 
                     <RevealContent delay={0.8}>
                         <div className="bg-gray-50 p-12 flex items-center justify-center border-4 border-dashed border-gray-200 min-h-[500px]">
-                            <OpenSesameDoor title="Hover Me" revealedText="ACCESS_GRANTED" />
+                            <div className="w-64 h-80">
+                                <OpenSesameDoor title="Hover Me" revealedText="ACCESS_GRANTED" />
+                            </div>
                         </div>
                     </RevealContent>
                 </section>
