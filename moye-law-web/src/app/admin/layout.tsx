@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { LayoutDashboard, Palette, Type, Component, Lock, LogOut, Terminal } from 'lucide-react';
+import { LayoutDashboard, Palette, Type, Component, Lock, LogOut, Terminal, Grid } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { supabase } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
@@ -30,6 +30,7 @@ export default function AdminLayout({
         { name: 'Colors', path: '/admin/design/colors', icon: Palette },
         { name: 'Typography', path: '/admin/design/typography', icon: Type },
         { name: 'Components', path: '/admin/design/components', icon: Component },
+        { name: 'Bento Grids', path: '/admin/design/bento-grids', icon: Grid },
         { name: 'Protocols', path: '/admin/design/protocol', icon: Terminal },
     ];
 
