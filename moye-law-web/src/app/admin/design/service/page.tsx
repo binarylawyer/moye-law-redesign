@@ -3,6 +3,11 @@
 import React from 'react';
 import { MondrianGrid, RevealContent } from '@/components/ui/MondrianGrid';
 import { Scale, Users, FileText } from 'lucide-react';
+import SushiServiceHero from '@/components/layout/SushiServiceHero';
+import ServiceFeature from '@/components/services/ServiceFeature';
+import ServiceProcess from '@/components/services/ServiceProcess';
+import ServiceConsiderations from '@/components/services/ServiceConsiderations';
+import ServiceRelated from '@/components/services/ServiceRelated';
 
 // --- HELPER COMPONENTS ---
 
@@ -25,6 +30,34 @@ const ServiceTier = ({ level, title, desc, price, icon: Icon }: { level: string,
         </div>
     </div>
 );
+
+// --- MOCK DATA ---
+const mockFeatures = [
+    { title: "Rapid Filing", description: "Automated submission to USPTO.", icon: "zap" },
+    { title: "Global Search", description: "World-wide conflict check.", icon: "globe" },
+    { title: "Asset Locking", description: "Immutable record keeping.", icon: "lock" }
+];
+
+const mockProcess = {
+    title: "The Execution Protocol",
+    steps: [
+        { title: "Audit", description: "We analyze your current holdings." },
+        { title: "Strategy", description: "We design the protection layer." },
+        { title: "Deployment", description: "We execute the filings." }
+    ]
+};
+
+const mockConsiderations = [
+    { title: "How long does it take?", description: "Standard filing takes 3-5 days." },
+    { title: "Is it confidential?", description: "All client data is encrypted." },
+    { title: "What if I get sued?", description: "We have a defense team on standby." }
+];
+
+const mockRelated = [
+    { title: "Estate Planning", description: "Protect your legacy.", path: "#" },
+    { title: "Business Formation", description: "Start your venture.", path: "#" },
+    { title: "IP Licensing", description: "Monetize your assets.", path: "#" }
+];
 
 // --- MAIN PAGE ---
 
@@ -100,6 +133,46 @@ export default function DesignServicePage() {
                             </p>
                         </div>
                     </RevealContent>
+                </section>
+
+                {/* SECTION 2: COMPONENT PLAYGROUND */}
+                <section className="border-t-4 border-navy pt-24">
+                    <div className="flex items-center mb-12">
+                        <div className="w-12 h-1 bg-navy mr-4"></div>
+                        <h2 className="font-display text-4xl text-navy">Service Template Components</h2>
+                    </div>
+
+                    <div className="space-y-24">
+                        {/* HERO DEMO */}
+                        <div className="border border-gray-200">
+                            <div className="bg-gray-100 p-2 font-mono text-xs text-gray-500 uppercase">Component: SushiServiceHero</div>
+                            <SushiServiceHero title="Intellectual Property" description="Defend your ideas with military-grade legal architecture." />
+                        </div>
+
+                        {/* FEATURES DEMO */}
+                        <div className="border border-gray-200">
+                            <div className="bg-gray-100 p-2 font-mono text-xs text-gray-500 uppercase">Component: ServiceFeature</div>
+                            <ServiceFeature features={mockFeatures} />
+                        </div>
+
+                        {/* PROCESS DEMO */}
+                        <div className="border border-gray-200">
+                            <div className="bg-gray-100 p-2 font-mono text-xs text-gray-500 uppercase">Component: ServiceProcess</div>
+                            <ServiceProcess process={mockProcess} />
+                        </div>
+
+                        {/* FAQ DEMO */}
+                        <div className="border border-gray-200">
+                            <div className="bg-gray-100 p-2 font-mono text-xs text-gray-500 uppercase">Component: ServiceConsiderations (FAQ)</div>
+                            <ServiceConsiderations considerations={mockConsiderations} />
+                        </div>
+
+                        {/* RELATED DEMO */}
+                        <div className="border border-gray-200">
+                            <div className="bg-gray-100 p-2 font-mono text-xs text-gray-500 uppercase">Component: ServiceRelated</div>
+                            <ServiceRelated relatedServices={mockRelated} />
+                        </div>
+                    </div>
                 </section>
 
             </main>

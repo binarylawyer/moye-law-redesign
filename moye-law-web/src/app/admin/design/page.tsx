@@ -58,6 +58,15 @@ export default function DesignSystemHub() {
                         View All Pages <ArrowRight className="w-4 h-4 ml-2" />
                     </span>
                 </Link>
+
+                <Link href="/admin/design/service-components" className="group block bg-white border-2 border-navy p-8 hover:shadow-[8px_8px_0px_0px_#C99D56] transition-shadow">
+                    <div className="h-2 w-12 bg-navy mb-6 group-hover:w-24 transition-all duration-300"></div>
+                    <h3 className="font-display text-2xl text-navy mb-2">Components for Services</h3>
+                    <p className="font-mono text-xs text-gray-500 mb-6">HERO // FEATURES // PROCESS</p>
+                    <span className="flex items-center text-sm font-bold text-navy group-hover:text-gold transition-colors">
+                        View Service Kit <ArrowRight className="w-4 h-4 ml-2" />
+                    </span>
+                </Link>
             </div>
 
             <div className="bg-navy p-8 text-white max-w-2xl">
