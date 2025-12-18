@@ -7,6 +7,7 @@ import TechnicalProcess from "@/components/layout/TechnicalProcess";
 import BinaryBio from "@/components/content/BinaryBio";
 import LegalExhibit from "@/components/content/LegalExhibit";
 import ExecuteCTA from "@/components/layout/ExecuteCTA";
+import KineticBentoWrapper from "@/components/content/KineticBentoWrapper";
 
 export default function Home() {
   return (
@@ -39,7 +40,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <KineticBentoWrapper>
               {/* ESTATE PLANNING */}
               <SplitServiceCard
                 title="Estate Planning"
@@ -93,7 +94,7 @@ export default function Home() {
                 productTitle="Deed Generator"
                 productDesc="Transfer property titles automatically."
               />
-            </div>
+            </KineticBentoWrapper>
           </div>
         </section>
 
