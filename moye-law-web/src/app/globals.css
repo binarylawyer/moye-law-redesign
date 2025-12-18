@@ -8,6 +8,11 @@
   /* Venetian Red */
   --color-grey: #F3F4F6;
 
+  /* Mondrian Primary Colors */
+  --color-mondrian-red: #E31C23;
+  --color-mondrian-blue: #0055A4;
+  --color-mondrian-yellow: #FFD700;
+
   /* FONTS: Mapped from Next.js Font Loader */
   --font-display: var(--font-cormorant);
   --font-sans: var(--font-inter);
