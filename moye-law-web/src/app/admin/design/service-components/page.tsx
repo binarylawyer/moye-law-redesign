@@ -52,6 +52,36 @@ export default function ServiceComponentsPage() {
 
             <main className="container mx-auto px-6 max-w-7xl py-12 space-y-20">
 
+                {/* 0. LIVE IMPLEMENTATIONS INDEX */}
+                <section className="bg-navy/5 p-8 border border-navy/10 rounded-lg">
+                    <h2 className="font-display text-2xl text-navy mb-4">Live Implementations</h2>
+                    <p className="text-gray-600 mb-6 font-sans">
+                        See how these components are assembled in the actual service pages:
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <Link href="/services" className="px-4 py-3 bg-white border border-gray-200 hover:border-gold hover:text-gold hover:shadow-md transition-all font-mono text-sm flex items-center justify-between">
+                            <span>INDEX</span>
+                            <span className="opacity-50 text-xs">/services</span>
+                        </Link>
+                        <Link href="/services/estate-planning" className="px-4 py-3 bg-white border border-gray-200 hover:border-gold hover:text-gold hover:shadow-md transition-all font-mono text-sm flex items-center justify-between">
+                            <span>ESTATE PLANNING</span>
+                            <span className="opacity-50 text-xs">/estate..</span>
+                        </Link>
+                        <Link href="/services/probate-administration" className="px-4 py-3 bg-white border border-gray-200 hover:border-gold hover:text-gold hover:shadow-md transition-all font-mono text-sm flex items-center justify-between">
+                            <span>PROBATE</span>
+                            <span className="opacity-50 text-xs">/prob..</span>
+                        </Link>
+                        <Link href="/services/ip-consulting-strategy" className="px-4 py-3 bg-white border border-gray-200 hover:border-gold hover:text-gold hover:shadow-md transition-all font-mono text-sm flex items-center justify-between">
+                            <span>IP STRATEGY</span>
+                            <span className="opacity-50 text-xs">/ip-c..</span>
+                        </Link>
+                        <Link href="/services/licensing-transactions" className="px-4 py-3 bg-white border border-gray-200 hover:border-gold hover:text-gold hover:shadow-md transition-all font-mono text-sm flex items-center justify-between">
+                            <span>LICENSING</span>
+                            <span className="opacity-50 text-xs">/lice..</span>
+                        </Link>
+                    </div>
+                </section>
+
                 {/* 1. HERO COMPONENT */}
                 <section className="bg-white p-8 border border-gray-200">
                     <div className="flex justify-between items-center mb-8 border-b pb-4">
