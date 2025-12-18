@@ -2,7 +2,11 @@ import NavBarV2 from "@/components/layout/NavBarV2";
 import TerminalFooter from "@/components/layout/TerminalFooter";
 import HeroV2 from "@/components/layout/HeroV2";
 import SplitServiceCard from "@/components/content/SplitServiceCard";
-import FeatureGrid from "@/components/layout/FeatureGrid";
+import MondrianStats from "@/components/content/MondrianStats";
+import TechnicalProcess from "@/components/layout/TechnicalProcess";
+import BinaryBio from "@/components/content/BinaryBio";
+import LegalExhibit from "@/components/content/LegalExhibit";
+import ExecuteCTA from "@/components/layout/ExecuteCTA";
 
 export default function Home() {
   return (
@@ -10,13 +14,14 @@ export default function Home() {
       <NavBarV2 />
 
       <main className="pt-20">
+        {/* 1. HERO */}
         <HeroV2 />
 
-        {/* SECTION 9: FEATURE GRID TEST */}
-        <FeatureGrid />
+        {/* 2. STATS STRIP */}
+        <MondrianStats />
 
-        {/* 4. THE PAIRING (Binary Choice Services) */}
-        <section id="services" className="py-24 bg-grey border-b-4 border-navy relative">
+        {/* 3. SERVICES GRID */}
+        <section id="services" className="py-24 bg-[#FAFAFA] border-b-4 border-navy relative">
           <div className="absolute top-0 left-0 bg-navy text-white px-2 py-1 text-xs font-mono">
             System_Modules::Active
           </div>
@@ -91,6 +96,18 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* 4. TECHNICAL PROCESS */}
+        <TechnicalProcess />
+
+        {/* 5. BINARY BIO */}
+        <BinaryBio />
+
+        {/* 6. SOCIAL PROOF */}
+        <LegalExhibit />
+
+        {/* 7. CTA */}
+        <ExecuteCTA />
 
       </main>
 

@@ -59,6 +59,24 @@ export default function ComponentsLibrary() {
                 </div>
             </section>
 
+            <section>
+                <h2 className="font-mono text-sm font-bold text-gray-400 uppercase tracking-widest mb-6 pb-2 border-b border-gray-200">
+                    04. Legacy Integrations (Ported)
+                </h2>
+                <div className="space-y-8">
+                    <p className="font-mono text-xs text-gray-500">
+                        COMPONENTS MIGRATED FROM V2 LEGACY SYSTEM
+                    </p>
+                    <div className="border border-gray-200 p-4">
+                        <strong className="block mb-2 font-mono text-xs text-navy">MondrianStats.tsx</strong>
+                        {/* We don't render them all here to avoid layout breakage, just listing availability for now or a small preview */}
+                        <div className="bg-gray-100 p-4 text-center font-mono text-xs">
+                            [Preview available on Homepage]
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </div>
     )
 }

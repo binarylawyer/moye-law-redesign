@@ -1,7 +1,8 @@
 "use client";
 
 import React from 'react';
-import { OpenSesameDoor } from '@/components/ui/OpenSesameDoor';
+import { motion } from 'framer-motion';
+import { KineticDoor } from '@/components/ui/KineticDoor';
 import { MondrianGrid, RevealContent } from '@/components/ui/MondrianGrid';
 
 export default function DesignMotionPage() {
@@ -15,7 +16,7 @@ export default function DesignMotionPage() {
                     <RevealContent delay={0.4}>
                         <div className="flex flex-col md:flex-row justify-between items-end">
                             <div>
-                                <span className="font-mono text-gold text-xs tracking-[0.3em] uppercase block mb-4">Design System v2.1</span>
+                                <span className="font-mono text-gold text-xs tracking-[0.3em] uppercase block mb-4">Design System v2.2</span>
                                 <h1 className="font-display text-6xl md:text-8xl text-navy leading-none">Kinetic Physics <br />& Motion Laws.</h1>
                             </div>
                         </div>
@@ -34,14 +35,15 @@ export default function DesignMotionPage() {
                                 <h2 className="font-display text-3xl text-navy">The "Saul Bass" Door</h2>
                             </div>
                             <p className="font-sans text-gray-600 mb-8 max-w-md leading-relaxed">
-                                A heavy, decisive opening mechanism typically used for high-value reveals.
-                                Uses <strong>CSS 3D Transforms</strong> with a custom bezier curve to mimic mechanical weight.
+                                A heavy, decisive opening mechanism distinct to the "Kinetic Structuralism" language.
+                                Unlike standard web ease-in-out curves, this door uses a custom cubic-bezier to mimic mechanical friction and release.
                                 <br /><br />
-                                The motion should feel "oiled" and "mechanical," not bouncy or rubbery.
-                                <span className="font-mono text-xs text-navy bg-gray-100 p-4 block mt-4 border-l-2 border-gold">
-                                    Easing: cubic-bezier(0.25, 0.46, 0.45, 0.94)<br />
-                                    Duration: 1.2s<br />
-                                    Rotation: -110deg (Y-Axis)
+                                The motions should feel "engineered," decisively snapping open rather than floating.
+                                <span className="font-mono text-xs text-navy bg-gray-100 p-4 block mt-4 border-l-4 border-gold">
+                                    Easing: cubic-bezier(0.3, 0.0, 0.2, 1) (The "Snap")<br />
+                                    Duration: 0.6s (Mechanical)<br />
+                                    Rotation: -110deg (Y-Axis)<br />
+                                    Origin: Left-Center
                                 </span>
                             </p>
                         </RevealContent>
@@ -49,9 +51,10 @@ export default function DesignMotionPage() {
 
                     <RevealContent delay={0.8}>
                         <div className="bg-gray-50 p-12 flex items-center justify-center border-4 border-dashed border-gray-200 min-h-[500px]">
-                            <div className="w-64 h-80">
-                                <OpenSesameDoor title="Hover Me" revealedText="ACCESS_GRANTED" />
-                            </div>
+                            <KineticDoor
+                                title="Hover Me"
+                                revealedText="ACCESS_GRANTED"
+                            />
                         </div>
                     </RevealContent>
                 </section>
@@ -64,11 +67,21 @@ export default function DesignMotionPage() {
                             <h2 className="font-display text-3xl text-navy">Structural Grid Construction</h2>
                         </div>
                         <div className="w-full h-64 relative border-4 border-navy overflow-hidden bg-gray-50">
-                            <MondrianGrid delay={0} />
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="font-mono text-xs text-navy/50 bg-white/80 p-2">
-                                    INTERSECT & REVEAL PROTOCOL ACTIVATED
-                                </div>
+                            {/* Demo Lines - Replicated from Legacy V2 */}
+                            <motion.div
+                                className="absolute top-0 bottom-0 left-[33%] w-2 bg-navy"
+                                initial={{ height: "0%" }}
+                                whileInView={{ height: "100%" }}
+                                transition={{ duration: 1.5, ease: "easeInOut" }}
+                            />
+                            <motion.div
+                                className="absolute top-[50%] left-0 right-0 h-1 bg-gold"
+                                initial={{ width: "0%" }}
+                                whileInView={{ width: "100%" }}
+                                transition={{ duration: 1.2, delay: 0.5, ease: "easeInOut" }}
+                            />
+                            <div className="absolute bottom-4 right-4 font-mono text-xs text-gray-400">
+                                INTERSECT & REVEAL PROTOCOL
                             </div>
                         </div>
                     </RevealContent>

@@ -86,6 +86,30 @@ export default function TypographySystem() {
                 </div>
 
             </section>
+
+            {/* SECTION 4: LEGACY FONTS (AUDIT) */}
+            <section className="opacity-60 border-t-4 border-gray-200 pt-12">
+                <div className="flex items-center mb-8">
+                    <div className="w-12 h-1 bg-gray-300 mr-4"></div>
+                    <div>
+                        <h2 className="font-display text-3xl text-gray-500">Legacy Typography (Decommissioned)</h2>
+                        <p className="font-mono text-xs text-gray-300 mt-2">DO NOT USE IN NEW COMPONENTS</p>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="bg-gray-50 p-6 border border-gray-200">
+                        <h4 className="font-bold text-navy mb-2">Montserrat</h4>
+                        <p className="text-sm text-gray-500 mb-4">Formerly used as primary sans-serif. Replaced by <strong>Inter</strong> for better readability at small scales.</p>
+                        <p className="text-xl text-gray-400 italic">The quick brown fox jumps over the lazy dog.</p>
+                    </div>
+                    <div className="bg-gray-50 p-6 border border-gray-200">
+                        <h4 className="font-bold text-navy mb-2">Poppins</h4>
+                        <p className="text-sm text-gray-500 mb-4">Formerly used for pre-loader and marketing headers. Replaced by <strong>Cormorant Garamond</strong> for authoritative tone.</p>
+                        <p className="text-xl text-gray-400 italic">The quick brown fox jumps over the lazy dog.</p>
+                    </div>
+                </div>
+            </section>
         </div>
     )
 }
