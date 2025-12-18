@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { KineticDoor } from '@/components/ui/KineticDoor';
 import { MondrianGrid, RevealContent } from '@/components/ui/MondrianGrid';
+import KineticMondrianDemo from '@/components/content/KineticMondrianDemo';
 
 export default function DesignMotionPage() {
     return (
@@ -86,6 +87,11 @@ export default function DesignMotionPage() {
                         </div>
                     </RevealContent>
                 </section>
+
+                {/* SECTION 3: KINETIC MONDRIAN ASSEMBLY */}
+                <div className="mt-32">
+                    <KineticMondrianDemo />
+                </div>
 
             </main>
         </div>
