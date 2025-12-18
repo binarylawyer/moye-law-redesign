@@ -11,13 +11,13 @@ import { motion } from "framer-motion";
 
 const blocks = [
     { id: 1, color: "bg-navy", span: "col-span-2 row-span-2", initial: { x: -100, y: -100, rotate: -5 } }, // Big Navy
-    { id: 2, color: "bg-gold", span: "col-span-1 row-span-1", initial: { x: 0, y: -100, rotate: 10 } },    // Top Gold
+    { id: 2, color: "bg-mondrian-yellow", span: "col-span-1 row-span-1", initial: { x: 0, y: -100, rotate: 10 } }, // Top Gold -> Yellow
     { id: 3, color: "bg-white", span: "col-span-1 row-span-2", initial: { x: 100, y: -50, rotate: -8 } },  // Tall White
     { id: 4, color: "bg-mondrian-red", span: "col-span-1 row-span-1", initial: { x: 50, y: 0, rotate: 15 } }, // Red Accent
     { id: 5, color: "bg-white", span: "col-span-2 row-span-1", initial: { x: -50, y: 50, rotate: -3 } },   // Wide White
     { id: 6, color: "bg-mondrian-blue", span: "col-span-1 row-span-1", initial: { x: 0, y: 100, rotate: 12 } }, // Blue Footer
     { id: 7, color: "bg-gray-200", span: "col-span-1 row-span-1", initial: { x: 100, y: 100, rotate: -10 } }, // Gray Corner
-    { id: 8, color: "bg-white", span: "col-span-1 row-span-1", initial: { x: -100, y: 50, rotate: 6 } }, // Extra White
+    { id: 8, color: "bg-mondrian-yellow", span: "col-span-1 row-span-1", initial: { x: -100, y: 50, rotate: 6 } }, // Extra White -> Yellow
     { id: 9, color: "bg-navy", span: "col-span-1 row-span-1", initial: { x: 50, y: -50, rotate: -15 } },  // Small Navy
 ];
 
@@ -63,17 +63,16 @@ export default function KineticMondrianDemo() {
                                         duration: 1.5
                                     }
                                 }}
-                                viewport={{ once: false, margin: "-100px" }} // Re-animates on scroll
-                            >
-                                <span className="absolute bottom-2 right-2 font-mono text-[10px] opacity-30 mix-blend-difference text-white">
+                                viewport={{ once: true, amount: 0.5 }} // Triggers when 50% visible
+                            ><span className="absolute bottom-2 right-2 font-mono text-[10px] opacity-30 mix-blend-difference text-white">
                                     0{block.id}
                                 </span>
-                            </motion.div>
+                            </motion.div >
                         ))}
-                    </div>
+                    </div >
 
-                </div>
-            </div>
-        </section>
+                </div >
+            </div >
+        </section >
     );
 }
