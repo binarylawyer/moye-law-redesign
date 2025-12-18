@@ -21,6 +21,9 @@ const HeroV2 = () => {
                 {/* === BLOCK A: THE PROMISE (60% approx - Cols 1-7) === */}
                 <div className="col-span-1 md:col-span-7 bg-transparent p-8 md:p-16 flex flex-col justify-center relative">
                     <RevealContent delay={1.2} className="max-w-3xl">
+                        <div className="inline-block mb-6 px-3 py-1 border border-navy text-navy font-mono text-xs tracking-widest uppercase">
+                            System v2.0 :: Online
+                        </div>
                         <h1 className="font-display text-6xl md:text-8xl font-bold text-navy leading-[0.9] tracking-tight mb-8">
                             The Architecture <br />
                             of <span className="italic text-gold">Legacy</span>.
