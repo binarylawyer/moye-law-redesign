@@ -88,10 +88,7 @@ export default function DesignMotionPage() {
                     </RevealContent>
                 </section>
 
-                {/* SECTION 3: KINETIC MONDRIAN ASSEMBLY */}
-                <div className="mt-32">
-                    <KineticMondrianDemo />
-                </div>
+
 
             </main>
         </div>
