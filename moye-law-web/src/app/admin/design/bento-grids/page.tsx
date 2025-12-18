@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import KineticMondrianDemo from "@/components/content/KineticMondrianDemo";
+import KineticMondrianLines from "@/components/content/KineticMondrianLines";
 import StripeBentoGrid from "@/components/content/StripeBentoGrid";
 import FloatingBentoGrid from "@/components/content/FloatingBentoGrid";
 
@@ -28,17 +29,11 @@ export default function BentoGridsPage() {
 
             <main className="container mx-auto px-6 max-w-7xl py-24 space-y-32">
 
-                {/* 1. KINETIC MONDRIAN */}
-                <section>
-                    <div className="mb-8">
-                        <span className="font-mono text-xs text-gold tracking-widest uppercase block mb-2">01 // VISUAL IMPACT</span>
-                        <h2 className="font-display text-3xl text-navy">Kinetic Mondrian</h2>
-                        <p className="text-gray-600 mt-2">High-impact assembly for hero sections and feature reveals.</p>
-                    </div>
-                    <div className="border border-gray-200 rounded-lg overflow-hidden">
-                        <KineticMondrianDemo />
-                    </div>
-                </section>
+                {/* 1. KINETIC MONDRIAN (Standard) */}
+                <KineticMondrianDemo />
+
+                {/* 1.5. KINETIC MONDRIAN (Lines) */}
+                <KineticMondrianLines />
 
                 {/* 2. STRIPE VARIANT */}
                 <section>
