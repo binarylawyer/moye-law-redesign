@@ -8,6 +8,8 @@ import BinaryBio from "@/components/content/BinaryBio";
 import LegalExhibit from "@/components/content/LegalExhibit";
 import ExecuteCTA from "@/components/layout/ExecuteCTA";
 import KineticBentoWrapper from "@/components/content/KineticBentoWrapper";
+import ICPHub from "@/components/content/ICPHub";
+import CinematicDivider from "@/components/content/CinematicDivider";
 
 export default function Home() {
   return (
@@ -20,6 +22,9 @@ export default function Home() {
 
         {/* 2. STATS STRIP */}
         <MondrianStats />
+
+        {/* 2.5 ICP HUB (NEW) */}
+        <ICPHub />
 
         {/* 3. SERVICES GRID */}
         <section id="services" className="py-24 bg-[#FAFAFA] border-b-4 border-navy relative">
@@ -98,7 +103,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 4. TECHNICAL PROCESS */}
+        {/* 4. CINEMATIC DIVIDER */}
+        <CinematicDivider
+          title="The Structure of Peace."
+          subtitle="We do not sell documents. We sell sleep."
+        />
+
+        {/* 5. TECHNICAL PROCESS */}
         <TechnicalProcess />
 
         {/* 5. BINARY BIO */}
