@@ -1,9 +1,9 @@
 "use client";
 
-import { createBrowserClient } from '@supabase/ssr'
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { supabase } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
-import { ArrowRight, Lock, Terminal } from 'lucide-react';
+import { Lock, ArrowRight, Loader2 } from 'lucide-react';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -12,93 +12,93 @@ export default function LoginPage() {
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
 
-    const supabase = createBrowserClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co',
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
-    )
-
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
         setError(null);
 
-        const { error } = await supabase.auth.signInWithPassword({
-            email,
-            password,
-        });
+        try {
+            const { error } = await supabase.auth.signInWithPassword({
+                email,
+                password,
+            });
 
-        if (error) {
-            setError(error.message);
-            setLoading(false);
-        } else {
+            if (error) throw error;
+
+            // Success
             router.push('/admin');
-            router.refresh(); // Refresh to update middleware state
+            router.refresh(); // Refresh middleware/server state
+        } catch (err: any) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        <div className="min-h-screen bg-navy flex flex-col items-center justify-center p-6 relative overflow-hidden">
+        <div className="min-h-screen bg-navy flex items-center justify-center p-6">
+            <div className="w-full max-w-md bg-white p-8 border-4 border-gold shadow-[16px_16px_0px_0px_#C99D56]">
 
-            {/* Background Grid */}
-            <div className="absolute inset-0 opacity-10"
-                style={{ backgroundImage: 'linear-gradient(#C99D56 1px, transparent 1px), linear-gradient(90deg, #C99D56 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
-            </div>
-
-            <div className="bg-white w-full max-w-md border-4 border-gold shadow-[16px_16px_0px_0px_#0A2342] relative z-10 p-10">
-
-                <div className="text-center mb-8">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-navy text-gold mb-4 border-2 border-gold">
-                        <Lock className="w-8 h-8" />
+                <div className="mb-8 text-center">
+                    <div className="inline-flex items-center justify-center w-12 h-12 bg-navy mb-4">
+                        <Lock className="w-6 h-6 text-gold" />
                     </div>
-                    <h1 className="font-display text-4xl text-navy mb-2">Restricted Access</h1>
-                    <p className="font-mono text-xs text-gray-500 uppercase tracking-widest">
-                        Moye Law Systems // Admin Console
-                    </p>
+                    <h1 className="font-display text-4xl text-navy">Access Control</h1>
+                    <p className="font-mono text-xs text-gray-500 mt-2 tracking-widest uppercase">AUTHORIZED PERSONNEL ONLY</p>
                 </div>
 
                 <form onSubmit={handleLogin} className="space-y-6">
+                    {error && (
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 text-sm text-red-700 font-mono">
+                            ERROR: {error}
+                        </div>
+                    )}
+
                     <div>
-                        <label className="font-mono text-xs font-bold text-navy block mb-2">OPERATOR_ID (EMAIL)</label>
+                        <label className="block font-mono text-xs text-navy uppercase mb-2">Identifier</label>
                         <input
                             type="email"
                             required
-                            className="w-full bg-grey border-2 border-navy p-3 font-mono text-sm focus:outline-none focus:border-gold transition-colors"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            className="w-full bg-gray-50 border-2 border-gray-200 p-3 focus:outline-none focus:border-navy transition-colors font-mono"
+                            placeholder="admin@moye.law"
                         />
                     </div>
 
                     <div>
-                        <label className="font-mono text-xs font-bold text-navy block mb-2">ACCESS_KEY (PASSWORD)</label>
+                        <label className="block font-mono text-xs text-navy uppercase mb-2">Passkey</label>
                         <input
                             type="password"
                             required
-                            className="w-full bg-grey border-2 border-navy p-3 font-mono text-sm focus:outline-none focus:border-gold transition-colors"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            className="w-full bg-gray-50 border-2 border-gray-200 p-3 focus:outline-none focus:border-navy transition-colors font-mono"
+                            placeholder="••••••••"
                         />
                     </div>
-
-                    {error && (
-                        <div className="bg-red-50 text-red-700 p-3 font-mono text-xs border border-red-200 flex items-start">
-                            <Terminal className="w-4 h-4 mr-2 flex-shrink-0" />
-                            <span>ERROR: {error}</span>
-                        </div>
-                    )}
 
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-navy text-white font-mono text-sm uppercase tracking-widest py-4 border-2 border-navy hover:bg-gold hover:text-navy hover:border-gold transition-all flex items-center justify-center disabled:opacity-50 disabled:cursor-wait"
+                        className="w-full bg-navy text-white font-bold py-4 hover:bg-gold hover:text-navy transition-all flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        {loading ? 'AUTHENTICATING...' : 'INITIATE_SESSION >'}
+                        {loading ? (
+                            <Loader2 className="w-5 h-5 animate-spin" />
+                        ) : (
+                            <>
+                                AUTHENTICATE <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </>
+                        )}
                     </button>
                 </form>
 
-            </div>
+                <div className="mt-8 text-center border-t border-gray-100 pt-6">
+                    <p className="font-mono text-[10px] text-gray-400">
+                        SYSTEM V2.0 // SECURE GATEWAY
+                    </p>
+                </div>
 
-            <div className="absolute bottom-8 left-0 w-full text-center font-mono text-[10px] text-white/30 uppercase">
-                Secure Connection // TLS 1.3 // 256-bit AES
             </div>
         </div>
     );
