@@ -8,10 +8,17 @@ export async function middleware(request: NextRequest) {
         },
     })
 
+    // BUILD SAFETY: Check for keys
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+        // If keys are missing (e.g. during build or before setup), just allow the request
+        // This prevents build failures.
+        return response;
+    }
+
     // Create Supabase Server Client
     const supabase = createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        process.env.NEXT_PUBLIC_SUPABASE_URL,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
         {
             cookies: {
                 getAll() {
